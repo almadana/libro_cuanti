@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.258">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Matthew J. C. Crump">
 
-<title>Answering questions with data - 12&nbsp; Thinking about answering questions with data</title>
+<title>Respondiendo preguntas con datos - 12&nbsp; Thinking about answering questions with data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -58,7 +92,8 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1116FZ99DZ"></script>
@@ -74,14 +109,14 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Answering questions with data - 12&nbsp; Thinking about answering questions with data">
-<meta property="og:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
+<meta property="og:title" content="Respondiendo preguntas con datos - 12&nbsp; Thinking about answering questions with data">
+<meta property="og:description" content="">
 <meta property="og:image" content="https://crumplab.com/statistics/12-Thinking_files/figure-html/fig-12effectdists-1.png">
-<meta property="og:site-name" content="Answering questions with data">
+<meta property="og:site-name" content="Respondiendo preguntas con datos">
 <meta property="og:image:height" content="960">
 <meta property="og:image:width" content="1344">
-<meta name="twitter:title" content="Answering questions with data - 12&nbsp; Thinking about answering questions with data">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Respondiendo preguntas con datos - 12&nbsp; Thinking about answering questions with data">
+<meta name="twitter:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
 <meta name="twitter:image" content="https://crumplab.com/statistics/imgs/TextbookCover.png">
 <meta name="twitter:site" content="@MattCrumpLab">
 <meta name="twitter:card" content="summary">
@@ -101,7 +136,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./12-Thinking.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Thinking about answering questions with data</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -113,9 +148,9 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Answering questions with data</a> 
+      <a href="./">Respondiendo preguntas con datos</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/CrumpLab/statistics/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/CrumpLab/statistics/" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
@@ -129,13 +164,13 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
+ <span class="menu-text">Prefacio</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01-Science_Data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why Statistics?</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">¿Por qué estadística?</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -275,6 +310,10 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 
 </header>
 
+<div class="cell" data-hash="12-Thinking_cache/html/unnamed-chunk-2_2da51f6476cab433ca362314a14b9d67">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>You might be happy that this is the last chapter (so far) of this textbook. At this point we are in the last weeks of our introductory statistics course. It’s called “introductory” for a reason. There’s just too much out there to cover in one short semester. In this chapter we acknowledge some of the things we haven’t yet covered, and treat them as things that you should think about. If there is one take home message that we want to get across to you, it’s that when you ask questions with data, you should be able to <strong>justify</strong> how you answer those questions.</p>
 <section id="effect-size-and-power" class="level2" data-number="12.1">
 <h2 data-number="12.1" class="anchored" data-anchor-id="effect-size-and-power"><span class="header-section-number">12.1</span> Effect-size and power</h2>
@@ -296,30 +335,105 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <section id="cohens-d" class="level3" data-number="12.1.3">
 <h3 data-number="12.1.3" class="anchored" data-anchor-id="cohens-d"><span class="header-section-number">12.1.3</span> Cohen’s d</h3>
 <p>Let’s look a few distributions to firm up some ideas about effect-size. <a href="#fig-12effectdists">Figure&nbsp;<span>12.1</span></a> has four panels. The first panel (0) represents the null distribution of no differences. This is the idea that your manipulation (A vs.&nbsp;B) doesn’t do anything at all, as a result when you measure scores in conditions A and B, you are effectively sampling scores from the very same overall distribution. The panel shows the distribution as green for condition B, but the red one for condition A is identical and drawn underneath (it’s invisible). There is 0 difference between these distributions, so it represent a null effect.</p>
-<div class="cell" data-hash="12-Thinking_cache/html/fig-12effectdists_eee4714521960ea63355b982d93a668a">
+<div class="cell" data-hash="12-Thinking_cache/html/fig-12effectdists_ed74cb5ca9dfaeb65337f289d8dcf5b0">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, .<span class="dv">1</span>),</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, .<span class="dv">1</span>),</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, .<span class="dv">1</span>),</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, .<span class="dv">1</span>),</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, .<span class="dv">1</span>),</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, .<span class="dv">1</span>),</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, .<span class="dv">1</span>),</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, .<span class="dv">1</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dnorm</span>(<span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, .<span class="dv">1</span>), <span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dnorm</span>(<span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, .<span class="dv">1</span>), <span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dnorm</span>(<span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, .<span class="dv">1</span>), <span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dnorm</span>(<span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, .<span class="dv">1</span>), .<span class="dv">5</span>, <span class="dv">1</span>),</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dnorm</span>(<span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, .<span class="dv">1</span>), <span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dnorm</span>(<span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, .<span class="dv">1</span>), <span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dnorm</span>(<span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, .<span class="dv">1</span>), <span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dnorm</span>(<span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, .<span class="dv">1</span>), <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>effect_size <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">0</span>, .<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="at">each =</span> <span class="dv">101</span> <span class="sc">*</span> <span class="dv">2</span>)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>condition <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>), <span class="at">each =</span> <span class="dv">101</span>), <span class="dv">2</span>)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(effect_size,</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>                 condition,</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>                 X, Y)</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> X,</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> Y,</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">group =</span> condition,</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> condition</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>)) <span class="sc">+</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">15</span>) <span class="sc">+</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>( <span class="sc">~</span> effect_size) <span class="sc">+</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"values"</span>) <span class="sc">+</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"density"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-12effectdists" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="12-Thinking_files/figure-html/fig-12effectdists-1.png" class="quarto-discovered-preview-image img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;12.1: Each panel shows hypothetical distributions for two conditions. As the effect-size increases, the difference between the distributions become larger.</figcaption><p></p>
+<p><img src="12-Thinking_files/figure-html/fig-12effectdists-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;12.1: Each panel shows hypothetical distributions for two conditions. As the effect-size increases, the difference between the distributions become larger.</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>The remaining panels are hypothetical examples of what a true effect could look like, when your manipulation actually causes a difference. For example, if condition A is a control group, and condition B is a treatment group, we are looking at three cases where the treatment manipulation causes a positive shift in the mean of distribution. We are using normal curves with mean =0 and sd =1 for this demonstration, so a shift of .5 is a shift of half of a standard deviation. A shift of 1 is a shift of 1 standard deviation, and a shift of 2 is a shift of 2 standard deviations. We could draw many more examples showing even bigger shifts, or shifts that go in the other direction.</p>
 <p>Let’s look at another example, but this time we’ll use some concrete measurements. Let’s say we are looking at final exam performance, so our numbers are grade percentages. Let’s also say that we know the mean on the test is 65%, with a standard deviation of 5%. Group A could be a control that just takes the test, Group B could receive some “educational” manipulation designed to improve the test score. These graphs then show us some hypotheses about what the manipulation may or may not be doing.</p>
-<div class="cell" data-hash="12-Thinking_cache/html/fig-12effectdistsB_90ccc8c70c11a26facafe44756e96506">
+<div class="cell" data-hash="12-Thinking_cache/html/fig-12effectdistsB_5c90700a4b4b0a8bc7483ce6e1f948a5">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">seq</span>(<span class="dv">25</span>, <span class="dv">100</span>, <span class="dv">1</span>),</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">seq</span>(<span class="dv">25</span>, <span class="dv">100</span>, <span class="dv">1</span>),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">seq</span>(<span class="dv">25</span>, <span class="dv">100</span>, <span class="dv">1</span>),</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">seq</span>(<span class="dv">25</span>, <span class="dv">100</span>, <span class="dv">1</span>),</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">seq</span>(<span class="dv">25</span>, <span class="dv">100</span>, <span class="dv">1</span>),</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">seq</span>(<span class="dv">25</span>, <span class="dv">100</span>, <span class="dv">1</span>),</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">seq</span>(<span class="dv">25</span>, <span class="dv">100</span>, <span class="dv">1</span>),</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">seq</span>(<span class="dv">25</span>, <span class="dv">100</span>, <span class="dv">1</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dnorm</span>(<span class="fu">seq</span>(<span class="dv">25</span>, <span class="dv">100</span>, <span class="dv">1</span>), <span class="dv">65</span>, <span class="dv">5</span>),</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dnorm</span>(<span class="fu">seq</span>(<span class="dv">25</span>, <span class="dv">100</span>, <span class="dv">1</span>), <span class="dv">65</span>, <span class="dv">5</span>),</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dnorm</span>(<span class="fu">seq</span>(<span class="dv">25</span>, <span class="dv">100</span>, <span class="dv">1</span>), <span class="dv">65</span>, <span class="dv">5</span>),</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dnorm</span>(<span class="fu">seq</span>(<span class="dv">25</span>, <span class="dv">100</span>, <span class="dv">1</span>), <span class="fl">67.5</span>, <span class="dv">5</span>),</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dnorm</span>(<span class="fu">seq</span>(<span class="dv">25</span>, <span class="dv">100</span>, <span class="dv">1</span>), <span class="dv">65</span>, <span class="dv">5</span>),</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dnorm</span>(<span class="fu">seq</span>(<span class="dv">25</span>, <span class="dv">100</span>, <span class="dv">1</span>), <span class="dv">70</span>, <span class="dv">5</span>),</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dnorm</span>(<span class="fu">seq</span>(<span class="dv">25</span>, <span class="dv">100</span>, <span class="dv">1</span>), <span class="dv">65</span>, <span class="dv">5</span>),</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dnorm</span>(<span class="fu">seq</span>(<span class="dv">25</span>, <span class="dv">100</span>, <span class="dv">1</span>), <span class="dv">75</span>, <span class="dv">5</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>effect_size <span class="ot">&lt;-</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"65, d=0"</span>, <span class="st">"67.5,d=.5"</span>, <span class="st">"70, d=1"</span>, <span class="st">"75, d=2"</span>), <span class="at">each =</span> <span class="dv">76</span> <span class="sc">*</span> <span class="dv">2</span>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>condition <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>), <span class="at">each =</span> <span class="dv">76</span>), <span class="dv">2</span>)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(effect_size,</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>                 condition,</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>                 X, Y)</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> X,</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> Y,</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">group =</span> condition,</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> condition</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>)) <span class="sc">+</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">15</span>) <span class="sc">+</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>( <span class="sc">~</span> effect_size) <span class="sc">+</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"values"</span>) <span class="sc">+</span></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"density"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-12effectdistsB" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="12-Thinking_files/figure-html/fig-12effectdistsB-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;12.2: Each panel shows hypothetical distributions for two conditions. As the effect-size increases, the difference between the distributions become larger.</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;12.2: Each panel shows hypothetical distributions for two conditions. As the effect-size increases, the difference between the distributions become larger.</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>The first panel shows that both condition A and B will sample test scores from the same distribution (mean =65, with 0 effect). The other panels show shifted mean for condition B (the treatment that is supposed to increase test performance). So, the treatment could increase the test performance by 2.5% (mean 67.5, .5 sd shift), or by 5% (mean 70, 1 sd shift), or by 10% (mean 75%, 2 sd shift), or by any other amount. In terms of our previous metaphor, a shift of 2 standard deviations is more like jack-hammer in terms of size, and a shift of .5 standard deviations is more like using a pencil. The thing about research, is we often have no clue about whether our manipulation will produce a big or small effect, that’s why we are conducting the research.</p>
-<p>You might have noticed that the letter <span class="math inline">\(d\)</span> appears in the above figure. Why is that? Jacob Cohen <span class="citation" data-cites="cohen1988">(<a href="#ref-cohen1988" role="doc-biblioref"><strong>cohen1988?</strong></a>)</span> used the letter <span class="math inline">\(d\)</span> in defining the effect-size for this situation, and now everyone calls it Cohen’s <span class="math inline">\(d\)</span>. The formula for Cohen’s <span class="math inline">\(d\)</span> is:</p>
+<p>You might have noticed that the letter <span class="math inline">\(d\)</span> appears in the above figure. Why is that? Jacob Cohen <span class="citation" data-cites="cohen1988">(<a href="references.html#ref-cohen1988" role="doc-biblioref"><strong>cohen1988?</strong></a>)</span> used the letter <span class="math inline">\(d\)</span> in defining the effect-size for this situation, and now everyone calls it Cohen’s <span class="math inline">\(d\)</span>. The formula for Cohen’s <span class="math inline">\(d\)</span> is:</p>
 <p><span class="math inline">\(d = \frac{\text{mean for condition 1} - \text{mean for condition 2}}{\text{population standard deviation}}\)</span></p>
 <p>If you notice, this is just a kind of z-score. It is a way to standardize the mean difference in terms of the population standard deviation.</p>
 <p>It is also worth noting again that this measure of effect-size is entirely hypothetical for most purposes. In general, researchers do not know the population standard deviation, they can only guess at it, or estimate it from the sample. The same goes for means, in the formula these are hypothetical mean differences in two population distributions. In practice, researchers do not know these values, they guess at them from their samples.</p>
@@ -359,24 +473,64 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 </ol>
 <p>To see this in practice let’s do a simulation. We will do a t-test on a between-groups design 10 subjects in each group. Group A will be a control group with scores sampled from a normal distribution with mean of 10, and standard deviation of 5. Group B will be a treatment group, we will say the treatment has an effect-size of Cohen’s <span class="math inline">\(d\)</span> = .5, that’s a standard deviation shift of .5, so the scores with come from a normal distribution with mean =12.5 and standard deivation of 5. Remember 1 standard deviation here is 5, so half of a standard deviation is 2.5.</p>
 <p>The following R script runs this simulated experiment 1000 times. We set the alpha criterion to .05, this means we will reject the null whenever the <span class="math inline">\(p\)</span>-value is less than .05. With this specific design, how many times out of of 1000 do we reject the null, and accept the alternative hypothesis?</p>
-<div class="cell" data-hash="12-Thinking_cache/html/unnamed-chunk-5_cccb3568faad7b2dccbe6d4980aef0e9">
-<pre><code>#&gt; [1] 173</code></pre>
+<div class="cell" data-hash="12-Thinking_cache/html/unnamed-chunk-3_14c68b52f9997276d47b475f6340be67">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p<span class="ot">&lt;-</span><span class="fu">length</span>(<span class="dv">1000</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  A<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">5</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  B<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="fl">12.5</span>,<span class="dv">5</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  p[i]<span class="ot">&lt;-</span><span class="fu">t.test</span>(A,B,<span class="at">var.equal =</span> <span class="cn">TRUE</span>)<span class="sc">$</span>p.value</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(p[p<span class="sc">&lt;</span>.<span class="dv">05</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 181</code></pre>
 </div>
-<p>The answer is that we reject the null, and accept the alternative 173 times out of 1000. In other words our experiment succesfully accepts the alternative hypothesis 17.3 percent of the time, this is known as the power of the study. Power is the probability that a design will succesfully detect an effect of a specific size.</p>
+</div>
+<p>The answer is that we reject the null, and accept the alternative 181 times out of 1000. In other words our experiment succesfully accepts the alternative hypothesis 18.1 percent of the time, this is known as the power of the study. Power is the probability that a design will succesfully detect an effect of a specific size.</p>
 <p>Importantly, power is completely abstract idea that is completely determined by many assumptions including N, effect-size, and alpha. As a result, it is best not to think of power as a single number, but instead as a family of numbers.</p>
 <p>For example, power is different when we change N. If we increase N, our samples will more precisely estimate the true distributions that they came from. Increasing N reduces sampling error, and shrinks the range of differences that can be produced by chance. Lets’ increase our N in this simulation from 10 to 20 in each group and see what happens.</p>
-<div class="cell" data-hash="12-Thinking_cache/html/unnamed-chunk-6_1afe3dace25df6cf62ed805d7f3d2e2d">
-<pre><code>#&gt; [1] 352</code></pre>
+<div class="cell" data-hash="12-Thinking_cache/html/unnamed-chunk-4_9f68862e550eb188691928e04a6a6e02">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>p<span class="ot">&lt;-</span><span class="fu">length</span>(<span class="dv">1000</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  A<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">20</span>,<span class="dv">10</span>,<span class="dv">5</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  B<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">20</span>,<span class="fl">12.5</span>,<span class="dv">5</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  p[i]<span class="ot">&lt;-</span><span class="fu">t.test</span>(A,B,<span class="at">var.equal =</span> <span class="cn">TRUE</span>)<span class="sc">$</span>p.value</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(p[p<span class="sc">&lt;</span>.<span class="dv">05</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 376</code></pre>
 </div>
-<p>Now the number of significant experiments i 352 out of 1000, or a power of 35.2 percent. That’s roughly doubled from before. We have made the design more sensitive to the effect by increasing N.</p>
+</div>
+<p>Now the number of significant experiments i 376 out of 1000, or a power of 37.6 percent. That’s roughly doubled from before. We have made the design more sensitive to the effect by increasing N.</p>
 <p>We can change the power of the design by changing the alpha-value, which tells us how much evidence we need to reject the null. For example, if we set the alpha criterion to 0.01, then we will be more conservative, only rejecting the null when chance can produce the observed difference 1% of the time. In our example, this will have the effect of reducing power. Let’s keep N at 20, but reduce the alpha to 0.01 and see what happens:</p>
-<div class="cell" data-hash="12-Thinking_cache/html/unnamed-chunk-7_370bb2b56c038a58efcd07fb6a949fad">
-<pre><code>#&gt; [1] 139</code></pre>
+<div class="cell" data-hash="12-Thinking_cache/html/unnamed-chunk-5_44f409f132e02cdc8cb2e61ab103c58d">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>p<span class="ot">&lt;-</span><span class="fu">length</span>(<span class="dv">1000</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  A<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">20</span>,<span class="dv">10</span>,<span class="dv">5</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  B<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">20</span>,<span class="fl">12.5</span>,<span class="dv">5</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  p[i]<span class="ot">&lt;-</span><span class="fu">t.test</span>(A,B,<span class="at">var.equal =</span> <span class="cn">TRUE</span>)<span class="sc">$</span>p.value</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(p[p<span class="sc">&lt;</span>.<span class="dv">01</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 162</code></pre>
 </div>
-<p>Now only 139 out of 1000 experiments are significant, that’s 13.9 power.</p>
+</div>
+<p>Now only 162 out of 1000 experiments are significant, that’s 16.2 power.</p>
 <p>Finally, the power of the design depends on the actual size of the effect caused by the manipulation. In our example, we hypothesized that the effect caused a shift of .5 standard deviations. What if the effect causes a bigger shift? Say, a shift of 2 standard deviations. Let’s keep N= 20, and alpha &lt; .01, but change the effect-size to two standard deviations. When the effect in the real-world is bigger, it should be easier to measure, so our power will increase.</p>
-<div class="cell" data-hash="12-Thinking_cache/html/unnamed-chunk-8_88f91b1aee15e0fb44c0a91461c0a796">
-<pre><code>#&gt; [1] 1000</code></pre>
+<div class="cell" data-hash="12-Thinking_cache/html/unnamed-chunk-6_e97ed416d5a33a4dc41388d2b35c9897">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>p<span class="ot">&lt;-</span><span class="fu">length</span>(<span class="dv">1000</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  A<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">20</span>,<span class="dv">10</span>,<span class="dv">5</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  B<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">5</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  p[i]<span class="ot">&lt;-</span><span class="fu">t.test</span>(A,B,<span class="at">var.equal =</span> <span class="cn">TRUE</span>)<span class="sc">$</span>p.value</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(p[p<span class="sc">&lt;</span>.<span class="dv">01</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1000</code></pre>
+</div>
 </div>
 <p>Neat, if the effect-size is actually huge (2 standard deviation shift), then we have power 100 percent to detect the true effect.</p>
 </section>
@@ -384,24 +538,57 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <h3 data-number="12.2.3" class="anchored" data-anchor-id="power-curves"><span class="header-section-number">12.2.3</span> Power curves</h3>
 <p>We mentioned that it is best to think of power as a family of numbers, rather than as a single number. To elaborate on this consider the power curve below. This is the power curve for a specific design: a between groups experiments with two levels, that uses an independent samples t-test to test whether an observed difference is due to chance. Critically, N is set to 10 in each group, and alpha is set to .05</p>
 <p>In <a href="#fig-12powercurve">Figure&nbsp;<span>12.3</span></a> power (as a proportion, not a percentage) is plotted on the y-axis, and effect-size (Cohen’s d) in standard deviation units is plotted on the x-axis.</p>
-<div class="cell" data-hash="12-Thinking_cache/html/fig-12powercurve_79c8f0d99a2389b2dea4aa7d297f3bf5">
+<div class="cell" data-hash="12-Thinking_cache/html/fig-12powercurve_9bfef2f0760b7ad54b3bdc78df9e46df">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>power<span class="ot">&lt;-</span><span class="fu">c</span>()</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">2</span>,.<span class="dv">1</span>)){</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>sd_AB <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>n<span class="ot">&lt;-</span><span class="dv">10</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>C <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>( sd_AB<span class="sc">/</span>n <span class="sc">+</span> sd_AB<span class="sc">/</span>n )</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>delta<span class="ot">&lt;-</span>i</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>power <span class="ot">&lt;-</span> <span class="fu">c</span>(power,<span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(C<span class="sc">-</span>delta<span class="sc">/</span>se) <span class="sc">+</span> <span class="fu">pnorm</span>(<span class="sc">-</span>C<span class="sc">-</span>delta<span class="sc">/</span>se))</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>plot_df<span class="ot">&lt;-</span><span class="fu">data.frame</span>(power,</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">effect_size =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">2</span>,.<span class="dv">1</span>))</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_df, <span class="fu">aes</span>(<span class="at">x=</span>effect_size, <span class="at">y=</span>power))<span class="sc">+</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-12powercurve" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="12-Thinking_files/figure-html/fig-12powercurve-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;12.3: This figure shows power as a function of effect-size (Cohen’s d) for a between-subjects independent samples t-test, with N=10, and alpha criterion 0.05.</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;12.3: This figure shows power as a function of effect-size (Cohen’s d) for a between-subjects independent samples t-test, with N=10, and alpha criterion 0.05.</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>A power curve like this one is very helpful to understand the sensitivity of a particular design. For example, we can see that a between subjects design with N=10 in both groups, will detect an effect of d=.5 (half a standard deviation shift) about 20% of the time, will detect an effect of d=.8 about 50% of the time, and will detect an effect of d=2 about 100% of the time. All of the percentages reflect the power of the design, which is the percentage of times the design would be expected to find a <span class="math inline">\(p\)</span> &lt; 0.05.</p>
 <p>Let’s imagine that based on prior research, the effect you are interested in measuring is fairly small, d=0.2. If you want to run an experiment that will detect an effect of this size a large percentage of the time, how many subjects do you need to have in each group? We know from the above graph that with N=10, power is very low to detect an effect of d=0.2. Let’s make <a href="#fig-12powercurveN">Figure&nbsp;<span>12.4</span></a> and vary the number of subjects rather than the size of the effect.</p>
-<div class="cell" data-hash="12-Thinking_cache/html/fig-12powercurveN_9eb63e92f338d3b30547a5b3a02f20aa">
+<div class="cell" data-hash="12-Thinking_cache/html/fig-12powercurveN_f40545908bcafb1967c568d146dae6ae">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>power<span class="ot">&lt;-</span><span class="fu">c</span>()</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">10</span>,<span class="dv">800</span>,<span class="dv">10</span>)){</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>sd_AB <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>n<span class="ot">&lt;-</span>i</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>C <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>( sd_AB<span class="sc">/</span>n <span class="sc">+</span> sd_AB<span class="sc">/</span>n )</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>delta<span class="ot">&lt;-</span><span class="fl">0.2</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>power <span class="ot">&lt;-</span> <span class="fu">c</span>(power,<span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(C<span class="sc">-</span>delta<span class="sc">/</span>se) <span class="sc">+</span> <span class="fu">pnorm</span>(<span class="sc">-</span>C<span class="sc">-</span>delta<span class="sc">/</span>se))</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>plot_df<span class="ot">&lt;-</span><span class="fu">data.frame</span>(power,</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">N =</span> <span class="fu">seq</span>(<span class="dv">10</span>,<span class="dv">800</span>,<span class="dv">10</span>))</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_df, <span class="fu">aes</span>(<span class="at">x=</span>N, <span class="at">y=</span>power))<span class="sc">+</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span>.<span class="dv">8</span>, <span class="at">color=</span><span class="st">"green"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-12powercurveN" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="12-Thinking_files/figure-html/fig-12powercurveN-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;12.4: This figure shows power as a function of N for a between-subjects independent samples t-test, with d=0.2, and alpha criterion 0.05.</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;12.4: This figure shows power as a function of N for a between-subjects independent samples t-test, with d=0.2, and alpha criterion 0.05.</figcaption>
 </figure>
 </div>
 </div>
@@ -446,23 +633,79 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <p>So what is this pernicious relationship between Type I errors and effect-size? Mainly, this relationship is pernicious for small N studies. For example, the following figure illustrates the results of 1000s of simulated experiments, all assuming the null distribution. In other words, for all of these simulations there is no true effect, as the numbers are all sampled from an identical distribution (normal distribution with mean =0, and standard deviation =1). The true effect-size is 0 in all cases.</p>
 <p>We know that under the null, researchers will find p values that are less 5% about 5% of the time, remember that is the definition. So, if a researcher happened to be in this situation (where there manipulation did absolutely nothing), they would make a type I error 5% of the time, or if they conducted 100 experiments, they would expect to find a significant result for 5 of them.</p>
 <p><a href="#fig-12effectsizeType1">Figure&nbsp;<span>12.5</span></a> reports the findings from only the type I errors, where the simulated study did produce p &lt; 0.05. For each type I error, we calculated the exact p-value, as well as the effect-size (cohen’s D) (mean difference divided by standard deviation). We already know that the true effect-size is zero, however take a look at this graph, and pay close attention to the smaller sample-sizes.</p>
-<div class="cell" data-hash="12-Thinking_cache/html/fig-12effectsizeType1_d40a687eeebf299a762fcbb43c112d49">
+<div class="cell" data-hash="12-Thinking_cache/html/fig-12effectsizeType1_7de12a6fd39bfb3d67e0f627c8b83638">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>all_df<span class="ot">&lt;-</span><span class="fu">data.frame</span>()</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(n <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">50</span>,<span class="dv">100</span>,<span class="dv">1000</span>)){</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    some_data<span class="ot">&lt;-</span><span class="fu">rnorm</span>(n,<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    p_value<span class="ot">&lt;-</span><span class="fu">t.test</span>(some_data)<span class="sc">$</span>p.value</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    effect_size<span class="ot">&lt;-</span><span class="fu">mean</span>(some_data)<span class="sc">/</span><span class="fu">sd</span>(some_data)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    mean_scores<span class="ot">&lt;-</span><span class="fu">mean</span>(some_data)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    standard_error<span class="ot">&lt;-</span><span class="fu">sd</span>(some_data)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(some_data))</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    t_df<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">sim=</span>i,<span class="at">sample_size=</span>n,p_value,effect_size,mean_scores,standard_error)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    all_df<span class="ot">&lt;-</span><span class="fu">rbind</span>(all_df,t_df)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>type_I_error <span class="ot">&lt;-</span>all_df[all_df<span class="sc">$</span>p_value<span class="sc">&lt;</span>.<span class="dv">05</span>,]</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>type_I_error<span class="sc">$</span>sample_size<span class="ot">&lt;-</span><span class="fu">as.factor</span>(type_I_error<span class="sc">$</span>sample_size)</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(type_I_error,<span class="fu">aes</span>(<span class="at">x=</span>p_value,<span class="at">y=</span>effect_size, <span class="at">group=</span>sample_size,<span class="at">color=</span>sample_size))<span class="sc">+</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Effect sizes for type I errors"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-12effectsizeType1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="12-Thinking_files/figure-html/fig-12effectsizeType1-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;12.5: Effect size as a function of p-values for type 1 Errors under the null, for a paired samples t-test.</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;12.5: Effect size as a function of p-values for type 1 Errors under the null, for a paired samples t-test.</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>For example, look at the red dots, when sample size is 10. Here we see that the effect-sizes are quite large. When p is near 0.05 the effect-size is around .8, and it goes up and up as when p gets smaller and smaller. What does this mean? It means that when you get unlucky with a small N design, and your manipulation does not work, but you by chance find a “significant” effect, the effect-size measurement will show you a “big effect”. This is the pernicious aspect. When you make a type I error for small N, your data will make you think there is no way it could be a type I error because the effect is just so big!. Notice that when N is very large, like 1000, the measure of effect-size approaches 0 (which is the true effect-size in the simulation shown in <a href="#fig-12cohensD">Figure&nbsp;<span>12.6</span></a>).</p>
-<div class="cell" data-hash="12-Thinking_cache/html/fig-12cohensD_6d1cca0dd89be85f45e50a4985e8c224">
+<div class="cell" data-hash="12-Thinking_cache/html/fig-12cohensD_4eb30fd2942600550d66c1851671d1ce">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>all_df<span class="ot">&lt;-</span><span class="fu">data.frame</span>()</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>){</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  sample      <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">50</span>,<span class="dv">100</span>,<span class="dv">20</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  sample_mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(sample[<span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>]<span class="sc">-</span>sample[<span class="dv">26</span><span class="sc">:</span><span class="dv">50</span>])</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  sample_sem  <span class="ot">&lt;-</span> <span class="fu">sd</span>(sample)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(sample))</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  sample_t    <span class="ot">&lt;-</span> <span class="fu">t.test</span>(sample, <span class="at">mu=</span><span class="dv">100</span>)<span class="sc">$</span>statistic</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  sample_d    <span class="ot">&lt;-</span> (<span class="fu">mean</span>(sample)<span class="sc">-</span><span class="dv">100</span>)<span class="sc">/</span><span class="fu">sd</span>(sample)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  t_df<span class="ot">&lt;-</span><span class="fu">data.frame</span>(i,sample_mean,</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>                   sample_sem,</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>                   sample_t,</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>                   sample_d)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  all_df<span class="ot">&lt;-</span><span class="fu">rbind</span>(all_df,t_df)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>a<span class="ot">&lt;-</span><span class="fu">ggplot</span>(all_df,<span class="fu">aes</span>(<span class="at">x=</span>sample_mean))<span class="sc">+</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color=</span><span class="st">"white"</span>)<span class="sc">+</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>b<span class="ot">&lt;-</span><span class="fu">ggplot</span>(all_df,<span class="fu">aes</span>(<span class="at">x=</span>sample_sem))<span class="sc">+</span></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color=</span><span class="st">"white"</span>)<span class="sc">+</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>c<span class="ot">&lt;-</span><span class="fu">ggplot</span>(all_df,<span class="fu">aes</span>(<span class="at">x=</span>sample_t))<span class="sc">+</span></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color=</span><span class="st">"white"</span>)<span class="sc">+</span></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>d<span class="ot">&lt;-</span><span class="fu">ggplot</span>(all_df,<span class="fu">aes</span>(<span class="at">x=</span>sample_d))<span class="sc">+</span></span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color=</span><span class="st">"white"</span>)<span class="sc">+</span></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(a,b,c,d,</span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>          <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">nrow =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
 <div class="cell-output-display">
 <div id="fig-12cohensD" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="12-Thinking_files/figure-html/fig-12cohensD-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;12.6: Each panel shows a histogram of a different sampling statistic.</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;12.6: Each panel shows a histogram of a different sampling statistic.</figcaption>
 </figure>
 </div>
 </div>

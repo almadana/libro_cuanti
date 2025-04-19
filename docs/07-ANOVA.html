@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.258">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Matthew J. C. Crump">
 
-<title>Answering questions with data - 7&nbsp; ANOVA</title>
+<title>Respondiendo preguntas con datos - 7&nbsp; ANOVA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -77,7 +111,8 @@ div.csl-indent {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1116FZ99DZ"></script>
@@ -93,14 +128,14 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Answering questions with data - 7&nbsp; ANOVA">
-<meta property="og:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
+<meta property="og:title" content="Respondiendo preguntas con datos - 7&nbsp; ANOVA">
+<meta property="og:description" content="">
 <meta property="og:image" content="https://crumplab.com/statistics/07-ANOVA_files/figure-html/fig-7fnull-1.png">
-<meta property="og:site-name" content="Answering questions with data">
+<meta property="og:site-name" content="Respondiendo preguntas con datos">
 <meta property="og:image:height" content="672">
 <meta property="og:image:width" content="1344">
-<meta name="twitter:title" content="Answering questions with data - 7&nbsp; ANOVA">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Respondiendo preguntas con datos - 7&nbsp; ANOVA">
+<meta name="twitter:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
 <meta name="twitter:image" content="https://crumplab.com/statistics/imgs/TextbookCover.png">
 <meta name="twitter:site" content="@MattCrumpLab">
 <meta name="twitter:card" content="summary">
@@ -120,7 +155,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07-ANOVA.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ANOVA</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -132,9 +167,9 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Answering questions with data</a> 
+      <a href="./">Respondiendo preguntas con datos</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/CrumpLab/statistics/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/CrumpLab/statistics/" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
@@ -148,13 +183,13 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
+ <span class="menu-text">Prefacio</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01-Science_Data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why Statistics?</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">¿Por qué estadística?</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -297,7 +332,11 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 
 </header>
 
-<p>A fun bit of stats history <span class="citation" data-cites="salsburg2001lady">(<a href="#ref-salsburg2001lady" role="doc-biblioref">Salsburg 2001</a>)</span>. Sir Ronald Fisher invented the ANOVA, which we learn about in this section. He wanted to publish his new test in the journal Biometrika. The editor at the time was Karl Pearson (remember Pearson’s <span class="math inline">\(r\)</span> for correlation?). Pearson and Fisher were apparently not on good terms, they didn’t like each other. Pearson refused to publish Fisher’s new test. So, Fisher eventually published his work in the Journal of Agricultural Science. Funnily enough, the feud continued onto the next generation. Years after Fisher published his ANOVA, Karl Pearson’s son Egon Pearson, and Jersey Neyman revamped Fisher’s ideas, and re-cast them into what is commonly known as null vs.&nbsp;alternative hypothesis testing. Fisher didn’t like this very much.</p>
+<div class="cell" data-hash="07-ANOVA_cache/html/unnamed-chunk-2_75f944fdbaea13cdd954a3cbee08b144">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>A fun bit of stats history <span class="citation" data-cites="salsburg2001lady">(<a href="references.html#ref-salsburg2001lady" role="doc-biblioref">Salsburg 2001</a>)</span>. Sir Ronald Fisher invented the ANOVA, which we learn about in this section. He wanted to publish his new test in the journal Biometrika. The editor at the time was Karl Pearson (remember Pearson’s <span class="math inline">\(r\)</span> for correlation?). Pearson and Fisher were apparently not on good terms, they didn’t like each other. Pearson refused to publish Fisher’s new test. So, Fisher eventually published his work in the Journal of Agricultural Science. Funnily enough, the feud continued onto the next generation. Years after Fisher published his ANOVA, Karl Pearson’s son Egon Pearson, and Jersey Neyman revamped Fisher’s ideas, and re-cast them into what is commonly known as null vs.&nbsp;alternative hypothesis testing. Fisher didn’t like this very much.</p>
 <p>We present the ANOVA in the Fisherian sense, and at the end describe the Neyman-Pearson approach that invokes the concept of null vs.&nbsp;alternative hypotheses.</p>
 <section id="anova-is-analysis-of-variance" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="anova-is-analysis-of-variance"><span class="header-section-number">7.1</span> ANOVA is Analysis of Variance</h2>
@@ -330,9 +369,22 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <h3 data-number="7.2.2" class="anchored" data-anchor-id="ss-total"><span class="header-section-number">7.2.2</span> SS Total</h3>
 <p>The total sums of squares, or <span class="math inline">\(SS\text{Total}\)</span> is a way of thinking about all of the variation in a set of data. It’s pretty straightforward to measure. No tricky business. All we do is find the difference between each score and the grand mean, then we square the differences and add them all up.</p>
 <p>Let’s imagine we had some data in three groups, A, B, and C. For example, we might have 3 scores in each group. The data could look like this:</p>
-<div class="cell" data-hash="07-ANOVA_cache/html/unnamed-chunk-3_ac0a3b9900fdfae730df54b80bcb12c8">
+<div class="cell" data-hash="07-ANOVA_cache/html/unnamed-chunk-3_09ed57f70476c1e72c53d2b10fd455f7">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">11</span>, <span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">11</span>, <span class="dv">2</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>groups <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>), <span class="at">each =</span> <span class="dv">3</span>))</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>diff <span class="ot">&lt;-</span> scores <span class="sc">-</span> <span class="fu">mean</span>(scores)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>diff_squared <span class="ot">&lt;-</span> diff <span class="sc">^</span> <span class="dv">2</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(groups, scores, diff, diff_squared)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>groups <span class="ot">&lt;-</span> <span class="fu">as.character</span>(df<span class="sc">$</span>groups)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="st">"Sums"</span>, <span class="fu">colSums</span>(df[<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>]))) <span class="sc">%&gt;%</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="st">"Means"</span>, <span class="fu">colMeans</span>(df[<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>])))</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">groups</th>
@@ -429,9 +481,23 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <p>What we want to do next is estimate how much of the total change in the data might be due to the experimental manipulation. For example, if we ran an experiment that causes causes change in the measurement, then the means for each group will be different from other. As a result, the manipulation forces change onto the numbers, and this will naturally mean that some part of the total variation in the numbers is caused by the manipulation.</p>
 <p>The way to isolate the variation due to the manipulation (also called effect) is to look at the means in each group, and calculate the difference scores between each group mean and the grand mean, and then sum the squared deviations to find <span class="math inline">\(SS_\text{Effect}\)</span>.</p>
 <p>Consider this table, showing the calculations for <span class="math inline">\(SS_\text{Effect}\)</span>.</p>
-<div class="cell" data-hash="07-ANOVA_cache/html/unnamed-chunk-4_f502c31f73e5ea9dfde476330d28a8d7">
+<div class="cell" data-hash="07-ANOVA_cache/html/unnamed-chunk-4_a7fa18b81185b60798a4c0815c29a521">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">11</span>, <span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">11</span>, <span class="dv">2</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>means <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">11</span>, <span class="dv">11</span>, <span class="dv">11</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>groups <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>), <span class="at">each =</span> <span class="dv">3</span>))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>diff <span class="ot">&lt;-</span> means <span class="sc">-</span> <span class="fu">mean</span>(scores)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>diff_squared <span class="ot">&lt;-</span> diff <span class="sc">^</span> <span class="dv">2</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(groups, scores, means, diff, diff_squared)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>groups <span class="ot">&lt;-</span> <span class="fu">as.character</span>(df<span class="sc">$</span>groups)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="st">"Sums"</span>, <span class="fu">colSums</span>(df[<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>]))) <span class="sc">%&gt;%</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="st">"Means"</span>, <span class="fu">colMeans</span>(df[<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>])))</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">groups</th>
@@ -540,9 +606,22 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <p>$ SS_ = SS_ - SS_ $</p>
 <p>$ SS_ = 302 - 72 = 230 $</p>
 <p>We could stop here and show you the rest of the ANOVA, we’re almost there. But, the next step might not make sense unless we show you how to calculate <span class="math inline">\(SS_\text{Error}\)</span> directly from the data, rather than just solving for it. We should do this just to double-check our work anyway.</p>
-<div class="cell" data-hash="07-ANOVA_cache/html/unnamed-chunk-5_361d2bc815a0285d22a2bff0f9ec3aa4">
+<div class="cell" data-hash="07-ANOVA_cache/html/unnamed-chunk-5_a466ba55744c551c64fb02339640b310">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">11</span>, <span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">11</span>, <span class="dv">2</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>means <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">11</span>, <span class="dv">11</span>, <span class="dv">11</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>groups <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>), <span class="at">each =</span> <span class="dv">3</span>))</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>diff <span class="ot">&lt;-</span> means <span class="sc">-</span> scores</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>diff_squared <span class="ot">&lt;-</span> diff <span class="sc">^</span> <span class="dv">2</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(groups, scores, means, diff, diff_squared)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>groups <span class="ot">&lt;-</span> <span class="fu">as.character</span>(df<span class="sc">$</span>groups)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="st">"Sums"</span>, <span class="fu">colSums</span>(df[<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>]))) <span class="sc">%&gt;%</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="st">"Means"</span>, <span class="fu">colMeans</span>(df[<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>])))</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">groups</th>
@@ -675,9 +754,14 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <h3 data-number="7.2.8" class="anchored" data-anchor-id="the-anova-table"><span class="header-section-number">7.2.8</span> The ANOVA TABLE</h3>
 <p>You might suspect we aren’t totally done here. We’ve walked through the steps of computing <span class="math inline">\(F\)</span>. Remember, <span class="math inline">\(F\)</span> is a sample statistic, we computed <span class="math inline">\(F\)</span> directly from the data. There were a whole bunch of pieces we needed, the dfs, the SSes, the MSEs, and then finally the F.</p>
 <p>All of these little pieces are conveniently organized by ANOVA tables. ANOVA tables look like this:</p>
-<div class="cell" data-hash="07-ANOVA_cache/html/unnamed-chunk-6_eee1645af8382e813b0624e6bfe85442">
+<div class="cell" data-hash="07-ANOVA_cache/html/unnamed-chunk-6_4dfdc9bedb0f46607412ca6c2fcf4e8f">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(xtable)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>aov_out <span class="ot">&lt;-</span> <span class="fu">aov</span>(scores <span class="sc">~</span> groups, df[<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, ])</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>summary_out <span class="ot">&lt;-</span> <span class="fu">summary</span>(aov_out)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">xtable</span>(summary_out))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -720,12 +804,30 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <p>Here is the set-up, we are going to run an experiment with three levels. In our imaginary experiment we are going to test whether a new magic pill can make you smarter. The independent variable is the number of magic pills you take: 1, 2, or 3. We will measure your smartness using a smartness test. We will assume the smartness test has some known properties, the mean score on the test is 100, with a standard deviation of 10 (and the distribution is normal).</p>
 <p>The only catch is that our magic pill does NOTHING AT ALL. The fake people in our fake experiment will all take sugar pills that do absolutely nothing to their smartness. Why would we want to simulate such a bunch of nonsense? The answer is that this kind of simulation is critical for making inferences about chance if you were to conduct a real experiment.</p>
 <p>Here are some more details for the experiment. Each group will have 10 different subjects, so there will be a total of 30 subjects. We are going to run this experiment 10,000 times. Each time drawing numbers randomly from the very same normal distribution. We are going to calculate <span class="math inline">\(F\)</span> from our sample data every time, and then we are going to draw the histogram of <span class="math inline">\(F\)</span>-values. <a href="#fig-7fnull">Figure&nbsp;<span>7.1</span></a> shows the sampling distribution of <span class="math inline">\(F\)</span> for our situation.</p>
-<div class="cell" data-fig.asp="0.5" data-hash="07-ANOVA_cache/html/fig-7fnull_0d615a14ecc01d41c82129c6476f107c">
+<div class="cell" data-fig.asp="0.5" data-hash="07-ANOVA_cache/html/fig-7fnull_b612b1c780345255c02c22edd5bffec7">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>save_F <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">10000</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>) {</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  smartness   <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">30</span>, <span class="dv">100</span>, <span class="dv">10</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  pill_group  <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">each =</span> <span class="dv">10</span>))</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  simulations <span class="ot">&lt;-</span> <span class="fu">rep</span>(i, <span class="at">each =</span> <span class="dv">30</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  sample_df   <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(simulations, pill_group, smartness)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  aov.out <span class="ot">&lt;-</span> <span class="fu">summary</span>(<span class="fu">aov</span>(smartness <span class="sc">~</span> pill_group, sample_df))</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  save_F[i] <span class="ot">&lt;-</span> aov.out[[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">`</span><span class="at">F value</span><span class="st">`</span>[<span class="dv">1</span>]</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>plot_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">sims =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>, save_F)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>plot_df <span class="ot">&lt;-</span> plot_df[plot_df<span class="sc">$</span>save_F <span class="sc">&lt;</span> <span class="dv">10</span>, ]</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_df, <span class="fu">aes</span>(<span class="at">x =</span> save_F)) <span class="sc">+</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">bins =</span> <span class="dv">100</span>) <span class="sc">+</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-7fnull" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="07-ANOVA_files/figure-html/fig-7fnull-1.png" class="quarto-discovered-preview-image img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;7.1: A simulation of 10,000 experiments from a null distribution where there is no differences. The histogram shows 10,000 <span class="math inline">\(F\)</span>-values, one for each simulation. These are values that F can take in this situation. All of these <span class="math inline">\(F\)</span>-values were produced by random sampling error.</figcaption><p></p>
+<p><img src="07-ANOVA_files/figure-html/fig-7fnull-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;7.1: A simulation of 10,000 experiments from a null distribution where there is no differences. The histogram shows 10,000 <span class="math inline">\(F\)</span>-values, one for each simulation. These are values that F can take in this situation. All of these <span class="math inline">\(F\)</span>-values were produced by random sampling error.</figcaption>
 </figure>
 </div>
 </div>
@@ -741,12 +843,32 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <li>Find out the critical value for <span class="math inline">\(F\)</span>, for our particular situation (with our <span class="math inline">\(df\)</span>s for the numerator and denominator).</li>
 </ol>
 <p>Let’s do that. I’ve drawn the line for the critical value onto the histogram in <a href="#fig-7criticalF">Figure&nbsp;<span>7.2</span></a>:</p>
-<div class="cell" data-fig.asp="0.5" data-hash="07-ANOVA_cache/html/fig-7criticalF_99953ab19be0100024a3831916a3540d">
+<div class="cell" data-fig.asp="0.5" data-hash="07-ANOVA_cache/html/fig-7criticalF_10bc09f40a2257d2a8ab71c5a15835df">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_df, <span class="fu">aes</span>(<span class="at">x =</span> save_F)) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">bins =</span> <span class="dv">100</span>) <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">qf</span>(.<span class="dv">95</span>, <span class="dv">2</span>, <span class="dv">27</span>)) <span class="sc">+</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"rect"</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmin =</span> <span class="fu">qf</span>(.<span class="dv">95</span>, <span class="dv">2</span>, <span class="dv">27</span>),</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmax =</span> <span class="cn">Inf</span>,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">ymin =</span> <span class="dv">0</span>,</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">ymax =</span> <span class="cn">Inf</span>,</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.5</span>,</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"green"</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">qf</span>(.<span class="dv">95</span>, <span class="dv">2</span>, <span class="dv">27</span>),</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="dv">500</span>,</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">round</span>(<span class="fu">qf</span>(.<span class="dv">95</span>, <span class="dv">2</span>, <span class="dv">27</span>), <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  ), <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> label)) <span class="sc">+</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fl">7.5</span>, <span class="at">y =</span> <span class="dv">500</span>, <span class="at">label =</span> <span class="st">"5% of F-values"</span>),</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> label))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-7criticalF" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="07-ANOVA_files/figure-html/fig-7criticalF-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;7.2: The critical value for <span class="math inline">\(F\)</span> where 5% of all <span class="math inline">\(F\)</span>-values lie beyond this point</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;7.2: The critical value for <span class="math inline">\(F\)</span> where 5% of all <span class="math inline">\(F\)</span>-values lie beyond this point</figcaption>
 </figure>
 </div>
 </div>
@@ -782,12 +904,46 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <section id="looking-at-a-bunch-of-group-means" class="level4" data-number="7.3.2.2">
 <h4 data-number="7.3.2.2" class="anchored" data-anchor-id="looking-at-a-bunch-of-group-means"><span class="header-section-number">7.3.2.2</span> Looking at a bunch of group means</h4>
 <p>We just ran 10,000 experiments and we didn’t even once look at the group means for any of the experiments. Different patterns of group means under the null are shown in <a href="#fig-7manyDiffs">Figure&nbsp;<span>7.3</span></a> for a subset of 10 random simulations.</p>
-<div class="cell" data-hash="07-ANOVA_cache/html/fig-7manyDiffs_370c9837c29ca2bc81e9c7424809e84c">
+<div class="cell" data-hash="07-ANOVA_cache/html/fig-7manyDiffs_545bdf67d7eba26fd3cac8c571b5a69b">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(dplyr)</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#library(ggplot2)</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>all_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  smartness   <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">30</span>, <span class="dv">100</span>, <span class="dv">10</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  pill_group  <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">each =</span> <span class="dv">10</span>))</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  simulations <span class="ot">&lt;-</span> <span class="fu">rep</span>(i, <span class="at">each =</span> <span class="dv">30</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  sample_df   <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(simulations, pill_group, smartness)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  all_df      <span class="ot">&lt;-</span> <span class="fu">rbind</span>(all_df, sample_df)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">#print(all_df[1:50,])</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>all_df<span class="sc">$</span>simulations  <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(all_df<span class="sc">$</span>simulations)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>plot_df2 <span class="ot">&lt;-</span> all_df <span class="sc">%&gt;%</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(simulations, pill_group) <span class="sc">%&gt;%</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">group_means =</span> <span class="fu">mean</span>(smartness),</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>                   <span class="at">group_SE =</span> <span class="fu">sd</span>(smartness) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">length</span>(smartness)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'simulations'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#print(plot_df2[1:10,])</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> plot_df2, <span class="fu">aes</span>(<span class="at">x =</span> pill_group, <span class="at">y =</span> group_means, <span class="at">color =</span> simulations)) <span class="sc">+</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> group_means <span class="sc">-</span> group_SE, <span class="at">ymax =</span> group_means <span class="sc">+</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>                      group_SE)) <span class="sc">+</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Mean Smartness"</span>) <span class="sc">+</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>( <span class="sc">~</span> simulations, <span class="at">nrow=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-7manyDiffs" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="07-ANOVA_files/figure-html/fig-7manyDiffs-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;7.3: Different patterns of group means under the null (all scores for each group sampled from the same distribution).</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;7.3: Different patterns of group means under the null (all scores for each group sampled from the same distribution).</figcaption>
 </figure>
 </div>
 </div>
@@ -799,12 +955,40 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <section id="looking-at-bar-graphs" class="level4" data-number="7.3.2.3">
 <h4 data-number="7.3.2.3" class="anchored" data-anchor-id="looking-at-bar-graphs"><span class="header-section-number">7.3.2.3</span> Looking at bar graphs</h4>
 <p>Let’s look at the exact same graph as above, but this time use bars to visually illustrate the means, instead of dots. We’ll re-do our simulation of 10 experiments, so the pattern will be a little bit different:</p>
-<div class="cell" data-hash="07-ANOVA_cache/html/fig-7manyDiffsBar_d2b38a5e2c9a92ef81ca763dbf20a970">
+<div class="cell" data-hash="07-ANOVA_cache/html/fig-7manyDiffsBar_c0adb5cbde3ca14cf0be6def9eb3554d">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>all_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  smartness   <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">30</span>, <span class="dv">100</span>, <span class="dv">10</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  pill_group  <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">each =</span> <span class="dv">10</span>))</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  simulations <span class="ot">&lt;-</span> <span class="fu">rep</span>(i, <span class="at">each =</span> <span class="dv">30</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  sample_df   <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(simulations, pill_group, smartness)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  all_df      <span class="ot">&lt;-</span> <span class="fu">rbind</span>(all_df, sample_df)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>all_df<span class="sc">$</span>simulations  <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(all_df<span class="sc">$</span>simulations)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>plot_df2 <span class="ot">&lt;-</span> all_df <span class="sc">%&gt;%</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(simulations, pill_group) <span class="sc">%&gt;%</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarize</span>(<span class="at">group_means =</span> <span class="fu">mean</span>(smartness),</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>                   <span class="at">group_SE =</span> <span class="fu">sd</span>(smartness) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">length</span>(smartness)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'simulations'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_df2, <span class="fu">aes</span>(<span class="at">x =</span> pill_group, <span class="at">y =</span> group_means, <span class="at">fill =</span> simulations)) <span class="sc">+</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> group_means <span class="sc">-</span> group_SE, <span class="at">ymax =</span> group_means <span class="sc">+</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                      group_SE)) <span class="sc">+</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Mean Smartness"</span>) <span class="sc">+</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>( <span class="sc">~</span> simulations, <span class="at">nrow=</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">90</span>, <span class="dv">110</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-7manyDiffsBar" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="07-ANOVA_files/figure-html/fig-7manyDiffsBar-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;7.4: Different patterns of group means under the null (all scores for each group sampled from the same distribution).</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;7.4: Different patterns of group means under the null (all scores for each group sampled from the same distribution).</figcaption>
 </figure>
 </div>
 </div>
@@ -815,12 +999,47 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <h4 data-number="7.3.2.4" class="anchored" data-anchor-id="what-mean-differences-look-like-when-f-is-less-than-1"><span class="header-section-number">7.3.2.4</span> What mean differences look like when <span class="math inline">\(F\)</span> is less than 1</h4>
 <p>We are now giving you some visual experience looking at what means look like from a particular experiment. This is for your stats intuition. We’re trying to improve your data senses.</p>
 <p>What we are going to do now is similar to what we did before. Except this time we are going to look at 10 simulated experiments, where all of the <span class="math inline">\(F\)</span>-values were less than 1. All of these <span class="math inline">\(F\)</span>-values would also be associated with fairly large <span class="math inline">\(p\)</span>-values. When F is less than one, we would not reject the hypothesis of no differences. So, when we look at patterns of means when F is less than 1, we should see mostly the same means, and no big differences.</p>
-<div class="cell" data-hash="07-ANOVA_cache/html/fig-7flesshthanone_05c48bc74fe1ffeef650dfcde959ef44">
+<div class="cell" data-hash="07-ANOVA_cache/html/fig-7flesshthanone_899fb32fb18966893c7bfa4cc05f5de8">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>all_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>counter <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) {</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  smartness   <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">30</span>, <span class="dv">100</span>, <span class="dv">10</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  pill_group  <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">each =</span> <span class="dv">10</span>))</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  simulations <span class="ot">&lt;-</span> <span class="fu">rep</span>(i, <span class="at">each =</span> <span class="dv">30</span>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  sample_df   <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(simulations, pill_group, smartness)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  aov.out <span class="ot">&lt;-</span> <span class="fu">summary</span>(<span class="fu">aov</span>(smartness <span class="sc">~</span> pill_group, sample_df))</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  the_f <span class="ot">&lt;-</span> aov.out[[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">`</span><span class="at">F value</span><span class="st">`</span>[<span class="dv">1</span>]</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (the_f <span class="sc">&lt;</span> <span class="dv">1</span>) {</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    all_df <span class="ot">&lt;-</span> <span class="fu">rbind</span>(all_df, sample_df)</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    counter <span class="ot">&lt;-</span> counter <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (counter <span class="sc">==</span> <span class="dv">10</span>) {</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>all_df<span class="sc">$</span>simulations  <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(all_df<span class="sc">$</span>simulations)</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>plot_df <span class="ot">&lt;-</span> all_df <span class="sc">%&gt;%</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(simulations, pill_group) <span class="sc">%&gt;%</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">means =</span> <span class="fu">mean</span>(smartness),</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>                   <span class="at">SEs =</span> <span class="fu">sd</span>(smartness) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">length</span>(smartness)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'simulations'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_df, <span class="fu">aes</span>(<span class="at">x =</span> pill_group, <span class="at">y =</span> means, <span class="at">fill =</span> simulations)) <span class="sc">+</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> means <span class="sc">-</span> SEs, <span class="at">ymax =</span> means <span class="sc">+</span> SEs)) <span class="sc">+</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>( <span class="sc">~</span> simulations, <span class="at">nrow=</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Mean Smartness"</span>) <span class="sc">+</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">85</span>, <span class="dv">115</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-7flesshthanone" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="07-ANOVA_files/figure-html/fig-7flesshthanone-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;7.5: Different patterns of group means under the null (sampled from same distribution) when F is less than 1.</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;7.5: Different patterns of group means under the null (sampled from same distribution) when F is less than 1.</figcaption>
 </figure>
 </div>
 </div>
@@ -831,12 +1050,47 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <section id="what-mean-differences-look-like-when-f-3.35" class="level4" data-number="7.3.2.5">
 <h4 data-number="7.3.2.5" class="anchored" data-anchor-id="what-mean-differences-look-like-when-f-3.35"><span class="header-section-number">7.3.2.5</span> What mean differences look like when F &gt; 3.35</h4>
 <p>Earlier we found that the critical value for <span class="math inline">\(F\)</span> in our situation was 3.35, this was the location on the <span class="math inline">\(F\)</span> distribution where only 5% of <span class="math inline">\(F\)</span>s were 3.35 or greater. We would reject the hypothesis of no differences whenever <span class="math inline">\(F\)</span> was greater than 3.35. In this case, whenever we did that, we would be making a type I error. That is because we are simulating the distribution of no differences (remember all of our sample means are coming from the exact same distribution). So, now we can take a look at what type I errors look like. In other words, we can run some simulations and look at the pattern in the means, only when <span class="math inline">\(F\)</span> happens to be 3.35 or greater (this only happens 5% of the time, so we might have to let the computer simulate for a while). Let’s see what that looks like:</p>
-<div class="cell" data-hash="07-ANOVA_cache/html/fig-7sigdiffs_1eecda35e783f09b0306e383d2a42e7d">
+<div class="cell" data-hash="07-ANOVA_cache/html/fig-7sigdiffs_e47d858b156fb6fe2c6108e62a10e0b7">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>all_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>counter <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>) {</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  smartness   <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">30</span>, <span class="dv">100</span>, <span class="dv">10</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  pill_group  <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">each =</span> <span class="dv">10</span>))</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  simulations <span class="ot">&lt;-</span> <span class="fu">rep</span>(i, <span class="at">each =</span> <span class="dv">30</span>)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  sample_df   <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(simulations, pill_group, smartness)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  aov.out <span class="ot">&lt;-</span> <span class="fu">summary</span>(<span class="fu">aov</span>(smartness <span class="sc">~</span> pill_group, sample_df))</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  the_f <span class="ot">&lt;-</span> aov.out[[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">`</span><span class="at">F value</span><span class="st">`</span>[<span class="dv">1</span>]</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (the_f <span class="sc">&gt;</span> <span class="fl">3.35</span>) {</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    all_df <span class="ot">&lt;-</span> <span class="fu">rbind</span>(all_df, sample_df)</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    counter <span class="ot">&lt;-</span> counter <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (counter <span class="sc">==</span> <span class="dv">10</span>) {</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>all_df<span class="sc">$</span>simulations  <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(all_df<span class="sc">$</span>simulations)</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>plot_df <span class="ot">&lt;-</span> all_df <span class="sc">%&gt;%</span></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(simulations, pill_group) <span class="sc">%&gt;%</span></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">means =</span> <span class="fu">mean</span>(smartness),</span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>                   <span class="at">SEs =</span> <span class="fu">sd</span>(smartness) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">length</span>(smartness)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'simulations'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_df, <span class="fu">aes</span>(<span class="at">x =</span> pill_group, <span class="at">y =</span> means, <span class="at">fill =</span> simulations)) <span class="sc">+</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> means <span class="sc">-</span> SEs, <span class="at">ymax =</span> means <span class="sc">+</span> SEs)) <span class="sc">+</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>( <span class="sc">~</span> simulations, <span class="at">nrow =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Mean Smartness"</span>) <span class="sc">+</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">85</span>, <span class="dv">115</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-7sigdiffs" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="07-ANOVA_files/figure-html/fig-7sigdiffs-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;7.6: Different patterns of group means under the null when F is above critical value (these are all type I Errors).</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;7.6: Different patterns of group means under the null when F is above critical value (these are all type I Errors).</figcaption>
 </figure>
 </div>
 </div>
@@ -853,7 +1107,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <p>So, we return to the application of the ANOVA to a real data set with a real question. This is the same one that you will be learning about in the lab. We give you a brief overview here so you know what to expect.</p>
 <section id="tetris-and-bad-memories" class="level3" data-number="7.4.1">
 <h3 data-number="7.4.1" class="anchored" data-anchor-id="tetris-and-bad-memories"><span class="header-section-number">7.4.1</span> Tetris and bad memories</h3>
-<p>Yup, you read that right. The research you will learn about tests whether playing Tetris after watching a scary movie can help prevent you from having bad memories from the movie <span class="citation" data-cites="james2015computer">(<a href="#ref-james2015computer" role="doc-biblioref">James et al. 2015</a>)</span>. Sometimes in life people have intrusive memories, and they think about things they’d rather not have to think about. This research looks at one method that could reduce the frequency of intrusive memories.</p>
+<p>Yup, you read that right. The research you will learn about tests whether playing Tetris after watching a scary movie can help prevent you from having bad memories from the movie <span class="citation" data-cites="james2015computer">(<a href="references.html#ref-james2015computer" role="doc-biblioref">James et al. 2015</a>)</span>. Sometimes in life people have intrusive memories, and they think about things they’d rather not have to think about. This research looks at one method that could reduce the frequency of intrusive memories.</p>
 <p>Here’s what they did. Subjects watched a scary movie, then at the end of the week they reported how many intrusive memories about the movie they had. The mean number of intrusive memories was the measurement (the dependent variable). This was a between-subjects experiment with four groups. Each group of subjects received a different treatment following the scary movie. The question was whether any of these treatments would reduce the number of intrusive memories. All of these treatments occurred after watching the scary movie:</p>
 <ol type="1">
 <li>No-task control: These participants completed a 10-minute music filler task after watching the scary movie.</li>
@@ -863,12 +1117,44 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 </ol>
 <p>For reasons we elaborate on in the lab, the researchers hypothesized that the <code>Reactivation+Tetris</code> group would have fewer intrusive memories over the week than the other groups.</p>
 <p>Let’s look at the findings. Note you will learn how to do all of these steps in the lab. For now, we just show the findings and the ANOVA table. Then we walk through how to interpret it.</p>
-<div class="cell" data-fig.asp="0.5" data-hash="07-ANOVA_cache/html/fig-7tetrisData_b39d210fd59687f5afb47150cddf2706">
+<div class="cell" data-fig.asp="0.5" data-hash="07-ANOVA_cache/html/fig-7tetrisData_0de5966682433605dff426dfd1d91a32">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>all_data <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">"data/Jamesetal2015Experiment2.csv"</span>)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>all_data<span class="sc">$</span>Condition <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(all_data<span class="sc">$</span>Condition)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(all_data<span class="sc">$</span>Condition) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Control"</span>,</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"Reactivation+Tetris"</span>,</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"Tetris_only"</span>,</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"Reactivation_only"</span>)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="co"># get means and SEs</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>descriptive_df <span class="ot">&lt;-</span> all_data <span class="sc">%&gt;%</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(Condition) <span class="sc">%&gt;%</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">means =</span> <span class="fu">mean</span>(Days_One_to_Seven_Number_of_Intrusions),</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">SEs =</span> <span class="fu">sd</span>(Days_One_to_Seven_Number_of_Intrusions) <span class="sc">/</span></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>      <span class="fu">sqrt</span>(<span class="fu">length</span>(Days_One_to_Seven_Number_of_Intrusions))</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Make the plot</span></span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(descriptive_df, <span class="fu">aes</span>(<span class="at">x =</span> Condition, <span class="at">y =</span> means)) <span class="sc">+</span></span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="fu">aes</span>(<span class="at">fill =</span> Condition)) <span class="sc">+</span> <span class="co"># add means</span></span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> means <span class="sc">-</span> SEs,               <span class="co"># add error bars</span></span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>                    <span class="at">ymax =</span> means <span class="sc">+</span> SEs), <span class="at">width =</span> .<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> all_data,</span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> Condition, <span class="at">y =</span> Days_One_to_Seven_Number_of_Intrusions),</span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> .<span class="dv">5</span></span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">25</span>) <span class="sc">+</span></span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Intrusive Memories (Mean for Week)"</span>)<span class="sc">+</span></span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-7tetrisData" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="07-ANOVA_files/figure-html/fig-7tetrisData-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;7.7: Mean number of intrusive memories per week as a function of experimental treatments.</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;7.7: Mean number of intrusive memories per week as a function of experimental treatments.</figcaption>
 </figure>
 </div>
 </div>
@@ -876,9 +1162,14 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <p>OOooh, look at that. We did something fancy. <a href="#fig-7tetrisData">Figure&nbsp;<span>7.7</span></a> shows the data from the four groups. The height of each bar shows the mean intrusive memories for the week. The dots show the individual scores for each subject in each group (useful to to the spread of the data). The error bars show the standard errors of the mean.</p>
 <p>What can we see here? Right away it looks like there is some support for the research hypothesis. The green bar, for the Reactivation + Tetris group had the lowest mean number of intrusive memories. Also, the error bar is not overlapping with any of the other error bars. This implies that the mean for the Reactivation + Tetris group is different from the means for the other groups. And, this difference is probably not very likely by chance.</p>
 <p>We can now conduct the ANOVA on the data to ask the omnibus question. If we get a an <span class="math inline">\(F\)</span>-value with an associated <span class="math inline">\(p\)</span>-value of less than .05 (the alpha criterion set by the authors), then we can reject the hypothesis of no differences. Let’s see what happens:</p>
-<div class="cell" data-hash="07-ANOVA_cache/html/unnamed-chunk-14_9cb5bf943a12e79a489d0cd307c8e655">
+<div class="cell" data-hash="07-ANOVA_cache/html/unnamed-chunk-7_ea5315092fb6673964bb61cb53939e3f">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(xtable)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>aov_out<span class="ot">&lt;-</span><span class="fu">aov</span>(Days_One_to_Seven_Number_of_Intrusions <span class="sc">~</span> Condition, all_data)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>summary_out<span class="ot">&lt;-</span><span class="fu">summary</span>(aov_out)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">xtable</span>(summary_out))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -924,18 +1215,26 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <section id="control-vs.-reactivationtetris" class="level4" data-number="7.4.2.1">
 <h4 data-number="7.4.2.1" class="anchored" data-anchor-id="control-vs.-reactivationtetris"><span class="header-section-number">7.4.2.1</span> Control vs.&nbsp;Reactivation+Tetris</h4>
 <p>What we really want to know is if Reactivation+Tetris caused fewer intrusive memories…but compared to what? Well, if it did something, the Reactivation+Tetris group should have a smaller mean than the Control group. So, let’s do that comparison:</p>
-<div class="cell" data-hash="07-ANOVA_cache/html/unnamed-chunk-15_224520545b357cc11bd7dc9475375702">
-<pre><code>#&gt; 
-#&gt;  Two Sample t-test
-#&gt; 
-#&gt; data:  Days_One_to_Seven_Number_of_Intrusions by Condition
-#&gt; t = 2.9893, df = 34, p-value = 0.005167
-#&gt; alternative hypothesis: true difference in means between group Control and group Reactivation+Tetris is not equal to 0
-#&gt; 95 percent confidence interval:
-#&gt;  1.031592 5.412852
-#&gt; sample estimates:
-#&gt;             mean in group Control mean in group Reactivation+Tetris 
-#&gt;                          5.111111                          1.888889</code></pre>
+<div class="cell" data-hash="07-ANOVA_cache/html/unnamed-chunk-8_c54af1fa8b2cbaade6f72711920ee164">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>comparison_df <span class="ot">&lt;-</span> all_data <span class="sc">%&gt;%</span> </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">filter</span>(Condition <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">'Control'</span>,<span class="st">'Reactivation+Tetris'</span>)<span class="sc">==</span><span class="cn">TRUE</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>                        </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Days_One_to_Seven_Number_of_Intrusions <span class="sc">~</span> Condition, </span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>       comparison_df,</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">var.equal=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Two Sample t-test
+
+data:  Days_One_to_Seven_Number_of_Intrusions by Condition
+t = 2.9893, df = 34, p-value = 0.005167
+alternative hypothesis: true difference in means between group Control and group Reactivation+Tetris is not equal to 0
+95 percent confidence interval:
+ 1.031592 5.412852
+sample estimates:
+            mean in group Control mean in group Reactivation+Tetris 
+                         5.111111                          1.888889 </code></pre>
+</div>
 </div>
 <p>We found that there was a significant difference between the control group (M=5.11) and Reactivation + Tetris group (M=1.89), t(34) = 2.99, p=0.005.</p>
 <p>Above you just saw an example of reporting another <span class="math inline">\(t\)</span>-test. This sentences does an OK job of telling the reader everything they want to know. It has the means for each group, and the important bits from the <span class="math inline">\(t\)</span>-test.</p>
@@ -944,18 +1243,26 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <section id="control-vs.-tetris_only" class="level4" data-number="7.4.2.2">
 <h4 data-number="7.4.2.2" class="anchored" data-anchor-id="control-vs.-tetris_only"><span class="header-section-number">7.4.2.2</span> Control vs.&nbsp;Tetris_only</h4>
 <p>Now we can really start wondering what caused the difference. Was it just playing Tetris? Does just playing Tetris reduce the number of intrusive memories during the week? Let’s compare that to control:</p>
-<div class="cell" data-hash="07-ANOVA_cache/html/unnamed-chunk-16_848d48b5058701b012112df3120a18bd">
-<pre><code>#&gt; 
-#&gt;  Two Sample t-test
-#&gt; 
-#&gt; data:  Days_One_to_Seven_Number_of_Intrusions by Condition
-#&gt; t = 1.0129, df = 34, p-value = 0.3183
-#&gt; alternative hypothesis: true difference in means between group Control and group Tetris_only is not equal to 0
-#&gt; 95 percent confidence interval:
-#&gt;  -1.230036  3.674480
-#&gt; sample estimates:
-#&gt;     mean in group Control mean in group Tetris_only 
-#&gt;                  5.111111                  3.888889</code></pre>
+<div class="cell" data-hash="07-ANOVA_cache/html/unnamed-chunk-9_f567f058b8b02ef925d3ff6408b5133f">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>comparison_df <span class="ot">&lt;-</span> all_data <span class="sc">%&gt;%</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">filter</span>(Condition <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">'Control'</span>,<span class="st">'Tetris_only'</span>)<span class="sc">==</span><span class="cn">TRUE</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>                        </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Days_One_to_Seven_Number_of_Intrusions <span class="sc">~</span> Condition, </span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>       comparison_df,</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">var.equal=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Two Sample t-test
+
+data:  Days_One_to_Seven_Number_of_Intrusions by Condition
+t = 1.0129, df = 34, p-value = 0.3183
+alternative hypothesis: true difference in means between group Control and group Tetris_only is not equal to 0
+95 percent confidence interval:
+ -1.230036  3.674480
+sample estimates:
+    mean in group Control mean in group Tetris_only 
+                 5.111111                  3.888889 </code></pre>
+</div>
 </div>
 <p>Here we did not find a significant difference. We found that no significant difference between the control group (M=5.11) and Tetris Only group (M=3.89), t(34) = 2.99, p=0.318.</p>
 <p>So, it seems that not all of the differences between our means are large enough to be called statistically significant. In particular, the difference here, or larger, happens by chance 31.8% of the time.</p>
@@ -974,7 +1281,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <p>So what’s next…the ANOVA for repeated measures designs. See you in the next chapter.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-james2015computer" class="csl-entry" role="listitem">
 James, Ella L, Michael B Bonsall, Laura Hoppitt, Elizabeth M Tunbridge, John R Geddes, Amy L Milton, and Emily A Holmes. 2015. <span>“Computer Game Play Reduces Intrusive Memories of Experimental Trauma via Reconsolidation-Update Mechanisms.”</span> <em>Psychological Science</em> 26 (8): 1201–15. <a href="https://doi.org/10.1177/0956797615583071">https://doi.org/10.1177/0956797615583071</a>.
 </div>

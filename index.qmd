@@ -1,12 +1,12 @@
-# Preface {.unnumbered}
+# Prefacio {.unnumbered}
 
-First Draft (version 0.9 = August 7th, 2018) Last Compiled: `r Sys.Date()`
+Primera traducción al español (versión 0.1 = 7 Abril 2025) Compilado: `r Sys.Date()`
 
-**Online Textbook**: <https://crumplab.github.io/statistics/>
+**Traducción de:** <https://crumplab.github.io/statistics/>
 
-**Citation**: Crump, M. J. C., Navarro, D. J., & Suzuki, J. (2019, June 5). Answering Questions with Data (Textbook): Introductory Statistics for Psychology Students. https://doi.org/10.17605/OSF.IO/JZE52
+**Cita original**: Crump, M. J. C., Navarro, D. J., & Suzuki, J. (2019, June 5). Answering Questions with Data (Textbook): Introductory Statistics for Psychology Students. https://doi.org/10.17605/OSF.IO/JZE52
 
-## Important notes
+## Notas importantes
 
 This is a free textbook teaching introductory statistics for undergraduates in Psychology. This textbook is part of a larger OER course package for teaching undergraduate statistics in Psychology, including this textbook, a lab manual, and a course website. All of the materials are free and copiable, with source code maintained in Github repositories. The links below connect to various components of the project. The main OSF project link is <https://osf.io/3s68c/>.
 
@@ -34,6 +34,8 @@ This is a free textbook teaching introductory statistics for undergraduates in P
 All resources are released under a creative commons licence [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Click the link to read more about the license, or read more below in the license section.
 
 ### Contributors
+
+Traducción: ChatGPT-4o. Supervisión: Álvaro Cabana
 
 Team members contributing new content include, Matthew Crump, Alla Chavarga, Anjali Krishnan, Jeffrey Suzuki, and Stephen Volz. This textbook was primarily written by Matthew J. C. Crump. Jeff contributed the YouTube videos peppered throughout the textbook. All of Jeff's statistics videos are available on his Youtube channel: [Statistics Video playlist](https://www.youtube.com/playlist?list=PLKXdxQAT3tCvuex_E1ZnQYaw897ELUSaI).
 

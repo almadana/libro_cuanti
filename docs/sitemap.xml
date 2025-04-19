@@ -1,63 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://crumplab.com/statistics/index.html</loc>
-    <lastmod>2024-11-26T12:52:56.470Z</lastmod>
-  </url>
-  <url>
     <loc>https://crumplab.com/statistics/01-Science_Data.html</loc>
-    <lastmod>2023-06-28T12:22:35.244Z</lastmod>
+    <lastmod>2025-04-10T16:05:15.012Z</lastmod>
   </url>
   <url>
     <loc>https://crumplab.com/statistics/02-Describing_Data.html</loc>
-    <lastmod>2024-11-26T12:52:56.290Z</lastmod>
+    <lastmod>2025-04-19T16:14:31.454Z</lastmod>
   </url>
   <url>
     <loc>https://crumplab.com/statistics/03-Correlation.html</loc>
-    <lastmod>2023-06-28T12:22:35.341Z</lastmod>
+    <lastmod>2025-04-19T15:02:31.363Z</lastmod>
   </url>
   <url>
     <loc>https://crumplab.com/statistics/04-SamplesPopulations.html</loc>
-    <lastmod>2024-11-26T13:01:12.953Z</lastmod>
+    <lastmod>2025-04-02T16:18:03.000Z</lastmod>
   </url>
   <url>
     <loc>https://crumplab.com/statistics/05-Foundation_Inference.html</loc>
-    <lastmod>2023-06-28T12:22:35.445Z</lastmod>
+    <lastmod>2025-04-10T16:00:00.779Z</lastmod>
   </url>
   <url>
     <loc>https://crumplab.com/statistics/06-ttests.html</loc>
-    <lastmod>2024-11-26T13:03:39.159Z</lastmod>
+    <lastmod>2025-04-10T16:00:00.820Z</lastmod>
   </url>
   <url>
     <loc>https://crumplab.com/statistics/07-ANOVA.html</loc>
-    <lastmod>2023-06-28T12:22:35.538Z</lastmod>
+    <lastmod>2025-04-10T16:00:00.871Z</lastmod>
   </url>
   <url>
     <loc>https://crumplab.com/statistics/08-RMANOVA.html</loc>
-    <lastmod>2023-06-28T12:22:35.572Z</lastmod>
+    <lastmod>2025-04-10T16:00:00.918Z</lastmod>
   </url>
   <url>
     <loc>https://crumplab.com/statistics/09-FactorialANOVA.html</loc>
-    <lastmod>2023-06-28T12:22:35.646Z</lastmod>
+    <lastmod>2025-04-10T16:00:01.066Z</lastmod>
   </url>
   <url>
     <loc>https://crumplab.com/statistics/10-MixedANOVA.html</loc>
-    <lastmod>2023-06-28T12:22:35.659Z</lastmod>
+    <lastmod>2025-04-10T16:00:01.093Z</lastmod>
   </url>
   <url>
     <loc>https://crumplab.com/statistics/11-Simulation.html</loc>
-    <lastmod>2023-06-28T12:22:35.679Z</lastmod>
+    <lastmod>2025-04-10T16:00:01.110Z</lastmod>
   </url>
   <url>
     <loc>https://crumplab.com/statistics/12-Thinking.html</loc>
-    <lastmod>2023-06-28T12:22:35.695Z</lastmod>
+    <lastmod>2025-04-10T16:00:01.140Z</lastmod>
   </url>
   <url>
     <loc>https://crumplab.com/statistics/13-Gifs.html</loc>
-    <lastmod>2023-06-28T12:22:35.864Z</lastmod>
+    <lastmod>2025-04-02T16:18:03.000Z</lastmod>
   </url>
   <url>
     <loc>https://crumplab.com/statistics/references.html</loc>
-    <lastmod>2023-06-28T12:22:35.872Z</lastmod>
+    <lastmod>2025-04-10T16:00:01.238Z</lastmod>
+  </url>
+  <url>
+    <loc>https://crumplab.com/statistics/index.html</loc>
+    <lastmod>2025-04-08T00:07:52.896Z</lastmod>
   </url>
 </urlset>

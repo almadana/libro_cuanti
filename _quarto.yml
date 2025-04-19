@@ -3,14 +3,14 @@ project:
   output-dir: docs
 
 book:
-  title: "Answering questions with data"
+  title: "Respondiendo preguntas con datos"
   cover-image: imgs/TextbookCover.png
   author:
     - "Matthew J. C. Crump"
     - "Danielle J. Navarro"
     - "Jeffrey Suzuki"
   date: "2018-09-01"
-  abstract: "A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0"
+  abstract: "Un libro gratis que introduce la estadística a nivel de grado para psicología, incluye un manual de laboratorio, y una web del curso. Licensia: CC BY SA 4.0"
   chapters:
     - index.qmd
     - 01-Science_Data.qmd

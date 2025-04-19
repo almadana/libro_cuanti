@@ -1,0 +1,62 @@
+
+## Evaluar la validez de un estudio
+
+Más que cualquier otra cosa, une científique quiere que su investigación sea “válida”. La idea conceptual detrás de la **validez** es muy simple: ¿podés confiar en los resultados de tu estudio? Si no, el estudio es inválido. Sin embargo, aunque es fácil de enunciar, en la práctica es mucho más difícil verificar la validez que la confiabilidad. Y para ser sinceres, no hay una noción precisa y universalmente aceptada de qué es la validez. De hecho, existen muchos tipos diferentes de validez, cada una con sus propios problemas, y no todas son relevantes para todos los estudios. Voy a hablar de cinco tipos diferentes:
+
+- Validez interna  
+- Validez externa  
+- Validez de constructo  
+- Validez aparente  
+- Validez ecológica  
+
+Para darte una guía rápida de lo que importa acá... (1) La validez interna y externa son las más importantes, ya que están directamente relacionadas con la pregunta fundamental de si tu estudio realmente funciona. (2) La validez de constructo pregunta si estás midiendo lo que creés que estás midiendo. (3) La validez aparente no es especialmente importante, excepto en la medida en que te preocupen las “apariencias”. (4) La validez ecológica es un caso especial de validez aparente que se refiere a un tipo de apariencia que puede importarte bastante.
+
+### Validez interna
+
+La **validez interna** se refiere al grado en que podés sacar conclusiones correctas sobre las relaciones causales entre variables. Se llama “interna” porque se refiere a las relaciones entre cosas “dentro” del estudio. Vamos a ilustrar este concepto con un ejemplo simple. Supongamos que te interesa saber si una educación universitaria mejora la escritura. Para eso, reunís un grupo de estudiantes de primer año, les pedís que escriban un ensayo de 1000 palabras, y contás los errores ortográficos y gramaticales. Luego hacés lo mismo con estudiantes de tercer año, que obviamente tienen más educación universitaria que les de primer año. Y supongamos que les de tercer año cometen menos errores. Entonces concluís que la educación universitaria mejora las habilidades de escritura. ¿No?
+
+El gran problema de este experimento es que les estudiantes de tercer año son mayores y tienen más experiencia escribiendo. Así que no es fácil saber cuál es la relación causal real: ¿las personas mayores escriben mejor? ¿O las personas con más experiencia escribiendo? ¿O las personas con más educación? ¿Cuál de estas es la *verdadera causa* del mejor desempeño de les de tercer año? ¿La edad? ¿La experiencia? ¿La educación? No lo podés saber. Este es un ejemplo de una falla de validez interna, porque tu estudio no permite desentrañar bien las relaciones *causales* entre las variables.
+
+
+### Validez externa
+
+La **validez externa** se refiere a la **generalización** de tus resultados. Es decir, hasta qué punto esperás ver el mismo patrón de resultados en la “vida real” que el que observaste en tu estudio. Más precisamente, cualquier estudio que hagas en psicología va a involucrar un conjunto bastante específico de preguntas o tareas, va a ocurrir en un entorno específico y va a incluir participantes de un subgrupo particular. Entonces, si resulta que los resultados no se generalizan a personas o situaciones fuera de las que estudiaste, entonces tenés un problema de validez externa.
+
+El ejemplo clásico de este problema es el hecho de que una gran proporción de los estudios en psicología usan estudiantes universitarios de psicología como participantes. Pero claramente, a les investigadores no les interesa *solo* ese grupo: les interesa la gente en general. Dado eso, un estudio que solo usa estudiantes de psicología como participantes siempre corre el riesgo de carecer de validez externa. Es decir, si hay algo “especial” en les estudiantes de psicología que les hace diferentes de la población general en algún aspecto *relevante*, entonces podríamos preocuparnos por la validez externa.
+
+Dicho esto, es absolutamente crucial darse cuenta de que un estudio que usa únicamente estudiantes de psicología no necesariamente tiene un problema de validez externa. Lo voy a mencionar más adelante, pero como es un error muy común, lo digo ya: la validez externa se ve amenazada por la elección de población si (a) la población de la que tomaste tu muestra es muy limitada (por ejemplo, estudiantes de psicología) y (b) esa población limitada es sistemáticamente diferente de la población general *en algún aspecto relevante para el fenómeno psicológico que querés estudiar*. Esa parte en cursiva es la que muches olvidan: es cierto que les estudiantes de psicología difieren de la población general en muchas cosas, así que un estudio que solo incluye estudiantes *puede* tener problemas de validez externa. Pero si esas diferencias no son relevantes para el fenómeno que estás estudiando, entonces no hay de qué preocuparse. Para hacerlo más concreto, acá van dos ejemplos extremos:
+
+- Querés medir “las actitudes del público general hacia la psicoterapia”, pero todes tus participantes son estudiantes de psicología. Este estudio casi con certeza tendría problemas de validez externa.
+
+- Querés medir la efectividad de una ilusión visual, y todes tus participantes son estudiantes de psicología. Este estudio muy probablemente *no* tendría problemas de validez externa.
+
+Después de haberme centrado varios párrafos en la elección de participantes (porque es el tema que más preocupa a todes), vale la pena recordar que la validez externa es un concepto más amplio. Los siguientes también son ejemplos de cosas que pueden amenazar la validez externa, según qué tipo de estudio estés haciendo:
+
+- Puede que la gente responda un “cuestionario de psicología” de un modo que no refleja cómo actuaría en la vida real.
+
+- Tu experimento de laboratorio sobre “aprendizaje humano” podría tener una estructura diferente de los problemas de aprendizaje que la gente enfrenta fuera del laboratorio.
+
+
+### Validez de constructo
+
+La **validez de constructo** es, básicamente, la pregunta de si estás midiendo lo que realmente querés medir. Una medición tiene buena validez de constructo si realmente mide el constructo teórico correcto, y mala validez de constructo si no lo hace. Para dar un ejemplo muy simple (aunque ridículo), supongamos que quiero investigar qué porcentaje de estudiantes universitarios hacen trampa en los exámenes. Y la manera en que intento medirlo es pidiéndoles a les estudiantes que hacen trampa que se paren en el aula para que pueda contarlos. Cuando hago esto en una clase de 300 estudiantes, nadie se levanta. Entonces concluyo que el porcentaje de estudiantes que hacen trampa es 0%. Claramente esto es ridículo. Pero el punto acá no es que sea un gran ejemplo metodológico, sino que ilustra qué es la validez de constructo. El problema con mi medición es que aunque *intento* medir “el porcentaje de personas que hacen trampa”, lo que en realidad estoy midiendo es “el porcentaje de personas lo suficientemente tontas como para admitirlo, o lo suficientemente provocadoras como para fingir que lo hacen”. Obviamente, ¡eso no es lo mismo! Así que mi estudio sale mal porque mi medición tiene una validez de constructo muy pobre.
+
+
+### Validez aparente
+
+La **validez aparente** simplemente se refiere a si una medición “parece” estar haciendo lo que se supone que hace, y nada más. Si diseño un test de inteligencia, y la gente lo mira y dice “no, ese test no mide inteligencia”, entonces mi medición carece de validez aparente. Así de simple. Obviamente, la validez aparente no es muy importante desde una perspectiva científica pura. Después de todo, lo que nos importa es si la medición *realmente* hace lo que se supone que haga, no si *parece* hacerlo. Como consecuencia, generalmente no nos preocupa demasiado la validez aparente. Dicho esto, el concepto tiene tres usos pragmáticos útiles:
+
+- A veces, une científique con experiencia tiene la “intuición” de que una medición no va a funcionar. Aunque esas intuiciones no tienen valor como evidencia en sí mismas, suele valer la pena prestarles atención. Porque muchas veces las personas tienen conocimientos que no pueden verbalizar del todo, así que puede haber algo preocupante incluso si no pueden explicar bien qué. En otras palabras, si alguien en quien confiás critica la validez aparente de tu estudio, conviene tomarse el tiempo de revisar bien el diseño para ver si encontrás razones por las que podría fallar. Ahora bien, si no encontrás nada, entonces probablemente no haya motivo para preocuparse: al fin y al cabo, la validez aparente no es muy relevante.
+
+- Muchas veces (muchísimas), personas completamente desinformadas también tienen la “intuición” de que tu investigación es mala. Y la van a criticar en internet o donde sea. Si mirás de cerca, vas a notar que muchas de esas críticas están centradas únicamente en cómo “luce” el estudio, pero no en nada más profundo. El concepto de validez aparente sirve para explicarles amablemente que necesitan fundamentar mejor sus argumentos.
+
+- En relación con lo anterior: si las creencias de personas sin formación científica son clave (por ejemplo, en investigación aplicada donde querés convencer a responsables de políticas), entonces *tenés* que preocuparte por la validez aparente. Simplemente porque —te guste o no— mucha gente va a usar la validez aparente como sustituto de la validez real. Si querés que el gobierno cambie una ley con base en datos científicos o psicológicos, no va a importar cuán buenos sean *realmente* tus estudios. Si carecen de validez aparente, les políticxs te van a ignorar. Claro que es algo injusto que las decisiones se basen más en apariencias que en hechos, pero así funcionan las cosas.
+
+
+### Validez ecológica
+
+La **validez ecológica** es una noción diferente de validez, parecida a la validez externa, pero menos importante. La idea es que, para que un estudio sea ecológicamente válido, toda su configuración debería parecerse mucho al escenario real que se está investigando. En cierto sentido, la validez ecológica es un tipo de validez aparente —se refiere principalmente a si el estudio “luce” correcto, pero con un poco más de rigor. Para que tenga validez ecológica, el estudio tiene que parecer correcto de una manera bastante específica. La idea que la sustenta es la intuición de que un estudio con validez ecológica tiene más probabilidades de tener validez externa. No es una garantía, claro. Pero lo bueno de la validez ecológica es que es mucho más fácil de evaluar que la validez externa.
+
+Un ejemplo simple serían los estudios de identificación de testigxs. Muchos de estos estudios suelen hacerse en entornos universitarios, a menudo con una disposición bastante simple de rostros para observar, en lugar de una rueda de reconocimiento real. El tiempo entre ver al “criminal” y que se le pida a la persona que lo identifique en la “rueda” suele ser más corto. El “crimen” no es real, así que no hay posibilidad de que el testigo esté asustado, y no hay policías presentes, así que hay menos probabilidad de que sientan presión. Todo eso significa que el estudio *definitivamente* carece de validez ecológica. Tal vez (o tal vez no) también carezca de validez externa.
+
+

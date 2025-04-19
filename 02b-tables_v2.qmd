@@ -1,0 +1,131 @@
+## Capítulo X: Explorando relaciones entre variables categóricas
+
+### ¿Qué tienen en común leer novelas y fumar cigarrillos?
+
+Supongamos que estás analizando los resultados de una encuesta a estudiantes universitarios. Algunas preguntas eran: "¿Fumás cigarrillos?", "¿Qué género de música preferís?", "¿Te gustan más los libros físicos o los digitales?", y "¿Qué estás estudiando?". Todas esas preguntas tienen algo en común: sus respuestas son **categóricas**. Y muchas veces, lo que queremos saber no es solo la distribución de una variable (por ejemplo, cuántas personas prefieren libros digitales), sino **cómo se relacionan dos variables entre sí**. ¿Fuman más quienes escuchan rock? ¿Prefieren libros físicos los estudiantes de Psicología? ¿Las preferencias musicales varían según el género?
+
+Cuando ambas variables son categóricas, una herramienta simple y poderosa para empezar a responder estas preguntas es la **tabla de contingencia**.
+
+------------------------------------------------------------------------
+
+### Empezamos por contar
+
+Tomemos un ejemplo sencillo. Supongamos que entrevistamos a 105 personas, y preguntamos dos cosas: su **género** (masculino o femenino), y su **preferencia musical** (rock, pop o música clásica).
+
+Podemos organizar las respuestas en una tabla como esta:
+
+|           | Rock | Pop | Clásica |
+|-----------|------|-----|---------|
+| Masculino | 30   | 15  | 5       |
+| Femenino  | 20   | 25  | 10      |
+
+Esta tabla muestra **frecuencias absolutas**: simplemente, cuántas personas hay en cada combinación de categorías. Podemos ver, por ejemplo, que 30 hombres prefieren rock, y 25 mujeres prefieren pop. Pero ¿cómo seguimos? ¿Cómo la interpretamos?
+
+Una primera pista aparece si agregamos una fila y una columna con los totales:
+
+|           | Rock | Pop | Clásica | Total |
+|-----------|------|-----|---------|-------|
+| Masculino | 30   | 15  | 5       | 50    |
+| Femenino  | 20   | 25  | 10      | 55    |
+| **Total** | 50   | 40  | 15      | 105   |
+
+Ahora podemos hacernos preguntas más claras: ¿qué porcentaje de las personas prefiere pop? (40/105 = 38%). ¿Qué porcentaje de los hombres prefieren rock? (30/50 = 60%). ¿Y qué porcentaje de quienes prefieren música clásica son mujeres? (10/15 = 66.7%).
+
+------------------------------------------------------------------------
+
+### Segundo ejemplo: Carrera × Formato de lectura preferido
+
+Supongamos ahora que preguntamos a estudiantes de tres carreras distintas qué formato de lectura prefieren: ¿libros físicos o digitales?
+
+| Carrera    | Físico | Digital |
+|------------|--------|---------|
+| Psicología | 45     | 30      |
+| Medicina   | 25     | 35      |
+| Ingeniería | 20     | 40      |
+
+¿Quiénes prefieren libros físicos? ¿Son más comunes entre estudiantes de Psicología? ¿O será que en Ingeniería simplemente hay más estudiantes que prefieren digital?
+
+Agregamos los totales:
+
+| Carrera    | Físico | Digital | Total |
+|------------|--------|---------|-------|
+| Psicología | 45     | 30      | 75    |
+| Medicina   | 25     | 35      | 60    |
+| Ingeniería | 20     | 40      | 60    |
+| **Total**  | 90     | 105     | 195   |
+
+Con esta tabla ya podemos explorar proporciones:
+
+-   Proporciones por fila: ¿Qué porcentaje de estudiantes de Psicología prefieren libros físicos? 45/75 = 60%.
+-   Proporciones por columna: ¿Qué porcentaje de quienes prefieren digitales son de Ingeniería? 40/105 ≈ 38%.
+
+> 🔎 ¿La carrera parece influir en la preferencia por formato? ¿Cuál tiene el mayor porcentaje de lectura digital? ¿Y cuál la menor?
+
+------------------------------------------------------------------------
+
+### Tercer ejemplo: Nivel educativo × Opinión sobre legalización del cannabis
+
+Queremos saber si la postura frente a la legalización del cannabis varía según nivel educativo. Las opciones de respuesta fueron: "a favor", "en contra" y "no opina".
+
+Primero, sin totales:
+
+| Nivel educativo | A favor | En contra | No opina |
+|-----------------|---------|-----------|----------|
+| Primaria        | 10      | 25        | 5        |
+| Secundaria      | 30      | 35        | 5        |
+| Universitario   | 50      | 20        | 5        |
+
+Ahora con totales:
+
+| Nivel educativo | A favor | En contra | No opina | Total |
+|-----------------|---------|-----------|----------|-------|
+| Primaria        | 10      | 25        | 5        | 40    |
+| Secundaria      | 30      | 35        | 5        | 70    |
+| Universitario   | 50      | 20        | 5        | 75    |
+| **Total**       | 90      | 80        | 15       | 185   |
+
+Al observar esta tabla, podemos preguntarnos: - ¿Cuál es el nivel educativo con mayor porcentaje de apoyo a la legalización? - ¿Qué patrón se observa al aumentar el nivel educativo? - ¿Qué tan grande es la diferencia entre quienes solo tienen primaria y quienes cursaron la universidad?
+
+Este es un buen momento para practicar el cálculo de proporciones por fila o por columna.
+
+------------------------------------------------------------------------
+
+### Cuando una de las variables es dicotómica: el caso de fumadores
+
+Volvamos al tema del tabaquismo. Ahora queremos saber qué porcentaje de personas **fuma cigarrillos** en diferentes subgrupos de la población.
+
+Supongamos que tenemos los siguientes datos:
+
+| Edad / Sexo | Masculino | Femenino |
+|-------------|-----------|----------|
+| 18--29      | 35%       | 30%      |
+| 30--49      | 40%       | 25%      |
+| 50+         | 28%       | 22%      |
+
+Esta tabla muestra **prevalencias**: el porcentaje de personas que fuman dentro de cada grupo. No tenemos los conteos, pero igual podemos extraer bastante información.
+
+> 🧠 **Prevalencia** es la proporción de personas con una condición en un momento dado. **Incidencia** se refiere a la cantidad de personas que desarrollan la condición en un período.
+
+Este tipo de tabla es especialmente útil en estudios de salud pública. Pero es importante no olvidar que, si bien las prevalencias son claras, **no podemos saber si las diferencias son importantes** sin saber cuántas personas hay en cada grupo.
+
+> ⚠️ Un 40% puede parecer mucho, pero si es 2 de 5 personas, puede no ser representativo. Siempre que sea posible, mostrà también los conteos.
+
+Por ejemplo:
+
+| Edad / Sexo | Masculino   | Femenino    | Total |
+|-------------|-------------|-------------|-------|
+| 18--29      | 35 (de 100) | 30 (de 100) | 200   |
+| 30--49      | 40 (de 80)  | 25 (de 100) | 180   |
+| 50+         | 28 (de 70)  | 22 (de 90)  | 160   |
+
+Con esta información, podemos calcular tanto las prevalencias como los números absolutos, y tener una visión más completa.
+
+------------------------------------------------------------------------
+
+### En resumen: contar bien para pensar mejor
+
+Las tablas bivariadas nos permiten explorar relaciones entre variables categóricas. Dependiendo de cómo las presentemos ---como conteos, proporciones sobre el total, porcentajes por fila o por columna--- obtenemos distintas formas de ver lo mismo. Elegir la forma correcta depende de qué pregunta nos estamos haciendo.
+
+No te olvides: - Pedí los totales. Te ayudan a interpretar correctamente los porcentajes. - Fijate en qué dirección están calculadas las proporciones. - No confundas prevalencia con incidencia. - Y sobre todo: **mirá con cuidado antes de sacar conclusiones**.
+
+Más adelante vas a aprender cómo probar si una diferencia en una tabla es "estadísticamente significativa". Pero todo empieza por acá: mirar, contar, y hacerse buenas preguntas.

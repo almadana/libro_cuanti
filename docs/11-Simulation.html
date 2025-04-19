@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.258">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Matthew J. C. Crump">
 
-<title>Answering questions with data - 11&nbsp; Simulating Data</title>
+<title>Respondiendo preguntas con datos - 11&nbsp; Simulating Data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -92,7 +92,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1116FZ99DZ"></script>
@@ -108,14 +109,14 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Answering questions with data - 11&nbsp; Simulating Data">
-<meta property="og:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
+<meta property="og:title" content="Respondiendo preguntas con datos - 11&nbsp; Simulating Data">
+<meta property="og:description" content="">
 <meta property="og:image" content="https://crumplab.com/statistics/11-Simulation_files/figure-html/fig-11simt-1.png">
-<meta property="og:site-name" content="Answering questions with data">
+<meta property="og:site-name" content="Respondiendo preguntas con datos">
 <meta property="og:image:height" content="960">
 <meta property="og:image:width" content="1344">
-<meta name="twitter:title" content="Answering questions with data - 11&nbsp; Simulating Data">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Respondiendo preguntas con datos - 11&nbsp; Simulating Data">
+<meta name="twitter:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
 <meta name="twitter:image" content="https://crumplab.com/statistics/imgs/TextbookCover.png">
 <meta name="twitter:site" content="@MattCrumpLab">
 <meta name="twitter:card" content="summary">
@@ -135,7 +136,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./11-Simulation.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simulating Data</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -147,9 +148,9 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Answering questions with data</a> 
+      <a href="./">Respondiendo preguntas con datos</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/CrumpLab/statistics/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/CrumpLab/statistics/" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
@@ -163,13 +164,13 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
+ <span class="menu-text">Prefacio</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01-Science_Data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why Statistics?</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">¿Por qué estadística?</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -294,6 +295,10 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 
 </header>
 
+<div class="cell" data-hash="11-Simulation_cache/html/unnamed-chunk-2_e625685f586d9c70ec93083513c97b62">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>You may have noticed that throughout this book so far we have analyzed a lot of fake data. We used R to simulate pretend numbers, and then we analyzed those numbers. We also, from time to time, loaded in some “real” data, and analyzed that. In your labs each week, you have been analyzing a lot of real data. You might be thinking that the simulations we ran were just for educational purposes, to show you how things work. That’s partly true, that’s one reason we ran so many simulations. At the same time, conducting simulations to understand how data behaves is a legitimate branch of statistics. There are some problems out there where we don’t have really good analytic math formulas to tell us the correct answer, so we create and run simulations to approximate the answer.</p>
 <p>I’m going to say something mildy controversial right now: If you can’t simulate your data, then you probably don’t really understand your data or how to analyze it. Perhaps, this is too bold of a statement. There are many researchers out there who have never simulated their data, and it might be too much too claim that they don’t really understand their data because they didn’t simulate. Perhaps. There are also many students who have taken statistics classes, and learned how to press some buttons, or copy some code, to analyze some real data; but, who never learned how to run simulations. Perhaps my statement applies more to those students, who I believe would benefit greatly from learning some simulation tricks.</p>
 <section id="reasons-to-simulate" class="level2" data-number="11.1">
@@ -314,51 +319,57 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <h2 data-number="11.2" class="anchored" data-anchor-id="simulation-overview"><span class="header-section-number">11.2</span> Simulation overview</h2>
 <p>The basic idea here is actually pretty simple. You make some assumptions about how many subjects will be in your design (set N), you make some assumptions about the distributions that you will be sampling your scores from, then you use R to fabricate fake data according to the parameters you set. Once you build some simulated data, you can conduct a statistical analysis that you would be planning to run on the real data. Then you can see what happens. More importantly, you can repeat the above process many times. This is similar to conducting a replication of your experiment to see if you find the same thing, only you make the computer replicate your simulation 1000s of times. This way you can see how your simulated experiment would turn out over the long run. For example, you might find that the experiment you are planning to run will only produce a “signficant” result 25% of the time, that’s not very good. Your simulation might also tell you that if you increase your N by say 25, that could really help, and your new experiment with N=25 might succeed 90% of the time. That’s information worth knowing.</p>
 <p>Before we go into more simulation details, let’s just run a quick one. We’ll do an independent samples <span class="math inline">\(t\)</span>-test. Imagine we have a study with N=10 in each group. There are two groups. We are measuring heart rate. Let’s say we know that heart rate is on average 100 beats per minute with a standard deviation of 7. We are going to measure heart rate in condition A where nothing happens, and we are going to measure heart rate in condition B while they watch a scary movie. We think the scary movie might increase heart rate by 5 beats per minute. Let’s run a simulation of this:</p>
-<div class="cell" data-hash="11-Simulation_cache/html/unnamed-chunk-3_da1450c68e2651ed5b4781750b307638">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>group_A <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="dv">100</span>,<span class="dv">7</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>group_B <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="dv">105</span>, <span class="dv">7</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(group_A,group_B,<span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Two Sample t-test</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; data:  group_A and group_B</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; t = -0.62985, df = 18, p-value = 0.5367</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; alternative hypothesis: true difference in means is not equal to 0</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 95 percent confidence interval:</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  -10.052224   5.415151</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; sample estimates:</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; mean of x mean of y </span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  102.9900  105.3086</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="11-Simulation_cache/html/unnamed-chunk-3_1457547dc94dcb7085af69fb4a7e4502">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>group_A <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="dv">100</span>,<span class="dv">7</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>group_B <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="dv">105</span>, <span class="dv">7</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(group_A,group_B,<span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Two Sample t-test
+
+data:  group_A and group_B
+t = -3.0362, df = 18, p-value = 0.007103
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -15.754445  -2.868281
+sample estimates:
+mean of x mean of y 
+ 97.10206 106.41342 </code></pre>
+</div>
 </div>
 <p>We sampled 10 scores from a normal distribution for each group. We changed the mean for group_b to 105, because we were thinking their heart rate would be 5 more than group A. We ran one <span class="math inline">\(t\)</span>-test, and we got a result. This result tells us what happens for this one simulation.</p>
 <p>We could learn more by repeating the simulation 1000 times, saving the <span class="math inline">\(p\)</span>-values from each replication, and then finding out how many of our 1000 simulated experiments give us a significant result:</p>
-<div class="cell" data-hash="11-Simulation_cache/html/unnamed-chunk-4_b608e69654160873b284da19f4dae9bd">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>save_ps<span class="ot">&lt;-</span><span class="fu">length</span>(<span class="dv">1000</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  group_A <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="dv">100</span>,<span class="dv">7</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  group_B <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="dv">105</span>, <span class="dv">7</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  t_results <span class="ot">&lt;-</span> <span class="fu">t.test</span>(group_A,group_B,<span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  save_ps[i] <span class="ot">&lt;-</span> t_results<span class="sc">$</span>p.value</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>prop_p<span class="ot">&lt;-</span><span class="fu">length</span>(save_ps[save_ps<span class="sc">&lt;</span><span class="fl">0.05</span>])<span class="sc">/</span><span class="dv">1000</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(prop_p)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.339</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="11-Simulation_cache/html/unnamed-chunk-4_6e2de336f6b6109c1219e083764752ff">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>save_ps<span class="ot">&lt;-</span><span class="fu">length</span>(<span class="dv">1000</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  group_A <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="dv">100</span>,<span class="dv">7</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  group_B <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="dv">105</span>, <span class="dv">7</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  t_results <span class="ot">&lt;-</span> <span class="fu">t.test</span>(group_A,group_B,<span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  save_ps[i] <span class="ot">&lt;-</span> t_results<span class="sc">$</span>p.value</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>prop_p<span class="ot">&lt;-</span><span class="fu">length</span>(save_ps[save_ps<span class="sc">&lt;</span><span class="fl">0.05</span>])<span class="sc">/</span><span class="dv">1000</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(prop_p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.333</code></pre>
 </div>
-<p>Now this is more interesting. We found that 33.9% of simulated experiments had a <span class="math inline">\(p\)</span>-value less than 0.05. That’s not very good. If you were going to collect data in this kind of experiment, and you made the correct assumptions about the mean and standard deviation of the distribution, and you made the correct assumption about the size of difference between the groups, you would be planning to run an experiment that would not work-out most of the time.</p>
+</div>
+<p>Now this is more interesting. We found that 33.3% of simulated experiments had a <span class="math inline">\(p\)</span>-value less than 0.05. That’s not very good. If you were going to collect data in this kind of experiment, and you made the correct assumptions about the mean and standard deviation of the distribution, and you made the correct assumption about the size of difference between the groups, you would be planning to run an experiment that would not work-out most of the time.</p>
 <p>What happens if we increase the number of subject to 50 in each group?</p>
-<div class="cell" data-hash="11-Simulation_cache/html/unnamed-chunk-5_316f6109d0912d6e2343485ffd2b3851">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>save_ps<span class="ot">&lt;-</span><span class="fu">length</span>(<span class="dv">1000</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  group_A <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">50</span>,<span class="dv">100</span>,<span class="dv">7</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  group_B <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">50</span>,<span class="dv">105</span>, <span class="dv">7</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  t_results <span class="ot">&lt;-</span> <span class="fu">t.test</span>(group_A,group_B,<span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  save_ps[i] <span class="ot">&lt;-</span> t_results<span class="sc">$</span>p.value</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>prop_p<span class="ot">&lt;-</span><span class="fu">length</span>(save_ps[save_ps<span class="sc">&lt;</span><span class="fl">0.05</span>])<span class="sc">/</span><span class="dv">1000</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(prop_p)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.954</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="11-Simulation_cache/html/unnamed-chunk-5_9bd0c7c47fe1e2e2c2d4abd2352e5c54">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>save_ps<span class="ot">&lt;-</span><span class="fu">length</span>(<span class="dv">1000</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  group_A <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">50</span>,<span class="dv">100</span>,<span class="dv">7</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  group_B <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">50</span>,<span class="dv">105</span>, <span class="dv">7</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  t_results <span class="ot">&lt;-</span> <span class="fu">t.test</span>(group_A,group_B,<span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  save_ps[i] <span class="ot">&lt;-</span> t_results<span class="sc">$</span>p.value</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>prop_p<span class="ot">&lt;-</span><span class="fu">length</span>(save_ps[save_ps<span class="sc">&lt;</span><span class="fl">0.05</span>])<span class="sc">/</span><span class="dv">1000</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(prop_p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.955</code></pre>
+</div>
 </div>
 <p>Ooh, look, almost all of the experiments are significant now. So, it would be better to use 50 subjects per group than 10 per group according to this simulation.</p>
 <p>Of course, you might already be wondering so many different kinds of things. How can we plausibly know the parameters for the distribution we are sampling from? Isn’t this all just guess work? We’ll discuss some of these issues as we move forward in this chapter.</p>
@@ -395,10 +406,34 @@ Alright, the general idea here is that each individual mean can be described in 
 
 Let's look at some numbers. We'll imagine IV1 has two levels, A and B, and IV2 has two levels 1 and 2. The table below reports the means in each condition. It also shows you how each mean is the sum of the grand mean, and the means for main effects and interaction
 
-::: {.cell hash='11-Simulation_cache/html/unnamed-chunk-6_fffc9805b61862b61ce80f85721f79cc'}
+::: {.cell hash='11-Simulation_cache/html/unnamed-chunk-6_8dd5119f160640b54f4a27eb60761b3e'}
+
+```{.r .cell-code}
+grand_m   <-c(5,5,5,5)
+IV1_m     <-c(-2,-2,2,2)
+IV2_m     <-c(3,-3,3,-3)
+IV1xIV2_m <-c(0,0,0,0)
+IV1       <-c("A","A","B","B")
+IV2       <-as.factor(c(1,2,1,2))
+means     <-grand_m+IV1_m+IV2_m+IV1xIV2_m
+
+df  <- data.frame(IV1, IV2, means,
+                  grand_m, IV1_m, IV2_m,IV1xIV2_m)
+
+ggplot(df, aes(x=IV1, y=means, group=IV2, color=IV2))+
+  geom_point()+
+  geom_line()+
+  theme_classic()
+```
+
+
 ::: {.cell-output-display}
-![](11-Simulation_files/figure-html/unnamed-chunk-6-1.png){width=75%}
+![](11-Simulation_files/figure-html/unnamed-chunk-6-1.png){width=672}
 :::
+
+```{.r .cell-code}
+knitr::kable(df)
+```
 
 ::: {.cell-output-display}
 |IV1 |IV2 | means| grand_m| IV1_m| IV2_m| IV1xIV2_m|
@@ -444,27 +479,63 @@ What we are doing with the GLM approach is making these same predictions, but do
 <section id="simulating-t-tests" class="level2" data-number="11.3">
 <h2 data-number="11.3" class="anchored" data-anchor-id="simulating-t-tests"><span class="header-section-number">11.3</span> Simulating t-tests</h2>
 <p>We’ve already seen some code for simulating a <span class="math inline">\(t\)</span>-test 1000 times, saving the <span class="math inline">\(p\)</span>-values, and then calculating the proportion of simulations that are significant (p&lt;0.05). It looked like this:</p>
-<div class="cell" data-hash="11-Simulation_cache/html/unnamed-chunk-7_c73f4c580262b37ad6dc65a9923f6628">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>save_ps<span class="ot">&lt;-</span><span class="fu">length</span>(<span class="dv">1000</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  group_A <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">50</span>,<span class="dv">100</span>,<span class="dv">7</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  group_B <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">50</span>,<span class="dv">105</span>, <span class="dv">7</span>)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  t_results <span class="ot">&lt;-</span> <span class="fu">t.test</span>(group_A,group_B,<span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  save_ps[i] <span class="ot">&lt;-</span> t_results<span class="sc">$</span>p.value</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>prop_p<span class="ot">&lt;-</span><span class="fu">length</span>(save_ps[save_ps<span class="sc">&lt;</span><span class="fl">0.05</span>])<span class="sc">/</span><span class="dv">1000</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(prop_p)</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.939</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="11-Simulation_cache/html/unnamed-chunk-7_08cb0b2e4b39210385ef052eb8899255">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>save_ps<span class="ot">&lt;-</span><span class="fu">length</span>(<span class="dv">1000</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  group_A <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">50</span>,<span class="dv">100</span>,<span class="dv">7</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  group_B <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">50</span>,<span class="dv">105</span>, <span class="dv">7</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  t_results <span class="ot">&lt;-</span> <span class="fu">t.test</span>(group_A,group_B,<span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  save_ps[i] <span class="ot">&lt;-</span> t_results<span class="sc">$</span>p.value</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>prop_p<span class="ot">&lt;-</span><span class="fu">length</span>(save_ps[save_ps<span class="sc">&lt;</span><span class="fl">0.05</span>])<span class="sc">/</span><span class="dv">1000</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(prop_p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.947</code></pre>
+</div>
 </div>
 <p>You could play around with that, and it would be very useful I think. Is there anything else that we can do that would be more useful? Sure there is. With the above simulation, you have to change N or the mean difference each time to see how proportion of significant experiments turns out. It would be nice to look at a graph where we could vary the number of subjects, and the size of the mean difference. That’s what the next simulation does. This kind of simulation can make your computer do some hard work depening on how many simulations you run. To make my computer do less work, we will only run 100 simulations for each parameter. But, what we will do is vary the number of subjects from 10 to 50 (steps of 10), and vary the size of the effect from 0 to 20 in steps of 4.</p>
-<div class="cell" data-hash="11-Simulation_cache/html/fig-11simt_d5b2bc36f196ee70276a7a136fa8ab69">
+<div class="cell" data-hash="11-Simulation_cache/html/fig-11simt_f4b18f5d6de8fc836dabfaa76f4e07bf">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>num_sims        <span class="ot">&lt;-</span><span class="dv">500</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>N               <span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>,<span class="dv">50</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>mean_difference <span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">12</span>,<span class="dv">16</span>,<span class="dv">20</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>save_ps<span class="ot">&lt;-</span><span class="fu">length</span>(num_sims)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>all_df<span class="ot">&lt;-</span><span class="fu">data.frame</span>()</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(diff <span class="cf">in</span> mean_difference){</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> N){</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_sims){</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>      group_A <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(j,<span class="dv">100</span>,<span class="dv">7</span>)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>      group_B <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(j,<span class="dv">100</span><span class="sc">+</span>diff, <span class="dv">7</span>)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>      t_results <span class="ot">&lt;-</span> <span class="fu">t.test</span>(group_A,group_B,<span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>      save_ps[i] <span class="ot">&lt;-</span> t_results<span class="sc">$</span>p.value</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    sim_df <span class="ot">&lt;-</span><span class="fu">data.frame</span>(save_ps,</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>                        <span class="at">num_subjects=</span><span class="fu">as.factor</span>(<span class="fu">rep</span>(j,num_sims)),</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>                        <span class="at">mean_diff =</span><span class="fu">rep</span>(diff,num_sims))</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    all_df <span class="ot">&lt;-</span> <span class="fu">rbind</span>(all_df,sim_df)</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>}  </span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>plot_df <span class="ot">&lt;-</span> all_df <span class="sc">%&gt;%</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>            dplyr<span class="sc">::</span><span class="fu">group_by</span>(num_subjects,mean_diff) <span class="sc">%&gt;%</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>            dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">proportion_sig =</span> <span class="fu">length</span>(save_ps[save_ps<span class="sc">&lt;</span><span class="fl">0.05</span>])<span class="sc">/</span>num_sims)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'num_subjects'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_df, <span class="fu">aes</span>(<span class="at">x=</span>mean_diff, </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">y=</span>proportion_sig, </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">group=</span>num_subjects, </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">color=</span>num_subjects))<span class="sc">+</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-11simt" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="11-Simulation_files/figure-html/fig-11simt-1.png" class="quarto-discovered-preview-image img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;11.1: A simulation showing the proportion of significant <span class="math inline">\(t\)</span> tests as a function of the programmed mean difference and number of subjects.</figcaption><p></p>
+<p><img src="11-Simulation_files/figure-html/fig-11simt-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;11.1: A simulation showing the proportion of significant <span class="math inline">\(t\)</span> tests as a function of the programmed mean difference and number of subjects.</figcaption>
 </figure>
 </div>
 </div>
@@ -477,21 +548,21 @@ What we are doing with the GLM approach is making these same predictions, but do
 <section id="simulating-one-factor-anovas" class="level2" data-number="11.4">
 <h2 data-number="11.4" class="anchored" data-anchor-id="simulating-one-factor-anovas"><span class="header-section-number">11.4</span> Simulating one-factor ANOVAs</h2>
 <p>The following builds simulated data for a one-factor ANOVA, appropriate for a between subjects design. We build the data frame containg a column for the group factor levels, and a column for the DV. Then, we run the ANOVA an print it out.</p>
-<div class="cell" data-hash="11-Simulation_cache/html/unnamed-chunk-9_96c1d71015e057e998cf0fa962211492">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>groups <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>), <span class="at">each=</span><span class="dv">10</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>DV <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>,<span class="dv">10</span>,<span class="dv">15</span>),   <span class="co"># means for group A</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rnorm</span>(<span class="dv">100</span>,<span class="dv">10</span>,<span class="dv">15</span>),   <span class="co"># means for group B</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rnorm</span>(<span class="dv">100</span>,<span class="dv">20</span>,<span class="dv">15</span>)    <span class="co"># means for group C</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>sim_df<span class="ot">&lt;-</span><span class="fu">data.frame</span>(groups,DV)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>aov_results <span class="ot">&lt;-</span> <span class="fu">summary</span>(<span class="fu">aov</span>(DV<span class="sc">~</span>groups, sim_df))</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(xtable)</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">xtable</span>(aov_results))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="11-Simulation_cache/html/unnamed-chunk-8_d25c78be7dfd77cdec78555549a5abca">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>groups <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>), <span class="at">each=</span><span class="dv">10</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>DV <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>,<span class="dv">10</span>,<span class="dv">15</span>),   <span class="co"># means for group A</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rnorm</span>(<span class="dv">100</span>,<span class="dv">10</span>,<span class="dv">15</span>),   <span class="co"># means for group B</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rnorm</span>(<span class="dv">100</span>,<span class="dv">20</span>,<span class="dv">15</span>)    <span class="co"># means for group C</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>sim_df<span class="ot">&lt;-</span><span class="fu">data.frame</span>(groups,DV)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>aov_results <span class="ot">&lt;-</span> <span class="fu">summary</span>(<span class="fu">aov</span>(DV<span class="sc">~</span>groups, sim_df))</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(xtable)</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">xtable</span>(aov_results))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -506,16 +577,16 @@ What we are doing with the GLM approach is making these same predictions, but do
 <tr class="odd">
 <td style="text-align: left;">groups</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">111.2747</td>
-<td style="text-align: right;">55.63735</td>
-<td style="text-align: right;">0.1989719</td>
-<td style="text-align: right;">0.8196821</td>
+<td style="text-align: right;">1266.487</td>
+<td style="text-align: right;">633.2434</td>
+<td style="text-align: right;">2.372723</td>
+<td style="text-align: right;">0.0949916</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Residuals</td>
 <td style="text-align: right;">297</td>
-<td style="text-align: right;">83048.3738</td>
-<td style="text-align: right;">279.62415</td>
+<td style="text-align: right;">79264.755</td>
+<td style="text-align: right;">266.8847</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">NA</td>
 </tr>
@@ -524,25 +595,26 @@ What we are doing with the GLM approach is making these same predictions, but do
 </div>
 </div>
 <p>In this next example, we simulate the same design 100 times, save the <span class="math inline">\(p\)</span>-values, and the determine the proportion of significant simulations.</p>
-<div class="cell" data-hash="11-Simulation_cache/html/unnamed-chunk-10_d91139833a7922802a3fe504fe830310">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>save_p<span class="ot">&lt;-</span><span class="fu">length</span>(<span class="dv">100</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  groups <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>), <span class="at">each=</span><span class="dv">10</span>)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  DV <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>,<span class="dv">10</span>,<span class="dv">15</span>),   <span class="co"># means for group A</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>          <span class="fu">rnorm</span>(<span class="dv">100</span>,<span class="dv">10</span>,<span class="dv">15</span>),   <span class="co"># means for group B</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>          <span class="fu">rnorm</span>(<span class="dv">100</span>,<span class="dv">20</span>,<span class="dv">15</span>)    <span class="co"># means for group C</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>          )</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  sim_df<span class="ot">&lt;-</span><span class="fu">data.frame</span>(groups,DV)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  aov_results <span class="ot">&lt;-</span> <span class="fu">summary</span>(<span class="fu">aov</span>(DV<span class="sc">~</span>groups, sim_df))</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  save_p[i]<span class="ot">&lt;-</span>aov_results[[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">`</span><span class="at">Pr(&gt;F)</span><span class="st">`</span>[<span class="dv">1</span>]</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(save_p[save_p<span class="sc">&lt;</span><span class="fl">0.05</span>])<span class="sc">/</span><span class="dv">100</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.08</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="11-Simulation_cache/html/unnamed-chunk-9_65aa016ab035100bd2a8158b0688ce94">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>save_p<span class="ot">&lt;-</span><span class="fu">length</span>(<span class="dv">100</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  groups <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>), <span class="at">each=</span><span class="dv">10</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  DV <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>,<span class="dv">10</span>,<span class="dv">15</span>),   <span class="co"># means for group A</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>          <span class="fu">rnorm</span>(<span class="dv">100</span>,<span class="dv">10</span>,<span class="dv">15</span>),   <span class="co"># means for group B</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>          <span class="fu">rnorm</span>(<span class="dv">100</span>,<span class="dv">20</span>,<span class="dv">15</span>)    <span class="co"># means for group C</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>          )</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  sim_df<span class="ot">&lt;-</span><span class="fu">data.frame</span>(groups,DV)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  aov_results <span class="ot">&lt;-</span> <span class="fu">summary</span>(<span class="fu">aov</span>(DV<span class="sc">~</span>groups, sim_df))</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  save_p[i]<span class="ot">&lt;-</span>aov_results[[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">`</span><span class="at">Pr(&gt;F)</span><span class="st">`</span>[<span class="dv">1</span>]</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(save_p[save_p<span class="sc">&lt;</span><span class="fl">0.05</span>])<span class="sc">/</span><span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.04</code></pre>
+</div>
 </div>
 </section>
 <section id="other-resources" class="level2" data-number="11.5">

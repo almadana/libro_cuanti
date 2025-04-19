@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Álvaro Cabana">
+
+<title>b-tables</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="02b-tables_files/libs/clipboard/clipboard.min.js"></script>
+<script src="02b-tables_files/libs/quarto-html/quarto.js"></script>
+<script src="02b-tables_files/libs/quarto-html/popper.min.js"></script>
+<script src="02b-tables_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="02b-tables_files/libs/quarto-html/anchor.min.js"></script>
+<link href="02b-tables_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="02b-tables_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="02b-tables_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="02b-tables_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="02b-tables_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="capítulo-x-explorando-relaciones-entre-variables-categóricas" class="level2">
+<h2 class="anchored" data-anchor-id="capítulo-x-explorando-relaciones-entre-variables-categóricas">Capítulo X: Explorando relaciones entre variables categóricas</h2>
+<section id="introducción" class="level3">
+<h3 class="anchored" data-anchor-id="introducción">Introducción</h3>
+<p>Muchas preguntas que nos hacemos sobre datos involucran relaciones entre dos variables. Por ejemplo:</p>
+<ul>
+<li>¿Fuman más los hombres que las mujeres?</li>
+<li>¿La preferencia musical varía según la edad?</li>
+<li>¿Hay diferencias de opinión política según nivel educativo?</li>
+</ul>
+<p>Cuando ambas variables son <strong>categóricas</strong>, una de las herramientas más útiles es la <strong>tabla de contingencia</strong>. Estas tablas nos permiten observar cómo se distribuyen los casos entre combinaciones de niveles de dos variables. En este capítulo vamos a explorar distintas formas de construir, leer e interpretar tablas bivariadas categóricas, señalando también errores comunes y preguntas que conviene hacerse frente a los datos.</p>
+</section>
+<section id="tablas-de-contingencia-la-base" class="level3">
+<h3 class="anchored" data-anchor-id="tablas-de-contingencia-la-base">Tablas de contingencia: la base</h3>
+<p>Una tabla de contingencia muestra cuántas observaciones hay en cada combinación de categorías. A veces se le llama también “tabla cruzada” o simplemente “crosstab”. Las filas y columnas representan los niveles de las variables, y las celdas indican la cantidad de casos que pertenecen a cada combinación.</p>
+<section id="ejemplo-sexo-preferencia-musical" class="level4">
+<h4 class="anchored" data-anchor-id="ejemplo-sexo-preferencia-musical">Ejemplo: Sexo × Preferencia musical</h4>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Rock</th>
+<th>Pop</th>
+<th>Clásica</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Masculino</td>
+<td>30</td>
+<td>15</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td>Femenino</td>
+<td>20</td>
+<td>25</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<p>Esta tabla muestra las <strong>frecuencias absolutas</strong>: el número de personas en cada grupo. Por ejemplo, hay 30 hombres que prefieren rock, 25 mujeres que prefieren pop, etc.</p>
+<p>Al mirar esta tabla, podemos empezar a preguntarnos: - ¿Es la preferencia por el rock más alta entre los hombres? - ¿Es la música clásica poco popular en general? - ¿Hay algún género musical que sea igual de popular entre hombres y mujeres?</p>
+<p>Sin embargo, sin información adicional, no siempre está claro en qué dirección fue construida la tabla: ¿es “preferencia musical por sexo” o “sexo por preferencia musical”? Esta ambigüedad se puede resolver si la tabla incluye totales.</p>
+</section>
+<section id="ahora-con-totales" class="level4">
+<h4 class="anchored" data-anchor-id="ahora-con-totales">Ahora con totales:</h4>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Rock</th>
+<th>Pop</th>
+<th>Clásica</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Masculino</td>
+<td>30</td>
+<td>15</td>
+<td>5</td>
+<td>50</td>
+</tr>
+<tr class="even">
+<td>Femenino</td>
+<td>20</td>
+<td>25</td>
+<td>10</td>
+<td>55</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td>50</td>
+<td>40</td>
+<td>15</td>
+<td>105</td>
+</tr>
+</tbody>
+</table>
+<p>Cuando la tabla incluye la <strong>fila y columna de totales</strong>, es mucho más fácil orientarse: podemos ver cuántas personas hay en cada nivel individual de cada variable. Por ejemplo, ahora sabemos que hay 50 hombres y 55 mujeres, y que 40 personas prefieren pop. Además, al observar las sumas por fila y por columna, podemos verificar si los porcentajes están bien calculados cuando analizamos proporciones.</p>
+<blockquote class="blockquote">
+<p>🔎 <strong>Un detalle importante:</strong> muchas veces las tablas se presentan sin estos totales. Cuando eso ocurre, debemos tener cuidado al interpretar los porcentajes: sin totales, es fácil confundirse respecto a si los porcentajes fueron calculados por fila, por columna, o sobre el total general.</p>
+</blockquote>
+<p>Siempre que sea posible, incluir los totales (al menos como referencia visual) puede facilitar mucho la lectura y previene errores comunes.</p>
+</section>
+</section>
+<section id="proporciones-y-porcentajes-viendo-mejor-los-datos" class="level3">
+<h3 class="anchored" data-anchor-id="proporciones-y-porcentajes-viendo-mejor-los-datos">Proporciones y porcentajes: viendo mejor los datos</h3>
+<p>Los conteos por sí solos pueden ser difíciles de interpretar, especialmente cuando los tamaños de los grupos no son iguales. Para comparar distribuciones, es mejor convertir la tabla a proporciones o porcentajes.</p>
+<section id="frecuencia-relativa-sobre-el-total" class="level4">
+<h4 class="anchored" data-anchor-id="frecuencia-relativa-sobre-el-total">Frecuencia relativa sobre el total</h4>
+<p>Cada celda se divide por el total de casos. Esto permite comparar proporciones globales.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Rock</th>
+<th>Pop</th>
+<th>Clásica</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Masculino</td>
+<td>28.6%</td>
+<td>14.3%</td>
+<td>4.8%</td>
+<td>47.6%</td>
+</tr>
+<tr class="even">
+<td>Femenino</td>
+<td>19.0%</td>
+<td>23.8%</td>
+<td>9.5%</td>
+<td>52.4%</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td>47.6%</td>
+<td>38.1%</td>
+<td>14.3%</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table>
+<blockquote class="blockquote">
+<p>🔍 Útil para ver el peso relativo de cada combinación en el conjunto total.</p>
+</blockquote>
+<p>Preguntas que podemos hacernos: - ¿Qué combinaciones de sexo y preferencia musical son más comunes? - ¿Cómo se comparan el total de personas que prefieren rock y las que prefieren clásica? - ¿Hay algún grupo que combine baja frecuencia absoluta con alta proporción relativa?</p>
+<blockquote class="blockquote">
+<p>⚠️ Si la tabla no incluye totales explícitos, asegurate de saber cuál es el total general. En tablas grandes, un error en este punto puede llevar a interpretaciones equivocadas.</p>
+</blockquote>
+</section>
+<section id="frecuencia-relativa-por-fila" class="level4">
+<h4 class="anchored" data-anchor-id="frecuencia-relativa-por-fila">Frecuencia relativa por fila</h4>
+<p>Convertimos cada fila en proporciones que suman 100%. Esto nos dice cómo se distribuye una categoría (por ejemplo, género) según otra (preferencia musical).</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Rock</th>
+<th>Pop</th>
+<th>Clásica</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Masculino</td>
+<td>60%</td>
+<td>30%</td>
+<td>10%</td>
+<td>100%</td>
+</tr>
+<tr class="even">
+<td>Femenino</td>
+<td>36%</td>
+<td>45%</td>
+<td>18%</td>
+<td>99%*</td>
+</tr>
+</tbody>
+</table>
+<blockquote class="blockquote">
+<p>*Puede no sumar 100% exacto por redondeo.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>⚠️ Atención: las columnas ya no suman 100%. La comparación válida es horizontal (dentro de filas).</p>
+</blockquote>
+<p>Este tipo de tabla es útil cuando queremos comparar perfiles o distribuciones internas dentro de cada grupo. Si los totales por fila están presentes, es fácil verificar si los porcentajes fueron correctamente calculados.</p>
+</section>
+<section id="frecuencia-relativa-por-columna" class="level4">
+<h4 class="anchored" data-anchor-id="frecuencia-relativa-por-columna">Frecuencia relativa por columna</h4>
+<p>Lo inverso: proporciones dentro de cada columna. Permite ver cómo se distribuye la variable de fila dentro de cada categoría de la columna. Es decir, de las personas que prefieren pop, ¿qué proporción son hombres y cuáles mujeres?</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Rock</th>
+<th>Pop</th>
+<th>Clásica</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Masculino</td>
+<td>60%</td>
+<td>37.5%</td>
+<td>33.3%</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Femenino</td>
+<td>40%</td>
+<td>62.5%</td>
+<td>66.7%</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td>100%</td>
+<td>100%</td>
+<td>100%</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote class="blockquote">
+<p>⚠️ Muchas veces estas tablas no incluyen totales explícitos, pero deberían. La fila de totales (100%) ayuda a recordar que las proporciones fueron calculadas verticalmente, y evita errores comunes al leer la tabla.</p>
+</blockquote>
+</section>
+</section>
+<section id="una-situación-especial-una-variable-dicotómica" class="level3">
+<h3 class="anchored" data-anchor-id="una-situación-especial-una-variable-dicotómica">Una situación especial: una variable dicotómica</h3>
+<p>Cuando una de las variables tiene solo dos categorías (por ejemplo, fumador: sí/no), suele ser más claro reportar directamente el porcentaje de personas que cumplen una condición. Este tipo de resumen es especialmente útil cuando queremos comunicar tasas, proporciones o prevalencias.</p>
+<section id="ejemplo-de-fumadores-según-sexo-y-edad" class="level4">
+<h4 class="anchored" data-anchor-id="ejemplo-de-fumadores-según-sexo-y-edad">Ejemplo: % de fumadores según sexo y edad</h4>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Edad / Sexo</th>
+<th>Masculino</th>
+<th>Femenino</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>18–29</td>
+<td>35%</td>
+<td>30%</td>
+</tr>
+<tr class="even">
+<td>30–49</td>
+<td>40%</td>
+<td>25%</td>
+</tr>
+<tr class="odd">
+<td>50+</td>
+<td>28%</td>
+<td>22%</td>
+</tr>
+</tbody>
+</table>
+<p>Este tipo de tabla es muy común en epidemiología o en encuestas sociales.</p>
+<p>Algunas preguntas para guiar la lectura: - ¿Cómo cambia la prevalencia de tabaquismo con la edad? - ¿Se observan diferencias sistemáticas entre hombres y mujeres? - ¿Cuál es el grupo con mayor proporción de fumadores?</p>
+<blockquote class="blockquote">
+<p>⚠️ Cuidado: asegurate de saber qué significa el porcentaje. ¿Es % de fumadores? ¿De no fumadores? ¿Por grupo o del total? El malentendido es frecuente.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>❗ Si los totales por grupo (por ejemplo, cantidad total de hombres de 18–29 años) no están presentes, puede ser difícil estimar el número absoluto de casos detrás de cada porcentaje.</p>
+</blockquote>
+<p>Otro ejemplo clásico: % de personas que votaron un partido según región o nivel socioeconómico.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>NSE / Región</th>
+<th>Partido A</th>
+<th>Partido B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Bajo</td>
+<td>60%</td>
+<td>40%</td>
+</tr>
+<tr class="even">
+<td>Medio</td>
+<td>50%</td>
+<td>50%</td>
+</tr>
+<tr class="odd">
+<td>Alto</td>
+<td>35%</td>
+<td>65%</td>
+</tr>
+</tbody>
+</table>
+<p>Aquí también podemos interrogarnos: - ¿Existe una relación entre nivel socioeconómico y elección de partido? - ¿Qué tan marcada es la diferencia entre los extremos? - ¿Falta información sobre el total de personas por grupo? ¿Sería útil incluirla?</p>
+</section>
+</section>
+<section id="cuidado-al-interpretar" class="level3">
+<h3 class="anchored" data-anchor-id="cuidado-al-interpretar">Cuidado al interpretar</h3>
+<p>Las tablas bivariadas son descriptivas. Te muestran cómo están distribuidos los datos, pero <strong>no prueban causalidad</strong>. Aun así, permiten generar hipótesis, detectar patrones interesantes y comunicar resultados con claridad.</p>
+<p>Algunas cosas a tener en cuenta:</p>
+<ul>
+<li>Una celda con muchos casos no siempre indica una asociación: puede deberse al tamaño de grupo.</li>
+<li>Los porcentajes pueden ser engañosos si se presentan mal: chequeá si suman por fila, columna, o sobre el total.</li>
+<li>Comparar proporciones requiere contexto: 35% puede ser alto o bajo según con qué lo compares.</li>
+<li>A veces, una variable tiene muchos niveles y la tabla se vuelve difícil de leer. En esos casos, puede ser mejor agrupar niveles o usar gráficos.</li>
+<li>La presencia (o ausencia) de totales puede afectar significativamente la interpretación: siempre preguntate si la tabla te da suficiente información para verificar los cálculos.</li>
+</ul>
+<blockquote class="blockquote">
+<p>📌 Siempre preguntate: ¿estos números reflejan lo que quiero saber? ¿O necesito ajustar, estandarizar, o usar otro enfoque?</p>
+</blockquote>
+</section>
+<section id="más-allá-de-mirar-analizar" class="level3">
+<h3 class="anchored" data-anchor-id="más-allá-de-mirar-analizar">Más allá de mirar: analizar</h3>
+<p>Las tablas bivariadas son el punto de partida. Si encontrás patrones interesantes, podés avanzar hacia análisis más formales:</p>
+<ul>
+<li>Pruebas de independencia (como el test de chi-cuadrado)</li>
+<li>Análisis de residuos estandarizados</li>
+<li>Modelos log-lineales</li>
+<li>Regresiones para variables categóricas (como regresión logística)</li>
+</ul>
+<p>Pero todo empieza contando. Y mirando con cuidado. Cada tabla es una historia: hay que leerla con atención, hacerse preguntas, y dejar que los datos hablen antes de decidir qué camino seguir.</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

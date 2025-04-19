@@ -1,0 +1,157 @@
+---
+author: Álvaro Cabana
+lang: es
+abstract-title: Notas
+abstract: Para escribir este capítulo se ha utilizado un Chatbot conversacional.
+aliases: [why-statistics.html]
+---
+
+## Capítulo X: Explorando relaciones entre variables categóricas
+
+### Introducción
+
+Muchas preguntas que nos hacemos sobre datos involucran relaciones entre dos variables. Por ejemplo:
+
+-   ¿Fuman más los hombres que las mujeres?
+-   ¿La preferencia musical varía según la edad?
+-   ¿Hay diferencias de opinión política según nivel educativo?
+
+Cuando ambas variables son **categóricas**, una de las herramientas más útiles es la **tabla de contingencia**. Estas tablas nos permiten observar cómo se distribuyen los casos entre combinaciones de niveles de dos variables. En este capítulo vamos a explorar distintas formas de construir, leer e interpretar tablas bivariadas categóricas, señalando también errores comunes y preguntas que conviene hacerse frente a los datos.
+
+
+### Tablas de contingencia: la base
+
+Una tabla de contingencia muestra cuántas observaciones hay en cada combinación de categorías. A veces se le llama también "tabla cruzada" o simplemente "crosstab". Las filas y columnas representan los niveles de las variables, y las celdas indican la cantidad de casos que pertenecen a cada combinación.
+
+#### Ejemplo: Sexo × Preferencia musical
+
+|           | Rock | Pop | Clásica |
+|-----------|------|-----|---------|
+| Masculino | 30   | 15  | 5       |
+| Femenino  | 20   | 25  | 10      |
+
+Esta tabla muestra las **frecuencias absolutas**: el número de personas en cada grupo. Por ejemplo, hay 30 hombres que prefieren rock, 25 mujeres que prefieren pop, etc.
+
+Al mirar esta tabla, podemos empezar a preguntarnos: - ¿Es la preferencia por el rock más alta entre los hombres? - ¿Es la música clásica poco popular en general? - ¿Hay algún género musical que sea igual de popular entre hombres y mujeres?
+
+Sin embargo, sin información adicional, no siempre está claro en qué dirección fue construida la tabla: ¿es "preferencia musical por sexo" o "sexo por preferencia musical"? Esta ambigüedad se puede resolver si la tabla incluye totales.
+
+#### Ahora con totales:
+
+|           | Rock | Pop | Clásica | Total |
+|-----------|------|-----|---------|-------|
+| Masculino | 30   | 15  | 5       | 50    |
+| Femenino  | 20   | 25  | 10      | 55    |
+| **Total** | 50   | 40  | 15      | 105   |
+
+Cuando la tabla incluye la **fila y columna de totales**, es mucho más fácil orientarse: podemos ver cuántas personas hay en cada nivel individual de cada variable. Por ejemplo, ahora sabemos que hay 50 hombres y 55 mujeres, y que 40 personas prefieren pop. Además, al observar las sumas por fila y por columna, podemos verificar si los porcentajes están bien calculados cuando analizamos proporciones.
+
+> 🔎 **Un detalle importante:** muchas veces las tablas se presentan sin estos totales. Cuando eso ocurre, debemos tener cuidado al interpretar los porcentajes: sin totales, es fácil confundirse respecto a si los porcentajes fueron calculados por fila, por columna, o sobre el total general.
+
+Siempre que sea posible, incluir los totales (al menos como referencia visual) puede facilitar mucho la lectura y previene errores comunes.
+
+
+### Proporciones y porcentajes: viendo mejor los datos
+
+Los conteos por sí solos pueden ser difíciles de interpretar, especialmente cuando los tamaños de los grupos no son iguales. Para comparar distribuciones, es mejor convertir la tabla a proporciones o porcentajes.
+
+#### Frecuencia relativa sobre el total
+
+Cada celda se divide por el total de casos. Esto permite comparar proporciones globales.
+
+|           | Rock  | Pop   | Clásica | Total |
+|-----------|-------|-------|---------|-------|
+| Masculino | 28.6% | 14.3% | 4.8%    | 47.6% |
+| Femenino  | 19.0% | 23.8% | 9.5%    | 52.4% |
+| **Total** | 47.6% | 38.1% | 14.3%   | 100%  |
+
+> 🔍 Útil para ver el peso relativo de cada combinación en el conjunto total.
+
+Preguntas que podemos hacernos: - ¿Qué combinaciones de sexo y preferencia musical son más comunes? - ¿Cómo se comparan el total de personas que prefieren rock y las que prefieren clásica? - ¿Hay algún grupo que combine baja frecuencia absoluta con alta proporción relativa?
+
+> ⚠️ Si la tabla no incluye totales explícitos, asegurate de saber cuál es el total general. En tablas grandes, un error en este punto puede llevar a interpretaciones equivocadas.
+
+#### Frecuencia relativa por fila
+
+Convertimos cada fila en proporciones que suman 100%. Esto nos dice cómo se distribuye una categoría (por ejemplo, género) según otra (preferencia musical).
+
+|           | Rock | Pop | Clásica | Total |
+|-----------|------|-----|---------|-------|
+| Masculino | 60%  | 30% | 10%     | 100%  |
+| Femenino  | 36%  | 45% | 18%     | 99%\* |
+
+> \*Puede no sumar 100% exacto por redondeo.
+
+> ⚠️ Atención: las columnas ya no suman 100%. La comparación válida es horizontal (dentro de filas).
+
+Este tipo de tabla es útil cuando queremos comparar perfiles o distribuciones internas dentro de cada grupo. Si los totales por fila están presentes, es fácil verificar si los porcentajes fueron correctamente calculados.
+
+#### Frecuencia relativa por columna
+
+Lo inverso: proporciones dentro de cada columna. Permite ver cómo se distribuye la variable de fila dentro de cada categoría de la columna. Es decir, de las personas que prefieren pop, ¿qué proporción son hombres y cuáles mujeres?
+
+|           | Rock | Pop   | Clásica | Total |
+|-----------|------|-------|---------|-------|
+| Masculino | 60%  | 37.5% | 33.3%   |       |
+| Femenino  | 40%  | 62.5% | 66.7%   |       |
+| **Total** | 100% | 100%  | 100%    |       |
+
+> ⚠️ Muchas veces estas tablas no incluyen totales explícitos, pero deberían. La fila de totales (100%) ayuda a recordar que las proporciones fueron calculadas verticalmente, y evita errores comunes al leer la tabla.
+
+
+### Una situación especial: una variable dicotómica
+
+Cuando una de las variables tiene solo dos categorías (por ejemplo, fumador: sí/no), suele ser más claro reportar directamente el porcentaje de personas que cumplen una condición. Este tipo de resumen es especialmente útil cuando queremos comunicar tasas, proporciones o prevalencias.
+
+#### Ejemplo: % de fumadores según sexo y edad
+
+| Edad / Sexo | Masculino | Femenino |
+|-------------|-----------|----------|
+| 18--29      | 35%       | 30%      |
+| 30--49      | 40%       | 25%      |
+| 50+         | 28%       | 22%      |
+
+Este tipo de tabla es muy común en epidemiología o en encuestas sociales.
+
+Algunas preguntas para guiar la lectura: - ¿Cómo cambia la prevalencia de tabaquismo con la edad? - ¿Se observan diferencias sistemáticas entre hombres y mujeres? - ¿Cuál es el grupo con mayor proporción de fumadores?
+
+> ⚠️ Cuidado: asegurate de saber qué significa el porcentaje. ¿Es % de fumadores? ¿De no fumadores? ¿Por grupo o del total? El malentendido es frecuente.
+
+> ❗ Si los totales por grupo (por ejemplo, cantidad total de hombres de 18--29 años) no están presentes, puede ser difícil estimar el número absoluto de casos detrás de cada porcentaje.
+
+Otro ejemplo clásico: % de personas que votaron un partido según región o nivel socioeconómico.
+
+| NSE / Región | Partido A | Partido B |
+|--------------|-----------|-----------|
+| Bajo         | 60%       | 40%       |
+| Medio        | 50%       | 50%       |
+| Alto         | 35%       | 65%       |
+
+Aquí también podemos interrogarnos: - ¿Existe una relación entre nivel socioeconómico y elección de partido? - ¿Qué tan marcada es la diferencia entre los extremos? - ¿Falta información sobre el total de personas por grupo? ¿Sería útil incluirla?
+
+
+### Cuidado al interpretar
+
+Las tablas bivariadas son descriptivas. Te muestran cómo están distribuidos los datos, pero **no prueban causalidad**. Aun así, permiten generar hipótesis, detectar patrones interesantes y comunicar resultados con claridad.
+
+Algunas cosas a tener en cuenta:
+
+-   Una celda con muchos casos no siempre indica una asociación: puede deberse al tamaño de grupo.
+-   Los porcentajes pueden ser engañosos si se presentan mal: chequeá si suman por fila, columna, o sobre el total.
+-   Comparar proporciones requiere contexto: 35% puede ser alto o bajo según con qué lo compares.
+-   A veces, una variable tiene muchos niveles y la tabla se vuelve difícil de leer. En esos casos, puede ser mejor agrupar niveles o usar gráficos.
+-   La presencia (o ausencia) de totales puede afectar significativamente la interpretación: siempre preguntate si la tabla te da suficiente información para verificar los cálculos.
+
+> 📌 Siempre preguntate: ¿estos números reflejan lo que quiero saber? ¿O necesito ajustar, estandarizar, o usar otro enfoque?
+
+
+### Más allá de mirar: analizar
+
+Las tablas bivariadas son el punto de partida. Si encontrás patrones interesantes, podés avanzar hacia análisis más formales:
+
+-   Pruebas de independencia (como el test de chi-cuadrado)
+-   Análisis de residuos estandarizados
+-   Modelos log-lineales
+-   Regresiones para variables categóricas (como regresión logística)
+
+Pero todo empieza contando. Y mirando con cuidado. Cada tabla es una historia: hay que leerla con atención, hacerse preguntas, y dejar que los datos hablen antes de decidir qué camino seguir.

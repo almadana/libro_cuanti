@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>b-tables_v3</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="02b-tables_v3_files/libs/clipboard/clipboard.min.js"></script>
+<script src="02b-tables_v3_files/libs/quarto-html/quarto.js"></script>
+<script src="02b-tables_v3_files/libs/quarto-html/popper.min.js"></script>
+<script src="02b-tables_v3_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="02b-tables_v3_files/libs/quarto-html/anchor.min.js"></script>
+<link href="02b-tables_v3_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="02b-tables_v3_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="02b-tables_v3_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="02b-tables_v3_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="02b-tables_v3_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="capítulo-x-explorando-relaciones-entre-variables-categóricas" class="level2">
+<h2 class="anchored" data-anchor-id="capítulo-x-explorando-relaciones-entre-variables-categóricas">Capítulo X: Explorando relaciones entre variables categóricas</h2>
+<section id="qué-tienen-en-común-leer-novelas-y-fumar-cigarrillos" class="level3">
+<h3 class="anchored" data-anchor-id="qué-tienen-en-común-leer-novelas-y-fumar-cigarrillos">¿Qué tienen en común leer novelas y fumar cigarrillos?</h3>
+<p>Supongamos que estás analizando los resultados de una encuesta a estudiantes universitarios. Algunas preguntas eran: “¿Fumás cigarrillos?”, “¿Qué género de música preferís?”, “¿Te gustan más los libros físicos o los digitales?”, y “¿Qué estás estudiando?”. Todas esas preguntas tienen algo en común: sus respuestas son <strong>categóricas</strong>. Y muchas veces, lo que queremos saber no es solo la distribución de una variable (por ejemplo, cuántas personas prefieren libros digitales), sino <strong>cómo se relacionan dos variables entre sí</strong>. ¿Fuman más quienes escuchan rock? ¿Prefieren libros físicos los estudiantes de Psicología? ¿Las preferencias musicales varían según el género?</p>
+<p>Cuando ambas variables son categóricas, una herramienta simple y poderosa para empezar a responder estas preguntas es la <strong>tabla de contingencia</strong>.</p>
+<hr>
+</section>
+<section id="empezamos-por-contar" class="level3">
+<h3 class="anchored" data-anchor-id="empezamos-por-contar">Empezamos por contar</h3>
+<p>Tomemos un ejemplo sencillo. Supongamos que entrevistamos a 105 personas, y preguntamos dos cosas: su <strong>género</strong> (masculino o femenino), y su <strong>preferencia musical</strong> (rock, pop o música clásica).</p>
+<p>Podemos organizar las respuestas en una tabla como esta:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Rock</th>
+<th>Pop</th>
+<th>Clásica</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Masculino</td>
+<td>30</td>
+<td>15</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td>Femenino</td>
+<td>20</td>
+<td>25</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<p>Esta tabla muestra <strong>frecuencias absolutas</strong>: simplemente, cuántas personas hay en cada combinación de categorías. Podemos ver, por ejemplo, que 30 hombres prefieren rock, y 25 mujeres prefieren pop. Pero ¿cómo seguimos? ¿Cómo la interpretamos?</p>
+<p>Una primera pista aparece si agregamos una fila y una columna con los totales:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Rock</th>
+<th>Pop</th>
+<th>Clásica</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Masculino</td>
+<td>30</td>
+<td>15</td>
+<td>5</td>
+<td>50</td>
+</tr>
+<tr class="even">
+<td>Femenino</td>
+<td>20</td>
+<td>25</td>
+<td>10</td>
+<td>55</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td>50</td>
+<td>40</td>
+<td>15</td>
+<td>105</td>
+</tr>
+</tbody>
+</table>
+<p>Ahora podemos hacernos preguntas más claras: ¿qué porcentaje de las personas prefiere pop? (40/105 = 38%). ¿Qué porcentaje de los hombres prefieren rock? (30/50 = 60%). ¿Y qué porcentaje de quienes prefieren música clásica son mujeres? (10/15 = 66.7%).</p>
+<hr>
+</section>
+<section id="segundo-ejemplo-carrera-formato-de-lectura-preferido" class="level3">
+<h3 class="anchored" data-anchor-id="segundo-ejemplo-carrera-formato-de-lectura-preferido">Segundo ejemplo: Carrera × Formato de lectura preferido</h3>
+<p>Supongamos ahora que preguntamos a estudiantes de tres carreras distintas qué formato de lectura prefieren: ¿libros físicos o digitales?</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Carrera</th>
+<th>Físico</th>
+<th>Digital</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Psicología</td>
+<td>45</td>
+<td>30</td>
+</tr>
+<tr class="even">
+<td>Medicina</td>
+<td>25</td>
+<td>35</td>
+</tr>
+<tr class="odd">
+<td>Ingeniería</td>
+<td>20</td>
+<td>40</td>
+</tr>
+</tbody>
+</table>
+<p>¿Quiénes prefieren libros físicos? ¿Son más comunes entre estudiantes de Psicología? ¿O será que en Ingeniería simplemente hay más estudiantes que prefieren digital?</p>
+<p>Agregamos los totales:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Carrera</th>
+<th>Físico</th>
+<th>Digital</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Psicología</td>
+<td>45</td>
+<td>30</td>
+<td>75</td>
+</tr>
+<tr class="even">
+<td>Medicina</td>
+<td>25</td>
+<td>35</td>
+<td>60</td>
+</tr>
+<tr class="odd">
+<td>Ingeniería</td>
+<td>20</td>
+<td>40</td>
+<td>60</td>
+</tr>
+<tr class="even">
+<td><strong>Total</strong></td>
+<td>90</td>
+<td>105</td>
+<td>195</td>
+</tr>
+</tbody>
+</table>
+<p>Con esta tabla ya podemos explorar proporciones:</p>
+<ul>
+<li>Proporciones por fila: ¿Qué porcentaje de estudiantes de Psicología prefieren libros físicos? 45/75 = 60%.</li>
+<li>Proporciones por columna: ¿Qué porcentaje de quienes prefieren digitales son de Ingeniería? 40/105 ≈ 38%.</li>
+</ul>
+<blockquote class="blockquote">
+<p>🔎 ¿La carrera parece influir en la preferencia por formato? ¿Cuál tiene el mayor porcentaje de lectura digital? ¿Y cuál la menor?</p>
+</blockquote>
+<hr>
+</section>
+<section id="tercer-ejemplo-nivel-educativo-opinión-sobre-legalización-del-cannabis" class="level3">
+<h3 class="anchored" data-anchor-id="tercer-ejemplo-nivel-educativo-opinión-sobre-legalización-del-cannabis">Tercer ejemplo: Nivel educativo × Opinión sobre legalización del cannabis</h3>
+<p>Queremos saber si la postura frente a la legalización del cannabis varía según nivel educativo. Las opciones de respuesta fueron: “a favor”, “en contra” y “no opina”.</p>
+<p>Primero, sin totales:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Nivel educativo</th>
+<th>A favor</th>
+<th>En contra</th>
+<th>No opina</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Primaria</td>
+<td>10</td>
+<td>25</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td>Secundaria</td>
+<td>30</td>
+<td>35</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td>Universitario</td>
+<td>50</td>
+<td>20</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p>Ahora con totales:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Nivel educativo</th>
+<th>A favor</th>
+<th>En contra</th>
+<th>No opina</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Primaria</td>
+<td>10</td>
+<td>25</td>
+<td>5</td>
+<td>40</td>
+</tr>
+<tr class="even">
+<td>Secundaria</td>
+<td>30</td>
+<td>35</td>
+<td>5</td>
+<td>70</td>
+</tr>
+<tr class="odd">
+<td>Universitario</td>
+<td>50</td>
+<td>20</td>
+<td>5</td>
+<td>75</td>
+</tr>
+<tr class="even">
+<td><strong>Total</strong></td>
+<td>90</td>
+<td>80</td>
+<td>15</td>
+<td>185</td>
+</tr>
+</tbody>
+</table>
+<p>Al observar esta tabla, podemos preguntarnos: - ¿Cuál es el nivel educativo con mayor porcentaje de apoyo a la legalización? - ¿Qué patrón se observa al aumentar el nivel educativo? - ¿Qué tan grande es la diferencia entre quienes solo tienen primaria y quienes cursaron la universidad?</p>
+<p>Este es un buen momento para practicar el cálculo de proporciones por fila o por columna.</p>
+<hr>
+</section>
+<section id="cuando-una-de-las-variables-es-dicotómica-el-caso-de-fumadores" class="level3">
+<h3 class="anchored" data-anchor-id="cuando-una-de-las-variables-es-dicotómica-el-caso-de-fumadores">Cuando una de las variables es dicotómica: el caso de fumadores</h3>
+<p>Volvamos al tema del tabaquismo. Ahora queremos saber qué porcentaje de personas <strong>fuma cigarrillos</strong> en diferentes subgrupos de la población.</p>
+<p>Supongamos que tenemos los siguientes datos:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Edad / Sexo</th>
+<th>Masculino</th>
+<th>Femenino</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>18–29</td>
+<td>35%</td>
+<td>30%</td>
+</tr>
+<tr class="even">
+<td>30–49</td>
+<td>40%</td>
+<td>25%</td>
+</tr>
+<tr class="odd">
+<td>50+</td>
+<td>28%</td>
+<td>22%</td>
+</tr>
+</tbody>
+</table>
+<p>Esta tabla muestra <strong>prevalencias</strong>: el porcentaje de personas que fuman dentro de cada grupo. No tenemos los conteos, pero igual podemos extraer bastante información.</p>
+<blockquote class="blockquote">
+<p>🧠 <strong>Prevalencia</strong> es la proporción de personas con una condición en un momento dado. <strong>Incidencia</strong> se refiere a la cantidad de personas que desarrollan la condición en un período.</p>
+</blockquote>
+<p>Este tipo de tabla es especialmente útil en estudios de salud pública. Pero es importante no olvidar que, si bien las prevalencias son claras, <strong>no podemos saber si las diferencias son importantes</strong> sin saber cuántas personas hay en cada grupo.</p>
+<blockquote class="blockquote">
+<p>⚠️ Un 40% puede parecer mucho, pero si es 2 de 5 personas, puede no ser representativo. Siempre que sea posible, mostrà también los conteos.</p>
+</blockquote>
+<p>Por ejemplo:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Edad / Sexo</th>
+<th>Masculino</th>
+<th>Femenino</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>18–29</td>
+<td>35 (de 100)</td>
+<td>30 (de 100)</td>
+<td>200</td>
+</tr>
+<tr class="even">
+<td>30–49</td>
+<td>40 (de 80)</td>
+<td>25 (de 100)</td>
+<td>180</td>
+</tr>
+<tr class="odd">
+<td>50+</td>
+<td>28 (de 70)</td>
+<td>22 (de 90)</td>
+<td>160</td>
+</tr>
+</tbody>
+</table>
+<p>Con esta información, podemos calcular tanto las prevalencias como los números absolutos, y tener una visión más completa.</p>
+<hr>
+</section>
+<section id="conectando-con-preguntas-reales-en-psicología" class="level3">
+<h3 class="anchored" data-anchor-id="conectando-con-preguntas-reales-en-psicología">Conectando con preguntas reales en psicología</h3>
+<p>Las tablas bivariadas no son solo una herramienta técnica: son una manera de ver el mundo. En psicología, muchas de nuestras preguntas empíricas pueden empezar a explorarse con una tabla como las que vimos.</p>
+<section id="ejemplos-vamos-con-tres" class="level4">
+<h4 class="anchored" data-anchor-id="ejemplos-vamos-con-tres">¿Ejemplos? Vamos con tres:</h4>
+<p><strong>1. ¿Está asociada la ansiedad con el uso intensivo de redes sociales?</strong></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Uso de redes</th>
+<th>Alta ansiedad</th>
+<th>Baja ansiedad</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Alto</td>
+<td>50</td>
+<td>30</td>
+</tr>
+<tr class="even">
+<td>Bajo</td>
+<td>20</td>
+<td>60</td>
+</tr>
+</tbody>
+</table>
+<p>¿Hay más ansiedad entre quienes usan más redes? ¿Qué pasa si sumamos totales y calculamos porcentajes por fila o por columna? ¿Podríamos usar esto para justificar una hipótesis de trabajo?</p>
+<p><strong>2. ¿Varía la actitud hacia la terapia psicológica según el género?</strong></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Género</th>
+<th>Positiva</th>
+<th>Negativa</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mujer</td>
+<td>80</td>
+<td>20</td>
+</tr>
+<tr class="even">
+<td>Hombre</td>
+<td>50</td>
+<td>50</td>
+</tr>
+</tbody>
+</table>
+<p>¿Las mujeres tienen una actitud más favorable hacia la terapia? ¿Qué pasaría si tuviéramos una muestra desequilibrada (por ejemplo, más mujeres que hombres)? ¿Cómo cambiaría la tabla?</p>
+<p><strong>3. ¿La elección de carrera se relaciona con el nivel educativo de los padres?</strong></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Nivel padres &nbsp;Carrera</th>
+<th>Psicología</th>
+<th>Ingeniería</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Bajo</td>
+<td>30</td>
+<td>15</td>
+</tr>
+<tr class="even">
+<td>Medio</td>
+<td>50</td>
+<td>40</td>
+</tr>
+<tr class="odd">
+<td>Alto</td>
+<td>20</td>
+<td>45</td>
+</tr>
+</tbody>
+</table>
+<p>¿Hay algún patrón visible? ¿Elegir Ingeniería parece más frecuente entre estudiantes cuyos padres tienen nivel educativo alto? ¿Y Psicología?</p>
+<p>Estas son solo algunas formas en que una tabla puede ayudarte a iniciar un análisis, proponer una hipótesis o simplemente contar mejor lo que está pasando en tus datos. No hace falta una estadística avanzada para empezar: solo contar, mirar, y preguntarse por qué.</p>
+<hr>
+</section>
+</section>
+<section id="en-resumen-contar-bien-para-pensar-mejor" class="level3">
+<h3 class="anchored" data-anchor-id="en-resumen-contar-bien-para-pensar-mejor">En resumen: contar bien para pensar mejor</h3>
+<p>Las tablas bivariadas nos permiten explorar relaciones entre variables categóricas. Dependiendo de cómo las presentemos —como conteos, proporciones sobre el total, porcentajes por fila o por columna— obtenemos distintas formas de ver lo mismo. Elegir la forma correcta depende de qué pregunta nos estamos haciendo.</p>
+<p>No te olvides: - Pedí los totales. Te ayudan a interpretar correctamente los porcentajes. - Fijate en qué dirección están calculadas las proporciones. - No confundas prevalencia con incidencia. - Y sobre todo: <strong>mirá con cuidado antes de sacar conclusiones</strong>.</p>
+<p>Más adelante vas a aprender cómo probar si una diferencia en una tabla es “estadísticamente significativa”. Pero todo empieza por acá: mirar, contar, y hacerse buenas preguntas.</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

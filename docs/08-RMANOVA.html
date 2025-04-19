@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.258">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Matthew J. C. Crump">
 
-<title>Answering questions with data - 8&nbsp; Repeated Measures ANOVA</title>
+<title>Respondiendo preguntas con datos - 8&nbsp; Repeated Measures ANOVA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -77,7 +111,8 @@ div.csl-indent {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1116FZ99DZ"></script>
@@ -93,14 +128,14 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Answering questions with data - 8&nbsp; Repeated Measures ANOVA">
-<meta property="og:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
+<meta property="og:title" content="Respondiendo preguntas con datos - 8&nbsp; Repeated Measures ANOVA">
+<meta property="og:description" content="">
 <meta property="og:image" content="https://crumplab.com/statistics/imgs/figures/SS_ANOVA.png">
-<meta property="og:site-name" content="Answering questions with data">
+<meta property="og:site-name" content="Respondiendo preguntas con datos">
 <meta property="og:image:height" content="1160">
 <meta property="og:image:width" content="1520">
-<meta name="twitter:title" content="Answering questions with data - 8&nbsp; Repeated Measures ANOVA">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Respondiendo preguntas con datos - 8&nbsp; Repeated Measures ANOVA">
+<meta name="twitter:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
 <meta name="twitter:image" content="https://crumplab.com/statistics/imgs/TextbookCover.png">
 <meta name="twitter:site" content="@MattCrumpLab">
 <meta name="twitter:card" content="summary">
@@ -120,7 +155,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-RMANOVA.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Repeated Measures ANOVA</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -132,9 +167,9 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Answering questions with data</a> 
+      <a href="./">Respondiendo preguntas con datos</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/CrumpLab/statistics/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/CrumpLab/statistics/" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
@@ -148,13 +183,13 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
+ <span class="menu-text">Prefacio</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01-Science_Data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why Statistics?</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">¿Por qué estadística?</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -295,6 +330,11 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 
 </header>
 
+<div class="cell" data-hash="08-RMANOVA_cache/html/unnamed-chunk-2_2983cc34f2e1213e160c4b7684f1ffb7">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(xtable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>This chapter introduces you to <strong>repeated measures ANOVA</strong>. Repeated measures ANOVAs are very common in Psychology, because psychologists often use repeated measures designs, and repeated measures ANOVAs are the appropriate test for making inferences about repeated measures designs.</p>
 <p>Remember the paired sample <span class="math inline">\(t\)</span>-test? We used that test to compare two means from a repeated measures design. Remember what a repeated measures design is? It’s also called a within-subjects design. These designs involve measuring the same subject more than once. Specifically, at least once for every experimental condition. In the paired <span class="math inline">\(t\)</span>-test example, we discussed a simple experiment with only two experimental conditions. There, each subject would contribute a measurement to level one and level two of the design.</p>
 <p>However, paired-samples <span class="math inline">\(t\)</span>-tests are limited to comparing two means. What if you had a design that had more than two experimental conditions? For example, perhaps your experiment had 3 levels for the independent variable, and each subject contributed data to each of the three levels?</p>
@@ -304,10 +344,15 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <h2 data-number="8.1" class="anchored" data-anchor-id="repeated-measures-design"><span class="header-section-number">8.1</span> Repeated measures design</h2>
 <p>Let’s use the exact same toy example from the previous chapter, but let’s convert it to a repeated measures design.</p>
 <p>Last time, we imagined we had some data in three groups, A, B, and C, such as in <a href="#tbl-8rmdata1">Table&nbsp;<span>8.1</span></a>:</p>
-<div class="cell" data-hash="08-RMANOVA_cache/html/tbl-8rmdata1_ed68e8aff3a78a8b0fc3aab6d0f15f4f">
+<div class="cell" data-hash="08-RMANOVA_cache/html/tbl-8rmdata1_2ef76fda6c44ed095019d395cf67cd83">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">11</span>,<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">2</span>,<span class="dv">11</span>,<span class="dv">2</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>groups <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>), <span class="at">each=</span><span class="dv">3</span>))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df<span class="ot">&lt;-</span><span class="fu">data.frame</span>(groups,scores)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="tbl-8rmdata1" class="anchored">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <caption>Table&nbsp;8.1: Example data for three groups.</caption>
 <thead>
 <tr class="header">
@@ -359,10 +404,16 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 </div>
 <p>The above table represents a between-subject design where each score involves a unique subject.</p>
 <p>Let’s change things up a tiny bit, and imagine we only had 3 subjects in total in the experiment. And, that each subject contributed data to the three levels of the independent variable, A, B, and C. Before we called the IV <code>groups</code>, because there were different groups of subjects. Let’s change that to <code>conditions</code>, because now the same group of subjects participates in all three conditions. <a href="#tbl-8rmdata2">Table&nbsp;<span>8.2</span></a> shows a within-subjects (repeated measures) version of this experiment:</p>
-<div class="cell" data-hash="08-RMANOVA_cache/html/tbl-8rmdata2_5d22fa3595d2fabe8fa40455232de4f6">
+<div class="cell" data-hash="08-RMANOVA_cache/html/tbl-8rmdata2_d202ae699d2872659a2c1927a39f8e9f">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">11</span>,<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">2</span>,<span class="dv">11</span>,<span class="dv">2</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>conditions <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>), <span class="at">each=</span><span class="dv">3</span>))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>subjects <span class="ot">&lt;-</span><span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>df<span class="ot">&lt;-</span><span class="fu">data.frame</span>(subjects,conditions,scores)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="tbl-8rmdata2" class="anchored">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <caption>Table&nbsp;8.2: Example data for a repeated measures design with three conditions, where each subject contributes data in each condition.</caption>
 <thead>
 <tr class="header">
@@ -441,12 +492,13 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <p><span class="math inline">\(SS_\text{TOTAL} = SS_\text{Between} + SS_\text{Within}\)</span></p>
 <p>Whoa, hold on a minute. Haven’t we switched back to talking about a <strong>between-subjects</strong> ANOVA. YES! Then why are we using the word <strong>within</strong>, what does that mean? YES! We think this is very confusing for people. Here the word <strong>within</strong> has a special meaning. It <strong>does not</strong> refer to a within-subjects design. Let’s explain. First, <span class="math inline">\(SS_\text{Between}\)</span> (which we have been calling <span class="math inline">\(SS_\text{Effect}\)</span>) refers to variation <strong>between</strong> the group means, that’s why it is called <span class="math inline">\(SS_\text{Between}\)</span>. Second, and most important, <span class="math inline">\(SS_\text{Within}\)</span> (which we have been calling <span class="math inline">\(SS_\text{Error}\)</span>), refers to the leftover variation within each group mean. Specifically, it is the variation between each group mean and each score in the group. “AAGGH, you’ve just used the word between to describe within group variation!”. Yes! We feel your pain. Remember, for each group mean, every score is probably off a little bit from the mean. So, the scores within each group have some variation. This is the within group variation, and it is why the leftover error that we can’t explain is often called <span class="math inline">\(SS_\text{Within}\)</span>.</p>
 <p>OK. So why did we introduce this new confusing way of talking about things? Why can’t we just use <span class="math inline">\(SS_\text{Error}\)</span> to talk about this instead of <span class="math inline">\(SS_\text{Within}\)</span>, which you might (we do) find confusing. We’re getting there, but perhaps <a href="#fig-8splitSS">Figure&nbsp;<span>8.1</span></a> will help out.</p>
-<div class="cell" data-hash="08-RMANOVA_cache/html/fig-8splitSS_6a41ec922154aa98a4009a801f7cb3a6">
+<div class="cell" data-hash="08-RMANOVA_cache/html/fig-8splitSS_80d2d129219dddb6bb18e1297e048a45">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"imgs/figures/SS_ANOVA.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-8splitSS" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="imgs/figures/SS_ANOVA.png" class="quarto-discovered-preview-image img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;8.1: Illustration showing how the total sums of squares are partitioned differently for a between versus repeated-measures design</figcaption><p></p>
+<p><img src="imgs/figures/SS_ANOVA.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;8.1: Illustration showing how the total sums of squares are partitioned differently for a between versus repeated-measures design</figcaption>
 </figure>
 </div>
 </div>
@@ -456,12 +508,13 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <p><span class="math inline">\(SS_\text{TOTAL} = SS_\text{Effect} + SS_\text{Subjects} +SS_\text{Error}\)</span></p>
 <p>The critical feature of the repeated-measures ANOVA, is that the <span class="math inline">\(SS_\text{Error}\)</span> that we will later use to compute the MSE in the denominator for the <span class="math inline">\(F\)</span>-value, is smaller in a repeated-measures design, compared to a between subjects design. This is because the <span class="math inline">\(SS_\text{Error (within-groups)}\)</span> is split into two parts, <span class="math inline">\(SS_\text{Subjects (error variation about the subject mean)}\)</span> and <span class="math inline">\(SS_\text{Error (left-over variation we can't explain)}\)</span>.</p>
 <p>To make this more clear, consider <a href="#fig-8moresplit">Figure&nbsp;<span>8.2</span></a>:</p>
-<div class="cell" data-hash="08-RMANOVA_cache/html/fig-8moresplit_c7cb55c5266902cc1c20b08b1da5f62b">
+<div class="cell" data-hash="08-RMANOVA_cache/html/fig-8moresplit_95ec7a366ce2e4b292d0e358a3ed0e97">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"imgs/figures/SS_RMANOVA.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-8moresplit" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="imgs/figures/SS_RMANOVA.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;8.2: Close-up showing that the Error term is split into two parts in the repeated measures design</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;8.2: Close-up showing that the Error term is split into two parts in the repeated measures design</figcaption>
 </figure>
 </div>
 </div>
@@ -471,12 +524,13 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <section id="calculating-the-rm-anova" class="level2" data-number="8.3">
 <h2 data-number="8.3" class="anchored" data-anchor-id="calculating-the-rm-anova"><span class="header-section-number">8.3</span> Calculating the RM ANOVA</h2>
 <p>Now that you are familiar with the concept of an ANOVA table (remember the table from last chapter where we reported all of the parts to calculate the <span class="math inline">\(F\)</span>-value?), we can take a look at the things we need to find out to make the ANOVA table. <a href="#fig-8rmtable">Figure&nbsp;<span>8.3</span></a> presents an abstract for the repeated-measures ANOVA table. It shows us all the thing we need to calculate to get the <span class="math inline">\(F\)</span>-value for our data.</p>
-<div class="cell" data-hash="08-RMANOVA_cache/html/fig-8rmtable_b9a53b694afd12543f49b6b35b572fcd">
+<div class="cell" data-hash="08-RMANOVA_cache/html/fig-8rmtable_05b54022259e342811c81045f378979e">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"imgs/figures/RMANOVA_table.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-8rmtable" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="imgs/figures/RMANOVA_table.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;8.3: Equations for computing the ANOVA table for a repeated measures design</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;8.3: Equations for computing the ANOVA table for a repeated measures design</figcaption>
 </figure>
 </div>
 </div>
@@ -485,9 +539,24 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <section id="ss-total" class="level3" data-number="8.3.1">
 <h3 data-number="8.3.1" class="anchored" data-anchor-id="ss-total"><span class="header-section-number">8.3.1</span> SS Total</h3>
 <p>The total sums of squares, or <span class="math inline">\(SS\text{Total}\)</span> measures the total variation in a set of data. All we do is find the difference between each score and the grand mean, then we square the differences and add them all up.</p>
-<div class="cell" data-hash="08-RMANOVA_cache/html/unnamed-chunk-8_771b34e93fc6cd2e87cdae95b950eae8">
+<div class="cell" data-hash="08-RMANOVA_cache/html/unnamed-chunk-3_7b55a1f2842bc8f5cae40968a1ed5ee5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">11</span>,<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">2</span>,<span class="dv">11</span>,<span class="dv">2</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>conditions <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>), <span class="at">each=</span><span class="dv">3</span>))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>subjects <span class="ot">&lt;-</span><span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>diff <span class="ot">&lt;-</span>scores<span class="sc">-</span><span class="fu">mean</span>(scores)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>diff_squared <span class="ot">&lt;-</span>diff<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>df<span class="ot">&lt;-</span><span class="fu">data.frame</span>(subjects,conditions,scores,diff, diff_squared)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>conditions<span class="ot">&lt;-</span><span class="fu">as.character</span>(df<span class="sc">$</span>conditions)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>subjects<span class="ot">&lt;-</span><span class="fu">as.character</span>(df<span class="sc">$</span>subjects)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="st">"Sums"</span>,<span class="st">""</span>, <span class="fu">colSums</span>(df[<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>,<span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>]))) <span class="sc">%&gt;%</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="st">"Means"</span>,<span class="st">""</span>,<span class="fu">colMeans</span>(df[<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>,<span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>])))</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">subjects</th>
@@ -593,9 +662,25 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <p>What we want to do next is estimate how much of the total change in the data might be due to the experimental manipulation. For example, if we ran an experiment that causes causes change in the measurement, then the means for each group will be different from other, and the scores in each group will be different from each. As a result, the manipulation forces change onto the numbers, and this will naturally mean that some part of the total variation in the numbers is caused by the manipulation.</p>
 <p>The way to isolate the variation due to the manipulation (also called effect) is to look at the means in each group, and the calculate the difference scores between each group mean and the grand mean, and then the squared deviations to find the sum for <span class="math inline">\(SS_\text{Effect}\)</span>.</p>
 <p>Consider this table, showing the calculations for <span class="math inline">\(SS_\text{Effect}\)</span>.</p>
-<div class="cell" data-hash="08-RMANOVA_cache/html/unnamed-chunk-9_dd6e47e6a4d2ca4d321606e2d9ffe075">
+<div class="cell" data-hash="08-RMANOVA_cache/html/unnamed-chunk-4_5f9d7d201a721ff82dcfd9a8c931c6ef">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">11</span>,<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">2</span>,<span class="dv">11</span>,<span class="dv">2</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>conditions <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>), <span class="at">each=</span><span class="dv">3</span>))</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>subjects <span class="ot">&lt;-</span><span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>means <span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">11</span>,<span class="dv">11</span>,<span class="dv">11</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>diff <span class="ot">&lt;-</span>means<span class="sc">-</span><span class="fu">mean</span>(scores)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>diff_squared <span class="ot">&lt;-</span>diff<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>df<span class="ot">&lt;-</span><span class="fu">data.frame</span>(subjects,conditions,scores,means,diff, diff_squared)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>conditions<span class="ot">&lt;-</span><span class="fu">as.character</span>(df<span class="sc">$</span>conditions)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>subjects<span class="ot">&lt;-</span><span class="fu">as.character</span>(df<span class="sc">$</span>subjects)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="st">"Sums"</span>,<span class="st">""</span>, <span class="fu">colSums</span>(df[<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>,<span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>]))) <span class="sc">%&gt;%</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="st">"Means"</span>,<span class="st">""</span>,<span class="fu">colMeans</span>(df[<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>,<span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>])))</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">subjects</th>
@@ -711,9 +796,25 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <p>$ SS_ = SS_ - SS_ $</p>
 <p>$ SS_ = 302 - 72 = 230 $</p>
 <p>Or, we could compute <span class="math inline">\(SS_\text{Error (within conditions)}\)</span> directly from the data as we did last time:</p>
-<div class="cell" data-hash="08-RMANOVA_cache/html/unnamed-chunk-10_5a195e89b198122a2ab3c984b8d29540">
+<div class="cell" data-hash="08-RMANOVA_cache/html/unnamed-chunk-5_47fe79af738a7af7f8808b8ad25dda8d">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">11</span>,<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">2</span>,<span class="dv">11</span>,<span class="dv">2</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>conditions <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>), <span class="at">each=</span><span class="dv">3</span>))</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>subjects <span class="ot">&lt;-</span><span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>means <span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">11</span>,<span class="dv">11</span>,<span class="dv">11</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>diff <span class="ot">&lt;-</span>means<span class="sc">-</span>scores</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>diff_squared <span class="ot">&lt;-</span>diff<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>df<span class="ot">&lt;-</span><span class="fu">data.frame</span>(subjects,conditions,scores,means,diff, diff_squared)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>conditions<span class="ot">&lt;-</span><span class="fu">as.character</span>(df<span class="sc">$</span>conditions)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>subjects<span class="ot">&lt;-</span><span class="fu">as.character</span>(df<span class="sc">$</span>subjects)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="st">"Sums"</span>,<span class="st">""</span>, <span class="fu">colSums</span>(df[<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>,<span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>]))) <span class="sc">%&gt;%</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="st">"Means"</span>,<span class="st">""</span>,<span class="fu">colMeans</span>(df[<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>,<span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>])))</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">subjects</th>
@@ -823,9 +924,25 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <h3 data-number="8.3.4" class="anchored" data-anchor-id="ss-subjects"><span class="header-section-number">8.3.4</span> SS Subjects</h3>
 <p>Now we are ready to calculate new partition, called <span class="math inline">\(SS_\text{Subjects}\)</span>. We first find the means for each subject. For subject 1, this is the mean of their scores across Conditions A, B, and C. The mean for subject 1 is 9.33 (repeating). Notice there is going to be some rounding error here, that’s OK for now.</p>
 <p>The <code>means</code> column now shows all of the subject means. We then find the difference between each subject mean and the grand mean. These deviations are shown in the <code>diff</code> column. Then we square the deviations, and sum them up.</p>
-<div class="cell" data-hash="08-RMANOVA_cache/html/unnamed-chunk-11_32131791a3036f155c22a315194b2361">
+<div class="cell" data-hash="08-RMANOVA_cache/html/unnamed-chunk-6_6d9029733f685e384d81fc58d3eb3aab">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">11</span>,<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">2</span>,<span class="dv">11</span>,<span class="dv">2</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>conditions <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>), <span class="at">each=</span><span class="dv">3</span>))</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>subjects <span class="ot">&lt;-</span><span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>means <span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fl">9.33</span>,<span class="dv">8</span>,<span class="fl">3.66</span>,<span class="fl">9.33</span>,<span class="dv">8</span>,<span class="fl">3.66</span>,<span class="fl">9.33</span>,<span class="dv">8</span>,<span class="fl">3.66</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>diff <span class="ot">&lt;-</span>means<span class="sc">-</span><span class="fu">mean</span>(scores)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>diff_squared <span class="ot">&lt;-</span>diff<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>df<span class="ot">&lt;-</span><span class="fu">data.frame</span>(subjects,conditions,scores,means,diff, diff_squared)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>conditions<span class="ot">&lt;-</span><span class="fu">as.character</span>(df<span class="sc">$</span>conditions)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>subjects<span class="ot">&lt;-</span><span class="fu">as.character</span>(df<span class="sc">$</span>subjects)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="st">"Sums"</span>,<span class="st">""</span>, <span class="fu">colSums</span>(df[<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>,<span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>]))) <span class="sc">%&gt;%</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="st">"Means"</span>,<span class="st">""</span>,<span class="fu">colMeans</span>(df[<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>,<span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>])))</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <colgroup>
 <col style="width: 11%">
 <col style="width: 14%">
@@ -949,10 +1066,12 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <section id="check-our-work" class="level3" data-number="8.3.6">
 <h3 data-number="8.3.6" class="anchored" data-anchor-id="check-our-work"><span class="header-section-number">8.3.6</span> Check our work</h3>
 <p>Before we continue to compute the MSEs and F-value for our data, let’s quickly check our work. For example, we could have R compute the repeated measures ANOVA for us, and then we could look at the ANOVA table and see if we are on the right track so far.</p>
-<div class="cell" data-hash="08-RMANOVA_cache/html/tbl-8rmANOVA1_8668971c16a8421513f225158cb83e02">
+<div class="cell" data-hash="08-RMANOVA_cache/html/tbl-8rmANOVA1_2024d53d500e9d5ca70d6e32fb9141a6">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>summary_out <span class="ot">&lt;-</span> <span class="fu">summary</span>(<span class="fu">aov</span>(scores<span class="sc">~</span>conditions <span class="sc">+</span> <span class="fu">Error</span>(subjects<span class="sc">/</span>conditions),df[<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>,]))</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">xtable</span>(summary_out))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="tbl-8rmANOVA1" class="anchored">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <caption>Table&nbsp;8.3: Example ANOVA table table reporting the degrees of freedom, sums of squares, mean squares, <span class="math inline">\(F\)</span> value and associated <span class="math inline">\(p\)</span> value.</caption>
 <thead>
 <tr class="header">
@@ -1015,9 +1134,11 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <section id="p-value" class="level3" data-number="8.3.9">
 <h3 data-number="8.3.9" class="anchored" data-anchor-id="p-value"><span class="header-section-number">8.3.9</span> p-value</h3>
 <p>We already conducted the repeated-measures ANOVA using R and reported the ANOVA. Here it is again. The table shows the <span class="math inline">\(p\)</span>-value associated with our <span class="math inline">\(F\)</span>-value.</p>
-<div class="cell" data-hash="08-RMANOVA_cache/html/unnamed-chunk-13_04c7fc1f9b617e161f33cc7e1b75e79f">
+<div class="cell" data-hash="08-RMANOVA_cache/html/unnamed-chunk-7_bb3be3cc1b013dc137018f51eac74bf3">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>summary_out <span class="ot">&lt;-</span> <span class="fu">summary</span>(<span class="fu">aov</span>(scores<span class="sc">~</span>conditions <span class="sc">+</span> <span class="fu">Error</span>(subjects<span class="sc">/</span>conditions),df[<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>,]))</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">xtable</span>(summary_out))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -1078,12 +1199,50 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <li>For the between-subjects design there are 30 different subjects, each contributing one score in the condition they were assigned to (really the group).</li>
 </ol>
 <p>We run 1000 simulated experiments for each design. We calculate the <span class="math inline">\(F\)</span> for each experiment, for both the between and repeated measures designs. <a href="#fig-8critcompare">Figure&nbsp;<span>8.4</span></a> has the sampling distributions of <span class="math inline">\(F\)</span> for both designs.</p>
-<div class="cell" data-fig.asp="0.5" data-hash="08-RMANOVA_cache/html/fig-8critcompare_15987e4716dd369ca5ec6c343e4c713d">
+<div class="cell" data-fig.asp="0.5" data-hash="08-RMANOVA_cache/html/fig-8critcompare_4591a46a7e557663c64a2a8bf53fb4bf">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>b_f <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>w_f <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>) {</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  scores <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">30</span>, <span class="dv">100</span>, <span class="dv">10</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  conditions <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>), <span class="at">each =</span> <span class="dv">10</span>))</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  subjects <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">3</span>))</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(scores, conditions, subjects)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  between_out <span class="ot">&lt;-</span> <span class="fu">summary</span>(<span class="fu">aov</span>(scores <span class="sc">~</span> conditions, df))</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  b_f[i] <span class="ot">&lt;-</span> between_out[[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">`</span><span class="at">F value</span><span class="st">`</span>[<span class="dv">1</span>]</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  within_out <span class="ot">&lt;-</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>(<span class="fu">aov</span>(scores <span class="sc">~</span> conditions <span class="sc">+</span> <span class="fu">Error</span>(subjects <span class="sc">/</span> conditions), df))</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  w_f[i] <span class="ot">&lt;-</span> within_out[[<span class="dv">2</span>]][[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">`</span><span class="at">F value</span><span class="st">`</span>[<span class="dv">1</span>]</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>plot_df <span class="ot">&lt;-</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">fs =</span> <span class="fu">c</span>(b_f, w_f), <span class="at">type =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"between"</span>, <span class="st">"repeated"</span>), <span class="at">each =</span></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>                                            <span class="dv">1000</span>))</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>crit_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">type =</span> <span class="fu">c</span>(<span class="st">"between"</span>, <span class="st">"repeated"</span>),</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>                      <span class="at">crit =</span> <span class="fu">c</span>(<span class="fu">qf</span>(.<span class="dv">95</span>, <span class="dv">2</span>, <span class="dv">27</span>),</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>                               <span class="fu">qf</span>(.<span class="dv">95</span>, <span class="dv">2</span>, <span class="dv">18</span>)))</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_df, <span class="fu">aes</span>(<span class="at">x =</span> fs)) <span class="sc">+</span></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">data =</span> crit_df, <span class="fu">aes</span>(<span class="at">xintercept =</span> crit)) <span class="sc">+</span></span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="at">data =</span> crit_df, <span class="fu">aes</span>(</span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> crit,</span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="dv">150</span>,</span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">round</span>(crit, <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">+</span></span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>( <span class="sc">~</span> type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
 <div class="cell-output-display">
 <div id="fig-8critcompare" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="08-RMANOVA_files/figure-html/fig-8critcompare-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;8.4: Comparing critical F values for a between and repeated measures design</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;8.4: Comparing critical F values for a between and repeated measures design</figcaption>
 </figure>
 </div>
 </div>
@@ -1099,47 +1258,149 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <p>We will do something slightly different this time. We will make sure that the scores for condition A, are always a little bit higher than the other scores. In other words, we will program in a real true difference. Specifically, the scores for condition will be sampled from a normal distribution with mean = 105, and SD = 10. This mean is 5 larger than the means for the other two conditions (still set to 100).</p>
 <p>With a real difference in the means, we should now reject the hypothesis of no differences more often. We should find <span class="math inline">\(F\)</span> values larger than the critical value more often. And, we should find <span class="math inline">\(p\)</span>-values for each experiment that are smaller than .05 more often, those should occur more than 5% of the time.</p>
 <p>To look at this we conduct 1000 experiments for each design, we conduct the ANOVA, then we save the <span class="math inline">\(p\)</span>-value we obtained for each experiment. This is like asking how many times will we find a <span class="math inline">\(p\)</span>-value less than 0.05, when there is a real difference (in this case an average of 5) between some of the means. <a href="#fig-8fpvaluedist">Figure&nbsp;<span>8.5</span></a> contains histograms of the <span class="math inline">\(p\)</span>-values:</p>
-<div class="cell" data-fig.asp="0.5" data-hash="08-RMANOVA_cache/html/fig-8fpvaluedist_ec407eec1907439019ac5704306f8235">
+<div class="cell" data-fig.asp="0.5" data-hash="08-RMANOVA_cache/html/fig-8fpvaluedist_ac4199b0de58002d8f13c838ceae6c5c">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>b_p<span class="ot">&lt;-</span><span class="fu">length</span>(<span class="dv">1000</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>w_p<span class="ot">&lt;-</span><span class="fu">length</span>(<span class="dv">1000</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="dv">110</span>,<span class="dv">10</span>),<span class="fu">rnorm</span>(<span class="dv">20</span>,<span class="dv">100</span>,<span class="dv">10</span>))</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>conditions <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>), <span class="at">each=</span><span class="dv">10</span>))</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>subjects <span class="ot">&lt;-</span><span class="fu">as.factor</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="dv">3</span>))</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>df<span class="ot">&lt;-</span><span class="fu">data.frame</span>(scores,conditions,subjects)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>between_out<span class="ot">&lt;-</span><span class="fu">summary</span>(<span class="fu">aov</span>(scores<span class="sc">~</span>conditions,df))</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>b_p[i] <span class="ot">&lt;-</span> between_out[[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">`</span><span class="at">Pr(&gt;F)</span><span class="st">`</span>[<span class="dv">1</span>]</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>within_out<span class="ot">&lt;-</span><span class="fu">summary</span>(<span class="fu">aov</span>(scores<span class="sc">~</span>conditions <span class="sc">+</span> <span class="fu">Error</span>(subjects<span class="sc">/</span>conditions),df))</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>w_p[i] <span class="ot">&lt;-</span> within_out[[<span class="dv">2</span>]][[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">`</span><span class="at">Pr(&gt;F)</span><span class="st">`</span>[<span class="dv">1</span>]</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>plot_df<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">ps=</span><span class="fu">c</span>(b_p,w_p), <span class="at">type=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"between"</span>,<span class="st">"repeated"</span>),<span class="at">each=</span><span class="dv">1000</span>))</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>crit_df<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">type=</span><span class="fu">c</span>(<span class="st">"between"</span>,<span class="st">"repeated"</span>),</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>           <span class="at">crit=</span><span class="fu">c</span>(<span class="fu">qf</span>(.<span class="dv">95</span>, <span class="dv">2</span>, <span class="dv">27</span>),</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">qf</span>(.<span class="dv">95</span>, <span class="dv">2</span>, <span class="dv">18</span>)))</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_df, <span class="fu">aes</span>(<span class="at">x=</span>ps))<span class="sc">+</span></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color=</span><span class="st">"white"</span>)<span class="sc">+</span></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept=</span><span class="fl">0.05</span>, <span class="at">color=</span><span class="st">"red"</span>)<span class="sc">+</span></span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
 <div class="cell-output-display">
 <div id="fig-8fpvaluedist" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="08-RMANOVA_files/figure-html/fig-8fpvaluedist-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;8.5: <span class="math inline">\(p\)</span>-value distributions for a between and within-subjects ANOVA</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;8.5: <span class="math inline">\(p\)</span>-value distributions for a between and within-subjects ANOVA</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Here we have two distributions of observed p-values for the simulations. The red line shows the location of 0.05. Overall, we can see that for both designs, we got a full range of <span class="math inline">\(p\)</span>-values from 0 to 1. This means that many times we would not have rejected the hypothesis of no differences (even though we know there is a small difference). We would have rejected the null every time the <span class="math inline">\(p\)</span>-value was less than 0.05.</p>
-<p>For the between subject design, there were 584 experiments with a <span class="math inline">\(p\)</span> less than 0.05, or 0.584 of experiments were “significant”, with alpha=.05.</p>
-<p>For the within subject design, there were 569 experiments with a <span class="math inline">\(p\)</span> less than 0.05, or 0.569 of experiments were “significant”, with alpha=.05.</p>
+<p>For the between subject design, there were 594 experiments with a <span class="math inline">\(p\)</span> less than 0.05, or 0.594 of experiments were “significant”, with alpha=.05.</p>
+<p>For the within subject design, there were 563 experiments with a <span class="math inline">\(p\)</span> less than 0.05, or 0.563 of experiments were “significant”, with alpha=.05.</p>
 <p>OK, well, you still might not be impressed. In this case, the between-subjects design detected the true effect slightly more often than the repeated measures design. Both them were right around 55% of the time. Based on this, we could say the two designs are pretty comparable in their sensitivity, or ability to detect a true difference when there is one.</p>
 <p>However, remember that the between-subjects design uses 30 subjects, and the repeated measures design only uses 10. We had to make a big investment to get our 30 subjects. And, we’re kind of unfairly comparing the between design (which is more sensitive because it has more subjects) with the repeated measures design that has fewer subjects.</p>
 <p>What do you think would happen if we ran 30 subjects in the repeated measures design? Let’s find out. <a href="#fig-8pdistwithin">Figure&nbsp;<span>8.6</span></a> re-plots the above, but this time only for the repeated measures design. We increase <span class="math inline">\(N\)</span> from 10 to 30.</p>
-<div class="cell" data-fig.asp="0.5" data-hash="08-RMANOVA_cache/html/fig-8pdistwithin_13c974dbebd09d3b7b7341b1e9858b9d">
+<div class="cell" data-fig.asp="0.5" data-hash="08-RMANOVA_cache/html/fig-8pdistwithin_c2beef0c559cc0cf716b67577298cbe2">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>b_p<span class="ot">&lt;-</span><span class="fu">length</span>(<span class="dv">1000</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>w_p<span class="ot">&lt;-</span><span class="fu">length</span>(<span class="dv">1000</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">30</span>,<span class="dv">110</span>,<span class="dv">10</span>),<span class="fu">rnorm</span>(<span class="dv">60</span>,<span class="dv">100</span>,<span class="dv">10</span>))</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>conditions <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>), <span class="at">each=</span><span class="dv">30</span>))</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>subjects <span class="ot">&lt;-</span><span class="fu">as.factor</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>,<span class="dv">3</span>))</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>df<span class="ot">&lt;-</span><span class="fu">data.frame</span>(scores,conditions,subjects)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>within_out<span class="ot">&lt;-</span><span class="fu">summary</span>(<span class="fu">aov</span>(scores<span class="sc">~</span>conditions <span class="sc">+</span> <span class="fu">Error</span>(subjects<span class="sc">/</span>conditions),df))</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>w_p[i] <span class="ot">&lt;-</span> within_out[[<span class="dv">2</span>]][[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">`</span><span class="at">Pr(&gt;F)</span><span class="st">`</span>[<span class="dv">1</span>]</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>plot_df<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">ps=</span>w_p, <span class="at">type=</span><span class="fu">rep</span>(<span class="st">"repeated"</span>,<span class="dv">1000</span>))</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_df, <span class="fu">aes</span>(<span class="at">x=</span>ps))<span class="sc">+</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color=</span><span class="st">"white"</span>)<span class="sc">+</span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept=</span><span class="fl">0.05</span>, <span class="at">color=</span><span class="st">"red"</span>)<span class="sc">+</span></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
 <div class="cell-output-display">
 <div id="fig-8pdistwithin" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="08-RMANOVA_files/figure-html/fig-8pdistwithin-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;8.6: <span class="math inline">\(p\)</span>-value distribution for within-subjects design with <span class="math inline">\(n = 30\)</span></figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;8.6: <span class="math inline">\(p\)</span>-value distribution for within-subjects design with <span class="math inline">\(n = 30\)</span></figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Wowsers! Look at that. When we ran 30 subjects in the repeated measures design almost all of the <span class="math inline">\(p\)</span>-values were less than .05. There were 986 experiments with a <span class="math inline">\(p\)</span> less than 0.05, or 0.986 of experiments were “significant”, with alpha=.05. That’s huge! If we ran the repeated measures design, we would almost always detect the true difference when it is there. This is why the repeated measures design can be more sensitive than the between-subjects design.</p>
+<p>Wowsers! Look at that. When we ran 30 subjects in the repeated measures design almost all of the <span class="math inline">\(p\)</span>-values were less than .05. There were 988 experiments with a <span class="math inline">\(p\)</span> less than 0.05, or 0.988 of experiments were “significant”, with alpha=.05. That’s huge! If we ran the repeated measures design, we would almost always detect the true difference when it is there. This is why the repeated measures design can be more sensitive than the between-subjects design.</p>
 </section>
 </section>
 <section id="real-data" class="level2" data-number="8.5">
 <h2 data-number="8.5" class="anchored" data-anchor-id="real-data"><span class="header-section-number">8.5</span> Real Data</h2>
-<p>Let’s look at some real data from a published experiment that uses a repeated measures design. This is the same example that you will be using in the lab for repeated measures ANOVA. The data happen to be taken from a recent study conducted by Lawrence Behmer and myself, at Brooklyn College <span class="citation" data-cites="behmer2017spatial">(<a href="#ref-behmer2017spatial" role="doc-biblioref">Behmer and Crump 2017</a>)</span>.</p>
+<p>Let’s look at some real data from a published experiment that uses a repeated measures design. This is the same example that you will be using in the lab for repeated measures ANOVA. The data happen to be taken from a recent study conducted by Lawrence Behmer and myself, at Brooklyn College <span class="citation" data-cites="behmer2017spatial">(<a href="references.html#ref-behmer2017spatial" role="doc-biblioref">Behmer and Crump 2017</a>)</span>.</p>
 <p>We were interested in how people perform sequences of actions. One question is whether people learn individual parts of actions, or the whole larger pattern of a sequence of actions. We looked at these issues in a computer keyboard typing task. One of our questions was whether we would replicate some well known findings about how people type words and letters.</p>
 <p>From prior work we knew that people type words way faster than than random letters, but if you made the random letters a little bit more English-like, then people type those letter strings a little bit faster, but not as slow as random string.</p>
 <p>In the study, 38 participants sat in front of a computer and typed 5 letter strings one at a time. Sometimes the 5 letter made a word (Normal condition, TRUCK), sometimes they were completely random (Random Condition, JWYFG), and sometimes they followed patterns like you find in English (Bigram Condition, QUEND), but were not actual words. So, the independent variable for the typing material had three levels. We measured every single keystroke that participants made. This gave us a few different dependent measures. Let’s take a look a the reaction times. This is how long it took for participants to start typing the first letter in the string.</p>
-<div class="cell" data-fig.asp="0.5" data-hash="08-RMANOVA_cache/html/fig-8behmcrump_1ff90435e67207bce03d7423b9ed0297">
+<div class="cell" data-fig.asp="0.5" data-hash="08-RMANOVA_cache/html/fig-8behmcrump_e36b16483a21390faedfb08517aa57c3">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>exp1_data <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">"data/exp1_BehmerCrumpAPP.csv"</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>exp1_data<span class="sc">$</span>Block <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(exp1_data<span class="sc">$</span>Block)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(exp1_data<span class="sc">$</span>Block) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Visible keyboard"</span>, <span class="st">"Covered Keyboard"</span>)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="do">## get subject mean RTs</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>subject_means <span class="ot">&lt;-</span> exp1_data <span class="sc">%&gt;%</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Order <span class="sc">==</span> <span class="dv">1</span>, Correct <span class="sc">==</span> <span class="dv">1</span>, PureRTs <span class="sc">&lt;</span> <span class="dv">5000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(Subject, Block, Stimulus) <span class="sc">%&gt;%</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">mean_rt =</span> <span class="fu">mean</span>(PureRTs))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'Subject', 'Block'. You can override using
+the `.groups` argument.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>subject_means<span class="sc">$</span>Subject <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(subject_means<span class="sc">$</span>Subject)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>subject_means<span class="sc">$</span>Block <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(subject_means<span class="sc">$</span>Block)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>subject_means<span class="sc">$</span>Stimulus <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(subject_means<span class="sc">$</span>Stimulus)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="do">## get condition mean RTs</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>plot_means <span class="ot">&lt;-</span> subject_means <span class="sc">%&gt;%</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">match</span>(Stimulus, <span class="fu">c</span>(<span class="st">"Normal"</span>, <span class="st">"Bigrams"</span>, <span class="st">"Random"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(Block, Stimulus) <span class="sc">%&gt;%</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">means =</span> <span class="fu">mean</span>(mean_rt),</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>                   <span class="at">SEs =</span> <span class="fu">sd</span>(mean_rt) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">length</span>(mean_rt)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'Block'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="do">## plot the condition means</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># re-order stimulus factor for plotting</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>plot_means<span class="sc">$</span>Stimulus <span class="ot">&lt;-</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">factor</span>(plot_means<span class="sc">$</span>Stimulus, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Normal"</span>, <span class="st">"Bigrams"</span>, <span class="st">"Random"</span>))</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_means, <span class="fu">aes</span>(</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> Stimulus,</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> means,</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">group =</span> Block,</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> Block</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>)) <span class="sc">+</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> means <span class="sc">-</span> SEs, <span class="at">ymax =</span> means <span class="sc">+</span> SEs), <span class="at">width =</span> .<span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Mean Reaction Time (ms)"</span>) <span class="sc">+</span></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Typing Material"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-8behmcrump" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="08-RMANOVA_files/figure-html/fig-8behmcrump-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;8.7: Results from Behmer &amp; Crump (2017)</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;8.7: Results from Behmer &amp; Crump (2017)</figcaption>
 </figure>
 </div>
 </div>
@@ -1160,9 +1421,15 @@ Note
 </div>
 <p>For the purpose of this example, we will say, it sure looks like the previous finding replicated. For example, people started typing Normal words faster than Bigram strings (English-like), and they started typing random letters the most slowly of all. Just like prior research had found.</p>
 <p>Let’s focus only on the block of trials where participants were allowed to look at the keyboard while they typed, that’s the red line, for the “visible keyboard” block. We can see the means look different. Let’s next ask, what is the likelihood that chance (random sampling error) could have produced these mean differences. To do that we run a repeated-measures ANOVA in R. Here is the ANOVA table.</p>
-<div class="cell" data-hash="08-RMANOVA_cache/html/unnamed-chunk-18_dcbb703a7d3afea83db5398df8d71a48">
+<div class="cell" data-hash="08-RMANOVA_cache/html/unnamed-chunk-8_19974021ac0942da6907e319ffcc89bd">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>visible_means<span class="ot">&lt;-</span> subject_means <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">filter</span>(Block<span class="sc">==</span><span class="st">"Visible keyboard"</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>s_out <span class="ot">&lt;-</span> <span class="fu">summary</span>(<span class="fu">aov</span>(mean_rt<span class="sc">~</span>Stimulus <span class="sc">+</span> <span class="fu">Error</span> (Subject<span class="sc">/</span>Stimulus),visible_means))</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">xtable</span>(s_out))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -1210,7 +1477,7 @@ Note
 <p>In this chapter you were introduced to the repeated-measures ANOVA. This analysis is appropriate for within-subjects or repeated measures designs. The main difference between the independent factor ANOVA and the repeated measures ANOVA, is the ability to partial out variance due to the individual subject means. This can often result in the repeated-measures ANOVA being more sensitive to true effects than the between-subjects ANOVA.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-behmer2017spatial" class="csl-entry" role="listitem">
 Behmer, Lawrence P, and Matthew JC Crump. 2017. <span>“Spatial Knowledge During Skilled Action Sequencing: <span>Hierarchical</span> Versus Nonhierarchical Representations.”</span> <em>Attention, Perception, &amp; Psychophysics</em> 79 (8): 2435–48. <a href="https://doi.org/10.3758/s13414-017-1389-3">https://doi.org/10.3758/s13414-017-1389-3</a>.
 </div>

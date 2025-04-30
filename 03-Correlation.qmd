@@ -26,22 +26,19 @@ Advertencia anticipada: sabemos que es fácil olvidarse de esto cuando nos metem
 
 En el capítulo dos empezamos con unos datos ficticios sobre la felicidad humana, ¿te acordás? Imaginamos que le pedíamos a muchas personas que nos dijeran cuán felices se sentían, y luego mirábamos los números que nos daban. Sigamos con ese experimento mental imaginario.
 
-¿Qué obtenés cuando le pedís a la gente que use un número para describir cuán feliz está? Un montón de números. ¿Qué tipo de preguntas podés hacer con esos números? Bueno, podés mirar los valores y estimar sus propiedades generales, como ya hicimos. Esperamos que esos números nos digan cosas que más o menos ya sabemos. Que hay personas diferentes, y que cada persona tiene un nivel diferente de felicidad.
+¿Qué obtenés cuando le pedís a la gente que use un número para describir cuán feliz está? Un montón de números. ¿Qué tipo de preguntas podés hacer con esos números? Bueno, podés mirar los valores y estimar sus propiedades generales, como ya hicimos. Esperamos que esos números nos digan cosas que más o menos ya sabemos. Que hay personas diferentes, y que cada persona tiene un nivel diferente de felicidad. Probablemente conociste a algunas personas realmente felices, y otras realmente infelices, y vos también seguramente tengas algún nivel de felicidad. “Buenísimo, ¡chocolate por la noticia!”.
 
-Probablemente conociste a algunas personas realmente felices, y otras realmente infelices, y vos también seguramente tengas algún nivel de felicidad. “Buenísimo, ¡chocolate por la noticia!”.
+Antes de seguir, también deberías tener una actitud crítica respecto a qué significan esos números. Por ejemplo, si forzás a las personas a calificar su felicidad con un número entre 0 y 100, ¿ese número refleja realmente cuán felices son? ¿Puede una persona saber cuán feliz está? ¿El formato de la pregunta influye en la respuesta? ¿La felicidad es siquiera algo real?. Estas son todas preguntas válidas sobre la **validez** del constructo (la felicidad misma) y del instrumento de medida (los números) que estás usando para cuantificarlo. Pero por ahora vamos a dejar esas preguntas importantes de lado, y vamos a asumir que la felicidad existe, y que nuestra medida de felicidad refleja algo sobre cuán feliz está la gente.
 
-Antes de seguir, también deberías tener una actitud crítica respecto a qué significan esos números. Por ejemplo, si forzás a las personas a calificar su felicidad con un número entre 0 y 100, ¿ese número refleja realmente cuán felices son? ¿Puede una persona saber cuán feliz está? ¿El formato de la pregunta influye en la respuesta? ¿La felicidad es siquiera algo real?\
-Estas son todas preguntas válidas sobre la **validez** del constructo (la felicidad misma) y del instrumento de medida (los números) que estás usando para cuantificarlo. Pero por ahora vamos a dejar esas preguntas importantes de lado, y vamos a asumir que la felicidad existe, y que nuestra medida de felicidad refleja algo sobre cuán feliz está la gente.
+Bien. Una vez que medimos un poco de felicidad, seguro se te ocurren preguntas más importantes. Por ejemplo, ¿qué cosas hacen que la felicidad suba o baje? Si supieras qué la causa, ¿qué podrías hacer? ¿Qué tal aumentar tu propia felicidad?; o ayudar a personas que están infelices; o entender mejor por qué Ígor, el burrito de *Winnie the Pooh*, está siempre bajoneado; o presentar argumentos científicos válidos contra afirmaciones erróneas sobre las causas de la felicidad. Una teoría causal y un entendimiento de la felicidad servirían para todo eso. Entonces, ¿cómo hacemos para llegamos ahí?
 
-Bien. Una vez que medimos algo de felicidad, seguro se te ocurren preguntas más importantes. Por ejemplo, ¿qué cosas hacen que la felicidad suba o baje? Si supieras qué la causa, ¿qué podrías hacer? Podrías aumentar tu propia felicidad; o ayudar a personas que están infelices; o entender por qué Ígor, el burrito de *Winnie the Pooh*, está siempre bajoneado; o presentar argumentos científicos válidos contra afirmaciones erróneas sobre las causas de la felicidad. Una teoría causal y un entendimiento de la felicidad servirían para todo eso. Entonces, ¿cómo llegamos ahí?
-
-Imaginá que sos una observadora alienígena. Llegás a la Tierra y escuchás hablar de esta cosa llamada “felicidad” que tienen las personas. Querés saber qué la causa. También descubrís que en el planeta Tierra hay muchas otras cosas. ¿Cuáles de todas esas cosas —te preguntás— causan la felicidad? ¿Cómo harías, siendo una alienígena, para empezar a responder esa pregunta gigante?
+Imaginá que sos una observadora alienígena. Llegás a la Tierra y escuchás hablar de esta cosa llamada “felicidad” que tienen las personas. Querés saber qué la causa. También descubrís que en el planeta Tierra hay muchas otras cosas. ¿Cuáles de todas esas cosas —te preguntás— causan la felicidad? ¿Cómo haría, tu yo-alienígena, para empezar a responder esa pregunta gigante?
 
 Como persona que tiene felicidad, quizás ya tengas algunas corazonadas sobre qué la hace cambiar. Por ejemplo: el clima, las amistades, la música, el dinero, la educación, las drogas, los libros, las películas, las creencias, la personalidad, el color de tus zapatos, el largo de tus cejas, cuántos gatos ves por día, cuántas veces se demora el subte, una provisión de por vida de chocolate, etcétera, etcétera (como diría Willy Wonka), podrían contribuir de alguna forma a la felicidad. Podría haber muchas causas distintas de la felicidad.
 
 ## Si algo causara que otra cosa cambie, ¿cómo se vería eso?
 
-Antes de salir a buscar las causas de la felicidad, deberíamos prepararnos con algunas herramientas analíticas que nos permitan identificar cómo se ve una relación causal. Si no nos preparamos para lo que podríamos encontrar, no vamos a saber cómo interpretar nuestros propios datos. En cambio, necesitamos anticipar cómo se verían esos datos. En concreto, necesitamos saber cómo lucen los datos cuando una cosa *no causa* a otra, y cómo lucen cuando *sí* la causa. Este capítulo trata justamente de esa preparación. Advertencia: vamos a descubrir cosas complejas. Por ejemplo, hay patrones que *parecen* mostrar que una cosa causa a otra, incluso cuando en realidad **no la causa**. Aguantá, ya vamos a verlo.
+Antes de salir a buscar las causas de la felicidad, deberíamos prepararnos con algunas herramientas analíticas que nos permitan identificar cómo se ve una relación causal. Si no nos preparamos para lo que podríamos encontrar, no vamos a saber cómo interpretar nuestros propios datos. En cambio, necesitamos anticipar cómo podrían verse esos datos. En concreto, necesitamos saber cómo lucen los datos cuando una cosa *no causa* a otra, y cómo lucen cuando *sí* la causa. Este capítulo trata justamente de esa preparación. Advertencia: vamos a descubrir cosas complejas. Por ejemplo, hay patrones que *parecen* mostrar que una cosa causa a otra, incluso cuando en realidad **no la causa**. Aguantá, ya vamos a verlo.
 
 ### Charlie y la fábrica de chocolate
 
@@ -96,8 +93,7 @@ Más importante todavía: los puntos muestran una relación entre el suministro 
 
 ### Correlación positiva, negativa y nula
 
-Ya que estamos en el negocio de imaginar datos, sigamos imaginando un poco más. Ya imaginamos cómo se verían los datos si tener más chocolate aumentara la felicidad. Vamos a mostrar eso de nuevo en un momento. Pero, ¿cómo te imaginás que se vería un gráfico de dispersión si la relación fuera al revés, y tener más chocolate *disminuyera* la felicidad?\
-¿O cómo se vería si *no hubiera ninguna relación* entre la cantidad de chocolate y la felicidad?\
+Ya que estamos en el negocio de imaginar datos, sigamos imaginando un poco más. Ya imaginamos cómo se verían los datos si tener más chocolate aumentara la felicidad. Vamos a mostrar eso de nuevo en un momento. Pero, ¿cómo te imaginás que se vería un gráfico de dispersión si la relación fuera al revés, y tener más chocolate *disminuyera* la felicidad? ¿O cómo se vería si *no hubiera ninguna relación* entre la cantidad de chocolate y la felicidad?\
 Te invitamos a imaginarlo mirando la figura @fig-3posnegrand:
 
 ```{r}
@@ -134,11 +130,7 @@ ggplot(all_data,aes(x=chocolate_x,y=happiness_x))+
 
 ```
 
-El primer panel muestra una **correlación negativa**. La felicidad disminuye a medida que aumenta el suministro de chocolate. La correlación negativa ocurre cuando una variable sube y la otra baja; o sea, cuando tener más de X implica tener menos de Y, y viceversa.
-
-El segundo panel muestra una **correlación positiva**. La felicidad aumenta a medida que aumenta el suministro de chocolate. En una correlación positiva, ambas cosas suben juntas, o bajan juntas: más de X implica más de Y, y viceversa.
-
-El tercer panel muestra **ausencia de correlación**. En este caso, no parece haber ninguna relación clara entre el suministro de chocolate y la felicidad. Los puntos están totalmente dispersos —el más disperso de todos los gráficos de dispersión.
+El primer panel muestra una **correlación negativa**. La felicidad disminuye a medida que aumenta el suministro de chocolate. La correlación negativa ocurre cuando una variable sube y la otra baja; o sea, cuando tener más de X implica tener menos de Y, y viceversa. El segundo panel muestra una **correlación positiva**. La felicidad aumenta a medida que aumenta el suministro de chocolate. En una correlación positiva, ambas cosas suben juntas, o bajan juntas: más de X implica más de Y, y viceversa. El tercer panel muestra **ausencia de correlación**. En este caso, no parece haber ninguna relación clara entre el suministro de chocolate y la felicidad. Los puntos están totalmente dispersos —el más disperso de todos los gráficos de dispersión.
 
 ::: callout-note
 Nos estamos metiendo en la idea de que las mediciones de dos cosas pueden estar relacionadas, o correlacionadas entre sí. Las relaciones pueden ser más complejas que simplemente “sube” o “baja”. Por ejemplo, podríamos tener una relación en la que los puntos suben en la primera mitad del eje X, y bajan en la segunda.
@@ -148,14 +140,13 @@ Una correlación nula ocurre cuando una cosa no está relacionada de ninguna for
 
 ## El *r* de Pearson
 
-Si Beyoncé fuera estadística, probablemente miraría estos gráficos de dispersión y diría: “pongámosle un número”. Y nos parece una excelente idea.\
-Ya aprendimos a calcular estadísticas descriptivas para una sola variable, como el chocolate o la felicidad (medias, varianzas, etc.). Pero, ¿es posible crear una estadística descriptiva que resuma la relación entre **dos** variables, en un solo número? ¿Se puede? Karl Pearson al rescate.
+Ya aprendimos a calcular estadísticos descriptivos para una sola variable, como el chocolate o la felicidad (medias, varianzas, etc.). Pero, ¿es posible crear un estadístico descriptivo que resuma la relación entre **dos** variables, todo en un solo número? ¿Se puede? Karl Pearson al rescate.
 
 ::: callout-note
 Las historias sobre la invención de distintas estadísticas son muy interesantes. Podés leer más sobre eso en el libro *The Lady Tasting Tea* [@salsburg2001lady].
 :::
 
-Existe una estadística para eso, y Karl Pearson la inventó. Hoy en día todxs la llaman el **r de Pearson**. Más adelante veremos que Pearson fue editor de *Biometrika* en los años 30. Le tenía bastante bronca a otro estadístico famoso, Sir Ronald Fisher (del que también vamos a hablar), y se tiraban con estadísticas... ¿no podríamos llevarnos bien aunque sea en estadística?
+Existe una estadística para eso, y Karl Pearson la inventó. Hoy en día todxs la llaman el **r de Pearson**. Más adelante veremos que Pearson fue editor de *Biometrika* en los años 30. Le tenía bastante bronca a otro estadístico famoso, Sir Ronald Fisher (del que también vamos a hablar), y se tiraban con estadísticas... ¿Por qué no podemos simplemente llevarnos bien en estadística?
 
 ¿Cómo funciona el *r* de Pearson? Volvamos a mirar los datos de los primeros 10 sujetos de nuestro experimento ficticio:
 
@@ -173,18 +164,13 @@ knitr::kable(the_df_short)
 ### La idea de la covarianza
 
 “Por favor no... otra vez no uses la palabra *varianza*”. Sí, lo vamos a hacer. Vamos a usar la palabra *varianza* una y otra vez, hasta que tenga sentido.\
-Recordá lo que significa la varianza respecto a un conjunto de números: significa que los números tienen cierta variación, que no son todos iguales, que algunos son más grandes y otros más chicos.
+Recordá lo que significa la varianza respecto a un conjunto de números: significa que los números tienen cierta variación, que no son todos iguales, que algunos son más grandes y otros más chicos. Podemos ver que hay varianza en el suministro de chocolate entre los 10 sujetos. También hay varianza en los niveles de felicidad. Y también vimos, en el gráfico de dispersión, que la felicidad aumenta cuando aumenta el chocolate —una relación positiva, una correlación positiva. ¿Qué tiene que ver eso con la varianza? Bueno, quiere decir que hay una relación entre la varianza en el suministro de chocolate y la varianza en los niveles de felicidad. ¿No te parece que ambas medidas varían juntas? Cuando tenemos dos variables que varían juntas, son como una pareja feliz que comparte su varianza. Eso es lo que significa **covarianza**: la idea de que el patrón de variación en una medida se comparte con el patrón de variación en otra.
 
-Podemos ver que hay varianza en el suministro de chocolate entre los 10 sujetos. También hay varianza en los niveles de felicidad. Y también vimos, en el gráfico de dispersión, que la felicidad aumenta cuando aumenta el chocolate —una relación positiva, una correlación positiva.
+La **covarianza** es **muy, muy, muy, muy** importante. Sabemos que al principio puede ser una palabra confusa, especialmente si todavía no te sentís del todo cómodo con lo que significa varianza en una sola variable. Sin embargo, tenemos que seguir adelante y usar la idea de covarianza una y otra vez, para que quede bien grabada en tu mente estadística (sí, ya lo dijimos, pero repetir ayuda, es una hecho).
 
-¿Qué tiene que ver eso con la varianza? Bueno, quiere decir que hay una relación entre la varianza en el suministro de chocolate y la varianza en los niveles de felicidad. ¿No te parece que ambas medidas varían juntas? Cuando tenemos dos variables que varían juntas, son como una pareja feliz que comparte su varianza. Eso es lo que significa **covarianza**: la idea de que el patrón de variación en una medida se comparte con el patrón de variación en otra.
+> 🧠 Consejo pro: La carrera de tres piernas es una metáfora de la covarianza. Dos personas se atan una pierna entre sí, y luego intentan caminar. Funciona cuando sus piernas se mueven juntas (relación positiva). También pueden moverse juntas de forma torpe, por ejemplo cuando una intenta avanzar justo cuando la otra intenta retroceder. Eso también es covarianza (pero negativa). Caminan de forma aleatoria cuando no hay covarianza: cada persona hace lo suyo, sin coordinación. Hay mucha varianza, pero la varianza se comparte al azar. Es solo un montón de piernas moviéndose sin lograr nada.
 
-La **covarianza** es **muy, muy, muy, muy** importante. Sabemos que al principio puede ser una palabra confusa, especialmente si todavía no te sentís del todo cómodo con lo que significa varianza en una sola variable. Sin embargo, tenemos que seguir adelante y usar la idea de covarianza una y otra vez, para que quede bien grabada en tu mente estadística (sí, ya lo dijimos, pero repetir ayuda, es una cosa real).
-
-> 🧠 Consejo pro: La carrera de tres piernas es una metáfora de la covarianza. Dos personas se atan una pierna entre sí, y luego intentan caminar. Funciona cuando sus piernas se mueven juntas (relación positiva). También pueden moverse juntas de forma torpe, por ejemplo cuando una intenta avanzar justo cuando la otra intenta retroceder. Eso también es covarianza (pero negativa).\
-> Caminan de forma aleatoria cuando no hay covarianza: cada persona hace lo suyo, sin coordinación. Hay mucha varianza, pero la varianza se comparte al azar. Es solo un montón de piernas moviéndose sin lograr nada.
-
-> 🧠 Consejo pro #2: Jugar bien a las palmas (paddy-cake) requiere que dos personas coordinen sus acciones. Eso es una covarianza positiva bien compartida.
+> 🧠 Consejo pro #2: Jugar bien a las palmas requiere que dos personas coordinen sus acciones. Eso es una covarianza positiva bien compartida.
 
 ## Convertir los números en una medida de covarianza
 
@@ -332,11 +318,12 @@ Por suerte, este episodio está auspiciado por el **r de Pearson**, que hace jus
 
 Veamos la fórmula del *r* de Pearson:
 
-\$r = \frac{\text{cov}(X, Y)}{\sigma_X \cdot \sigma_Y} = \frac{\text{covarianza de X e Y}}{\text{desviación estándar de X} \times \text{desviación estándar de Y}} \$
+$$
+r = \frac{\mathrm{cov}(X,Y)}{\sigma_{X}\sigma_{Y}} = \frac{\mathrm{cov}(X,Y)}{\mathrm{SD}_{X}\mathrm{SD}_{Y}}
+$$
 
 Aparece el símbolo $\sigma$ (sí, más griego para vos). $\sigma$ es el símbolo que se usa frecuentemente para la desviación estándar.\
-Leído en voz alta: *r* es la covarianza de X e Y dividida por el producto de las desviaciones estándar de X y Y.\
-¿Y por qué hacemos esa división? Porque esta operación tiene el efecto de **normalizar** la covarianza, forzándola a caer dentro del rango –1 a 1.
+Leído en voz alta: *r* es la covarianza de X e Y dividida por el producto de las desviaciones estándar de X y Y. ¿Y por qué hacemos esa división? Porque esta operación tiene el efecto de **normalizar** la covarianza, forzándola a caer dentro del rango –1 a 1.
 
 ::: callout-note
 Más adelante vamos a explicar esta magia matemática... prometido. Pero te adelantamos que no es magia. La explicación rápida es que dividir cada variable por su desviación estándar garantiza que todas las mediciones estén en el mismo rango de escala.
@@ -344,13 +331,9 @@ Más adelante vamos a explicar esta magia matemática... prometido. Pero te adel
 
 Por ahora, podés pensar que es magia matemática. Funciona. Ya después veremos por qué.
 
-::: Vale decir que existen muchas fórmulas diferentes para calcular el *r* de Pearson. Podés buscarlas en Google y vas a ver varias versiones. Algunas aparecerán más adelante en este libro también.\
-Pero todas dan el mismo resultado. Algunas son más elegantes que otras. Y algunas pueden parecer un poco intimidantes. En otros libros de estadística vas a encontrar fórmulas pensadas para facilitar los cálculos a mano, por ejemplo si solo tenés papel y lápiz.\
-Pero la verdad, no nos interesa mucho enseñarte a enchufar números en fórmulas. Nuestra única lección sobre eso es esta: poné los números en las letras, y calculá. Perdón si sonamos secos.\
-Hoy en día tenés una computadora, y deberías usarla para estas cosas. Así que nuestro interés está más en enseñarte **qué significan** los cálculos, más que en cómo hacerlos.\
-Claro que igual, cada semana en el laboratorio te mostramos cómo hacer los cálculos en la compu, porque eso también es importante. :::
+Vale decir que existen muchas fórmulas diferentes para calcular el *r* de Pearson. Podés buscarlas en Google y vas a ver varias versiones. Algunas aparecerán más adelante en este libro también. Pero todas dan el mismo resultado. Algunas son más elegantes que otras. Y algunas pueden parecer un poco intimidantes. En otros libros de estadística vas a encontrar fórmulas pensadas para facilitar los cálculos a mano, por ejemplo si solo tenés papel y lápiz. Para ser honestos, no estamos muy interesados en enseñarte cómo meter números en fórmulas. Damos una sola lección sobre eso aquí: pon los números donde están las letras y luego calcula el resultado. Perdón por ser sarcásticos. Hoy en día tenés una computadora que deberías usar para estas cosas. Así que nuestro interés está más en enseñarte **qué significan** los cálculos, más que en cómo hacerlos. Claro que igual, cada semana en el laboratorio te mostramos cómo hacer los cálculos en la compu, porque eso también es importante.
 
-¿El *r* de Pearson **siempre** queda entre –1 y 1, sin importar qué datos uses? Sí. Mirá la siguiente simulación. Reordenamos al azar los números del 1 al 10 para una variable X, y lo mismo para Y. Calculamos el *r* de Pearson y repetimos eso 1000 veces. Como podés ver en la figura @fig-3onethousandr, **todos** los puntos caen entre –1 y 1. Buenísimo, ¿no?
+¿El *r* de Pearson **siempre** queda entre –1 y 1, sin importar qué datos uses? Sí. Mirá la siguiente simulación. Reordenamos al azar los números del 1 al 10 para una variable X, y lo mismo para Y. Calculamos el *r* de Pearson y repetimos eso 1000 veces. Como podés ver en la figura @fig-3onethousandr, **todos** los puntos caen entre –1 y 1. Tremendo, ¿no?
 
 ## Ejemplos con datos
 
@@ -396,7 +379,7 @@ cor(smaller_df$`Freedom to make life choices`,
     smaller_df$`Confidence in national government`)
 ```
 
-En el laboratorio vas a hacer mucho más de este tipo de análisis. Al mirar el gráfico, podrías empezar a preguntarte: ¿acaso la libertad para tomar decisiones causa un cambio en la confianza en el gobierno nacional? ¿O será al revés? ¿Tener confianza en el gobierno hace que uno se sienta más libre para tomar decisiones? ¿O tal vez esta relación es solo una coincidencia sin sentido?\
+En el laboratorio vas a hacer mucho análisis como este. Al mirar el gráfico, podrías empezar a preguntarte: ¿acaso la libertad para tomar decisiones causa un cambio en la confianza en el gobierno nacional? ¿O será al revés? ¿Tener confianza en el gobierno hace que uno se sienta más libre para tomar decisiones? ¿O tal vez esta relación es solo una coincidencia sin sentido?\
 Todas son buenas preguntas. Pero estos datos **no** nos dan la respuesta. Solo sugieren que *podría* haber una relación.
 
 ## Regresión: una mini introducción
@@ -443,25 +426,17 @@ ggplot(all_data,aes(x=chocolate_x,y=felicidad_x))+
 
 ### La línea de mejor ajuste
 
-¿Notás algo particular en estas líneas azules? Esperamos que, al menos en los dos primeros paneles, puedas ver que pasan directamente por el medio de los datos, como si fueran un palito de brochette. A estas líneas las llamamos **líneas de mejor ajuste**, porque según la definición que vamos a ver (te prometemos que ya llega), **no hay ninguna otra línea que puedas dibujar que haga un mejor trabajo atravesando los datos**.
+¿Notás algo particular en estas líneas azules? Esperamos que, al menos en los dos primeros paneles, puedas ver que pasan directamente por el medio de los datos, como si fueran un palito de brochette. A estas líneas las llamamos **líneas de mejor ajuste**, porque según la definición que vamos a ver (te prometemos que ya llega), **no hay ninguna otra línea recta que puedas dibujar que haga un mejor trabajo atravesando los datos**.
 
-Una idea importante acá es que estamos usando la línea como una especie de “media” para describir la relación entre las dos variables.\
-Cuando solo tenemos una variable, esa variable existe en una dimensión: es un dato 1D. En ese caso, tiene sentido usar un único número —como la media— para describir su tendencia central.\
-Pero cuando tenemos dos variables, y las graficamos juntas, estamos en un espacio bidimensional. Entonces, para ese espacio 2D, podemos usar algo más grande —como una línea— para resumir la tendencia central en la relación entre ambas variables.
+Una idea importante acá es que estamos usando la línea como una especie de “media” para describir la relación entre las dos variables. Cuando solo tenemos una variable, esa variable existe en una dimensión: es un dato 1D. En ese caso, tiene sentido usar un único número —como la media— para describir su tendencia central. Pero cuando tenemos dos variables, y las graficamos juntas, estamos en un espacio bidimensional. Entonces, para ese espacio 2D, podemos usar algo más grande —como una línea— para resumir la tendencia central en la relación entre ambas variables.
 
-¿Qué esperamos de esa línea? Bueno, si tuvieras un lápiz y un gráfico impreso, podrías dibujar un montón de líneas rectas como se te ocurriera. Tus líneas ni siquiera tendrían que pasar por los datos: podrían tener cualquier inclinación o dirección.\
-¿Serían todas esas líneas buenas para describir el patrón general de los puntos? La mayoría, no.\
-Las mejores líneas serían aquellas que siguen el patrón general de los puntos. Pero de entre todas las líneas buenas, ¿cuál es la mejor? ¿Cómo podemos saberlo? ¿Y qué significa “mejor”?\
-En resumen: **la línea de mejor ajuste es aquella que tiene el menor error**.
+¿Qué esperamos de esa línea? Bueno, si tuvieras un lápiz y un gráfico impreso, podrías dibujar un montón de líneas rectas como se te ocurriera. Tus líneas ni siquiera tendrían que pasar por los datos: podrían tener cualquier inclinación o dirección. ¿Serían todas esas líneas buenas para describir el patrón general de los puntos? La mayoría, no. Las mejores líneas serían aquellas que siguen el patrón general de los puntos. Pero de entre todas las líneas buenas, ¿cuál es la mejor? ¿Cómo podemos saberlo? ¿Y qué significa “mejor”? En resumen: **la línea de mejor ajuste es aquella que tiene el menor error**.
 
 ::: callout-note
 Código R para graficar los residuos, cortesía del blog de Simon Jackson: <https://drsimonj.svbtle.com/visualising-residuals>
 :::
 
-Mirá este próximo gráfico. Muestra una línea que atraviesa algunos puntos. Pero también muestra unas líneas pequeñas que bajan desde cada punto hasta la línea. Cada una de esas líneas chiquitas se llama **residuo**.\
-Los residuos te muestran cuán lejos está cada punto de la línea. Es una medida de error, y nos dice **qué tan equivocada está** la línea.\
-Después de todo, no todos los puntos están sobre la línea. Eso significa que **la línea no representa perfectamente a los datos**.\
-Pero la línea de mejor ajuste es **la menos equivocada** de todas las posibles.
+Mirá este próximo gráfico. Muestra una línea que atraviesa algunos puntos. Pero también muestra unas líneas pequeñas que bajan desde cada punto hasta la línea. Cada una de esas líneas chiquitas se llama **residuo**. Los residuos te muestran cuán lejos está cada punto de la línea. Es una medida de error, y nos dice **qué tan equivocada está** la línea. Después de todo, no todos los puntos están sobre la línea. Eso significa que **la línea no representa perfectamente a los datos**. Pero la línea de mejor ajuste es **la menos equivocada** de todas las posibles.
 
 ```{r}
 #| label: fig-3regressionResiduals
@@ -482,28 +457,11 @@ ggplot(d, aes(x = hp, y = mpg)) +
   xlab("X") + ylab("Y")
 ```
 
-Pasan muchas cosas en la figura @fig-3regressionResiduals. Primero, estamos mirando un diagrama de dispersión de dos variables, una variable X y una variable Y. Cada punto negro representa los valores reales de esas variables. Podés ver que hay una correlación negativa: a medida que X aumenta, Y tiende a disminuir.\
-Trazamos una línea de regresión sobre los datos —esa es la línea azul. También aparecen unos puntitos blancos.\
-Esos muestran **dónde la línea “cree” que deberían estar los puntos negros**.\
-Y están también las líneas rojas, que son los residuos de los que veníamos hablando.\
-Cada punto negro tiene una línea roja que baja (o sube) en línea recta desde su ubicación hasta tocar la línea.\
-Ya podemos ver que muchos de los puntos **no están sobre la línea**, así que sabemos que la línea se equivoca un poco en cada punto.\
-La línea roja simplemente hace que sea más fácil ver **exactamente cuánto se equivoca**.
+Pasan muchas cosas en la figura @fig-3regressionResiduals. Primero, estamos mirando un diagrama de dispersión de dos variables, una variable X y una variable Y. Cada punto negro representa los valores reales de esas variables. Podés ver que hay una correlación negativa: a medida que X aumenta, Y tiende a disminuir. Trazamos una línea de regresión sobre los datos —esa es la línea azul. También aparecen unos puntitos blancos. Esos muestran **dónde la línea “cree” que deberían estar los puntos negros**. Y están también las líneas rojas, que son los residuos de los que veníamos hablando. Cada punto negro tiene una línea roja que baja (o sube) en línea recta desde su ubicación hasta tocar la línea. Ya podemos ver que muchos de los puntos **no están sobre la línea**, así que sabemos que la línea se equivoca un poco en cada punto. La línea roja simplemente hace que sea más fácil ver **exactamente cuánto se equivoca**.
 
-Lo importante que está ocurriendo acá es que la línea azul fue trazada de manera tal que **minimiza la suma total de las líneas rojas**.\
-Por ejemplo, si quisiéramos saber **cuán equivocada** está esta línea, podríamos juntar todas las líneas rojas, medir cuánto miden, y sumar todas esas equivocaciones.\
-Eso nos daría el **error total**.\
-De hecho, ya hablamos de esta idea cuando discutimos la desviación estándar.\
-Lo que realmente vamos a hacer con estas líneas rojas es **elevar al cuadrado su longitud** (para que los valores negativos no se cancelen), y luego **sumarlas**.\
-Esa suma representa el **total de error**.\
-Y esta línea azul **minimiza esa suma**.\
-Cualquier otra línea tendría un error total mayor.
+Lo importante que está ocurriendo acá es que la línea azul fue trazada de manera tal que **minimiza la suma total de las líneas rojas**. Por ejemplo, si quisiéramos saber **cuán equivocada** está esta línea, podríamos juntar todas las líneas rojas, medir cuánto miden, y sumar todas esas equivocaciones. Eso nos daría el **error total**. De hecho, ya hablamos de esta idea cuando discutimos la desviación estándar. Lo que realmente vamos a hacer con estas líneas rojas es **elevar al cuadrado su longitud** (para que los valores negativos no se cancelen), y luego **sumarlas**. Esa suma representa el **total de error**. Y esta línea azul **minimiza esa suma**. Cualquier otra línea tendría un error total mayor.
 
-La figura @fig-3regressionGIF es una animación que muestra esto en acción.\
-La animación compara la línea azul (la de mejor ajuste) con otras líneas posibles (en negro).\
-La línea negra se mueve hacia arriba y abajo. Las líneas rojas muestran el error entre la línea negra y los puntos de datos.\
-A medida que la línea negra se acerca a la línea azul, el error total —representado visualmente como un área gris— **se achica hasta su valor mínimo**.\
-Ese error total se agranda a medida que la línea negra se aleja de la línea azul.
+La figura @fig-3regressionGIF es una animación que muestra esto en acción. La animación compara la línea azul (la de mejor ajuste) con otras líneas posibles (en negro). La línea negra se mueve hacia arriba y abajo. Las líneas rojas muestran el error entre la línea negra y los puntos de datos. A medida que la línea negra se acerca a la línea azul, el error total —representado visualmente como un área gris— **se achica hasta su valor mínimo**. Ese error total se agranda a medida que la línea negra se aleja de la línea azul.
 
 ::: {.content-visible when-format="html"}
 ```{r}
@@ -515,11 +473,11 @@ knitr::include_graphics(path="imgs/gifs/regression-1.gif")
 ```
 :::
 
-Siempre que la línea negra no coincida con la línea azul, es peor que la línea de mejor ajuste.\
-La línea de regresión azul es como Ricitos de Oro: está justo en el medio, y es la adecuada.
+Siempre que la línea negra no coincida con la línea azul, es peor que la línea de mejor ajuste. La línea de regresión azul es como Ricitos de Oro: está justo en el medio, y es la adecuada.
 
-La figura @fig-3minimizeSS muestra cómo se comporta la **suma de los errores al cuadrado** (es decir, la suma de las longitudes al cuadrado de las líneas rojas) cuando movemos la línea hacia arriba o abajo. Lo que hacemos acá es calcular una medida del **error total** para cada posible posición vertical de la línea.\
-Ese gráfico muestra cómo el error **disminuye hasta un mínimo** cuando la línea está en la posición óptima, y **aumenta otra vez** cuando nos movemos más allá de ese punto.
+La figura @fig-3minimizeSS muestra cómo se comporta la suma de las desviaciones al cuadrado (la suma de las longitudes al cuadrado de las líneas rojas) a medida que movemos la línea hacia arriba y hacia abajo. Lo que está ocurriendo aquí es que estamos calculando una medida del error total a medida que la línea negra pasa por la línea de mejor ajuste. Esto representa la suma de las desviaciones al cuadrado. Es decir, elevamos al cuadrado la longitud de cada línea roja de la animación anterior, luego sumamos todas esas líneas rojas al cuadrado y obtenemos el error total (la suma total de las desviaciones al cuadrado).
+
+El gráfico de abajo muestra cómo se ve el error total a medida que la línea negra se acerca y luego se aleja de la línea de mejor ajuste. Fijate que los puntos en este gráfico comienzan altos en el lado izquierdo, luego descienden hasta alcanzar un mínimo en la parte inferior central del gráfico. Cuando alcanzan ese punto mínimo, hemos encontrado una línea que minimiza el error total. Esa es la línea de regresión de mejor ajuste.
 
 ```{r}
 #| label: fig-3minimizeSS
@@ -554,17 +512,11 @@ ggplot(df, aes(x = move_line, y = total_error)) +
 
 ```
 
-Todavía no hablamos de la intersección con el eje y. Pero este gráfico nos muestra cómo se comporta el **error total** al mover la línea hacia arriba o hacia abajo.\
-La intersección con el eje y es lo que estamos cambiando cuando movemos la línea verticalmente.\
-Como podés ver, el error aumenta cuando bajamos la línea desde 0 hasta –5, y también aumenta cuando la subimos desde 0 hasta +5.\
-La mejor línea —la que **minimiza el error**— ocurre justo en el medio, cuando **no movemos en absoluto** la línea azul de regresión.
+Todavía no hablamos de la intersección con el eje y. Pero este gráfico nos muestra cómo se comporta el **error total** al mover la línea hacia arriba o hacia abajo. La intersección con el eje y es lo que estamos cambiando cuando movemos la línea verticalmente. Como podés ver, el error aumenta cuando bajamos la línea desde 0 hasta –5, y también aumenta cuando la subimos desde 0 hasta +5. La mejor línea —la que **minimiza el error**— ocurre justo en el medio, cuando **no movemos en absoluto** la línea azul de regresión.
 
 ### Líneas
 
-Bueno, decís. Así que hay una línea mágica que atraviesa el centro del diagrama de dispersión y minimiza la suma de los errores al cuadrado. ¿Cómo encuentro esa línea mágica?\
-Te lo vamos a mostrar. Pero, para ser completamente honestos, casi nunca vas a hacerlo de la manera que vamos a explicar acá.\
-En cambio, es mucho más fácil usar software y hacer que la computadora lo calcule por vos.\
-Vas a aprender a hacerlo así en los laboratorios.
+Bueno, decís. Así que hay una línea mágica que atraviesa el centro del diagrama de dispersión y minimiza la suma de los errores al cuadrado. ¿Cómo encuentro esa línea mágica? Te lo vamos a mostrar. Pero, para ser completamente honestos, casi nunca vas a hacerlo de la manera que vamos a explicar acá. En cambio, es mucho más fácil usar software y hacer que la computadora lo calcule por vos. Vas a aprender a hacerlo así en los laboratorios.
 
 Antes de mostrarte cómo encontrar la línea de regresión, vale la pena refrescar la memoria sobre cómo funcionan las líneas, especialmente en 2 dimensiones. ¿Te acordás de esto?
 
@@ -574,8 +526,7 @@ Esta es la fórmula de una línea recta. Otra forma de escribirla sería:
 
 $y = \text{pendiente} * x + \text{intercepto}$
 
-La **pendiente** indica la inclinación de la línea, y el **intercepto** o la **intersección con el eje y** es el punto donde la línea cruza el eje vertical.\
-Miremos las líneas de la figura @fig-3twolines.
+La **pendiente** indica la inclinación de la línea, y el **intercepto** o la **intersección con el eje y** es el punto donde la línea cruza el eje vertical. Miremos las líneas de la figura @fig-3twolines.
 
 ```{r}
 #| label: fig-3twolines
@@ -591,39 +542,23 @@ ggplot()+
 ```
 
 La fórmula para la línea azul es: $y = 1*x + 5$. Hablemos de eso. Cuando $x=0$ , ¿dónde está la línea azul en el eje y? Está en 5.\
-Eso pasa porque \$ 1 \times 0 = 0 \$, y entonces nos queda solo el 5. ¿Y qué pasa cuando $x = 5$? En ese caso:
+Eso pasa porque 1 multiplicado por 0 es 0, y entonces nos queda solo el 5. ¿Y qué pasa cuando $x = 5$? En ese caso:
 
-$y = 1 \cdot 5 + 5 = 5 + 5 = 10$
+$y = 1*x + 5y = 1*5 + 5 = 5 + 5 = 10$
 
-La idea de la fórmula es decirte dónde está $y$, para cualquier valor de $x$.\
-La pendiente de la línea te indica si la línea sube o baja cuando te movés de izquierda a derecha.\
-La línea azul tiene una pendiente positiva de uno, así que sube a medida que $x$ aumenta. ¿Cuánto sube? Sube uno por cada unidad de $x$.\
-Si hiciéramos que la pendiente fuera 2, la línea sería mucho más empinada y subiría más rápido.\
-La línea roja tiene pendiente negativa, así que se inclina hacia abajo.\
-Eso significa que $y$ disminuye a medida que $x$ aumenta.\
-Y si no hay pendiente —es decir, queremos una línea completamente horizontal—, simplemente ponemos la pendiente en 0.\
-Eso significa que $y$ **no cambia nada**, aunque $x$ aumente o disminuya.
+La idea de la fórmula es decirte dónde está $y$, para cualquier valor de $x$. La pendiente de la línea te indica si la línea sube o baja cuando te movés de izquierda a derecha. La línea azul tiene una pendiente positiva de uno, así que sube a medida que $x$ aumenta. ¿Cuánto sube? Sube uno por cada unidad de $x$. Si hiciéramos que la pendiente fuera 2, la línea sería mucho más empinada y subiría más rápido. La línea roja tiene pendiente negativa, así que se inclina hacia abajo. Eso significa que $y$ disminuye a medida que $x$ aumenta. Y si no hay pendiente —es decir, queremos una línea completamente horizontal—, simplemente ponemos la pendiente en 0. Eso significa que $y$ **no cambia nada**, aunque $x$ aumente o disminuya.
 
 Eso son las líneas.
 
 ### Calcular la línea de mejor ajuste
 
-Si tenés un diagrama de dispersión que muestra la ubicación de puntajes de dos variables, la verdadera pregunta es: ¿cómo encontrás la pendiente y la intersección con el eje y de la mejor línea de ajuste?\
-¿Qué vas a hacer? ¿Dibujar millones de líneas, sumar los residuos y ver cuál es la mejor?\
-Eso llevaría una eternidad. Por suerte, existen las computadoras.\
-Y si no tenés una a mano, también hay algunas fórmulas útiles.
+Si tenés un diagrama de dispersión que muestra la ubicación de puntajes de dos variables, la verdadera pregunta es: ¿cómo encontrás la pendiente y la intersección con el eje y de la mejor línea de ajuste? ¿Qué vas a hacer? ¿Dibujar millones de líneas, sumar los residuos y ver cuál es la mejor? Eso llevaría una eternidad. Por suerte, existen las computadoras. Y si no tenés una a mano, también hay algunas fórmulas útiles.
 
 ::: callout-note
-Vale la pena mencionar cuánto cambiaron las cosas desde que existen las computadoras.\
-Antes, todo el mundo tenía que hacer estos cálculos a mano —¡un embole total!\
-Más allá de las ideas matemáticas profundas detrás de las fórmulas, muchas fueron diseñadas por conveniencia, para facilitar los cálculos a mano, porque no había computadoras.\
-Ahora que las tenemos, hacer las cuentas a mano suele ser solo un ejercicio de álgebra…\
-Tal vez sirve para forjar el carácter. Vos decidís.
+Vale la pena mencionar cuánto cambiaron las cosas desde que existen las computadoras. Antes, todo el mundo tenía que hacer estos cálculos a mano —¡un embole total! Más allá de las ideas matemáticas profundas detrás de las fórmulas, muchas fueron diseñadas por conveniencia, para facilitar los cálculos a mano, porque no había computadoras. Ahora que las tenemos, hacer las cuentas a mano suele ser solo un ejercicio de álgebra… Tal vez sirve para forjar el carácter. Vos decidís.
 :::
 
-Te vamos a mostrar las fórmulas.\
-Y vamos a resolver un ejemplo a mano. Sí, lo sabemos: es un horror.\
-Por cierto, deberías sentir un poco de lástima por mí mientras hago todo esto a mano por vos.
+Te vamos a mostrar las fórmulas. Y vamos a resolver un ejemplo a mano. Sí, lo sabemos: es un horror. Por cierto, deberías sentir un poco de lástima por mí mientras hago todo esto a mano por vos.
 
 Acá están las dos fórmulas que podés usar para calcular la pendiente y la intersección directamente desde los datos.\
 No vamos a explicar por qué hacen lo que hacen. Estas son solo fórmulas “prácticas” para facilitar los cálculos:

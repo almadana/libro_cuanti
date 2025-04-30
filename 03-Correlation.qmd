@@ -560,8 +560,7 @@ Vale la pena mencionar cuánto cambiaron las cosas desde que existen las computa
 
 Te vamos a mostrar las fórmulas. Y vamos a resolver un ejemplo a mano. Sí, lo sabemos: es un horror. Por cierto, deberías sentir un poco de lástima por mí mientras hago todo esto a mano por vos.
 
-Acá están las dos fórmulas que podés usar para calcular la pendiente y la intersección directamente desde los datos.\
-No vamos a explicar por qué hacen lo que hacen. Estas son solo fórmulas “prácticas” para facilitar los cálculos:
+Acá están las dos fórmulas que podés usar para calcular la pendiente y la intersección directamente desde los datos. No vamos a explicar por qué hacen lo que hacen. Estas son solo fórmulas “prácticas” para facilitar los cálculos:
 
 $\text{intercepto} = b = \frac{\sum{y}\sum{x^2}-\sum{x}\sum{xy}}{n\sum{x^2}-(\sum{x})^2}$
 
@@ -589,10 +588,7 @@ knitr::kable(all_df)
 
 ```
 
-Vemos 7 pares de valores para las variables $x$ e $y$. Calculamos $x^2$ elevando al cuadrado cada valor de $x$, y lo pusimos en una columna.\
-Hicimos lo mismo con $y^2$. Después calculamos $xy$, multiplicando cada valor de $x$ con su correspondiente valor de $y$, y también lo pusimos en una columna.\
-Finalmente, sumamos todas las columnas y pusimos esos totales al final.\
-Esos son los números que necesitamos para usar las fórmulas y encontrar la mejor línea de ajuste.
+Vemos 7 pares de valores para las variables $x$ e $y$. Calculamos $x^2$ elevando al cuadrado cada valor de $x$, y lo pusimos en una columna. Hicimos lo mismo con $y^2$. Después calculamos $xy$, multiplicando cada valor de $x$ con su correspondiente valor de $y$, y también lo pusimos en una columna. Finalmente, sumamos todas las columnas y pusimos esos totales al final. Esos son los números que necesitamos para usar las fórmulas y encontrar la mejor línea de ajuste.
 
 Así se ven las fórmulas con los números incluidos:
 
@@ -600,9 +596,7 @@ $\text{intercepto} = b = \frac{\sum{y}\sum{x^2}-\sum{x}\sum{xy}}{n\sum{x^2}-(\su
 
 $\text{pendiente} = m = \frac{n\sum{xy}-\sum{x}\sum{y}}{n\sum{x^2}-(\sum{x})^2} = \frac{7*231-34*39}{7*275-34^2} = 1.19$
 
-Genial. Ahora podemos verificar si lo hicimos bien.\
-Vamos a graficar los datos en un diagrama de dispersión y trazar una línea con pendiente = 1.19 y una intersección en el eje y de –0.221.\
-Como se muestra en la figura @fig-3corwithLine, la línea debería atravesar el centro de los puntos.
+Genial. Ahora podemos verificar si lo hicimos bien. Vamos a graficar los datos en un diagrama de dispersión y trazar una línea con pendiente = 1.19 y una intersección en el eje y de –0.221. Como se muestra en la figura @fig-3corwithLine, la línea debería atravesar el centro de los puntos.
 
 ```{r}
 #| label: fig-3corwithLine
@@ -621,32 +615,17 @@ ggplot(plot_df,aes(x=x,y=y))+
 
 ## Interpretar correlaciones
 
-¿Qué significa que haya —o no haya— una correlación entre dos medidas? ¿Cómo deberían interpretarse las correlaciones? ¿Qué tipo de inferencias se pueden hacer a partir de una correlación? Todas estas son preguntas excelentes.\
-El primer consejo es: **tené cuidado al interpretar correlaciones**. Y ahora te contamos por qué.
+¿Qué significa que haya —o no haya— una correlación entre dos medidas? ¿Cómo deberían interpretarse las correlaciones? ¿Qué tipo de inferencias se pueden hacer a partir de una correlación? Todas estas son preguntas excelentes. El primer consejo es: **tené cuidado al interpretar correlaciones**. Y ahora te contamos por qué.
 
 ### Correlación no implica causalidad
 
-Probablemente ya escuchaste que “correlación no implica causalidad”. ¿Pero por qué no? Hay muchas razones. Sin embargo, antes de meternos con las razones, empecemos con un caso en el que **sí** esperaríamos una conexión causal entre dos medidas.
-
-Supongamos que comprás una planta serpiente (Sansevieria) para tu casa. Estas plantas son conocidas por ser fáciles de cuidar, porque casi no requieren atención.\
-Como la mayoría de las plantas, necesitan algo de agua para sobrevivir. Pero también necesitan **la cantidad justa** de agua.
-
-Imaginemos un experimento donde cultivás 1000 plantas serpiente en tu casa. Cada planta recibe una cantidad diferente de agua por día, desde 0 cucharaditas hasta 1000 cucharaditas por día. Vamos a asumir que el agua forma parte del proceso causal que permite que las plantas crezcan.\
-Entonces, la cantidad de agua por día sería una de nuestras medidas. Y cada semana, medís cuánto crecieron las plantas. Esa sería la segunda medida.
-
-¿Te podés imaginar cómo se vería un gráfico de dispersión con estos datos? Eje X: cucharaditas de agua por día. Eje Y: crecimiento semanal de la planta.
+Probablemente ya escuchaste que “correlación no implica causalidad”. ¿Pero por qué no? Hay muchas razones. Sin embargo, antes de meternos con las razones, empecemos con un caso en el que **sí** esperaríamos una conexión causal entre dos medidas. Supongamos que comprás una planta serpiente (Sansevieria) para tu casa. Estas plantas son conocidas por ser fáciles de cuidar, porque casi no requieren atención. Como la mayoría de las plantas, necesitan algo de agua para sobrevivir. Pero también necesitan **la cantidad justa** de agua. Imaginemos un experimento donde cultivás 1000 plantas serpiente en tu casa. Cada planta recibe una cantidad diferente de agua por día, desde 0 cucharaditas hasta 1000 cucharaditas por día. Vamos a asumir que el agua forma parte del proceso causal que permite que las plantas crezcan. Entonces, la cantidad de agua por día sería una de nuestras medidas. Y cada semana, medís cuánto crecieron las plantas. Esa sería la segunda medida. Ahora, ¿te podés imaginar cómo se vería un gráfico de dispersión con estos datos? Eje X: cucharaditas de agua por día. Eje Y: crecimiento semanal de la planta.
 
 #### Incluso cuando hay causalidad, puede que no haya correlación clara
 
-La primera planta, que no recibe nada de agua, seguramente lo va a pasar mal y eventualmente morir. Debería mostrar el menor crecimiento semanal.\
-¿Y las plantas que reciben solo unas pocas cucharaditas al día? Quizás reciban justo lo necesario para mantenerse vivas, pero no para crecer mucho.\
-Si estás imaginando un gráfico de dispersión, cada punto sería una planta. Algunos puntos deberían estar en la esquina inferior izquierda (nada de agua = nada de crecimiento). A medida que aumenta el agua, los puntos deberían ir subiendo hacia la derecha: más agua, más crecimiento.
+La primera planta, que no recibe nada de agua, seguramente lo va a pasar mal y eventualmente morir. Debería mostrar el menor crecimiento semanal. ¿Y las plantas que reciben solo unas pocas cucharaditas al día? Quizás reciban justo lo necesario para mantenerse vivas, pero no para crecer mucho. Si estás imaginando un gráfico de dispersión, cada punto sería una planta. Algunos puntos deberían estar en la esquina inferior izquierda (nada de agua = nada de crecimiento). A medida que aumenta el agua, los puntos deberían ir subiendo hacia la derecha: más agua, más crecimiento. ¿Pero qué pasa cuando le das **demasiada** agua a una planta serpiente? Por experiencia personal: se muere. Así que en algún momento, los puntos del gráfico deberían empezar a **bajar** otra vez. Las plantas que reciben **demasiada** agua no crecen bien.
 
-¿Pero qué pasa cuando le das **demasiada** agua a una planta serpiente? Por experiencia personal: se muere.\
-Así que en algún momento, los puntos del gráfico deberían empezar a **bajar** otra vez. Las plantas que reciben **demasiada** agua no crecen bien.
-
-Ese gráfico imaginario tendría una forma de U invertida. De izquierda a derecha, los puntos suben, llegan a un máximo, y después vuelven a bajar.\
-¿Y qué pasa si calculás el *r* de Pearson con esos datos? Te puede dar un valor cercano a 0. El gráfico de dispersión se vería más o menos como en la figura @fig-3snakeplant.
+Ese gráfico imaginario tendría una forma de U invertida. De izquierda a derecha, los puntos suben, llegan a un máximo, y después vuelven a bajar. ¿Y qué pasa si calculás el *r* de Pearson con esos datos? Te puede dar un valor cercano a 0. El gráfico de dispersión se vería más o menos como en la figura @fig-3snakeplant.
 
 ```{r}
 #| label: fig-3snakeplant
@@ -662,6 +641,7 @@ ggplot(snake_df, aes(x=water,y=growth))+
   geom_point()+
   theme_classic()+
   xlab("Agua (cucharaditas)") +
+  ylab("Crecimiento") +
   ggtitle("Crecimiento imaginario de una planta serpiente\n en función del agua")
 
 ```
@@ -674,11 +654,7 @@ cor(growth,water)
 
 Lo que esto significa, en realidad, es que **no hay una relación lineal** que se pueda describir con una sola línea recta. Cuando necesitamos líneas o curvas que cambien de dirección, estamos ante una relación **no lineal**.
 
-Este ejemplo muestra algunas complicaciones al interpretar correlaciones. Ya sabemos que las plantas necesitan agua para crecer, así que esperamos que haya alguna relación entre la cantidad de agua y el crecimiento.\
-Si miramos solo la primera mitad de los datos, vemos una correlación positiva.\
-Si miramos solo la segunda mitad, vemos una correlación negativa.\
-Y si miramos todos los datos juntos, **no vemos ninguna correlación**.\
-Uf. Entonces, **incluso cuando hay una conexión causal entre dos variables**, eso no garantiza que obtengamos evidencia clara al calcular un coeficiente de correlación.
+Este ejemplo muestra algunas complicaciones al interpretar correlaciones. Ya sabemos que las plantas necesitan agua para crecer, así que esperamos que haya alguna relación entre la cantidad de agua y el crecimiento. Si miramos solo la primera mitad de los datos, vemos una correlación positiva. Si miramos solo la segunda mitad, vemos una correlación negativa. Y si miramos todos los datos juntos, **no vemos ninguna correlación**. Uf. Entonces, **incluso cuando hay una conexión causal entre dos variables**, eso no garantiza que obtengamos evidencia clara al calcular un coeficiente de correlación.
 
 > 🧠 Consejo pro: Esta es una de las razones por las que es tan importante graficar tus datos. Si ves un patrón en forma de U invertida, entonces un análisis de correlación probablemente **no sea el mejor** para esos datos.
 
@@ -694,19 +670,10 @@ Cualquiera puede correlacionar dos cosas que se puedan medir. Por ejemplo, podr�
 6.  ¿Cuántos libros leíste en tu vida?\
 7.  ¿Qué tan fuerte es tu voz interior?
 
-Supongamos que encontramos una correlación positiva entre el salario anual y la felicidad. Notá que podríamos haber hecho exactamente lo mismo correlacionando felicidad con salario.\
-Si encontramos una correlación, ¿te animarías a decir que el salario **causa** felicidad?\
-Tal vez tiene algo que ver. Pero algo como la felicidad seguramente tiene **muchas causas**.\
-La plata podría hacer feliz a algunas personas directamente.\
-Pero, más probablemente, la plata les permite acceder a otras cosas… y quizás algunas de esas cosas sí generen felicidad.\
-A esas “otras cosas” les decimos **variables de tercer orden** o **terceras variables**.
-
-Por ejemplo: quizás las personas que viven en lugares más lindos, con casas más caras, son más felices que quienes viven en lugares peores, con casas más baratas.\
-En ese escenario, no sería la plata la que causa felicidad, sino **los lugares y casas que la plata puede comprar**.\
+Supongamos que encontramos una correlación positiva entre el salario anual y la felicidad. Notá que podríamos haber hecho exactamente lo mismo correlacionando felicidad con salario. Si encontramos una correlación, ¿te animarías a decir que el salario **causa** felicidad? Tal vez tiene algo que ver. Pero algo como la felicidad seguramente tiene **muchas causas**. La plata podría hacer feliz a algunas personas directamente. Pero, más probablemente, la plata les permite acceder a otras cosas… y quizás algunas de esas cosas sí generen felicidad. A esas “otras cosas” les decimos **variables de tercer orden** o **terceras variables**. Por ejemplo: quizás las personas que viven en lugares más lindos, con casas más caras, son más felices que quienes viven en lugares peores, con casas más baratas. En ese escenario, no sería la plata la que causa felicidad, sino **los lugares y casas que la plata puede comprar**.\
 Y aunque eso fuera cierto, las personas pueden ser más o menos felices en un montón de situaciones diferentes.
 
-La lección acá es que una correlación puede aparecer entre dos medidas debido a una **tercera variable no medida directamente**.\
-Entonces, aunque encontremos una correlación, **no significa que podamos concluir** nada firme sobre causalidad.
+La lección acá es que una correlación puede aparecer entre dos medidas debido a una **tercera variable no medida directamente**. Entonces, aunque encontremos una correlación, **no significa que podamos concluir** nada firme sobre causalidad.
 
 ### Correlación y el azar
 
@@ -733,13 +700,7 @@ knitr::kable(the_df_balls)
 
 En este caso puntual, si calculamos el *r* de Pearson, podríamos obtener, por ejemplo, un valor como ( r = 0.51 ). Pero ya sabemos que **ese valor no nos dice nada** sobre la relación entre las bolillas del Polo Norte y las del Polo Sur. Sabemos que esa relación **debería ser completamente aleatoria**, porque así diseñamos el experimento.
 
-La mejor pregunta en este caso no es “¿cuál fue la correlación?”, sino **¿qué puede producir el azar?**\
-Por ejemplo: si repitiéramos este juego una y otra vez miles de veces —cada vez eligiendo bolillas nuevas y cada vez calculando la correlación—, ¿qué obtendríamos?
-
-Primero, notaríamos **variación**. El valor de *r* a veces sería positivo, a veces negativo, a veces grande y a veces pequeño.\
-Segundo, podríamos ver **cómo se ve esa variación**. Esto nos daría una ventana hacia los tipos de correlaciones que **el azar, por sí solo, puede producir**.
-
-Vamos a ver qué pasa.
+La mejor pregunta en este caso no es “¿cuál fue la correlación?”, sino **¿qué puede producir el azar?** Por ejemplo: si repitiéramos este juego una y otra vez miles de veces —cada vez eligiendo bolillas nuevas y cada vez calculando la correlación—, ¿qué obtendríamos? Primero, notaríamos **variación**. El valor de *r* a veces sería positivo, a veces negativo, a veces grande y a veces pequeño. Segundo, podríamos ver **cómo se ve esa variación**. Esto nos daría una ventana hacia los tipos de correlaciones que **el azar, por sí solo, puede producir**. Vamos a ver qué pasa.
 
 #### Simulación Monte Carlo de correlaciones aleatorias
 
@@ -766,17 +727,15 @@ ggplot(sim_df, aes(x = simulaciones, y = correlaciones_simuladas))+
   theme_classic()+
   geom_hline(yintercept = -1)+
   geom_hline(yintercept = 1)+
-  ggtitle("Simulación de 1000 valores de r")
+  ggtitle("Simulación de 1000 valores de r")+
+  labs(x="Correlación simulada",y="Frecuencia")
 ```
 
 La @fig-3anotherthousand muestra esos 1000 valores de $r$ obtenidos en la simulación. ¿Te resulta familiar el gráfico? Ya hicimos una simulación parecida antes. Cada punto en el gráfico representa el valor de ( r ) de una de las 1000 simulaciones. Como ves, los puntos están por todos lados, entre –1 y 1. La lección importante acá es que **el azar produjo todas estas correlaciones**. Eso quiere decir que podemos encontrar “correlaciones” en los datos que son completamente **sin sentido**, y que no reflejan ninguna relación causal entre una medida y otra.
 
 Vamos a ilustrar esta idea de encontrar correlaciones “al azar” una vez más, con una pequeña animación. Esta vez, te vamos a mostrar un gráfico de dispersión con los valores aleatorios de las bolillas elegidas desde el Polo Norte y el Polo Sur. Si no hay relación, deberíamos ver puntos por todos lados. Si llega a aparecer una relación positiva (por pura casualidad), los puntos irán de abajo a la izquierda hacia arriba a la derecha. Si aparece una relación negativa (también por azar), los puntos irán de arriba a la izquierda hacia abajo a la derecha.
 
-Una cosa más para prepararte para la animación: abajo, en la figura @fig-3reminder, hay tres diagramas de dispersión que muestran correlaciones negativa, positiva y nula entre dos variables. Ya viste ese gráfico antes. Solo te estamos recordando que las líneas azules ayudan a ver la dirección de la correlación.\
-Las correlaciones negativas ocurren cuando la línea baja de izquierda a derecha.\
-Las positivas, cuando la línea sube de izquierda a derecha.\
-Y las correlaciones nulas, cuando la línea es plana (ni sube ni baja).
+Una cosa más para prepararte para la animación: abajo, en la figura @fig-3reminder, hay tres diagramas de dispersión que muestran correlaciones negativa, positiva y nula entre dos variables. Ya viste ese gráfico antes. Solo te estamos recordando que las líneas azules ayudan a ver la dirección de la correlación. Las correlaciones negativas ocurren cuando la línea baja de izquierda a derecha. Las positivas, cuando la línea sube de izquierda a derecha. Y las correlaciones nulas, cuando la línea es plana (ni sube ni baja).
 
 Ok, ahora estamos listos para la animación. La figura @fig-3randcor10gif muestra el proceso de muestreo aleatorio de dos conjuntos de números: uno para la variable X y otro para la variable Y. Cada vez tomamos 10 números para cada variable, los graficamos, y trazamos una línea a través de los puntos. Recordá: estos números son completamente aleatorios, así que deberíamos esperar, en promedio, **que no haya correlación entre ellos**. Sin embargo, eso **no es lo que pasa**. Podés ver cómo la línea cambia todo el tiempo. A veces encontramos una correlación negativa (la línea baja), otras veces una correlación positiva (la línea sube), y otras veces parece que no hay ninguna correlación (la línea es más plana).
 
@@ -822,9 +781,7 @@ ggplot(all_df,aes(x=Polo_norte,y=Polo_sur))+
 
 Capaz estás pensando que esto es un poco inquietante. Si sabemos que no debería haber ninguna correlación entre dos variables aleatorias, ¿cómo puede ser que estemos encontrando correlaciones? ¿No es un gran problema? O sea, si alguien me muestra una correlación entre dos cosas y me dice que están relacionadas, ¿cómo puedo saber si eso es verdad? Después de todo, ¡podría ser pura suerte! El azar también puede producir eso.
 
-Por suerte, no todo está perdido. Podemos mirar nuestros datos simulados de otra manera, usando un histograma. ¿Te acordás que antes de la animación hicimos 1000 simulaciones con números aleatorios y calculamos el valor de (r) para cada una? Si ponemos todos esos valores de (r) en un histograma, vamos a tener una mejor idea de cómo se comporta el azar. Vamos a ver qué tipo de correlaciones es más o menos probable que el azar produzca.
-
-La figura @fig-3histrandcor muestra ese histograma de los valores simulados de $r$.
+Por suerte, no todo está perdido. Podemos mirar nuestros datos simulados de otra manera, usando un histograma. ¿Te acordás que antes de la animación hicimos 1000 simulaciones con números aleatorios y calculamos el valor de (r) para cada una? Si ponemos todos esos valores de (r) en un histograma, vamos a tener una mejor idea de cómo se comporta el azar. Vamos a ver qué tipo de correlaciones es más o menos probable que el azar produzca. La figura @fig-3histrandcor muestra ese histograma de los valores simulados de $r$.
 
 ```{r}
 #| label: fig-3histrandcor
@@ -835,23 +792,7 @@ hist(correlaciones_simuladas,breaks=seq(-1,1,.1))
 
 Notá que este histograma **no es plano**. La mayoría de los valores de (r) simulados están **cerca de cero**. Y también podés ver que las barras se achican a medida que te alejás de cero, ya sea en dirección positiva o negativa. El mensaje principal acá es que el azar puede producir un rango amplio de correlaciones. Sin embargo, **no todas ocurren con la misma frecuencia**. Por ejemplo, las barras cercanas a –1 y 1 son muy bajas. El azar **casi nunca** produce correlaciones perfectas. Las barras alrededor de –0.5 y 0.5 también son más chicas que las del centro: eso significa que correlaciones medianas **no son tan comunes** cuando los datos son puramente aleatorios.
 
-Podés pensar este histograma como una especie de “**ventana del azar**”. Te muestra lo que el azar **suele hacer**, y lo que **suele no hacer**. Ahora imaginemos que estás trabajando con un conjunto real de datos, no con datos simulados. Y calculás un valor de ( r = 0.7 ). ¿Qué significa eso? ¿Es un valor de correlación grande? ¿O podría haber sido generado por azar?
-
-Una forma de pensar esta pregunta es usar el histograma del azar como “ventana”. Si tu valor de ( r ) cae en el centro del histograma —digamos, cerca de 0—, entonces es muy probable que el azar haya podido generarlo. Pero si tu valor está lejos del centro —digamos, cerca de –0.8 o +0.8—, entonces es poco probable que lo haya generado el azar. Eso te da más confianza de que tu valor de ( r ) representa algo real.
-
-Esta idea es muy parecida a la lógica del **p-valor**, que vas a aprender más adelante en el curso. La idea es que mirás tus datos, calculás una estadística (como ( r )), y después te preguntás: “¿qué tan probable es que este valor haya sido generado por azar?”. Si la respuesta es “muy poco probable”, entonces podés tener más confianza en que el patrón que ves en tus datos **no se debe simplemente al azar**.
-
-### El tamaño de muestra reduce el poder del azar
-
-En todo este capítulo estuvimos usando ejemplos con muestras pequeñas —por ejemplo, 10 valores por variable. Pero, ¿qué pasa si usás muestras más grandes?
-
-Vamos a repetir la simulación de Monte Carlo, pero esta vez con diferentes tamaños muestrales. La figura @fig-3corrandN muestra cuatro histogramas diferentes, que muestran valores de ( r ) generados por azar para tamaños de muestra de 10, 50, 100 y 1000.
-
-Fijate en lo que pasa cuando aumentamos el tamaño muestral. Con muestras pequeñas (como 10), el azar puede producir una gran variedad de valores de ( r ). Pero a medida que aumentás el tamaño de la muestra, el histograma se vuelve más angosto. Eso significa que el azar tiene **menos poder** para producir valores extremos de ( r ).
-
-Entonces, si trabajás con una muestra grande y encontrás un valor de ( r ) bastante alejado de cero, es mucho más probable que ese valor **represente una relación real** y **no simplemente el azar**.
-
-Gracias. A continuación te traduzco fielmente esta sección del capítulo, incluyendo las leyendas, explicaciones y descripción de las animaciones, y recordando insertar los `chunks` de código donde correspondan:
+Podés pensar este histograma como una “ventana del azar”. Muestra lo que el azar suele hacer, y lo que no suele hacer. Si encontraste una correlación en estas mismas condiciones (por ejemplo, mediste la correlación entre dos conjuntos de 10 números al azar), entonces podrías consultar esta ventana. ¿Qué le preguntarías a la ventana? Algo como: ¿mi correlación observada (la que encontraste en tus datos) podría haber salido de esta ventana? Ponele que encontraste una correlación de r=0.1. ¿Podría haber salido un r=0.1 de este histograma? Bueno, mirá el histograma alrededor del punto 0.1 en el eje x. ¿Hay una barra grande ahí? Si la hay, eso significa que el azar genera ese valor bastante seguido. Podrías sentirte cómodx sacando la siguiente conclusión: sí, este 0.1 podría haber sido producto del azar, porque está bien dentro de la ventana del azar. ¿Y qué pasa con un r=0.5? La barra es mucho más chica ahí. Podrías pensar: “bueno, veo que el azar genera 0.5 algunas veces, así que podría haber sido producto del azar. ¿Lo fue? Tal vez sí, tal vez no, no estoy segurx”. En este punto, tu confianza para sacar una conclusión fuerte sobre el rol del azar quizás empieza a tambalear un poco. ¿Y un r=0.95? Capaz ves que la barra para 0.95 es muy muy chiquita, quizás tan chiquita que ni se ve. ¿Qué te dice eso? Que el azar no produce 0.95 muy seguido, casi nunca. Entonces, si encontraste un 0.95 en tus datos, ¿qué podrías inferir? Quizás te sentirías cómodx diciendo que el azar no generó ese 0.95, porque el 0.95 está casi completamente fuera de la ventana del azar.
 
 La figura @fig-3corrandN muestra cuatro histogramas diferentes con los valores de correlación de Pearson ( r ) para cada uno de los escenarios. Cada escenario involucra un tamaño muestral distinto: 10, 50, 100 y 1000.
 
@@ -907,7 +848,7 @@ Con tamaño muestral de 10, la línea gira para cualquier lado. También se muev
 
 ```{r}
 #| label: fig-3corRandfour
-#| fig-cap: "Animation of how correlation behaves for completely random X and Y variables as a function of sample size. The best fit line is not very stable for small sample-sizes, but becomes more reliably flat as sample-size increases."
+#| fig-cap: "Animación de cómo se comporta la correlación entre variables X e Y completamente aleatorias en función del tamaño de la muestra. La línea de mejor ajuste no es muy estable con tamaños de muestra pequeños, pero se vuelve más consistentemente plana a medida que aumenta el tamaño de la muestra."
 #| out.width: "75%"
 
 knitr::include_graphics(path="imgs/gifs/corUnifFourNs-1_es.gif")
@@ -947,21 +888,15 @@ ggplot(all_df,aes(x=North_pole,y=South_pole))+
   ease_aes('sine-in-out')
 ```
 
-¿Cuál de estas líneas deberías creer? Bueno, esperamos que veas que la línea correspondiente a N = 1000 es **la más estable**. Tiende a ser muy plana cada vez, y **no depende tanto de la muestra en particular**. En cambio, la línea con solo 10 observaciones **va para cualquier lado**.
+¿En cuál de estas líneas deberías creer? Bueno, esperamos que veas que la línea correspondiente a N = 1000 es **la más estable**. Tiende a ser muy plana cada vez, y **no depende tanto de la muestra en particular**. En cambio, la línea con solo 10 observaciones **va para cualquier lado**. La conclusión acá es que si alguien te dice que encontró una correlación, deberías preguntar cuántas observaciones tenía en su muestra. Si solo tenía 10 observaciones, ¿cómo podrías confiar en esa afirmación? ¡No podés! Ahora que sabés que muestras tan chicas pueden producir cualquier cosa **solo por azar**, deberías desconfiar. En cambio, si descubrís que la muestra era grande, podés confiar un poco más en el hallazgo.
 
-La conclusión acá es que si alguien te dice que encontró una correlación, deberías preguntar cuántas observaciones tenía en su muestra. Si solo tenía 10 observaciones, ¿cómo podrías confiar en esa afirmación? ¡No podés! Ahora que sabés que muestras tan chicas pueden producir cualquier cosa **solo por azar**, deberías desconfiar.\
-En cambio, si descubrís que la muestra era grande, podés confiar un poco más en el hallazgo.
-
-En el ejemplo anterior, muestreamos números de una distribución **uniforme**. Muchos datos reales provienen de una distribución normal (o aproximadamente normal). Podemos repetir lo anterior, pero muestreando de una misma distribución normal. Igual habrá **cero correlación real** entre X e Y, porque todo fue generado al azar.\
-La figura @fig-3normCorfour muestra el mismo comportamiento. Con tamaños muestrales pequeños, la correlación calculada fluctúa mucho. Con muestras grandes, no.
+En el ejemplo anterior, muestreamos números de una distribución **uniforme**. Muchos datos reales provienen de una distribución normal (o aproximadamente normal). Podemos repetir lo anterior, pero muestreando de una misma distribución normal. Igual habrá **cero correlación real** entre X e Y, porque todo fue generado al azar. La figura @fig-3normCorfour muestra el mismo comportamiento. Con tamaños muestrales pequeños, la correlación calculada fluctúa mucho. Con muestras grandes, no.
 
 ### Ver cómo se comporta la correlación cuando realmente **hay** una correlación
 
-A veces sí existen correlaciones entre dos variables que **no** son producto del azar. La figura @fig-3realcorFour muestra una animación con cuatro gráficos de dispersión. Cada uno muestra la correlación entre dos variables. Nuevamente, variamos el tamaño muestral: 10, 50, 100 y 1000 observaciones. Los datos fueron generados de forma que **contengan una correlación positiva real**. Así que deberíamos esperar que la línea suba desde la esquina inferior izquierda hacia la esquina superior derecha.\
-Sin embargo, los datos todavía tienen variabilidad. Así que esta vez, el error muestral debido al azar va a “difuminar” un poco la correlación. Sabemos que está ahí, pero a veces el azar puede hacer que desaparezca.
+A veces sí existen correlaciones entre dos variables que **no** son producto del azar. La figura @fig-3realcorFour muestra una animación con cuatro gráficos de dispersión. Cada uno muestra la correlación entre dos variables. Nuevamente, variamos el tamaño muestral: 10, 50, 100 y 1000 observaciones. Los datos fueron generados de forma que **contengan una correlación positiva real**. Así que deberíamos esperar que la línea suba desde la esquina inferior izquierda hacia la esquina superior derecha. Sin embargo, los datos todavía tienen variabilidad. Así que esta vez, el error muestral debido al azar va a “difuminar” un poco la correlación. Sabemos que está ahí, pero a veces el azar puede hacer que desaparezca.
 
-Notá que en el panel superior izquierdo (tamaño muestral = 10), la línea se mueve mucho más que en los otros paneles. Cada nuevo conjunto de muestras produce correlaciones distintas. A veces, la línea incluso se aplana o baja.\
-Pero a medida que aumentamos el tamaño muestral, vemos que la línea **no cambia tanto**: siempre va hacia arriba, mostrando una correlación positiva.
+Notá que en el panel superior izquierdo (tamaño muestral = 10), la línea se mueve mucho más que en los otros paneles. Cada nuevo conjunto de muestras produce correlaciones distintas. A veces, la línea incluso se aplana o baja. Pero a medida que aumentamos el tamaño muestral, vemos que la línea **no cambia tanto**: siempre va hacia arriba, mostrando una correlación positiva.
 
 ::: {.content-visible when-format="html"}
 ```{r}
@@ -974,9 +909,7 @@ knitr::include_graphics(path="imgs/gifs/corRealgif-1_es.gif")
 :::
 
 La lección principal acá es que **incluso cuando hay una correlación positiva real entre dos variables, podrías no verla si tu muestra es muy pequeña**. Por ejemplo, podrías tener mala suerte con la muestra que recolectaste. Esa muestra podría mostrar una correlación negativa, ¡aunque la verdadera correlación sea positiva!\
-Lamentablemente, en el mundo real casi siempre tenemos solo una muestra, la que logramos recolectar. Así que siempre tenemos que preguntarnos si tuvimos suerte… o no.
-
-Por suerte, si querés eliminar el factor suerte, **todo lo que necesitás es recolectar una muestra más grande**. Así vas a tener muchas más chances de observar el patrón real, y no uno que apareció por azar.
+Lamentablemente, en el mundo real casi siempre tenemos solo una muestra, la que logramos recolectar. Así que siempre tenemos que preguntarnos si tuvimos suerte… o no. Por suerte, si querés eliminar el factor suerte, **todo lo que necesitás es recolectar una muestra más grande**. Así vas a tener muchas más chances de observar el patrón real, y no uno que apareció por azar.
 
 ## Resumen
 

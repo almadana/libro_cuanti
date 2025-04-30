@@ -12,7 +12,7 @@ source("global_stuff.R")
 
 # Describir los datos {#DescribingData}
 
-> Mucho mejor una respuesta aproximada a la pregunta correcta —aunque sea vaga— que una respuesta exacta a la pregunta incorrecta , que siempre puede ser precisa. — John W. Tukey
+> Mucho mejor una respuesta aproximada a la pregunta correcta —aunque sea vaga— que una respuesta exacta a la pregunta incorrecta, que siempre puede ser precisa. — John W. Tukey
 
 Este capítulo trata sobre **estadísticas descriptivas**. Son herramientas para describir datos. Algunas cosas a tener en cuenta mientras avanzamos:
 

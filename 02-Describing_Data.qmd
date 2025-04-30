@@ -44,7 +44,7 @@ Ya intentamos una forma de mirar los números, y no fue muy útil. Probemos ahor
 
 Convirtamos todos los números en puntos, y mostremos esos puntos en un gráfico. Ojo: cuando hacemos esto, todavía no hemos resumido nada de los datos. Simplemente los estamos observando en formato visual, en vez de mirar los números directamente.
 
-```{ r, echo=F}
+```{r, echo=F}
 #| label: fig-happyPlot
 #| fig-cap: "Supuestas puntuaciones de felicidad de 500 personas"
 

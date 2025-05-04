@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Danielle J. Navarro">
 <meta name="author" content="Matthew J. C. Crump">
 
-<title>Respondiendo preguntas con datos - 4&nbsp; Probabilidad, muestreo y estimación</title>
+<title>4&nbsp; Probabilidad, muestreo y estimación – Respondiendo preguntas con datos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -35,7 +35,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -60,6 +60,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -102,7 +103,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -111,6 +118,7 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -126,16 +134,40 @@ gtag('js', new Date());
 gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 </script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Respondiendo preguntas con datos - 4&nbsp; Probabilidad, muestreo y estimación">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="4&nbsp; Probabilidad, muestreo y estimación – Respondiendo preguntas con datos">
 <meta property="og:description" content="Sections 4.1 &amp; 4.9 - Adapted text by Danielle Navarro Section 4.10 - 4.11 &amp; 4.13 - Mix of Matthew Crump &amp; Danielle Navarro Section 4.12 - 4.13 - Adapted text by Danielle Navarro">
-<meta property="og:image" content="https://crumplab.com/statistics/imgs/navarro_img/probability/frequentistProb-eps-converted-to.png">
-<meta property="og:site-name" content="Respondiendo preguntas con datos">
-<meta property="og:image:height" content="2400">
-<meta property="og:image:width" content="2329">
-<meta name="twitter:title" content="Respondiendo preguntas con datos - 4&nbsp; Probabilidad, muestreo y estimación">
+<meta property="og:site_name" content="Respondiendo preguntas con datos">
+<meta name="twitter:title" content="4&nbsp; Probabilidad, muestreo y estimación – Respondiendo preguntas con datos">
 <meta name="twitter:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
 <meta name="twitter:image" content="https://crumplab.com/statistics/imgs/TextbookCover.png">
 <meta name="twitter:site" content="@MattCrumpLab">
@@ -150,13 +182,13 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-SamplesPopulations.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probabilidad, muestreo y estimación</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-SamplesPopulations.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probabilidad, muestreo y estimación</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -165,12 +197,12 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Respondiendo preguntas con datos</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/CrumpLab/statistics/" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/CrumpLab/statistics/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
@@ -274,7 +306,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -309,7 +341,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
   <li><a href="#parámetros-poblacionales-y-estadísticas-muestrales" id="toc-parámetros-poblacionales-y-estadísticas-muestrales" class="nav-link" data-scroll-target="#parámetros-poblacionales-y-estadísticas-muestrales"><span class="header-section-number">4.8.5</span> Parámetros poblacionales y estadísticas muestrales</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/CrumpLab/statistics/edit/master/04-SamplesPopulations.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/CrumpLab/statistics/edit/master/04-SamplesPopulations.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -337,12 +369,14 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
   
 <div>
   <div class="abstract">
-    <div class="abstract-title">Chapter notes</div>
+    <div class="block-title">Chapter notes</div>
     Sections 4.1 &amp; 4.9 - Adapted text by Danielle Navarro Section 4.10 - 4.11 &amp; 4.13 - Mix of Matthew Crump &amp; Danielle Navarro Section 4.12 - 4.13 - Adapted text by Danielle Navarro
   </div>
 </div>
 
+
 </header>
+
 
 <blockquote class="blockquote">
 <p>He estudiado muchos idiomas —francés, español y un poco de italiano—, pero nadie me dijo que la estadística era una lengua extranjera. —Charmaine J. Forde</p>
@@ -407,7 +441,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <p>Supongamos que empezamos a lanzar una moneda justa, una y otra vez. Por definición, es una moneda en la que <span class="math inline">\(P(H) = 0.5\)</span>. ¿Qué podríamos observar? Una posibilidad es que los primeros 20 lanzamientos se vean así:</p>
 <pre><code>T, H, H, H, H, T, T, H, H, H, H, T, H, H, T, T, T, T, T, H</code></pre>
 <p>En este caso, 11 de los 20 lanzamientos (55%) salieron cara. Ahora supongamos que fui llevando la cuenta del número de caras (que voy a llamar $ N_H $) en los primeros $ N $ lanzamientos, y que cada vez calculo la proporción de caras $ N_H / N $. Esto es lo que obtendría (¡sí, de verdad lancé monedas para obtener esto!):</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 37%">
 <col style="width: 6%">
@@ -465,7 +499,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 </tr>
 </tbody>
 </table>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 37%">
 <col style="width: 6%">
@@ -525,14 +559,18 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 </table>
 <p>Fijate que al principio de la secuencia, la <strong>proporción</strong> de caras fluctúa bastante, empezando en .00 y subiendo hasta .80. Más adelante, da la impresión de que se estabiliza, con valores que se acercan cada vez más al valor “correcto” de 0.50. Esta es la definición frecuentista de probabilidad en pocas palabras: lanzá una moneda justa muchas veces, y a medida que $ N $ crece (se acerca al infinito, denotado $ N $), la proporción de caras converge a 50%.</p>
 <p>Hay algunas sutilezas técnicas que le importan a lxs matemáticxs, pero en términos cualitativos, así es como lxs frecuentistas definen la probabilidad.</p>
-<p>Por supuesto, no tengo un número infinito de monedas, ni la paciencia infinita para lanzarlas eternamente. Pero sí tengo una computadora, y las computadoras son excelentes para tareas repetitivas. Así que le pedí a la computadora que simulara lanzar una moneda 1000 veces, y luego grafiqué lo que pasa con la proporción $ N_H / N $ a medida que $ N $ aumenta. En realidad, lo hice cuatro veces, solo para asegurarme de que no fuera casualidad. Los resultados se muestran en la figura <a href="#fig-4FreqProb">Figure&nbsp;<span>4.1</span></a>.</p>
+<p>Por supuesto, no tengo un número infinito de monedas, ni la paciencia infinita para lanzarlas eternamente. Pero sí tengo una computadora, y las computadoras son excelentes para tareas repetitivas. Así que le pedí a la computadora que simulara lanzar una moneda 1000 veces, y luego grafiqué lo que pasa con la proporción $ N_H / N $ a medida que $ N $ aumenta. En realidad, lo hice cuatro veces, solo para asegurarme de que no fuera casualidad. Los resultados se muestran en la figura <a href="#fig-4FreqProb" class="quarto-xref">Figure&nbsp;<span>4.1</span></a>.</p>
 <p>Como podés ver, la <strong>proporción de caras observadas</strong> eventualmente deja de fluctuar, y se estabiliza. Cuando eso ocurre, el número al que se estabiliza es la verdadera probabilidad de cara.</p>
 <div class="cell" data-hash="04-SamplesPopulations_cache/html/fig-4FreqProb_c8028b22e40e2e7d6125fda701c3c5ae">
 <div class="cell-output-display">
-<div id="fig-4FreqProb" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="imgs/navarro_img/probability/frequentistProb-eps-converted-to.png" class="img-fluid figure-img" width="1164"></p>
-<figcaption class="figure-caption">Figure&nbsp;4.1: Ilustración de cómo funciona la probabilidad frecuentista. Si lanzás una moneda justa muchas veces, la proporción de caras observadas se estabiliza y converge hacia la probabilidad verdadera de 0.5. Cada panel muestra un experimento simulado distinto: en cada caso, se simula lanzar una moneda 1000 veces y se lleva un registro de la proporción de caras acumuladas. Aunque ninguna secuencia termina exactamente en 0.5, si el experimento se extendiera indefinidamente, lo haría.</figcaption>
+<div id="fig-4FreqProb" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-4FreqProb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="imgs/navarro_img/probability/frequentistProb-eps-converted-to.png" class="img-fluid figure-img" width="1164">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4FreqProb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.1: Ilustración de cómo funciona la probabilidad frecuentista. Si lanzás una moneda justa muchas veces, la proporción de caras observadas se estabiliza y converge hacia la probabilidad verdadera de 0.5. Cada panel muestra un experimento simulado distinto: en cada caso, se simula lanzar una moneda 1000 veces y se lleva un registro de la proporción de caras acumuladas. Aunque ninguna secuencia termina exactamente en 0.5, si el experimento se extendiera indefinidamente, lo haría.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -582,7 +620,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <p>A esta altura, ya casi terminamos. Lo último que necesitamos reconocer es que “<strong>algo siempre ocurre</strong>”. Cada vez que me pongo pantalones, efectivamente termino con un par puesto (una locura, ¿no?). Esta afirmación algo trillada quiere decir, en términos probabilísticos, que <strong>las probabilidades de todos los eventos elementales deben sumar 1</strong>.</p>
 <p>Esto se conoce como la <strong>ley de probabilidad total</strong>, aunque a nadie le importe demasiado. Más importante aún, si se cumplen estos requisitos, lo que tenemos es una <strong>distribución de probabilidad</strong>.</p>
 <p>Por ejemplo, esta es una distribución de probabilidad:</p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">¿Qué pantalón?</th>
@@ -619,13 +657,17 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 </tbody>
 </table>
 <p>Cada uno de estos eventos tiene una probabilidad que está entre 0 y 1, y si sumamos todas las probabilidades, el total es 1. Genial.</p>
-<p>Incluso podemos hacer un lindo gráfico de barras para visualizar esta distribución, como se muestra en la figura <a href="#fig-4pantsprob">Figure&nbsp;<span>4.2</span></a>. Y en este punto, todes logramos algo: vos aprendiste qué es una distribución de probabilidad, y yo por fin encontré la forma de hacer un gráfico que trata exclusivamente sobre mis pantalones. ¡Ganamos todes!</p>
+<p>Incluso podemos hacer un lindo gráfico de barras para visualizar esta distribución, como se muestra en la figura <a href="#fig-4pantsprob" class="quarto-xref">Figure&nbsp;<span>4.2</span></a>. Y en este punto, todes logramos algo: vos aprendiste qué es una distribución de probabilidad, y yo por fin encontré la forma de hacer un gráfico que trata exclusivamente sobre mis pantalones. ¡Ganamos todes!</p>
 <div class="cell" data-hash="04-SamplesPopulations_cache/html/fig-4pantsprob_65502b537fb785f5e1bec6c9b6881062">
 <div class="cell-output-display">
-<div id="fig-4pantsprob" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="imgs/navarro_img/probability/pantsDistribution-eps-converted-to.png" class="img-fluid figure-img" width="1164"></p>
-<figcaption class="figure-caption">Figure&nbsp;4.2: Representación visual de la distribución de probabilidad de los pantalones. Hay cinco eventos elementales, que corresponden a los cinco pares de pantalones que tengo. Cada evento tiene alguna probabilidad de ocurrir: ese valor es un número entre 0 y 1. La suma de estas probabilidades es igual a 1.</figcaption>
+<div id="fig-4pantsprob" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-4pantsprob-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="imgs/navarro_img/probability/pantsDistribution-eps-converted-to.png" class="img-fluid figure-img" width="1164">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4pantsprob-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.2: Representación visual de la distribución de probabilidad de los pantalones. Hay cinco eventos elementales, que corresponden a los cinco pares de pantalones que tengo. Cada evento tiene alguna probabilidad de ocurrir: ese valor es un número entre 0 y 1. La suma de estas probabilidades es igual a 1.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -640,7 +682,7 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
 <p>Y como las probabilidades de jean azul, gris y negro son 0.5, 0.3 y 0.1 respectivamente, la probabilidad de que use jeans es igual a 0.9.</p>
 <p>A esta altura tal vez estés pensando que todo esto es increíblemente obvio y simple, y tenés razón. Lo único que hicimos fue envolver algunas intuiciones de sentido común con un poco de matemática básica.</p>
 <p>Sin embargo, a partir de estos comienzos simples se pueden construir herramientas matemáticas extremadamente poderosas. Definitivamente <strong>no</strong> voy a entrar en esos detalles en este libro, pero lo que sí voy a hacer es listar algunas otras reglas que las probabilidades deben cumplir. Estas reglas se pueden derivar de los supuestos básicos que acabamos de ver, pero como <strong>no las vamos a usar directamente en este libro</strong>, no me voy a detener en eso.</p>
-<table class="table">
+<table class="caption-top table">
 <caption>Algunas reglas básicas que deben cumplir las probabilidades. No necesitás conocerlas para entender los análisis que vamos a ver más adelante en el libro, pero son importantes si querés entender la teoría de la probabilidad con más profundidad.</caption>
 <colgroup>
 <col style="width: 17%">
@@ -694,7 +736,8 @@ B &amp;=&amp; (x_3, x_4)
 \end{array}
 \]</span></p>
 <p>Ahora podemos empezar a comprobar las reglas que figuran en la tabla.</p>
-<p>En la primera línea, la tabla dice que:<span class="math display">\[ P(\neg A) = 1 - P(A)\]</span> y lo que <strong>significa</strong> esto es que la probabilidad de “no $ A $” es igual a 1 menos la probabilidad de $ A $. Con un poco de reflexión (y un ejemplo tedioso) se vuelve evidente por qué esto tiene que ser así. Si $ A $ corresponde al evento de que me pongo jeans (es decir, que ocurre alguno de los eventos $ x_1 $, $ x_2 $ o $ x_3 $), entonces la única definición razonable de “no $ A $” (que se denota matemáticamente como $ A $) es decir que $ A $ consiste en <strong>todos</strong> los eventos elementales que <strong>no</strong> pertenecen a $ A $. En el caso de los pantalones, eso significa que: <span class="math display">\[ \neg A = (x_4, x_5) \]</span> o, dicho en castellano: “no jeans” incluye todos los pantalones que <strong>no</strong> son jeans (es decir, el pantalón de traje negro y el pantalón deportivo azul).Por lo tanto, cada uno de los eventos elementales pertenece **o bien a $ A $, o bien a $ A <span class="math inline">\(**, pero no a ambos. Bien, entonces reorganicemos lo anterior:\)</span><span class="math inline">\(P(\neg A) + P(A) = 1\)</span>$ que no es más que una forma matemática de decir: o uso jeans, o no uso jeans; la probabilidad de “no jeans” más la probabilidad de “jeans” es igual a 1.</p>
+<p>En la primera línea, la tabla dice que:<span class="math display">\[ P(\neg A) = 1 - P(A)\]</span> y lo que <strong>significa</strong> esto es que la probabilidad de “no $ A $” es igual a 1 menos la probabilidad de $ A $. Con un poco de reflexión (y un ejemplo tedioso) se vuelve evidente por qué esto tiene que ser así. Si $ A $ corresponde al evento de que me pongo jeans (es decir, que ocurre alguno de los eventos $ x_1 $, $ x_2 $ o $ x_3 $), entonces la única definición razonable de “no $ A $” (que se denota matemáticamente como $ A $) es decir que $ A $ consiste en <strong>todos</strong> los eventos elementales que <strong>no</strong> pertenecen a $ A $. En el caso de los pantalones, eso significa que: <span class="math display">\[ \neg A = (x_4, x_5) \]</span> o, dicho en castellano: “no jeans” incluye todos los pantalones que <strong>no</strong> son jeans (es decir, el pantalón de traje negro y el pantalón deportivo azul).Por lo tanto, cada uno de los eventos elementales pertenece **o bien a $ A $, o bien a $ A <span class="math inline">\(**, pero no a ambos.
+Bien, entonces reorganicemos lo anterior:\)</span><span class="math inline">\(P(\neg A) + P(A) = 1\)</span>$ que no es más que una forma matemática de decir: o uso jeans, o no uso jeans; la probabilidad de “no jeans” más la probabilidad de “jeans” es igual a 1.</p>
 <p>Matemáticamente:</p>
 <p><span class="math display">\[
 \begin{array}{rcl}
@@ -711,8 +754,10 @@ P(\neg A) + P(A) &amp;=&amp; P(x_1) + P(x_2) + P(x_3) + P(x_4) + P(x_5) \\
 \end{array}
 \]</span> Excelente. Todo parece funcionar.</p>
 <p>“Guau”, te escucho decir. “Todo esto para decirme lo <strong>obvio</strong>”. Y tenés razón: esto <strong>es</strong> increíblemente obvio. El <strong>propósito</strong> de la teoría de la probabilidad es formalizar y matematizar unas pocas intuiciones de sentido común. Así que sigamos un poco más con esta línea de razonamiento.</p>
-<p>En la sección anterior definí un evento correspondiente a <strong>no</strong> $ A $, que denoté como $ A <span class="math inline">\(. Ahora vamos a definir dos nuevos eventos que corresponden a conceptos cotidianos importantes: **\)</span> A $ y $ B <span class="math inline">\(**, y **\)</span> A $ o $ B $**. Específicamente:</p>
-<table class="table">
+<p>En la sección anterior definí un evento correspondiente a <strong>no</strong> $ A $, que denoté como $ A <span class="math inline">\(.
+Ahora vamos a definir dos nuevos eventos que corresponden a conceptos cotidianos importantes:
+**\)</span> A $ y $ B <span class="math inline">\(**, y **\)</span> A $ o $ B $**. Específicamente:</p>
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Afirmación en español</th>
@@ -747,26 +792,26 @@ A \cup B &amp;=&amp; (x_1, x_2, x_3, x_4)
 \end{array}
 \]</span></p>
 <p>Vaaamooooooooo!!!!. Matemáticas, sabelo!.</p>
-<p>Entonces, ya definimos qué queremos decir con $ A B $ y $ A B $. Ahora asignemos probabilidades a esos eventos. Más específicamente, vamos a verificar la regla que dice que: <span class="math display">\[
-P(A \cup B) = P(A) + P(B) - P(A \cap B)
-\]</span></p>
+<p>Entonces, ya definimos qué queremos decir con $ A B $ y $ A B <span class="math inline">\(. Ahora asignemos probabilidades a esos eventos. Más específicamente, vamos a verificar la regla que dice que:\)</span>$ P(A B) = P(A) + P(B) - P(A B) $$</p>
 <p>Usando las definiciones anteriores, sabemos que: <span class="math display">\[
 P(A \cup B) = P(x_1) + P(x_2) + P(x_3) + P(x_4)
 \]</span></p>
-<p>y usando el hecho de que sabemos qué eventos elementales pertenecen a $ A $, $ B $, y $ A B $, tenemos: <span class="math display">\[
-\begin{array}{rcl}
+y usando el hecho de que sabemos qué eventos elementales pertenecen a $ A $, $ B $, y $ A B <span class="math inline">\(, tenemos:\)</span>$
+<span class="math display">\[\begin{array}{rcl}
 P(A) &amp;=&amp; P(x_1) + P(x_2) + P(x_3) \\
 P(B) &amp;=&amp; P(x_3) + P(x_4) \\
 P(A \cap B) &amp;=&amp; P(x_3)
-\end{array}
-\]</span> y por lo tanto: <span class="math display">\[
-\begin{array}{rcl}
+\end{array}\]</span>
+<span class="math display">\[
+y por lo tanto:
+\]</span>
+<span class="math display">\[\begin{array}{rcl}
 P(A) + P(B) - P(A \cap B)
 &amp;=&amp; P(x_1) + P(x_2) + P(x_3) + P(x_3) + P(x_4) - P(x_3) \\
 &amp;=&amp; P(x_1) + P(x_2) + P(x_3) + P(x_4) \\
 &amp;=&amp; P(A \cup B)
-\end{array}
-\]</span></p>
+\end{array}\]</span>
+<p>$$</p>
 <p>Listo.</p>
 <p>El próximo concepto que necesitamos definir es el de “$ B $ dado $ A $”, que se escribe típicamente como $ B A $. Esto es lo que quiero decir: supongamos que me levanto una mañana y me pongo un pantalón. Ocurre un evento elemental $ x $. Supongamos que le grito a mi esposa (que está en la otra habitación, y no puede ver qué pantalón me puse): “¡Hoy estoy usando jeans!”. Asumiendo que ella me cree, entonces sabe que $ A $ es verdadero. <strong>Dado</strong> que sabe que ocurrió $ A $, ¿cuál es la <strong>probabilidad condicional</strong> de que también sea cierto $ B $?</p>
 <p>Bueno, pensemos qué información tiene. Estas son las cosas que sabe:</p>
@@ -775,7 +820,7 @@ P(A) + P(B) - P(A \cap B)
 <li><p><strong>Ella no aprendió nada sobre qué jeans estoy usando</strong>. Antes de que yo anunciara que estoy usando jeans, ella ya sabía que era cinco veces más probable que estuviera usando jeans azules ($ P(x_1) = 0.5 <span class="math inline">\() que jeans negros (\)</span> P(x_3) = 0.1 $). Mi anuncio no cambia eso… no dije <strong>nada</strong> sobre el color, así que la proporción $ P(x_1) / P(x_3) $ se mantiene igual, con un valor de 5.</p></li>
 </ul>
 <p>Dado que ( P(A) = 0{,}9 ), dividimos por 0.9. Esto da:</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
 <col style="width: 18%">
@@ -852,15 +897,19 @@ P(B \mid A) &amp;=&amp; P(x_3 \mid A) + P(x_4 \mid A) \\\\
 <p>Hay una última notación que quiero mencionar antes de pasar a cómo resolver el problema. Si quiero decir que ( X ) fue generado aleatoriamente a partir de una distribución binomial con parámetros ( ) y ( N ), lo escribo así:</p>
 <p>[ X (, N) ]</p>
 <p>Sí, sí, ya sé lo que estás pensando: notación, notación, notación. ¿A quién le importa? Muy pocxs lectorxs están acá por la notación, así que mejor sigo y explico <strong>cómo usar</strong> la distribución binomial.</p>
-<p>Para eso, la figura <a href="#fig-4binomial1">Figure&nbsp;<span>4.3</span></a> muestra las probabilidades binomiales para todos los valores posibles de ( X ) en nuestro experimento con los dados, desde ( X = 0 ) (ninguna calavera) hasta ( X = 20 ) (todas calaveras).</p>
-<p>Notá que básicamente es un gráfico de barras, y no es distinto del gráfico de “probabilidad de pantalones” que hicimos en <a href="#fig-4pantsprob">Figure&nbsp;<span>4.2</span></a>. En el eje horizontal están todos los eventos posibles, y en el eje vertical podemos ver la probabilidad de cada uno de esos eventos.</p>
+<p>Para eso, la figura <a href="#fig-4binomial1" class="quarto-xref">Figure&nbsp;<span>4.3</span></a> muestra las probabilidades binomiales para todos los valores posibles de ( X ) en nuestro experimento con los dados, desde ( X = 0 ) (ninguna calavera) hasta ( X = 20 ) (todas calaveras).</p>
+<p>Notá que básicamente es un gráfico de barras, y no es distinto del gráfico de “probabilidad de pantalones” que hicimos en <a href="#fig-4pantsprob" class="quarto-xref">Figure&nbsp;<span>4.2</span></a>. En el eje horizontal están todos los eventos posibles, y en el eje vertical podemos ver la probabilidad de cada uno de esos eventos.</p>
 <p>Por ejemplo, la probabilidad de obtener 4 calaveras al lanzar 20 dados es de aproximadamente 0.20 (la respuesta exacta es 0.2022036, como veremos enseguida). En otras palabras, esperarías que eso ocurra alrededor del 20% de las veces que repitas este experimento.</p>
 <div class="cell" data-hash="04-SamplesPopulations_cache/html/fig-4binomial1_ba6eca9824aef4fcb52e22a585baae21">
 <div class="cell-output-display">
-<div id="fig-4binomial1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="imgs/navarro_img/probability/binomSkulls20-eps-converted-to.png" class="img-fluid figure-img" width="1164"></p>
-<figcaption class="figure-caption">Figure&nbsp;4.3: La distribución binomial con parámetro de tamaño <span class="math inline">\(N = 20\)</span> y una probabilidad de éxito de 1/6. Cada barra vertical representa la probabilidad de un resultado específico (es decir, un valor posible de <span class="math inline">\(X\)</span>). Como se trata de una distribución de probabilidad, cada probabilidad debe ser un número entre 0 y 1, y la suma de las alturas de las barras también debe ser 1.</figcaption>
+<div id="fig-4binomial1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-4binomial1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="imgs/navarro_img/probability/binomSkulls20-eps-converted-to.png" class="img-fluid figure-img" width="1164">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4binomial1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.3: La distribución binomial con parámetro de tamaño <span class="math inline">\(N = 20\)</span> y una probabilidad de éxito de 1/6. Cada barra vertical representa la probabilidad de un resultado específico (es decir, un valor posible de <span class="math inline">\(X\)</span>). Como se trata de una distribución de probabilidad, cada probabilidad debe ser un número entre 0 y 1, y la suma de las alturas de las barras también debe ser 1.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -885,15 +934,19 @@ P(B \mid A) &amp;=&amp; P(x_3 \mid A) + P(x_4 \mid A) \\\\
 <p>En este ejemplo, cambié la probabilidad de éxito, pero mantuve igual el tamaño del experimento. ¿Qué le pasa a la distribución binomial?</p>
 <div class="cell" data-hash="04-SamplesPopulations_cache/html/fig-4binomial2_dcadf6013632948609fc9df94dabce33">
 <div class="cell-output-display">
-<div id="fig-4binomial2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="imgs/navarro_img/probability/Binomial2.png" class="img-fluid figure-img" width="507"></p>
-<figcaption class="figure-caption">Figure&nbsp;4.4: Dos distribuciones binomiales, en un escenario donde lanzo una moneda justa, con probabilidad de éxito <span class="math inline">\(1/2\)</span>. En el panel (a), se supone que lanzo la moneda <span class="math inline">\(N = 20\)</span> veces. En el panel (b), que la lanzo <span class="math inline">\(N = 100\)</span> veces.</figcaption>
+<div id="fig-4binomial2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-4binomial2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="imgs/navarro_img/probability/Binomial2.png" class="img-fluid figure-img" width="507">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4binomial2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.4: Dos distribuciones binomiales, en un escenario donde lanzo una moneda justa, con probabilidad de éxito <span class="math inline">\(1/2\)</span>. En el panel (a), se supone que lanzo la moneda <span class="math inline">\(N = 20\)</span> veces. En el panel (b), que la lanzo <span class="math inline">\(N = 100\)</span> veces.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Bueno, como se ve en <a href="#fig-4binomial2">Figure&nbsp;<span>4.4</span></a> (a), el efecto principal es que la distribución se desplaza hacia el centro, como cabría esperar. Ahora, ¿qué pasa si lanzo la moneda ( N = 100 ) veces? En ese caso, obtenemos la figura <a href="#fig-4binomial2">Figure&nbsp;<span>4.4</span></a> (b). La distribución se mantiene más o menos centrada, pero hay más variabilidad en los posibles resultados.R incluye <strong>cuatro funciones</strong> para trabajar con la distribución binomial. Estas funciones son <code>dbinom</code>, <code>pbinom</code>, <code>rbinom</code> y <code>qbinom</code>, y cada una calcula una cantidad distinta de interés. No solo eso: <strong>R hace lo mismo para todas las distribuciones de probabilidad</strong> que implementa. No importa de qué distribución se trate, siempre vas a encontrar una función <code>d</code>, una función <code>p</code>, una función <code>r</code> y una función <code>q</code>.</p>
+<p>Bueno, como se ve en <a href="#fig-4binomial2" class="quarto-xref">Figure&nbsp;<span>4.4</span></a> (a), el efecto principal es que la distribución se desplaza hacia el centro, como cabría esperar. Ahora, ¿qué pasa si lanzo la moneda ( N = 100 ) veces? En ese caso, obtenemos la figura <a href="#fig-4binomial2" class="quarto-xref">Figure&nbsp;<span>4.4</span></a> (b). La distribución se mantiene más o menos centrada, pero hay más variabilidad en los posibles resultados.R incluye <strong>cuatro funciones</strong> para trabajar con la distribución binomial. Estas funciones son <code>dbinom</code>, <code>pbinom</code>, <code>rbinom</code> y <code>qbinom</code>, y cada una calcula una cantidad distinta de interés. No solo eso: <strong>R hace lo mismo para todas las distribuciones de probabilidad</strong> que implementa. No importa de qué distribución se trate, siempre vas a encontrar una función <code>d</code>, una función <code>p</code>, una función <code>r</code> y una función <code>q</code>.</p>
 <p>Veamos qué hace cada una de estas funciones. Primero, las cuatro versiones de la función requieren que le indiques los argumentos <code>size</code> y <code>prob</code>: no importa qué querés que R calcule, siempre necesita saber cuáles son los parámetros de la distribución. Pero lo que cambia entre funciones es <strong>cuál es el argumento principal</strong> y <strong>qué devuelve como resultado</strong>. Así que veámoslas una por una:</p>
 <ul>
 <li><p>La versión <code>d</code> ya la vimos: le pasás un valor específico <code>x</code>, y la salida es la probabilidad de obtener <strong>exactamente</strong> ese valor. (La “d” viene de <em>density</em>, aunque por ahora podés ignorarlo).</p></li>
@@ -932,7 +985,7 @@ P(B \mid A) &amp;=&amp; P(x_3 \mid A) + P(x_4 \mid A) \\\\
  [75] 4 4 5 3 3 1 7 3 3 4 4 1 4 3 3 3 5 6 4 1 4 5 4 4 1 7</code></pre>
 </div>
 </div>
-<p>Como podés ver, los números que aparecen son bastante lo que uno esperaría, dados los resultados en <a href="#fig-4binomial1">Figure&nbsp;<span>4.3</span></a>. La mayoría de las veces saco entre 1 y 5 calaveras.</p>
+<p>Como podés ver, los números que aparecen son bastante lo que uno esperaría, dados los resultados en <a href="#fig-4binomial1" class="quarto-xref">Figure&nbsp;<span>4.3</span></a>. La mayoría de las veces saco entre 1 y 5 calaveras.</p>
 <p>Hay muchas sutilezas sobre cómo se generan números aleatorios en una computadora, pero para los fines de este libro no necesitamos preocuparnos demasiado.</p>
 </section>
 </section>
@@ -1109,38 +1162,50 @@ dnorm(x = 1, mean = 1, sd = 0.1)</code></pre>
 <p>Para mantenerlo simple, imaginá que tenemos una bolsa con 10 fichas. Cada ficha tiene una letra única impresa, así que podemos distinguirlas. Las fichas vienen en dos colores: negro y blanco.</p>
 <div class="cell" data-hash="04-SamplesPopulations_cache/html/fig-srs1_7e35952c1ad3dbae2b4bcd0912f64f22">
 <div class="cell-output-display">
-<div id="fig-srs1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="imgs/navarro_img/estimation/srs1.png" class="img-fluid figure-img" width="421"></p>
-<figcaption class="figure-caption">Figure&nbsp;4.5: Muestreo aleatorio simple sin reemplazo a partir de una población finita.</figcaption>
+<div id="fig-srs1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-srs1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="imgs/navarro_img/estimation/srs1.png" class="img-fluid figure-img" width="421">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-srs1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.5: Muestreo aleatorio simple sin reemplazo a partir de una población finita.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Este conjunto de fichas es la población de interés, y está representada gráficamente en la parte izquierda de la figura <a href="#fig-srs1">Figure&nbsp;<span>4.5</span></a>.</p>
+<p>Este conjunto de fichas es la población de interés, y está representada gráficamente en la parte izquierda de la figura <a href="#fig-srs1" class="quarto-xref">Figure&nbsp;<span>4.5</span></a>.</p>
 <p>Como podés ver en la imagen, hay 4 fichas negras y 6 fichas blancas, pero en la vida real <strong>no sabríamos eso a menos que miremos dentro de la bolsa</strong>.</p>
-<p>Ahora imaginá que hacés el siguiente “experimento”: agitás la bolsa, cerrás los ojos y sacás 4 fichas, sin devolverlas después de sacarlas. Primero sale la ficha <span class="math inline">\(a\)</span> (negra), luego la <span class="math inline">\(c\)</span> (blanca), después la <span class="math inline">\(j\)</span> (blanca), y finalmente la <span class="math inline">\(b\)</span> (negra). Si quisieras, podrías volver a meter todas las fichas en la bolsa y repetir el experimento, como se muestra en el lado derecho de la figura <a href="#fig-srs1">Figure&nbsp;<span>4.5</span></a>.</p>
+<p>Ahora imaginá que hacés el siguiente “experimento”: agitás la bolsa, cerrás los ojos y sacás 4 fichas, sin devolverlas después de sacarlas. Primero sale la ficha <span class="math inline">\(a\)</span> (negra), luego la <span class="math inline">\(c\)</span> (blanca), después la <span class="math inline">\(j\)</span> (blanca), y finalmente la <span class="math inline">\(b\)</span> (negra). Si quisieras, podrías volver a meter todas las fichas en la bolsa y repetir el experimento, como se muestra en el lado derecho de la figura <a href="#fig-srs1" class="quarto-xref">Figure&nbsp;<span>4.5</span></a>.</p>
 <p>Cada vez vas a obtener resultados distintos, pero el procedimiento es <strong>idéntico</strong> en todos los casos. El hecho de que el mismo procedimiento pueda producir distintos resultados cada vez es lo que hace que lo llamemos un <strong>proceso aleatorio</strong>. Sin embargo, como agitamos la bolsa antes de sacar cualquier ficha, parece razonable pensar que <strong>cada ficha tenía la misma probabilidad de ser elegida</strong>. Un procedimiento en el que <strong>cada miembro de la población tiene la misma probabilidad de ser seleccionado</strong> se llama una <strong>muestra aleatoria simple</strong>.El hecho de que <strong>no</strong> devolvimos las fichas a la bolsa después de sacarlas significa que <strong>no podés observar la misma ficha dos veces</strong>, y en estos casos se dice que las observaciones fueron tomadas <strong>sin reemplazo</strong>.</p>
-<p>Para ayudarte a entender la importancia del procedimiento de muestreo, considerá una alternativa. Supongamos que mi hijo de 5 años abre la bolsa y decide sacar cuatro fichas negras, sin devolver ninguna. Este esquema de muestreo <strong>sesgado</strong> se muestra en la figura <a href="#fig-brs">Figure&nbsp;<span>4.6</span></a>.</p>
+<p>Para ayudarte a entender la importancia del procedimiento de muestreo, considerá una alternativa. Supongamos que mi hijo de 5 años abre la bolsa y decide sacar cuatro fichas negras, sin devolver ninguna. Este esquema de muestreo <strong>sesgado</strong> se muestra en la figura <a href="#fig-brs" class="quarto-xref">Figure&nbsp;<span>4.6</span></a>.</p>
 <div class="cell" data-hash="04-SamplesPopulations_cache/html/fig-brs_61d714b539bdbd7eafc99bc54deb9e8d">
 <div class="cell-output-display">
-<div id="fig-brs" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="imgs/navarro_img/estimation/brs.png" class="img-fluid figure-img" width="412"></p>
-<figcaption class="figure-caption">Figure&nbsp;4.6: Muestreo sesgado sin reemplazo a partir de una población finita.</figcaption>
+<div id="fig-brs" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-brs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="imgs/navarro_img/estimation/brs.png" class="img-fluid figure-img" width="412">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-brs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.6: Muestreo sesgado sin reemplazo a partir de una población finita.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Ahora considerá el valor informativo de observar 4 fichas negras y 0 blancas. Claramente, eso <strong>depende del esquema de muestreo</strong>, ¿no? Si sabés que el procedimiento estaba sesgado a seleccionar solo fichas negras, entonces una muestra compuesta únicamente por fichas negras <strong>no te dice mucho</strong> sobre la población. Por esta razón, a lxs estadísticxs <strong>les encanta</strong> cuando un conjunto de datos puede considerarse una muestra aleatoria simple, porque hace que el análisis de los datos sea <strong>mucho</strong> más fácil.</p>
 <p>Hay un tercer procedimiento que vale la pena mencionar. Esta vez, cerramos los ojos, agitamos la bolsa y sacamos una ficha. <strong>Pero ahora</strong>, registramos la ficha y luego la devolvemos a la bolsa. De nuevo, cerramos los ojos, agitamos la bolsa y sacamos otra ficha. Repetimos este procedimiento hasta tener 4 fichas.</p>
-<p>Los conjuntos de datos generados de esta manera <strong>también</strong> se consideran muestras aleatorias simples, pero como devolvemos las fichas a la bolsa después de cada extracción, se dice que es un muestreo <strong>con reemplazo</strong>. La diferencia con el primer caso es que ahora <strong>es posible observar el mismo miembro de la población más de una vez</strong>, como se muestra en la figura <a href="#fig-srs2">Figure&nbsp;<span>4.7</span></a>.</p>
+<p>Los conjuntos de datos generados de esta manera <strong>también</strong> se consideran muestras aleatorias simples, pero como devolvemos las fichas a la bolsa después de cada extracción, se dice que es un muestreo <strong>con reemplazo</strong>. La diferencia con el primer caso es que ahora <strong>es posible observar el mismo miembro de la población más de una vez</strong>, como se muestra en la figura <a href="#fig-srs2" class="quarto-xref">Figure&nbsp;<span>4.7</span></a>.</p>
 <div class="cell" data-hash="04-SamplesPopulations_cache/html/fig-srs2_ec6b9c50b601fa1e2d0c8e588b60a1bc">
 <div class="cell-output-display">
-<div id="fig-srs2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="imgs/navarro_img/estimation/srs2.png" class="img-fluid figure-img" width="421"></p>
-<figcaption class="figure-caption">Figure&nbsp;4.7: Muestreo aleatorio simple con reemplazo a partir de una población finita.</figcaption>
+<div id="fig-srs2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-srs2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="imgs/navarro_img/estimation/srs2.png" class="img-fluid figure-img" width="421">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-srs2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.7: Muestreo aleatorio simple con reemplazo a partir de una población finita.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1164,7 +1229,7 @@ dnorm(x = 1, mean = 1, sd = 0.1)</code></pre>
 <section id="qué-tan-grave-es-no-tener-una-muestra-aleatoria-simple" class="level3" data-number="4.8.4">
 <h3 data-number="4.8.4" class="anchored" data-anchor-id="qué-tan-grave-es-no-tener-una-muestra-aleatoria-simple"><span class="header-section-number">4.8.4</span> ¿Qué tan grave es no tener una muestra aleatoria simple?</h3>
 <p>Ok, entonces recolectar datos en el mundo real <strong>casi nunca</strong> involucra una muestra aleatoria simple. ¿Y eso importa?</p>
-<p>Con un poco de reflexión, te debería quedar claro que <strong>puede</strong> importar si tus datos <strong>no</strong> son una muestra aleatoria simple: basta con pensar en la diferencia entre la figura <a href="#fig-srs1">Figure&nbsp;<span>4.5</span></a> y la figura <a href="#fig-brs">Figure&nbsp;<span>4.6</span></a>.</p>
+<p>Con un poco de reflexión, te debería quedar claro que <strong>puede</strong> importar si tus datos <strong>no</strong> son una muestra aleatoria simple: basta con pensar en la diferencia entre la figura <a href="#fig-srs1" class="quarto-xref">Figure&nbsp;<span>4.5</span></a> y la figura <a href="#fig-brs" class="quarto-xref">Figure&nbsp;<span>4.6</span></a>.</p>
 <p>Sin embargo, <strong>no es tan grave como suena</strong>. Algunos tipos de muestras sesgadas <strong>no son problemáticos en absoluto</strong>. Por ejemplo, cuando usás muestreo estratificado, en realidad <strong>sabés</strong> cuál es el sesgo porque <strong>vos mismx lo generaste a propósito</strong>, a menudo para hacer que tu estudio sea más efectivo. Y existen técnicas estadísticas que permiten ajustar los análisis para tener en cuenta esos sesgos (¡aunque este libro no las cubre!).</p>
 <p>En general, es importante recordar que el muestreo aleatorio <strong>es un medio para un fin</strong>, no un fin en sí mismo. Supongamos que usaste una muestra por conveniencia, y por eso podés asumir que tiene algún sesgo. Un sesgo en el método de muestreo <strong>solo es problemático si te lleva a sacar conclusiones equivocadas</strong>.</p>
 <p>Desde esa perspectiva, <strong>no necesitamos que la muestra sea aleatoria en absolutamente todos los aspectos</strong>: solo necesitamos que sea aleatoria <strong>en relación al fenómeno psicológico que estamos estudiando</strong>.</p>
@@ -1199,7 +1264,7 @@ dnorm(x = 1, mean = 1, sd = 0.1)</code></pre>
 <p>¿Querés que continúe con la parte siguiente de esta sección?</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-Fisher1922b" class="csl-entry" role="listitem">
 Fisher, R. A. 1922. <span>“On the Mathematical Foundation of Theoretical Statistics.”</span> <em>Philosophical Transactions of the Royal Society A</em> 222: 309–68.
 </div>
@@ -1246,18 +1311,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1289,11 +1343,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/crumplab\.com\/statistics\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1303,8 +1396,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1316,7 +1418,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1360,6 +1585,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1385,6 +1611,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1446,12 +1698,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./03-Correlation.html" class="pagination-link">
+      <a href="./03-Correlation.html" class="pagination-link" aria-label="Correlación">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Correlación</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./05-Foundation_Inference.html" class="pagination-link">
+      <a href="./05-Foundation_Inference.html" class="pagination-link" aria-label="Foundations for inference">
         <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Foundations for inference</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1460,4 +1712,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CrumpLab/statistics/edit/master/04-SamplesPopulations.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>

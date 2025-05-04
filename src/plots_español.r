@@ -162,3 +162,37 @@ gif = ggplot(all_df,aes(x=North_pole,y=South_pole))+
   ease_aes('sine-in-out')
 
 anim_save("imgs/gifs/corRealgif-1_es.gif", animation = animate(gif, width = 480, height = 480, fps = 10))
+
+
+# ----corNormFourNsgif -------------
+
+
+all_df<-data.frame()
+for(sim in 1:10){
+  for(n in c(10,50,100,1000)){
+    North_pole <- rnorm(n,0,1)
+    South_pole <- rnorm(n,0,1)
+    t_df<-data.frame(nsize=rep(n,n),
+                     simulation=rep(sim,n),
+                     North_pole,
+                     South_pole)
+    all_df<-rbind(all_df,t_df)
+  }
+}
+
+
+gif = ggplot(all_df,aes(x=North_pole,y=South_pole))+
+  geom_point()+
+  geom_smooth(method=lm, se=FALSE)+
+  theme_classic()+
+  facet_wrap(~nsize)+
+  transition_states(
+    simulation,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() +
+  exit_shrink() +
+  ease_aes('sine-in-out')
+
+anim_save("imgs/gifs/corNormFourNs-1_es.gif", animation = animate(gif, width = 480, height = 480, fps = 10))
+

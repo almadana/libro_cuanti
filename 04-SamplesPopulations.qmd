@@ -847,15 +847,12 @@ Las densidades en sí **no tienen sentido por sí solas**; pero están “diseñ
 
 Para ser sincerx, eso es más o menos **todo lo que necesitás saber por ahora**.
 
-
 ## Otras distribuciones útiles
 
 Hay muchas otras distribuciones útiles, entre ellas la distribución `t`, la distribución `F` y la distribución chi cuadrado (`χ²`).
 Pronto vamos a aprender más sobre las distribuciones `t` y `F` cuando discutamos los t-tests y los ANOVA en capítulos posteriores.
 
 Perfecto. Gracias por compartir el texto original completo. A continuación te doy la **traducción fiel** de esta sección final, que no habíamos incluido antes:
-
----
 
 ## Resumen sobre la probabilidad
 
@@ -1113,9 +1110,6 @@ y hace lo que puede por compensarlo.
 Decir simplemente “el estudio solo incluyó personas del grupo TAL” **no ayuda en nada**,
 y roza lo insultante para lxs investigadorxs, que probablemente **sí estaban al tanto del problema**,
 pero no disponían de la **infinita cantidad de tiempo y dinero** que haría falta para construir la muestra perfecta. En resumen: si querés ofrecer una crítica **responsable** sobre el muestreo, entonces sé **útil**. Repetir verdades obvias como las que acabo de presentar en esta sección **no sirve de nada**.
-Gracias. A continuación te presento la **traducción fiel** del comienzo de la sección *“Population parameters and sample statistics”*:
-
----
 
 ### Parámetros poblacionales y estadísticas muestrales
 
@@ -1140,7 +1134,7 @@ La idea es muy simple. Supongamos que hablamos de puntuaciones de CI (coeficient
 Para una psicóloga, la población de interés es un grupo de personas reales que tienen puntajes de CI.
 Una estadística “simplifica” eso definiendo operativamente la población como la distribución de probabilidad mostrada en la figura @fig-IQdist (panel a).
 
-```r
+```{r echo=F}
 #| label: fig-IQdist
 #| fig-cap: "Distribución poblacional de puntuaciones de CI (panel a) y dos muestras extraídas al azar de esa población. En el panel b hay una muestra de 100 observaciones; en el panel c, una muestra de 10.000 observaciones."
 #| out-width: "100%"
@@ -1158,13 +1152,1011 @@ La muestra consistiría en una colección de números como esta:
 
 `106 101 98 80 74 ... 107 72 100`
 
-Cada una de estas puntuaciones fue extraída de una distribución normal con media 100 y desviación estándar 15.
-Si dibujo un histograma de la muestra, obtengo algo como lo que se ve en el panel b de la figura @fig-IQdist.
-Como podés ver, el histograma tiene **más o menos** la forma correcta, pero es una aproximación muy burda a la verdadera distribución poblacional del panel a.
+Cada uno de estos puntajes de CI fue extraído de una distribución normal con media 100 y desviación estándar 15.
+Así que, si dibujo un histograma de la muestra, obtengo algo como lo que se muestra en @fig-IQdist \$b\$.
+Como podés ver, el histograma tiene una forma **aproximadamente** correcta, pero es una aproximación bastante burda de la verdadera distribución poblacional que aparece en @fig-IQdist $a$.
+La media de la muestra está bastante cerca de la media poblacional (100), pero no es idéntica.
+En este caso, resulta que las personas de la muestra tienen un CI promedio de 98.5, y la desviación estándar de sus puntajes es 15.9. Estas **estadísticas muestrales** son propiedades del conjunto de datos, y aunque son bastante parecidas a los verdaderos valores poblacionales, no son iguales. **En general, las estadísticas muestrales son las cosas que podés calcular a partir de tus datos, y los parámetros poblacionales son las cosas que querés aprender.** Más adelante en este capítulo vamos a hablar sobre cómo podés estimar los parámetros poblacionales a partir de las estadísticas muestrales,
+y cómo calcular qué tan confiado podés estar en tus estimaciones. Pero antes de llegar a eso, todavía hay algunas ideas de teoría del muestreo que necesitás conocer.
 
-La media muestral es bastante cercana a la media poblacional (100), pero no es idéntica.
-En este caso, resulta que las personas de la muestra tienen un CI medio de 98.5...
+## La ley de los grandes números
+
+En el ejemplo anterior mostramos los resultados de un experimento ficticio sobre CI con un tamaño muestral de $N = 100$.
+Los resultados fueron bastante alentadores: la verdadera media poblacional es 100, y la media muestral fue 98.5, una aproximación bastante razonable.
+En muchos estudios científicos, ese nivel de precisión es perfectamente aceptable,
+pero en otras situaciones quizás necesitemos ser mucho más precisos.
+
+Entonces, si queremos que nuestras estadísticas muestrales se acerquen más a los parámetros poblacionales,
+¿qué podemos hacer?
+
+La respuesta obvia es: recolectar **más datos**.
+
+Supongamos que hacemos un experimento mucho más grande, esta vez midiendo el CI de 10.000 personas.
+Podemos simular los resultados de este experimento usando R y la función `rnorm()`,
+que genera números aleatorios extraídos de una distribución normal.
+
+Para un experimento con tamaño muestral $n = 10000$, y una población con media 100 y desviación estándar 15,
+R puede generar datos simulados de CI así:
+
+```{r}
+IQ <- rnorm(n = 10000, mean = 100, sd = 15)  # generar los CI
+IQ <- round(IQ)  # redondear a números enteros
+```
+
+Y listo, ya generamos 10.000 valores de CI simulados.
+¿Dónde están esos datos? En el objeto `IQ` de tu entorno de trabajo.
+Podés hacer lo mismo en tu propia computadora.
+Ver los 10.000 números sería demasiado, pero podés mirar los primeros 100 así:
+
+```{r}
+print(IQ[1:100])
+```
+
+También podés calcular la media con `mean(IQ)` y la desviación estándar con `sd(IQ)`,
+y hacer un histograma con `hist()`. El histograma de esta muestra mucho más grande se muestra en el panel c de la figura @fig-IQdist.
+Con solo mirarlo, se nota que esta muestra es **una mejor aproximación** a la distribución poblacional real que la muestra más pequeña.
+Eso también se ve en las estadísticas: la media muestral es 99.9 y la desviación estándar es 15.1,
+ambas muy cercanas a los valores reales de la población.
+
+Me siento un poco tonto al decir esto, pero lo que quiero que te lleves de todo esto es que las muestras grandes, en general, te dan mejor información. Me siento tonto porque es tan tremendamente obvio que no debería hacer falta decirlo. De hecho, es tan obvio que cuando Jacob Bernoulli —uno de los fundadores de la teoría de la probabilidad— formalizó esta idea allá por 1713, fue medio un imbécil al respecto. Así fue como describió el hecho de que todos compartimos esta intuición:
+
+> **“Pues incluso el más estúpido de los hombres, por algún instinto natural, por sí mismo y sin ninguna instrucción (lo cual es notable), está convencido de que cuantas más observaciones se han hecho, menor es el peligro de desviarse del objetivo”** (ver Stigler, 1986, p. 65).
+
+Bueno, el pasaje suena un poco condescendiente (por no decir sexista), pero su punto principal es correcto: realmente parece obvio que más datos te van a dar mejores respuestas. La pregunta es: ¿por qué es así? No sorprende que esta intuición que todos compartimos resulta ser correcta, y los estadísticos se refieren a ella como la **ley de los grandes números**. La ley de los grandes números es una ley matemática que se aplica a muchas estadísticas muestrales, pero la forma más simple de entenderla es como una ley sobre promedios. La media muestral es el ejemplo más obvio de una estadística que se basa en promediar (porque eso es justamente lo que es la media), así que vamos a mirar eso. **Aplicada a la media muestral, lo que dice la ley de los grandes números es que a medida que la muestra se hace más grande, la media muestral tiende a acercarse a la media verdadera de la población.** O, dicho de manera un poco más precisa, cuando el tamaño de la muestra "tiende" a infinito (se escribe \$N \rightarrow \infty\$), la media muestral se aproxima a la media poblacional (\$\bar{X} \rightarrow \mu\$).
+
+No tengo intención de torturarte con una demostración de que la ley de los grandes números es cierta, pero es una de las herramientas más importantes de la teoría estadística. Es lo que podemos usar para justificar nuestra creencia de que, si seguimos recolectando más y más datos, eventualmente vamos a llegar a la verdad. Para un conjunto de datos en particular, las estadísticas muestrales que calculemos estarán equivocadas, pero la ley de los grandes números nos dice que si seguimos recolectando más datos, esas estadísticas tenderán a acercarse cada vez más a los verdaderos parámetros de la población.
+
+## Distribuciones muestrales y el teorema central del límite
+
+La ley de los grandes números es una herramienta muy poderosa, pero no alcanza para responder todas nuestras preguntas. Entre otras cosas, lo único que nos ofrece es una “garantía en el largo plazo”. A largo plazo, si de alguna manera pudiéramos recolectar una cantidad infinita de datos, entonces la ley de los grandes números garantiza que nuestras estadísticas muestrales serán correctas. Pero como John Maynard Keynes argumentó con razón en economía, una garantía en el largo plazo tiene poca utilidad en la vida real:
+
+> **\[El] largo plazo es una guía engañosa para los asuntos actuales. A largo plazo, todos estaremos muertos. Los economistas se asignan una tarea demasiado fácil, y por lo tanto inútil, si en tiempos tormentosos sólo pueden decirnos que, cuando la tormenta haya pasado hace tiempo, el océano volverá a estar calmo.**
+> — @Keynes1923 \[p.80]
+
+Lo mismo que en economía vale también para la psicología y la estadística. No basta con saber que **eventualmente** llegaremos a la respuesta correcta al calcular la media muestral. Saber que un conjunto de datos infinitamente grande nos dará el valor correcto no resuelve nuestros problemas prácticos en el presente. Saber que un conjunto de datos infinitamente grande me dará el valor exacto de la media poblacional no es precisamente reconfortante cuando mi conjunto de datos **real** tiene un tamaño de muestra de \$N=100\$. En la vida real, entonces, necesitamos saber algo sobre el comportamiento de la media muestral cuando se calcula a partir de un conjunto de datos más modesto.
+
+### Distribución muestral de las medias muestrales
+
+“Oh no, ¿qué es la distribución muestral de las medias muestrales? ¿Eso siquiera se puede decir en inglés?”. Sí, lamentablemente, se puede. La **distribución muestral de las medias muestrales** es la próxima cosa más importante que vas a tener que entender. ES TAN IMPORTANTE QUE ES NECESARIO ESCRIBIRLO TODO EN MAYÚSCULAS. Solo resulta confuso al principio porque es largo y usa "muestreo" y "muestra" en la misma frase.
+
+No te preocupes, ya te venimos preparando para esto. Sabés lo que es una **distribución**, ¿no? Es de donde salen los números. Determina qué números ocurren más o menos seguido, o con la misma frecuencia. Y también sabés qué es una **muestra**, ¿no? Es un conjunto de números que tomamos de una distribución. Entonces, ¿qué sería la distribución muestral de las medias muestrales? 
+
+Primero: ¿a qué nos referimos con “medias muestrales”? Bueno, si tomás una muestra de números, tenés un conjunto de valores… y podés calcular la media de esos valores. Eso es la **media muestral**. Simple.
+
+Ahora bien, ¿qué es esa “distribución” de la que hablamos? Imaginá que tomás muchas muestras distintas: una por acá, otra por allá, muchas más. De cada muestra, podés calcular su media. Y entonces tenés muchas medias. ¿Cómo se ven esas medias? Si las ponés en un histograma, lo vas a saber. Y eso que estarías viendo —más o menos— es una distribución: la **distribución muestral de las medias muestrales**.
+
+“Más o menos te sigo… pero, ¿por qué haría esto en vez de mirar Netflix…?” Porque la distribución muestral de las medias te da una nueva manera de entender el azar. Una que podés manejar, igual que manejás el control remoto, si apretás los botones de diseño adecuados.
+
+### Viendo las partes
+
+Para construir una distribución muestral de medias muestrales, solo necesitamos lo siguiente:
+
+1. Una distribución de donde tomar los números
+2. Un montón de muestras diferentes extraídas de esa distribución
+3. Calcular la media de cada una de esas muestras
+4. Juntar todas esas medias muestrales y graficarlas en un histograma
 
 ---
 
-¿Querés que continúe con la parte siguiente de esta sección?
+**Pregunta para vos:** ¿Cómo pensás que se va a ver la distribución muestral de las medias? ¿Va a tener la misma forma que la distribución original de la que salieron las muestras? ¿O no? Buena pregunta, pensalo.
+
+---
+
+Hagamos esas cuatro cosas. Vamos a tomar números de una distribución uniforme. La figura `@fig-4Unif` muestra la distribución uniforme usada para muestrear números enteros del 1 al 10:
+
+```{r echo=F}
+#| label: fig-4Unif
+#| fig-cap: " Ilustración de las probabilidades de muestreo para los números del 1 al 10. En una distribución uniforme, todos los números tienen igual probabilidad,  así que la línea es plana, indicando que todos tienen la misma chance."
+library(ggplot2)
+x <- 1:10
+y <- rep(1/10, 10)  # todos los valores tienen la misma probabilidad
+uniform_df <- data.frame(x, y)
+ggplot(uniform_df, aes(x = x, y = y)) +
+  geom_col(fill = "steelblue") +
+  theme_minimal() +
+  labs(x = "Valor", y = "Probabilidad")
+```
+
+La figura `@fig-4sample20unif` anima el proceso de tomar un montón de muestras de la distribución uniforme. Vamos a fijar el tamaño de muestra en 20. Es más fácil ver cómo se comporta la media muestral en una animación. Cada histograma muestra una nueva muestra. La línea roja indica dónde está la media de esa muestra. Las muestras son todas bastante distintas entre sí, pero la línea roja no se mueve mucho: siempre queda cerca del centro. Sin embargo, sí se desplaza un poco, y esa variabilidad es lo que llamamos la **distribución muestral de la media muestral**.
+
+
+
+```r
+library(ggplot2)
+
+df <- data.frame(a = 1:10, b = seq(.1, 1, .1))
+df$a <- as.factor(df$a)
+
+ggplot(df, aes(x = a, y = b)) +
+  geom_point(color = "white") +
+  geom_hline(yintercept = .1) +
+  scale_y_continuous(limits = c(0, 1), breaks = seq(0, 1, by = .1)) +
+  theme_classic() +
+  ylab("Probabilidad") +
+  xlab("Número") +
+  ggtitle("Distribución uniforme para los números del 1 al 10")
+```
+
+La figura `@fig-4sample20unif` anima el proceso de tomar muchas muestras de la distribución uniforme. Vamos a fijar el tamaño de muestra en 20. Es más fácil ver cómo se comporta la media muestral en una animación. Cada histograma muestra una nueva muestra. La línea roja indica la media de esa muestra. Las muestras entre sí son muy diferentes, pero la línea roja no se mueve tanto: siempre se queda más o menos cerca del centro. Sin embargo, sí se mueve un poco, y esa variación es lo que llamamos la **distribución muestral de la media muestral**.
+
+::: {.content-visible when-format="html"}
+
+```{r}
+#| label: fig-4sample20unif
+#| fig-cap: "Animación que muestra histogramas para diferentes muestras de tamaño 20 tomadas de la distribución uniforme. La línea roja indica la media de cada muestra."
+
+knitr::include_graphics(path = "imgs/gifs/sampleHistUnif-1.gif")
+```
+:::
+
+
+OK, ¿qué tenemos acá? Tenemos una animación de 10 muestras diferentes. Cada muestra tiene 20 observaciones, que están resumidas en los histogramas que aparecen en la animación. Cada histograma tiene una línea roja. Esa línea roja muestra dónde está ubicada la media de esa muestra. Así que hemos calculado las medias muestrales de 10 muestras distintas tomadas de una distribución uniforme.
+
+**Primera pregunta:** ¿Las medias muestrales son todas iguales?
+La respuesta es no. Aunque son todas más o menos parecidas, están todas alrededor de cinco, más o menos un par de unidades. Esto es interesante. Aunque nuestras muestras se ven bastante diferentes entre sí, las medias de esas muestras se ven más similares que distintas.
+
+**Segunda pregunta:** ¿Qué deberíamos hacer con las medias de nuestras muestras?
+Bueno, ¿qué tal si las juntamos todas y graficamos un histograma de ellas? Eso nos permitiría ver cómo se ve la distribución de las medias muestrales. El próximo histograma muestra exactamente eso. Solo que, en lugar de tomar 10 muestras, vamos a tomar 10.000. Y para cada una vamos a calcular su media. Así que vamos a tener 10.000 medias muestrales. La figura `@fig-4unifmany` muestra ese histograma:
+
+```{r}
+#| label: fig-4unifmany
+#| fig-cap: "Histograma de las medias muestrales de 10.000 muestras (de tamaño 20) tomadas de una distribución uniforme de números del 1 al 10. La media esperada es 5.5, y el histograma está centrado en 5.5. La media de cada muestra no es siempre 5.5 debido al error muestral o al azar."
+
+a <- round(runif(20 * 10000, 1, 10))
+df <- data.frame(a, sample = rep(1:10000, each = 20))
+df2 <- aggregate(a ~ sample, df, mean)
+
+ggplot(df2, aes(x = a)) +
+  geom_histogram(color = "white") +
+  theme_classic(base_size = 15) +
+  ggtitle("Histograma de 10.000 medias muestrales") +
+  xlab("valor")
+```
+
+“Pará, ¿qué? Esto no tiene sentido. Pensé que estábamos tomando muestras de una distribución uniforme. Las distribuciones uniformes son planas. ESTO NO SE PARECE A UNA DISTRIBUCIÓN PLANA, ¿QUÉ ESTÁ PASANDO, AAAAAGGGHH.” Te entendemos. Te juro que sí.
+
+
+Recordá que estamos mirando la distribución de las **medias muestrales**. Y sí, es cierto que esta distribución no se parece a la distribución original de la que tomamos las muestras. Nuestra distribución de medias muestrales sube y baja. De hecho, esto es lo que ocurre casi siempre con las distribuciones de medias muestrales. Este hecho se conoce como el **teorema central del límite**, del que hablaremos más adelante.
+
+Por ahora, hablemos de lo que está pasando. Recordá que hemos estado muestreando números entre 1 y 10. Se supone que cada número debería aparecer con aproximadamente la misma frecuencia, porque estamos usando una distribución uniforme. Entonces, supongamos que tomamos una muestra de 10 números, y por casualidad obtuvimos uno de cada uno del 1 al 10:
+
+`1 2 3 4 5 6 7 8 9 10`
+
+¿Cuál es la media de esos números? Bueno, es 1+2+3+4+5+6+7+8+9+10 = 55, y 55 / 10 = 5.5.
+Imaginá que tomamos una muestra más grande, digamos de 20 números, y de nuevo obtenemos exactamente 2 de cada número. ¿Cuál sería la media? Sería (1+2+3+4+5+6+7+8+9+10)×2 = 110, y 110 / 20 = 5.5. Sigue siendo 5.5.
+
+Podés ver que el valor medio de nuestra distribución uniforme es 5.5. Ahora que sabemos esto, podríamos esperar que la mayoría de nuestras muestras tengan una media cercana a ese número. Ya sabemos que ninguna muestra va a ser perfecta, y no va a tener exactamente la misma cantidad de cada número. Así que esperamos que la media de nuestras muestras varíe un poco. El histograma que hicimos muestra justamente esa variación. Como era de esperar, los valores se agrupan en torno al 5.5.
+
+
+### ¡Las distribuciones muestrales existen para cualquier estadístico muestral!
+
+Algo importante a tener en cuenta cuando hablamos de distribuciones muestrales es que **cualquier** estadístico muestral que quieras calcular tiene su propia distribución muestral. Por ejemplo, supongamos que cada vez que tomás una muestra de números, anotás el valor más alto de esa muestra. Si repetís esto muchas veces, vas a obtener una distribución muestral completamente distinta: la **distribución muestral del máximo**.
+
+Podrías calcular el número más pequeño, o la moda, o la mediana, o la varianza, o el desvío estándar, o cualquier otra cosa a partir de tu muestra. Luego podrías repetir ese procedimiento muchas veces y obtener la **distribución muestral** de esos estadísticos. ¡Qué genial!
+
+Solo por diversión, acá van algunas distribuciones muestrales para distintos estadísticos. Vamos a tomar una distribución normal con media = 100 y desvío estándar = 20. Luego tomamos muchas muestras de tamaño n = 50 (50 observaciones por muestra). Guardamos todos los estadísticos muestrales y graficamos sus histogramas en la figura `@fig-4samplestats`. Hagámoslo:
+
+```{r echo=F}
+#| label: fig-4samplestats
+#| fig-cap: "Cada panel muestra un histograma de un estadístico muestral distinto"
+#| out.width: "100%"
+
+all_df <- data.frame()
+for (i in 1:10000) {
+  sample <- rnorm(50, 100, 20)
+  sample_mean <- mean(sample)
+  sample_sd <- sd(sample)
+  sample_max <- max(sample)
+  sample_median <- median(sample)
+  t_df <- data.frame(i, sample_mean, sample_sd, sample_max, sample_median)
+  all_df <- rbind(all_df, t_df)
+}
+
+library(ggpubr)
+a <- ggplot(all_df, aes(x = sample_mean)) +
+  geom_histogram(color = "white") +
+  theme_classic(base_size = 20)+
+  labs(x="Media muestral")
+b <- ggplot(all_df, aes(x = sample_sd)) +
+  geom_histogram(color = "white") +
+  theme_classic(base_size = 20) +
+  labs(x="Desvío muestral")
+c <- ggplot(all_df, aes(x = sample_max)) +
+  geom_histogram(color = "white") +
+  theme_classic(base_size = 20)+
+  labs(x="Máximo muestral")
+d <- ggplot(all_df, aes(x = sample_median)) +
+  geom_histogram(color = "white") +
+  theme_classic(base_size = 20) +
+  labs(x="Mediana muestral")
+
+ggarrange(a, b, c, d, ncol = 2, nrow = 2)
+```
+
+Acabamos de calcular 4 distribuciones muestrales diferentes: para la media, el desvío estándar, el valor máximo y la mediana. Si mirás rápido los histogramas, podrías pensar que todos se ven más o menos iguales. Pero esperá un segundo. Es muy importante mirar los ejes x. Son diferentes. Por ejemplo, la media muestral va aproximadamente de 90 a 110, mientras que el desvío estándar va de 15 a 25.
+
+Estas distribuciones muestrales son súper importantes, y vale la pena pensarlas bien. ¿En qué deberías pensar? Bueno, acá va una pista: estas distribuciones te están diciendo qué podés esperar de tu muestra. Y lo más importante: te están diciendo qué deberías esperar cuando tomás una muestra **de una distribución específica**, en este caso, una distribución normal con media 100 y desvío estándar 20.
+
+¿Qué aprendimos? Aprendimos muchísimo. Aprendimos que podemos esperar que nuestra muestra tenga una media más o menos entre 90 y 108. Notá que las medias muestrales nunca son más extremas que eso. Aprendimos que nuestras muestras normalmente van a tener cierta variabilidad, y que el desvío estándar va a estar entre 15 y 25 (nunca mucho más allá). También vemos que, a veces, obtenemos valores grandes —digamos entre 120 y 180— pero no mucho más que eso. Y que la mediana es bastante similar a la media.
+
+Entonces, si alguna vez tomás una muestra de 50 números y tus estadísticas descriptivas caen dentro de esos rangos, es razonable suponer que esa muestra podría venir de una distribución como esta. Pero si tus estadísticas son muy distintas, es probable que **no** vengan de esta distribución. Usando simulaciones, podemos ver cómo se ven las muestras cuando provienen de ciertas distribuciones, y eso nos permite hacer inferencias sobre el origen de nuestros datos.
+
+Veamos ahora una linda animación para ver todo esto en acción. Vamos a tomar muestras de una distribución normal. La figura `@fig-4samplingmean` tiene cuatro paneles, cada uno representando un tamaño de muestra distinto (n): 10, 50, 100 y 1000. La línea roja muestra la forma de la distribución normal. Las barras grises muestran un histograma de cada una de las muestras que tomamos. La línea roja muestra la media de una muestra individual (es decir, el centro del histograma en gris). Como podés ver, la línea roja se mueve bastante, especialmente cuando el tamaño de la muestra es pequeño (10).
+
+Lo nuevo acá son las barras azules y las líneas azules. Las barras azules representan la **distribución muestral de la media muestral**. Por ejemplo, en el panel con tamaño de muestra 10, vemos un montón de barras azules: es un histograma de 10 medias muestrales, cada una calculada a partir de una muestra de tamaño 10. En el panel de n = 50, vemos un histograma de 50 medias muestrales, tomadas de 50 muestras de tamaño 50, y así sucesivamente. La línea azul en cada panel es la media de esas medias muestrales (“¡aaaaagh, es una media de medias!”… sí, lo es).
+
+::: {.content-visible when-format="html"}
+```r
+#| label: fig-4samplingmean
+#| fig-cap: "Animación de muestras (el histograma gris muestra la frecuencia de los datos en cada muestra) y de la distribución muestral de la media (histograma azul de medias muestrales de muchas muestras). Cada muestra proviene de la distribución normal mostrada en rojo. La línea roja móvil es la media de una muestra individual. La línea azul es la media del histograma azul, que representa la distribución muestral de la media para muchas muestras."
+
+knitr::include_graphics(path = "imgs/gifs/sampleDistNormal-1.gif")
+```
+:::
+
+
+
+```{r echo=F, eval=F}
+# Esta función genera medias muestrales a partir de múltiples muestras
+get_sampling_means <- function(m, sd, s_size) {
+  save_means <- length(s_size)
+  for (i in 1:s_size) {
+    save_means[i] <- mean(rnorm(s_size, m, sd))
+  }
+  return(save_means)
+}
+
+# Creamos un data frame para guardar todo
+all_df <- data.frame()
+
+# Simulamos para distintos tamaños de muestra y múltiples repeticiones
+for (sims in 1:10) {
+  for (n in c(10, 50, 100, 1000)) {
+    sample <- rnorm(n, 0, 1)
+    sample_means <- get_sampling_means(0, 1, n)
+    t_df <- data.frame(
+      sims = rep(sims, n),
+      sample = sample,
+      sample_means = sample_means,
+      n = rep(n, n)
+    )
+    all_df <- rbind(all_df, t_df)
+  }
+}
+```
+
+Perfecto, acá va la traducción del código original que genera la animación, con los comentarios en español:
+
+```r
+# Esta función genera medias muestrales a partir de múltiples muestras
+get_sampling_means <- function(m, sd, s_size) {
+  save_means <- length(s_size)
+  for (i in 1:s_size) {
+    save_means[i] <- mean(rnorm(s_size, m, sd))
+  }
+  return(save_means)
+}
+
+# Creamos un data frame para guardar todo
+all_df <- data.frame()
+
+# Simulamos para distintos tamaños de muestra y múltiples repeticiones
+for (sims in 1:10) {
+  for (n in c(10, 50, 100, 1000)) {
+    sample <- rnorm(n, 0, 1)
+    sample_means <- get_sampling_means(0, 1, n)
+    t_df <- data.frame(
+      sims = rep(sims, n),
+      sample = sample,
+      sample_means = sample_means,
+      n = rep(n, n)
+    )
+    all_df <- rbind(all_df, t_df)
+  }
+}
+```
+
+Perfecto, acá sigue la traducción del bloque de código y del texto que le sigue:
+
+---
+
+```r
+              sample_means,
+              sample_size = rep(n, n),
+              sample_mean = rep(mean(sample), n),
+              sampling_mean = rep(mean(sample_means), n)
+    )
+    all_df <- rbind(all_df, t_df)
+  }
+}
+
+ggplot(all_df, aes(x = sample)) +
+  geom_histogram(aes(y = (..density..) / max(..density..)^.8),
+                 color = "white", fill = "grey") +
+  geom_histogram(aes(x = sample_means, y = (..density..) / max(..density..)),
+                 fill = "blue", color = "white", alpha = .5) +
+  stat_function(fun = dnorm,
+                args = list(mean = 0, sd = 1),
+                lwd = .75,
+                col = 'red') +
+  geom_vline(aes(xintercept = sample_mean, frame = sims), color = "red") +
+  geom_vline(aes(xintercept = sampling_mean, frame = sims), color = "blue") +
+  facet_wrap(~sample_size) +
+  xlim(-3, 3) +
+  theme_classic() +
+  ggtitle("Población (rojo), muestras (gris),\n y distribución muestral de la media (azul)") +
+  ylab("Verosimilitudes aproximadas") +
+  xlab("valor") +
+  transition_states(
+    sims,
+    transition_length = 2,
+    state_length = 1
+  ) +
+  enter_fade() +
+  exit_shrink() +
+  ease_aes('sine-in-out')
+```
+
+
+¿Qué deberías notar? Fijate que el rango de las barras azules se reduce a medida que el tamaño de muestra aumenta. La distribución muestral de la media es bastante ancha cuando el tamaño de muestra es 10, se estrecha al aumentar a 50 y 100, y es prácticamente una sola barra en el centro cuando el tamaño llega a 1000. Lo que estamos viendo es que la media de la distribución muestral se aproxima a la media poblacional a medida que crece el tamaño de la muestra.
+
+Entonces, la distribución muestral de la media es otra distribución, y tiene cierta varianza. Varía más cuando el tamaño de muestra es pequeño, y varía menos cuando el tamaño es grande. Podemos cuantificar este efecto calculando el **desvío estándar de la distribución muestral**, que se conoce como el **error estándar**. El error estándar de un estadístico suele abreviarse como *SE*, y como habitualmente nos interesa el error estándar de la **media muestral**, usamos la sigla **SEM** (*standard error of the mean*). Como podés ver claramente en la animación, a medida que el tamaño de muestra \$N\$ aumenta, el SEM disminuye.
+
+Bueno, eso es una parte de la historia. Sin embargo, hay algo que hemos estado dejando un poco de lado. Ya lo vimos antes, pero vale la pena volver a observarlo. Acá va el punto clave: **no importa qué forma tenga tu distribución poblacional**, a medida que \$N\$ aumenta, la distribución muestral de la media empieza a parecerse más y más a una distribución normal. Eso es el **teorema central del límite**. Para ver el teorema central del límite en acción, vamos a mirar algunos histogramas de medias muestrales provenientes de diferentes tipos de distribuciones. Es muy importante recordar que lo que estás viendo son **distribuciones de medias muestrales**, no distribuciones de valores individuales.
+
+Empecemos. La figura `@fig-4sampledistmeannorm` muestra un muestreo a partir de una distribución normal. La línea roja es la distribución normal de la que se extraen las muestras. Para cada muestra se calcula la media, y la distribución de esas medias se muestra con las barras azules. Notá que la forma de la línea roja y de las barras azules es similar: ambas se ven como una distribución normal.
+
+
+```{r echo=F}
+#| label: fig-4sampledistmeannorm
+#| fig-cap: "Comparación entre dos distribuciones normales y los histogramas de la distribución muestral de la media para distintos tamaños de muestra. El rango de la distribución muestral de la media se achica a medida que el tamaño de la muestra aumenta."
+
+# Esta función genera 'iter' medias muestrales a partir de muestras de tamaño 's_size'
+get_sampling_means <- function(m, sd, s_size, iter) {
+  save_means <- length(iter)
+  for (i in 1:iter) {
+    save_means[i] <- mean(rnorm(s_size, m, sd))
+  }
+  return(save_means)
+}
+
+all_df <- data.frame()
+sims <- 1
+
+# Vamos a probar con dos tamaños de muestra: 10 y 50
+for (n in c(10, 50)) {
+  sample <- rnorm(n, 0, 1)  # muestra individual
+  sample_means <- get_sampling_means(0, 1, n, 1000)  # 1000 medias muestrales
+  t_df <- data.frame(
+    sims = rep(sims, 1000),
+    sample = sample,
+    sample_means = sample_means,
+    sample_size = rep(n, 1000),
+    sample_mean = rep(mean(sample), 1000),
+    sampling_mean = rep(mean(sample_means), 1000)
+  )
+  all_df <- rbind(all_df, t_df)
+}
+```
+Hagámoslo de nuevo. Esta vez vamos a tomar muestras de una distribución uniforme plana, representada por la línea roja. Sin embargo, la figura `@fig-4samplemeanunif` muestra que la distribución de las medias muestrales, representada por las barras azules, **no** es plana: se parece a una distribución normal.
+
+```{r echo=F}
+#| label: fig-4samplemeanunif
+#| fig-cap: "Ilustración de que la forma de la distribución muestral de la media es normal, incluso cuando las muestras provienen de una distribución no normal (en este caso, uniforme)"
+#| out-width: "100%"
+
+# Función para obtener medias muestrales a partir de muestras tomadas de una distribución uniforme
+get_sampling_means <- function(mn, mx, s_size, iter) {
+  save_means <- length(iter)
+  for (i in 1:iter) {
+    save_means[i] <- mean(runif(s_size, mn, mx))
+  }
+  return(save_means)
+}
+
+all_df <- data.frame()
+sims <- 1
+
+# Tamaños de muestra: 10 y 50
+for (n in c(10, 50)) {
+  sample <- rnorm(n, 0, 1)  # Nota: el código original genera normales, pero el histograma usa medias de uniformes
+  sample_means <- get_sampling_means(0, 1, n, 1000)
+  t_df <- data.frame(
+    sims = rep(sims, 1000),
+    sample,
+    sample_means,
+    sample_size = rep(n, 1000),
+    sample_mean = rep(mean(sample), 1000),
+    sampling_mean = rep(mean(sample_means), 1000)
+  )
+  all_df <- rbind(all_df, t_df)
+}
+
+# Gráfico de la distribución muestral de la media
+ggplot(all_df, aes(x = sample)) +
+  geom_histogram(
+    aes(x = sample_means, y = (..density..) / max(..density..)),
+    fill = "blue", color = "white", alpha = .5, bins = 75
+  ) +
+  geom_hline(yintercept = .1, color = "red") +
+  facet_wrap(~sample_size) +
+  xlim(0, 1) +
+  theme_classic(base_size = 20) +
+  ggtitle("Distribución muestral de la media\n para muestras tomadas de una distribución uniforme")
+```
+
+Una vez más, ahora con una **distribución exponencial** (mostrada en rojo), donde es más probable que se muestren valores pequeños que grandes. Aunque muchos más números en cada muestra serán pequeños en comparación con los grandes, según la figura `@fig-4samplemeanExp`, la distribución muestral de la media **no** se parece a la línea roja. En cambio, la distribución muestral de la media se parece a una curva en forma de campana: una distribución normal. Esto es el **teorema central del límite** en acción.
+
+```{r}
+#| label: fig-4samplemeanExp
+#| fig-cap: "Ilustración de que la forma de la distribución muestral de la media es normal, incluso cuando las muestras provienen de una distribución exponencial"
+
+# Función para obtener medias muestrales a partir de una distribución exponencial
+get_sampling_means <- function(s_size, r, iter) {
+  save_means <- length(iter)
+  for (i in 1:iter) {
+    save_means[i] <- mean(rexp(s_size, r))
+  }
+  return(save_means)
+}
+
+all_df <- data.frame()
+sims <- 1
+
+# Tamaños de muestra: 10 y 50
+for (n in c(10, 50)) {
+  sample <- rnorm(n, 0, 1)  # Nota: como antes, sample no se usa luego
+  sample_means <- get_sampling_means(n, 2, 1000)
+  t_df <- data.frame(
+    sims = rep(sims, 1000),
+    sample,
+    sample_means,
+    sample_size = rep(n, 1000),
+    sample_mean = rep(mean(sample), 1000),
+    sampling_mean = rep(mean(sample_means), 1000)
+  )
+  all_df <- rbind(all_df, t_df)
+}
+
+ggplot(all_df, aes(x = sample)) +
+  geom_histogram(
+    aes(x = sample_means, y = (..density..) / max(..density..)),
+    fill = "blue", color = "white", alpha = .5, bins = 75
+  ) +
+  stat_function(fun = dexp,
+                args = list(rate = 2),
+                lwd = .75,
+                col = "red") +
+  facet_wrap(~sample_size) +
+  xlim(0, 1) +
+  theme_classic() +
+  ggtitle("Distribución muestral de la media\n para muestras tomadas de una distribución exponencial") +
+  ylab("Verosimilitudes aproximadas") +
+  xlab("valor")
+```
+
+
+A partir de estas figuras, parece que tenemos evidencia para las siguientes afirmaciones sobre la distribución muestral de la media:
+
+- La **media** de la distribución muestral es igual a la media de la población
+
+- El **desvío estándar** de la distribución muestral (es decir, el error estándar) se **reduce** a medida que aumenta el tamaño de la muestra
+
+- La **forma** de la distribución muestral se vuelve **normal** a medida que aumenta el tamaño de la muestra
+
+Y resulta que no solo estas afirmaciones son verdaderas: hay un teorema muy famoso en estadística que las demuestra a todas, conocido como el **teorema central del límite**. Entre otras cosas, este teorema nos dice que si la distribución poblacional tiene media \$\mu\$ y desvío estándar \$\sigma\$, entonces la distribución muestral de la media también tiene media \$\mu\$, y su error estándar es:
+
+$$
+\text{SEM} = \frac{\sigma}{\sqrt{N}}
+$$
+
+Como se divide el desvío estándar poblacional \$\sigma\$ por la raíz cuadrada del tamaño muestral \$N\$, el SEM disminuye al aumentar el tamaño de la muestra. También nos dice que la forma de la distribución muestral **tiende a ser normal**.
+
+Este resultado es útil para todo tipo de cosas. Nos explica por qué los experimentos grandes son más confiables que los pequeños, y como nos da una fórmula explícita para el error estándar, también nos dice **cuánto** más confiables son. También nos explica por qué la distribución normal es, bueno... *normal*. En los experimentos reales, muchas de las cosas que queremos medir son en realidad **promedios** de un montón de variables diferentes (por ejemplo, uno podría decir que la inteligencia “general” medida por el CI es un promedio de muchas habilidades y aptitudes “específicas”), y cuando eso pasa, el valor promedio tiende a seguir una distribución normal. Por eso, esta ley matemática hace que la distribución normal aparezca una y otra vez en datos reales.
+
+
+## Puntajes z
+
+Ahora estamos en condiciones de combinar algunas de las cosas que vimos en este capítulo, e introducirte a una nueva herramienta: los **puntajes z** (*z-scores*). No podés hacer un curso de estadística sin aprender sobre los **puntajes z**.
+
+Vamos a observar una distribución normal en la figura `@fig-4normalSDspercents`, y vamos a trazar líneas en la distribución en 0, ±1, ±2 y ±3 desviaciones estándar desde la media:
+
+```{r}
+#| label: fig-4normalSDspercents
+#| fig-cap: "Una distribución normal. Cada línea representa una desviación estándar desde la media. Las etiquetas muestran la proporción de puntajes que caen entre cada barra."
+
+dnorm_vec <- dnorm(seq(-5, 5, .1), mean = 0, sd = 1)
+x_range   <- seq(-5, 5, .1)
+t_df <- data.frame(x_range, dnorm_vec)
+
+ggplot(t_df, aes(x = x_range, y = dnorm_vec)) +
+  geom_line() +
+  geom_vline(xintercept = 0) +
+  geom_vline(xintercept = c(-3, -2, -1, 1, 2, 3)) +
+  theme_classic() +
+  ylab("Densidad") +
+  xlab("Puntaje") +
+  scale_x_continuous(breaks = seq(-5, 5, 1)) +
+  geom_label(data = data.frame(x = -0.5, y = .3,
+    label = round(pnorm(c(0, 1), 0, 1)[2] - pnorm(c(0, 1), 0, 1)[1], 3)),
+    aes(x = x, y = y, label = label)) +
+  geom_label(data = data.frame(x = 0.5, y = .3,
+    label = round(pnorm(c(0, 1), 0, 1)[2] - pnorm(c(0, 1), 0, 1)[1], 3)),
+    aes(x = x, y = y, label = label)) +
+  geom_label(data = data.frame(x = -1.5, y = .3,
+    label = round(pnorm(c(1, 2), 0, 1)[2] - pnorm(c(1, 2), 0, 1)[1], 3)),
+    aes(x = x, y = y, label = label)) +
+  geom_label(data = data.frame(x = 1.5, y = .3,
+    label = round(pnorm(c(1, 2), 0, 1)[2] - pnorm(c(1, 2), 0, 1)[1], 3)),
+    aes(x = x, y = y, label = label)) +
+  geom_label(data = data.frame(x = -2.5, y = .3,
+    label = round(pnorm(c(2, 3), 0, 1)[2] - pnorm(c(2, 3), 0, 1)[1], 3)),
+    aes(x = x, y = y, label = label)) +
+  geom_label(data = data.frame(x = 2.5, y = .3,
+    label = round(pnorm(c(2, 3), 0, 1)[2] - pnorm(c(2, 3), 0, 1)[1], 3)),
+    aes(x = x, y = y, label = label)) +
+  geom_label(data = data.frame(x = -3.5, y = .3,
+    label = round(pnorm(c(3, 4), 0, 1)[2] - pnorm(c(3, 4), 0, 1)[1], 3)),
+    aes(x = x, y = y, label = label)) +
+  geom_label(data = data.frame(x = 3.5, y = .3,
+    label = round(pnorm(c(3, 4), 0, 1)[2] - pnorm(c(3, 4), 0, 1)[1], 3)),
+    aes(x = x, y = y, label = label))
+```
+
+La figura muestra una distribución normal con media = 0 y desvío estándar = 1. Trazamos líneas en cada desviación estándar: -3, -2, -1, 0, 1, 2 y 3. También mostramos algunos números en las etiquetas entre cada línea. Esos números son proporciones. Por ejemplo, vemos que la proporción entre 0 y 1 es 0.341: es decir, los puntajes entre 0 y 1 ocurren el 34.1% del tiempo. Los puntajes entre -1 y 1 ocurren el 68.2% del tiempo, lo cual es más de la mitad. Los puntajes entre 1 y 2 ocurren aproximadamente el 13.6% del tiempo, y los que están entre 2 y 3 ocurren aún menos: solo el 2.1%.
+
+Las distribuciones normales **siempre** tienen estas propiedades, incluso cuando tienen distintas medias y desviaciones estándar. Por ejemplo, mirá la distribución normal en la figura `@fig-4normalSDspercentsB`, que tiene media = 100 y desvío estándar = 25.
+
+Tenés razón, gracias por señalarlo. Acá va la traducción fiel del código de la figura `fig-4normalSDspercentsB` con comentarios en español:
+
+```{r eval=F}
+#| label: fig-4normalSDspercentsB
+#| fig-cap: "Una distribución normal. Cada línea representa una desviación estándar desde la media. Las etiquetas muestran la proporción de puntajes que caen entre cada barra."
+
+# Creamos la curva de densidad para una normal con media 100 y sd 25
+dnorm_vec <- dnorm(seq(0, 200, .1), mean = 100, sd = 25)
+x_range   <- seq(0, 200, .1)
+t_df <- data.frame(x_range, dnorm_vec)
+
+ggplot(t_df, aes(x = x_range, y = dnorm_vec)) +
+  geom_line() +
+  geom_vline(xintercept = 100) +
+  geom_vline(xintercept = c(25, 50, 75, 125, 150, 175)) +
+  theme_classic() +
+  ylab("Densidad") +
+  xlab("Puntaje") +
+  scale_x_continuous(breaks = seq(0, 200, 25)) +
+  geom_label(data = data.frame(x = 87.5, y = 0.01,
+    label = round(pnorm(c(0, 1), 0, 1)[2] - pnorm(c(0, 1), 0, 1)[1], 3)),
+    aes(x = x, y = y, label = label)) +
+  geom_label(data = data.frame(x = 112.5, y = 0.01,
+    label = round(pnorm(c(0, 1), 0, 1)[2] - pnorm(c(0, 1), 0, 1)[1], 3)),
+    aes(x = x, y = y, label = label)) +
+  geom_label(data = data.frame(x = 62.5, y = 0.01,
+    label = round(pnorm(c(1, 2), 0, 1)[2] - pnorm(c(1, 2), 0, 1)[1], 3)),
+    aes(x = x, y = y, label = label)) +
+  geom_label(data = data.frame(x = 137.5, y = 0.01,
+    label = round(pnorm(c(1, 2), 0, 1)[2] - pnorm(c(1, 2), 0, 1)[1], 3)),
+    aes(x = x, y = y, label = label)) +
+  geom_label(data = data.frame(x = 37.5, y = 0.01,
+    label = round(pnorm(c(2, 3), 0, 1)[2] - pnorm(c(2, 3), 0, 1)[1], 3)),
+    aes(x = x, y = y, label = label)) +
+  geom_label(data = data.frame(x = 162.5, y = 0.01,
+    label = round(pnorm(c(2, 3), 0, 1)[2] - pnorm(c(2, 3), 0, 1)[1], 3)),
+    aes(x = x, y = y, label = label)) +
+  geom_label(data = data.frame(x = 12.5, y = 0.01,
+    label = round(pnorm(c(3, 4), 0, 1)[2] - pnorm(c(3, 4), 0, 1)[1], 3)),
+    aes(x = x, y = y, label = label)) +
+  geom_label(data = data.frame(x = 187.5, y = 0.01,
+    label = round(pnorm(c(3, 4), 0, 1)[2] - pnorm(c(3, 4), 0, 1)[1], 3)),
+    aes(x = x, y = y, label = label))
+```
+
+Ahora estamos viendo una distribución normal con media = 100 y desvío estándar = 25. Fijate que la región entre 100 y 125 contiene el 34.1% de los puntajes. Esta región está a 1 desviación estándar de la media (la desviación estándar es 25, la media es 100, así que 125 está a una desviación estándar completa de 100). Como podés ver, las **mismas proporciones** aparecen entre cada una de las desviaciones estándar, tal como ocurría cuando la desviación estándar era 1 y la media era 0.
+
+
+### La idea detrás de los puntajes z
+
+A veces puede ser útil transformar tus puntajes originales a otros que sean más fáciles de manejar. Por ejemplo, si tenés un montón de proporciones como .3, .5, .6, .7, podrías querer convertirlas en porcentajes: 30%, 50%, 60%, 70%. Para eso, multiplicás las proporciones por una constante, 100. Si querés volver de porcentajes a proporciones, simplemente dividís por 100. Este tipo de transformación simplemente **cambia la escala** de los números (de 0–1 a 0–100), pero **no cambia el patrón de los datos**.
+
+La idea detrás de los **puntajes z** es un tipo de transformación similar. La idea es expresar cada puntaje original (o bruto) en función de su desviación estándar. Por ejemplo, si te digo que saqué un 75% en una prueba, no sabrías qué tan bien me fue comparado con el resto de la clase. Pero si te digo que obtuve una puntuación **2 desviaciones estándar por encima de la media**, sí sabrías que me fue bastante bien, porque sabés que la mayoría de los puntajes (si están distribuidos normalmente) quedan por debajo de 2 desviaciones estándar de la media.
+
+Ahora también sabemos, gracias al **teorema central del límite**, que muchas de nuestras medidas —como las medias muestrales— se distribuyen normalmente. Por eso, muchas veces conviene expresar los puntajes brutos en términos de sus desviaciones estándar.
+
+Veamos cómo se ve esto en una tabla, sin fórmulas por ahora. Vamos a considerar puntajes que provienen de una distribución normal con media = 100 y desviación estándar = 25. Vamos a listar algunos puntajes originales junto con sus correspondientes puntajes z:
+
+```{r}
+original <- c(25, 50, 75, 100, 125, 150, 175)
+z   <- c(-3, -2, -1, 0, 1, 2, 3)
+df <- data.frame(original, z)
+knitr::kable(df)
+```
+
+Recordá: la media es 100 y el desvío estándar es 25. ¿Cuántas desviaciones estándar está un puntaje de 100 por encima o por debajo de la media? Cero. Está justo en la media. Por eso, el puntaje z de 100 es 0. ¿Y el puntaje 125? Está exactamente 25 unidades por encima de 100, o sea, a **una desviación estándar** de distancia. Por eso su z es 1. El puntaje 150 está dos veces 25 por encima de 100, o sea, z = 2. Y el puntaje 50 está dos veces 25 por **debajo** de 100, así que z = -2. Todo lo que estamos haciendo es **reexpresar los puntajes brutos en función de cuántas desviaciones estándar están alejados de la media**. Y como siempre, la media está justo en el centro: el centro de la distribución de puntajes z es 0.
+
+
+### Cómo calcular puntajes z
+
+La idea es averiguar cuántas desviaciones estándar está cada número respecto de la media. Supongamos que la media es 100 y la desviación estándar es 25. Tenés un puntaje de 97. ¿Cuántas desviaciones estándar está 97 por debajo de la media?
+
+Primero, calculamos la diferencia entre el puntaje y la media:
+
+$$
+97 - 100 = -3
+$$
+
+Bien, tenemos una diferencia total de -3. ¿Cuántas desviaciones estándar representa ese -3, si una desviación estándar es 25? Claramente -3 es mucho menor que 25, así que va a ser mucho menos de 1 desviación estándar. Para saber cuánto, simplemente dividimos -3 por la desviación estándar:
+
+$$
+\frac{-3}{25} = -0.12
+$$
+
+Nuestro **puntaje z** para 97 es -0.12.
+
+La fórmula general es:
+
+$$
+z = \frac{\text{puntaje bruto} - \text{media}}{\text{desvío estándar}}
+$$
+
+Por ejemplo, si tenemos estos 10 puntajes tomados de una distribución normal con media = 100 y desvío estándar = 25:
+
+```r
+scores <- round(rnorm(10, 100, 25), digits = 2)
+print(scores)
+```
+
+Los puntajes z correspondientes serían:
+
+```r
+(scores - 100) / 25
+```
+
+Una vez que tenés los puntajes z, podés usarlos como una forma alternativa de describir tus datos. Por ejemplo, ahora con solo mirar un puntaje sabés si es más o menos probable que ocurra, porque ya conocés cómo funciona el área bajo la curva normal. Puntajes z entre -1 y 1 ocurren bastante seguido; mayores que ±1 todavía ocurren, pero con menos frecuencia; y los que superan ±2 son bastante poco comunes. Esta es una forma práctica de mirar tus números y tener una idea general de su frecuencia relativa.
+
+En general, no conocés la media ni el desvío estándar de la población de la que provienen tus datos. Por eso, podés usar la **media y el desvío estándar de tu muestra** como estimaciones, y usarlos para calcular los puntajes z.
+
+Finalmente, los puntajes z también se llaman **puntajes estandarizados**, porque cada puntaje bruto se expresa en términos de cuántas desviaciones estándar se encuentra respecto de la media. Es muy probable que esta sea la última vez que hablemos de puntajes z en este libro. Y podrías preguntarte por qué nos molestamos en explicarlos. Primero, porque vale la pena saber que existen. Segundo, porque **se vuelven importantes** a medida que tu conocimiento estadístico se vuelve más avanzado. Tercero, porque algunos conceptos estadísticos —como la **correlación**— pueden expresarse en términos de puntajes z, y eso permite entender mejor cómo funcionan esos conceptos. Y por último, porque los puntajes z son **muy útiles** cuando estás trabajando con una distribución normal **cuyo promedio y desviación estándar son conocidos**.
+
+## Estimación de parámetros poblacionales
+
+Paremos un momento para ubicarnos. Estamos por meternos en el tema de la **estimación**. ¿Qué es eso, y por qué debería importarte? Primero: los **parámetros poblacionales** son cosas que describen una distribución. Por ejemplo, las distribuciones tienen medias. La media es un parámetro de la distribución. La desviación estándar también es un parámetro. Cualquier cosa que describa una distribución es un posible parámetro. OK, ¿y por qué importa? Buena pregunta. Hay razones concretas para que te importe. Y también hay muy buenas razones abstractas. Desafortunadamente, en investigación, casi siempre son las razones abstractas las que más importan —y también las más difíciles de entender al principio.
+
+### Parámetros poblacionales concretos
+
+Primero, algunas razones concretas. Existen poblaciones reales ahí afuera, y a veces queremos conocer sus parámetros. Por ejemplo, si sos una empresa que fabrica calzado, te interesaría conocer los parámetros poblacionales del **tamaño de los pies**. Como primera aproximación, querrías saber la media y la desviación estándar de la población. Si tu empresa conoce esto, y otras no, probablemente te vaya mejor (asumiendo que todas fabrican zapatos de calidad similar). ¿Por qué te iría mejor y cómo podrías usar esos parámetros? Acá va una buena razón: como empresa, querés que la oferta coincida con la demanda. Si fabricás demasiados zapatos de talles muy chicos o muy grandes, y no hay suficientes personas que los compren, estás haciendo un montón de calzado que no se va a vender. Y si no fabricás suficientes zapatos de los talles más comunes, vas a estar dejando plata sobre la mesa. ¿Verdad? Sí. Entonces, ¿qué sería lo óptimo? Tal vez fabricarías diferentes cantidades de zapatos en cada talle, de acuerdo a la demanda de cada uno. Y sabrías algo sobre la demanda si conocieras la **frecuencia de cada talle** en la población. Para eso, necesitarías conocer los **parámetros poblacionales**.
+
+Por suerte, no es tan difícil obtener los parámetros poblacionales sin medir a toda la población. ¿Quién tiene tiempo para medirle los pies a todo el mundo? Nadie. Lo que hacés, en cambio, es seleccionar al azar un grupo de personas, medirles los pies, y después calcular los parámetros de esa muestra. Si la muestra es suficientemente grande, ya aprendimos que **la media muestral** es una muy buena estimación de **la media poblacional**. Y pronto vamos a ver que también hay versiones del desvío estándar muestral que estiman bastante bien **la desviación estándar poblacional**. Quizás la distribución de talles de calzado no tenga una forma exactamente normal. Aun así, si recolectás una muestra lo bastante grande, **la forma de la distribución muestral** será una buena aproximación a la forma de la distribución poblacional. Todas estas son buenas razones para interesarse por la **estimación de parámetros poblacionales**. Pero... ¿acaso dirigís una empresa de calzado? Probablemente no.
+
+### Parámetros poblacionales abstractos
+
+Incluso cuando pensamos que estamos hablando de algo concreto en psicología, a menudo enseguida se vuelve abstracto. En lugar de medir la población de talles de calzado, ¿qué tal si intentamos medir la población de la **felicidad humana**? Todos creemos saber lo que es la felicidad. Todos tienen más o menos cantidad de ella. Hay mucha gente, así que... debe haber una “población de felicidad”, ¿no?
+
+Tal vez. Pero no es algo muy concreto. El primer problema es cómo **medir** la felicidad. Supongamos que usamos un cuestionario. Considerá estas preguntas:
+
+> ¿Qué tan feliz te sentís ahora mismo en una escala del 1 al 7? ¿Qué tan feliz sos en general en una escala del 1 al 7?  ¿Qué tan feliz te sentís a la mañana en una escala del 1 al 7? ¿Qué tan feliz te sentís a la tarde en una escala del 1 al 7?
+  
+
+1  = muy infeliz
+2  = infeliz
+3 = algo infeliz
+4 = más o menos
+5 = algo feliz
+6 = feliz
+7 = muy feliz
+
+Olvidémonos de preguntarle esto a todo el mundo. Supongamos que se lo preguntamos a mucha gente (nuestra muestra). ¿Qué creés que va a pasar? Bueno, obviamente, la gente va a dar **todo tipo de respuestas**, ¿no? Podemos contar cuántas veces se eligió cada opción y graficarlas en un histograma. Eso nos mostraría la **distribución de puntajes de felicidad** en nuestra muestra.
+“¡Genial, fantástico!”, decís. Sí, está todo muy bien.
+
+Por un lado, podemos decir un montón de cosas sobre las personas **en nuestra muestra**. Podemos decir quién dijo que es feliz y quién no —¡al fin y al cabo, nos lo acaban de decir!
+
+Pero... ¿qué podemos decir sobre la **población más grande**? ¿Podemos usar los parámetros de nuestra muestra (media, desvío, forma, etc.) para **estimar algo sobre la población completa**? ¿Podemos inferir qué tan feliz es “todo el mundo” a partir de lo que dijo nuestra muestra?
+
+**¡PAREN TODO!**
+
+#### Complicaciones de la inferencia
+
+Antes de listar un montón de complicaciones, dejame decirte qué creo que **sí** podemos hacer con nuestra muestra. Siempre que sea lo suficientemente grande, los parámetros de nuestra muestra serán **una muy buena estimación de cómo se vería otra muestra** tomada de la misma población. Y por los motivos que vamos a discutir, muchas veces eso es todo lo que podemos decir. Pero está bien: como vas a ver a lo largo de este libro, **podemos trabajar con eso**.
+
+
+**Problema 1: múltiples poblaciones**
+Si observás una muestra grande de respuestas a un cuestionario, vas a encontrar evidencia de **múltiples distribuciones** dentro de tu muestra. Las personas responden de maneras distintas. Algunas personas son muy cautas y evitan los extremos. Sus respuestas tienden a concentrarse en el centro de la escala, con muchos 3, 4 y 5. Otras personas responden de manera muy bimodal: se sienten muy felices o muy infelices dependiendo del momento del día. Sus respuestas se agrupan mayormente en los extremos: 1, 2, 6 y 7. Esos números parecen provenir de una distribución completamente distinta.
+También hay personas que son completamente felices o completamente infelices. Una vez más, estos dos “grupos” de personas generan respuestas que parecen venir de **dos distribuciones diferentes**: una con casi todos 6 y 7, y otra con casi todos 1 y 2. Otras personas responden de forma bastante aleatoria, y sus respuestas se distribuyen de manera casi uniforme en toda la escala.  Entonces, ¿existe una única población con parámetros que podamos estimar a partir de nuestra muestra? **Probablemente no.** Podría tratarse de una **mezcla de muchas poblaciones**, cada una con su propia distribución.
+
+
+**Problema 2: ¿Qué miden realmente estas preguntas?**
+Si todo el propósito de hacer el cuestionario es estimar la felicidad de la población, entonces realmente tenemos que preguntarnos si nuestras mediciones **nos dicen algo sobre la felicidad en primer lugar**.
+
+Algunas preguntas que surgen:
+
+* ¿Las personas son precisas al decir cuán felices son?
+* ¿La medición de felicidad depende de la escala usada? Por ejemplo, ¿los resultados serían distintos si usáramos una escala de 0 a 100, o de -100 a +100, o si no usáramos números en absoluto?
+* ¿La medición de felicidad depende de cómo está redactada la pregunta?
+* ¿Una medida como esta nos dice **todo** lo que queremos saber sobre la felicidad? (probablemente no).
+* ¿Qué cosas está dejando afuera? (¿quién sabe? probablemente muchas).
+
+En resumen, **nadie sabe con certeza si este tipo de preguntas miden lo que queremos que midan**. Solo **esperamos** que lo hagan. Lo que **sí** sabemos bastante bien es **qué tipo de cosas miden realmente este tipo de preguntas**. Es algo bastante evidente, que está justo frente a nosotros: **las mediciones de cuestionarios miden cómo la gente responde cuestionarios**. Dicho de otro modo: miden **cómo se comportan las personas cuando se les da un cuestionario para responder**. Esto puede también reflejar algo sobre la felicidad, si la pregunta trata sobre felicidad. Pero, resulta que las personas son notablemente **consistentes** en cómo responden, incluso cuando las preguntas son totalmente absurdas, o cuando **ni siquiera hay preguntas** (¡solo números para elegir!) \[@maul\_rethinking\_2017]. La enseñanza que nos dejan estas complicaciones es que, en psicología, podemos recolectar muestras… pero muchas veces **no tenemos una idea clara de qué población está asociada a esas muestras**. Puede que haya muchas poblaciones… o que ni siquiera haya una única población bien definida.
+
+
+### Algunas complicaciones importantes para llevarse
+
+La enseñanza aquí es que, aunque podemos recolectar muestras, **en psicología a menudo no tenemos una buena idea de cuál es la población que podría estar asociada a esas muestras**.
+Puede haber muchas poblaciones distintas.
+O la población puede variar dependiendo de a quién le preguntes.
+Y finalmente, la “población” quizás **no sea la que vos querés que sea**.
+
+### Experimentos y parámetros poblacionales
+
+OK, entonces no tenemos una empresa de calzado, y tampoco podemos identificar con claridad la población que nos interesa en psicología... ¿podemos saltearnos esta sección sobre estimación?
+Después de todo, eso de “la población” parece demasiado raro, abstracto, inútil y polémico. **¡UN MOMENTO!**
+
+Resulta que **sí** podemos aplicar todo lo que venimos aprendiendo para resolver **un montón de problemas importantes en investigación**. Estas herramientas nos permiten **responder preguntas a partir de los datos que recolectamos**. La estimación de parámetros es una de esas herramientas. Solo necesitamos ser un poco más **creativos** y un poco más **abstractos** para poder usarlas.
+
+Ya sabemos algunas cosas. Los números que medimos **vienen de algún lado**. A eso le llamamos “distribuciones”. Las distribuciones controlan **cómo aparecen los números**. Algunos valores ocurren más que otros, según la distribución. Asumimos —incluso si no sabemos cuál es la distribución, ni qué significa— que los números **provienen de una**.
+
+Segundo: cuando tenemos algunos números, a eso le llamamos **una muestra**. Y todo este capítulo te enseñó una cosa fundamental: **Cuando tu muestra es grande, se parece a la distribución de la que proviene.** Y cuando tu muestra es grande, **también se va a parecer mucho a otra muestra grande de la misma población**. **¡Podemos usar este conocimiento!**
+
+Muy a menudo, como psicólogos, lo que queremos saber es **qué causa qué**. Queremos saber si **X causa un cambio en Y**. ¿Comer chocolate te hace más feliz? ¿Estudiar mejora tus notas? Hay millones de preguntas como estas. Y queremos respuestas.
+
+Hasta ahora traté de mantenerme en ejemplos concretos en este libro —por eso hablamos de chocolate y felicidad, al menos son cosas tangibles. Pero ahora intentemos ponernos **abstractos**. Podemos hacerlo.
+
+Queremos saber si **X causa un cambio en Y**. ¿Qué es X? ¿Qué es Y? **X es algo que cambiás**, es decir, la **variable independiente**. **Y** es algo que medís. Entonces, vamos a tomar **muestras de Y**. 
+“¡Ah, ya entendí! Tomamos muestras de Y, y luego podemos usar los parámetros muestrales para estimar los parámetros poblacionales de Y.”
+**NO. Bueno, más o menos.** Vamos a tomar muestras de Y, eso sí. De hecho, eso es **todo lo que hacemos siempre**, por eso hablar de “la población de Y” es un poco sin sentido. Lo que nos interesa de verdad son nuestras muestras de Y, y **cómo se comportan**.
+
+Entonces, ¿qué pasaría si elimináramos completamente X del universo, y luego tomáramos una gran muestra de Y? Vamos a suponer que Y mide algo en un experimento de psicología. Así que sabemos, desde ya, que **Y es una variable**. Cuando tomamos una muestra grande, va a tener una distribución (porque Y varía). Entonces podemos hacer cosas como calcular la media de Y, medir su desviación estándar, y cualquier otra cosa que nos interese saber sobre Y. Perfecto. ¿Y si repitiésemos esa medición? Es decir, tomamos **otra muestra aleatoria de Y**, del mismo tamaño que la anterior. ¿Qué debería pasar? Nuestra primera muestra debería parecerse mucho a la segunda. Después de todo, no hicimos **nada** a Y, simplemente tomamos dos muestras grandes, en dos momentos diferentes. Ambas muestras serán un poco distintas (por el **error muestral**), pero se parecerán bastante. Cuanto más grandes sean nuestras muestras, más similares serán entre sí, **especialmente si no hicimos nada para que sean diferentes**. En otras palabras: podemos usar los **parámetros de una muestra** para estimar los de otra, **porque tienden a ser iguales**… sobre todo cuando las muestras son grandes.  Tus muestras grandes de Y deberían ser bastante similares.
+
+
+Sin embargo, **si X realmente tiene un efecto sobre Y**, entonces una de tus muestras grandes de Y **va a ser distinta** de la otra.
+Habrás cambiado algo en Y. Tal vez X hace que cambie **la media** de Y. O tal vez X cambia **la variabilidad** de Y. O incluso, puede que X cambie **toda la forma de la distribución**. Si encontramos algún cambio importante que **no pueda explicarse por error muestral**, entonces podemos concluir que **algo en X causó un cambio en Y**. ¡Podemos usar este enfoque para aprender **qué causa qué**!
+
+La idea muy importante sigue siendo la de **estimación**, solo que no se trata exactamente de estimar un parámetro poblacional. Sabemos que cuando tomamos muestras, **hay variación natural**. Entonces, cuando estimamos un parámetro de una muestra —como la media— sabemos que esa estimación **va a estar equivocada en alguna medida**. Cuando encontramos que dos muestras son distintas, lo que necesitamos averiguar es si la **magnitud de esa diferencia** es compatible con lo que esperaría del **error muestral**, o si la diferencia es **más grande que eso**. Si la diferencia es más grande, entonces podemos tener confianza en que **no fue el error muestral** lo que la produjo. Entonces, podemos inferir con confianza que **otra cosa** (como X) **causó la diferencia**. Este tipo de pensamiento más abstracto es el que ocupa la mayor parte del resto del libro. Se trata de **determinar si hubo una diferencia causada por tu manipulación experimental**. Hay mucho más para contar, siempre lo hay. Podemos ir más allá de simplemente preguntar si hay una diferencia, pero para fines introductorios, nos vamos a enfocar en **encontrar diferencias** como concepto fundamental.
+
+
+### Resumen intermedio
+
+Hemos hablado bastante sobre **estimación**, aunque hasta ahora no hemos hecho muchas estimaciones concretas. Así que en la próxima sección vamos a empezar **a estimar la media y la desviación estándar**.
+
+Formalmente, esto se conoce como el uso de una muestra para estimar un parámetro poblacional. Pero sentite libre de pensar en “la población” de distintas maneras. Podría ser una población concreta, como la distribución de tamaños de calzado.
+O podría ser algo más abstracto, como una **estimación del parámetro que típicamente producen las muestras**, si las repitieras muchas veces.
+Por ejemplo, si realizás muchas muestras grandes bajo condiciones similares, ¿qué promedio suelen darte? Eso es un parámetro.
+La mayoría de las veces, no podemos ver directamente ese parámetro.
+Lo que podemos ver es **una muestra**.
+Y lo que podemos hacer es usar esa muestra para **estimar** el parámetro que no podemos observar.
+
+
+
+### Estimación de la media poblacional
+
+Supongamos que vamos a Brooklyn y 100 personas locales tienen la amabilidad de hacer una prueba de CI. El puntaje promedio de CI entre esas personas resulta ser \$\bar{X} = 98.5\$. Entonces, ¿cuál es la verdadera media del CI en toda la población de Brooklyn? Obviamente, no lo sabemos. Podría ser 97.2, o también podría ser 103.5. Como nuestra muestra no es exhaustiva, no podemos dar una respuesta definitiva. Sin embargo, si nos obligaran a dar una “mejor suposición”, tendría que decir 98.5.
+Esa es la esencia de la estimación estadística: dar una mejor conjetura. Estamos usando la media muestral como nuestra mejor estimación de la media poblacional.
+
+En este ejemplo, estimar el parámetro poblacional desconocido es bastante directo. Calculamos la media muestral y la usamos como nuestra **estimación de la media poblacional**. Es bastante simple, y en la próxima sección vamos a ver la justificación estadística de por qué esta respuesta intuitiva tiene sentido. Pero por ahora, asegurémonos de distinguir bien que la estadística muestral y la estimación del parámetro poblacional **no son lo mismo**. Una estadística muestral describe tus datos; en cambio, una estimación es una conjetura sobre la población.
+
+Con eso en mente, lxs estadísticxs suelen usar notaciones distintas para diferenciarlas. Por ejemplo, si la media poblacional verdadera se denota \$\mu\$, entonces usamos \$\hat{\mu}\$ para referirnos a nuestra estimación de esa media. En contraste, la media muestral se denota \$\bar{X}\$, o a veces \$m\$. Sin embargo, en muestras aleatorias simples, la estimación de la media poblacional es idéntica a la media muestral: si observo una media muestral de \$\bar{X} = 98.5\$, entonces mi estimación de la media poblacional es también \$\hat{\mu} = 98.5\$.
+
+Para dejar clara la notación, acá va una tabla útil:
+
+| Símbolo       | Qué representa                     | ¿Conocido a partir de la muestra?           |
+| ------------- | ---------------------------------- | ------------------------------------------- |
+| \$\bar{X}\$   | Media muestral                     | Sí, se calcula a partir de los datos crudos |
+| \$\mu\$       | Verdadera media poblacional        | Casi nunca se conoce con certeza            |
+| \$\hat{\mu}\$ | Estimación de la media poblacional | Sí, es idéntica a la media muestral         |
+
+
+### Estimación del desvío estándar poblacional
+
+Hasta ahora, la estimación parece bastante sencilla, y tal vez te estés preguntando por qué te hice leer todo ese material sobre teoría del muestreo. En el caso de la media, nuestra estimación del parámetro poblacional (\$\hat{\mu}\$) resultó ser idéntica a la estadística muestral correspondiente (\$\bar{X}\$). Sin embargo, **eso no siempre es así**.
+
+Para verlo, pensemos cómo construir una **estimación del desvío estándar poblacional**, que vamos a denotar como \$\hat{\sigma}\$. ¿Qué deberíamos usar como estimación en este caso? Tu primera reacción podría ser hacer lo mismo que con la media, y simplemente usar la estadística muestral como estimación. Eso está **casi** bien, pero no del todo.
+
+Veamos por qué. Supongamos que tengo una muestra que contiene **una sola observación**. Para este ejemplo, ayuda pensar en una situación donde no tengas ninguna intuición previa sobre cuál podría ser el valor real en la población. Así que usemos algo completamente ficticio: supongamos que la observación mide la **cromulencia** de mis zapatos. Resulta que mis zapatos tienen una cromulencia de 20. Así que mi muestra es: `20` Esta es una muestra perfectamente válida, aunque tenga un tamaño muestral de \$N = 1\$.
+Tiene una media muestral de 20, y como **cada observación en esta muestra es igual a la media muestral** (¡obviamente!), el desvío estándar muestral es 0.
+
+Como **descripción de la muestra**, esto está perfecto: la muestra contiene una sola observación, así que no hay variabilidad observada. Un desvío estándar muestral de \$s = 0\$ es la respuesta correcta acá. Pero como **estimación del desvío estándar poblacional**, eso suena completamente absurdo, ¿no? Por ejemplo, imaginá que la media muestral **siempre** fuera menor que la media poblacional. Si eso fuera cierto (no lo es), no podríamos usar la media muestral como estimador. Estaría sesgada, estaríamos usando un valor sistemáticamente incorrecto.
+
+Bueno, resulta que el **desvío estándar muestral** es un **estimador sesgado** del desvío estándar poblacional. Ya veníamos intuyéndolo con lo que estuvimos discutiendo. Cuando el tamaño muestral es 1, el desvío estándar es 0, lo cual claramente es demasiado bajo. Cuando el tamaño muestral es 2, el desvío estándar empieza a ser mayor que 0, pero como solo tenemos dos datos, sospechamos que **sigue siendo demasiado bajo**. Y resulta que esta intuición es correcta.
+
+Estaría bueno poder demostrar esto de alguna forma. Hay pruebas matemáticas que confirman esta intuición, pero salvo que tengas una formación matemática bastante sólida, no van a ayudarte mucho. Así que en vez de eso, lo que voy a hacer es usar **R** para simular los resultados de algunos experimentos.
+
+Volvamos a nuestros estudios sobre CI. Supongamos que la verdadera media poblacional de CI es 100, y la desviación estándar poblacional es 15. Podemos usar la función `rnorm()` para generar los resultados de un experimento en el que medimos \$N = 2\$ puntuaciones de CI, y luego calculamos el **desvío estándar muestral**.
+
+Si repetimos este procedimiento una y otra vez, y graficamos un histograma de esos desvíos estándar muestrales, obtenemos la **distribución muestral del desvío estándar**. Esa distribución está graficada en la figura `@fig-sampdistsd`.
+
+
+```{r}
+knitr::include_graphics("imgs/navarro_img/estimation/sampdistsd.png")
+```
+
+Aunque la verdadera desviación estándar poblacional es 15, el promedio de los **desvíos estándar muestrales** es solo 8.5. Notá que esto es **muy distinto** de lo que pasaba cuando graficábamos distribuciones muestrales de la media: esas siempre estaban centradas en la media poblacional.
+
+Ahora ampliemos la simulación. En lugar de restringirnos a un tamaño muestral de \$N=2\$, repitamos el experimento para tamaños muestrales del 1 al 10. Si graficamos el promedio de la media muestral y el promedio del desvío estándar muestral como función del tamaño de la muestra, obtenemos los siguientes resultados.
+
+La figura `@fig-estimatorbiasA` muestra cómo cambia la media muestral según el tamaño de la muestra. Notá que la línea es **plana**: la media muestral **no sobrestima ni subestima** la media poblacional. Es un **estimador insesgado**.
+
+```{r}
+#| label: fig-estimatorbiasA
+#| fig-cap: "Una ilustración del hecho de que la media muestral es un estimador insesgado de la media poblacional."
+
+knitr::include_graphics("imgs/navarro_img/estimation/biasMean-eps-converted-to.png")
+```
+
+La figura `@fig-estimatorbiasB` muestra cómo cambia el **desvío estándar muestral** con el tamaño de muestra. Notá que **no** es una línea plana: el desvío estándar muestral **subestima sistemáticamente** la desviación estándar poblacional.
+
+```{r}
+#| label: fig-estimatorbiasB
+#| fig-cap: "Una ilustración del hecho de que el desvío estándar muestral es un estimador sesgado de la desviación estándar poblacional."
+
+knitr::include_graphics("imgs/navarro_img/estimation/biasSD-eps-converted-to.png")
+```
+
+En otras palabras, si queremos hacer nuestra **mejor conjetura** sobre el valor de la desviación estándar poblacional \$\sigma\$ (lo que llamamos \$\hat{\sigma}\$), deberíamos asegurarnos de que sea **un poco más grande** que el desvío estándar muestral \$s\$.
+
+Volvamos a mirar la varianza. Si recordás del segundo capítulo, la **varianza muestral** se define como el promedio de los cuadrados de las desviaciones respecto de la media muestral. Es decir:
+
+$$
+s^2 = \frac{1}{N} \sum_{i=1}^N (X_i - \bar{X})^2
+$$
+
+La varianza muestral \$s^2\$ es un **estimador sesgado** de la varianza poblacional \$\sigma^2\$.
+Pero resulta que solo necesitamos hacer un pequeño ajuste para transformarla en un estimador **insesgado**.
+Todo lo que hay que hacer es dividir por \$N-1\$ en lugar de por \$N\$.
+Si hacemos eso, obtenemos la siguiente fórmula:
+
+$$
+\hat\sigma^2 = \frac{1}{N-1} \sum_{i=1}^N (X_i - \bar{X})^2
+$$
+
+Esto **sí** es un estimador insesgado de la varianza poblacional \$\sigma^2\$.
+
+Una historia similar se aplica al **desvío estándar**.
+Si dividimos por \$N-1\$ en lugar de por \$N\$, nuestra estimación del desvío estándar poblacional se convierte en:
+
+$$
+\hat\sigma = \sqrt{\frac{1}{N-1} \sum_{i=1}^N (X_i - \bar{X})^2}
+$$
+
+Vale la pena señalar que los programas de software toman **decisiones por vos** sobre qué tipo de varianza y desvío estándar estás calculando.
+Algunos programas dividen automáticamente por \$N-1\$, otros no.
+Necesitás verificar qué están haciendo.
+**No dejes que el software decida por vos.** El software está para que vos le digas qué hacer.
+
+Un último punto: en la práctica, muchas personas se refieren a \$\hat{\sigma}\$ (la fórmula con \$N-1\$) como el **desvío estándar muestral**.
+Técnicamente, esto es incorrecto: el **desvío estándar muestral**, como propiedad de la muestra, debería ser igual a \$s\$ (la fórmula con \$N\$).
+No son la misma cosa, ni conceptualmente ni numéricamente.
+Una es una propiedad de la muestra; la otra, una estimación del parámetro poblacional.
+Sin embargo, en casi todas las aplicaciones reales, lo que realmente nos importa es la estimación del parámetro poblacional.
+Por eso, la gente casi siempre reporta \$\hat{\sigma}\$ en lugar de \$s\$.
+
+\::: {.callout-note}
+
+> Si lo que estás haciendo es estimar un parámetro poblacional, ¿por qué dividirías por \$N-1\$? Además, cuando \$N\$ es grande, no importa tanto. La diferencia entre un \$N\$ grande y un \$N-1\$ grande es solo… -1.
+> \:::
+
+Este es el número correcto que hay que reportar, claro. Pero la gente tiende a ser un poco imprecisa con la terminología cuando lo escribe, porque "desvío estándar muestral" es más corto que "estimación del desvío estándar poblacional". No es gran cosa, y en la práctica yo hago lo mismo que todos los demás.
+Sin embargo, creo que es importante mantener los dos **conceptos** separados: nunca es buena idea confundir “propiedades conocidas de tu muestra” con “conjeturas sobre la población de la que proviene”.
+En el momento en que empezás a pensar que \$s\$ y \$\hat{\sigma}\$ son lo mismo, empezás a hacer justamente eso.
+
+Para cerrar esta sección, acá tenés un par de tablas más para ayudarte a mantener todo claro:
+
+| Símbolo            | ¿Qué es?                              | ¿Lo conocemos?                                   |
+| ------------------ | ------------------------------------- | ------------------------------------------------ |
+| \$s^2\$            | Varianza muestral                     | Sí, se calcula a partir de los datos crudos      |
+| \$\sigma^2\$       | Varianza poblacional                  | Casi nunca se conoce con certeza                 |
+| \$\hat{\sigma}^2\$ | Estimación de la varianza poblacional | Sí, pero no es lo mismo que la varianza muestral |
+
+
+## Estimación de un intervalo de confianza
+
+> La estadística es no tener que decir nunca que estás seguro — Autor desconocido
+
+Hasta este punto del capítulo, describimos los fundamentos de la teoría del muestreo en los que se apoyan lxs estadísticxs para hacer conjeturas sobre los parámetros poblacionales a partir de una muestra de datos. Como muestra esta discusión, una de las razones por las que necesitamos toda esta teoría es que **todo conjunto de datos deja un cierto grado de incertidumbre**, así que nuestras estimaciones nunca van a ser perfectamente precisas. Lo que falta en esta discusión hasta ahora es un intento de **cuantificar** cuánto es esa incertidumbre.
+
+Lo que falta en nuestra discusión hasta ahora es un intento de **cuantificar** cuánta incertidumbre hay en nuestra estimación. No alcanza con poder decir que el CI promedio de estudiantes de psicología es 115 (sí, me acabo de inventar ese número). También queremos poder decir **qué tan seguros estamos de esa estimación**. Por ejemplo, estaría bueno poder decir que hay un 95% de probabilidad de que el valor real esté entre 109 y 121. A eso se le llama un **intervalo de confianza** para la media.
+
+Armados con lo que ya sabemos sobre distribuciones muestrales, construir un intervalo de confianza para la media es bastante fácil.
+Así es como funciona:
+
+Supongamos que la verdadera media poblacional es \$\mu\$ y la desviación estándar poblacional es \$\sigma\$.
+Acabo de terminar mi estudio con \$N\$ participantes, y la media muestral de CI fue \$\bar{X}\$.
+Sabemos, gracias al teorema central del límite, que la distribución muestral de la media es aproximadamente normal.
+También sabemos, por lo que aprendimos sobre la distribución normal, que hay un 95% de probabilidad de que un valor normalmente distribuido caiga dentro de dos desviaciones estándar de la media verdadera.
+
+Para ser más precisos, podemos usar la función `qnorm()` para calcular los percentiles 2.5 y 97.5 de la distribución normal:
+
+```{r }
+qnorm( p = c(.025, .975) )
+```
+Ok, así que te mentí un poco antes: lo más correcto es decir que hay un 95% de probabilidad de que una cantidad normalmente distribuida caiga dentro de **1.96** desviaciones estándar de la media verdadera.
+
+Ahora recordá que la desviación estándar de la distribución muestral se llama **error estándar**, y que el error estándar de la media se denota como **SEM**.
+Cuando juntamos todas estas piezas, aprendemos que hay un 95% de probabilidad de que la media muestral \$\bar{X}\$ que obtuvimos esté **a no más de 1.96 errores estándar de la media poblacional**.
+
+Uf, eso fue mucha matemática junta. Tranquilo, ahora lo aclaramos. En notación matemática, esto se escribe así:
+
+$$
+\mu - \left(1.96 \times \text{SEM} \right) \ \leq\ \bar{X} \ \leq\ \mu + \left(1.96 \times \text{SEM} \right)
+$$
+donde el SEM es igual a \$\sigma / \sqrt{N}\$, y podemos estar un 95% seguros de que esto es cierto.
+
+Sin embargo, esto **no** responde la pregunta que realmente nos interesa.
+La ecuación anterior nos dice qué deberíamos esperar sobre la **media muestral**, dado que **conocemos** los parámetros poblacionales.
+Pero lo que **queremos** es que funcione al revés: queremos saber qué deberíamos creer sobre los **parámetros poblacionales**, dado que **observamos** una muestra particular.
+
+Sin embargo, no es muy difícil lograrlo.
+Con un poco de álgebra de secundaria, podemos reescribir nuestra ecuación así:
+
+$$
+\bar{X} - \left( 1.96 \times \text{SEM} \right) \leq \mu \leq \bar{X} + \left( 1.96 \times \text{SEM} \right)
+$$
+
+Esto nos dice que **el rango de valores delimitado por esa desigualdad tiene una probabilidad del 95% de contener la media poblacional \$\mu\$**.
+A este rango lo llamamos **intervalo de confianza del 95%**, denotado como \$\text{CI}\_{95}\$.
+
+En resumen, siempre que \$N\$ sea lo suficientemente grande —lo suficientemente grande como para que la distribución muestral de la media se parezca a una normal—
+podemos usar la siguiente fórmula para el intervalo de confianza del 95%:
+
+$$
+\text{CI}_{95} = \bar{X} \pm \left( 1.96 \times \frac{\sigma}{\sqrt{N}} \right)
+$$
+
+Por supuesto, no hay nada especial en el número 1.96: simplemente es el multiplicador que necesitás usar si querés un intervalo de confianza del 95%.
+
+Si quisiera un intervalo de confianza del 70%, podría usar la función `qnorm()` para calcular los cuantiles 15 y 85:
+
+```{r}
+qnorm( p = c(.15, .85) )
+```
+
+Así que la fórmula para el \$\text{CI}*{70}\$ sería igual a la del \$\text{CI}*{95}\$, excepto que usaríamos **1.04** como nuestro número mágico, en lugar de 1.96.
+
+### Un pequeño error en la fórmula
+
+Como de costumbre, te mentí un poco. La fórmula que te di arriba para el intervalo de confianza del 95% es aproximadamente correcta, pero omití un detalle importante…
+Usa el **error estándar de la media** (SEM), que a su vez requiere conocer la **desviación estándar poblacional verdadera** \$\sigma\$.
+
+Sin embargo, ya dijimos antes que en general **no conocemos** los parámetros poblacionales verdaderos. Y como no conocemos el valor real de \$\sigma\$, tenemos que usar una **estimación** del desvío estándar poblacional, es decir, \$\hat{\sigma}\$. Eso no es difícil de hacer, pero tiene una consecuencia: ahora tenemos que usar los **cuantiles de la distribución \$t\$** en lugar de la distribución normal para calcular nuestro “número mágico”; y ese número **depende del tamaño muestral**. Además, todavía **no hablamos de la distribución \$t\$** en este capítulo.
+
+Cuando usamos la distribución \$t\$ en lugar de la normal, los valores críticos son más grandes. Eso refleja el hecho de que tenemos **mayor incertidumbre**. ¿Y por qué tenemos esa incertidumbre extra?
+Bueno, porque nuestra estimación del desvío estándar poblacional \$\hat{\sigma}\$ **podría estar equivocada**. Si lo está, eso implica que **no estamos tan seguros** de cómo es realmente la distribución muestral de la media… y esa incertidumbre **termina reflejándose** en un **intervalo de confianza más amplio**.
+
+## Resumen
+
+En este capítulo cubrimos dos grandes temas. La primera mitad trató sobre la teoría del muestreo, y la segunda mitad sobre cómo podemos usar esa teoría para construir **estimaciones de parámetros poblacionales**. La estructura fue más o menos así:
+
+- Ideas básicas sobre muestras, muestreo y poblaciones
+- Teoría estadística del muestreo: ley de los grandes números, distribuciones muestrales y el teorema central del límite
+- Estimación de medias y desviaciones estándar
+- Intervalos de confianza
+
+Como siempre, hay muchos otros temas relacionados con muestreo y estimación que **no** se abordaron en este capítulo. Pero para un curso introductorio de psicología, creo que esto es bastante completo. Para la mayoría de lxs investigadores aplicadxs, no se necesita mucha más teoría que esta.
+
+
+## Videos
+
+### Introducción a la probabilidad
+
+Jeff tiene varios videos más sobre probabilidad que podés ver en su [lista de reproducción de estadística](https://www.youtube.com/playlist?list=PLKXdxQAT3tCvuex_E1ZnQYaw897ELUSaI).
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/RoalMn9VHZg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+### Teorema de Chebychev
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4RtwqCFt1IU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+### Puntajes Z
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dQVO0KAxFaU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+### Distribución normal I
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/FPJDF9fGwwE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+### Distribución normal II
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/mPdnF-GVuCo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+
+</iframe>
+
+
+

@@ -196,3 +196,34 @@ gif = ggplot(all_df,aes(x=North_pole,y=South_pole))+
 
 anim_save("imgs/gifs/corNormFourNs-1_es.gif", animation = animate(gif, width = 480, height = 480, fps = 10))
 
+
+#---fig-4sample20unif---------
+
+# Este bloque genera 10 muestras de tamaño 20 tomadas de una distribución uniforme (números del 1 al 10)
+a <- round(runif(20 * 10, 1, 10))
+df <- data.frame(a, sample = rep(1:10, each = 20))
+
+# Calculamos la media de cada muestra
+df2 <- aggregate(a ~ sample, df, mean)
+
+# Añadimos una columna con la media correspondiente a cada observación
+df <- cbind(df, mean_loc = rep(df2$a, each = 20))
+
+library(gganimate)
+
+# Creamos una animación con un histograma por muestra y una línea roja indicando la media
+gif = ggplot(df, aes(x = a, group = sample, frame = sample)) +
+  geom_histogram() +
+  geom_vline(aes(xintercept = mean_loc, frame = sample), color = "red") +
+  scale_x_continuous(breaks = seq(1, 10, 1)) +
+  theme_classic() +
+  transition_states(
+    sample,
+    transition_length = 2,
+    state_length = 1
+  ) +
+  enter_fade() +
+  exit_shrink()
+
+anim_save("imgs/gifs/sampleHistUnif-1_es.gif", animation = animate(gif, width = 480, height = 480, fps = 10))
+

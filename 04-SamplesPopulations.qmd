@@ -184,7 +184,7 @@ Cuando eso ocurre, el número al que se estabiliza es la verdadera probabilidad 
 ```{r echo=F}
 #| label: fig-4FreqProb
 #| fig-cap: "Ilustración de cómo funciona la probabilidad frecuentista. Si lanzás una moneda justa muchas veces, la proporción de caras observadas se estabiliza y converge hacia la probabilidad verdadera de 0.5. Cada panel muestra un experimento simulado distinto: en cada caso, se simula lanzar una moneda 1000 veces y se lleva un registro de la proporción de caras acumuladas. Aunque ninguna secuencia termina exactamente en 0.5, si el experimento se extendiera indefinidamente, lo haría."
-knitr::include_graphics("imgs/navarro_img/probability/frequentistProb-eps-converted-to.png")
+knitr::include_graphics("imgs/navarro_img/probability/frequentistProb_es.png")
 ```
 
 La definición frecuentista de probabilidad tiene algunas características deseables. Primero, es **objetiva**: la probabilidad de un evento está necesariamente anclada en el mundo. La única forma en que las afirmaciones probabilísticas tienen sentido es si se refieren a (una secuencia de) eventos que ocurren en el universo físico.
@@ -329,7 +329,7 @@ Y en este punto, todes logramos algo: vos aprendiste qué es una distribución d
 #| label: fig-4pantsprob
 #| fig-cap: "Representación visual de la distribución de probabilidad de los pantalones. Hay cinco eventos elementales, que corresponden a los cinco pares de pantalones que tengo. Cada evento tiene alguna probabilidad de ocurrir: ese valor es un número entre 0 y 1. La suma de estas probabilidades es igual a 1."
 
-knitr::include_graphics("imgs/navarro_img/probability/pantsDistribution-eps-converted-to.png")
+knitr::include_graphics("imgs/navarro_img/probability/pantsDistribution_es.png")
 ```
 
 La única otra cosa que necesito señalar es que la teoría de la probabilidad también te permite hablar de **eventos no elementales**, además de los elementales.

@@ -219,27 +219,27 @@ Más allá de eso, está la cuestión metodológica: ¿qué "método de medició
 
 ### Operacionalización: definir tu medición
 
-Todo lo que vimos en la sección anterior se relaciona con el concepto de operacionalización. En términos simples, es el proceso de tomar un concepto significativo pero vago, y transformarlo en una medición precisa. La operacionalización puede incluir varias cosas:
+Todas las ideas discutidas en la sección anterior se relacionan con el concepto de operacionalización. Para ser un poco más precisos, es el proceso de tomar un concepto significativo pero vago, y convertirlo en una medición precisa. La operacionalización puede incluir varias cosas diferentes:
 
--   Ser precisx sobre qué querés medir. Por ejemplo, ¿"edad" significa tiempo desde el nacimiento o desde la concepción?
+-   Ser preciso sobre qué intentás medir. Por ejemplo, ¿"edad" significa tiempo desde el nacimiento o desde la concepción en el contexto de tu investigación?
 
 -   Definir el método que vas a usar. ¿Vas a usar autorreporte, le vas a preguntar a alguien más, o vas a consultar registros? Y si usás autorreporte, ¿cómo vas a formular la pregunta?
 
--   Definir el conjunto de valores permitidos. A veces son numéricos (como la edad), pero no siempre. Por ejemplo, al medir género, ¿qué opciones vas a ofrecer? ¿Solo "masculino" y "femenino"? ¿Agregás "otro"? ¿Dejás que la gente responda libremente? ¿Y cómo vas a interpretar esas respuestas?
+-   Definir el conjunto de valores permitidos: Tené en cuenta que estos valores no siempre tienen que ser numéricos, aunque muchas veces lo son. Al medir la edad, los valores son numéricos, pero aún así necesitamos pensar bien qué números vamos a permitir. ¿Queremos la edad en años, en años y meses, en días, en horas? Y así. Para otros tipos de mediciones (por ejemplo, el género), los valores no son numéricos. Pero, como antes, tenemos que pensar qué valores vamos a permitir. Si les pedimos a las personas que autoinformen su género, ¿qué opciones les vamos a ofrecer? ¿Alcanza con permitir solo "masculino" o "femenino"? ¿Necesitamos una opción de "otro"? ¿O sería mejor no dar opciones cerradas y dejar que respondan con sus propias palabras? Y si abrimos el conjunto de valores posibles para incluir todas las respuestas verbales, ¿cómo vamos a interpretar sus respuestas?
 
-La operacionalización es complicada, y no hay una "forma correcta" universal. La forma en que operativizás algo como "edad" o "género" depende de para qué necesitás la medición. Muchas veces, la comunidad científica de tu área ya tiene convenciones al respecto. Aun así, hay que pensarlo caso por caso.
+La operacionalización no es una tarea sencilla, y no existe una única manera “correcta” de llevarla a cabo. La forma en que elijas operacionalizar un concepto informal como “edad” o “género” en una medición formal depende del uso que vayas a darle a esa medición. A menudo, vas a encontrar que la comunidad científica que trabaja en tu área ya tiene ideas bastante consolidadas sobre cómo hacerlo. En otras palabras, la operacionalización debe pensarse caso por caso. Dicho esto, aunque hay muchos aspectos que dependen del proyecto de investigación particular, también hay elementos que son bastante generales.
 
-Antes de seguir, quiero aclarar un poco la terminología e introducir un concepto más. Hay cuatro elementos estrechamente relacionados:
+Antes de continuar, quiero detenerme un momento para aclarar algunos términos y, de paso, introducir uno más. A continuación, presento cuatro conceptos estrechamente relacionados entre sí:
 
 -   **Un constructo teórico:** es lo que querés medir, como "edad", "género" u "opinión". No se puede observar directamente, y suele ser algo vago.
 
--   **Una medida:** es el método o herramienta que usás para hacer la observación. Puede ser una pregunta en una encuesta, una observación conductual o una resonancia.
+-   **Una medida:** es el método o herramienta que usás para hacer tus observaciones. Puede ser una pregunta en una encuesta, una observación conductual o una resonancia.
 
--   **Una operacionalización:** es la conexión lógica entre el constructo y la medida, o el proceso por el cual derivás una medida a partir del constructo.
+-   **Una operacionalización:** es la conexión lógica entre el constructo y la medida, o el proceso por el cual derivás una medida a partir del constructo teórico.
 
--   **Una variable:** es lo que obtenés cuando aplicás la medida a algo en el mundo. O sea, los datos concretos que aparecen en tus datasets.
+-   **Una variable:** Finalmente, un término nuevo: una variable es lo que obtenemos cuando aplicamos una medida a algo del mundo real. Es decir, las variables son los datos concretos que terminamos registrando en nuestros conjuntos de datos.
 
-En la práctica, incluso les científiques mezclan estos términos, pero tratar de diferenciarlos es muy útil.
+En la práctica, incluso los científicos tienden a mezclar estos términos, pero es muy útil tratar de comprender en qué se distinguen.
 
 ### Escalas de medición
 
@@ -249,7 +249,7 @@ Como vimos en la sección anterior, el resultado de una medición psicológica s
 
 Una variable de **escala nominal** (también llamada **categórica**) es aquella en la que no hay una relación particular entre las distintas opciones: para este tipo de variables no tiene sentido decir que una es "mayor" o "mejor" que otra, y mucho menos calcular un promedio. El ejemplo clásico es el "color de ojos". Pueden ser azules, verdes o marrones, entre otras opciones, pero ninguna es mejor que otra. Por eso sería raro hablar de un "color de ojos promedio". Lo mismo pasa con el género: ser hombre no es mejor ni peor que ser mujer, y no tiene sentido hablar de un "género promedio". En resumen, las variables nominales son aquellas en las que lo único que podés decir es que las categorías son diferentes. Y nada más.
 
-Veamos esto más de cerca. Supongamos que estoy investigando cómo viaja la gente al trabajo. Una variable que tendría que medir es el tipo de transporte. Este "tipo de transporte" podría incluir: "tren", "ómnibus", "auto", "bicicleta", etc. Supongamos por ahora que esas son las únicas opciones, y que al preguntar a 100 personas cómo llegaron hoy al trabajo, obtengo esto:
+Veamos esto más de cerca. Supongamos que estoy investigando cómo viaja la gente al trabajo. Una variable que tendría que medir es el medio de transporte. Esta variable "medio de transporte" podría incluir varios valores, incluyendo: "tren", "ómnibus", "auto", "bicicleta", etc. Supongamos por ahora que esas cuatro son las únicas opciones, y que al preguntar a 100 personas cómo llegaron hoy al trabajo, obtengo esto:
 
 | Medio de transporte | Cantidad de personas |
 |:--------------------|:--------------------:|
@@ -258,7 +258,7 @@ Veamos esto más de cerca. Supongamos que estoy investigando cómo viaja la gent
 | \(3\) Auto          |          48          |
 | \(4\) Bicicleta     |          10          |
 
-Entonces, ¿cuál es el medio de transporte promedio? Obviamente, no hay uno. Es una pregunta sin sentido. Podés decir que el auto es el medio más popular y que el tren es el menos popular, pero nada más. Fijate además que el orden en que puse las opciones no importa mucho. Podría haber presentado los datos así, y nada cambia realmente:
+Entonces, ¿cuál es el medio de transporte promedio? Obviamente, no lo hay. Es una pregunta sin sentido. Podés decir que el auto es el medio más popular y que el tren es el menos popular, pero nada más. Fijate además que el orden en que puse las opciones no importa mucho. Podría haber presentado los datos así, y nada cambia realmente:
 
 | Medio de transporte | Cantidad de personas |
 |:--------------------|:--------------------:|
@@ -271,7 +271,7 @@ Entonces, ¿cuál es el medio de transporte promedio? Obviamente, no hay uno. Es
 
 Las variables de **escala ordinal** tienen un poco más de estructura que las variables de escala nominal, pero no mucho más. Una variable ordinal es aquella en la que hay una forma natural y significativa de ordenar las distintas opciones, pero no se puede hacer mucho más. El ejemplo habitual es la "posición de llegada en una carrera". *Podés* decir que la persona que llegó primera fue más rápida que la que llegó segunda, pero *no sabés* cuánto más rápida. Como consecuencia, sabemos que 1.º $>$ 2.º y que 2.º $>$ 3.º, pero la diferencia entre 1.º y 2.º podría ser mucho mayor que la diferencia entre 2.º y 3.º.
 
-Acá hay un ejemplo más interesante desde el punto de vista psicológico. Supongamos que me interesa conocer las actitudes de las personas frente al cambio climático, y les pido que elijan una de estas cuatro afirmaciones que más se acerque a sus creencias:
+Acá hay un ejemplo más interesante desde el punto de vista psicológico. Supongamos que me interesa conocer las actitudes de las personas frente al cambio climático, y les pido que elijan una de estas cuatro afirmaciones, la que más se acerque a sus creencias:
 
 > (1) Las temperaturas están subiendo debido a la actividad humana
 > (2) Las temperaturas están subiendo, pero no sabemos por qué
@@ -285,7 +285,7 @@ Fijate que estas cuatro afirmaciones tienen un orden natural, en cuanto al "grad
 > (5) Las temperaturas no están subiendo
 > (6) Las temperaturas están subiendo, pero no sabemos por qué
 
-...porque violaría la "estructura" natural de la pregunta.
+...porque parece violar la "estructura" natural de la pregunta.
 
 Ahora supongamos que les hago esta pregunta a 100 personas y obtengo las siguientes respuestas:
 
@@ -296,7 +296,7 @@ Ahora supongamos que les hago esta pregunta a 100 personas y obtengo las siguien
 | \(3\) Las temperaturas están subiendo, pero no por causa humana    |    10    |
 | \(4\) Las temperaturas no están subiendo                           |    19    |
 
-Al analizar estos datos, parece bastante razonable agrupar las respuestas (1), (2) y (3), y decir que 81 de 100 personas están dispuestas a *al menos en parte* avalar la ciencia. Y también es razonable agrupar (2), (3) y (4), y decir que 49 de 100 expresan *al menos cierto desacuerdo* con el consenso científico. Pero sería completamente extraño agrupar (1), (2) y (4) y decir que 90 de 100 personas dijeron... ¿qué? No hay nada coherente que permita agrupar esas respuestas.
+Al analizar estos datos, parece bastante razonable agrupar las respuestas (1), (2) y (3), y decir que 81 de 100 personas están dispuestas a *al menos en parte* avalar la ciencia. Y también es razonable agrupar (2), (3) y (4), y decir que 49 de 100 expresan *al menos cierto desacuerdo* con el consenso científico. Pero sería completamente extraño agrupar (1), (2) y (4) y decir que 90 de 100 personas dijeron... ¿qué? No hay nada sensato que permita agrupar esas respuestas.
 
 Dicho eso, aunque *sí* podemos usar el orden natural de estas opciones para construir agrupamientos sensatos, lo que no podemos hacer es promediarlas. Por ejemplo, en este caso, la respuesta "promedio" sería 1.97. Si podés explicarme qué significa eso, me encantaría saberlo. ¡Porque a mí me suena a puro disparate!
 
@@ -304,17 +304,15 @@ Dicho eso, aunque *sí* podemos usar el orden natural de estas opciones para con
 
 A diferencia de las variables de escala nominal y ordinal, las variables de **escala de intervalo** y de razón son aquellas en las que el valor numérico tiene un significado genuino. En el caso de las variables de escala de intervalo, las *diferencias* entre los números son interpretables, pero la variable no tiene un valor cero "natural". Un buen ejemplo de una variable de escala de intervalo es la temperatura medida en grados Celsius. Por ejemplo, si ayer hizo 15 °C y hoy hace 18 °C, la diferencia de 3 °C entre ambos días tiene un significado real. Además, esa diferencia de 3 °C es *exactamente la misma* que la diferencia entre 7 °C y 10 °C. En resumen, la suma y la resta tienen sentido para variables de escala de intervalo.
 
-Sin embargo, notá que 0 °C no significa "ausencia total de temperatura": en realidad significa "la temperatura a la que se congela el agua", lo cual es bastante arbitrario. Como consecuencia, resulta inútil intentar multiplicar o dividir temperaturas. Está mal decir que 20 °C es *el doble de caliente* que 10 °C, así como también carece de sentido decir que 20 °C es "menos dos veces más caliente" que --10 °C.
+Sin embargo, notá que 0 °C no significa "ausencia total de temperatura": en realidad significa "la temperatura a la que se congela el agua", lo cual es bastante arbitrario. Como consecuencia, resulta inútil intentar multiplicar o dividir temperaturas. Está mal decir que 20 °C es *el doble de caliente* que 10 °C, así como también es raro y carece de sentido decir que 20 °C es "menos dos veces más caliente" que --10 °C.
 
-Veamos otro ejemplo más relacionado con la psicología. Supongamos que me interesa estudiar cómo han cambiado las actitudes de les estudiantes de primer año de universidad a lo largo del tiempo. Obviamente, voy a querer registrar el año en que cada estudiante ingresó. Ese año es una variable de escala de intervalo. Une estudiante que ingresó en 2003 lo hizo cinco años antes que une que ingresó en 2008. Sin embargo, sería completamente absurdo dividir 2008 por 2003 y decir que la segunda persona ingresó "1,0024 veces más tarde" que la primera. Eso no tiene ningún sentido.
+Veamos otro ejemplo más relacionado con la psicología. Supongamos que me interesa estudiar cómo han cambiado las actitudes de los estudiantes de primer año de universidad a lo largo del tiempo. Obviamente, voy a querer registrar el año en que cada estudiante ingresó. Ese año es una variable de escala de intervalo. Un estudiante que ingresó en 2003 lo hizo cinco años antes que uno que ingresó en 2008. Sin embargo, sería completamente absurdo dividir 2008 entre 2003 y decir que la segunda persona ingresó "1,0024 veces más tarde" que la primera. Eso no tiene ningún sentido.
 
 ------------------------------------------------------------------------
 
 ### Escala de razón
 
-El cuarto y último tipo de variable que vamos a considerar es la variable de **escala de razón**, en la cual el cero realmente significa cero, y está bien multiplicar y dividir. Un buen ejemplo psicológico de una variable de escala de razón es el tiempo de respuesta (RT). En muchas tareas es común registrar cuánto tiempo le lleva a alguien resolver un problema o responder una pregunta, ya que eso puede ser un indicador de cuán difícil es la tarea.
-
-Supongamos que Alan tarda 2,3 segundos en responder una pregunta, mientras que Ben tarda 3,1 segundos. Al igual que con una variable de escala de intervalo, la suma y la resta tienen sentido: Ben realmente tardó (3{,}1 - 2{,}3 = 0{,}8) segundos más que Alan. Sin embargo, también tiene sentido multiplicar y dividir: Ben tardó (3{,}1 / 2{,}3 = 1{,}35) veces más que Alan en responder. Y esto tiene sentido porque, para una variable de escala de razón como el tiempo de respuesta, "cero segundos" realmente significa "ningún tiempo en absoluto".
+El cuarto y último tipo de variable que vamos a considerar es la variable de **escala de razón**, en la cual el cero realmente significa cero, y está bien multiplicar y dividir. Un buen ejemplo psicológico de una variable de escala de razón es el tiempo de respuesta. En muchas tareas es común registrar cuánto tiempo le lleva a alguien resolver un problema o responder una pregunta, ya que eso puede ser un indicador de cuán difícil es la tarea. Supongamos que Alan tarda 2,3 segundos en responder una pregunta, mientras que Ben tarda 3,1 segundos. Al igual que con una variable de escala de intervalo, la suma y la resta tienen sentido: Ben realmente tardó (3{,}1 - 2{,}3 = 0{,}8) segundos más que Alan. Sin embargo, también tiene sentido multiplicar y dividir: Ben tardó (3{,}1 / 2{,}3 = 1{,}35) veces más que Alan en responder. Y esto tiene sentido porque, para una variable de escala de razón como el tiempo de respuesta, "cero segundos" realmente significa "ningún tiempo en absoluto".
 
 ------------------------------------------------------------------------
 
@@ -326,13 +324,11 @@ Hay otro tipo de distinción que tenés que tener en cuenta respecto a los tipos
 
 -   Una **variable discreta** es, en efecto, una variable que *no* es continua. En una variable discreta, a veces *no* hay nada en el medio.
 
-Estas definiciones pueden parecer un poco abstractas, pero son bastante simples una vez que ves algunos ejemplos. Por ejemplo, el tiempo de respuesta es una variable continua. Si Alan tarda 3,1 segundos y Ben tarda 2,3 segundos en responder una pregunta, entonces es posible que Cameron haya tardado 3,0 segundos, es decir, un valor intermedio. Y claro, también sería posible que David tardara 3,031 segundos, lo que lo pondría entre Cameron y Alan. Aunque en la práctica tal vez no podamos medir el RT con tanta precisión, *en principio* sí se puede. Como siempre es posible encontrar un nuevo valor entre cualquier par de valores, decimos que el tiempo de respuesta es una variable continua.
+Estas definiciones pueden parecer un poco abstractas, pero son bastante simples una vez que ves algunos ejemplos. Por ejemplo, el tiempo de respuesta es una variable continua. Si Alan tarda 3,1 segundos y Ben tarda 2,3 segundos en responder una pregunta, entonces es posible que Cameron haya tardado 3,0 segundos, es decir, un valor intermedio. Y claro, también sería posible que David tardara 3,031 segundos, lo que lo pondría entre Cameron y Alan. Aunque en la práctica tal vez no podamos medir el tiempo de respuesta con tanta precisión, *en principio* sí se puede. Como siempre es posible encontrar un nuevo valor entre cualquier par de valores, decimos que el tiempo de respuesta es una variable continua.
 
-Las variables discretas aparecen cuando esta regla se rompe. Por ejemplo, las variables de escala nominal son siempre discretas: no hay un medio de transporte que esté "entre" el tren y la bicicleta, al menos no de la manera estrictamente matemática en la que 2,3 está entre 2 y 3. Así que el tipo de transporte es una variable discreta. Del mismo modo, las variables ordinales también son siempre discretas: aunque el "2.º lugar" esté entre el "1.º" y el "3.º", no hay nada que pueda caer *entre* el 1.º y el 2.º lugar.
+Las variables discretas aparecen cuando esta regla se rompe. Por ejemplo, las variables de escala nominal son siempre discretas: no hay un medio de transporte que esté "entre" el tren y la bicicleta, al menos no de la manera estrictamente matemática en la que 2,3 está entre 2 y 3. Así que el tipo de transporte es una variable discreta. Del mismo modo, las variables ordinales también son siempre discretas: aunque el "2.º lugar" esté entre el "1.º" y el "3.º", no hay nada que pueda caer *entre* el 1.º y el 2.º lugar. Las variables de escala de intervalo y de razón pueden ser continuas o discretas. Como vimos antes, el tiempo de respuesta (una variable de razón) es continua. La temperatura en grados Celsius (una variable de intervalo) también es continua. Pero el año en que alguien ingresó a la universidad (una variable de intervalo) es discreta: no hay ningún año entre 2002 y 2003. El número de respuestas correctas en un test de verdadero/falso (una variable de razón) también es discreto: como una pregunta de verdadero/falso no permite estar "parcialmente correcto", no hay nada entre 5/10 y 6/10.
 
-Las variables de escala de intervalo y de razón pueden ser continuas o discretas. Como vimos antes, el tiempo de respuesta (una variable de razón) es continua. La temperatura en grados Celsius (una variable de intervalo) también es continua. Pero el año en que alguien ingresó a la universidad (una variable de intervalo) es discreta: no hay ningún año entre 2002 y 2003. El número de respuestas correctas en un test de verdadero/falso (una variable de razón) también es discreto: como una pregunta de verdadero/falso no permite estar "parcialmente correcto", no hay nada entre 5/10 y 6/10.
-
-La siguiente tabla resume la relación entre las escalas de medición y la distinción continuo/discreto. Las celdas con una "x" marcan combinaciones posibles:
+La siguiente tabla resume la relación entre las escalas de medición y la distinción continuo/discreto. Las celdas con una "x" marcan combinaciones posibles. Estoy tratando de dejar bien en claro este punto porque: (a) algunos manuales no lo explican bien, y (b) muy seguido la gente dice cosas como “variable discreta” cuando en realidad quiere decir “variable de escala nominal”. Es una confusión bastante desafortunada.
 
 |           | continua | discreta |
 |-----------|:--------:|:--------:|
@@ -353,23 +349,23 @@ Así que tomemos un ejemplo clásico, quizás *el* ejemplo clásico, de una herr
 
 -   
 
-    (1) Estoy totalmente en desacuerdo\
+    (1) Totalmente en desacuerdo\
 
 -   
 
-    (2) Estoy en desacuerdo\
+    (2) En desacuerdo\
 
 -   
 
-    (3) No tengo una opinión clara\
+    (3) Ni de acuerdo ni en desacuerdo\
 
 -   
 
-    (4) Estoy de acuerdo\
+    (4) De acuerdo\
 
 -   
 
-    (5) Estoy totalmente de acuerdo
+    (5) Totalmente de acuerdo
 
 Y luego se le presentan al participante las siguientes opciones:
 
@@ -389,9 +385,7 @@ Este conjunto de ítems es un ejemplo de una escala de Likert de 5 puntos: se le
 
 Las escalas de Likert son herramientas muy útiles, aunque algo limitadas. La pregunta es: ¿qué tipo de variable son? Obviamente son discretas, ya que no se puede responder "2,5". Claramente no son de escala nominal, porque los ítems están ordenados; y tampoco son de escala de razón, porque no hay un cero natural.
 
-Pero entonces, ¿son de escala ordinal o de intervalo? Un argumento sostiene que no podemos realmente demostrar que la diferencia entre "totalmente de acuerdo" y "de acuerdo" sea del mismo tamaño que la diferencia entre "de acuerdo" y "ni de acuerdo ni en desacuerdo". De hecho, en la vida cotidiana es bastante obvio que no son iguales. Esto sugiere que deberíamos tratar las escalas de Likert como variables ordinales.
-
-Por otro lado, en la práctica, la mayoría de les participantes parece tomarse bastante en serio eso de "en una escala del 1 al 5", y tienden a comportarse como si las diferencias entre las cinco opciones de respuesta fueran más o menos similares entre sí. Como consecuencia, muches investigadores tratan los datos de escalas de Likert como si fueran de escala de intervalo. No lo son realmente, pero en la práctica se parecen lo suficiente como para que usualmente pensemos en ellas como de **cuasi-escala de intervalo**.
+Pero entonces, ¿son de escala ordinal o de intervalo? Un argumento sostiene que no podemos realmente demostrar que la diferencia entre "totalmente de acuerdo" y "de acuerdo" sea del mismo tamaño que la diferencia entre "de acuerdo" y "ni de acuerdo ni en desacuerdo". De hecho, en la vida cotidiana es bastante obvio que no son iguales. Esto sugiere que deberíamos tratar las escalas de Likert como variables ordinales. Por otro lado, en la práctica, la mayoría de les participantes parece tomarse bastante en serio eso de "en una escala del 1 al 5", y tienden a comportarse como si las diferencias entre las cinco opciones de respuesta fueran más o menos similares entre sí. Como consecuencia, muches investigadores tratan los datos de escalas de Likert como si fueran de escala de intervalo. No lo son realmente, pero en la práctica se parecen lo suficiente como para que usualmente pensemos en ellas como de **cuasi-escala de intervalo**.
 
 ## Evaluación de la confiabilidad de una medición
 

@@ -11,7 +11,7 @@ makeEps <- function( file, width, height ) {
 	)
 
 }
-makePng <- function(file, width, height, res = 300) {
+makePng <- function(file, width, height, res = 600) {
   dev.print(
     device = grDevices::png,
     file = file,

@@ -598,7 +598,7 @@ En otras palabras, esperarías que eso ocurra alrededor del 20% de las veces que
 #| label: fig-4binomial1
 #| fig-cap: "La distribución binomial con parámetro de tamaño $N = 20$ y una probabilidad de éxito de 1/6. Cada barra vertical representa la probabilidad de un resultado específico (es decir, un valor posible de $X$). Como se trata de una distribución de probabilidad, cada probabilidad debe ser un número entre 0 y 1, y la suma de las alturas de las barras también debe ser 1."
 
-knitr::include_graphics("imgs/navarro_img/probability/binomSkulls20-eps-converted-to.png")
+knitr::include_graphics("imgs/navarro_img/probability/binomSkulls20_es.png")
 ```
 
 
@@ -630,7 +630,7 @@ En este ejemplo, cambié la probabilidad de éxito, pero mantuve igual el tamañ
 #| label: fig-4binomial2
 #| fig-cap: "Dos distribuciones binomiales, en un escenario donde lanzo una moneda justa, con probabilidad de éxito $1/2$. En el panel (a), se supone que lanzo la moneda $N = 20$ veces. En el panel (b), que la lanzo $N = 100$ veces."
 
-knitr::include_graphics("imgs/navarro_img/probability/Binomial2.png")
+knitr::include_graphics("imgs/navarro_img/probability/Binomial2_es.png")
 ```
 
 Bueno, como se ve en @fig-4binomial2 (a), el efecto principal es que la distribución se desplaza hacia el centro, como cabría esperar.
@@ -706,11 +706,11 @@ Hay muchas sutilezas sobre cómo se generan números aleatorios en una computado
 Aunque la distribución binomial es conceptualmente la más fácil de entender, **no es la más importante**.
 Ese honor particular le corresponde a la *distribución normal*, también conocida como “la campana de Gauss” o simplemente “la curva de campana”.
 
-```{r
+```{r}
 #| label: fig-4normal
 #| fig-cap: "La distribución normal con media = 0 y desviación estándar = 1. El eje x representa los valores posibles de una variable, y el eje y nos dice qué tan probable es observar ese valor. Sin embargo, notá que el eje y está etiquetado como Densidad de Probabilidad y no como Probabilidad. Esto se debe a una característica sutil —y algo frustrante— de las distribuciones continuas, que hace que el eje y se comporte de manera un poco extraña: la altura de la curva no representa literalmente la probabilidad de observar un valor x en particular. Sin embargo, sí es cierto que los valores de x más probables corresponden a las alturas mayores de la curva."
 
-knitr::include_graphics("imgs/navarro_img/probability/standardNormal-eps-converted-to.png")
+knitr::include_graphics("imgs/navarro_img/probability/standardNormal_es.png")
 ```
 
 Una distribución normal se describe usando dos parámetros: la **media** de la distribución (\( \mu \)) y la **desviación estándar** (\( \sigma \)).
@@ -761,7 +761,7 @@ En la animación, la curva normal sube y baja un poco, pero eso es solo una cara
 #| fig-cap: "Una distribución normal con media variable"
 #| out.width: "50%"
 
-knitr::include_graphics(path="imgs/gifs/normalMovingMean-1.gif")
+knitr::include_graphics(path="imgs/gifs/normalMovingMean-1_es.gif")
 ```
 :::
 
@@ -775,7 +775,7 @@ Como podés ver, la distribución se expande y se vuelve más ancha a medida que
 #| fig-cap: "Una distribución normal con desviación estándar variable."
 #| out.width: "50%"
 
-knitr::include_graphics(path="imgs/gifs/normalMovingSD-1.gif")
+knitr::include_graphics(path="imgs/gifs/normalMovingSD-1_es.gif")
 ```
 :::
 

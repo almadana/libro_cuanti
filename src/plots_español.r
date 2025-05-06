@@ -227,3 +227,69 @@ gif = ggplot(df, aes(x = a, group = sample, frame = sample)) +
 
 anim_save("imgs/gifs/sampleHistUnif-1_es.gif", animation = animate(gif, width = 480, height = 480, fps = 10))
 
+# capitulo 4 -------------
+##fig-4normalMeanShift-----
+
+some_means<-c(0,1,2,3,4,5,4,3,2,1)
+all_df<-data.frame()
+for(i in 1:10){
+  dnorm_vec <- dnorm(seq(-10,10,.1),mean=some_means[i],sd=1)
+  x_range   <- seq(-10,10,.1)
+  means <- rep(some_means[i], length(x_range))
+  sims <- rep(i, length(x_range))
+  t_df<-data.frame(sims,means,x_range,dnorm_vec)
+  all_df<-rbind(all_df,t_df)
+}
+
+gif = ggplot(all_df, aes(x=x_range,y=dnorm_vec))+
+  geom_line()+
+  theme_classic()+
+  ylab("Densidad de probabilidad")+
+  xlab("Valor")+
+  ggtitle("Distribución normal con media cambiante")+
+  transition_states(
+    sims,
+    transition_length = 1,
+    state_length = 1
+  )
+
+anim_save("imgs/gifs/normalMovingMean-1_es.gif", animation = animate(gif, width = 480, height = 480, fps = 10))
+
+#enter_fade() +
+#exit_shrink() +
+#ease_aes('sine-in-out')
+
+## fig-4normalSDShift ---------
+
+some_sds<-seq(0.5,5,.5)
+all_df<-data.frame()
+for(i in 1:10){
+  dnorm_vec <- dnorm(seq(-10,10,.1),mean=0,sd=some_sds[i])
+  x_range   <- seq(-10,10,.1)
+  sds <- rep(some_sds[i], length(x_range))
+  sims <- rep(i, length(x_range))
+  t_df<-data.frame(sims,sds,x_range,dnorm_vec)
+  all_df<-rbind(all_df,t_df)
+}
+
+labs_df<-data.frame(sims=1:10,
+                    sds=as.character(seq(0.5,5,.5)))
+
+gif = ggplot(all_df, aes(x=x_range,y=dnorm_vec, frame=sims))+
+  geom_line()+
+  theme_classic()+
+  ylab("Densidad de probabilidad")+
+  xlab("Valor")+
+  ggtitle("Distribución normal con desvío cambiante")+
+  geom_label(data = labs_df, aes(x = 5, y = .5, label = sds))+
+  transition_states(
+    sims,
+    transition_length = 2,
+    state_length = 1
+  )+
+  enter_fade() +
+  exit_shrink() +
+  ease_aes('sine-in-out')
+
+anim_save("imgs/gifs/normalMovingSD-1_es.gif", animation = animate(gif, width = 480, height = 480, fps = 10))
+

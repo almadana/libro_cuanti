@@ -77,7 +77,20 @@ pantsDist()
 
 ## fig-4binomial1 ------
 
+set.seed(42)
+binomPlot <- function( n,p, ... ) {
 
+  # probabilities of each outcome
+  out <- 0:n
+  prob <- dbinom( x=out, size=n, prob=p )
+
+  # plot
+  plot(
+    out, prob, type="h", lwd=3, ylab="Probabilidad",
+    frame.plot=FALSE, col=ifelse(colour,emphCol,"black"), ...
+  )
+
+}
 binomExamples <- function() {
 
   # plots the three examples of a binomial distribution
@@ -87,30 +100,47 @@ binomExamples <- function() {
   height <- 6
 
   # function to produce a styled binomial plot
-  binomPlot <- function( n,p, ... ) {
-
-    # probabilities of each outcome
-    out <- 0:n
-    prob <- dbinom( x=out, size=n, prob=p )
-
-    # plot
-    plot(
-      out, prob, type="h", lwd=3, ylab="Probabilidad",
-      frame.plot=FALSE, col=ifelse(colour,emphCol,"black"), ...
-    )
-
-  }
 
   # skulls image...
-  binomPlot( n=20, p=1/6, xlab="Number of skulls observed" )
-  if( gif ) makeGif( paste0(dir, "binomSkulls20_es.gif"), width, height )
+  binomPlot( n=20, p=1/6, xlab="Número de cráneos observados" )
+  if( png ) makePng( paste0(directory, paste0("probability/","binomSkulls20_es.png")), width, height )
 
   # coins image #1...
-  binomPlot( n=20, p=1/2, xlab="Number of heads observed" )
-  if( gif ) makeGif( paste(dir, "binomHeads20_es.gif", sep=""), width, height )
+  binomPlot( n=20, p=1/2, xlab="Número de caras observadas" )
+  if( png ) makePng( paste0(directory, paste0("probability/", "binomHeads20_es.png")), width, height )
 
   # coins image #2...
-  binomPlot( n=100, p=1/2, xlab="Number of heads observed" )
-  if( gif ) makeGif( paste(dir, "binomHeads100_es.gif", sep=""), width, height )
+  binomPlot( n=100, p=1/2, xlab="Número de caras observadas" )
+  if( png ) makePng( paste0(directory, paste0("probability/", "binomHeads100_es.png")), width, height )
 }
+binomExamples()
 
+# fig-4binomial2---------
+par(mfrow = c(2, 1))  # 2 filas, 1 columna
+binomPlot( n=20, p=1/2, xlab="Número de caras observadas" ,main="a)")
+binomPlot( n=100, p=1/2, xlab="Número de caras observadas",main="b)" )
+makePng( paste0(directory, paste0("probability/", "Binomial2_es.png")), 8, 12 )
+
+#fig-4normal --------
+set.seed(42)
+standardNormal <- function() {
+
+  # plots the standard normal
+
+  # needed for printing
+  width <- 8
+  height <- 6
+  fileName <- "standardNormal_es.png"
+
+  # draw the plot
+  xval <- seq(-3,3,.01)
+  yval <- dnorm( xval, 0, 1)
+  plot( 	xval, yval, lwd=3, ylab="Densidad de probabilidad", xlab="Valor observado",
+         frame.plot = FALSE, col=ifelse(colour,emphCol,"black"), type="l"
+  )
+
+  # print
+  if( png ) makePng( paste0(directory, paste0("probability/",  fileName)), width, height )
+
+}
+standardNormal()

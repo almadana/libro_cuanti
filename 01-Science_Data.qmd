@@ -12,7 +12,7 @@ source("global_stuff.R")
 
 # ¿Por qué estadística?
 
-> Llamar a los estadísticos después de que el experimento ha terminado puede no ser más que pedirles que realicen una autopsia: puede que sean capaces de decir de qué murió el experimento. --- Sir Ronald Fisher
+> Consultar al estadístico después de que un experimento ha terminado es, a menudo, simplemente pedirle que realice una autopsia. Tal vez pueda decir de qué murió el experimento. --- Sir Ronald Fisher
 
 ## Sobre la psicología de la estadística
 
@@ -134,21 +134,21 @@ Espero que la discusión anterior haya ayudado a entender por qué la ciencia en
 
 -   **¿Por qué hay tanta estadística en psicología?**
 
-Siendo sinceres, hay varias razones, y algunas son mejores que otras. La más importante es que la psicología es una ciencia estadística. ¿Qué quiero decir con eso? Que lo que estudiamos somos personas. Personas reales, complicadas, caóticas, contradictorias. La física estudia "cosas" como electrones, y aunque la física tiene sus complejidades, los electrones no tienen mente propia. No tienen opiniones, no se comportan de manera arbitraria, no se aburren a mitad de experimento, ni sabotean los datos por bronca. A un nivel fundamental, la psicología es más difícil que la física.
+Siendo sinceros, hay varias razones, y algunas son mejores que otras. La más importante es que la psicología es una ciencia estadística. ¿Qué quiero decir con eso? Que lo que estudiamos son personas. Personas reales, complicadas, caóticas, contradictorias. La física estudia "cosas" como electrones, y aunque la física tiene sus complejidades, los electrones no tienen mente propia. No tienen opiniones, no difieren entre sí de maneras extrañas y arbitrarias, no se aburren a mitad de un experimento, y no se enojan con el experimentador para luego tratar deliberadamente de sabotear los datos (no es que yo alguna vez haya hecho eso…). A un nivel fundamental, la psicología es más difícil que la física.
 
-Básicamente, te enseñamos estadística porque, como psicólogue, necesitás ser mejor en esto que un físico. En física a veces se dice: "si tu experimento necesita estadística, tendrías que haber hecho un mejor experimento". Pero elles pueden decir eso porque sus objetos de estudio son ridículamente simples comparados con el lío que enfrentamos en las ciencias sociales. No es solo psicología: casi todas las ciencias sociales dependen mucho de la estadística. No porque seamos experimentalistas mediocres, sino porque elegimos problemas más difíciles. Te enseñamos estadística porque la vas a necesitar.
+Básicamente, te enseñamos estadística porque, como psicólogo, necesitás ser mejor en esto que un físico. En física a veces se dice: "si tu experimento necesita estadística, tendrías que haber hecho un mejor experimento". Pero ellos pueden decir eso porque sus objetos de estudio son ridículamente simples comparados con el lío que enfrentamos en las ciencias sociales. No es solo psicología: casi todas las ciencias sociales dependen mucho de la estadística. No porque seamos experimentadores mediocres, sino porque elegimos problemas más difíciles. Te enseñamos estadística porque realmente la vas a necesitar.
 
 -   **¿No puede encargarse otra persona de la estadística?**
 
-Hasta cierto punto, sí. No hace falta que te conviertas en une estadístique profesional para hacer psicología. Pero sí necesitás manejar lo básico. Para mí, hay tres razones por las que tode investigador/a en psicología debería saber estadística básica:
+Hasta cierto punto, sí, pero no completamente. No hace falta que te conviertas en un estadístico profesional para hacer psicología, pero sí necesitas alcanzar un cierto nivel de competencia estadística. Para mí, hay tres razones por las que todo investigador en psicología debería saber estadística básica:
 
 1.  La razón fundamental: la estadística está completamente ligada al diseño de investigación. Si querés diseñar buenos estudios, tenés que entender al menos lo básico.
 
-2.  Si querés entender bien la psicología, tenés que poder leer la literatura científica, y casi todos los artículos reportan análisis estadísticos. Si no entendés eso, te estás perdiendo una parte clave.
+2.  En segundo lugar, si querés ser bueno en la parte psicológica de la investigación, necesitás poder entender la literatura psicológica, ¿no? Pero casi todos los artículos en esa literatura presentan resultados de análisis estadísticos. Así que, si de verdad querés entender la psicología, tenés que poder entender qué hicieron los demás con sus datos. Y eso significa saber al menos algo de estadística.
 
-3.  Ser dependiente de otres para hacer análisis estadísticos tiene un gran problema práctico: es caro. En la mayoría de los casos no vas a tener presupuesto para contratar une estadístique. Así que, por economía, tenés que poder arreglártelas por tu cuenta.
+3.  Ser dependiente de otros para hacer análisis estadísticos tiene un gran problema práctico: es caro. En la mayoría de los casos no vas a tener presupuesto para contratar un estadístico. Así que, por economía, tenés que poder arreglártelas por tu cuenta.
 
-Y ojo, esto no aplica solo a investigadores. Si querés ejercer como psicólogue y mantenerte al día, te conviene poder leer la literatura científica, que está llena de estadística.
+Y ojo, esto no aplica solo a investigadores. Si querés ejercer como psicólogo y mantenerte al día, te conviene poder leer la literatura científica, que está llena de estadística.
 
 -   **No me interesan ni los trabajos, ni la investigación, ni lo clínico. ¿Igual necesito estadística?**
 
@@ -161,23 +161,23 @@ Y eso nos lleva al próximo tema...
 > *"Nos estamos ahogando en información,\
 > pero nos morimos de hambre por conocimiento"*\
 >
-> -- Varias autorías, probablemente John Naisbitt
+> -- Varios autores, original probablemente de John Naisbitt
 
-Cuando empecé a escribir estas notas, tomé los 20 artículos más recientes del sitio de noticias de ABC. De esos 20, resultó que 8 trataban sobre algo que yo consideraría un tema estadístico; 6 de esos 8 tenían algún error. El error más común, por si te da curiosidad, era no reportar datos de referencia (por ejemplo, el artículo dice que el 5% de las personas en la situación X tienen cierta característica Y, pero no dice cuán común es esa característica en la población general). El punto no es que les periodistas sean malísimes en estadística (aunque casi siempre lo son), sino que tener un conocimiento básico de estadística te ayuda mucho para darte cuenta cuando alguien se equivoca ---o directamente te está mintiendo. Quizás, una de las mayores consecuencias de aprender estadística es que te vas a enojar con el diario o con internet mucho más seguido :).
+Cuando empecé a escribir estas notas, tomé los 20 artículos más recientes del sitio de noticias de ABC. De esos 20, resultó que 8 trataban sobre algo que yo consideraría un tema estadístico; 6 de esos 8 tenían algún error. El error más común, por si te da curiosidad, era no reportar datos de línea de base (por ejemplo, el artículo dice que el 5% de las personas en la situación X tienen cierta característica Y, pero no dice cuán común es esa característica en la población general). El punto no es que los periodistas sean malísimos en estadística (aunque casi siempre lo son), sino que tener un conocimiento básico de estadística te ayuda mucho para darte cuenta cuando alguien se equivoca ---o directamente te está mintiendo. Quizás, una de las mayores consecuencias de aprender estadística es que te vas a enojar con el diario o con internet mucho más seguido :).
 
-## Hay más en los métodos de investigación que la estadística
+## Hay más en los métodos de investigación que solo la estadística
 
-Hasta ahora, la mayoría de lo que dije fue sobre estadística, así que no te culpo si pensás que es lo único que me importa en la vida. Para ser justes, no estarías tan equivocade, pero la metodología de investigación es un concepto más amplio. Por eso, los cursos de métodos suelen cubrir un montón de temas más ligados a los aspectos prácticos del diseño de investigaciones, especialmente cuando trabajás con personas. Sin embargo, el 99% de los miedos estudiantiles tienen que ver con la parte estadística del curso, así que me enfoqué en eso, y espero haberte convencido de que la estadística importa, y más importante aún, que no hay que tenerle miedo. Dicho eso, es bastante típico que los cursos introductorios de métodos estén muy cargados de estadística. Y no es (generalmente) porque les docentes sean gente malvada. Al contrario. Los cursos intro se enfocan tanto en estadística porque la vas a necesitar antes que el resto del entrenamiento metodológico. ¿Por qué? Porque en casi todas tus otras materias, los trabajos prácticos van a requerir análisis estadístico, mucho más que cualquier otra herramienta de metodología. No es común que te pidan diseñar un estudio desde cero (en cuyo caso sí necesitarías saber mucho sobre diseño de investigación), pero sí es común que te pidan analizar e interpretar datos recolectados por otra persona (en cuyo caso necesitás estadística). En ese sentido, si pensás en lo que más te va a servir para rendir bien en tus materias, la estadística es lo más urgente.
+Hasta ahora, la mayoría de lo que dije fue sobre estadística, así que no te culpo si pensás que es lo único que me importa en la vida. Para ser justos, no estarías tan equivocado, pero la metodología de investigación es un concepto más amplio. Por eso, los cursos de métodos suelen cubrir un montón de temas más ligados a los aspectos prácticos del diseño de investigaciones, especialmente cuando trabajás con personas. Sin embargo, el 99% de los miedos estudiantiles tienen que ver con la parte estadística del curso, así que me enfoqué en eso, y espero haberte convencido de que la estadística importa, y más importante aún, que no hay que tenerle miedo. Dicho eso, es bastante típico que los cursos introductorios de métodos estén muy cargados de estadística. Y no es (generalmente) porque los docentes sean gente malvada. Al contrario. Los cursos introductorios se enfocan tanto en estadística porque la vas a necesitar antes que el resto del entrenamiento metodológico. ¿Por qué? Porque en casi todas tus otras materias, los trabajos prácticos van a requerir análisis estadístico, mucho más que cualquier otra herramienta de metodología. No es común que te pidan diseñar un estudio desde cero (en cuyo caso sí necesitarías saber mucho sobre diseño de investigación), pero sí es común que te pidan analizar e interpretar datos recolectados por otra persona (en cuyo caso necesitás estadística). En ese sentido, si pensás en lo que más te va a servir para rendir bien en tus materias, la estadística es lo más urgente.
 
-Pero "urgente" no es lo mismo que "importante": las dos cosas lo son. De verdad quiero insistir en que el diseño de investigación es tan importante como el análisis de datos, y este libro le dedica bastante espacio. Aun así, mientras que la estadística tiene un carácter más universal y te da un conjunto de herramientas útiles para casi cualquier investigación en psicología, el diseño de investigación no es tan generalizable. Hay principios básicos que todes deberían tener en cuenta, pero muchos aspectos del diseño son muy específicos del área en la que trabajás. Y como lo que más importa está en los detalles, esos detalles casi nunca aparecen en un curso introductorio de estadística y métodos.
+Pero tené en cuenta que “urgente” es diferente de “importante”; ambos son relevantes. De verdad quiero insistir en que el diseño de investigación es tan importante como el análisis de datos, y este libro le dedica bastante espacio. Aun así, mientras que la estadística tiene un carácter más universal y te da un conjunto de herramientas útiles para casi cualquier investigación en psicología, el diseño de investigación no es tan generalizable. Hay principios básicos que todos deberían tener en cuenta, pero muchos aspectos del diseño son muy específicos del área en la que trabajás. Y como lo que más importa está en los detalles, esos detalles casi nunca aparecen en un curso introductorio de estadística y métodos.
 
 ## Una breve introducción al diseño de investigación
 
-En este capítulo vamos a empezar a pensar en las ideas básicas que intervienen al diseñar un estudio, recolectar datos, verificar si la recolección funciona, etc. No te va a dar suficiente info como para que puedas diseñar tus propios estudios, pero sí te va a dar herramientas básicas para evaluar los estudios de otres. Sin embargo, como este libro está más enfocado en el análisis de datos que en la recolección, solo voy a dar un panorama general.
+En este capítulo vamos a empezar a pensar en las ideas básicas que intervienen al diseñar un estudio, recolectar datos, verificar si la recolección funciona, etc. No te va a dar suficiente info como para que puedas diseñar tus propios estudios, pero sí te va a dar herramientas básicas para evaluar los estudios de otros. Sin embargo, como este libro está más enfocado en el análisis de datos que en la recolección, solo voy a dar un panorama general.
 
-Este capítulo es "especial" por dos razones. Primero, es mucho más específico de la psicología que los capítulos que vienen después. Segundo, se enfoca mucho más en el problema científico del diseño metodológico, y mucho menos en el problema estadístico del análisis de datos. Aun así, los dos están relacionados, y por eso es tradicional que los libros de estadística dediquen aunque sea un poco de espacio a hablar del tema.
+Este capítulo es "especial" por dos razones. Primero, es mucho más específico de la psicología que los capítulos que vienen después. Segundo, se enfoca mucho más en el problema científico del diseño metodológico, y mucho menos en el problema estadístico del análisis de datos. De todos modos, los dos problemas están relacionados entre sí, así que es común que los libros de estadística los traten con cierto detalle.
 
-Este capítulo se basa bastante en @Campbell1963 para el diseño de estudios, y en @Stevens1946 para la discusión sobre escalas de medición. En versiones futuras del texto, las citas van a estar más detalladas.
+Este capítulo se basa bastante en @Campbell1963 para el diseño de estudios, y en @Stevens1946 para la discusión sobre escalas de medición.
 
 ## Introducción a la medición psicológica
 
@@ -197,25 +197,25 @@ La medición es un concepto sutil, pero básicamente se trata de encontrar una f
 
 En esta lista, lo que está **en negrita** es "lo que se quiere medir", y lo que está *en cursiva* es "la medida en sí". Podemos ir un poco más allá y pensar en el conjunto de posibles mediciones que podrían haber surgido en cada caso:
 
--   Mi **edad** (en años) podría haber sido *0, 1, 2, 3*... etc. El valor máximo posible es medio difuso, pero en la práctica se suele usar *150* como un límite razonable.
+-   Mi **edad** (en años) podría haber sido *0, 1, 2, 3*... etc. El límite superior de lo que podría ser mi edad es un poco impreciso, pero en la práctica podrías decir tranquilamente que la edad máxima posible es 150, ya que ningún ser humano ha vivido tanto.
 
 -   Al preguntarme si me **gustan las anchoas**, podría haber respondido *sí*, *no*, *no tengo opinión*, o *a veces*.
 
--   Mi **sexo cromosómico** casi seguro será *masculino (XY)* o *femenino (XX)*, pero hay otras posibilidades, como el *síndrome de Klinefelter (XXY)*, que es más similar al masculino. Y seguro hay más.
+-   Mi **sexo cromosómico** casi seguro será *masculino (XY)* o *femenino (XX)*, pero hay otras posibilidades, como el *síndrome de Klinefelter (XXY)*, que es más similar al masculino. Y seguro hay más posibilidades.
 
 -   Mi **género autoidentificado** también podría ser *masculino* o *femenino*, pero no tiene por qué coincidir con el sexo cromosómico. También podría identificarme con *ninguno*, o declararme explícitamente *transgénero*.
 
-Como ves, para algunas cosas (como la edad) es bastante claro cuál es el conjunto de valores posibles, pero para otras se vuelve más complicado. Incluso con la edad, hay sutilezas. En el ejemplo anterior asumí que medir en años estaba bien. Pero si sos psicólogue del desarrollo, eso es muy burdo: se suele usar *años* y *meses* (por ejemplo, "2;11" para 2 años y 11 meses). Si trabajás con recién nacides, tal vez necesites medir *días desde el nacimiento*, o incluso *horas*.
+Como ves, para algunas cosas (como la edad) es bastante claro cuál es el conjunto de valores posibles, pero para otras se vuelve más complicado. Incluso con la edad, hay sutilezas. En el ejemplo anterior asumí que medir en años estaba bien. Pero si sos psicólogo del desarrollo, eso es muy burdo: se suele usar *años* y *meses* (por ejemplo, "2;11" para 2 años y 11 meses). Si trabajás con recién nacidos, tal vez necesites medir *días desde el nacimiento*, o incluso *horas*.
 
-Y si lo pensás más, te das cuenta de que el concepto de "edad" no es tan preciso. En general, cuando decimos "edad" nos referimos al tiempo desde el nacimiento. Pero eso no siempre es lo ideal. Supongamos que te interesa estudiar el control ocular en recién nacides. En ese caso, podrías cuestionarte si "nacimiento" es el punto de referencia adecuado. Si María nace 3 semanas antes de término y Juana una semana después, ¿tienen la "misma edad" si las observamos a las 2 horas de nacidas? Socialmente, sí. Pero desde una perspectiva biológica, no. Tal vez convenga definir dos conceptos distintos: tiempo desde la concepción, y tiempo desde el nacimiento. Para adultes no hace diferencia, pero para recién nacides sí.
+Y si lo pensás más, te das cuenta de que el concepto de "edad" no es tan preciso. En general, cuando decimos "edad" nos referimos al tiempo desde el nacimiento. Pero eso no siempre es lo ideal. Supongamos que te interesa estudiar el control ocular en recién nacidos. En ese caso, podrías cuestionarte si "nacimiento" es el punto de referencia adecuado. Si María nace 3 semanas antes de término y Juana una semana después, ¿tienen la "misma edad" si las observamos a las 2 horas de nacidas? Socialmente, sí. Pero desde una perspectiva biológica, no. Tal vez convenga definir dos conceptos distintos: tiempo desde la concepción, y tiempo desde el nacimiento. Para adultos no hace diferencia, pero para recién nacidos sí.
 
-Más allá de eso, está la cuestión metodológica: ¿qué método vas a usar para medir la edad?
+Más allá de eso, está la cuestión metodológica: ¿qué "método de medición" vas a usar para averiguar la edad? Como antes, hay muchas posibilidades.
 
--   Podés simplemente preguntar: "¿cuántos años tenés?" El autorreporte es rápido y barato, pero solo sirve si la persona entiende la pregunta, y alguna gente miente.
+-   Podés simplemente preguntar: "¿cuántos años tenés?" El autorreporte es rápido, barato y sencillo, pero solo sirve con personas lo suficientemente grandes como para entender la pregunta, y alguna gente miente sobre su edad.
 
--   Podés preguntarle a une adulte responsable: "¿qué edad tiene tu hije?" Esto también es rápido, y suele ser fiable. Pero no sirve si querés saber la edad desde la concepción, porque muches padres no saben con precisión cuándo ocurrió.
+-   Podrías preguntarle a una persona referente (por ejemplo, a la madre o al padre): “¿Qué edad tiene tu hijo?” Este método es rápido, y cuando se trata de niños no suele ser complicado, ya que casi siempre hay algún adulto presente. No funciona tan bien si querés saber la “edad desde la concepción”, porque muchas veces los padres no saben con certeza cuándo ocurrió. Para eso, quizás necesites otra autoridad (por ejemplo, un obstetra).
 
--   Podés consultar registros oficiales, como partidas de nacimiento. Lleva más tiempo, pero tiene su utilidad (por ejemplo, si la persona ya murió).
+-   Podés consultar registros oficiales, como partidas de nacimiento. Es un proceso tedioso y lleva tiempo, pero puede ser útil (por ejemplo, si la persona ya falleció).
 
 ### Operacionalización: definir tu medición
 

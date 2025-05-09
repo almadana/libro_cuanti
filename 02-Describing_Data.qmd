@@ -12,12 +12,12 @@ source("global_stuff.R")
 
 # Describir los datos {#DescribingData}
 
-> Mucho mejor una respuesta aproximada a la pregunta correcta —aunque sea vaga— que una respuesta exacta a la pregunta incorrecta, que siempre puede ser precisa. — John W. Tukey
+> Mucho mejor una respuesta aproximada a la pregunta correcta ---aunque sea vaga--- que una respuesta exacta a la pregunta incorrecta, que siempre puede ser precisa. --- John W. Tukey
 
 Este capítulo trata sobre **estadísticas descriptivas**. Son herramientas para describir datos. Algunas cosas a tener en cuenta mientras avanzamos:
 
 1.  Hay muchas formas diferentes de describir datos.\
-2.  No hay una única forma “correcta”; podés elegir la más “útil” para los datos que estás describiendo.\
+2.  No hay una única forma "correcta"; podés elegir la más "útil" para los datos que estás describiendo.\
 3.  Es posible inventar nuevas formas de describir datos. Todas las formas que vamos a ver fueron inventadas por otras personas, y se usan comúnmente porque resultan útiles.\
 4.  Describir los datos es necesario porque normalmente hay demasiados, y por sí solos no tienen mucho sentido.
 
@@ -55,7 +55,7 @@ La @fig-happyPlot muestra 500 mediciones de felicidad. El gráfico tiene dos eje
 
 Antes de hablar sobre lo que podemos y no podemos ver en los datos, vale la pena mencionar que la forma en que los graficás puede hacer que algunas cosas sean más fáciles de ver y otras más difíciles. Entonces, ¿qué podemos ver ahora en los datos?
 
-Hay muchos puntos por todos lados. Parece que hay 500, porque el índice llega hasta 500. Algunos puntos parecen llegar tan alto como 1000–1500, y tan bajo como -1500. Da la impresión de que hay más puntos en la zona central del gráfico, más o menos alrededor del 0.
+Hay muchos puntos por todos lados. Parece que hay 500, porque el índice llega hasta 500. Algunos puntos parecen llegar tan alto como 1000--1500, y tan bajo como -1500. Da la impresión de que hay más puntos en la zona central del gráfico, más o menos alrededor del 0.
 
 > Conclusión: podemos ver todos los números a la vez al ponerlos en un gráfico, y eso es mucho más fácil y útil que mirar los números crudos.
 
@@ -71,7 +71,7 @@ Hacer un histograma será nuestro primer acto de resumir oficialmente algo sobre
 hist(happiness)
 ```
 
-Los puntos desaparecieron, y ahora vemos unas barras. Cada barra resume varios puntos: representa cuántos puntos (frecuencia) caen dentro de un determinado rango de felicidad, también llamado **bin** o intervalo. Por ejemplo, ¿cuántas personas dieron una puntuación de felicidad entre 0 y 500? La quinta barra —la que va de 0 a 500 en el eje x— te lo dice. Mirá qué alta es esa barra. ¿Cuánto mide? La altura se muestra en el eje y, que indica la frecuencia (el número de puntos o valores). Parece que unas 150 personas dijeron que su felicidad estaba entre 0 y 500.
+Los puntos desaparecieron, y ahora vemos unas barras. Cada barra resume varios puntos: representa cuántos puntos (frecuencia) caen dentro de un determinado rango de felicidad, también llamado **bin** o intervalo. Por ejemplo, ¿cuántas personas dieron una puntuación de felicidad entre 0 y 500? La quinta barra ---la que va de 0 a 500 en el eje x--- te lo dice. Mirá qué alta es esa barra. ¿Cuánto mide? La altura se muestra en el eje y, que indica la frecuencia (el número de puntos o valores). Parece que unas 150 personas dijeron que su felicidad estaba entre 0 y 500.
 
 En general, vemos que hay muchos bins en el eje x. Dividimos los datos en intervalos de 500. El bin #1 va de -2000 a -1500, el bin #2 de -1500 a -1000, y así sucesivamente hasta el último intervalo. Para hacer el histograma, simplemente contamos cuántos valores caen en cada intervalo, y graficamos esas frecuencias como función de los bins. Voilà, un histograma.
 
@@ -109,9 +109,9 @@ Todos los histogramas tienen aproximadamente la misma forma general: de izquierd
 
 ## Ideas importantes: distribución, tendencia central y varianza
 
-Vamos a presentar tres términos importantes que vamos a usar mucho: **distribución**, **tendencia central** y **varianza**. Estos términos son parecidos a su uso cotidiano (aunque sospecho que la mayoría no dice “tendencia central” muy seguido).
+Vamos a presentar tres términos importantes que vamos a usar mucho: **distribución**, **tendencia central** y **varianza**. Estos términos son parecidos a su uso cotidiano (aunque sospecho que la mayoría no dice "tendencia central" muy seguido).
 
-**Distribución.** Cuando pedís algo por internet, ¿de dónde viene y cómo llega a tu casa? Eso viene de uno de los centros de distribución de Amazon. Ellos distribuyen todo tipo de cosas repartiéndolas por todos lados. “Distribuir” significa eso: esparcir algo. Notá que los datos en el histograma están distribuidos, o sea, están repartidos en distintos intervalos. También podemos hablar de una distribución como sustantivo. El histograma es una distribución de las frecuencias a lo largo de los bins. Las distribuciones son **muy, muy, muy, muy, muy** importantes. Pueden tener muchas formas distintas. Pueden describir datos, como en el histograma que vimos. Y, como vamos a ver más adelante, también pueden **generar** datos. Muchas veces nos vamos a preguntar de dónde vienen nuestros datos, y eso suele significar preguntarse qué tipo de distribución podría haber generado esos datos (más sobre eso más adelante).
+**Distribución.** Cuando pedís algo por internet, ¿de dónde viene y cómo llega a tu casa? Eso viene de uno de los centros de distribución de Amazon. Ellos distribuyen todo tipo de cosas repartiéndolas por todos lados. "Distribuir" significa eso: esparcir algo. Notá que los datos en el histograma están distribuidos, o sea, están repartidos en distintos intervalos. También podemos hablar de una distribución como sustantivo. El histograma es una distribución de las frecuencias a lo largo de los bins. Las distribuciones son **muy, muy, muy, muy, muy** importantes. Pueden tener muchas formas distintas. Pueden describir datos, como en el histograma que vimos. Y, como vamos a ver más adelante, también pueden **generar** datos. Muchas veces nos vamos a preguntar de dónde vienen nuestros datos, y eso suele significar preguntarse qué tipo de distribución podría haber generado esos datos (más sobre eso más adelante).
 
 **Tendencia central** tiene que ver con lo común: ¿Qué tienen en común ciertos números? Por ejemplo, ¿hay algo en común en los números del histograma? Sí, podemos decir que la mayoría están cerca del 0. Hay una tendencia de muchos de esos números a estar centrados cerca del 0. Fijate que estamos siendo cautelosos: no estamos diciendo que *todos* sean 0, sino que hay una tendencia a estar cerca de 0. Hay muchas formas de hablar de la tendencia central de un conjunto de números. Incluso puede haber más de una. Por ejemplo, si muchos de los números estuvieran alrededor de -1000, y otro grupo similar estuviera alrededor de 1000, podríamos decir que hay dos tendencias.
 
@@ -123,7 +123,7 @@ Ya vimos que podemos hacernos una idea de los datos graficando puntos o haciendo
 
 ### De muchos números a uno solo
 
-Las medidas de tendencia central tienen un objetivo importante: reducir un montón de números a un solo número que podamos mirar. Ya sabemos que mirar miles de números no sirve de mucho. ¿No estaría bueno poder mirar uno solo? Nosotros creemos que sí. Resulta que hay muchas formas de hacerlo. Así, si alguien alguna vez te hace la temida pregunta: “che, ¿cómo son todos estos números?”, podés responder: “son más o menos como este número que ves acá”.
+Las medidas de tendencia central tienen un objetivo importante: reducir un montón de números a un solo número que podamos mirar. Ya sabemos que mirar miles de números no sirve de mucho. ¿No estaría bueno poder mirar uno solo? Nosotros creemos que sí. Resulta que hay muchas formas de hacerlo. Así, si alguien alguna vez te hace la temida pregunta: "che, ¿cómo son todos estos números?", podés responder: "son más o menos como este número que ves acá".
 
 Pero, al igual que en *Indiana Jones y la Última Cruzada* (gran película, recomendada), tenés que elegir sabiamente tu medida de tendencia central.
 
@@ -139,19 +139,19 @@ Bueno, perfecto. ¿Y qué pasa acá?
 > Ejemplo: 1 1 1 2 2 2 3 4 5 6\
 > Ahora tanto 1 como 2 aparecen tres veces. ¿Qué hacemos? Decimos que hay dos modas: 1 y 2.
 
-¿Por qué la moda es una medida de tendencia central? Bueno, cuando preguntamos “¿cómo son mis números?”, podemos decir: “la mayoría son como un 1” (o lo que sea que sea la moda).
+¿Por qué la moda es una medida de tendencia central? Bueno, cuando preguntamos "¿cómo son mis números?", podemos decir: "la mayoría son como un 1" (o lo que sea que sea la moda).
 
 ¿Es una buena medida de tendencia central? Depende de los números. Por ejemplo, considerá estos:
 
 > 1 1 2 3 4 5 6 7 8
 
-Acá, la moda vuelve a ser 1, porque aparece dos veces y los demás números una sola vez. Pero, ¿la mayoría de los números son “como un 1”? No, la mayoría no lo son.
+Acá, la moda vuelve a ser 1, porque aparece dos veces y los demás números una sola vez. Pero, ¿la mayoría de los números son "como un 1"? No, la mayoría no lo son.
 
-“¡Argh! Entonces, ¿debería o no debería usar la moda? Pensé que esta clase me iba a decir qué hacer…”. No, nadie te va a decir qué hacer. Cada vez que uses una herramienta estadística vas a tener que pensar qué estás haciendo y justificar por qué tiene sentido. Lo siento.
+"¡Argh! Entonces, ¿debería o no debería usar la moda? Pensé que esta clase me iba a decir qué hacer...". No, nadie te va a decir qué hacer. Cada vez que uses una herramienta estadística vas a tener que pensar qué estás haciendo y justificar por qué tiene sentido. Lo siento.
 
 ### Mediana
 
-La **mediana** es el punto exacto del medio en el conjunto de datos. Después de todo, estamos preguntándonos sobre la tendencia *central*, así que, ¿por qué no ir al centro del conjunto de datos a ver qué hay ahí? ¿Qué significa “el medio”? Miremos estos números:
+La **mediana** es el punto exacto del medio en el conjunto de datos. Después de todo, estamos preguntándonos sobre la tendencia *central*, así que, ¿por qué no ir al centro del conjunto de datos a ver qué hay ahí? ¿Qué significa "el medio"? Miremos estos números:
 
 > 1 5 4 3 6 7 9
 
@@ -159,7 +159,7 @@ Mmm, ok. ¿Entonces el 3 está en el medio? Parece un poco arbitrario. Y sí. An
 
 > 1 3 4 **5** 6 7 9
 
-Ahora el 5 está en el medio. Y por “medio” nos referimos literalmente al medio. Hay tres números a la izquierda del 5, y tres a la derecha. Así que sí, el 5 está justo en el centro.
+Ahora el 5 está en el medio. Y por "medio" nos referimos literalmente al medio. Hay tres números a la izquierda del 5, y tres a la derecha. Así que sí, el 5 está justo en el centro.
 
 Bueno, pero ¿qué pasa si hay una cantidad *par* de números? Entonces el medio no va a estar en el conjunto, ¿no? Veamos:
 
@@ -183,13 +183,13 @@ La **media** también se llama promedio. Y probablemente ya sepas qué es: se su
 
 $\text{Media} = \bar{X} = \frac{\sum_{i=1}^{n} x_{i}}{N}$
 
-“Eso me suena a griego”. Y sí. El símbolo $\sum$ se llama **sigma** y representa la operación de sumar. La “i” abajo y la “n” arriba indican que hay que sumar todos los números del conjunto, desde el primero (i) hasta el último (n). Las letras son etiquetas arbitrarias, llamadas **variables**, que usamos para describir. El $x_i$ se refiere a cada número del conjunto. Sumamos todo, y dividimos por $N$, que es la cantidad total de valores. A veces usamos $\bar{X}$ para referirnos a la media.
+"Eso me suena a griego". Y sí. El símbolo $\sum$ se llama **sigma** y representa la operación de sumar. La "i" abajo y la "n" arriba indican que hay que sumar todos los números del conjunto, desde el primero (i) hasta el último (n). Las letras son etiquetas arbitrarias, llamadas **variables**, que usamos para describir. El $x_i$ se refiere a cada número del conjunto. Sumamos todo, y dividimos por $N$, que es la cantidad total de valores. A veces usamos $\bar{X}$ para referirnos a la media.
 
 En lenguaje común, la fórmula sería algo así:
 
 $\text{Media} = \frac{\text{Suma de mis números}}{\text{Cantidad de números}}$
 
-“¿Y por qué no dijiste eso desde el principio?”. Bueno... lo acabamos de decir.
+"¿Y por qué no dijiste eso desde el principio?". Bueno... lo acabamos de decir.
 
 Calculemos la media de estos cinco números:
 
@@ -220,16 +220,15 @@ Bueno, así se calcula la media. Pero, como imaginábamos, probablemente ya sab�
 
 No alcanza con saber la fórmula de la media, ni con poder calcularla para un conjunto de números. Confiamos en tu capacidad de sumar y dividir. Lo que realmente importa es entender qué *significa* la media. Tenés que saber qué hace la media, no solo cómo se hace. ¿Te desconcertó? Te lo explicamos.
 
-¿Podés responder esta pregunta?: ¿Qué pasa cuando dividís una suma de números por la cantidad de números? ¿Cuáles son las consecuencias de hacer eso? ¿Qué hace exactamente esa fórmula? ¿Qué propiedades tiene el resultado? Ojo: la respuesta *no* es simplemente “da la media”.
+¿Podés responder esta pregunta?: ¿Qué pasa cuando dividís una suma de números por la cantidad de números? ¿Cuáles son las consecuencias de hacer eso? ¿Qué hace exactamente esa fórmula? ¿Qué propiedades tiene el resultado? Ojo: la respuesta *no* es simplemente "da la media".
 
-Ok, ¿qué pasa cuando dividís cualquier número por otro? La palabra clave es “dividir”. Literalmente, estamos cortando el número de arriba (el numerador) en partes. ¿En cuántas partes? Depende del número de abajo (el denominador). Mirá:
-
+Ok, ¿qué pasa cuando dividís cualquier número por otro? La palabra clave es "dividir". Literalmente, estamos cortando el número de arriba (el numerador) en partes. ¿En cuántas partes? Depende del número de abajo (el denominador). Mirá:
 
 $\frac{12}{3} = 4$
 
 Ya sabés que el resultado es 4. Pero, ¿qué está pasando en realidad? Estamos cortando el 12 en tres partes. Y resulta que esas partes miden 4. Entonces, podemos pensar el 12 como 3 pedazos iguales: (12 = 4 + 4 + 4). ¿Y qué propiedad tienen esos pedazos? Son todos iguales. Sí. La división iguala el numerador en partes iguales.
 
-“Ehh… creo que esto lo aprendí en la escuela. ¿Qué tiene que ver con la media?”. Bueno, el número de arriba en la fórmula de la media es justamente otro numerador dividido por un denominador. En este caso, el numerador es la suma de todos los valores. ¿Y si fuera la suma de las 500 puntuaciones de felicidad? Esa suma sería un solo número. Si dividimos esa suma en partes iguales, una para cada persona, ¿qué obtenemos? Obtendríamos 500 valores iguales, uno por persona. Sería como tomar toda la felicidad del mundo, dividirla en partes iguales, y después devolverle a cada persona exactamente la misma cantidad. A algunas personas les tocaría más de lo que tenían antes, a otras menos. Porque estaríamos igualando la distribución de felicidad. Ese proceso de dividir en partes iguales es lo que hace la **media**. ¿Ves? Es más que una fórmula. Es una idea. Y esta es solo la primera de muchas ideas que vamos a ir explorando. Vamos a volver a hablar de esto más adelante.
+"Ehh... creo que esto lo aprendí en la escuela. ¿Qué tiene que ver con la media?". Bueno, el número de arriba en la fórmula de la media es justamente otro numerador dividido por un denominador. En este caso, el numerador es la suma de todos los valores. ¿Y si fuera la suma de las 500 puntuaciones de felicidad? Esa suma sería un solo número. Si dividimos esa suma en partes iguales, una para cada persona, ¿qué obtenemos? Obtendríamos 500 valores iguales, uno por persona. Sería como tomar toda la felicidad del mundo, dividirla en partes iguales, y después devolverle a cada persona exactamente la misma cantidad. A algunas personas les tocaría más de lo que tenían antes, a otras menos. Porque estaríamos igualando la distribución de felicidad. Ese proceso de dividir en partes iguales es lo que hace la **media**. ¿Ves? Es más que una fórmula. Es una idea. Y esta es solo la primera de muchas ideas que vamos a ir explorando. Vamos a volver a hablar de esto más adelante.
 
 > Consejo útil: La media es el único número que puede reemplazar a todos los valores de un conjunto, de manera que si sumás esos valores iguales, obtenés la misma suma original de los datos.
 
@@ -237,7 +236,7 @@ Ya sabés que el resultado es 4. Pero, ¿qué está pasando en realidad? Estamos
 
 Para repasar la moda, la mediana y la media, mirá el siguiente histograma en @fig-meanmodemed. Indicamos la ubicación de la media (rojo), la mediana (verde) y la moda (azul). Para este conjunto de datos, las tres medidas de tendencia central dan valores diferentes. La media es la más alta porque se ve influida por valores grandes, incluso si aparecen pocas veces. La moda y la mediana no se ven afectadas por esos valores extremos, por eso tienen valores más bajos.
 
-``` {r, echo=F}
+```{r, echo=F}
 #| label: fig-meanmodemed
 #| fig-cap: "Un histograma con la media (rojo), la mediana (verde) y la moda (azul)"
 
@@ -272,7 +271,7 @@ Considerá estos 10 números, que ya están ordenados de menor a mayor:
 
 Estos números varían, porque no son todos iguales. Podemos usar el rango para describir la amplitud de esa variación. El rango se refiere al **mínimo** (el valor más bajo) y al **máximo** (el valor más alto) del conjunto. Así que el rango sería 1 y 24.
 
-El rango es una forma rápida de resumir los límites de los datos con solo dos números. Al calcular el rango, sabemos que ningún valor es más chico ni más grande que esos extremos. Además, puede alertarte sobre valores atípicos. Por ejemplo, si esperás que tus números estén entre 1 y 7, pero el rango es 1–340.500, entonces sabés que hay algunos valores enormes que no deberían estar ahí. Eso te permite investigar por qué aparecieron (y posiblemente eliminarlos si hubo algún error).
+El rango es una forma rápida de resumir los límites de los datos con solo dos números. Al calcular el rango, sabemos que ningún valor es más chico ni más grande que esos extremos. Además, puede alertarte sobre valores atípicos. Por ejemplo, si esperás que tus números estén entre 1 y 7, pero el rango es 1--340.500, entonces sabés que hay algunos valores enormes que no deberían estar ahí. Eso te permite investigar por qué aparecieron (y posiblemente eliminarlos si hubo algún error).
 
 ### Las diferencias
 
@@ -292,7 +291,7 @@ knitr::kable(differences,row.names=T)
 
 ```
 
-Estamos viendo todas las diferencias posibles entre cada número y los demás. Por ejemplo, en la esquina superior izquierda, la diferencia entre 1 y sí mismo es 0. Una columna a la derecha, la diferencia entre 3 y 1 (3–1) es 2, etc. Como ves, es una matriz de 10x10, o sea, 100 diferencias. No está mal… pero si tuviéramos 500 números, serían 500×500 = 250.000 diferencias para mirar (dale, si te divierte ese tipo de cosas).
+Estamos viendo todas las diferencias posibles entre cada número y los demás. Por ejemplo, en la esquina superior izquierda, la diferencia entre 1 y sí mismo es 0. Una columna a la derecha, la diferencia entre 3 y 1 (3--1) es 2, etc. Como ves, es una matriz de 10x10, o sea, 100 diferencias. No está mal... pero si tuviéramos 500 números, serían 500×500 = 250.000 diferencias para mirar (dale, si te divierte ese tipo de cosas).
 
 Pausa para una pregunta simple: ¿cómo se vería esta matriz si los 10 números fueran todos iguales? Debería estar llena de ceros, ¿no? Exacto. En ese caso, podríamos ver fácilmente que no hay variación.
 
@@ -323,7 +322,7 @@ Estos pequeños problemas se pueden resolver con el uso de la **varianza** y la 
 
 ### La varianza
 
-Variabilidad, variación, varianza, variar, variable, variado, variedad. ¿Confundido? Antes de describir **la varianza**, queremos que te sientas cómodo con cómo se usa esta palabra. Primero, no te olvides de lo importante: sabemos que variabilidad y variación se refieren a la gran idea de que los números pueden ser diferentes. Podemos usar “varianza” en ese mismo sentido. Cuando los números son distintos, tienen varianza.
+Variabilidad, variación, varianza, variar, variable, variado, variedad. ¿Confundido? Antes de describir **la varianza**, queremos que te sientas cómodo con cómo se usa esta palabra. Primero, no te olvides de lo importante: sabemos que variabilidad y variación se refieren a la gran idea de que los números pueden ser diferentes. Podemos usar "varianza" en ese mismo sentido. Cuando los números son distintos, tienen varianza.
 
 ::: callout-note
 Las fórmulas para la varianza y la desviación estándar dependen de si creés que tus datos representan toda una población, o si son solo una muestra. Vamos a discutir esto más adelante. Por ahora, dividimos por (N); más adelante veremos por qué a veces conviene dividir por (N-1).
@@ -375,7 +374,7 @@ Podemos ver que hay valores distintos de cero en las diferencias, así que sabem
 
 Hacemos una pausa para destacar otra propiedad genial de la media: es el punto de equilibrio del conjunto de datos. Si agarrás una birome o un lápiz e intentás equilibrarlo en un dedo, ¿qué estás haciendo? Buscás el centro de masa, el punto donde hay la misma cantidad de peso de un lado y del otro. Así funciona el equilibrio: un lado = el otro.
 
-Podemos pensar los datos como si tuvieran peso. Si los pusiéramos sobre una balanza, podríamos saber cuánto “pesan” sumándolos. Si quisiéramos dividir ese peso por la mitad, para que un lado tenga lo mismo que el otro, podríamos poner un alfiler para hacer de eje. La media nos dice exactamente dónde colocar ese alfiler. Es el punto donde los números de un lado suman lo mismo que los del otro.
+Podemos pensar los datos como si tuvieran peso. Si los pusiéramos sobre una balanza, podríamos saber cuánto "pesan" sumándolos. Si quisiéramos dividir ese peso por la mitad, para que un lado tenga lo mismo que el otro, podríamos poner un alfiler para hacer de eje. La media nos dice exactamente dónde colocar ese alfiler. Es el punto donde los números de un lado suman lo mismo que los del otro.
 
 Si lo pensás, eso significa que la suma de las diferencias con respecto a la media siempre va a dar cero. Porque los números a un lado de la media suman -x, y los del otro lado suman +x. Y:
 
@@ -392,7 +391,6 @@ Alguien muy ingenioso ideó una solución al hecho de que las diferencias con re
 La solución ingeniosa es elevarlas al cuadrado. Elevar al cuadrado convierte todos los valores negativos en positivos. Por ejemplo, $2\^2 = 4$, y $(-2)\^2 = 4$. Recordá cómo funciona: $2\^2 = 2 \times 2 = 4$, y $(-2)\^2 = -2 \times -2 = 4$. Usamos el término **desviaciones al cuadrado** para referirnos a las diferencias que han sido elevadas al cuadrado. Las desviaciones son justamente eso: apartamientos. Las diferencias con respecto a la media son desviaciones.
 
 Volvamos a mirar la tabla anterior, pero ahora con una columna adicional de desviaciones al cuadrado:
-
 
 ```{r 2deviationssquared,echo=F}
 medidas<-1:6
@@ -414,12 +412,12 @@ knitr::kable(the_df)
 
 Bien, ahora tenemos una nueva columna llamada `Desvíos_cuadráticos`. Son simplemente las diferencias elevadas al cuadrado. Por ejemplo, $(-3.5)\^2 = 12.25$, etc. Lo podés comprobar con la calculadora del celular.
 
-Ahora que todas las desviaciones al cuadrado son positivas, podemos sumarlos. Y al hacerlo obtenemos algo muy importante: la **suma de los cuadrados** (SS, por “sum of squares”), o sea, la suma de las desviaciones al cuadrado respecto de la media. Vamos a hablar mucho de esta SS más adelante, en el capítulo de ANOVA. Pero cuando llegues ahí, ya vas a saber de qué se trata: solo una suma de cuadrados, nada raro.
+Ahora que todas las desviaciones al cuadrado son positivas, podemos sumarlos. Y al hacerlo obtenemos algo muy importante: la **suma de los cuadrados** (SS, por "sum of squares"), o sea, la suma de las desviaciones al cuadrado respecto de la media. Vamos a hablar mucho de esta SS más adelante, en el capítulo de ANOVA. Pero cuando llegues ahí, ya vas a saber de qué se trata: solo una suma de cuadrados, nada raro.
 
 ### Finalmente, la varianza
 
-Sorpresa: ya calculamos la varianza. Sí, ya pasó… capaz no te diste cuenta.\
-“¿Eh? ¿Qué me perdí?”
+Sorpresa: ya calculamos la varianza. Sí, ya pasó... capaz no te diste cuenta.\
+"¿Eh? ¿Qué me perdí?"
 
 Bueno, antes que nada: ¿te acordás qué problema estábamos tratando de resolver? Hacé una pausa y tratá de decírtelo a vos mismo:
 
@@ -433,7 +431,7 @@ $\text{Varianza} = \frac{SS}{N}$
 
 donde $SS$ es la suma de los cuadrados y $N$ es el número de observaciones.
 
-Y ahora, ¿qué hago con la varianza? ¿Qué significa ese número? Buena pregunta. Muchas veces, la varianza no es un número muy útil para mirar. ¿Por qué? Porque no está en la misma escala que los datos originales. Esto pasa porque al elevar al cuadrado se obtienen números más grandes. Por ejemplo, tenemos un 12.25 por ahí. Ese número es más grande que cualquier diferencia entre dos valores originales. Entonces, ¿cómo hacemos para “bajar” ese número a la escala original?
+Y ahora, ¿qué hago con la varianza? ¿Qué significa ese número? Buena pregunta. Muchas veces, la varianza no es un número muy útil para mirar. ¿Por qué? Porque no está en la misma escala que los datos originales. Esto pasa porque al elevar al cuadrado se obtienen números más grandes. Por ejemplo, tenemos un 12.25 por ahí. Ese número es más grande que cualquier diferencia entre dos valores originales. Entonces, ¿cómo hacemos para "bajar" ese número a la escala original?
 
 Si pensaste en sacar la raíz cuadrada, ¡ding ding ding! Correcto! Siempre podés deshacer un cuadrado sacando la raíz cuadrada. Entonces, hagámoslo con 5.916:
 
@@ -449,12 +447,11 @@ $\text{Desviación estándar} = \sqrt{\text{Varianza}} = \sqrt{\frac{SS}{N}}$
 
 También se puede expandir así:
 
-$\text{Desviación estándar} = \sqrt{\frac{\sum_{i}^{n}(x_i - \bar{x})^2}{N}} $
+\$\text{Desviación estándar} = \sqrt{\frac{\sum_{i}^{n}(x_i - \bar{x})^2}{N}} \$
 
 No dejes que esas raíces gigantes te asusten. Ahora sabés que están ahí para devolvernos una medida que tenga la misma escala que los datos originales.
 
 Si miramos de nuevo la tabla:
-
 
 ```{r,echo=F}
 medidas<-1:6
@@ -471,15 +468,15 @@ knitr::kable(the_df)
 
 ```
 
-La desviación estándar que obtuvimos fue aproximadamente `√5.916`. Notá cómo ese número encaja con las diferencias respecto de la media: la mayoría están más o menos a +/– `√5.916` de distancia. En cambio, la varianza (5.916) es demasiado grande para dar una buena idea de la dispersión real.
+La desviación estándar que obtuvimos fue aproximadamente `√5.916`. Notá cómo ese número encaja con las diferencias respecto de la media: la mayoría están más o menos a +/-- `√5.916` de distancia. En cambio, la varianza (5.916) es demasiado grande para dar una buena idea de la dispersión real.
 
-¿Qué significa todo esto? Bueno, si alguien te dice que tiene un conjunto de datos con media 4.5 (como los de nuestra tabla) y desviación estándar `√5.916`, ya tenés un muy buen resumen de esos valores: sabés que giran alrededor del 4.5, pero no todos son iguales, y que esa dispersión no es muy grande. 
+¿Qué significa todo esto? Bueno, si alguien te dice que tiene un conjunto de datos con media 4.5 (como los de nuestra tabla) y desviación estándar `√5.916`, ya tenés un muy buen resumen de esos valores: sabés que giran alrededor del 4.5, pero no todos son iguales, y que esa dispersión no es muy grande.
 
 Si tuvieras un montón de datos, podrías resumirlos con solo dos números: la media y la desviación estándar. Y eso ya te daría una idea bastante buena del conjunto.
 
 ### Desviaciones absolutas
 
-¿Y si simplemente tomamos el valor absoluto de las diferencias respecto de la media?  
+¿Y si simplemente tomamos el valor absoluto de las diferencias respecto de la media?\
 Recordá que el valor absoluto convierte cualquier número en un valor positivo. Fijate en la siguiente tabla:
 
 ```{r 2absolute, echo=F}
@@ -496,13 +493,13 @@ knitr::kable(the_df)
 
 ```
 
-Esto también funciona bastante bien.  
-Al convertir las diferencias respecto de la media en valores positivos, ahora podemos sumarlas y obtener un valor distinto de cero (si es que hay diferencias).  Después, podemos calcular el promedio de la suma de las desviaciones absolutas.  Si quisiéramos hacer un paralelismo entre los términos suma de cuadrados (SS), varianza y desviación estándar, y estas nuevas medidas basadas en la desviación absoluta, ¿cómo sería ese mapeo?  
-Por ejemplo, ¿qué valor en la tabla correspondería a la SS?  
-Eso sería la **suma de desviaciones absolutas** en la última columna. ¿Y la varianza y la desviación estándar, a qué corresponderían?  Recordá que la varianza es el promedio ($SS/N$), y que la desviación estándar es la raíz cuadrada de ese promedio ($\sqrt{SS/N}$).  
+Esto también funciona bastante bien.\
+Al convertir las diferencias respecto de la media en valores positivos, ahora podemos sumarlas y obtener un valor distinto de cero (si es que hay diferencias). Después, podemos calcular el promedio de la suma de las desviaciones absolutas. Si quisiéramos hacer un paralelismo entre los términos suma de cuadrados (SS), varianza y desviación estándar, y estas nuevas medidas basadas en la desviación absoluta, ¿cómo sería ese mapeo?\
+Por ejemplo, ¿qué valor en la tabla correspondería a la SS?\
+Eso sería la **suma de desviaciones absolutas** en la última columna. ¿Y la varianza y la desviación estándar, a qué corresponderían? Recordá que la varianza es el promedio ($SS/N$), y que la desviación estándar es la raíz cuadrada de ese promedio ($\sqrt{SS/N}$).
 
-En la tabla de arriba solo tenemos un promedio: el promedio de la suma de desviaciones absolutas.  
-Entonces, tenemos una medida de **varianza** que **no necesita extraer raíz cuadrada**.  Podemos decir que la **desviación media absoluta** cumple un doble rol: es tanto una medida de varianza como de desviación estándar.  Gol.
+En la tabla de arriba solo tenemos un promedio: el promedio de la suma de desviaciones absolutas.\
+Entonces, tenemos una medida de **varianza** que **no necesita extraer raíz cuadrada**. Podemos decir que la **desviación media absoluta** cumple un doble rol: es tanto una medida de varianza como de desviación estándar. Gol.
 
 ### Otras operaciones que invierten el signo
 
@@ -516,9 +513,9 @@ Tal vez lo más importante que podés hacer cuando usás estadísticas descripti
 
 ### El cuarteto de Anscombe
 
-Para ilustrar este punto —y prepararte para los temas del próximo capítulo— mirá este ejemplo. Se llama el Cuarteto de Anscombe, porque estos gráficos y valores tan curiosos fueron producidos por \[Anscombe, 1973\]. En la figura @fig-anscombe estás viendo pares de mediciones. Cada gráfico tiene un eje X y un eje Y, y cada punto representa dos valores. A simple vista, cada gráfico se ve muy distinto, ¿no?
+Para ilustrar este punto ---y prepararte para los temas del próximo capítulo--- mirá este ejemplo. Se llama el Cuarteto de Anscombe, porque estos gráficos y valores tan curiosos fueron producidos por \[Anscombe, 1973\]. En la figura @fig-anscombe estás viendo pares de mediciones. Cada gráfico tiene un eje X y un eje Y, y cada punto representa dos valores. A simple vista, cada gráfico se ve muy distinto, ¿no?
 
-``` {r, echo=F}
+```{r, echo=F}
 #| label: fig-anscombe
 #| fig-cap: "El Cuarteto de Anscombe"
 
@@ -541,7 +538,7 @@ ggplot(ac_long, aes(x = x, y = y, color = quartet)) +
 
 Bueno, ¿te sorprendería si te dijera que las estadísticas descriptivas de los valores en estos gráficos son exactamente las mismas? Resulta que sí: tienen las mismas estadísticas descriptivas. En la tabla de abajo se presentan la media y la varianza para los valores de $x$ en cada gráfico, y la media y varianza de los valores de y en cada gráfico:
 
-``` {r, echo=F}
+```{r, echo=F}
 library(dplyr)
 
 ac_long_summary <- ac_long %>%
@@ -558,9 +555,9 @@ knitr::kable(ac_long_summary)
 
 ¡Las estadísticas descriptivas son todas iguales! Anscombe armó estos conjuntos especiales justamente para mostrar por qué es tan importante graficar los datos. Si solo mirás los resúmenes numéricos, no tenés idea de qué patrones están ocultando. Pero si mirás el gráfico, podés comprender mucho más.
 
-### El “Datasaurus Dozen”
+### El "Datasaurus Dozen"
 
-Si te pareció genial el Cuarteto de Anscombe, no te pierdas el [Datasaurus Dozen](https://www.autodeskresearch.com/publications/samestats) [@matejka2017same]. Bajá un poco en la página para ver los ejemplos. Vas a ver diagramas de puntos con muchísimos patrones distintos —¡incluso dinosaurios!— y lo más increíble es que todos tienen estadísticas descriptivas *casi* idénticas. Otro recordatorio más: **mirá tus datos**, ¡quizás tengan forma de dinosaurio!
+Si te pareció genial el Cuarteto de Anscombe, no te pierdas el [Datasaurus Dozen](https://www.autodeskresearch.com/publications/samestats) [@matejka2017same]. Bajá un poco en la página para ver los ejemplos. Vas a ver diagramas de puntos con muchísimos patrones distintos ---¡incluso dinosaurios!--- y lo más increíble es que todos tienen estadísticas descriptivas *casi* idénticas. Otro recordatorio más: **mirá tus datos**, ¡quizás tengan forma de dinosaurio!
 
 ------------------------------------------------------------------------
 
@@ -578,13 +575,13 @@ Si te pareció genial el Cuarteto de Anscombe, no te pierdas el [Datasaurus Doze
 
 </iframe>
 
-### Desviación estándar – Parte I
+### Desviación estándar -- Parte I
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/8Yguf93s5dI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 
 </iframe>
 
-### Desviación estándar – Parte II
+### Desviación estándar -- Parte II
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/KodmsOXScBc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 

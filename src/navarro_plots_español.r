@@ -120,6 +120,7 @@ par(mfrow = c(2, 1))  # 2 filas, 1 columna
 binomPlot( n=20, p=1/2, xlab="Número de caras observadas" ,main="a)")
 binomPlot( n=100, p=1/2, xlab="Número de caras observadas",main="b)" )
 makePng( paste0(directory, paste0("probability/", "Binomial2_es.png")), 8, 12 )
+par(mfrow = c(1, 1))
 
 #fig-4normal --------
 set.seed(42)
@@ -144,7 +145,7 @@ standardNormal <- function() {
 
 }
 standardNormal()
-
+par(mfrow = c(1, 1))
 
 
 ## fig-IQdist -----------
@@ -190,7 +191,7 @@ plotSamples <- function( n,main=NULL ) {
 plotSamples(100,main="b)")
 plotSamples(10000,main="c)")
 makePng( paste0(directory, "navIQ_es.png"), 8, 3 )
-
+par(mfrow = c(1, 1))
 
 ## sampdistsd -------------
 plotSD <- function( n, N) {

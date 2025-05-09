@@ -965,7 +965,7 @@ Las fichas vienen en dos colores: negro y blanco.
 #| label: fig-srs1
 #| fig-cap: "Muestreo aleatorio simple sin reemplazo a partir de una población finita."
 
-knitr::include_graphics("imgs/navarro_img/estimation/srs1.png")
+knitr::include_graphics("imgs/navarro_img/estimation/srs1_es.png")
 ```
 
 Este conjunto de fichas es la población de interés, y está representada gráficamente en la parte izquierda de la figura @fig-srs1.
@@ -989,7 +989,7 @@ Este esquema de muestreo **sesgado** se muestra en la figura @fig-brs.
 #| label: fig-brs
 #| fig-cap: "Muestreo sesgado sin reemplazo a partir de una población finita."
 
-knitr::include_graphics("imgs/navarro_img/estimation/brs.png")
+knitr::include_graphics("imgs/navarro_img/estimation/brs_es.png")
 ```
 
 Ahora considerá el valor informativo de observar 4 fichas negras y 0 blancas.
@@ -1010,7 +1010,7 @@ La diferencia con el primer caso es que ahora **es posible observar el mismo mie
 #| label: fig-srs2
 #| fig-cap: "Muestreo aleatorio simple con reemplazo a partir de una población finita."
 
-knitr::include_graphics("imgs/navarro_img/estimation/srs2.png")
+knitr::include_graphics("imgs/navarro_img/estimation/srs2_es.png")
 ```
 
 La mayoría de los experimentos en psicología tienden a ser sin reemplazo,
@@ -1139,7 +1139,7 @@ Una estadística “simplifica” eso definiendo operativamente la población co
 #| fig-cap: "Distribución poblacional de puntuaciones de CI (panel a) y dos muestras extraídas al azar de esa población. En el panel b hay una muestra de 100 observaciones; en el panel c, una muestra de 10.000 observaciones."
 #| out-width: "100%"
 
-knitr::include_graphics("imgs/figures/navIQ.png")
+knitr::include_graphics("imgs/navarro_img/navIQ_es.png")
 ```
 
 Los tests de CI están diseñados para que el promedio sea 100, la desviación estándar sea 15, y la distribución de puntajes sea normal.
@@ -1261,7 +1261,7 @@ La figura `@fig-4sample20unif` anima el proceso de tomar un montón de muestras 
 
 
 
-```r
+```{r}
 library(ggplot2)
 
 df <- data.frame(a = 1:10, b = seq(.1, 1, .1))
@@ -1285,7 +1285,7 @@ La figura `@fig-4sample20unif` anima el proceso de tomar muchas muestras de la d
 #| label: fig-4sample20unif
 #| fig-cap: "Animación que muestra histogramas para diferentes muestras de tamaño 20 tomadas de la distribución uniforme. La línea roja indica la media de cada muestra."
 
-knitr::include_graphics(path = "imgs/gifs/sampleHistUnif-1.gif")
+knitr::include_graphics(path = "imgs/gifs/sampleHistUnif-1_es.gif")
 ```
 :::
 
@@ -1298,7 +1298,7 @@ La respuesta es no. Aunque son todas más o menos parecidas, están todas alrede
 **Segunda pregunta:** ¿Qué deberíamos hacer con las medias de nuestras muestras?
 Bueno, ¿qué tal si las juntamos todas y graficamos un histograma de ellas? Eso nos permitiría ver cómo se ve la distribución de las medias muestrales. El próximo histograma muestra exactamente eso. Solo que, en lugar de tomar 10 muestras, vamos a tomar 10.000. Y para cada una vamos a calcular su media. Así que vamos a tener 10.000 medias muestrales. La figura `@fig-4unifmany` muestra ese histograma:
 
-```{r}
+```{r, echo=F}
 #| label: fig-4unifmany
 #| fig-cap: "Histograma de las medias muestrales de 10.000 muestras (de tamaño 20) tomadas de una distribución uniforme de números del 1 al 10. La media esperada es 5.5, y el histograma está centrado en 5.5. La media de cada muestra no es siempre 5.5 debido al error muestral o al azar."
 
@@ -1386,116 +1386,15 @@ Veamos ahora una linda animación para ver todo esto en acción. Vamos a tomar m
 Lo nuevo acá son las barras azules y las líneas azules. Las barras azules representan la **distribución muestral de la media muestral**. Por ejemplo, en el panel con tamaño de muestra 10, vemos un montón de barras azules: es un histograma de 10 medias muestrales, cada una calculada a partir de una muestra de tamaño 10. En el panel de n = 50, vemos un histograma de 50 medias muestrales, tomadas de 50 muestras de tamaño 50, y así sucesivamente. La línea azul en cada panel es la media de esas medias muestrales (“¡aaaaagh, es una media de medias!”… sí, lo es).
 
 ::: {.content-visible when-format="html"}
-```r
+```{r, echo=F}
 #| label: fig-4samplingmean
 #| fig-cap: "Animación de muestras (el histograma gris muestra la frecuencia de los datos en cada muestra) y de la distribución muestral de la media (histograma azul de medias muestrales de muchas muestras). Cada muestra proviene de la distribución normal mostrada en rojo. La línea roja móvil es la media de una muestra individual. La línea azul es la media del histograma azul, que representa la distribución muestral de la media para muchas muestras."
 
-knitr::include_graphics(path = "imgs/gifs/sampleDistNormal-1.gif")
+knitr::include_graphics(path = "imgs/gifs/sampleDistNormal-1_es.gif")
 ```
 :::
 
 
-
-```{r echo=F, eval=F}
-# Esta función genera medias muestrales a partir de múltiples muestras
-get_sampling_means <- function(m, sd, s_size) {
-  save_means <- length(s_size)
-  for (i in 1:s_size) {
-    save_means[i] <- mean(rnorm(s_size, m, sd))
-  }
-  return(save_means)
-}
-
-# Creamos un data frame para guardar todo
-all_df <- data.frame()
-
-# Simulamos para distintos tamaños de muestra y múltiples repeticiones
-for (sims in 1:10) {
-  for (n in c(10, 50, 100, 1000)) {
-    sample <- rnorm(n, 0, 1)
-    sample_means <- get_sampling_means(0, 1, n)
-    t_df <- data.frame(
-      sims = rep(sims, n),
-      sample = sample,
-      sample_means = sample_means,
-      n = rep(n, n)
-    )
-    all_df <- rbind(all_df, t_df)
-  }
-}
-```
-
-Perfecto, acá va la traducción del código original que genera la animación, con los comentarios en español:
-
-```r
-# Esta función genera medias muestrales a partir de múltiples muestras
-get_sampling_means <- function(m, sd, s_size) {
-  save_means <- length(s_size)
-  for (i in 1:s_size) {
-    save_means[i] <- mean(rnorm(s_size, m, sd))
-  }
-  return(save_means)
-}
-
-# Creamos un data frame para guardar todo
-all_df <- data.frame()
-
-# Simulamos para distintos tamaños de muestra y múltiples repeticiones
-for (sims in 1:10) {
-  for (n in c(10, 50, 100, 1000)) {
-    sample <- rnorm(n, 0, 1)
-    sample_means <- get_sampling_means(0, 1, n)
-    t_df <- data.frame(
-      sims = rep(sims, n),
-      sample = sample,
-      sample_means = sample_means,
-      n = rep(n, n)
-    )
-    all_df <- rbind(all_df, t_df)
-  }
-}
-```
-
-Perfecto, acá sigue la traducción del bloque de código y del texto que le sigue:
-
----
-
-```r
-              sample_means,
-              sample_size = rep(n, n),
-              sample_mean = rep(mean(sample), n),
-              sampling_mean = rep(mean(sample_means), n)
-    )
-    all_df <- rbind(all_df, t_df)
-  }
-}
-
-ggplot(all_df, aes(x = sample)) +
-  geom_histogram(aes(y = (..density..) / max(..density..)^.8),
-                 color = "white", fill = "grey") +
-  geom_histogram(aes(x = sample_means, y = (..density..) / max(..density..)),
-                 fill = "blue", color = "white", alpha = .5) +
-  stat_function(fun = dnorm,
-                args = list(mean = 0, sd = 1),
-                lwd = .75,
-                col = 'red') +
-  geom_vline(aes(xintercept = sample_mean, frame = sims), color = "red") +
-  geom_vline(aes(xintercept = sampling_mean, frame = sims), color = "blue") +
-  facet_wrap(~sample_size) +
-  xlim(-3, 3) +
-  theme_classic() +
-  ggtitle("Población (rojo), muestras (gris),\n y distribución muestral de la media (azul)") +
-  ylab("Verosimilitudes aproximadas") +
-  xlab("valor") +
-  transition_states(
-    sims,
-    transition_length = 2,
-    state_length = 1
-  ) +
-  enter_fade() +
-  exit_shrink() +
-  ease_aes('sine-in-out')
-```
 
 
 ¿Qué deberías notar? Fijate que el rango de las barras azules se reduce a medida que el tamaño de muestra aumenta. La distribución muestral de la media es bastante ancha cuando el tamaño de muestra es 10, se estrecha al aumentar a 50 y 100, y es prácticamente una sola barra en el centro cuando el tamaño llega a 1000. Lo que estamos viendo es que la media de la distribución muestral se aproxima a la media poblacional a medida que crece el tamaño de la muestra.
@@ -1661,7 +1560,7 @@ Ahora estamos en condiciones de combinar algunas de las cosas que vimos en este 
 
 Vamos a observar una distribución normal en la figura `@fig-4normalSDspercents`, y vamos a trazar líneas en la distribución en 0, ±1, ±2 y ±3 desviaciones estándar desde la media:
 
-```{r}
+```{r, echo=F}
 #| label: fig-4normalSDspercents
 #| fig-cap: "Una distribución normal. Cada línea representa una desviación estándar desde la media. Las etiquetas muestran la proporción de puntajes que caen entre cada barra."
 
@@ -1707,9 +1606,7 @@ La figura muestra una distribución normal con media = 0 y desvío estándar = 1
 
 Las distribuciones normales **siempre** tienen estas propiedades, incluso cuando tienen distintas medias y desviaciones estándar. Por ejemplo, mirá la distribución normal en la figura `@fig-4normalSDspercentsB`, que tiene media = 100 y desvío estándar = 25.
 
-Tenés razón, gracias por señalarlo. Acá va la traducción fiel del código de la figura `fig-4normalSDspercentsB` con comentarios en español:
-
-```{r eval=F}
+```{r echo=F}
 #| label: fig-4normalSDspercentsB
 #| fig-cap: "Una distribución normal. Cada línea representa una desviación estándar desde la media. Las etiquetas muestran la proporción de puntajes que caen entre cada barra."
 
@@ -1875,7 +1772,7 @@ Algunas preguntas que surgen:
 * ¿Una medida como esta nos dice **todo** lo que queremos saber sobre la felicidad? (probablemente no).
 * ¿Qué cosas está dejando afuera? (¿quién sabe? probablemente muchas).
 
-En resumen, **nadie sabe con certeza si este tipo de preguntas miden lo que queremos que midan**. Solo **esperamos** que lo hagan. Lo que **sí** sabemos bastante bien es **qué tipo de cosas miden realmente este tipo de preguntas**. Es algo bastante evidente, que está justo frente a nosotros: **las mediciones de cuestionarios miden cómo la gente responde cuestionarios**. Dicho de otro modo: miden **cómo se comportan las personas cuando se les da un cuestionario para responder**. Esto puede también reflejar algo sobre la felicidad, si la pregunta trata sobre felicidad. Pero, resulta que las personas son notablemente **consistentes** en cómo responden, incluso cuando las preguntas son totalmente absurdas, o cuando **ni siquiera hay preguntas** (¡solo números para elegir!) \[@maul\_rethinking\_2017]. La enseñanza que nos dejan estas complicaciones es que, en psicología, podemos recolectar muestras… pero muchas veces **no tenemos una idea clara de qué población está asociada a esas muestras**. Puede que haya muchas poblaciones… o que ni siquiera haya una única población bien definida.
+En resumen, **nadie sabe con certeza si este tipo de preguntas miden lo que queremos que midan**. Solo **esperamos** que lo hagan. Lo que **sí** sabemos bastante bien es **qué tipo de cosas miden realmente este tipo de preguntas**. Es algo bastante evidente, que está justo frente a nosotros: **las mediciones de cuestionarios miden cómo la gente responde cuestionarios**. Dicho de otro modo: miden **cómo se comportan las personas cuando se les da un cuestionario para responder**. Esto puede también reflejar algo sobre la felicidad, si la pregunta trata sobre felicidad. Pero, resulta que las personas son notablemente **consistentes** en cómo responden, incluso cuando las preguntas son totalmente absurdas, o cuando **ni siquiera hay preguntas** (¡solo números para elegir!) [@maul\_rethinking\_2017]. La enseñanza que nos dejan estas complicaciones es que, en psicología, podemos recolectar muestras… pero muchas veces **no tenemos una idea clara de qué población está asociada a esas muestras**. Puede que haya muchas poblaciones… o que ni siquiera haya una única población bien definida.
 
 
 ### Algunas complicaciones importantes para llevarse
@@ -1906,7 +1803,6 @@ Queremos saber si **X causa un cambio en Y**. ¿Qué es X? ¿Qué es Y? **X es a
 
 Entonces, ¿qué pasaría si elimináramos completamente X del universo, y luego tomáramos una gran muestra de Y? Vamos a suponer que Y mide algo en un experimento de psicología. Así que sabemos, desde ya, que **Y es una variable**. Cuando tomamos una muestra grande, va a tener una distribución (porque Y varía). Entonces podemos hacer cosas como calcular la media de Y, medir su desviación estándar, y cualquier otra cosa que nos interese saber sobre Y. Perfecto. ¿Y si repitiésemos esa medición? Es decir, tomamos **otra muestra aleatoria de Y**, del mismo tamaño que la anterior. ¿Qué debería pasar? Nuestra primera muestra debería parecerse mucho a la segunda. Después de todo, no hicimos **nada** a Y, simplemente tomamos dos muestras grandes, en dos momentos diferentes. Ambas muestras serán un poco distintas (por el **error muestral**), pero se parecerán bastante. Cuanto más grandes sean nuestras muestras, más similares serán entre sí, **especialmente si no hicimos nada para que sean diferentes**. En otras palabras: podemos usar los **parámetros de una muestra** para estimar los de otra, **porque tienden a ser iguales**… sobre todo cuando las muestras son grandes.  Tus muestras grandes de Y deberían ser bastante similares.
 
-
 Sin embargo, **si X realmente tiene un efecto sobre Y**, entonces una de tus muestras grandes de Y **va a ser distinta** de la otra.
 Habrás cambiado algo en Y. Tal vez X hace que cambie **la media** de Y. O tal vez X cambia **la variabilidad** de Y. O incluso, puede que X cambie **toda la forma de la distribución**. Si encontramos algún cambio importante que **no pueda explicarse por error muestral**, entonces podemos concluir que **algo en X causó un cambio en Y**. ¡Podemos usar este enfoque para aprender **qué causa qué**!
 
@@ -1933,7 +1829,7 @@ Esa es la esencia de la estimación estadística: dar una mejor conjetura. Estam
 
 En este ejemplo, estimar el parámetro poblacional desconocido es bastante directo. Calculamos la media muestral y la usamos como nuestra **estimación de la media poblacional**. Es bastante simple, y en la próxima sección vamos a ver la justificación estadística de por qué esta respuesta intuitiva tiene sentido. Pero por ahora, asegurémonos de distinguir bien que la estadística muestral y la estimación del parámetro poblacional **no son lo mismo**. Una estadística muestral describe tus datos; en cambio, una estimación es una conjetura sobre la población.
 
-Con eso en mente, lxs estadísticxs suelen usar notaciones distintas para diferenciarlas. Por ejemplo, si la media poblacional verdadera se denota \$\mu\$, entonces usamos \$\hat{\mu}\$ para referirnos a nuestra estimación de esa media. En contraste, la media muestral se denota \$\bar{X}\$, o a veces \$m\$. Sin embargo, en muestras aleatorias simples, la estimación de la media poblacional es idéntica a la media muestral: si observo una media muestral de \$\bar{X} = 98.5\$, entonces mi estimación de la media poblacional es también \$\hat{\mu} = 98.5\$.
+Con eso en mente, lxs estadísticxs suelen usar notaciones distintas para diferenciarlas. Por ejemplo, si la media poblacional verdadera se denota $\mu$, entonces usamos $\hat{\mu}$ para referirnos a nuestra estimación de esa media. En contraste, la media muestral se denota $\bar{X}$, o a veces $m$. Sin embargo, en muestras aleatorias simples, la estimación de la media poblacional es idéntica a la media muestral: si observo una media muestral de $\bar{X} = 98.5$, entonces mi estimación de la media poblacional es también $\hat{\mu} = 98.5$.
 
 Para dejar clara la notación, acá va una tabla útil:
 
@@ -1965,7 +1861,7 @@ Si repetimos este procedimiento una y otra vez, y graficamos un histograma de es
 
 
 ```{r}
-knitr::include_graphics("imgs/navarro_img/estimation/sampdistsd.png")
+knitr::include_graphics("imgs/navarro_img/estimation/sampdistsd_es.png")
 ```
 
 Aunque la verdadera desviación estándar poblacional es 15, el promedio de los **desvíos estándar muestrales** es solo 8.5. Notá que esto es **muy distinto** de lo que pasaba cuando graficábamos distribuciones muestrales de la media: esas siempre estaban centradas en la media poblacional.
@@ -1978,7 +1874,7 @@ La figura `@fig-estimatorbiasA` muestra cómo cambia la media muestral según el
 #| label: fig-estimatorbiasA
 #| fig-cap: "Una ilustración del hecho de que la media muestral es un estimador insesgado de la media poblacional."
 
-knitr::include_graphics("imgs/navarro_img/estimation/biasMean-eps-converted-to.png")
+knitr::include_graphics("imgs/navarro_img/estimation/biasMean_es.png")
 ```
 
 La figura `@fig-estimatorbiasB` muestra cómo cambia el **desvío estándar muestral** con el tamaño de muestra. Notá que **no** es una línea plana: el desvío estándar muestral **subestima sistemáticamente** la desviación estándar poblacional.
@@ -1987,7 +1883,7 @@ La figura `@fig-estimatorbiasB` muestra cómo cambia el **desvío estándar mues
 #| label: fig-estimatorbiasB
 #| fig-cap: "Una ilustración del hecho de que el desvío estándar muestral es un estimador sesgado de la desviación estándar poblacional."
 
-knitr::include_graphics("imgs/navarro_img/estimation/biasSD-eps-converted-to.png")
+knitr::include_graphics("imgs/navarro_img/estimation/biasSD_es.png")
 ```
 
 En otras palabras, si queremos hacer nuestra **mejor conjetura** sobre el valor de la desviación estándar poblacional \$\sigma\$ (lo que llamamos \$\hat{\sigma}\$), deberíamos asegurarnos de que sea **un poco más grande** que el desvío estándar muestral \$s\$.
@@ -2108,17 +2004,17 @@ Si quisiera un intervalo de confianza del 70%, podría usar la función `qnorm()
 qnorm( p = c(.15, .85) )
 ```
 
-Así que la fórmula para el \$\text{CI}*{70}\$ sería igual a la del \$\text{CI}*{95}\$, excepto que usaríamos **1.04** como nuestro número mágico, en lugar de 1.96.
+Así que la fórmula para el $\text{CI}*{70}$ sería igual a la del $\text{CI}*{95}$, excepto que usaríamos **1.04** como nuestro número mágico, en lugar de 1.96.
 
 ### Un pequeño error en la fórmula
 
 Como de costumbre, te mentí un poco. La fórmula que te di arriba para el intervalo de confianza del 95% es aproximadamente correcta, pero omití un detalle importante…
-Usa el **error estándar de la media** (SEM), que a su vez requiere conocer la **desviación estándar poblacional verdadera** \$\sigma\$.
+Usa el **error estándar de la media** (SEM), que a su vez requiere conocer la **desviación estándar poblacional verdadera** $\sigma$.
 
-Sin embargo, ya dijimos antes que en general **no conocemos** los parámetros poblacionales verdaderos. Y como no conocemos el valor real de \$\sigma\$, tenemos que usar una **estimación** del desvío estándar poblacional, es decir, \$\hat{\sigma}\$. Eso no es difícil de hacer, pero tiene una consecuencia: ahora tenemos que usar los **cuantiles de la distribución \$t\$** en lugar de la distribución normal para calcular nuestro “número mágico”; y ese número **depende del tamaño muestral**. Además, todavía **no hablamos de la distribución \$t\$** en este capítulo.
+Sin embargo, ya dijimos antes que en general **no conocemos** los parámetros poblacionales verdaderos. Y como no conocemos el valor real de $\sigma$, tenemos que usar una **estimación** del desvío estándar poblacional, es decir, $\hat{\sigma}$. Eso no es difícil de hacer, pero tiene una consecuencia: ahora tenemos que usar los **cuantiles de la distribución $t$** en lugar de la distribución normal para calcular nuestro “número mágico”; y ese número **depende del tamaño muestral**. Además, todavía **no hablamos de la distribución $t$** en este capítulo.
 
-Cuando usamos la distribución \$t\$ en lugar de la normal, los valores críticos son más grandes. Eso refleja el hecho de que tenemos **mayor incertidumbre**. ¿Y por qué tenemos esa incertidumbre extra?
-Bueno, porque nuestra estimación del desvío estándar poblacional \$\hat{\sigma}\$ **podría estar equivocada**. Si lo está, eso implica que **no estamos tan seguros** de cómo es realmente la distribución muestral de la media… y esa incertidumbre **termina reflejándose** en un **intervalo de confianza más amplio**.
+Cuando usamos la distribución $t$ en lugar de la normal, los valores críticos son más grandes. Eso refleja el hecho de que tenemos **mayor incertidumbre**. ¿Y por qué tenemos esa incertidumbre extra?
+Bueno, porque nuestra estimación del desvío estándar poblacional $\hat{\sigma}$ **podría estar equivocada**. Si lo está, eso implica que **no estamos tan seguros** de cómo es realmente la distribución muestral de la media… y esa incertidumbre **termina reflejándose** en un **intervalo de confianza más amplio**.
 
 ## Resumen
 

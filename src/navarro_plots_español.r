@@ -144,3 +144,134 @@ standardNormal <- function() {
 
 }
 standardNormal()
+
+
+
+## fig-IQdist -----------
+#navIQdist ----
+
+estImg <- list()
+emphCol <- rgb(0,0,1)
+emphColLight <- rgb(.5,.5,1)
+emphGrey <- grey(.5)
+
+colour <- TRUE
+
+width <- 4.5
+height <- 4.5
+
+
+#panels
+
+par(mfrow = c(1, 3))  # 2 filas, 1 columna
+
+
+# plot
+x <- 60:140
+y <- dnorm(x,100,15)
+plot(x,y,lwd=3,type="l",col=ifelse(colour,emphCol,"black"),
+     xlab="Puntuaciones de CI", ylab="Densidad de probabilidad",frame.plot=FALSE,main="a)"
+)
+
+
+# function to do all the work
+plotSamples <- function( n,main=NULL ) {
+
+  IQ <- rnorm(n, 100, 15)
+  hist( IQ, breaks=seq(10,180,5), border="white",
+        col=ifelse(colour,emphColLight,emphGrey),
+        xlab="Puntuaciones de CI", ylab="Frecuencia", xlim=c(60,140),
+        main=main,
+  )
+  print( paste( "n=",n,"media=",mean(IQ), "desvío=",sd(IQ) ) )
+}
+
+# plot two different sample sizes
+plotSamples(100,main="b)")
+plotSamples(10000,main="c)")
+makePng( paste0(directory, "navIQ_es.png"), 8, 3 )
+
+
+## sampdistsd -------------
+plotSD <- function( n, N) {
+
+  IQ <- matrix(rnorm(n*N, 100,15),N,n)
+
+  sd2 <- function(x) { sqrt(mean((x-mean(x))^2)) }
+
+  IQ <- apply(IQ,1,sd2)
+  hist(IQ)
+  print(mean(IQ))
+
+  hist( IQ, breaks=seq(0,60,2), border="white", freq=FALSE,
+        col=ifelse(colour,emphColLight,emphGrey),
+        xlab="Desvío estándar muestral", ylab="", xlim=c(0,60),
+        main="", axes=FALSE,
+        font.main=1, ylim=c(0,.075)
+  )
+  axis(1)
+  abline(v=15,lwd=2,lty=2)
+  text(y = .0825, x=15, labels = "Desvío estándar poblacional", xpd=1)
+}
+
+
+# plot two different sample sizes
+fileName <- "sampdistsd_es.png"
+plotSD(2,100000)
+#lines(x,y,lwd=2,col="black",type="l")
+makePng( paste0(directory, paste0("estimation/",fileName)), width*1.5, height*1.5 )
+
+## - fig-estimatorbiasA --------
+
+
+estimatorBehaviour <- function() {
+
+  # plots histograms of IQ samples
+
+  # needed for printing
+  width <- 6
+  height <- 6
+
+  # generate samples
+  n <- 10000
+  X <- matrix( rnorm(n*10,100,15), nrow=n, ncol=10 )
+
+  # calculate sample means
+  M <- matrix( NA, n, 10)
+  for( i in 1:10 ) {
+    M[,i] <- rowMeans(X[,1:i,drop=FALSE])
+  }
+
+  # calculate sample standard deviation
+  S <- matrix( 0, n, 10)
+  for( i in 2:10 ) {
+    S[,i] <- apply(X[,1:i],1,sd) * sqrt((i-1) / i)
+  }
+
+  # plot the means
+  plot(1:10, colMeans(M), type="b", ylim=c(95,105),
+       xlab="Tamaño de la muestra", ylab="Media muestral promedio",
+       col=ifelse(colour,emphCol,emphGrey),
+       pch=19, lwd=3
+  )
+  abline( h = 100, lty=2, lwd=3 )
+
+  fileName <- "biasMean_es.png"
+  if( png ) makePng( paste0(directory, paste0("estimation/",fileName)), width, height )
+
+  # plot the variances
+  plot(1:10, colMeans(S), type="b", ylim=c(0,16),
+       xlab="Tamaño de la muestra", ylab="Desvío estándar muestral promedio",
+       col=ifelse(colour,emphCol,emphGrey),
+       pch=19, lwd=3
+  )
+  abline( h = 15, lty=2, lwd=3 )
+
+  fileName <- "biasSD_es.png"
+  if( png ) makePng( paste0(directory, paste0("estimation/",fileName)), width, height )
+
+
+}
+
+estimatorBehaviour()
+

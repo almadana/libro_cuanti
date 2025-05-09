@@ -293,3 +293,83 @@ gif = ggplot(all_df, aes(x=x_range,y=dnorm_vec, frame=sims))+
 
 anim_save("imgs/gifs/normalMovingSD-1_es.gif", animation = animate(gif, width = 480, height = 480, fps = 10))
 
+
+
+## -----fig-4sample20unif------------
+
+a<-round(runif(20*10,1,10))
+df<-data.frame(a,sample=rep(1:10,each=20))
+df2<-aggregate(a~sample,df,mean)
+df<-cbind(df,mean_loc=rep(df2$a,each=20))
+
+library(gganimate)
+
+gif = ggplot(df,aes(x=a, group=sample,frame=sample)) +
+  geom_histogram() +
+  geom_vline(aes(xintercept=mean_loc,frame = sample),color="red")+
+  scale_x_continuous(breaks=seq(1,10,1))+
+  theme_classic()+
+  transition_states(
+    sample,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() +
+  exit_shrink() +
+  ease_aes('sine-in-out')
+
+
+anim_save("imgs/gifs/sampleHistUnif-1_es.gif", animation = animate(gif, width = 480, height = 480, fps = 10))
+
+
+##  fig-4samplingmean ----
+
+
+get_sampling_means<-function(m,sd,s_size){
+  save_means<-length(s_size)
+  for(i in 1:s_size){
+    save_means[i]<-mean(rnorm(s_size,m,sd))
+  }
+  return(save_means)
+}
+
+all_df<-data.frame()
+for(sims in 1:10){
+  for(n in c(10,50,100,1000)){
+    sample<-rnorm(n,0,1)
+    sample_means<-get_sampling_means(0,1,n)
+    t_df<-data.frame(sims=rep(sims,n),
+                     sample,
+                     sample_means,
+                     sample_size=rep(n,n),
+                     sample_mean=rep(mean(sample),n),
+                     sampling_mean=rep(mean(sample_means),n)
+    )
+    all_df<-rbind(all_df,t_df)
+  }
+}
+
+
+gif = ggplot(all_df, aes(x=sample))+
+  geom_histogram(aes(y=(..density..)/max(..density..)^.8),color="white",fill="grey")+
+  geom_histogram(aes(x=sample_means,y=(..density..)/max(..density..)),fill="blue",color="white",alpha=.5)+
+  stat_function(fun = dnorm,
+                args = list(mean = 0, sd = 1),
+                lwd = .75,
+                col = 'red')+
+  geom_vline(aes(xintercept=sample_mean,frame=sims),color="red")+
+  geom_vline(aes(xintercept=sampling_mean,frame=sims),color="blue")+
+  facet_wrap(~sample_size)+xlim(-3,3)+
+  theme_classic()+ggtitle("Distribución de la población (rojo), de las muestras (gris), \n y distribución muestral de la media (azul)")+
+  ylab("Verosimilitud aproximada")+
+  xlab("valor")+
+  transition_states(
+    sims,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() +
+  exit_shrink() +
+  ease_aes('sine-in-out')
+
+
+anim_save("imgs/gifs/sampleDistNormal-1_es.gif", animation = animate(gif, width = 480, height = 480, fps = 10))
+

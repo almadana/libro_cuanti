@@ -1,6 +1,9 @@
 ---
 author: 
   - Matthew J. C. Crump
+lang: es
+abstract-title: Notas
+abstract: Traducido al español rioplatense por ChatGPT4-o bajo la supervisión de Álvaro Cabana.
 aliases: [foundations-for-inference.html]
 ---
 
@@ -8,620 +11,588 @@ aliases: [foundations-for-inference.html]
 source("global_stuff.R")
 ```
 
-# Foundations for inference
+# Fundamentos de la inferencia
 
-> Data and data sets are not objective; they are creations of human design. We give numbers their voice, draw inferences from them, and define their meaning through our interpretations. ---Katie Crawford
+> Los datos y los conjuntos de datos no son objetivos; son creaciones del diseño humano. Les damos voz a los números, inferimos a partir de ellos, y definimos su significado a través de nuestras interpretaciones. — Katie Crawford
 
-So far we have been talking about describing data and looking for possible relationships between things we measure. We began with the problem of having too many numbers and discussed how they could be summarized with descriptive statistics, and communicated in graphs. We also looked at the idea of relationships between things. If one thing causes change in another thing, then if we measure how one thing goes up and down we should find that other thing goes up and down, or does something systematically following the first thing. At the end of the chapter on correlation, we showed how correlations, which imply a relationship between two things, are very difficult to interpret. Why? Because an observed correlation can be caused by a hidden third variable, or could be a spurious finding "caused" by random chance. In the last chapter, we talked about sampling from distributions, and we saw how samples can be different because of random error introduced by the sampling process.
+Hasta ahora hemos estado hablando sobre cómo describir datos y buscar posibles relaciones entre las cosas que medimos. Comenzamos con el problema de tener demasiados números y discutimos cómo podían resumirse con estadísticas descriptivas y comunicarse a través de gráficos. También analizamos la idea de relaciones entre cosas. Si una cosa causa un cambio en otra, entonces, si medimos cómo una varía, deberíamos ver que la otra también varía, o que cambia de forma sistemática como consecuencia de la primera. Al final del capítulo sobre correlación, mostramos cómo las correlaciones —que implican una relación entre dos cosas— son muy difíciles de interpretar. ¿Por qué? Porque una correlación observada puede ser causada por una tercera variable oculta, o puede ser un hallazgo espurio “causado” por el azar.
 
-Now we begin our journey into **inferential statistics**. These are tools used to make inferences about where our data came from, and to make inferences about what causes what.
+Ahora comenzamos nuestro recorrido por la **estadística inferencial**. Estas son herramientas que se utilizan para hacer inferencias sobre de dónde provienen nuestros datos, y para hacer inferencias sobre qué causa qué.
 
-In this chapter we provide some foundational ideas. We will stay mostly at a conceptual level, and use lots of simulations like we did in the last chapters. In the remaining chapters we formalize the intuitions built here to explain how some common inferential statistics work.
+En este capítulo vamos a presentar algunas ideas fundamentales. Nos mantendremos mayormente en un nivel conceptual, y usaremos muchas simulaciones, como hicimos en los capítulos anteriores. En los capítulos siguientes formalizaremos las intuiciones desarrolladas acá para explicar cómo funcionan algunas estadísticas inferenciales comunes.
 
-## Brief review of Experiments
+## Breve repaso de los experimentos
 
-In chapter one we talked a about research methods and experiments. Experiments are a structured way of collecting data that can permit inferences about causality. If we wanted to know whether something like watching cats on YouTube increases happiness we would need an experiment. We already found out that just finding a bunch of people and measuring number of hours watching cats, and level of happiness, and correlating the two will not permit inferences about causation. For one, the causal flow could be reversed. Maybe being happy causes people to watch more cat videos. We need an experiment.
+En el capítulo uno hablamos sobre métodos de investigación y experimentos. Los experimentos son una manera estructurada de recolectar datos que puede permitir inferencias sobre causalidad. Si quisiéramos saber si algo como ver videos de gatos en YouTube aumenta la felicidad, necesitaríamos un experimento. Ya vimos que simplemente buscar un montón de personas, medir cuántas horas ven videos de gatos y su nivel de felicidad, y correlacionar ambas cosas **no permite inferencias causales**. Por ejemplo, el flujo causal podría estar invertido: tal vez **ser feliz causa** que la gente quiera mirar más videos de gatos. Necesitamos un experimento.
 
-An experiment has two parts. A manipulation and a measurement. The manipulation is under the control of the experimenter. Manipulations are also called **independent variables**. For example, we could manipulate time spent watching cat videos: 1 hour versus 2 hours of cat videos. The measurement is the data that is collected. We could measure how happy people are after watching cat videos on a scale from 1 to 100. Measurements are also called **dependent variables**. So, in a basic experiment like the one above, we take measurements of happiness from people in one of two experimental conditions defined by the independent variable. Let's say we ran 50 subjects. 25 subjects would be randomly assigned to watch 1 hour of cat videos, and the other 25 subjects would be randomly assigned to watch 2 hours of cat videos. We would measure happiness for each subject at the end of the videos. Then we could look at the data.
+Un experimento tiene dos partes: una manipulación y una medición. La **manipulación** está bajo el control de quien realiza el experimento. Las manipulaciones también se llaman **variables independientes**. Por ejemplo, podríamos manipular el tiempo dedicado a mirar videos de gatos: 1 hora versus 2 horas. La **medición** es el dato que se recolecta. Podríamos medir cuán feliz se siente una persona después de ver videos de gatos, usando una escala del 1 al 100. Las mediciones también se llaman **variables dependientes**. Entonces, en un experimento básico como el que estamos considerando, recogemos medidas de felicidad de personas asignadas a una de dos condiciones experimentales definidas por la variable independiente. Supongamos que realizamos el experimento con 50 participantes. A 25 personas se las asigna al azar para ver 1 hora de videos de gatos, y a las otras 25 se las asigna al azar para ver 2 horas. Luego, medimos cuán felices se sienten al final del experimento.
 
-What would we want to look at? If watching cat videos caused a change in happiness, then we would expect the measures of happiness for people watching 1 hour of cat videos to be different from the measures of happiness for people watching 2 hours of cat videos. If watching cat videos does not change happiness, then we would expect no differences in measures of happiness between conditions. Causal forces cause change, and the experiment is set up to detect the change.
+¿Qué deberíamos mirar en los datos? Si mirar videos de gatos causara un cambio en la felicidad, entonces esperaríamos que las medidas de felicidad de las personas que vieron 1 hora de videos de gatos fueran diferentes de las medidas de aquellas que vieron 2 horas. Si mirar videos de gatos no produjera ningún cambio en la felicidad, entonces no deberíamos encontrar diferencias en las medidas de felicidad entre las dos condiciones. Las fuerzas causales provocan cambios, y el experimento está diseñado para detectar ese cambio.
 
-Now we can state one overarching question, how do we know if the data changed between conditions? If we can be confident that there was a change between conditions, we can infer that our manipulation caused a changed in the measurement. If we cannot be confident there was a change, then we cannot infer that our manipulation caused a change in the measurement. We need to build some change detection tools so we can know a change when we find one.
+Ahora podemos plantear una gran pregunta general: **¿cómo sabemos si los datos cambiaron entre condiciones?** Si podemos estar razonablemente seguros de que hubo un cambio entre condiciones, entonces podemos inferir que nuestra manipulación causó un cambio en la medición. Si no podemos estar seguros de que hubo un cambio, entonces **no podemos** inferir que la manipulación haya causado una diferencia. Necesitamos construir herramientas que nos permitan **detectar cambios**, para poder reconocer un cambio cuando ocurra.
 
-"Hold on, if we are just looking for a change, wouldn't that be easy to see by looking at the numbers and seeing if they are different, what's so hard about that?". Good question. Now we must take a detour. The short answer is that there will always be change in the data (remember variance).
+“Pará un poco, si solo estamos buscando un cambio, ¿no sería fácil ver eso mirando los números y viendo si son diferentes? ¿Qué tiene de difícil eso?” Buena pregunta. Ahora necesitamos hacer un desvío. La respuesta breve es que **siempre** va a haber cambio en los datos (recordá la varianza).
 
-## The data came from a distribution
+## Los datos provienen de una distribución
 
-In the last chapter we discussed samples and distributions, and the idea that you can take samples from distributions. So, from now on when you see a bunch of numbers, you should wonder, "where did these numbers come from?". What caused some kinds of numbers to happen more than other kinds of numbers. The answer to this question requires us to again veer off into the abstract world of distributions. A **distribution** a place where numbers can come from. The distribution sets the constraints. It determines what numbers are likely to occur, and what numbers are not likely to occur. Distributions are abstract ideas. But, they can be made concrete, and we can draw them with pictures that you have seen already, called histograms.
+En el capítulo anterior hablamos sobre muestras y distribuciones, y sobre la idea de que podés tomar muestras desde una distribución. Así que, de ahora en más, cada vez que veas un conjunto de números deberías preguntarte: “¿De dónde vienen estos números?”. ¿Qué causó que algunos tipos de números aparecieran más que otros? La respuesta a esta pregunta nos lleva de nuevo al mundo abstracto de las distribuciones.
 
-The next bit might seem slightly repetitive from the previous chapter. We again look at sampling numbers from a uniform distribution. We show that individual samples can look quite different from each other. Much of the beginning part of this chapter will already be familiar to you, but we take the concepts in a slightly different direction. The direction is how to make inferences about the role of chance in your experiment.
+Una **distribución** es un lugar de donde pueden salir los números. La distribución establece las restricciones: determina qué números es probable que ocurran y cuáles no. Las distribuciones son ideas abstractas, pero pueden hacerse concretas, y podemos representarlas con dibujos —como ya has visto antes— llamados histogramas.
 
-### Uniform distribution
+Lo que viene a continuación puede parecer un poco repetitivo con respecto al capítulo anterior. Volvemos a mirar muestreo de números desde una distribución uniforme. Mostramos que las muestras individuales pueden lucir bastante diferentes entre sí. Gran parte del comienzo de este capítulo ya te va a resultar familiar, pero llevamos los conceptos en una dirección un poco distinta: la dirección es cómo hacer inferencias sobre el papel del azar en tu experimento.
 
-As a reminder from last chapter, @fig-5unifagain shows that the shape of a uniform distribution is completely flat.
+### Distribución uniforme
 
-```{r}
+Como recordatorio del capítulo anterior, la figura `@fig-5unifagain` muestra que la forma de una distribución uniforme es completamente plana.
+
+Gracias. Acá va la traducción fiel del bloque `fig-5unifagain`, incluyendo el código R y el texto que lo acompaña:
+
+```{r, echo=F}
 #| label: fig-5unifagain
-#| fig-cap: "Uniform distribution showing that the numbers from 1 to 10 have an equal probability of being sampled"
+#| fig-cap: "Distribución uniforme que muestra que los números del 1 al 10 tienen la misma probabilidad de ser muestreados"
 
 library(ggplot2)
 library(dplyr)
 
-df <- data.frame(a=1:10,b=seq(.1,1,.1))
+df <- data.frame(a = 1:10, b = seq(.1, 1, .1))
 df$a <- as.factor(df$a)
 
-ggplot(df,aes(x=a,y=b))+
-  geom_point(color="white")+
-  geom_hline(yintercept=.1)+
-  scale_y_continuous(limits=c(0,1), breaks=seq(0,1, by = .1))+
-  theme_classic(base_size = 18)+
-  ylab("Probability")+
-  xlab("Number")+
-  ggtitle("Uniform distribution for numbers 1 to 10")
-
-
+ggplot(df, aes(x = a, y = b)) +
+  geom_point(color = "white") +
+  geom_hline(yintercept = .1) +
+  scale_y_continuous(limits = c(0, 1), breaks = seq(0, 1, by = .1)) +
+  theme_classic(base_size = 18) +
+  ylab("Probabilidad") +
+  xlab("Número") +
+  ggtitle("Distribución uniforme para los números del 1 al 10")
 ```
 
-OK, so that doesn't look like much. What is going on here? The y-axis is labelled `probability`, and it goes from 0 to 1. The x-axis is labelled `Number`, and it goes from one to 10. There is a horizontal line drawn straight through. This line tells you the probability of each number from 1 to 10. Notice the line is flat. This means all of the numbers have the same probability of occurring. More specifically, there are 10 numbers from 1 to 10 (1,2,3,4,5,6,7,8,9,10), and they all have an equal chance of occurring. 1/10 = .1, which is the probability indicated by the horizontal line.
+OK, eso no parece gran cosa. ¿Qué está pasando acá? El eje y está etiquetado como `Probabilidad`, y va de 0 a 1. El eje x está etiquetado como `Número`, y va del 1 al 10. Hay una línea horizontal atravesando el gráfico. Esa línea indica la probabilidad de cada número del 1 al 10. Notá que la línea es plana. Esto significa que **todos los números tienen la misma probabilidad de ocurrir**. Más específicamente, hay 10 números del 1 al 10 (1,2,3,4,5,6,7,8,9,10), y todos tienen la misma chance de aparecer. 1 dividido 10 es 0.1, que es la probabilidad indicada por la línea horizontal.
 
-"So what?". Imagine that this uniform distribution is a number generating machine. It spits out numbers, but it spits out each number with the probability indicated by the line. If this distribution was going to start spitting out numbers, it would spit out 10% 1s, 10% 2s, 10% 3s, and so on, up to 10% 10s. Wanna see what that would look like? Let's make it spit out 100 numbers and put them in @tbl-5100rand.
+“¿Y qué con eso?” Imaginá que esta distribución uniforme es una máquina generadora de números. Escupe números, pero escupe **cada número con la probabilidad indicada por la línea**. Si esta distribución comenzara a generar números, escupiría un 10% de unos, un 10% de doses, un 10% de treses, y así sucesivamente, hasta un 10% de dieces. ¿Querés ver cómo se vería eso? Hagamos que escupa 100 números y pongámoslos en la tabla `@tbl-5100rand`.
 
-```{r}
+```{r echo=F}
 #| label: tbl-5100rand
-#| tbl-cap: "100 numbers randomly sampled from a uniform distribution."
-a<-matrix(round(runif(100,1,10)),ncol=10)
+#| tbl-cap: "100 números muestreados aleatoriamente de una distribución uniforme."
+a <- matrix(round(runif(100, 1, 10)), ncol = 10)
 knitr::kable(a)
 ```
 
-We used the uniform distribution to generate these numbers. Officially, we call this **sampling** from a **distribution**. Sampling is what you do at a grocery store when there is free food. You can keep taking more. However, if you take all of the samples, then what you have is called the **population**. We'll talk more about samples and populations as we go along.
+Usamos la distribución uniforme para generar estos números. Formalmente, a esto lo llamamos **muestreo** desde una **distribución**. Muestrear es lo que hacés en el supermercado cuando hay comida para degustar. Podés seguir tomando más. Sin embargo, si tomás **todas** las muestras, lo que tenés se llama **población**. Vamos a hablar más sobre muestras y poblaciones más adelante. Como usamos la distribución uniforme para generar los números, ya sabemos de dónde vienen. Pero por ahora, podemos fingir que alguien aparece en tu puerta, te muestra estos números, y vos te preguntás de dónde salieron. ¿Podés decir, solo mirando los números, que provienen de una distribución uniforme?
 
-Because we used the uniform distribution to create numbers, we already know where our numbers came from. However, we can still pretend for the moment that someone showed up at your door, showed you these numbers, and then you wondered where they came from. Can you tell just by looking at these numbers that they came from a uniform distribution? What would need to look at? Perhaps you would want to know if all of the numbers occur with roughly equal frequency, after all they should have right? That is, if each number had the same chance of occurring, we should see that each number occurs roughly the same number of times.
+¿Qué deberías observar? Quizás quieras saber si todos los números ocurren con **aproximadamente la misma frecuencia** —después de todo, eso es lo que **debería** pasar, ¿no? Es decir, si cada número tiene la misma chance de ocurrir, deberíamos ver que **cada número ocurre más o menos la misma cantidad de veces**. Ya sabemos qué es un histograma, así que podemos poner nuestra muestra de 100 números en un histograma y ver cómo se distribuyen los conteos. Si todos los números del 1 al 10 aparecen con igual frecuencia, entonces cada número individual debería aparecer unas 10 veces. La figura `@fig-5histunif` muestra el histograma:
 
-We already know what a histogram is, so we can put our sample of 100 numbers into a histogram and see what the counts look like. If all of the numbers from 1 to 10 occur with equal frequency, then each individual number should occur about 10 times. @fig-5histunif shows the histogram:
-
-```{r}
+```{r, echo=F}
 #| label: fig-5histunif
-#| fig-cap: "Histogram of 100 numbers randomly sampled from the uniform distribution containing the integers from 1 to 10"
+#| fig-cap: "Histograma de 100 números muestreados aleatoriamente de una distribución uniforme que contiene los enteros del 1 al 10"
 
 hist(a)
 ```
 
-Uh oh, as you can see, not all of the number occurred 10 times each. All of the bars are not the same height. This shows that randomly sampling numbers from this distribution does not guarantee that our numbers will be exactly like the distribution they came from. We can call this sampling error, or sampling variability.
+Uy… como podés ver, **no** todos los números ocurrieron exactamente 10 veces. Las barras no tienen toda la misma altura. Esto muestra que el muestreo aleatorio de números desde esta distribución **no garantiza** que los números muestrados se vean exactamente como la distribución original. A esto lo llamamos **error muestral**, o **variabilidad del muestreo**.
 
-### Not all samples are the same, they are usually quite different
+### No todas las muestras son iguales — de hecho, suelen ser bastante distintas
 
-Let's look at sampling error more closely. We will sample 20 numbers from the uniform distribution. We should expect that each number between 1 and 10 occurs about two times each. As before, this expectation can be visualized in a histogram. To get a better sense of sampling error, let's repeat the above process ten times. @fig-5manysamples has 10 histograms, each showing what 10 different samples of twenty numbers looks like:
+Veamos más de cerca el error muestral. Vamos a tomar una muestra de 20 números de la distribución uniforme. Deberíamos esperar que cada número entre 1 y 10 ocurra unas dos veces. Como antes, esta expectativa puede visualizarse con un histograma.
 
-```{r}
+Para tener una mejor idea de la variabilidad muestral, repitamos ese proceso **diez veces**. La figura `@fig-5manysamples` muestra 10 histogramas, cada uno representando una muestra distinta de 20 números:
+
+```{r, echo=F}
 #| label: fig-5manysamples
-#| fig-cap: "Histograms for 10 different samples from the uniform distribution. Each sample contains 20 numbers. The histograms all look quite different. The differences between the samples are due to sampling error or random chance."
+#| fig-cap: "Histogramas de 10 muestras distintas de la distribución uniforme. Cada muestra contiene 20 números. Todos los histogramas se ven bastante distintos. Las diferencias entre las muestras se deben al error muestral o al azar."
 #| out-width: "100%"
 
 possible_integers <- round(runif(20*10,1,10))
-df <- data.frame(possible_integers, sample=rep(1:10,each=20))
+df <- data.frame(x = possible_integers,
+                 sample = as.factor(rep(1:10, each = 20)))
 
-ggplot(df,aes(x=possible_integers))+
-  geom_histogram(bins=10, color="white")+
-  theme_classic()+
-  scale_x_continuous(breaks=seq(1,10,1))+
-  facet_wrap(~sample, nrow=2)
-
+library(ggplot2)
+ggplot(df, aes(x = x)) +
+  geom_bar() +
+  facet_wrap(~sample, nrow = 2) +
+  theme_classic(base_size = 20)
 ```
 
-You might notice right away that none of the histograms are the same. Even though we are randomly taking 20 numbers from the very same uniform distribution, each sample of 20 numbers comes out different. This is sampling variability, or sampling error.
+Probablemente notes enseguida que ninguno de los histogramas es igual. Aunque estamos tomando aleatoriamente 20 números de la misma distribución uniforme, **cada muestra de 20 números resulta diferente**. Esto es **variabilidad muestral**, o **error de muestreo**.
 
-@fig-5expectedUnif shows an animated version of the process of repeatedly choosing 20 new random numbers and plotting a histogram. The horizontal line shows the flat-line shape of the uniform distribution. The line crosses the y-axis at 2; and, we expect that each number (from 1 to 10) should occur about 2 times each in a sample of 20. However, each sample bounces around quite a bit, due to random chance.
+La figura `@fig-5expectedUnif` muestra una versión animada del proceso de elegir repetidamente 20 números aleatorios nuevos y graficar un histograma. La línea horizontal muestra la forma plana de la distribución uniforme. La línea cruza el eje y en el valor 2; y esperamos que cada número (del 1 al 10) ocurra unas 2 veces en una muestra de 20. Sin embargo, cada muestra varía bastante, debido al azar.
 
-::: {.content-visible when-format="html"}
-```{r}
+```{r, echo=F}
 #| label: fig-5expectedUnif
-#| fig-cap: "Animation of histograms for different samples of 20 from Uniform distribution (numbers 1 to 10). The black lines shows the expected number of times each number from 1 to 10 should occur. The fact that each number does not occur 2 times each illustrates the error associated with sampling"
+#| fig-cap: "Animación de histogramas para diferentes muestras de 20 valores de una distribución uniforme (números del 1 al 10). Las líneas negras muestran la cantidad esperada de veces que debería aparecer cada número. El hecho de que no todos los números aparezcan exactamente 2 veces ilustra el error asociado al muestreo."
 
-knitr::include_graphics(path="imgs/gifs/sampleUnifExpected-1.gif")
+knitr::include_graphics(path = "imgs/gifs/sampleUnifExpected-1_es.gif")
 ```
+
 :::
 
-Looking at the above histograms shows us that figuring out where our numbers came from can be difficult. In the real world, our measurements are samples. We usually only have the luxury of getting one sample of measurements, rather than repeating our own measurements 10 times or more. If you look at the histograms, you will see that some of them look like they could have come from the uniform distribution: most of the bars are near two, and they all fall kind of on a flat line. But, if you happen to look at a different sample, you might see something that is very bumpy, with some numbers happening way more than others. This could suggest to you that those numbers did not come from a uniform distribution (they're just too bumpy). But let me remind you, all of these samples came from a uniform distribution, this is what samples from that distribution look like. This is what chance does to samples, it makes the individual data points noisy.
+Observar los histogramas anteriores nos muestra que puede ser difícil averiguar de dónde vinieron nuestros números. En el mundo real, nuestras mediciones son muestras. Por lo general, solo tenemos el lujo de obtener **una única muestra** de mediciones, en lugar de repetirlas 10 veces o más. Si mirás los histogramas, verás que algunos de ellos parecen haber salido de una distribución uniforme: la mayoría de las barras están cerca de 2, y todas más o menos alineadas. Pero si te tocara otra muestra distinta, podrías ver un histograma muy irregular, con algunos números ocurriendo mucho más que otros. Eso podría hacerte pensar que esos números **no** provienen de una distribución uniforme (parecen demasiado irregulares). Pero recordá: **todas** estas muestras vinieron de una distribución uniforme. Así es como se ven las muestras tomadas de esa distribución. Esto es lo que el **azar** le hace a las muestras: introduce **ruido** en los datos individuales.
 
-### Large samples are more like the distribution they came from
+### Las muestras grandes se parecen más a la distribución de la que provienen
 
-Let's refresh the question. Which of the two samples in @fig-5whichone do you think came from a uniform distribution?
+Volvamos a la pregunta: ¿cuál de las dos muestras en `@fig-5whichone` te parece que vino de una distribución uniforme?
 
 ```{r}
 #| label: fig-5whichone
-#| fig-cap: "Which of these two samples came from a uniform distribution?"
+#| fig-cap: "¿Cuál de estas dos muestras proviene de una distribución uniforme?"
 
-a<-round(runif(20*2,1,10))
-df<-data.frame(a,sample=rep(1:2,each=20))
+a <- round(runif(20*2, 1, 10))
+df <- data.frame(a, sample = rep(1:2, each = 20))
 
-ggplot(df,aes(x=a))+
-  geom_histogram(bins=10, color="white")+
-  facet_wrap(~sample)+
-  theme_classic()+
-  scale_x_continuous(breaks=seq(1,10,1))
-
+ggplot(df, aes(x = a)) +
+  geom_histogram(bins = 10, color = "white") +
+  facet_wrap(~sample) +
+  theme_classic() +
+  scale_x_continuous(breaks = seq(1, 10, 1))
 ```
 
-The answer is that they both did. But, neither of them look like they did.
+La respuesta es que **ambas** vinieron de una distribución uniforme. Pero ninguna **parece** que lo haya hecho.
 
-Can we improve things, and make it easier to see if a sample came from a uniform distribution? Yes, we can. All we need to do is increase the **sample-size**. We will often use the letter `n` to refer to sample-size. N is the number of observations in the sample.
+¿Podemos mejorar las cosas y facilitar ver si una muestra proviene de una distribución uniforme? Sí, podemos. Lo único que necesitamos hacer es **aumentar el tamaño de la muestra**. A menudo usamos la letra `n` para referirnos al tamaño muestral. `n` es el número de observaciones en la muestra.
 
-So let's increase the number of observations in each sample from 20 to 100. We will again create 10 samples (each with 100 observations), and make histograms for each of them. All of these samples will be drawn from the very same uniform distribution. This, means we should expect each number from 1 to 10 to occur about 10 times in each sample. The histograms are shown in @fig-5unifsamp100.
+Así que aumentemos el número de observaciones en cada muestra, de 20 a 100. Vamos a crear 10 muestras (cada una con 100 observaciones), y a graficar un histograma para cada una. Todas estas muestras se extraen de la **misma** distribución uniforme. Esto significa que deberíamos esperar que **cada número del 1 al 10 ocurra unas 10 veces** en cada muestra. Los histogramas están en la figura `@fig-5unifsamp100`.
 
 ```{r}
 #| label: fig-5unifsamp100
-#| fig-cap: "Histograms for different samples from a uniform distribution. N = 100 for each sample."
+#| fig-cap: "Histogramas de diferentes muestras de una distribución uniforme. N = 100 para cada muestra."
 #| out-width: "100%"
 
-a<-sample(1:10,100*10,replace=T)
-df<-data.frame(a,sample=rep(1:10,each=100))
+a <- sample(1:10, 100 * 10, replace = TRUE)
+df <- data.frame(a, sample = rep(1:10, each = 100))
 
-ggplot(df,aes(x=a))+
-  geom_histogram(bins=10, color="white")+
-  facet_wrap(~sample, nrow=2)+
-  theme_classic()+
-  ylim(0,20)+
-  scale_x_continuous(breaks=seq(1,10,1))
-
+ggplot(df, aes(x = a)) +
+  geom_histogram(bins = 10, color = "white") +
+  facet_wrap(~sample) +
+  theme_classic()
 ```
 
-Again, most of these histograms don't look very flat, and all of the bars seem to be going up or down, and they are not exactly at 10 each. So, we are still dealing with sampling error. It's a pain. It's always there.
+La figura `@fig-5unifsamp1000` muestra que los histogramas empiezan a aplanarse. Las barras todavía no están perfectamente en 100, porque sigue habiendo error muestral (siempre lo habrá). Pero si vieras un histograma que se ve plano y supieras que la muestra contiene muchas observaciones, podrías tener más confianza en que esos números provienen de una distribución uniforme.
 
-Let's bump up the $N$ from 100 to 1000 observations per sample. Now we should expect every number to appear about 100 times each. What happens?
+Solo por diversión, hagamos muestras realmente grandes. Digamos, 100.000 observaciones por muestra. En ese caso, deberíamos esperar que cada número ocurra unas 10.000 veces. ¿Qué pasa?
 
-```{r}
-#| label: fig-5unifsamp1000
-#| fig-cap: "Histograms for different samples from a uniform distribution. N = 1000 for each sample."
-#| out-width: "100%"
-
-a<-sample(1:10,1000*10,replace=T)
-df<-data.frame(a,sample=rep(1:10,each=1000))
-
-ggplot(df,aes(x=a))+
- geom_histogram(bins=10, color="white")+
-  facet_wrap(~sample, nrow=2)+
-  theme_classic()+
-  ylim(0,200)+
-  scale_x_continuous(breaks=seq(1,10,1))
-
-```
-
-@fig-5unifsamp1000 shows the histograms are starting to flatten out. The bars are still not perfectly at 100, because there is still sampling error (there always will be). But, if you found a histogram that looked flat and knew that the sample contained many observations, you might be more confident that those numbers came from a uniform distribution.
-
-Just for fun let's make the samples really big. Say 100,000 observations per sample. Here, we should expect that each number occurs about 10,000 times each. What happens?
-
-```{r}
+```{r, echo=F}
 #| label: fig-5sampunifALOT
-#| fig-cap: "Histograms for different samples from a uniform distribution. N = 100,000 for each sample."
+#| fig-cap: "Histogramas de distintas muestras de una distribución uniforme. N = 100.000 para cada muestra."
 #| out-width: "100%"
 
-a<-sample(1:10,100000*10,replace=T)
-df<-data.frame(a,sample=rep(1:10,each=100000))
+a <- sample(1:10, 100000 * 10, replace = TRUE)
+df <- data.frame(a, sample = rep(1:10, each = 100000))
 
-ggplot(df,aes(x=a))+
-  geom_histogram(bins=10, color="white")+
-  facet_wrap(~sample, nrow=2)+
-  theme_classic()+
-  ylim(0,20000)+
-  scale_x_continuous(breaks=seq(1,10,1))
-
+ggplot(df, aes(x = a)) +
+  geom_histogram(bins = 10, color = "white") +
+  facet_wrap(~sample, nrow = 2) +
+  theme_classic() +
+  ylim(0, 20000) +
+  scale_x_continuous(breaks = seq(1, 10, 1))
 ```
 
-@fig-5sampunifALOT shows that the histograms for each sample are starting to look the same. They all have 100,000 observations, and this gives chance enough opportunity to equally distribute the numbers, roughly making sure that they all occur very close to the same amount of times. As you can see, the bars are all very close to 10,000, which is where they should be if the sample came from a uniform distribution.
+La figura `@fig-5sampunifALOT` muestra que los histogramas de cada muestra empiezan a parecerse entre sí. Todas tienen 100.000 observaciones, y eso le da suficiente oportunidad al azar para distribuir los números de manera más equitativa, asegurándose aproximadamente de que todos ocurran más o menos la misma cantidad de veces. Como podés ver, las barras están todas muy cerca de 10.000, que es donde deberían estar si la muestra realmente proviene de una distribución uniforme. De nuevo, **no todas las barras tienen exactamente el mismo alto** —todavía hay error muestral—, pero **el patrón general** es ahora mucho más claro. Cada número ocurre más o menos la misma cantidad de veces, y las diferencias entre muestras son mucho menores.
 
 ::: callout-tip
-## Pro tip
+## Consejo pro
 
-The pattern behind a sample will tend to stabilize as sample-size increases. Small samples will have all sorts of patterns because of sampling error (chance).
+El patrón que muestra una muestra tiende a estabilizarse a medida que aumenta el tamaño muestral. Las muestras pequeñas pueden mostrar todo tipo de patrones, debido al error muestral (el azar).
 :::
 
-Before getting back to the topic of experiments that we started with, let's ask two more questions. First, which of the two samples in @fig-5whichoneB do you think came from a uniform distribution? FYI, each of these samples had 20 observations each.
+Antes de volver al tema de los experimentos con el que comenzamos, hagamos dos preguntas más. Primero: ¿cuál de las dos muestras en `@fig-5whichoneB` creés que proviene de una distribución uniforme? Dato: cada una de estas muestras tiene 20 observaciones.
 
-```{r}
+```{r, echo=F}
 #| label: fig-5whichoneB
-#| fig-cap: "Which of these samples came from a uniform distribution?"
+#| fig-cap: "¿Cuál de estas muestras proviene de una distribución uniforme?"
 
-a<-c(sample(1:10,20,replace=T),round(rnorm(20,5,2.5)))
-df<-data.frame(a,sample=rep(1:2,each=20))
+a <- c(sample(1:10, 20, replace = TRUE), round(rnorm(20, 5, 2.5)))
+df <- data.frame(a, sample = rep(1:2, each = 20))
 
-ggplot(df,aes(x=a))+
-  geom_histogram(bins=10, color="white")+
-  facet_wrap(~sample)+
-  theme_classic()+
-  scale_x_continuous(breaks=seq(1,10,1))
-
+ggplot(df, aes(x = a)) +
+  geom_histogram(bins = 10, color = "white") +
+  facet_wrap(~sample) +
+  theme_classic() +
+  scale_x_continuous(breaks = seq(1, 10, 1))
 ```
 
-If you are not confident in the answer, this is because **sampling error** (randomness) is fuzzing with the histograms.
+Si no estás muy segurx de la respuesta, es porque el **error muestral** (el azar) está “difuminando” los histogramas.
 
-Here is the very same question, only this time we will take 1,000 observations for each sample. Which histogram in @fig-5whichoneC do you think came from a uniform distribution, which one did not?
+Acá va exactamente la misma pregunta, solo que esta vez tomamos **1.000 observaciones por muestra**. ¿Cuál histograma en `@fig-5whichoneC` creés que proviene de una distribución uniforme, y cuál no?
 
-```{r}
+```{r, echo=F}
 #| label: fig-5whichoneC
-#| fig-cap: "Which of these samples came from a uniform distribution?"
+#| fig-cap: "¿Cuál de estas muestras proviene de una distribución uniforme?"
 
-a<-c(sample(1:10,1000,replace=T),round(rnorm(1000,5,1.25)))
-df<-data.frame(a,sample=rep(1:2,each=1000))
+a <- c(sample(1:10, 1000, replace = TRUE), round(rnorm(1000, 5, 1.25)))
+df <- data.frame(a, sample = rep(1:2, each = 1000))
 
-ggplot(df,aes(x=a))+
-  geom_histogram(bins=10, color="white")+
-  facet_wrap(~sample)+
-  theme_classic()+
-  scale_x_continuous(breaks=seq(0,10,1))
-
+ggplot(df, aes(x = a)) +
+  geom_histogram(bins = 10, color = "white") +
+  facet_wrap(~sample) +
+  theme_classic() +
+  scale_x_continuous(breaks = seq(0, 10, 1))
 ```
 
-Now that we have increased N, we can see the pattern in each sample becomes more obvious. The histogram for sample 1 has bars near 100, not perfectly flat, but it resembles a uniform distribution. The histogram for sample 2 is not flat looking at all.
+Ahora que aumentamos `N`, podemos ver que el patrón en cada muestra se vuelve más evidente. El histograma de la muestra 1 tiene barras cercanas a 100; no son perfectamente planas, pero **se parece** a una distribución uniforme. El histograma de la muestra 2 no es plano **en absoluto**.
 
-Congratulations to Us! We have just made some statistical inferences without using formulas!
+¡Felicitaciones para nosotrxs! Acabamos de hacer inferencias estadísticas sin usar fórmulas.
 
-"We did?" Yes, by looking at our two samples we have inferred that sample 2 did not come from a uniform distribution. We have also inferred that sample 1 could have come form a uniform distribution. Fantastic. These are the same kinds of inferences we will be making for the rest of the course. We will be looking at some numbers, wondering where they came from, then we will arrange the numbers in such a way so that we can make inferences about the kind of distribution they came from. That's it.
+“¿Lo hicimos?” Sí: al mirar nuestras dos muestras, inferimos que la muestra 2 **no** provino de una distribución uniforme. También inferimos que la muestra 1 **podría** haber venido de una distribución uniforme. Fantástico. Este tipo de inferencias son las mismas que vamos a hacer durante el resto del curso.
+
+Vamos a mirar algunos números, preguntarnos de dónde salieron, y luego organizarlos de forma tal que podamos hacer inferencias sobre **el tipo de distribución** de la que provinieron. Eso es todo.
 
 ```{=html}
 <!--
-## Playing with distributions
+## Jugando con distribuciones
 
-talk about a few different distribution. Embed shiny app
+Hablar sobre algunas distribuciones distintas. Incluir app de Shiny.
 
-SHINY APP here
-
+SHINY APP acá
 -->
 ```
-## Is there a difference?
 
-Let's get back to experiments. In an experiment we want to know if an independent variable (our manipulation) causes a change in a dependent variable (measurement). If this occurs, then we will expect to see some differences in our measurement as a function of the manipulation.
+## ¿Hay una diferencia?
 
-Consider the light switch example:
+Volvamos a los experimentos. En un experimento, queremos saber si una **variable independiente** (nuestra manipulación) **causa un cambio** en una **variable dependiente** (la medición). Si esto ocurre, entonces esperamos ver **alguna diferencia** en nuestra medición como función de la manipulación.
+
+Considerá el ejemplo del interruptor de luz:
+
+**Experimento del interruptor de luz**: manipulás el interruptor hacia arriba (condición 1 de la variable independiente), la luz se enciende (medición). Manipulás el interruptor hacia abajo (condición 2 de la variable independiente), la luz se apaga (otra medición). La medición (la luz) **cambia** (se enciende o se apaga) como función de la manipulación (mover el interruptor hacia arriba o hacia abajo).
+
+Podés ver el cambio en la medición entre condiciones, es tan obvio como el día y la noche. Entonces, cuando realizás una manipulación y **ves la diferencia** (el cambio) en tu medición, podés estar bastante segurx de que tu manipulación **está causando el cambio**.
+
+> Nota: para ser cautos, podemos decir que **“algo”** relacionado con tu manipulación está causando el cambio; tal vez no sea exactamente lo que pensás que es, si tu manipulación es muy complicada e involucra muchos elementos en juego.
+
+### El azar puede producir diferencias
+
+¿Creés que el azar puede producir la apariencia de diferencias, incluso cuando en realidad no hay ninguna? Espero que sí. Ya mostramos que el proceso de muestreo de números desde una distribución es algo azaroso que genera muestras distintas. Las muestras diferentes son diferentes entre sí, así que sí: el azar puede producir diferencias. Y eso puede complicar la interpretación de los experimentos.
+
+Hagamos un experimento ficticio en el que **no esperamos encontrar diferencias**, porque vamos a manipular algo que no debería generar ningún efecto. Este es el planteo:
+
+Vos sos el experimentador y estás parado frente a una máquina expendedora de bolitas. Es muy grande, tiene miles de bolitas. El 50% son verdes y el 50% son rojas. Querés averiguar si sacar bolitas con la mano derecha o con la izquierda te hace sacar más bolitas verdes. Además, vas a estar con los ojos vendados todo el tiempo. La variable independiente es **mano**: derecha vs. izquierda. La variable dependiente es **el color** de cada bolita que sacás.
+
+El experimento se desarrolla así:
+
+1.  te colocás una venda en los ojos;
+2.  sacás 10 bolitas al azar con la mano izquierda, y las dejás a un lado;
+3.  sacás 10 bolitas al azar con la mano derecha, y también las dejás aparte;
+4.  contás cuántas verdes salieron en cada mano.
+
+Gracias. Acá tenés la traducción fiel del fragmento completo, incluyendo el bloque de código:
 
 ------------------------------------------------------------------------
 
-**Light Switch Experiment**: You manipulate the switch up (condition 1 of independent variable), light goes on (measurement). You manipulate the switch down (condition 2 of independent variable), light goes off (another measurement). The measurement (light) changes (goes off and on) as a function of the manipulation (moving switch up or down).
+Realizás el experimento así:
 
-You can see the change in measurement between the conditions, it is as obvious as night and day. So, when you conduct a manipulation, and can see the difference (change) in your measure, you can be pretty confident that your manipulation is causing the change.
+1.  te colocás una venda en los ojos.
+2.  sacás 10 bolitas al azar con la mano izquierda y las dejás a un lado.
+3.  sacás 10 bolitas al azar con la mano derecha y las dejás a otro lado.
+4.  contás cuántas bolitas verdes y cuántas rojas sacaste con cada mano.
 
-> note: to be cautious we can say "something" about your manipulation is causing the change, it might not be what you think it is if your manipulation is very complicated and involves lots of moving parts.
+Esperamos que estés de acuerdo en que tus manos no pueden distinguir entre bolitas verdes y rojas. Si no estás de acuerdo, vamos a estipular además que las bolitas son completamente idénticas en todo, salvo en el color, así que sería imposible diferenciarlas usando el tacto. Entonces, ¿qué debería pasar en este experimento?
 
-------------------------------------------------------------------------
+—“Eh... quizás saques 5 bolitas rojas y 5 verdes con la mano izquierda, y lo mismo con la derecha?” Más o menos, eso es lo que usualmente pasaría. Pero no es lo único que podría pasar. Acá tenés algunos datos de un experimento ficticio:
 
-### Chance can produce differences
-
-Do you think random chance can produce the appearance of differences, even when there really aren't any? I hope so. We have already shown that the process of sampling numbers from a distribution is a chancy process that produces different samples. Different samples are different, so yes, chance can produce differences. This can muck up our interpretation of experiments.
-
-Let's conduct a fictitious experiment where we expect to find no differences, because we will manipulate something that shouldn't do anything. Here's the set-up:
-
-You are the experimenter standing in front of a gumball machine. It is very big, has thousands of gumballs. 50% of the gumballs are green, and 50% are red. You want to find out if picking gumballs with your right hand vs. your left hand will cause you to pick more green gumballs. Plus, you will be blindfolded the entire time. The independent variable is Hand: right hand vs. left hand. The dependent variable is the measurement of the color of each gumball.
-
-You run the experiment as follows. 1) put on blind fold. 2) pick 10 gumballs randomly with left hand, set them aside. 3) pick 10 gumballs randomly with right hand, set them aside. 4) count the number of green and red gumballs chosen by your left hand, and count the number of green and red gumballs chosen by your right hand. Hopefully you will agree that your hands will not be able to tell the difference between the gumballs. If you don't agree, we will further stipulate the gumballs are completely identical in every way except their color, so it would be impossible to tell them apart using your hands. So, what should happen in this experiment?
-
-"Umm, maybe you get 5 red gum balls and 5 green balls from your left hand, and also from your right hand?". Sort of yes, this is what you would usually get. But, it is not all that you can get. Here is some data showing what happened from one pretend experiment:
-
-```{r,echo=F}
-hand<-rep(c("left","right"),each=10)
-gumball<-rbinom(20,1,.5)
-df<-data.frame(hand,gumball)
+```{r, echo=F}
+mano <- rep(c("izquierda", "derecha"), each = 10)
+bolita <- rbinom(20, 1, .5)
+df <- data.frame(mano, bolita)
 
 knitr::kable(df)
 ```
 
-"What am I looking at here". This is a long-format table. Each row is one gumball. The first column tells you what hand was used. The second column tells you what kind of gumball. We will say 1s stand for green gum balls, and 0s stand for red gumballs. So, did your left hand cause you to pick more green gumballs than your right hand?
+—“¿Qué estoy viendo acá?” Esta es una tabla en formato largo. Cada fila es una bolita. La primera columna indica con qué mano se sacó. La segunda indica qué tipo de bolita es. Vamos a decir que los valores `1` representan bolitas verdes y los `0` representan bolitas rojas.
 
-It would be easier to look at the data using a bar graph (@fig-5gumballA). To keep things simple, we only count the green gumballs (the other gumballs must be red). So, all we need to do is sum up the 1s. The 0s won't add anything.
+Entonces... ¿la mano izquierda te hizo sacar más bolitas verdes que la mano derecha? Sería más fácil mirar los datos usando un gráfico de barras (`@fig-5bolitaA`). Para simplificar, vamos a contar solo las bolitas verdes (las otras necesariamente son rojas). Así que solo necesitamos sumar los unos; los ceros no suman nada.
 
-```{r}
-#| label: fig-5gumballA
-#| fig-cap: "Counts of green gumballs picked randomly by each hand."
+```{r, echo=F}
+#| label: fig-5bolitaA
+#| fig-cap: "Conteo de bolitas verdes seleccionadas al azar por cada mano."
 
-sum_df<-aggregate(gumball~hand,df,sum)
-ggplot(sum_df,aes(x=hand,y=gumball))+
-  ylab("# of green gumballs")+
-  geom_bar(stat="identity")+
-  theme_classic(base_size=20)
-  
+sum_df <- aggregate(bolita ~ mano, df, sum)
+ggplot(sum_df, aes(x = mano, y = bolita)) +
+  ylab("# de bolitas verdes") +
+  geom_bar(stat = "identity") +
+  theme_classic(base_size = 20)
 ```
 
-Oh look, the bars are not the same. One hand picked more green gum balls than the other. Does this mean that one of your hands secretly knows how to find green gumballs? No, it's just another case of sampling error, that thing we call luck or chance. The difference here is caused by chance, not by the manipulation (which hand you use). **Major problem for inference alert**. We run experiments to look for differences so we can make inferences about whether our manipulations cause change in our measures. However, this example demonstrates that we can find differences by chance. How can we know if a difference is real, or just caused by chance?
+"¡Ah mirá! Las barras no son iguales. Una mano sacó más bolitas verdes que la otra. ¿Eso significa que una de tus manos secretamente sabe cómo encontrar bolitas verdes?" No. Es solo otro caso de **error muestral**, eso que también llamamos suerte o azar. La diferencia acá fue causada por el azar, no por la manipulación (es decir, por qué mano usaste).
 
-### Differences due to chance can be simulated
+> **¡Alerta de un problema importante para la inferencia!** Hacemos experimentos para buscar diferencias, de modo que podamos inferir si nuestras manipulaciones causan cambios en nuestras mediciones. Sin embargo, este ejemplo demuestra que **podemos encontrar diferencias solo por azar**. Entonces, ¿cómo sabemos si una diferencia es real o simplemente fue causada por el azar?
 
-Remember when we showed that chance can produce correlations. We also showed that chance is restricted in its ability to produce correlations. For example, chance more often produces weak correlations than strong correlations. Remember the window of chance? We found out before that correlations falling outside the window of chance were very unlikely. We can do the same thing for differences. Let's find out just what chance can do in our experiment. Once we know what chance is capable of we will be in a better position to judge whether our manipulation caused a difference, or whether it could have been chance.
+### Las diferencias causadas por el azar se pueden simular
 
-The first thing to do is pretend you conduct the gumball experiment 10 times in a row. This will produce 10 different sets of results. @fig-5gumballsims shows bar graphs for each replication of the experiment. Now we can look at whether the left hand chose more green gumballs than red gumballs.
+Recordá cuando mostramos que el azar puede producir correlaciones. También mostramos que el azar tiene **limitaciones** en su capacidad para producir correlaciones. Por ejemplo, el azar **genera con más frecuencia correlaciones débiles que fuertes**. ¿Te acordás de la “ventana del azar”? Antes descubrimos que las correlaciones que caen fuera de esa ventana son muy poco probables.
 
-```{r}
-#| label: fig-5gumballsims
-#| fig-cap: "10 simulated replications of picking gumballs. Each replication gives a slightly different answer. Any difference between the bars is due to chance, or sampling error. This shows that chance alone can produce differences, just by the act of sampling."
+Podemos hacer lo mismo con las diferencias. Vamos a investigar exactamente qué puede hacer el azar en nuestro experimento. Una vez que sepamos de lo que el azar es capaz, vamos a estar en una mejor posición para juzgar si nuestra manipulación causó una diferencia, o si simplemente **podría haber sido el azar**.
+
+Lo primero que vamos a hacer es simular que realizás el experimento de las bolitas **10 veces seguidas**. Eso va a producir 10 conjuntos distintos de resultados. La figura `@fig-5bolitasims` muestra gráficos de barras para cada repetición del experimento. Ahora podemos ver si la mano izquierda sacó más bolitas verdes que la derecha.
+
+```{r echo=F}
+#| label: fig-5bolitasims
+#| fig-cap: "10 repeticiones simuladas del experimento de sacar bolitas. Cada repetición da una respuesta ligeramente distinta. Cualquier diferencia entre las barras se debe al azar, o al error muestral. Esto muestra que el azar por sí solo puede producir diferencias, simplemente por el acto de muestrear."
 #| out-width: "100%"
 
-hand <- rep(rep(c("left","right"),each=10),10)
+mano<- rep(rep(c("izquierda","derecha"),each=10),10)
 experiment <- rep(1:10,each=20)
-gumball <- rbinom(20*10,1,.5)
-df <- data.frame(experiment,hand,gumball)
-sum_df <- aggregate(gumball~experiment*hand,df,sum)
+bolita<- rbinom(20*10,1,.5)
+df <- data.frame(experiment,mano,bolita)
+sum_df <- aggregate(bolita~experiment*mano,df,sum)
 
-ggplot(sum_df, aes(x=hand,y=gumball))+
+ggplot(sum_df, aes(x=mano,y=bolita))+
   geom_bar(stat = "identity")+
   theme_classic()+
   facet_wrap(~experiment, nrow = 2)
-
 ```
 
-These 10 experiments give us a better look at what chance can do. It should also mesh well with your expectations. If everything is determined by chance (as we have made it so), then sometimes your left hand will choose more green balls, sometimes your right hand will choose more green gumballs, and sometimes they will choose the same amount of gumballs. Right? Right.
+Estos 10 experimentos nos permiten observar mejor lo que el azar puede hacer. Y tam bién debería coincidir con tus expectativas: si todo está determinado por el azar (como lo diseñamos acá), entonces a veces tu mano izquierda va a sacar más bolitas verdes, otras veces será la derecha, y otras veces ambas sacarán la misma cantidad. ¿Correcto? Correcto.
 
-## Chance makes some differences more likely than others
+## El azar hace que algunas diferencias sean más probables que otras
 
-OK, we have seen that chance can produce differences here. But, we still don't have a good idea about what chance usually does and doesn't do. For example, if we could find the window of opportunity here, we would be able find out that chance usually does not produce differences of a certain large size. If we knew what the size was, then if we ran experiment and our difference was bigger than what chance can do, we could be confident that chance did not produce our difference.
+Bien, ya vimos que el azar puede producir diferencias. Pero todavía no tenemos una buena idea de qué es lo que el azar usualmente puede o no puede hacer. Por ejemplo, si pudiéramos encontrar la "ventana de oportunidad" acá, podríamos descubrir que el azar normalmente **no produce diferencias demasiado grandes**. Y si supiéramos cuál es ese umbral, entonces, si realizamos un experimento y nuestra diferencia es más grande que lo que el azar puede producir, podríamos tener confianza en que **no fue el azar** lo que generó nuestra diferencia.
 
-Let's think about our measure of green balls in terms of a difference. For example, in each experiment we counted the green balls for the left and right hand. What we really want to know is if there is a difference between them. So, we can calculate the **difference score**. Let's decide that the difference score = \# of green gumballs in left hand - \# of green gumballs in right hand. @fig-5gumballdiffs redraws the 10 bar graphs from above; however, now there is only one bar for each experiment. This bar represents the difference in number of green gumballs drawn by the left and right hand.
+Pensemos en nuestra medición de bolitas verdes en términos de una **diferencia**. Por ejemplo, en cada experimento contamos las bolitas verdes para la mano izquierda y la derecha. Lo que realmente queremos saber es si hay una diferencia entre ellas. Así que podemos calcular el **puntaje de diferencia**. Vamos a definir ese puntaje de diferencia como: **\# de bolitas verdes con la izquierda menos \# de bolitas verdes con la derecha**. Ahora vamos a simular este experimento mil veces. Cada vez, vamos a contar la cantidad de bolitas verdes para cada mano y calcular la diferencia. Luego, vamos a graficar los puntajes de diferencia para ver qué tipo de valores produce el azar.
 
-```{r}
-#| label: fig-5gumballdiffs
-#| fig-cap: "A look at the differences between number of each kind of gumball for the different replications. The difference should be zero, but sampling error produces non-zero differences."
+```{r, ehco=F}
+#| label: fig-5bolitadiffs
+#| fig-cap: "Un vistazo a las diferencias en el número de bolitas verdes entre manos en distintas repeticiones. La diferencia esperada es cero, pero el error muestral produce diferencias distintas de cero."
 
+diferencias <- sum_df[sum_df$mano== "izquierda", ]$bolita-
+  sum_df[sum_df$mano== "derecha", ]$bolita
 
-differences<-sum_df[sum_df$hand =="left",]$gumball-
-  sum_df[sum_df$hand =="right",]$gumball
-
-dif_df<-data.frame(experiment=c(1:10),differences)
-dif_df$experiment<-as.factor(dif_df$experiment)
-
-ggplot(dif_df,aes(y=differences,x=experiment))+
-  geom_bar(stat="identity")+
-  geom_hline(yintercept = 0)+
-  theme_classic(base_size = 20)+
-  ylab("Difference Scores")
-```
-
-Missing bars mean that there were an equal number of green gumballs chosen by the left and right hands (difference score is 0). A positive value means that more green gumballs were chosen by the left than right hand. A negative value means that more green gumballs were chosen by the right than left hand. Note that if we decided (and we get to decide) to calculate the difference in reverse (right hand - left hand), the signs of the differences scores would flip around.
-
-We are starting to see more of the differences that chance can produce. The difference scores are mostly between -2 to +2. We could get an even better impression by running this pretend experiment 100 times instead of only 10 times. The results are shown in @fig-5manydiffs.
-
-```{r}
-#| label: fig-5manydiffs
-#| fig-cap: "Replicating the experiment 100 times, and looking at the differences each time. There are mnay kinds of differences that chance alone can produce."
-
-
-hand <- rep(rep(c("left", "right"), each = 10), 100)
-experiment <- rep(1:100, each = 20)
-gumball <- rbinom(20 * 100, 1, .5)
-df <- data.frame(experiment, hand, gumball)
-sum_df <- aggregate(gumball ~ experiment * hand, df, sum)
-
-differences <- sum_df[sum_df$hand == "left", ]$gumball -
-  sum_df[sum_df$hand == "right", ]$gumball
-
-dif_df <- data.frame(experiment = c(1:100), differences)
+dif_df <- data.frame(experiment = c(1:10), diferencias)
 dif_df$experiment <- as.factor(dif_df$experiment)
 
-ggplot(dif_df, aes(y = differences, x = experiment)) +
+ggplot(dif_df, aes(y = diferencias, x = experiment)) +
   geom_bar(stat = "identity") +
-  theme_classic(base_size=20) +
-  ylab("Difference Scores")
+  geom_hline(yintercept = 0) +
+  theme_classic(base_size = 20) +
+  labs(y="Puntajes de diferencia",x="experimento")
 ```
 
-Ooph, we just ran so many simulated experiments that the x-axis is unreadable, but it goes from 1 to 100. Each bar represents the difference of number of green balls chosen randomly by the left or right hand. Beginning to notice anything? Look at the y-axis, this shows the size of the difference. Yes, there are lots of bars of different sizes, this shows us that many kinds of differences do occur by chance. However, the y-axis is also restricted. It does not go from -10 to +10. Big differences greater than 5 or -5 don't happen very often.
+Las barras faltantes significan que se extrajo la misma cantidad de bolitas verdes con ambas manos (puntaje de diferencia igual a 0). Un valor positivo indica que la mano izquierda sacó más bolitas verdes que la derecha. Un valor negativo significa que fue la derecha la que sacó más verdes. Notá que si hubiéramos decidido (y lo podemos hacer) calcular la diferencia al revés (mano derecha menos mano izquierda), los signos de los puntajes se invertirían.
 
-Now that we have a method for simulating differences due to chance, let's run 10,000 simulated experiments. But, instead of plotting the differences in a bar graph for each experiment, how about we look at the histogram of difference scores. The histogram in @fig-5histdiffgumball provides a clearer picture about which differences happen most often, and which ones do not. This will be another window into observing what kinds of differences chance is capable of producing.
+Empezamos a ver mejor qué tipo de diferencias puede generar el azar. Los puntajes de diferencia están mayormente entre -2 y +2. Podríamos hacernos una idea más clara si corremos este experimento ficticio **100 veces** en lugar de solo 10. Los resultados se muestran en `@fig-5manydiffs`.
 
-```{r}
-#| label: fig-5histdiffgumball
-#| fig-cap: "A histogram of the differences obtained by chance over 10,000 replications. The most frequency difference is 0, which is what we expect by chance. But the differences can be as large as -10 or +10. Larger differences occur less often by chance. Chance can't do everything."
+```{r, ehco=F}
+#| label: fig-5manydiffs
+#| fig-cap: "Repetimos el experimento 100 veces y observamos las diferencias en cada repetición. Hay muchas diferencias que pueden ser causadas solo por el azar."
 
-hand<-rep(rep(c("left","right"),each=10),10000)
-experiment<-rep(1:10000,each=20)
-gumball<-rbinom(20*10000,1,.5)
-df<-data.frame(experiment,hand,gumball)
-sum_df<-aggregate(gumball~experiment*hand,df,sum)
+mano<- rep(rep(c("izquierda", "derecha"), each = 10), 100)
+experiment <- rep(1:100, each = 20)
+bolita<- rbinom(20 * 100, 1, .5)
+df <- data.frame(experiment, mano, bolita)
+sum_df <- aggregate(bolita~ experiment * mano, df, sum)
 
-differences<-sum_df[sum_df$hand =="left",]$gumball-
-  sum_df[sum_df$hand =="right",]$gumball
+diferencias <- sum_df[sum_df$mano== "izquierda", ]$bolita-
+  sum_df[sum_df$mano== "derecha", ]$bolita
 
-hist(differences,breaks=seq(-10,10,1))
+dif_df <- data.frame(experiment = c(1:100), diferencias)
+dif_df$experiment <- as.factor(dif_df$experiment)
+
+ggplot(dif_df, aes(y = diferencias, x = experiment)) +
+  geom_bar(stat = "identity") +
+  geom_hline(yintercept = 0) +
+  theme_classic(base_size = 20) +
+  labs(y="Puntajes de diferencia",x="experimento")
 ```
 
-Our computer simulation allows us to force chance to operate hundreds of times, each time it produces a difference. We record the difference, then at the end of the simulation we plot the histogram of the differences. The histogram begins to show us the where the differences came from. Remember the idea that numbers come from a distribution, and the distribution says how often each number occurs. We are looking at one of these distributions. It is showing us that chance produces some differences more often than others. First, chance usually produces 0 differences, that's the biggest bar in the middle. Chance also produces larger differences, but as the differences get larger (positive or negative), they occur less frequently. The shape of this histogram is your chance window, it tells you what chance can do, it tells you what chance usually does, and what it usually does not do.
+Para cerrar este experimento, veamos un histograma de los puntajes de diferencia. El histograma en `@fig-5histdiffbolita` ofrece una imagen más clara de qué diferencias ocurren con mayor frecuencia, y cuáles no. Esta será otra ventana para observar qué tipo de diferencias puede producir el azar.
 
-You can use this chance window to help you make inferences. If you ran yourself in the gumball experiment and found that your left hand chose 2 more green gumballs than red gumballs, would you conclude that you left hand was special, and caused you to choose more green gumballs? Hopefully not. You could look at the chance window and see that differences of size +2 do happen fairly often by chance alone. You should not be surprised if you got a +2 difference. However, what if your left chose 5 more green gumballs than red gumballs. Well, chance doesn't do this very often, you might think something is up with your left hand. If you got a whopping 9 more green gumballs than red gumballs, you might really start to wonder. This is the kind of thing that could happen (it's possible), but virtually never happens by chance. When you get things that almost never happen by chance, you can be more confident that the difference reflects a causal force that is not chance.
+```{r, echo=F}
+#| label: fig-5histdiffbolita
+#| fig-cap: "Histograma de las diferencias obtenidas por azar en 10.000 repeticiones. La diferencia más frecuente es 0, que es lo que esperamos por azar. Pero las diferencias pueden llegar a ser tan grandes como -10 o +10. Las diferencias más grandes ocurren con menor frecuencia. El azar no puede hacer cualquier cosa."
 
-## The Crump Test
+mano<- rep(rep(c("izquierda", "derecha"), each = 10), 10000)
+experiment <- rep(1:10000, each = 20)
+bolita<- rbinom(20 * 10000, 1, .5)
+df <- data.frame(experiment, mano, bolita)
+sum_df <- aggregate(bolita~ experiment * mano, df, sum)
 
-We are going to be doing a lot of inference throughout the rest of this course. Pretty much all of it will come down to one question. Did chance produce the differences in my data? We will be talking about experiments mostly, and in experiments we want to know if our manipulation caused a difference in our measurement. But, we measure things that have natural variability, so every time we measure things we will always find a difference. We want to know if the difference we found (between our experimental conditions) could have been produced by chance. If chance is a very unlikely explanation of our observed difference, we will make the inference that chance did not produce the difference, and that something about our experimental manipulation did produce the difference. This is it (for this textbook).
+diferencias <- sum_df[sum_df$mano== "izquierda", ]$bolita-
+  sum_df[sum_df$mano== "derecha", ]$bolita
 
-::: callout-note
-Statistics is not only about determining whether chance could have produced a pattern in the observed data. The same tools we are talking about here can be generalized to ask whether any kind of distribution could have produced the differences. This allows comparisons between different models of the data, to see which one was the most likely, rather than just rejecting the unlikely ones (e.g., chance). But, we'll leave those advanced topics for another textbook.
-:::
+hist(diferencias, breaks = seq(-10, 10, 1))
+```
 
-This chapter is about building intuitions for making these kinds of inferences about the role of chance in your data. It's not clear to me what are the best things to say, to build up your intuitions for how to do statistical inference. So, this chapter tries different things, some of them standard, and some of them made up. What you are about to read, is a made up way of doing statistical inference, without using the jargon that we normally use to talk about it. The goal is to do things without formulas, and without probabilities, and just work with some ideas using simulations to see what happens. We will look at what chance can do, then we will talk about what needs to happen in your data in order for you to be confident that chance didn't do it.
+Nuestra simulación por computadora nos permite forzar al azar a actuar miles de veces; cada vez produce una diferencia. Registramos la diferencia, y al final de la simulación graficamos el histograma de esas diferencias. Ese histograma empieza a mostrarnos **de dónde vinieron esas diferencias**. Recordá la idea de que los números provienen de una distribución, y que la distribución nos dice con qué frecuencia aparece cada número. Estamos viendo una de esas distribuciones. Nos está mostrando que el azar **produce algunas diferencias más a menudo que otras**.
 
-### Intuitive methods
+Primero, el azar usualmente produce diferencias de 0 —esa es la barra más alta en el centro. También puede producir diferencias más grandes, pero a medida que las diferencias se alejan de 0 (positivas o negativas), ocurren con **menos frecuencia**. La forma de este histograma es tu **ventana del azar**. Te dice lo que el azar puede hacer, lo que el azar usualmente hace, y lo que usualmente **no** hace.
 
-Warning, this is an unofficial statistical test made up by Matt Crump. It makes sense to him (me), and if it turns out someone else already made this up, then Crump didn't do his homework, and we will change the name of this test to it's original author later on. The point of this test is to show how simple arithmetic operations that you already understand can be used to create a statistic tool for inference. This test uses:
+Podés usar esta ventana del azar para ayudarte a hacer inferencias. Si vos mismo hicieras el experimento de las bolitas y encontraras que tu mano izquierda eligió 2 bolitas verdes más que la derecha, ¿concluirías que tu mano izquierda es especial, y que te hizo elegir más bolitas verdes? Esperemos que no. Podés mirar la ventana del azar y ver que **diferencias de +2 ocurren bastante seguido** por puro azar. No deberías sorprenderte si obtuviste una diferencia de +2. Ahora bien, ¿qué pasa si tu mano izquierda eligió 5 bolitas verdes más que la derecha? Bueno, el azar **no suele** hacer eso. Tal vez empieces a pensar que pasa algo con tu mano izquierda. Y si sacaras 9 bolitas verdes más con la izquierda que con la derecha, **realmente** podrías empezar a preguntarte. Eso es algo que puede pasar (es posible), pero **prácticamente nunca pasa por azar**.
 
-1.  Sampling numbers randomly from a distribution
-2.  Adding and subtracting
-3.  Division, to find the mean
-4.  Counting
-5.  Graphing and drawing lines
-6.  NO FORMULAS
+Cuando obtenés resultados que casi nunca ocurren por azar, podés tener más confianza en que la diferencia refleja una **fuerza causal que no es el azar**.
 
-### Part 1: Frequency based intuition about occurrence
+## La prueba de Crump
 
-**Question**: How many times does something need to happen for it to happen a lot? Or, how many times does something need to happen for it to happen not very much, or even really not at all? Small enough for you to not worry about it at all happening to you?
+Vamos a hacer muchas inferencias a lo largo del resto del curso. Y casi todas se reducen a una sola pregunta:
 
-Would you go outside everyday if you thought that you would get hit by lightning 1 out of 10 times? I wouldn't. You'd probably be hit by lightning more than once per month, you'd be dead pretty quickly. 1 out of 10 is a lot (to me, maybe not to you, there's no right answer here).
+> **¿Fue el azar el que produjo las diferencias en mis datos?**
 
-Would you go outside everyday if you thought that you would get hit by lightning 1 out of every 100 days? Jeez, that's a tough one. What would I even do? If I went out everyday I'd probably be dead in a year! Maybe I would go out 2 or 3 times per year, I'm risky like that, but I'd probably live longer if I stayed at home forever. It would massively suck.
+Vamos a hablar sobre experimentos, principalmente. Y en los experimentos queremos saber si nuestra **manipulación causó una diferencia** en nuestra medición. Pero, medimos cosas que tienen variabilidad natural. Así que **cada vez que medimos algo, siempre vamos a encontrar alguna diferencia**. Lo que queremos saber es si **la diferencia que encontramos entre nuestras condiciones experimentales podría haber sido producida por azar**. Si el azar es una explicación **muy poco probable** para la diferencia observada, vamos a hacer la inferencia de que el azar **no** produjo la diferencia, y que **algo en nuestra manipulación experimental sí lo hizo**. Eso es todo (por ahora).
 
-Would you go outside everyday if you thought you would get hit by lightning 1 out of every 1000 days? Well, you'd probably be dead in 3-6 years if you did that. Are you a gambler? Maybe go out once per month, still sucks.
+::::: callout-note
+La estadística no trata solo de determinar si el azar podría haber producido un patrón en los datos observados. Las mismas herramientas que estamos discutiendo acá se pueden generalizar para preguntarse si **cualquier tipo de distribución** podría haber producido...
 
-Would you go outside everyday if you thought lightning would get you 1 out every 10,000 days? 10,000 is a bigger number, harder to think about. It translates to getting hit about once every 27 years. Ya, I'd probably go out 150 days per year, and keep my fingers crossed.
+Este capítulo trata de construir intuiciones para hacer este tipo de inferencias sobre el papel del azar en tus datos. No me queda claro cuáles son las mejores cosas para decir, para ayudarte a desarrollar intuiciones sobre cómo hacer inferencia estadística. Así que este capítulo prueba diferentes caminos, algunos más estándar, y otros completamente inventados. Lo que vas a leer ahora es una forma inventada de hacer inferencia estadística, sin usar la jerga que normalmente usamos para hablar del tema. El objetivo es trabajar sin fórmulas ni probabilidades, y simplemente usar algunas ideas básicas con simulaciones para ver qué pasa. Vamos a mirar qué puede hacer el azar, y luego hablaremos de qué tiene que pasar en tus datos para que puedas tener confianza en que **no fue el azar** lo que produjo el patrón que observás.
 
-Would you go outside everyday if you thought lightning would get you 1 out every 100,000 days? How many years is that? It's about 273 years. With those odds, I'd probably go out all the time and forget about being hit by lightning. It doesn't happen very often.
+### Métodos intuitivos
 
-The point of considering these questions is to get a sense for yourself of what happens a lot, and what doesn't happen a lot, and how you would make important decisions based on what happens a lot and what doesn't.
+Atención: esto es una prueba estadística no oficial, inventada por Matt Crump. Tiene sentido para él (para mí), y si resulta que alguien ya inventó esto antes, entonces Crump no hizo bien la tarea, y le cambiaremos el nombre al autor original más adelante. El punto de esta prueba es mostrar cómo **operaciones aritméticas simples** que ya conocés pueden usarse para construir una herramienta estadística para la inferencia. Esta prueba utiliza:
 
-### Part 2: Simulating chance
+1.  Muestreo aleatorio de números desde una distribución
+2.  Sumar y restar
+3.  Dividir para calcular la media
+4.  Contar
+5.  Graficar y trazar líneas
+6.  **NINGUNA FÓRMULA**
 
-This next part could happen a bunch of ways, I'll make loads of assumptions that I won't defend, and I won't claim the Crump test has problems. I will claim it helps us make an inference about whether chance could have produced some differences in data. We've already been introduced to simulating things, so we'll do that again. Here is what we will do. I am a cognitive psychologist who happens to be measuring X. Because of prior research in the field, I know that when I measure X, my samples will tend to have a particular mean and standard deviation. Let's say the mean is usually 100, and the standard deviation is usually 15. In this case, I don't care about using these numbers as estimates of the population parameters, I'm just thinking about what my samples usually look like. What I want to know is how they behave when I sample them. I want to see what kind of samples happen a lot, and what kind of samples don't happen a lot. Now, I also live in the real world, and in the real world when I run experiments to see what changes X, I usually only have access to some number of participants, who I am very grateful too, because they participate in my experiments. Let's say I usually can run 20 subjects in each condition in my experiments. Let's keep the experiment simple, with two conditions, so I will need 40 total subjects.
+### Parte 1: Intuición basada en frecuencia sobre ocurrencias
 
-I would like to learn something to help me with inference. One thing I would like to learn is what the sampling distribution of the sample mean looks like. This distribution tells me what kinds of mean values happen a lot, and what kinds don't happen very often. But, I'm actually going to skip that bit. Because what I'm really interested in is what the **sampling distribution of the difference between my sample means** looks like. After all, I am going to run an experiment with 20 people in one condition, and 20 people in the other. Then I am going to calculate the mean for group A, and the mean for group B, and I'm going to look a the difference. I will probably find a difference, but my question is, did my manipulation cause this difference, or is this the kind of thing that happens a lot by chance. If I knew what chance can do, and how often it produces differences of particular sizes, I could look at the difference I observed, then look at what chance can do, and then I can make a decision! If my difference doesn't happen a lot (we'll get to how much not a lot is in a bit), then I might be willing to believe that my manipulation caused a difference. If my difference happens all the time by chance alone, then I wouldn't be inclined to think my manipulation caused the difference, because it could have been chance.
+**Pregunta:** ¿Cuántas veces tiene que pasar algo para que consideres que pasa mucho? ¿Y cuántas veces tiene que pasar para que consideres que pasa muy poco, o casi nunca? ¿Tan pocas veces como para que no te preocupe que te pase? ¿Saldrías a la calle todos los días si pensás que te puede caer un rayo 1 de cada 10 veces? Yo no. Probablemente te caería un rayo más de una vez por mes, y morirías bastante rápido. 1 de cada 10 es **mucho** (para mí, tal vez no para vos —acá no hay una única respuesta correcta).
 
-So, here's what we'll do, even before running the experiment. We'll do a simulation. We will sample numbers for group A and Group B, then compute the means for group A and group B, then we will find the difference in the means between group A and group B. But, we will do one very important thing. We will pretend that we haven't actually done a manipulation. If we do this (do nothing, no manipulation that could cause a difference), then we know that **only sampling error** could cause any differences between the mean of group A and group B. We've eliminated all other causes, only chance is left. By doing this, we will be able to see exactly what chance can do. More importantly, we will see the kinds of differences that occur a lot, and the kinds that don't occur a lot.
+¿Saldrías todos los días si pensaras que te puede caer un rayo 1 de cada 100 veces? Uf, esa es difícil. ¿Qué haría yo? Si saliera todos los días, probablemente estaría muerto en un año. Tal vez saldría 2 o 3 veces por año —soy algo arriesgado—, pero probablemente viviría más si me quedara en casa para siempre. Sería un bajón.
 
-Before we do the simulation, we need to answer one question. How much is a lot? We could pick any number for a lot. I'm going to pick 10,000. That is a lot. If something happens only 1 times out 10,000, I am willing to say that is not a lot.
+¿Saldrías todos los días si pensás que te podría caer un rayo 1 de cada 1000 días? Bueno, probablemente te morirías en 3 a 6 años si hicieras eso. ¿Sos timbero? Tal vez saldrías una vez por mes. Igual, un garrón.
 
-OK, now we have our number, we are going to simulate the possible mean differences between group A and group B that could arise by chance. We do this 10,000 times. This gives chance a lot of opportunity to show us what it does do, and what it does not do.
+¿Saldrías todos los días si pensás que te puede caer un rayo 1 de cada 10.000 días? 10.000 es un número grande, difícil de imaginar. Equivale a que te caiga un rayo más o menos una vez cada 27 años. Sí, probablemente saldría unas 150 veces por año, y cruzaría los dedos.
 
-This is what I did: I sampled 20 numbers into group A, and 20 into group B. The numbers both came from the same normal distribution, with mean = 100, and standard deviation = 15. Because the samples are coming from the same distribution, we expect that on average they will be similar (but we already know that samples differ from one another). Then, I compute the mean for each sample, and compute the difference between the means. I save the **mean difference score**, and end up with 10,000 of them. Then, I draw the histogram in @fig-5crumptestdiff.
+¿Saldrías todos los días si pensás que te puede caer un rayo 1 de cada 100.000 días? ¿Cuántos años es eso? Son unos 273 años. Con esas probabilidades, probablemente saldría todo el tiempo y me olvidaría del tema. No pasa muy seguido.
 
-```{r}
+El punto de considerar estas preguntas es que desarrolles tu propia intuición sobre qué cosas pasan mucho, qué cosas no pasan mucho, y cómo tomar decisiones importantes en función de qué tan frecuente es algo.
+
+### Parte 2: Simulando el azar
+
+Esta parte podría hacerse de muchas maneras. Voy a hacer un montón de suposiciones que no voy a justificar, y no voy a afirmar que la prueba de Crump esté libre de problemas. Lo que sí voy a afirmar es que **ayuda a hacer una inferencia** sobre si el azar podría haber producido ciertas diferencias en los datos. Ya nos hemos familiarizado con las simulaciones, así que vamos a hacer otra.
+
+Esto es lo que vamos a hacer. Soy un psicólogo cognitivo que está midiendo cierta variable X. Gracias a investigaciones previas, sé que cuando mido X, mis muestras tienden a tener una media y una desviación estándar particulares. Supongamos que la media suele ser 100, y la desviación estándar 15. En este caso, no me interesa usar esos números como estimaciones de parámetros poblacionales, simplemente estoy pensando en **cómo suelen ser mis muestras**. Lo que quiero saber es cómo se comportan cuando las muestreo. Quiero ver **qué tipo de muestras ocurren con frecuencia**, y cuáles no. Además, vivo en el mundo real, y en el mundo real, cuando hago experimentos para ver qué modifica X, usualmente tengo acceso a una cantidad limitada de participantes (a quienes agradezco mucho por colaborar). Supongamos que puedo incluir a 20 sujetos por condición. Mantenemos el experimento simple: dos condiciones, así que necesito 40 sujetos en total.
+
+Me gustaría aprender algo que me ayude a inferir. Una posibilidad sería ver **cómo se ve la distribución muestral de la media muestral**. Esa distribución me diría qué valores de la media aparecen frecuentemente, y cuáles son raros. Pero en realidad voy a **saltar esa parte**.
+
+Porque lo que realmente me interesa es **cómo se ve la distribución muestral de la diferencia entre medias muestrales**. Después de todo, voy a ejecutar un experimento con 20 personas en una condición y 20 en otra. Voy a calcular la media del grupo A, la media del grupo B, y mirar la diferencia. Probablemente encuentre una diferencia, pero mi pregunta es: ¿esa diferencia fue causada por mi manipulación, o es del tipo que suele ocurrir por azar? Si supiera qué puede hacer el azar y con qué frecuencia produce diferencias de determinado tamaño, entonces podría comparar la diferencia que observé con lo que el azar puede hacer, y entonces **tomar una decisión**. Si mi diferencia **no ocurre muy seguido**, (ya vamos a definir qué es “muy seguido”), entonces tal vez esté dispuesto a creer que **mi manipulación causó la diferencia**. Si mi diferencia ocurre todo el tiempo solo por azar, entonces no voy a pensar que fue causada por mi manipulación, porque podría haber sido simplemente el azar.
+
+Entonces, esto es lo que vamos a hacer, **incluso antes de ejecutar el experimento**. Vamos a hacer una simulación. Vamos a muestrear números para el grupo A y para el grupo B, luego vamos a calcular las medias de cada grupo, y después vamos a calcular la diferencia entre esas medias.
+
+Pero vamos a hacer **algo muy importante**: vamos a fingir que **no hicimos ninguna manipulación**. Si hacemos esto —no hacemos nada, ninguna intervención que pudiera causar una diferencia—, entonces sabemos que **cualquier diferencia entre las medias de los grupos A y B solo puede deberse al error muestral**. Eliminamos todas las demás causas: solo queda el azar. Haciendo esto, vamos a poder ver exactamente qué puede hacer el azar. Más importante aún, vamos a ver qué tipo de diferencias ocurren frecuentemente, y cuáles no.
+
+Antes de hacer la simulación, necesitamos responder una pregunta: **¿cuánto es “mucho”?** Podríamos elegir cualquier número. Yo voy a elegir 10.000. Eso es mucho. Si algo ocurre solo 1 vez en 10.000, estoy dispuesto a decir que **eso no es mucho**.
+
+Bien, ya tenemos nuestro número. Vamos a simular las diferencias de medias entre los grupos A y B **que podrían surgir solo por azar**. Lo vamos a hacer 10.000 veces. Eso le da al azar muchas oportunidades para mostrarnos qué puede hacer y qué no.
+
+Esto es lo que hice: muestreé 20 números para el grupo A y 20 para el grupo B. Ambos grupos provienen de la misma distribución normal, con media = 100 y desviación estándar = 15. Como las muestras provienen de la **misma distribución**, esperamos que, en promedio, sean similares (aunque ya sabemos que las muestras siempre difieren entre sí). Después calculo la media de cada grupo, y luego la diferencia entre esas medias. Guardo ese **puntaje de diferencia de medias**, y repito esto hasta tener 10.000 de ellos. Después, dibujo un histograma como el de la figura `@fig-5crumptestdiff`.
+
+```{r, echo=F}
 #| label: fig-5crumptestdiff
-#| fig-cap: "Histogram of mean differences arising by chance."
+#| fig-cap: "Histograma de diferencias entre medias surgidas por azar."
 
-difference <- length(10000)
+diferencia <- length(10000)
 for (i in 1:10000) {
-  difference[i] <- mean(rnorm(20, 100, 15) - rnorm(20, 100, 15))
+  diferencia[i] <- mean(rnorm(20, 100, 15) - rnorm(20, 100, 15))
 }
-plot_df <- data.frame(sim = 1:10000, difference)
-ggplot(plot_df, aes(x = difference)) +
+plot_df <- data.frame(sim = 1:10000, diferencia)
+
+ggplot(plot_df, aes(x = diferencia)) +
   geom_histogram(bins = 100, color = "white") +
   theme_classic() +
-  ggtitle(
-    "Histogram of mean differences between two samples (n=10) \n
-          both drawn from the same normal distribution (u=100, sd=20"
-  ) +
-  xlab("mean difference")
-
+  ggtitle("Histograma de diferencias de medias entre dos muestras (n = 10)\nambas extraídas de la misma distribución normal (μ = 100, σ = 20)") +
+  xlab("diferencia de medias") + ylab("frecuencia")
 ```
 
 ::: callout-note
-Of course, we might recognize that chance could do a difference greater than 15. We just didn't give it the opportunity. We only ran the simulation 10,000 times. If we ran it a million times, maybe a difference greater than 15 or even 20 would happen a couple times. If we ran it a bazillion gazillion times, maybe a difference greater than 30 would happen a couple times. If we go out to infinity, then chance might produce all sorts of bigger differences once in a while. But, we've already decided that 1/10,000 is not a lot. So things that happen 0 out of 10,000 times, like differences greater than 15, are considered to be extremely unlikely.
+Por supuesto, podríamos reconocer que el azar **podría** producir una diferencia mayor que 15. Simplemente **no le dimos la oportunidad**. Solo corrimos la simulación 10.000 veces. Si la corriéramos un millón de veces, tal vez una diferencia mayor que 15 o incluso 20 ocurriría un par de veces. Si la corriéramos un trillón de veces, tal vez una diferencia mayor que 30 ocurriría muy de vez en cuando. Si fuéramos hasta el infinito, entonces el azar podría producir todo tipo de diferencias grandes **cada tanto**. Pero ya decidimos que 1 en 10.000 **no es mucho**. Así que cosas que ocurren 0 veces en 10.000 simulaciones —como diferencias mayores a 15— se consideran extremadamente improbables.
 :::
 
-Now we can see what chance can do to the size of our mean difference. The x-axis shows the size of the mean difference. We took our samples from the sample distribution, so the difference between them should usually be 0, and that's what we see in the histogram.
+Ahora podemos ver lo que el azar puede hacer con respecto al tamaño de nuestras diferencias de medias. El eje x muestra el tamaño de la diferencia de medias. Como tomamos ambas muestras de la **misma distribución poblacional**, la diferencia entre ellas **debería tender a ser 0**, y eso es lo que vemos en el histograma.
 
-Pause for a second. Why should the mean differences usually be zero, wasn't the population mean = 100, shouldn't they be around 100? No. The mean of group A will tend to be around 100, and the mean of group B will tend be around 100. So, the difference score will tend to be 100-100 = 0. That is why we expect a mean difference of zero when the samples are drawn from the same population.
+Pausa un segundo. ¿Por qué las diferencias de medias deberían tender a cero? ¿No era que la media poblacional era 100? ¿No deberían las diferencias rondar 100? No. La media del grupo A tenderá a estar alrededor de 100, y la del grupo B también. Entonces, la diferencia tenderá a ser 100 − 100 = 0.Por eso esperamos una **diferencia de medias igual a cero** cuando las muestras provienen de la misma población.
 
-So, differences near zero happen the most, that's good, that's what we expect. Bigger or smaller differences happen increasingly less often. Differences greater than 15 or -15 never happen at all. For our purposes, it looks like chance only produces differences between -15 to 15.
+Entonces, las diferencias cercanas a cero ocurren con más frecuencia —eso es bueno, es lo que esperábamos. Las diferencias más grandes (positivas o negativas) ocurren cada vez menos. Diferencias mayores que 15 o menores que -15 **no ocurrieron nunca**. Para nuestros fines, parece que el azar **solo produce diferencias entre -15 y 15**.
 
-OK, let's ask a couple simple questions. What was the biggest negative number that occurred in the simulation? We'll use R for this. All of the 10,000 difference scores are stored in a variable I made called `difference`. If we want to find the minimum value, we use the `min` function. Here's the result.
-
-```{r, echo=T}
-min(difference)
-```
-
-OK, so what was the biggest positive number that occurred? Let's use the `max` function to find out. It finds the biggest (maximum) value in the variable. FYI, we've just computed the range, the minimum and maximum numbers in the data. Remember we learned that before. Anyway, here's the max.
+OK, hagamos un par de preguntas simples.¿Cuál fue el número negativo más grande (es decir, el más negativo) que ocurrió en la simulación? Vamos a usar R para esto. Todos los 10.000 puntajes de diferencia están guardados en una variable que llamé `diferencia`. Si queremos encontrar el valor mínimo, usamos la función `min`. Este es el resultado:
 
 ```{r, echo=T}
-max(difference)
+min(diferencia)
 ```
 
-Both of these extreme values only occurred once. Those values were so rare we couldn't even see them on the histogram, the bar was so small. Also, these biggest negative and positive numbers are pretty much the same size if you ignore their sign, which makes sense because the distribution looks roughly symmetrical.
+Bien, ¿y cuál fue el número positivo más grande que ocurrió? Usemos la función `max` para averiguarlo. Esa función encuentra el valor más grande (máximo) de una variable. Por cierto, acabamos de calcular el rango: el mínimo y el máximo de los datos. Recordá que ya aprendimos eso antes. De todos modos, acá va el máximo:
 
-So, what can we say about these two numbers for the min and max? We can say the min happens 1 times out of 10,000. We can say the max happens 1 times out of 10,000. Is that a lot of times? Not to me. It's not a lot.
+```{r, echo=T}
+max(diferencia)
+```
 
-So, how often does a difference of 30 (much larger larger than the max) occur out of 10,000. We really can't say, 30s didn't occur in the simulation. Going with what we got, we say 0 out of 10,000. That's never.
+Ambos valores extremos ocurrieron **solo una vez**. Fueron tan poco frecuentes que ni siquiera los pudimos ver en el histograma —la barra era tan baja que no se notaba. Además, el mayor valor negativo y el mayor positivo tienen prácticamente el mismo tamaño (ignorando el signo), lo cual tiene sentido porque la distribución parece bastante simétrica.
 
-We're about to move into part three, which involves drawing decision lines and talking about them. The really important part about part 3 is this. What would you say if you ran this experiment once, and found a mean difference of 30? I would say it happens 0 times of out 10,000 by chance. I would say chance did not produce my difference of 30. That's what I would say. We're going to expand upon this right now.
+Entonces, ¿qué podemos decir sobre estos dos números —el mínimo y el máximo? Podemos decir que el mínimo ocurrió 1 vez de cada 10.000. Y que el máximo ocurrió 1 vez de cada 10.000. ¿Eso es mucho? Para mí, no. **No es mucho.**
 
-### Part 3: Judgment and Decision-making
+¿Y con qué frecuencia ocurre una diferencia de 30 (mucho más grande que el máximo)? No podemos decirlo exactamente, porque **30 no ocurrió nunca** en la simulación. Con lo que tenemos, podemos decir: 0 veces de cada 10.000. Eso significa: **nunca**.
 
-Remember, we haven't even conducted an experiment. We're just simulating what could happen if we did conduct an experiment. We made a histogram. We can see that chance produces some differences more than others, and that chance never produced really big differences. What should we do with this information?
+Estamos por pasar a la parte tres, que consiste en **trazar líneas de decisión** y hablar sobre ellas. La parte realmente importante de la parte 3 es esta: ¿Qué dirías si hicieras este experimento una vez y encontraras una diferencia de medias de 30? Yo diría: eso ocurre **0 veces de cada 10.000** por azar. Yo diría: **el azar no produjo mi diferencia de 30**. Eso es lo que diría. Vamos a desarrollar esta idea ahora mismo.
 
-What we are going to do is talk about judgment and decision making. What kind of judgment and decision making? Well, when you finally do run an experiment, you will get two means for group A and B, and then you will need to make some judgments, and perhaps even a decision, if you are so inclined. You will need to judge whether chance (sampling error) could have produced the difference you observed. If you judge that it did it not, you might make the decision to tell people that your experimental manipulation actually works. If you judge that it could have been chance, you might make a different decision. These are important decisions for researchers. Their careers can depend on them. Also, their decisions matter for the public. Nobody wants to hear fake news from the media about scientific findings.
+### Parte 3: Juicio y toma de decisiones
 
-So, what we are doing is preparing to make those judgments. We are going to draw up a plan, before we even see the data, for how we will make judgments and decisions about what we find. This kind of planning is extremely important, because we discuss in part 4, that your planning can help you design an even better experiment than the one you might have been intending to run. This kind of planning can also be used to interpret other people's results, as a way of double-checking checking whether you believe those results are plausible.
+Recordá: ni siquiera hemos hecho un experimento real. Simplemente simulamos lo que podría pasar **si** lo hiciéramos. Hicimos un histograma. Vimos que el azar produce algunas diferencias más que otras, y que nunca produce diferencias realmente grandes. ¿Qué deberíamos hacer con esa información?
 
-The thing about judgement and decision making is that reasonable people disagree about how to do it, unreasonable people really disagree about it, and statisticians and researchers disagree about how to do it. I will propose some things that people will disagree with. That's OK, these things still make sense. And, the disagreeable things point to important problems that are very real for any "real" statistical inference test.
+Lo que vamos a hacer es hablar sobre **juicio y toma de decisiones**. ¿De qué tipo? Bueno, cuando finalmente hagas un experimento real, vas a obtener dos medias —una para el grupo A y otra para el grupo B—, y entonces vas a tener que hacer algunos juicios, y quizás incluso tomar una decisión, si querés.
 
-Let's talk about some objective facts from our simulation of 10,000 things that we definitely know to be true. For example, we can draw some lines on the graph, and label some different regions. We'll talk about two kinds of regions.
+Vas a tener que juzgar si el azar (es decir, el error muestral) **podría haber producido la diferencia que observaste**. Si juzgás que no fue el azar, quizás decidas contarle al mundo que tu manipulación experimental realmente funciona. Si juzgás que sí podría haber sido el azar, quizás tomes una decisión distinta. Estas decisiones son importantes para los investigadores. Sus carreras pueden depender de ellas. Y además, sus decisiones **importan para el público**. A nadie le gusta escuchar noticias falsas en los medios sobre hallazgos científicos.
 
-1.  Region of chance. Chance did it. Chance could have done it
-2.  Region of not chance. Chance didn't do it. Chance couldn't have done it.
+Así que lo que estamos haciendo es prepararnos para tomar esos juicios. Vamos a trazar un plan, **antes incluso de ver los datos**, sobre cómo vamos a juzgar y decidir lo que encontremos. Este tipo de planificación también puede usarse para **interpretar los resultados de otras personas**, como una forma de comprobar dos veces si creés que esos resultados son plausibles. El tema con el juicio y la toma de decisiones es que **las personas razonables no se ponen de acuerdo sobre cómo hacerlo**, las personas poco razonables realmente no se ponen de acuerdo, y los estadísticos e investigadores **también discrepan sobre cómo hacerlo**. Voy a proponer algunas ideas con las que la gente va a estar en desacuerdo. Está bien. Estas ideas igual tienen sentido. Y esas ideas que generan desacuerdo apuntan a problemas importantes que son muy reales en cualquier test de inferencia estadística "real".
 
-The regions are defined by the minimum value and the maximum value. Chance never produced a smaller or bigger number. The region inside the range is what chance did do, and the the region outside the range on both sides is what chance never did. It looks like @fig-5crumpdecision:
+Hablemos ahora de algunos hechos objetivos que **sabemos con certeza** a partir de nuestra simulación de 10.000 repeticiones. Por ejemplo, podemos trazar algunas líneas en el gráfico y marcar algunas regiones distintas. Vamos a hablar de dos tipos de regiones:
+
+1.  **Región del azar**. El azar lo hizo. El azar **podría** haberlo hecho.
+2.  **Región del no azar**. El azar **no** lo hizo. El azar **no podría** haberlo hecho.
+
+Las regiones están definidas por el valor mínimo y el valor máximo observados en la simulación. El azar **nunca produjo un número menor ni mayor** que esos extremos. La región **dentro del rango** es lo que el azar **sí hizo**, y la región **fuera del rango**, en ambos extremos, es lo que el azar **nunca hizo**.
+
+Se ve así en la figura `@fig-5crumpdecision`:
 
 ```{r}
 #| label: fig-5crumpdecision
-#| fig-cap: "Applying decision boundaries to the histogrm of mean differences. The boundaries identify what differences chance did or did not produce in the simulation."
+#| fig-cap: "Aplicación de límites de decisión al histograma de diferencias de medias. Los límites identifican qué diferencias produjo (o no produjo) el azar en la simulación."
 
-ggplot(plot_df, aes(x = difference)) +
-  annotate(
-    "rect",
-    xmin = min(difference),
-    xmax = max(difference),
-    ymin = 0,
-    ymax = Inf,
-    alpha = 0.5,
-    fill = "red"
-  ) +
-  geom_rect(aes(
-    xmin = -Inf,
-    xmax = min(difference),
-    ymin = 0,
-    ymax = Inf
-  ),
-  alpha = .5,
-  fill = "lightgreen") +
-  geom_rect(aes(
-    xmin = max(difference),
-    xmax = Inf,
-    ymin = 0,
-    ymax = Inf
-  ),
-  alpha = .5,
-  fill = "lightgreen") +
+ggplot(plot_df, aes(x = diferencia)) +
+  annotate("rect", xmin = min(diferencia), xmax = max(diferencia), ymin = 0, ymax = Inf, alpha = 0.5, fill = "red") +
+  geom_rect(aes(xmin = -Inf, xmax = min(diferencia), ymin = 0, ymax = Inf), alpha = .5, fill = "lightgreen") +
+  geom_rect(aes(xmin = max(diferencia), xmax = Inf, ymin = 0, ymax = Inf), alpha = .5, fill = "lightgreen") +
   geom_histogram(bins = 50, color = "white") +
   theme_classic() +
-  geom_vline(xintercept = min(difference)) +
-  geom_vline(xintercept = max(difference)) +
-  ggtitle(
-    "Histogram of mean differences between two samples (n=10) \n
-          both drawn from the same normal distribution (u=100, sd=20)"
-  ) +
+  geom_vline(xintercept = min(diferencia)) +
+  geom_vline(xintercept = max(diferencia)) +
+  ggtitle("Histograma de diferencias de medias entre dos muestras (n = 10)\nambas tomadas de la misma distribución normal (μ = 100, σ = 20)") +
   xlim(-30, 30) +
-  geom_label(data = data.frame(x = 0, y = 250, label = "CHANCE"), aes(x = x, y = y, label = label)) +
-  geom_label(data = data.frame(x = -25, y = 250, label = "NOT \n CHANCE"),
-             aes(x = x, y = y, label = label)) +
-  geom_label(data = data.frame(x = 25, y = 250, label = "NOT \n CHANCE"),
-             aes(x = x, y = y, label = label)) +
-  geom_label(data = data.frame(
-    x = min(difference),
-    y = 750,
-    label = paste0("min \n", round(min(difference)))
-  ),
-  aes(x = x, y = y, label = label)) +
-  geom_label(data = data.frame(
-    x = max(difference),
-    y = 750,
-    label = paste0("max \n", round(max(difference)))
-  ),
-  aes(x = x, y = y, label = label)) +
-  xlab("mean difference")
-  
-
+  geom_label(data = data.frame(x = 0, y = 250, label = "AZAR"), aes(x = x, y = y, label = label)) +
+  geom_label(data = data.frame(x = -25, y = 250, label = "NO\nAZAR"), aes(x = x, y = y, label = label)) +
+  geom_label(data = data.frame(x = 25, y = 250, label = "NO\nAZAR"), aes(x = x, y = y, label = label)) +
+  geom_label(data = data.frame(x = min(diferencia), y = 750, label = paste0("mín\n", round(min(diferencia)))), aes(x = x, y = y, label = label)) +
+  geom_label(data = data.frame(x = max(diferencia), y = 750, label = paste0("máx\n", round(max(diferencia)))), aes(x = x, y = y, label = label)) +
+  xlab("diferencia de medias")
 ```
 
-We have just drawn some lines, and shaded some regions, and made one plan we could use to make decisions. How would the decisions work. Let's say you ran the experiment and found a mean difference between groups A and B of 25. Where is 25 in the figure? It's in the green part. What does the green part say? NOT CHANCE. What does this mean. It means chance never made a difference of 25. It did that 0 out of 10,000 times. If we found a difference of 25, perhaps we could confidently conclude that chance did not cause the difference. If I found a difference of 25 with this kind of data, I'd be pretty confident chance did not cause the difference; and, I would give myself license to consider that my experimental manipulation may be causing the difference.
+Acabamos de trazar unas líneas, sombrear algunas regiones y construir un plan que podríamos usar para tomar decisiones. ¿Cómo funcionarían esas decisiones? Supongamos que hiciste el experimento y encontraste una diferencia de medias entre los grupos A y B de 25. ¿Dónde está el 25 en la figura? Está en la parte verde. ¿Qué dice la parte verde? “NO AZAR”. ¿Qué significa esto? Significa que el azar **nunca** produjo una diferencia de 25. Eso ocurrió **0 veces de cada 10.000**. Si encontramos una diferencia de 25, quizás podamos concluir con confianza que el azar **no causó esa diferencia**. Si yo encontrara una diferencia de 25 con este tipo de datos, estaría bastante seguro de que el azar no la causó, y me daría permiso a mí mismo para considerar que **mi manipulación experimental podría estar causando la diferencia**.
 
-What about a difference of +10? That's in the red part, where chance lives. Chance could have done a difference of +10 because we can see that it did do that sometimes. The red part is the window of what chance did in our simulation. Anything inside the window could have been a difference caused by chance. If I found a difference of +10, I'd say, "ya, it coulda been chance." I would also be less confident that the difference was only caused by my experimental manipulation.
+¿Y qué pasa con una diferencia de +10? Eso está en la parte roja, **donde vive el azar**. El azar **podría haber producido** una diferencia de +10, porque podemos ver que **a veces lo hizo**. La parte roja es la ventana de lo que el azar hizo en nuestra simulación. Cualquier cosa dentro de esa ventana podría haber sido una diferencia causada por el azar. Si encontrara una diferencia de +10, diría: “sí, podría haber sido el azar”. Y también estaría **menos seguro** de que la diferencia fue causada solamente por mi manipulación experimental.
 
-Statistical inference could be this easy. The number you get from your experiment could be in the chance window (then you can't rule out chance as a cause), or it could be outside the chance window (then you can rule out chance). Case closed. Let's all go home.
+La inferencia estadística **podría ser tan simple como esto**: El número que obtenés de tu experimento podría estar **dentro de la ventana del azar** (entonces no podés descartar al azar como causa), o podría estar **fuera de la ventana del azar** (entonces sí podés descartarlo). Caso cerrado. Vámonos todos a casa.
 
-#### Grey areas
+### Zonas grises
 
-So what's the problem? Depending on who you are, and what kinds of risks you're willing to take, there might not be a problem. But, if you are just even a little bit risky then there is a problem that makes clear judgments about the role of chance difficult. We would like to say chance did or did not cause our difference. But, we're really always in the position of admitting that it could have sometimes, or wouldn't have most times. These are wishy washy statements, they are in between yes or no. That's OK. Grey is a color too, let's give grey some respect.
+Entonces, ¿cuál es el problema? Dependiendo de quién seas, y qué tipo de riesgos estés dispuesto a tomar, puede que no haya ningún problema. Pero si sos **aunque sea un poco arriesgado**, entonces sí hay un problema que hace difícil emitir juicios claros sobre el papel del azar.
 
-"What grey areas are you talking about?, I only see red or green, am I grey blind?". Let's look at where some grey areas might be. I say might be, because people disagree about where the grey is. People have different comfort levels with grey. @fig-5crumpuncertainty shows my opinion on grey areas.
+Nos gustaría decir que **el azar causó** o **no causó** la diferencia que observamos. Pero en realidad, siempre estamos en la posición de tener que admitir que **el azar podría haberla causado a veces**, o que **no la habría causado la mayoría de las veces**.
+
+Estas son afirmaciones ambiguas, imprecisas, entre el “sí” y el “no”. Y está bien. El gris también es un color. Vamos a darle un poco de respeto al gris.
+
+—“¿De qué zonas grises estás hablando? ¡Solo veo rojo y verde! ¿Tengo daltonismo para el gris?”—
+
+Veamos dónde podrían estar algunas zonas grises. Digo “podrían”, porque la gente no se pone de acuerdo sobre **dónde empieza el gris**. Las personas tienen distintos niveles de tolerancia al gris.
+
+La figura `@fig-5crumpuncertainty` muestra **mi** opinión sobre dónde se ubican las zonas grises:
 
 ```{r}
 #| label: fig-5crumpuncertainty
-#| fig-cap: "The question marks refer to an area where you have some uncertainty. Differences inside the question mark region do not happen very often by chance. When you find differences of these sizes, should you reject the idea that chance caused your difference? You will always have some uncertainty associated with this decision because it is clear that chance could have caused the difference. But, chance usually does not produce differences of these sizes."
+#| fig-cap: "Los signos de interrogación indican una zona donde hay cierta incertidumbre. Las diferencias dentro de esta zona no ocurren muy seguido por azar. Cuando encontrás diferencias de ese tamaño, ¿deberías rechazar la idea de que fueron causadas por azar? Siempre vas a tener algo de incertidumbre asociada a esa decisión, porque está claro que el azar podría haber causado la diferencia. Pero, el azar usualmente no produce diferencias de ese tamaño."
 
-ggplot(plot_df, aes(x = difference)) +
+ggplot(plot_df, aes(x = diferencia)) +
   annotate(
     "rect",
-    xmin = min(difference),
-    xmax = max(difference),
+    xmin = min(diferencia),
+    xmax = max(diferencia),
     ymin = 0,
     ymax = Inf,
     alpha = 0.5,
@@ -629,8 +600,8 @@ ggplot(plot_df, aes(x = difference)) +
   ) +
   annotate(
     "rect",
-    xmin = min(difference),
-    xmax = min(difference) + 10,
+    xmin = min(diferencia),
+    xmax = min(diferencia) + 10,
     ymin = 0,
     ymax = Inf,
     alpha = 0.7,
@@ -638,8 +609,8 @@ ggplot(plot_df, aes(x = difference)) +
   ) +
   annotate(
     "rect",
-    xmin = max(difference) - 10,
-    xmax = max(difference),
+    xmin = max(diferencia) - 10,
+    xmax = max(diferencia),
     ymin = 0,
     ymax = Inf,
     alpha = 0.7,
@@ -647,14 +618,14 @@ ggplot(plot_df, aes(x = difference)) +
   ) +
   geom_rect(aes(
     xmin = -Inf,
-    xmax = min(difference),
+    xmax = min(diferencia),
     ymin = 0,
     ymax = Inf
   ),
   alpha = .5,
   fill = "lightgreen") +
   geom_rect(aes(
-    xmin = max(difference),
+    xmin = max(diferencia),
     xmax = Inf,
     ymin = 0,
     ymax = Inf
@@ -663,35 +634,35 @@ ggplot(plot_df, aes(x = difference)) +
   fill = "lightgreen") +
   geom_histogram(bins = 50, color = "white") +
   theme_classic() +
-  geom_vline(xintercept = min(difference)) +
-  geom_vline(xintercept = max(difference)) +
-  geom_vline(xintercept = min(difference) + 10) +
-  geom_vline(xintercept = max(difference) - 10) +
+  geom_vline(xintercept = min(diferencia)) +
+  geom_vline(xintercept = max(diferencia)) +
+  geom_vline(xintercept = min(diferencia) + 10) +
+  geom_vline(xintercept = max(diferencia) - 10) +
   ggtitle(
-    "Histogram of mean differences between two samples (n=10) \n
-          both drawn from the same normal distribution (u=100, sd=20)"
+    "Histograma de diferencias de medias entre dos muestras (n = 10) \n
+          ambas tomadas de la misma distribución normal (μ = 100, σ = 20)"
   ) +
   xlim(-30, 30) +
   geom_label(data = data.frame(x = 0, 
                                y = 250, 
-                               label = "CHANCE"), 
+                               label = "AZAR"), 
              aes(x = x, y = y, label = label)) +
   geom_label(data = data.frame(x = -25, 
                                y = 250, 
-                               label = "NOT \n CHANCE"),
+                               label = "NO \n AZAR"),
              aes(x = x, y = y, label = label)) +
   geom_label(data = data.frame(x = 25, 
                                y = 250, 
-                               label = "NOT \n CHANCE"),
+                               label = "NO \n AZAR"),
              aes(x = x, y = y, label = label)) +
-  geom_label(data = data.frame(x = min(difference),
+  geom_label(data = data.frame(x = min(diferencia),
                                y = 750,
-                               label = paste0("min \n",round(min(difference)))
+                               label = paste0("mín \n",round(min(diferencia)))
                                ), 
              aes(x = x, y = y, label = label)) +
-  geom_label(data = data.frame(x = max(difference),
+  geom_label(data = data.frame(x = max(diferencia),
                                y = 750,
-                               label = paste0("max \n", round(max(difference)))
+                               label = paste0("máx \n", round(max(diferencia)))
                             ),
                             aes(x = x, y = y, label = label)) +
   geom_label(data = data.frame(x = -15, y = 250,
@@ -700,32 +671,28 @@ ggplot(plot_df, aes(x = difference)) +
   geom_label(data = data.frame(x = 15, y = 250,
                                label = "?"),
              aes(x = x, y = y, label = label)) +
-  xlab("mean difference")
-
-
-
+  xlab("diferencia de medias")
 ```
 
-I made two grey areas, and they are reddish grey, because we are still in the chance window. There are question marks (?) in the grey areas. Why? The question marks reflect some uncertainty that we have about those particular differences. For example, if you found a difference that was in a grey area, say a 15. 15 is less than the maximum, which means chance did create differences of around 15. But, differences of 15 don't happen very often.
+Hice dos zonas grises, y son grisáceo-rojizas, porque todavía estamos dentro de la ventana del azar. Hay signos de interrogación (?) en las zonas grises. ¿Por qué? Los signos de interrogación reflejan cierta **incertidumbre** que tenemos respecto a esas diferencias en particular. Por ejemplo, si encontrás una diferencia dentro de una zona gris, digamos una de 15. 15 está por debajo del máximo, lo que significa que el azar sí **produjo diferencias cercanas a 15**. Pero, las diferencias de 15 **no ocurren muy seguido**.
 
-What can you conclude or say about this 15 you found? Can you say without a doubt that chance did not produce the difference? Of course not, you know that chance could have. Still, it's one of those things that doesn't happen a lot. That makes chance an unlikely explanation. Instead of thinking that chance did it, you might be willing to take a risk and say that your experimental manipulation caused the difference. You'd be making a bet that it wasn't chance...but, could be a safe bet, since you know the odds are in your favor.
+¿Qué podés concluir o decir sobre ese 15 que encontraste? ¿Podés decir, sin lugar a dudas, que el azar **no** produjo esa diferencia? Por supuesto que no. Sabés que el azar **podría haberla producido**. Aun así, es una de esas cosas que **no ocurren mucho**. Eso hace que el azar sea una explicación **poco probable**. En lugar de pensar que fue el azar, quizás estés dispuesto a **tomar el riesgo** y decir que tu manipulación experimental **causó la diferencia**. Estás haciendo una apuesta de que no fue el azar... pero podría ser una apuesta razonable, ya que sabés que **las probabilidades están de tu lado**.
 
-You might be thinking that your grey areas aren't the same as the ones I've drawn. Maybe you want to be more conservative, and make them smaller. Or, maybe you're more risky, and would make them bigger. Or, maybe you'd add some grey area going in a little bit to the green area (after all, chance could probably produce some bigger differences sometimes, and to avoid those you would have to make the grey area go a bit into the green area).
+Tal vez estés pensando que tus zonas grises no son iguales a las que dibujé yo. Quizás quieras ser más conservador y hacerlas más chicas. O, tal vez seas más arriesgado y prefieras hacerlas más grandes. O incluso, quizás quieras extender la zona gris un poco **dentro de la zona verde** (después de todo, el azar podría producir diferencias más grandes alguna que otra vez, y para evitarlas tendrías que hacer que la zona gris invada un poco el área verde).
 
-Another thing to think about is your decision policy. What will you do, when your observed difference is in your grey area? Will you always make the same decision about the role of chance? Or, will you sometimes flip-flop depending on how you feel. Perhaps, you think that there shouldn't be a strict policy, and that you should accept some level of uncertainty. The difference you found could be a real one, or it might not. There's uncertainty, hard to avoid that.
+Otra cosa en la que pensar es en tu **política de decisión**. ¿Qué vas a hacer cuando tu diferencia observada caiga dentro de la zona gris? ¿Siempre vas a tomar la misma decisión sobre el papel del azar? ¿O a veces vas a cambiar de parecer, según cómo te sientas? Tal vez pienses que no debería haber una política estricta, y que deberías aceptar cierto nivel de incertidumbre. La diferencia que encontraste **podría ser real... o tal vez no lo sea**. Hay incertidumbre, es difícil evitarla.
 
-So let's illustrate one more kind of strategy for making decisions. We just talked about one that had some lines, and some regions. This makes it seem like a binary choice: we can either rule out, or not rule out the role of chance. Another perspective is that everything is a different shade of grey, like in @fig-5crumpshade.
+Así que vamos a ilustrar **otro tipo de estrategia** para tomar decisiones. Recién hablamos de una que incluía líneas y regiones. Eso hace que parezca una elección binaria: podemos **descartar** o **no descartar** el papel del azar. Otra perspectiva es que **todo es un matiz de gris**, como en la figura `@fig-5crumpshade`.
 
 ```{r}
 #| label: fig-5crumpshade
-#| fig-cap: "The shading of the blue bars indicates levels of confidence in whether a difference could have been produced by chance. Darker bars represent increased confidence that the difference was not produced by chance. Bars get darker as the mean difference increases in absolute value."
+#| fig-cap: "El sombreado de las barras azules indica los niveles de confianza en si una diferencia podría haber sido producida por azar. Las barras más oscuras representan mayor confianza en que la diferencia no fue causada por azar. Las barras se oscurecen a medida que la diferencia de medias aumenta en valor absoluto."
 
-ggplot(plot_df, aes(x = difference)) +
-  # annotate("rect", xmin=min(difference), xmax=max(difference), ymin=0, ymax=Inf, alpha=0.5, fill="red") +
+ggplot(plot_df, aes(x = diferencia)) +
   annotate(
     "rect",
-    xmin = min(difference),
-    xmax = min(difference) + 10,
+    xmin = min(diferencia),
+    xmax = min(diferencia) + 10,
     ymin = 0,
     ymax = Inf,
     alpha = 0.7,
@@ -733,8 +700,8 @@ ggplot(plot_df, aes(x = difference)) +
   ) +
   annotate(
     "rect",
-    xmin = max(difference) - 10,
-    xmax = max(difference),
+    xmin = max(diferencia) - 10,
+    xmax = max(diferencia),
     ymin = 0,
     ymax = Inf,
     alpha = 0.7,
@@ -742,14 +709,14 @@ ggplot(plot_df, aes(x = difference)) +
   ) +
   geom_rect(aes(
     xmin = -Inf,
-    xmax = min(difference),
+    xmax = min(diferencia),
     ymin = 0,
     ymax = Inf
   ),
   alpha = .5,
   fill = "lightgreen") +
   geom_rect(aes(
-    xmin = max(difference),
+    xmin = max(diferencia),
     xmax = Inf,
     ymin = 0,
     ymax = Inf
@@ -758,124 +725,110 @@ ggplot(plot_df, aes(x = difference)) +
   fill = "lightgreen") +
   geom_histogram(bins = 50, color = "white", aes(fill = ..count..)) +
   theme_classic() +
-  geom_vline(xintercept = min(difference)) +
-  geom_vline(xintercept = max(difference)) +
-  geom_vline(xintercept = min(difference) + 10) +
-  geom_vline(xintercept = max(difference) - 10) +
-  ggtitle(
-    "Histogram of mean differences between two samples (n=10) \n
-          both drawn from the same normal distribution (u=100, sd=20)"
-  ) +
+  geom_vline(xintercept = min(diferencia)) +
+  geom_vline(xintercept = max(diferencia)) +
+  geom_vline(xintercept = min(diferencia) + 10) +
+  geom_vline(xintercept = max(diferencia) - 10) +
+  ggtitle("Histograma de diferencias de medias entre dos muestras (n = 10)\nambas tomadas de la misma distribución normal (μ = 100, σ = 20)") +
   xlim(-30, 30) +
-  geom_label(data = data.frame(x = 0, y = 250, label = "CHANCE"), aes(x = x, y = y, label = label)) +
-  geom_label(data = data.frame(x = -25, y = 250, label = "NOT \n CHANCE"),
-             aes(x = x, y = y, label = label)) +
-  geom_label(data = data.frame(x = 25, y = 250, label = "NOT \n CHANCE"),
-             aes(x = x, y = y, label = label)) +
-  geom_label(data = data.frame(
-    x = min(difference),
-    y = 750,
-    label = paste0("min \n", round(min(difference)))
-  ),
-  aes(x = x, y = y, label = label)) +
-  geom_label(data = data.frame(
-    x = max(difference),
-    y = 750,
-    label = paste0("max \n", round(max(difference)))
-  ),
-  aes(x = x, y = y, label = label)) +
-  geom_label(data = data.frame(x = -15, y = 250,
-                               label = "?"),
-             aes(x = x, y = y, label = label)) +
-  geom_label(data = data.frame(x = 15, y = 250,
-                               label = "?"),
-             aes(x = x, y = y, label = label)) +
-  xlab("mean difference")
-  
-  
-
+  geom_label(data = data.frame(x = 0, y = 250, label = "AZAR"), aes(x = x, y = y, label = label)) +
+  geom_label(data = data.frame(x = -25, y = 250, label = "NO\nAZAR"), aes(x = x, y = y, label = label)) +
+  geom_label(data = data.frame(x = 25, y = 250, label = "NO\nAZAR"), aes(x = x, y = y, label = label))
 ```
 
-OK, so I made it shades of blue (because it was easier in R). Now we can see two decision plans at the same time. Notice that as the bars get shorter, they also get become a darker stronger blue. The color can be used as a guide for your confidence. That is, your confidence in the belief that your manipulation caused the difference rather than chance. If you found a difference near a really dark bar, those don't happen often by chance, so you might be really confident that chance didn't do it. If you find a difference near a slightly lighter blue bar, you might be slightly less confident. That is all. You run your experiment, you get your data, then you have some amount of confidence that it wasn't produced by chance. This way of thinking is elaborated to very interesting degrees in the Bayesian world of statistics. We don't wade too much into that, but mention it a little bit here and there. It's worth knowing it's out there.
+OK, así que lo hice con tonos de azul (porque era más fácil en R). Ahora podemos ver dos planes de decisión al mismo tiempo. Notá que a medida que las barras se vuelven más bajas, también se vuelven de un azul más oscuro e intenso. El color puede usarse como guía para tu confianza. Es decir, tu confianza en la creencia de que **tu manipulación causó la diferencia**, y **no el azar**. Si encontrás una diferencia cerca de una barra azul bien oscura, esas diferencias **no ocurren muy seguido por azar**, así que podrías estar muy confiado en que **el azar no la causó**. Si encontrás una diferencia cerca de una barra azul un poco más clara, podrías estar **un poco menos confiado**. Eso es todo. Ejecutás tu experimento, obtenés tus datos, y después tenés cierto **nivel de confianza** en que la diferencia **no fue producida por azar**.
 
-#### Making decisions and being wrong
+Esta forma de pensar se desarrolla de manera mucho más interesante en el mundo bayesiano de la estadística. No vamos a meternos demasiado en eso, pero lo mencionaremos un poco acá y allá. Vale la pena saber que existe.
 
-No matter how you plan to make decisions about your data, you will always be prone to making some mistakes. You might call one finding real, when in fact it was caused by chance. This is called a **type I** error, or a false positive. You might ignore one finding, calling it chance, when in fact it wasn't chance (even though it was in the window). This is called a **type II** error, or a false negative.
+#### Tomar decisiones y equivocarse
 
-How you make decisions can influence how often you make errors over time. If you are a researcher, you will run lots of experiments, and you will make some amount of mistakes over time. If you do something like the very strict method of only accepting results as real when they are in the "no chance" zone, then you won't make many type I errors. Pretty much all of your result will be real. But, you'll also make type II errors, because you will miss things real things that your decision criteria says are due to chance. The opposite also holds. If you are willing to be more liberal, and accept results in the grey as real, then you will make more type I errors, but you won't make as many type II errors. Under the decision strategy of using these cutoff regions for decision-making there is a necessary trade-off. The Bayesian view get's around this a little bit. Bayesians talk about updating their beliefs and confidence over time. In that view, all you ever have is some level of confidence about whether something is real, and by running more experiments you can increase or decrease your level of confidence. This, in some fashion, avoids some trade-off between type I and type II errors.
+No importa cómo planees tomar decisiones sobre tus datos, **siempre vas a estar propenso a cometer errores**. Podrías declarar que un resultado es real, cuando en realidad fue causado por azar. Eso se llama un **error tipo I**, o un **falso positivo**. Podrías ignorar un resultado, decir que fue azar, cuando en realidad **no lo fue** (aunque estaba dentro de la ventana). Eso se llama un **error tipo II**, o un **falso negativo**. La forma en que tomás decisiones puede influir en **con qué frecuencia cometés estos errores** a lo largo del tiempo.
 
-Regardless, there is another way to reduce type I and type II errors, and to increase your confidence in your results, even before you do the experiment. It's called "knowing how to design a good experiment".
+La forma en que tomás decisiones puede influir en **con qué frecuencia cometés errores a lo largo del tiempo**. Si sos investigador, vas a correr muchos experimentos, y vas a cometer cierta cantidad de errores con el tiempo.
 
-### Part 4: Experiment Design
+Si usás algo como el método muy estricto de **solo aceptar resultados como reales cuando están en la zona de "no azar"**, entonces **no cometerás muchos errores tipo I**. Prácticamente todos tus resultados serán reales. Pero también vas a cometer **errores tipo II**, porque vas a perderte cosas reales que tu criterio de decisión dice que son producto del azar. Y también vale lo contrario. Si estás dispuesto a ser más liberal, y aceptar como reales los resultados que están en la zona gris, entonces vas a cometer **más errores tipo I**, pero **no vas a cometer tantos errores tipo II**. Bajo la estrategia de decisión que usa estas regiones de corte para decidir, hay un **compromiso necesario**: no podés minimizar ambos tipos de error a la vez.
 
-We've seen what chance can do. Now we run an experiment. We manipulate something between groups A and B, get the data, calculate the group means, then look at the difference. Then we cross all of our finger and toes, and hope beyond hope that the difference is big enough to not be caused by chance. That's a lot of hope.
+La perspectiva bayesiana evita un poco este problema. Los bayesianos hablan de **actualizar sus creencias y niveles de confianza con el tiempo**. En esa visión, lo único que tenés es **un cierto nivel de confianza** sobre si algo es real o no, y al ejecutar más experimentos podés **aumentar o disminuir** ese nivel de confianza. Esto, de alguna forma, **evita el compromiso entre errores tipo I y tipo II**.
 
-Here's the thing, we don't often know how strong our manipulation is in the first place. So, even if it can cause a change, we don't necessarily know how much change it can cause. That's why we're running the experiment. Many manipulations in Psychology are not strong enough to cause big changes. This is a problem for detecting these smallish causal forces. In our fake example, you could easily manipulate something that has a tiny influence, and will never push the mean difference past say 5 or 10. In our simulation, we need something more like a 15 or 17 or a 21, or hey, a 30 would be great, chance never does that. Let's say your manipulation is listening to music or not listening to music. Music listening might change something about X, but if it only changes X by +5, you'll never be able to confidently say it wasn't chance. And, it's not that easy to completely change music and make music super strong in the music condition so it really causes a change in X compared to the no music condition.
+De todos modos, hay otra forma de reducir los errores tipo I y tipo II, y **de aumentar tu confianza en los resultados incluso antes de hacer el experimento**. Se llama: **Saber cómo diseñar un buen experimento.**
 
-EXPERIMENT DESIGN TO THE RESCUE! Newsflash, it is often possible to change how you run your experiment so that it is **more sensitive** to smaller effects. How do you think we can do this? Here is a hint. It's the stuff you learned about the sampling distribution of the sample mean, and the role of sample-size. What happens to the sampling distribution of the sample mean when N (sample size)? The distribution gets narrower and narrower, and starts to look the a single number (the hypothetical mean of the hypothetical population). That's great. If you switch to thinking about mean difference scores, like the distribution we created in this test, what do you think will happen to that distribution as we increase N? It will will also shrink. As we increase N to infinity, it will shrink to 0. Which means that, when N is infinity, chance never produces any differences at all. We can use this.
+### Parte 4: Diseño experimental
 
-For example, we could run our experiment with 20 subjects in each group. Or, we could decide to invest more time and run 40 subjects in each group, or 80, or 150. When you are the experimenter, you get to decide the design. These decisions matter big time. Basically, the more subjects you have, the more sensitive your experiment. With bigger N, you will be able to reliably detect smaller mean differences, and be able to confidently conclude that chance did not produce those small effects.
+Ya vimos lo que puede hacer el azar. Ahora ejecutamos un experimento. Manipulamos algo entre los grupos A y B, obtenemos los datos, calculamos las medias de grupo, y luego observamos la diferencia. Después cruzamos todos los dedos de las manos y los pies, y rezamos con todas nuestras fuerzas que la diferencia sea lo suficientemente grande como para **no haber sido causada por azar**. Eso es mucho rezar.
 
-Check out the histograms in @fig-5sampleDistNormal. This is the same simulation as before, but with four different sample-sizes: 20, 40, 80, 160. We are doubling our sample-size across each simulation just to see what happens to the width of the chance window.
+El asunto es el siguiente: a menudo **no sabemos qué tan fuerte es nuestra manipulación** desde el principio. Entonces, incluso si puede causar un cambio, no necesariamente sabemos **cuánto** puede cambiar las cosas. Por eso estamos ejecutando el experimento.
+
+Muchas manipulaciones en Psicología **no son lo suficientemente fuertes** como para causar grandes cambios. Y eso es un problema cuando queremos detectar esas fuerzas causales más pequeñas. En nuestro ejemplo ficticio, podrías manipular algo que tenga una influencia muy leve, que nunca empuje la diferencia de medias más allá de, digamos, 5 o 10. En nuestra simulación, **necesitábamos algo más cercano a 15, 17 o 21 —o mejor aún, ¡30!— porque el azar nunca hace eso**. Digamos que tu manipulación es escuchar música vs. no escuchar música. Escuchar música podría cambiar algo sobre X, pero si solo cambia X en +5, **nunca vas a poder afirmar con confianza que no fue el azar**. Y no es tan fácil cambiar completamente la condición de música para que sea súper intensa y realmente cause un cambio en X comparado con la condición sin música.
+
+> **¡DISEÑO EXPERIMENTAL AL RESCATE!** Último momento: a menudo es posible cambiar cómo ejecutás tu experimento para que sea **más sensible** a efectos pequeños.
+
+¿Tenés alguna idea de cómo se puede hacer esto? Acá va una pista: es todo eso que aprendiste sobre la distribución muestral de la media muestral, y el papel del tamaño muestral. ¿Qué le pasa a la distribución muestral de la media cuando `N` (el tamaño de muestra) aumenta? La distribución **se vuelve más y más angosta**, y empieza a parecerse a un único número (la media hipotética de la población hipotética). Eso es genial.
+
+Si cambiás el enfoque y pensás en las **diferencias de medias**, como la distribución que creamos en esta prueba, ¿qué creés que va a pasar con esa distribución a medida que aumentamos `N`? También se va a **achicar**. A medida que aumentamos `N` hacia el infinito, esa distribución se reduce a 0. Lo que significa que, cuando `N` es infinito, el azar **nunca produce diferencias**. Podemos usar esto a nuestro favor.
+
+Por ejemplo, podríamos correr nuestro experimento con 20 sujetos por grupo. O podríamos decidir invertir más tiempo y correrlo con 40 sujetos por grupo, o 80, o 150. Cuando vos sos quien ejecuta el experimento, **vos decidís el diseño**. Y esas decisiones importan muchísimo. Básicamente, **cuantos más sujetos tenés, más sensible es tu experimento**. Con un `N` más grande, vas a poder detectar de manera confiable diferencias de medias más pequeñas, y podés concluir con confianza que esas diferencias **no fueron producidas por azar**.
+
+Fijate en los histogramas de `@fig-5sampleDistNormal`. Es la misma simulación de antes, pero con cuatro tamaños muestrales distintos: 20, 40, 80, 160. Vamos duplicando el tamaño muestral en cada simulación, solo para ver qué pasa con el **ancho de la ventana del azar**.
 
 ```{r}
 #| label: fig-5sampleDistNormal
-#| fig-cap: "The range or width of the differences produced by chance shrinks as sample-size increases."
+#| fig-cap: "El rango (o ancho) de las diferencias producidas por azar se reduce a medida que aumenta el tamaño muestral."
 
 ns <- c(20, 40, 80, 160)
 sims <- 5000
-all_df <- data.frame(sample = c(replicate(sims,mean(rnorm(ns[1], 100, 20)) - mean(rnorm(ns[1], 100, 20))),
-                                replicate(sims,mean(rnorm(ns[2], 100, 20)) - mean(rnorm(ns[2], 100, 20))),
-                                replicate(sims,mean(rnorm(ns[3], 100, 20)) - mean(rnorm(ns[3], 100, 20))),
-                                replicate(sims,mean(rnorm(ns[3], 100, 20)) - mean(rnorm(ns[3], 100, 20)))),
-                     sample_size = rep(ns, each = sims)
+all_df <- data.frame(
+  sample = c(
+    replicate(sims, mean(rnorm(ns[1], 100, 20)) - mean(rnorm(ns[1], 100, 20))),
+    replicate(sims, mean(rnorm(ns[2], 100, 20)) - mean(rnorm(ns[2], 100, 20))),
+    replicate(sims, mean(rnorm(ns[3], 100, 20)) - mean(rnorm(ns[3], 100, 20))),
+    replicate(sims, mean(rnorm(ns[4], 100, 20)) - mean(rnorm(ns[4], 100, 20)))
+  ),
+  sample_size = rep(ns, each = sims)
 )
-
-ggplot(all_df, aes(x = sample)) +
-  geom_histogram(bins = 50, color = "white") +
-  facet_wrap( ~ sample_size) + xlim(-30, 30) +
-  theme_classic() + ggtitle("Sampling distribution of mean differences by N") +
-  ylab("Counts") +
-  xlab("Mean Difference")
-  
 ```
 
-There you have it. The **sampling distribution of the mean differences** shrinks toward 0 as sample-size increases. This means if you run an experiment with a larger sample-size, you will be able to detect smaller mean differences, and be confident they aren't due to chance. @tbl-5minmax contains the minimum and maximum values that chance produced across the four sample-sizes:
+Ahí lo tenés. La **distribución muestral de las diferencias de medias** se contrae hacia 0 a medida que aumenta el tamaño muestral. Esto significa que, si ejecutás un experimento con un tamaño muestral mayor, vas a poder detectar diferencias de medias más pequeñas, y estar seguro de que **no se deben al azar**.
+
+La tabla `@tbl-5minmax` muestra los valores mínimos y máximos que el azar produjo para cada uno de los cuatro tamaños muestrales:
 
 ```{r}
 #| label: tbl-5minmax
-#| tbl-cap: "The smallest and largest mean differences produced by chance as a function of sample-size." 
+#| tbl-cap: "La diferencia de medias más pequeña y más grande producida por azar en función del tamaño muestral." 
 
 #library(plyr)
 #the_range<-ddply(all_df,.(sample_size), summarize, smallest=min(sample),
 #                                                  biggest=max(sample))
 the_range <- all_df %>%
   group_by(sample_size) %>%
-  summarize(smallest=min(sample),
-            largest=max(sample))
+  summarize(smallest = min(sample),
+            largest = max(sample))
 
 knitr::kable(the_range)
 ```
 
-The table shows the range of chance behavior is very wider for smaller N and narrower for larger N. Consider what this narrowing means for your experiment design. For example, one aspect of the design is the choice of sample size, N, or in a psychology experiment the number of participants.
+La tabla muestra que el rango de comportamiento del azar es **mucho más amplio para tamaños muestrales pequeños**, y **más estrecho para tamaños muestrales grandes**. Pensá en lo que implica ese estrechamiento para el diseño de tu experimento. Por ejemplo, un aspecto del diseño es la elección del tamaño muestral, `N` —o, en un experimento de psicología, la cantidad de participantes. Si resulta que tu manipulación va a causar una diferencia de +11, ¿qué deberías hacer? ¿Ejecutar un experimento con `N = 20` personas? Espero que no. Si lo hicieras, podrías obtener una diferencia de medias de +11 **bastante seguido solo por azar**.
 
-If it turns out your manipulation will cause a difference of +11, then what should you do? Run an experiment with N = 20 people? I hope not. If you did that, you could get a mean difference of +11 fairly often by chance. However, if you ran the experiment with 160 people, then you would definitely be able to say that +11 was not due to chance, it would be outside the range of what chance can do. You could even consider running the experiment with 80 subjects. A +11 there wouldn't happen often by chance, and you'd be cost-effective, spending less time on the experiment.
+Sin embargo, si ejecutarás el experimento con **160 personas**, entonces sí podrías decir con seguridad que **+11 no fue causado por azar**, estaría fuera del rango de lo que el azar puede producir. Incluso podrías considerar correr el experimento con **80 participantes**. Una diferencia de +11 ahí **no ocurriría muy seguido por azar**, y además serías más eficiente en términos de tiempo y recursos.
 
-The point is: **the design of the experiment determines the sizes of the effects it can detect**. If you want to detect a small effect. Make your sample size bigger. It's really important to say this is not the only thing you can do. You can also make your cell-sizes bigger. For example, often times we take several measurements from a single subject. The more measurements you take (cell-size), the more stable your estimate of the subject's mean. We discuss these issues more later. You can also make a stronger manipulation, when possible.
+El punto es: **el diseño del experimento determina el tamaño de los efectos que puede detectar.** Si querés detectar un efecto pequeño, **aumentá el tamaño muestral**.
 
-### Part 5: I have the power
+Es importante aclarar que **esto no es lo único que podés hacer**. También podés **aumentar el tamaño de cada celda**. Por ejemplo, muchas veces tomamos varias mediciones de un solo sujeto. Cuantas más mediciones tomás (es decir, mayor tamaño de celda), más estable es tu estimación de la media del sujeto. Vamos a hablar más de estas cuestiones más adelante. También podés intentar aplicar una manipulación **más fuerte**, cuando sea posible.
 
-> By the power of greyskull, I HAVE THE POWER - He-man
+### Parte 5: Yo tengo el poder
 
-The last topic in this section is called **power**. Later we will define power in terms of some particular ideas about statistical inference. Here, we will just talk about the big idea. And, we'll show how to make sure your design has 100% power. Because, why not. Why run a design that doesn't have the power?
+> Por el poder de Grayskull... ¡YO TENGO EL PODER! – He-Man
 
-The big idea behind power is the concept of sensitivity. The concept of sensitivity assumes that there is something to be sensitive to. That is, there is some real difference that can be measured. So, the question is, how sensitive is your experiment? We've already seen that the number of subjects (sample-size), changes the sensitivity of the design. More subjects = more sensitivity to smaller effects.
+El último tema de esta sección se llama **poder**. Más adelante vamos a definirlo con ideas estadísticas más específicas. Acá solo vamos a hablar de la idea general. Y vamos a mostrar cómo asegurarte de que **tu diseño tenga un poder del 100%**. Porque, ¿por qué ejecutar un diseño que no tenga poder?
 
-Let's take a look at one more plot. What we will do is simulate a measure of sensitivity across a whole bunch of sample sizes, from 10 to 300. We'll do this in steps of 10. For each simulation, we'll compute the mean differences as we have done. But, rather than showing the histogram, we'll just compute the smallest value and the largest value. This is a pretty good measure of the outer reach of chance. Then we'll plot those values as a function of sample size and see what we've got.
+La gran idea detrás del poder es el concepto de **sensibilidad**. El concepto de sensibilidad parte de la suposición de que **hay algo a lo que ser sensible**.
 
-```{r}
+Es decir, **existe una diferencia real** puede ser medida. Entonces, la pregunta es: **¿cuán sensible es tu experimento?** Ya vimos que **el número de sujetos (tamaño muestral)** cambia la sensibilidad del diseño. Más sujetos = más sensibilidad para detectar efectos más pequeños.
+
+Veamos un gráfico más. Lo que vamos a hacer es simular una medida de sensibilidad para **un conjunto de tamaños muestrales**, desde 10 hasta 300. Lo haremos en incrementos de 10. Para cada simulación, vamos a calcular las diferencias de medias como lo hicimos antes. Pero, en lugar de mostrar el histograma, simplemente vamos a calcular **el valor mínimo y el máximo**. Esto es una buena medida del alcance extremo del azar. Luego vamos a graficar esos valores en función del tamaño muestral y ver qué obtenemos.
+
+```{r, echo=F}
 #| label: fig-5crumpminmax
-#| fig-cap: "A graph of the maximum and minimum mean differences produced by chance as a function of sample-size. The range narrows as sample-size increases showing that chance alone produces a smaller range of mean differences as sample-size increases."
+#| fig-cap: "Gráfico del máximo y mínimo de las diferencias de medias producidas por azar en función del tamaño muestral. El rango se reduce a medida que el tamaño muestral aumenta, mostrando que el azar por sí solo produce un rango más pequeño de diferencias cuando el tamaño muestral es mayor."
 
 # all_df <- data.frame()
 # for (sims in 1:1000) {
@@ -890,18 +843,37 @@ Let's take a look at one more plot. What we will do is simulate a measure of sen
 
 all_df <- data.frame(
   sample = c(sapply(seq(10, 300, 10), FUN = function(x) 
-    replicate(1000, mean(rnorm(x,100,20) - mean(rnorm(x, 100,20)))))),
+    replicate(1000, mean(rnorm(x, 100, 20)) - mean(rnorm(x, 100, 20))))),
   sample_size = rep(seq(10, 300, 10), each = 1000)
 )
 
-#the_range<-ddply(all_df,.(sample_size), summarize, smallest=min(sample),
-#                                                  biggest=max(sample))
+# the_range <- ddply(all_df, .(sample_size), summarize,
+#                    smallest = min(sample),
+#                    biggest = max(sample))
 
 the_range <- all_df %>%
   group_by(sample_size) %>%
   summarize(smallest = min(sample),
             biggest = max(sample))
 
+ggplot(the_range, aes(x = sample_size, y = smallest)) +
+  geom_point() +
+  geom_line() +
+  geom_point(aes(x = sample_size, y = biggest)) +
+  geom_line(aes(x = sample_size, y = biggest))+ 
+  geom_hline(yintercept = 0) +
+  theme_classic(base_size = 20) +
+  ylab("Diferencia de medias más extrema") +
+  xlab("Tamaño muestral")
+```
+
+La figura `@fig-5crumpminmax` muestra una ventana de sensibilidad razonablemente precisa en función del tamaño muestral. Para cada tamaño muestral, podemos ver la diferencia máxima que el azar produjo y la mínima. En esas simulaciones, **el azar nunca produjo diferencias mayores ni menores** que esos valores extremos. Así que cada diseño es sensible a cualquier diferencia que esté **por debajo de la línea inferior o por encima de la línea superior**.
+
+Otra forma de decirlo es la siguiente: ¿Cuáles de los tamaños muestrales son sensibles a una diferencia de +10 o -10? Es decir, si se observa una diferencia de +10 o -10, entonces podríamos decir con mucha confianza que **esa diferencia no fue causada por azar**, porque según estas simulaciones, el azar **nunca** produjo diferencias tan grandes. Para ayudarnos a ver cuáles son sensibles, la figura `@fig-5crumpredline` traza líneas horizontales en -10 y +10:
+
+```{r}
+#| label: fig-5crumpredline
+#| fig-cap: "La línea roja representa el tamaño de una diferencia de medias que un investigador podría estar interesado en detectar. Todos los puntos que están por fuera (por encima o por debajo) de la línea roja representan diseños con tamaños muestrales pequeños. Cuando ocurre una diferencia de 10 en esos diseños, podemos descartar con confianza que haya sido causada por azar. Los puntos entre las líneas rojas representan diseños con tamaños muestrales grandes. Estos diseños nunca producen diferencias tan grandes como 10, así que cuando ocurren, podemos confiar en que no fueron producto del azar."
 
 ggplot(the_range, aes(x = sample_size, y = smallest)) +
   geom_point() +
@@ -909,300 +881,216 @@ ggplot(the_range, aes(x = sample_size, y = smallest)) +
   geom_point(aes(x = sample_size, y = biggest)) +
   geom_line(aes(x = sample_size, y = biggest)) +
   geom_hline(yintercept = 0) +
-  theme_classic(base_size=20) +
-  ylab("Most extreme mean difference") +
-  xlab("Sample Size")
-
+  geom_hline(yintercept = 10, color = "red") +
+  geom_hline(yintercept = -10, color = "red") +
+  theme_classic(base_size = 20) +
+  ylab("Diferencia de medias más extrema") +
+  xlab("Tamaño muestral")
 ```
 
-@fig-5crumpminmax shows a reasonably precise window of sensitivity as a function of sample size. For each sample size, we can see the maximum difference that chance produced and the minimum difference. In those simulations, chance never produced bigger or smaller differences. So, each design is sensitive to any difference that is underneath the bottom line, or above the top line.
+Según una estimación visual aproximada, los diseños con tamaño muestral **mayor o igual a 100** son todos sensibles a diferencias reales de 10. Los diseños con tamaño muestral **mayor a 100** nunca produjeron diferencias extremas fuera de las líneas rojas **solo por azar**. Si se usaran esos diseños, y se observara un efecto de 10 o más, entonces podríamos tener confianza en que **el azar no produjo ese efecto**. Diseñar tu experimento de modo que sepas que **es sensible a lo que estás buscando detectar** es la gran idea detrás del **poder estadístico**.
 
-Here's another way of putting it. Which of the sample sizes will be sensitive to a difference of +10 or -10. That is, if a difference of +10 or -10 was observed, then we could very confidently say that the difference was not due to chance, because according to these simulations, chance never produced differences that big. To help us see which ones are sensitive, @fig-5crumpredline draws horizontal lines at -10 and +10.
+### Resumen de la prueba de Crump
 
-```{r}
-#| label: fig-5crumpredline
-#| fig-cap: "The red line represents the size of a mean difference that a researcher may be interested in detecting. All of the dots outside (above or below) the red line represent designs with small sample-sizes. When a difference of 10 occurs for these designs, we can rule out chance with confidence. The dots between the red lines represent designs with larger sample-sizes. These designs never produce differences as large as 10, so when those differences occur, we can be confident chance did not produce them."
+¿Qué aprendimos con esta supuesta "prueba de Crump falsa" que nadie usa? Bueno, aprendimos lo básico de lo que estaremos haciendo de ahora en más. Y lo hicimos **sin matemática difícil ni fórmulas**.
 
-ggplot(the_range, aes(x=sample_size,y=smallest))+
-  geom_point()+
-  geom_line()+
-  geom_point(aes(x=sample_size,y=biggest))+
-  geom_line(aes(x=sample_size,y=biggest))+
-  geom_hline(yintercept=0)+
-  geom_hline(yintercept=10, color="red")+
-  geom_hline(yintercept=-10, color="red")+
-  theme_classic(base_size=20)+
-  ylab("Most extreme mean difference")+
-  xlab("Sample Size")
+Muestreamos números, calculamos medias, restamos las medias entre condiciones experimentales, luego repetimos ese proceso muchas veces, contamos las diferencias de medias y las pusimos en un histograma. Eso nos mostró **lo que puede hacer el azar en un experimento**. Después, discutimos cómo tomar decisiones en torno a esos hechos. Y mostramos cómo podemos **controlar el papel del azar** simplemente cambiando cosas como el tamaño muestral.
 
+## La prueba de aleatorización (o prueba de permutación)
+
+Bienvenidos a la **primera estadística inferencial oficial** de este libro. Hasta ahora estuvimos construyendo algunas intuiciones. A continuación, vamos a ser un poco más formales y mostrar cómo podemos usar el azar para decirnos si nuestro resultado experimental **probablemente fue causado por el azar o no**. Hacemos esto con algo llamado una **prueba de aleatorización**. Las ideas detrás de la prueba de aleatorización son **las mismas ideas** que están detrás del resto de las estadísticas inferenciales que vamos a discutir en los capítulos siguientes. Y —sorpresa— ya hemos hablado de **todas las ideas principales**. Ahora, simplemente las vamos a reunir, y darles el nombre de **prueba de aleatorización**.
+
+Acá va la idea principal. Cuando ejecutás un experimento y recolectás algunos datos, podés descubrir **qué pasó esa única vez**. Pero, como ejecutaste el experimento solo una vez, **no podés saber qué podría haber pasado**. La prueba de aleatorización es una forma de averiguar **qué podría haber pasado**. Y, una vez que sabés eso, podés comparar **lo que pasó** en tu experimento con **lo que podría haber pasado**.
+
+### Ejemplo ficticio: ¿masticar chicle mejora tus calificaciones?
+
+Supongamos que ejecutás un experimento para saber si masticar chicle hace que los estudiantes obtengan mejores notas en un examen de estadística. Asignás al azar a 20 estudiantes a la condición “con chicle”, y a otros 20 estudiantes a la condición “sin chicle”. Después, les tomás un examen de estadística a todos y medís sus notas. Si masticar chicle causa mejores calificaciones, entonces el grupo con chicle debería tener, en promedio, **notas más altas** que el grupo sin chicle.
+
+Digamos que los datos lucen así:
+
+```{r, echo=F}
+
+chicle <- round(runif(20, 70, 100))
+no_chicle <- round(runif(20, 40, 90))
+
+chicle_df <- data.frame(estudiante = seq(1:20), chicle, no_chicle)
+
+chicle_df <- chicle_df %>%
+  rbind(c("Sumas", colSums(chicle_df[, 2:3]))) %>%
+  rbind(c("Medias", colMeans(chicle_df[, 2:3])))
+
+knitr::kable(chicle_df)
 ```
 
-Based on visual guesstimation, the designs with sample-size \>= 100 are all sensitive to real differences of 10. Designs with sample-size \> 100 all failed to produce extreme differences outside of the red lines by chance alone. If these designs were used, and if an effect of 10 or larger was observed, then we could be confident that chance alone did not produce the effect. Designing your experiment so that you know it is sensitive to the thing you are looking for is the big idea behind power.
+Entonces, ¿los estudiantes que masticaron chicle tuvieron mejor desempeño que los que no lo hicieron? Mirá la fila de medias al final de la tabla. La media para los estudiantes que masticaron chicle fue `r mean(chicle)`, y la media para los estudiantes sin chicle fue `r mean(no_chicle)`. A simple vista, parece que masticar chicle **funcionó**.
 
-### Summary of Crump Test
+“¡PAREN LAS ROTATIVAS, esto es ridículo!”. Ya sabemos que es ridículo porque estamos usando datos inventados. Pero, incluso si estos fueran datos reales, podrías pensar: “Eso del chicle no tiene sentido, esta diferencia podría haber sido causada por azar. Quizás los estudiantes más inteligentes cayeron por azar en el grupo con chicle, y por eso sus notas fueron más altas... el chicle en realidad no hizo nada...”. Estamos de acuerdo. Pero echemos un vistazo más de cerca. Ya sabemos cómo salieron los datos. Lo que queremos saber es **cómo podrían haber salido**. ¿Cuáles son todas las posibilidades?
 
-What did we learn from this so-called fake Crump test that nobody uses? Well, we learned the basics of what we'll be doing moving forward. And, we did it all without any hard math or formulas. We sampled numbers, we computed means, we subtracted means between experimental conditions, then we repeated that process many times and counted up the mean differences and put them in a histogram. This showed us what chance do in an experiment. Then, we discussed how to make decisions around these facts. And, we showed how we can control the role of chance just by changing things like sample size.
+Por ejemplo, los datos habrían salido un poco distintos si hubiéramos asignado a algunos estudiantes del grupo con chicle al grupo sin chicle, y viceversa. Pensá en todas las formas posibles de asignar a los 40 estudiantes en dos grupos; hay **muchísimas maneras**. Y las medias de cada grupo serían diferentes dependiendo de cómo se asignen los estudiantes.
 
-## The randomization test (permutation test)
+En la práctica, no es posible ejecutar el experimento de todas esas formas posibles —eso llevaría demasiado tiempo. Pero **sí podemos estimar cómo habrían salido todos esos experimentos** usando simulación. Esta es la idea: Tomamos las 40 mediciones (las notas del examen) que obtuvimos para todos los estudiantes. Luego, seleccionamos aleatoriamente a 20 de ellas y fingimos que fueron del grupo con chicle, y las 20 restantes las asignamos al grupo sin chicle. Entonces, volvemos a calcular las medias para ver qué habría pasado. Y seguimos haciendo esto una y otra vez, cada vez calculando lo que habría pasado en esa versión alternativa del experimento.
 
-Welcome to the first official inferential statistic in this textbook. Up till now we have been building some intuitions for you. Next, we will get slightly more formal and show you how we can use random chance to tell us whether our experimental finding was likely due to chance or not. We do this with something called a randomization test. The ideas behind the randomization test are the very same ideas behind the rest of the inferential statistics that we will talk about in later chapters. And, surprise, we have already talked about all of the major ideas already. Now, we will just put the ideas together, and give them the name **randomization test**.
+#### Haciendo la aleatorización
 
-Here's the big idea. When you run an experiment and collect some data you get to find out what happened that one time. But, because you ran the experiment only once, you don't get to find out what **could have happened**. The randomization test is a way of finding out what **could have happened**. And, once you know that, you can compare **what did happen** in your experiment, with **what could have happened**.
+Antes de hacer eso, vamos a mostrar cómo funciona la parte de la aleatorización. Usaremos menos números para que el proceso sea más fácil de visualizar. Acá están los primeros 5 puntajes de examen para los estudiantes en ambos grupos:
 
-### Pretend example does chewing gum improve your grades?
+```{r, echo=F}
+chicle_df_small <- chicle_df[1:5, ]
+chicle_df_small$chicle <- as.numeric(chicle_df_small$chicle)
+chicle_df_small$no_chicle <- as.numeric(chicle_df_small$no_chicle)
 
-Let's say you run an experiment to find out if chewing gum causes students to get better grades on statistics exams. You randomly assign 20 students to the chewing gum condition, and 20 different students to the no-chewing gum condition. Then, you give everybody statistics tests and measure their grades. If chewing gum causes better grades, then the chewing gum group should have higher grades on average than the group who did not chew gum.
-
-Let's say the data looked like this:
-
-```{r}
-
-gum <- round(runif(20, 70, 100))
-no_gum <- round(runif(20, 40, 90))
-
-gum_df <- data.frame(student = seq(1:20), gum, no_gum)
-
-gum_df <- gum_df %>%
-  rbind(c("Sums", colSums(gum_df[, 2:3]))) %>%
-  rbind(c("Means", colMeans(gum_df[, 2:3])))
-knitr::kable(gum_df)
-
+chicle_df_small <- chicle_df_small %>%
+  rbind(c("Sums", colSums(chicle_df_small[, 2:3]))) %>%
+  rbind(c("Means", colMeans(chicle_df_small[, 2:3])))
+knitr::kable(chicle_df_small)
 ```
 
-So, did the students chewing gum do better than the students who didn't chew gum? Look at the mean test performance at the bottom of the table. The mean for students chewing gum was `r mean(gum)`, and the mean for students who did not chew gum was `r mean(no_gum)`. Just looking at the means, it looks like chewing gum worked!
+Las cosas podrían haber salido diferente si algunos de los sujetos en el grupo con chicle hubieran sido intercambiados con sujetos del grupo sin chicle. Así es cómo podemos hacer un poco de aleatorización.
 
-"STOP THE PRESSES, this is silly". We already know this is silly because we are making pretend data. But, even if this was real data, you might think, "Chewing gum won't do anything, this difference could have been caused by chance, I mean, maybe the better students just happened to be put into the chewing group, so because of that their grades were higher, chewing gum didn't do anything...". We agree. But, let's take a closer look. We already know how the data come out. What we want to know is how they could have come out, what are all the possibilities?
-
-For example, the data would have come out a bit different if we happened to have put some of the students from the gum group into the no gum group, and vice versa. Think of all the ways you could have assigned the 40 students into two groups, there are lots of ways. And, the means for each group would turn out differently depending on how the students are assigned to each group.
-
-Practically speaking, it's not possible to run the experiment every possible way, that would take too long. But, we can nevertheless estimate how all of those experiments might have turned out using simulation.
-
-Here's the idea. We will take the 40 measurements (exam scores) that we found for all the students. Then we will randomly take 20 of them and pretend they were in the gum group, and we'll take the remaining 20 and pretend they were in the no gum group. Then we can compute the means again to find out what would have happened. We can keep doing this over and over again. Every time computing what happened in that version of the experiment.
-
-#### Doing the randomization
-
-Before we do that, let's show how the randomization part works. We'll use fewer numbers to make the process easier to look at. Here are the first 5 exam scores for students in both groups.
-
-```{r}
-gum_df_small <- gum_df[1:5, ]
-gum_df_small$gum <- as.numeric(gum_df_small$gum)
-gum_df_small$no_gum <- as.numeric(gum_df_small$no_gum)
-
-gum_df_small <- gum_df_small %>%
-  rbind(c("Sums", colSums(gum_df_small[, 2:3]))) %>%
-  rbind(c("Means", colMeans(gum_df_small[, 2:3])))
-knitr::kable(gum_df_small)
-
-```
-
-Things could have turned out differently if some of the subjects in the gum group were switched with the subjects in the no gum group. Here's how we can do some random switching. We will do this using R.
-
-```{r, echo=TRUE}
-all_scores       <- c(gum[1:5],no_gum[1:5])
+```{r, echo=F}
+all_scores       <- c(chicle[1:5], no_chicle[1:5])
 randomize_scores <- sample(all_scores)
-new_gum          <- randomize_scores[1:5]
-new_no_gum       <- randomize_scores[6:10]
-print(new_gum)
-print(new_no_gum)
+new_chicle          <- randomize_scores[1:5]
+new_no_chicle       <- randomize_scores[6:10]
+print(new_chicle)
+print(new_no_chicle)
 ```
 
-We have taken the first 5 numbers from the original data, and put them all into a variable called `all_scores`. Then we use the `sample` function in R to shuffle the scores. Finally, we take the first 5 scores from the shuffled numbers and put them into a new variable called `new_gum`. Then, we put the last five scores into the variable `new_no_gum`. Then we printed them, so we can see them.
+Tomamos los primeros 5 números de los datos originales, y los pusimos todos en una variable llamada `all_scores`. Luego usamos la función `sample` en R para mezclar los puntajes. Finalmente, tomamos los primeros 5 puntajes mezclados y los guardamos en una nueva variable llamada `new_chicle`. Después, colocamos los últimos 5 puntajes en la variable `new_no_chicle`. Luego los imprimimos, así podemos verlos.
 
-If we do this a couple of times and put them in a table, we can indeed see that the means for gum and no gum would be different if the subjects were shuffled around. Check it out:
+Si hacemos esto un par de veces y lo ponemos en una tabla, podemos ver que las medias para “con chicle” y “sin chicle” serían distintas si los sujetos se asignaran al azar de otra forma. Fijate:
 
 ```{r,echo=F}
-gum_df_small <- gum_df[1:5, ]
-gum_df_small$gum <- as.numeric(gum_df_small$gum)
-gum_df_small$no_gum <- as.numeric(gum_df_small$no_gum)
+chicle_df_small <- chicle_df[1:5, ]
+chicle_df_small$chicle <- as.numeric(chicle_df_small$chicle)
+chicle_df_small$no_chicle <- as.numeric(chicle_df_small$no_chicle)
 
-all_scores       <- c(gum[1:5], no_gum[1:5])
+all_scores       <- c(chicle[1:5], no_chicle[1:5])
 randomize_scores <- sample(all_scores)
-gum2          <- randomize_scores[1:5]
-no_gum2       <- randomize_scores[6:10]
+chicle2          <- randomize_scores[1:5]
+no_chicle2       <- randomize_scores[6:10]
 
-gum_df_small <- cbind(gum_df_small, gum2, no_gum2)
+chicle_df_small <- cbind(chicle_df_small, chicle2, no_chicle2)
 
-all_scores       <- c(gum[1:5], no_gum[1:5])
+all_scores       <- c(chicle[1:5], no_chicle[1:5])
 randomize_scores <- sample(all_scores)
-gum3          <- randomize_scores[1:5]
-no_gum3       <- randomize_scores[6:10]
 
-gum_df_small <- cbind(gum_df_small, gum3, no_gum3)
+chicle3          <- randomize_scores[1:5]
+no_chicle3       <- randomize_scores[6:10]
 
-gum_df_small <- gum_df_small %>%
-  rbind(c("Sums", colSums(gum_df_small[, 2:7]))) %>%
-  rbind(c("Means", colMeans(gum_df_small[, 2:7])))
-knitr::kable(gum_df_small)
+chicle_df_small <- cbind(chicle_df_small, chicle3, no_chicle3)
 
+chicle_df_small <- chicle_df_small %>%
+  rbind(c("Sumas", colSums(chicle_df_small[, 2:7]))) %>%
+  rbind(c("Medias", colMeans(chicle_df_small[, 2:7])))
+knitr::kable(chicle_df_small)
 ```
 
-#### Simulating the mean differences across the different randomizations
+#### Simulando las diferencias de medias en distintas aleatorizaciones
 
-In our pretend experiment we found that the mean for students chewing gum was `r mean(gum)`, and the mean for students who did not chew gum was `r mean(no_gum)`. The mean difference (gum - no gum) was `r mean(gum) - mean(no_gum)`. This is a pretty big difference. This is **what did happen**. But, **what could have happened**? If we tried out all of the experiments where different subjects were switched around, what does the distribution of the possible mean differences look like? Let's find out. This is what the randomization test is all about.
+En nuestro experimento ficticio encontramos que la media para los estudiantes que masticaron chicle fue `r mean(chicle)`, y la media para los que no lo hicieron fue `r mean(no_chicle)`. La diferencia de medias (chicle – sin chicle) fue `r mean(chicle) - mean(no_chicle)`. Esa es una diferencia bastante grande. Eso es **lo que pasó**. Pero, **¿qué podría haber pasado**? Si probáramos todos los experimentos posibles en los que los sujetos se asignan de forma diferente, ¿cómo luciría la distribución de las posibles diferencias de medias?
 
-When we do our randomization test we will measure the mean difference in exam scores between the gum group and the no gum group. Every time we randomize we will save the mean difference.
+Vamos a averiguarlo. De eso se trata exactamente la prueba de aleatorización. Cuando hacemos nuestra prueba de aleatorización, vamos a medir la diferencia de medias en los puntajes del examen entre el grupo con chicle y el grupo sin chicle. Cada vez que hagamos una aleatorización, guardaremos la diferencia de medias.
 
-Let's look at a short animation of what is happening in the randomization test. @fig-5randtest shows data from a different fake experiment, but the principles are the same. We'll return to the gum no gum experiment after the animation. The animation is showing three important things. First, the purple dots show the mean scores in two groups (didn't study vs study). It looks like there is a difference, as 1 dot is lower than the other. We want to know if chance could produce a difference this big. At the beginning of the animation, the light green and red dots show the individual scores from each of 10 subjects in the design (the purple dots are the means of these original scores). Now, during the randomizations, we randomly shuffle the original scores between the groups. You can see this happening throughout the animation, as the green and red dots appear in different random combinations. The moving yellow dots show you the new means for each group after the randomization. The differences between the yellow dots show you the range of differences that chance could produce.
+Veamos una pequeña animación de lo que ocurre durante la prueba de aleatorización. La figura `@fig-5randtest` muestra datos de otro experimento ficticio, pero los principios son los mismos. Después volveremos al experimento del chicle.
+
+La animación muestra tres cosas importantes: Primero, los puntos púrpuras muestran las medias de los puntajes en dos grupos (no estudió vs. estudió). Parece que hay una diferencia, ya que un punto está más bajo que el otro. Queremos saber si **el azar podría producir una diferencia tan grande**.
+
+Al comienzo de la animación, los puntos verde claro y rojo muestran los puntajes individuales de cada uno de los 10 sujetos en el diseño (los puntos púrpura son las medias de estos puntajes originales). Luego, durante las aleatorizaciones, mezclamos aleatoriamente los puntajes originales entre los grupos. Podés ver esto ocurriendo a lo largo de la animación, mientras los puntos verde y rojo aparecen en diferentes combinaciones aleatorias. Los puntos amarillos en movimiento te muestran las **nuevas medias para cada grupo después de la aleatorización**. Las diferencias entre los puntos amarillos te muestran el **rango de diferencias que el azar podría producir**.
 
 ::: {.content-visible when-format="html"}
-```{r}
+```{r echo=F}
 #| label: fig-5randtest
-#| fig-cap: "Animation of a randomization test. The purple dots represent the location of the original sample means in each condition. The yellow dots represent the means of each randomized sample. The blue and red dots show how the original scores are shuffled across each randomization."
+#| fig-cap: "Animación de una prueba de aleatorización. Los puntos púrpura representan la ubicación de las medias originales en cada condición. Los puntos amarillos representan las medias de cada muestra aleatorizada. Los puntos azules y rojos muestran cómo los puntajes originales son redistribuidos al azar en cada aleatorización."
 
-knitr::include_graphics(path="imgs/gifs/randomizationTest-1.gif")
+knitr::include_graphics(path="imgs/gifs/randomizationTest-1_es.gif")
 ```
 :::
 
-```{r rtestGif, eval=F}
-study <- round(runif(10, 80, 100))
-no_study <- round(runif(10, 40, 90))
+Estamos haciendo una inferencia estadística **visual**. Al observar el rango de movimiento de los puntos amarillos, estamos viendo qué tipo de diferencias puede producir el azar. En esta animación, los puntos púrpura —que representan la diferencia original— están generalmente **fuera del rango del azar**. Los puntos amarillos **no se mueven más allá** de los puntos púrpura, así que el azar parece ser una explicación poco probable de la diferencia.
 
-study_df <- data.frame(student = seq(1:10), study, no_study)
-mean_original <- data.frame(IV = c("studied", "didnt_study"),
-                            means = c(mean(study), mean(no_study)))
-t_df <- data.frame(
-  sims = rep(1, 20),
-  IV = rep(c("studied", "didnt_study"), each = 10),
-  values = c(study, no_study),
-  rand_order = rep(c(0, 1), each = 10)
-)
+Si los puntos púrpura estuvieran **dentro del rango de los puntos amarillos**, entonces sabríamos que el azar **es capaz de producir** la diferencia que observamos, y que lo hace **con bastante frecuencia**. En ese caso, **no deberíamos concluir** que la manipulación causó la diferencia, porque **podría haber ocurrido fácilmente por azar**.
 
-raw_df <- t_df
-for (i in 2:10) {
-  #all<-sample(c(study,no_study))
-  #mean_study[i]<-mean(all[1:20])
-  #mean_no_study[i]<-mean(all[21:40])
-  #t_df<-data.frame(sims=rep(i,20),
-  #                 IV=rep(c("studied","didnt_study"),each=10),
-  #                 values=c(all[1:20],all[21:40]))
-  new_index <- sample(1:20)
-  t_df$values <- t_df$values[new_index]
-  t_df$rand_order <- t_df$rand_order[new_index]
-  t_df$sims <- rep(i, 20)
-  raw_df <- rbind(raw_df, t_df)
-}
+Volvamos al ejemplo del chicle. Después de aleatorizar nuestras notas muchas veces, y de calcular las nuevas medias y las diferencias de medias, vamos a tener **un montón de diferencias** para observar, que podemos representar en un histograma. Ese histograma da una imagen de **lo que podría haber pasado**. Luego, podemos comparar **lo que pasó realmente** con **lo que podría haber pasado**.
 
-raw_df$rand_order <- as.factor(raw_df$rand_order)
-rand_df <- aggregate(values ~ sims * IV, raw_df, mean)
-names(rand_df) <- c("sims", "IV", "means")
-
-#rand_df <- data.frame(sims=rep(1:10,2),means=c(mean_study,mean_no_study),
-#  IV=rep(c("studied","didnt_study"),each=10))
-
-a <- ggplot(raw_df, aes(
-  x = IV,
-  y = values,
-  color = rand_order,
-  size = 3
-)) +
-  geom_point(stat = "identity", alpha = .5) +
-  geom_point(
-    data = mean_original,
-    aes(x = IV, y = means),
-    stat = "identity",
-    shape = 21,
-    size = 6,
-    color = "black",
-    fill = "mediumorchid2"
-  ) +
-  geom_point(
-    data = rand_df,
-    aes(x = IV, y = means),
-    stat = "identity",
-    shape = 21,
-    size = 6,
-    color = "black",
-    fill = "gold"
-  ) +
-  theme_classic(base_size = 15) +
-  coord_cartesian(ylim = c(40, 100)) +
-  theme(legend.position = "none") +
-  ggtitle(
-    "Randomization test: Original Means (purple),
-          \n Randomized means (yellow)
-          \n Original scores (red,greenish)"
-  ) +
-  transition_states(sims,
-                    transition_length = 1,
-                    state_length = 2) + enter_fade() +
-  exit_shrink() +
-  ease_aes('sine-in-out')
-
-animate(a, nframes = 100, fps = 5)
-
-```
-
-We are engaging in some visual statistical inference. By looking at the range of motion of the yellow dots, we are watching what kind of differences chance can produce. In this animation, the purple dots, representing the original difference, are generally outside of the range of chance. The yellow dots don't move past the purple dots, as a result chance is an unlikely explanation of the difference.
-
-If the purple dots were inside the range of the yellow dots, then when would know that chance is capable of producing the difference we observed, and that it does so fairly often. As a result, we should not conclude the manipulation caused the difference, because it could have easily occurred by chance.
-
-Let's return to the gum example. After we randomize our scores many times, and computed the new means, and the mean differences, we will have loads of mean differences to look at, which we can plot in a histogram. The histogram gives a picture of **what could have happened**. Then, we can compare **what did happen** with **what could have happened**.
-
-Here's the histogram of the mean differences from the randomization test. For this simulation, we randomized the results from the original experiment 1000 times. This is what could have happened. The blue line in @fig-5randhist shows where the observed difference lies on the x-axis.
+Este es el histograma de las diferencias de medias obtenidas con la prueba de aleatorización. Para esta simulación, aleatorizamos los resultados del experimento original 1000 veces. Esto es lo que **podría haber pasado**. La línea azul en `@fig-5randhist` muestra **dónde se ubica la diferencia observada** sobre el eje x.
 
 ```{r}
 #| label: fig-5randhist
-#| fig.cap: "A histogram of simulated mean differences for a randomization test"
+#| fig-cap: "Histograma de diferencias de medias simuladas en una prueba de aleatorización"
 
-
-mean_differences <- length(10000)
+mean_diferencias <- length(10000)
 for (i in 1:10000) {
-  all <- sample(c(gum, no_gum))
-  mean_differences[i] <- mean(all[1:20]) - mean(all[21:40])
+  all <- sample(c(chicle, no_chicle))
+  mean_diferencias[i] <- mean(all[1:20]) - mean(all[21:40])
 }
 
-rand_df <- data.frame(sims = 1:10000, mean_differences)
+rand_df <- data.frame(sims = 1:10000, mean_diferencias)
 
-ggplot(rand_df, aes(x = mean_differences)) +
+ggplot(rand_df, aes(x = mean_diferencias)) +
   geom_histogram(color = "white") +
   theme_classic() +
-  geom_vline(color = "blue", xintercept = (mean(gum) - mean(no_gum)))
-
+  geom_vline(color = "blue", xintercept = (mean(chicle) - mean(no_chicle)))+
+  labs(x="Diferencias promedio",y="frecuencia")
 ```
 
-What do you think? Could the difference represented by the blue line have been caused by chance? My answer is probably not. The histogram shows us the window of chance. The blue line is not inside the window. This means we can be pretty confident that the difference we observed was not due to chance.
+¿Qué pensás? ¿Podría la diferencia representada por la línea azul haber sido causada por azar? Mi respuesta es: probablemente no. El histograma nos muestra la ventana del azar. La línea azul **no está dentro de esa ventana**. Esto significa que podemos estar bastante seguros de que **la diferencia que observamos no se debe al azar**.
 
-We are looking at another window of chance. We are seeing a histogram of the kinds of mean differences that could have occurred in our experiment, if we had assigned our subjects to the gum and no gum groups differently. As you can see, the mean differences range from negative to positive. The most frequent difference is 0. Also, the distribution appears to be symmetrical about zero, which shows we had roughly same the chances of getting a positive or negative difference. Also, notice that as the differences get larger (in the positive or negative direction, they become less frequent). The blue line shows us **the observed difference**, this is the one we found in our fake experiment. Where is it? It's way out to the right. It is is well outside the histogram. In other words, when we look at **what could have happened**, we see that **what did happen** doesn't occur very often.
+Estamos mirando otra ventana del azar. Estamos viendo un histograma de los tipos de diferencias de medias que podrían haber ocurrido en nuestro experimento, si hubiéramos asignado a los sujetos al grupo con chicle y al grupo sin chicle de otra forma.
 
-IMPORTANT: In this case, when we speak of **what could have happened**. We are talking about what could have happened **by chance**. When we compare what did happen to what chance could have done, we can get a better idea of whether our result was caused by chance.
+Como podés ver, las diferencias de medias varían de negativas a positivas. La diferencia más frecuente es 0. Además, la distribución parece simétrica en torno al cero, lo que muestra que teníamos aproximadamente las mismas probabilidades de obtener una diferencia positiva o negativa. También notá que a medida que las diferencias se hacen más grandes (ya sea en dirección positiva o negativa), **se vuelven menos frecuentes**. La línea azul nos muestra **la diferencia observada**, la que encontramos en nuestro experimento inventado. ¿Dónde está? Muy a la derecha. Está **bien fuera del histograma**. En otras palabras, cuando miramos **lo que podría haber pasado**, vemos que **lo que pasó realmente** no ocurre muy seguido.
+
+**IMPORTANTE:** En este caso, cuando hablamos de **lo que podría haber pasado**, nos referimos a lo que **podría haber pasado por azar**. Cuando comparamos lo que pasó con lo que el azar podría haber producido, podemos tener una mejor idea de si nuestro resultado fue o no **causado por azar**.
 
 ------------------------------------------------------------------------
 
-OK, let's pretend we got a much smaller mean difference when we first ran the experiment. We can draw new lines (blue and red) to represent a smaller mean that we might have found.
+OK, ahora vamos a fingir que obtuvimos una diferencia de medias **mucho más pequeña** cuando ejecutamos el experimento. Podemos trazar nuevas líneas (azul y roja) para representar una media más pequeña que podríamos haber encontrado.
 
 ```{r}
 #| label: fig-5randquestion
-#| fig.cap: "Would you expect a mean difference represented by the blue line to occur more or less often by chance compared to the mean difference represented by the red line?"
+#| fig-cap: "¿Esperarías que una diferencia de medias representada por la línea azul ocurra más o menos seguido por azar, en comparación con la diferencia representada por la línea roja?"
 
-ggplot(rand_df, aes(x = mean_differences)) +
+ggplot(rand_df, aes(x = mean_diferencias)) +
   geom_histogram(color = "white") +
   theme_classic() +
   geom_vline(color = "blue", xintercept = 10) +
-  geom_vline(color = "red", xintercept = 5)
-
-
+  geom_vline(color = "red", xintercept = 5)+
+  labs(x="Diferencias promedio",y="frecuencia")
 ```
 
-Look at the blue line in @fig-5randquestion. If you found a mean difference of 10, would you be convinced that your difference was not caused by chance? As you can see, the blue line is inside the chance window. Notably, differences of +10 don't very often. You might infer that your difference was not likely to be due to chance (but you might be a little bit skeptical, because it could have been). How about the red line? The red line represents a difference of +5. If you found a difference of +5 here, would you be confident that your difference was not caused by chance? I wouldn't be. The red line is totally inside the chance window, this kind of difference happens fairly often. I'd need some more evidence to consider the claim the some independent variable actually caused the difference. I'd be much more comfortable assuming that sampling error probably caused the difference.
+Fijate en la línea azul de `@fig-5randquestion`. Si encontraras una diferencia de medias de 10, ¿te convencería de que esa diferencia **no fue causada por azar**? Como podés ver, la línea azul **está dentro de la ventana del azar**. Aunque las diferencias de +10 **no ocurren muy seguido**, podrías inferir que **probablemente no fueron causadas por azar** (pero tal vez te mantendrías algo escéptico, porque **sí podrían haberlo sido**).
 
-### Take homes so far
+¿Y qué pasa con la línea roja? La línea roja representa una diferencia de +5. Si encontraras una diferencia de +5 acá, ¿estarías seguro de que **no fue causada por azar**? Yo no lo estaría. La línea roja está completamente dentro de la ventana del azar —**este tipo de diferencia ocurre con bastante frecuencia**. Necesitaría **más evidencia** para considerar la afirmación de que alguna variable independiente realmente **causó la diferencia**. Me sentiría mucho más cómodo asumiendo que la diferencia fue probablemente **causada por error muestral**.
 
-Have you noticed that we haven't used any formulas yet, but we have been able to accomplish inferential statistics. We will see some formulas as we progress, but these aren't as the idea behind the formulas.
+### Lo que nos queda hasta ahora
 
-Inferential statistics is an attempt to solve the problem: **where did my data from?**. In the randomization test example, our question was: **where did the differences between the means in my data come from?**. We know that the differences could be produced by chance alone. We simulated what chance can due using randomization. Then we plotted what chance can do using a histogram. Then, we used to picture to help us make an inference. Did our observed difference come from the distribution, or not? When the observed difference is clearly inside the chance distribution, then we can infer that our difference **could have been produced by chance**. When the observed difference is not clearly inside the chance distribution, then we can infer that our difference was **probably not produced by chance**.
+¿Notaste que hasta ahora **no usamos ninguna fórmula**, pero aun así pudimos hacer estadística inferencial? Veremos algunas fórmulas más adelante, pero **las ideas detrás de esas fórmulas son más importantes que las fórmulas mismas**.
 
-In my opinion, these pictures are very, very helpful. If one of our goals is to help ourselves summarize a bunch of complicated numbers to arrive at an inference, then the pictures do a great job. We don't even need a summary number, we just need to look at the picture and see if the observed difference is inside or outside of the window. This is what it is all about. Creating intuitive and meaningful ways to make inferences from our data. As we move forward, the main thing that we will do is formalize our process, and talk more about "standard" inferential statistics. For example, rather than looking at a picture (which is a good thing to do), we will create some helpful numbers. For example, what if you wanted to the probability that your difference could have been produced by chance? That could be a single number, like 95%. If there was a 95% probability that chance can produce the difference you observed, you might not be very confident that something like your experimental manipulation was causing the difference. If there was only 1% probability that chance could produce your difference, then you might be more confident that **chance did not** produce the difference; and, you might instead be comfortable with the possibility that your experimental manipulation actually caused the difference. So, how can we arrive at those numbers? In order to get there we will introduce you to some more foundational tools for statistical inference.
+La estadística inferencial es un intento de resolver el problema: **¿De dónde provienen mis datos?** En el ejemplo de la prueba de aleatorización, nuestra pregunta fue: **¿De dónde provienen las diferencias entre las medias de mis datos?**
+
+Sabemos que esas diferencias **podrían haber sido producidas solo por azar**. Simulamos lo que puede hacer el azar usando aleatorización. Luego trazamos lo que puede hacer el azar usando un histograma. Y después usamos esa imagen para ayudarnos a hacer una inferencia: ¿La diferencia observada **proviene de la distribución del azar, o no**?
+
+Cuando la diferencia observada está claramente dentro de la distribución del azar, entonces podemos inferir que nuestra diferencia **podría haber sido producida por azar**. Cuando la diferencia observada **no está claramente dentro** de la distribución del azar, entonces podemos inferir que nuestra diferencia **probablemente no fue producida por azar**.
+
+En mi opinión, estas imágenes son muy, muy útiles. Si uno de nuestros objetivos es ayudarnos a resumir un montón de números complicados para llegar a una inferencia, entonces **las imágenes hacen un excelente trabajo**. Ni siquiera necesitamos un número resumen: solo necesitamos mirar la imagen y ver si la diferencia observada está **dentro o fuera de la ventana del azar**. **De eso se trata todo esto.** Crear formas **intuitivas y significativas** de hacer inferencias a partir de nuestros datos. A medida que avancemos, lo principal que haremos será **formalizar nuestro proceso** y hablar más sobre las estadísticas inferenciales “estándar”.
+
+Por ejemplo, en lugar de mirar una imagen (aunque eso es algo útil), vamos a construir **algunos números útiles**. Por ejemplo: ¿y si quisieras saber **cuál es la probabilidad de que tu diferencia haya sido producida por azar**? Esa podría ser un número único, como el 95%. Si hubiera una probabilidad del 95% de que el azar pueda producir la diferencia que observaste, tal vez no estés muy confiado de que tu manipulación experimental fue la causa. Si hubiera solo un 1% de probabilidad de que el azar pueda producir esa diferencia, entonces podrías tener más confianza en que el **azar no produjo la diferencia**; y podrías, en cambio, estar cómodo con la posibilidad de que **tu manipulación experimental fue realmente la causa**.
+
+Entonces, ¿cómo podemos llegar a esos números? Para llegar a eso, vamos a presentarte algunas herramientas **más fundamentales** para la inferencia estadística.
+
+------------------------------------------------------------------------
 
 ## Videos
 
-### Null and Alternate Hypotheses
+### Hipótesis nula y alternativa
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/gJ38qX0ihPc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/gJ38qX0ihPc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 
 </iframe>
 
-### Types of Errors
+### Tipos de Errores
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/zhhDCFPzlkw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 
 </iframe>
+:::::

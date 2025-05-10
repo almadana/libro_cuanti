@@ -373,3 +373,79 @@ gif = ggplot(all_df, aes(x=sample))+
 
 anim_save("imgs/gifs/sampleDistNormal-1_es.gif", animation = animate(gif, width = 480, height = 480, fps = 10))
 
+# cap 5 ---------
+## fig-5expectedUnif-----
+a<-round(runif(20*10,1,10))
+df<-data.frame(a,sample=rep(1:10,each=20))
+
+
+
+gif = ggplot(df,aes(x=a))+
+  geom_histogram(bins=10, color="white")+
+  theme_classic()+
+  scale_x_continuous(breaks=seq(1,10,1))+
+  geom_hline(yintercept=2)+
+  ggtitle("Muestras pequeñas (N=20) de una distribución uniforme")+
+  labs(y="frecuencia",x="valor")+
+  transition_states(
+    sample,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() +
+  exit_shrink() +
+  ease_aes('sine-in-out')
+
+anim_save("imgs/gifs/sampleUnifExpected-1_es.gif", animation = animate(gif, width = 480, height = 480, fps = 10))
+
+
+
+
+## randomizationTestgif -----
+study<-round(runif(10,80,100))
+no_study<-round(runif(10,40,90))
+
+study_df<-data.frame(student=seq(1:10),study,no_study)
+mean_original<-data.frame(IV=c("studied","didnt_study"),
+                          means=c(mean(study),mean(no_study)))
+t_df<-data.frame(sims=rep(1,20),
+                 IV=rep(c("studied","didnt_study"),each=10),
+                 values=c(study,no_study),
+                 rand_order=rep(c(0,1),each=10))
+
+raw_df<-t_df
+for(i in 2:10){
+  new_index<-sample(1:20)
+  t_df$values<-t_df$values[new_index]
+  t_df$rand_order<-t_df$rand_order[new_index]
+  t_df$sims<-rep(i,20)
+  raw_df<-rbind(raw_df,t_df)
+}
+
+raw_df$rand_order<-as.factor(raw_df$rand_order)
+rand_df<-aggregate(values~sims*IV,raw_df,mean)
+names(rand_df)<-c("sims","IV","means")
+
+
+a<-ggplot(raw_df,aes(x=IV,y=values,color=rand_order,size=3))+
+  geom_point(stat="identity",alpha=.5)+
+  geom_point(data=mean_original,aes(x=IV,y=means),stat="identity",shape=21,size=6,color="black",fill="mediumorchid2")+
+  geom_point(data=rand_df,aes(x=IV,y=means),stat="identity",shape=21,size=6,color="black",fill="gold")+
+  theme_classic(base_size = 15)+
+  coord_cartesian(ylim=c(40, 100))+
+  theme(legend.position="none") +
+  ggtitle("Randomization test: Original Means (purple),
+          \n Randomized means (yellow)
+          \n Original scores (red,greenish)")+
+  transition_states(
+    sims,
+    transition_length = 1,
+    state_length = 2
+  )+enter_fade() +
+  exit_shrink() +
+  ease_aes('sine-in-out')
+
+anim_save("imgs/gifs/randomizationTest-1_es.gif", animation = animate(a,nframes = 100, fps = 5))
+
+
+
+

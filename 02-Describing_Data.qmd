@@ -447,7 +447,7 @@ $\text{Desviación estándar} = \sqrt{\text{Varianza}} = \sqrt{\frac{SS}{N}}$
 
 También se puede expandir así:
 
-\$\text{Desviación estándar} = \sqrt{\frac{\sum_{i}^{n}(x_i - \bar{x})^2}{N}} \$
+$\text{Desviación estándar} = \sqrt{\frac{\sum_{i}^{n}({x_{i}-\bar{x})^2}}{N}}$
 
 No dejes que esas raíces gigantes te asusten. Ahora sabés que están ahí para devolvernos una medida que tenga la misma escala que los datos originales.
 

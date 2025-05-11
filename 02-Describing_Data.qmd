@@ -59,7 +59,7 @@ Hay muchos puntos por todos lados. Parece que hay 500, porque el índice llega h
 
 > Conclusión: podemos ver todos los números a la vez al ponerlos en un gráfico, y eso es mucho más fácil y útil que mirar los números crudos.
 
-Bien, si estos puntos representan cuán felices están 500 personas, ¿qué podemos decir sobre esa gente? Primero, los puntos están bastante dispersos, así que distintas personas tienen niveles de felicidad diferentes.¿Hay más personas felices que infelices, o al revés? Eso no se ve claramente en el gráfico, así que hagamos otro tipo, llamado **histograma**.
+Bien, si estos puntos representan cuán felices están 500 personas, ¿qué podemos decir sobre esa gente? Primero, los puntos están bastante dispersos, así que distintas personas tienen niveles de felicidad diferentes.¿Hay más personas felices que infelices, o al revés? Eso no se ve claramente en el gráfico, así que hagamos otro tipo de gráfico, llamado **histograma**.
 
 ### Histogramas
 

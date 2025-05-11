@@ -425,17 +425,17 @@ Bueno, antes que nada: ¿te acordás qué problema estábamos tratando de resolv
 
 Exacto: queremos resumir cuán diferentes son los valores. Como hay tantas diferencias como valores, nos gustaría tener un solo número que resuma todo eso, algo como una media que represente el promedio de esas diferencias.
 
-Si mirás la tabla, vas a ver que ya calculamos la media de las desviaciones al cuadrado. Primero obtuvimos la suma (SS), y luego, debajo, la media: 5.916... Esa es **la varianza**. Es la media de las desviaciones al cuadrado:
+Si mirás la tabla, vas a ver que ya calculamos la media de las desviaciones al cuadrado. Primero obtuvimos la suma (SS), y luego, debajo, la media: 5,916... Esa es **la varianza**. Es la media de las desviaciones al cuadrado:
 
 $\text{Varianza} = \frac{SS}{N}$
 
 donde $SS$ es la suma de los cuadrados y $N$ es el número de observaciones.
 
-Y ahora, ¿qué hago con la varianza? ¿Qué significa ese número? Buena pregunta. Muchas veces, la varianza no es un número muy útil para mirar. ¿Por qué? Porque no está en la misma escala que los datos originales. Esto pasa porque al elevar al cuadrado se obtienen números más grandes. Por ejemplo, tenemos un 12.25 por ahí. Ese número es más grande que cualquier diferencia entre dos valores originales. Entonces, ¿cómo hacemos para "bajar" ese número a la escala original?
+Y ahora, ¿qué hago con la varianza? ¿Qué significa ese número? Buena pregunta. Muchas veces, la varianza no es un número muy útil para mirar. ¿Por qué? Porque no está en la misma escala que los datos originales. Esto pasa porque al elevar al cuadrado se obtienen números más grandes. Por ejemplo, tenemos un 12,25 por ahí. Ese número es más grande que cualquier diferencia entre dos valores originales. Entonces, ¿cómo hacemos para "bajar" ese número a la escala original?
 
-Si pensaste en sacar la raíz cuadrada, ¡ding ding ding! Correcto! Siempre podés deshacer un cuadrado sacando la raíz cuadrada. Entonces, hagámoslo con 5.916:
+Si pensaste en sacar la raíz cuadrada, ¡ding ding ding! Correcto! Siempre podés deshacer un cuadrado sacando la raíz cuadrada. Entonces, hagámoslo con 5,916:
 
-$\sqrt{5.916} = \text{desviación estándar}$
+$\sqrt{5,916} = \text{desviación estándar}$
 
 ### La desviación estándar
 

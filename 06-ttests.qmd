@@ -7,301 +7,281 @@ aliases: [t-tests.html]
 ```{r, include = FALSE}
 source("global_stuff.R")
 ```
+# Pruebas t
 
-# t-tests
+Volvamos atrás en el tiempo. William Sealy Gosset consiguió trabajo en la cervecería Guinness. Sí, la que hace la famosa stout irlandesa. Lo que pasó después fue más o menos así (lo estoy inventando, pero la idea general es cierta).
 
-```{r, echo=FALSE}
-library(ggplot2)
-```
+Guinness quería que todas sus cervezas fueran las mejores. Nada de errores, nada de birra mala. Querían mejorar el control de calidad para que, sin importar en qué parte del mundo sirvieras una Guinness, siempre saliera perfecta: 5 estrellas sobre 5, siempre.
 
-Back in the day, William Sealy Gosset got a job working for Guinness Breweries. They make the famous Irish stout called Guinness. What happens next went something like this (total fabrication, but mostly on point).
+Tenían catadores expertos. Cada vez que probaban una Guinness que no era 5 de 5, lo notaban al instante.
 
-Guinness wanted all of their beers to be the best beers. No mistakes, no bad beers. They wanted to improve their quality control so that when Guinness was poured anywhere in the world, it would always comes out fantastic: 5 stars out of 5 every time, the best.
+Pero había un gran problema. Hacían un barril de cerveza, y querían saber si **cada pinta** que saliera de ahí iba a ser perfecta. Así que los catadores se tomaban pinta tras pinta del barril... hasta que se acababa. Algunos barriles salían bien, otros no. Guinness tenía que arreglar eso. Pero el mayor problema era que, después del testeo, **no quedaba cerveza para vender** —se la habían tomado toda (recordá que esta parte me la estoy inventando para ilustrar el punto; seguro algo les quedaba para vender).
 
-Guinness had some beer tasters, who were super-experts. Every time they tasted a Guinness from the factory that wasn't 5 out of 5, they knew right away.
+Guinness tenía un problema de población y muestreo. Querían saber si toda la población de cervezas producidas era de 5 estrellas. Pero si probaban toda la población, no les quedaba nada para vender.
 
-But, Guinness had a big problem. They would make a keg of beer, and they would want to know if every single pint that would come out would be a 5 out of 5. So, the beer tasters drank pint after pint out of the keg, until it was gone. Some kegs were all 5 out of 5s. Some weren't, Guinness needed to fix that. But, the biggest problem was that, after the testing, there **was no beer left to sell**, the testers drank it all (remember I'm making this part up to illustrate a point, they probably still had beer left to sell).
+Ahí entra William Sealy Gosset. Gosset resolvió el problema. Se hizo preguntas como:
 
-Guinness had a sampling and population problem. They wanted to know that the entire population of the beers they made were all 5 out of 5 stars. But, if they sampled the entire population, they would drink all of their beer, and wouldn't have any left to sell.
+1. ¿Cuántas muestras necesito tomar para saber si toda la población es de 5 sobre 5?
 
-Enter William Sealy Gosset. Gosset figured out the solution to the problem. He asked questions like this:
+2. ¿Cuál es la menor cantidad de muestras que puedo tomar para saber eso, de forma que Guinness pueda testear menos cervezas, vender más, y acortar el tiempo de control de calidad?
 
-1.  How many samples do I need to take to know the whole population is 5 out of 5?
+Gosset resolvió esas preguntas e inventó algo llamado la *prueba t de Student*. Como trabajaba para Guinness, podía ser despedido si divulgaba secretos comerciales (como la prueba t). Pero igual publicó su trabajo, bajo un seudónimo [@Student1908]. Se hizo llamar "Student", y por eso el test se llama *prueba t de Student*. Ahora ya sabés el resto de la historia.
 
-2.  What's the fewest amount of samples I need to take to know the above, that would mean Guinness could test fewer beers for quality, sell more beers for profit, and make the product testing time shorter.
+Y resultó ser algo muy útil. La prueba t se usa todo el tiempo. Y se usa porque sirve. En este capítulo vamos a ver cómo funciona.
 
-Gosset solved those questions, and he invented something called the *Student's t-test*. Gosset was working for Guinness, and could be fired for releasing trade-secrets that he invented (the t-test). But, Gosset published the work anyways, under a pseudonym [@Student1908]. He called himself Student, hence Student's t-test. Now you know the rest of the story.
+Te va a sorprender saber que lo que ya vimos antes (el test de Crump, el test de aleatorización) es muy parecido a la prueba t. Así que ya venís pensando en lo necesario para entender las pruebas t. Seguramente te estás preguntando qué es eso de $t$, qué significa. Ya vamos a contarte. Pero antes, una idea más.
 
-It turns out this was a very nice thing for Gosset to have done. t-tests are used all the time, and they are useful, that's why they are used. In this chapter we learn how they work.
+## Revisá tu confianza en el promedio
 
-You'll be surprised to learn that what we've already talked about, (the Crump Test, and the Randomization Test), are both very very similar to the t-test. So, in general, you have already been thinking about the things you need to think about to understand t-tests. You're probably wondering what is this $t$, what does $t$ mean? We will tell you. Before we tell what it means, we first tell you about one more idea.
+Ya hablamos de tomar una muestra de datos. Sabemos cómo calcular la media, la desviación estándar, y cómo ver los datos en un histograma. Todo eso nos ayuda a entender mejor nuestras muestras.
 
-## Check your confidence in your mean
+Capaz pensás que la media y la desviación estándar son cosas muy distintas, que no deberían combinarse. La media te dice dónde están la mayoría de los datos, y la desviación estándar cuánto varían. Sí, son distintas. Pero combinarlas puede darnos información útil.
 
-We've talked about getting a sample of data. We know we can find the mean, we know we can find the standard deviation. We know we can look at the data in a histogram. These are all useful things to do for us to learn something about the properties of our data.
+Si te digo que mi media muestral es 50, y no te digo nada más, ¿cuán confiado estás de que los números están cerca de 50? ¿Te preguntás si hay mucha variabilidad, si algunos valores están lejos? Deberías preguntártelo. La media sola no dice cuánto representa al resto de los datos.
 
-You might be thinking of the mean and standard deviation as very different things that we would not put together. The mean is about central tendency (where most of the data is), and the standard deviation is about variance (where most of the data isn't). Yes, they are different things, but we can use them together to create useful new things.
+Puede ser representativa, si la desviación estándar es chica. O no, si la desviación es grande. Para confiar en la media, necesitás saber cuánta variabilidad hay.
 
-What if I told you my sample mean was 50, and I told you nothing else about my sample. Would you be confident that most of the numbers were near 50? Would you wonder if there was a lot of variability in the sample, and many of the numbers were very different from 50. You should wonder all of those things. The mean alone, just by itself, doesn't tell you anything about well the mean represents all of the numbers in the sample.
+¿Cómo combinamos media y desviación para obtener una medida de confianza?
 
-It could be a representative number, when the standard deviation is very small, and all the numbers are close to 50. It could be a non-representative number, when the standard deviation is large, and many of the numbers are not near 50. You need to know the standard deviation in order to be confident in how well the mean represents the data.
+Podemos usar un cociente:
 
-How can we put the mean and the standard deviation together, to give us a new number that tells us about confidence in the mean?
+$$\frac{\text{media}}{\text{desviación estándar}}$$
 
-We can do this using a ratio:
+Veamos qué pasa:
 
-$\frac{mean}{\text{standard deviation}}$
+$$\frac{\text{número}}{\text{mismo número}} = 1$$
 
-Think about what happens here. We are dividing a number by a number. Look at what happens:
+$$\frac{\text{número}}{\text{número chico}} = \text{número grande}$$
 
-$\frac{number}{\text{same number}} = 1$
+$$\frac{\text{número}}{\text{número grande}} = \text{número chico}$$
 
-$\frac{number}{\text{smaller number}} = \text{big number}$
+Si la media es 50 y la desviación es 1:
 
-compared to:
+$$\frac{50}{1} = 50$$
 
-$\frac{number}{\text{bigger number}} = \text{smaller number}$
+Si la desviación es 100:
 
-Imagine we have a mean of 50, and a truly small standard deviation of 1. What do we get with our formula?
+$$\frac{50}{100} = 0.5$$
 
-$\frac{50}{1} = 50$
+Cuando la desviación es baja, el cociente es grande: más confianza. Si la desviación es alta, el cociente es chico: menos confianza. Así que esta proporción nos da una idea de cuán confiable es la media.
 
-Imagine we have a mean of 50, and a big standard deviation of 100. What do we get with our formula?
+En resumen: creamos una estadística descriptiva dividiendo la media por la desviación estándar. Y tenemos una forma de interpretarla. Si el resultado es grande, la media representa bien a los datos. Si es chico, no tanto. Este tipo de razón es clave en estadística: compara lo que sabemos con lo que no sabemos.
 
-$\frac{50}{100} = 0.5$
+Casi todo lo que viene en este libro se basa en esta lógica. Las fórmulas siguen este esquema:
 
-Notice, when we have a mean paired with a small standard deviation, our formula gives us a big number, like 50. When we have a mean paired with a large standard deviation, our formula gives us a small number, like 0.5. These numbers can tell us something about confidence in our mean, in a general way. We can be 50 confident in our mean in the first case, and only 0.5 (not at a lot) confident in the second case.
+$$\text{estadístico} = \frac{\text{medida de lo que sabemos}}{\text{medida de lo que no sabemos}}$$
 
-What did we do here? We created a descriptive statistic by dividing the mean by the standard deviation. And, we have a sense of how to interpret this number, when it's big we're more confident that the mean represents all of the numbers, when it's small we are less confident. This is a useful kind of number, a ratio between what we think about our sample (the mean), and the variability in our sample (the standard deviation). Get used to this idea. Almost everything that follows in this textbook is based on this kind of ratio. We will see that our ratio turns into different kinds of "statistics", and the ratios will look like this in general:
+o también:
 
-$\text{name of statistic} = \frac{\text{measure of what we know}}{\text{measure of what we don't know}}$
+$$\text{estadístico} = \frac{\text{efecto}}{\text{error}}$$
 
-or, to say it using different words:
+Y esta es, justamente, la fórmula general dla prueba t. ¡Sorpresa!
 
-$\text{name of statistic} = \frac{\text{measure of effect}}{\text{measure of error}}$
+## Prueba t de una muestra: una nueva prueba t
 
-In fact, this is the general formula for the t-test. Big surprise!
+Ahora sí, hablemos de las pruebas t. Vamos a ver tres tipos. Empezamos con la prueba t de una muestra.
 
-## One-sample t-test: A new t-test
+Este test se usa para estimar la probabilidad de que tu muestra venga de una población específica. En particular, querés saber si la media de tu muestra podría venir de una población con cierta media.
 
-Now we are ready to talk about t-test. We will talk about three of them. We start with the one-sample t-test.
+Acá empieza lo confuso (y todavía no te dije la fórmula). En teoría, la prueba t usa parámetros conocidos de la población, como su media y su desviación. Pero en la práctica, casi nunca conocés esos valores. Así que tenés que estimarlos a partir de la muestra.
 
-Commonly, the one-sample t-test is used to estimate the chances that your sample came from a particular population. Specifically, you might want to know whether the mean that you found from your sample, could have come from a particular population having a particular mean.
+Recordá lo que vimos sobre estadística descriptiva y muestreo: la media muestral es un estimador insesgado de la media poblacional. Y la desviación muestral (la que divide por n–1) también lo es. Gosset se dio cuenta de que podía usar estas estimaciones para construir la prueba t.
 
-Straight away, the one-sample t-test becomes a little confusing (and I haven't even described it yet). Officially, it uses known parameters from the population, like the mean of the population and the standard deviation of the population. However, most times you don't know those parameters of the population! So, you have to estimate them from your sample. Remember from the chapters on descriptive statistics and sampling, our sample mean is an unbiased estimate of the population mean. And, our sample standard deviation (the one where we divide by n-1) is an unbiased estimate of the population standard deviation. When Gosset developed the t-test, he recognized that he could use these estimates from his samples, to make the t-test. Here is the formula for the one sample t-test, we first use words, and then become more specific:
+Acá va la fórmula, primero en palabras:
 
-### Formulas for one-sample t-test
+### Fórmulas dla prueba t de una muestra
 
-$\text{name of statistic} = \frac{\text{measure of effect}}{\text{measure of error}}$
+$$\text{estadístico} = \frac{\text{efecto}}{\text{error}}$$
 
-$\text{t} = \frac{\text{measure of effect}}{\text{measure of error}}$
+$$t = \frac{\text{efecto}}{\text{error}}$$
 
-$\text{t} = \frac{\text{Mean difference}}{\text{standard error}}$
+$$t = \frac{\text{diferencia de medias}}{\text{error estándar}}$$
 
-$\text{t} = \frac{\bar{X}-u}{S_{\bar{X}}}$
 
-$\text{t} = \frac{\text{Sample Mean  - Population Mean}}{\text{Sample Standard Error}}$
+$t = \frac{\bar{X}-\mu}{S\_{\bar{X}}}$
 
-$\text{Estimated Standard Error} = \text{Standard Error of Sample} = \frac{s}{\sqrt{N}}$
+$t = \frac{\text{Media muestral - Media poblacional}}{\text{Error estándar muestral}}$
 
-Where, s is the sample standard deviation.
+$Error estándar estimado = \text{Error estándar de la muestra} = \frac{s}{\sqrt{N}}$
 
-Some of you may have gone cross-eyed looking at all of this. Remember, we've seen it before when we divided our mean by the standard deviation in the first bit. The t-test is just a measure of a sample mean, divided by the standard error of the sample mean. That is it.
+donde *s* es la desviación estándar de la muestra.
 
-### What does t represent?
+Capaz que todo esto te hizo bizquear un poco. Tranquilo, ya lo vimos antes, cuando dividimos la media por la desviación estándar. La prueba t no es más que la media muestral dividida por el error estándar de esa media. Eso es todo.
 
-$t$ gives us a measure of confidence, just like our previous ratio for dividing the mean by a standard deviations. The only difference with $t$, is that we divide by the standard error of mean (remember, this is also a standard deviation, it is the standard deviation of the sampling distribution of the mean)
+### ¿Qué representa t?
+
+$t$ nos da una medida de confianza, igual que la razón anterior en la que dividíamos la media por la desviación estándar. La única diferencia es que ahora dividimos por el **error estándar de la media** (que, recordá, también es una desviación estándar: la de la distribución muestral de la media).
 
 ::: callout-note
-What does the t in t-test stand for? Apparently nothing. Gosset originally labelled it z. And, Fisher later called it t, perhaps because t comes after s, which is often used for the sample standard deviation.
+¿La *t* en *prueba t* significa algo? Aparentemente no. Gosset originalmente usó *z*. Y después Fisher lo llamó *t*, tal vez porque viene después de *s*, que suele usarse para la desviación estándar muestral.
 :::
 
-$t$ is a property of the data that you collect. You compute it with a sample mean, and a sample standard error (there's one more thing in the one-sample formula, the population mean, which we get to in a moment). This is why we call $t$, a sample-statistic. It's a statistic we compute from the sample.
+$t$ es una propiedad de los datos que recolectás. Se calcula con la media de la muestra y su error estándar (y también con la media poblacional, a la que llegamos enseguida). Por eso se dice que *t* es una estadística muestral: se calcula a partir de la muestra. ¿Qué valores deberíamos esperar obtener para esos *t*? ¿Cómo podríamos saberlo?
 
-What kinds of numbers should we expect to find for these $ts$? How could we figure that out?
+Empecemos con un ejemplo simple. Imaginá que tu media muestral es 5, y querés saber si viene de una población con media 5. ¿Cuál sería el valor de *t*? Cero: restamos 5 - 5 = 0. Como el numerador es 0, *t* también lo es. Así que *t* = 0 ocurre cuando **no hay diferencia**. Ahora tomás otra muestra. ¿La media será siempre 5? Probablemente no. Supongamos que da 6. ¿Qué valor tendrá *t*? El numerador es positivo: 6 - 5 = +1. Pero *t* no necesariamente será 1, eso depende del error estándar. Si es 1, entonces *t* será 1, porque 1/1 = 1. Si el error estándar es menor que 1, ¿qué pasa con *t*? Aumenta. Por ejemplo, 1 dividido por 0.5 da 2. Si el error estándar fuera 0.5, entonces *t* sería 2. Y con ese valor podríamos tener más confianza en que la diferencia que observamos no es casual.
 
-Let's start small and work through some examples. Imagine your sample mean is 5. You want to know if it came from a population that also has a mean of 5. In this case, what would $t$ be? It would be zero: we first subtract the sample mean from the population mean, $5-5=0$. Because the numerator is 0, $t$ will be zero. So, $t$ = 0, occurs, when there is no difference.
+¿Puede *t* ser menor que 1? Claro. Si el error estándar es grande, digamos 2, entonces *t* será más chico (1/2 = 0.5). La dirección de la diferencia entre la media muestral y la poblacional también puede hacer que *t* sea negativo. Si la media muestral fuera 4, entonces la diferencia es negativa, y *t* también lo será, porque el numerador es negativo. El denominador (el error estándar) siempre será positivo (acordate por qué: se calcula a partir de la desviación estándar de la muestra, que siempre es positiva porque usamos cuadrados al calcularla). Así que estas son algunas intuiciones sobre los valores posibles de *t*. Puede ser positivo o negativo, grande o chico.
 
-Let's say you take another sample, do you think the mean will be 5 every time, probably not. Let's say the mean is 6. So, what can $t$ be here? It will be a positive number, because 6-5= +1. But, will $t$ be +1? That depends on the standard error of the sample. If the standard error of the sample is 1, then $t$ could be 1, because 1/1 = 1.
+Hagamos una cosa más para afinar la intuición. ¿Qué tal si generamos varias muestras, calculamos la media muestral **y** el error estándar de la media, y graficamos esas dos cosas entre sí? Así vamos a ver cómo varía típicamente la media con respecto al error estándar.
 
-If the sample standard error is smaller than 1, what happens to $t$? It gets bigger right? For example, 1 divided by 0.5 = 2. If the sample standard error was 0.5, $t$ would be 2. And, what could we do with this information? Well, it be like a measure of confidence. As $t$ gets bigger we could be more confident in the mean difference we are measuring.
-
-Can $t$ be smaller than 1? Sure, it can. If the sample standard error is big, say like 2, then $t$ will be smaller than one (in our case), e.g., 1/2 = .5. The direction of the difference between the sample mean and population mean, can also make the $t$ become negative. What if our sample mean was 4. Well, then $t$ will be negative, because the mean difference in the numerator will be negative, and the number in the bottom (denominator) will always be positive (remember why, it's the standard error, computed from the sample standard deviation, which is always positive because of the squaring that we did.).
-
-So, that is some intuitions about what the kinds of values t can take. $t$ can be positive or negative, and big or small.
-
-Let's do one more thing to build our intuitions about what $t$ can look like. How about we sample some numbers and then measure the sample mean **and** the standard error of the mean, and then plot those two things against each each. This will show us how a sample mean typically varies with respect to the standard error of the mean.
-
-In @fig-6sampleMSEM, I pulled 1,000 samples of $N = 10$ from a normal distribution (mean = 0, sd = 1). Each time I measured the mean and standard error of the sample. That gave two descriptive statistics for each sample, letting us plot each sample as dot in a scatter plot.
+En la figura `@fig-6muestraMSEM`, tomé 1.000 muestras de tamaño \$N = 10\$ de una distribución normal (media = 0, desviación estándar = 1). En cada caso, calculé la media y el error estándar. Eso nos da dos estadísticas descriptivas por muestra, y podemos graficarlas como puntos en un scatterplot.
 
 ```{r}
-#| label: fig-6sampleMSEM
-#| fig-cap: "A scatter plot with sample mean on the x-axis, and standard error of the mean on the y-axis"
+#| label: fig-6muestraMSEM
+#| fig-cap: "Diagrama de dispersión con la media muestral en el eje x y el error estándar en el eje y"
 
-sample_mean <- length(1000)
-sample_se <- length(1000)
+media_muestral <- length(1000)
+desvío_muestral <- length(1000)
 
 for (i in 1:1000) {
   s <- rnorm(10, 0, 1)
-  sample_mean[i] <- mean(s)
-  sample_se[i] <- sd(s) / sqrt(length(s))
+  media_muestral[i] <- mean(s)
+  desvío_muestral[i] <- sd(s) / sqrt(length(s))
 }
 
-plot(sample_mean, sample_se)
-
+plot(media_muestral, desvío_muestral)
 ```
 
-What we get is a cloud of dots. You might notice the cloud has a circular quality. There's more dots in the middle, and fewer dots as they radiate out from the middle. The dot cloud shows us the general range of the sample mean, for example most of the dots are in between -1 and 1. Similarly, the range for the sample standard error is roughly between .2 and .5. Remember, each dot represents one sample.
+Lo que obtenemos es una nube de puntos. Podés notar que tiene una forma más o menos circular. Hay más puntos en el centro, y menos a medida que se alejan. La nube muestra el rango típico de las medias muestrales: la mayoría está entre -1 y 1. El error estándar también varía entre aproximadamente 0.2 y 0.5. Recordá que cada punto representa una muestra.
 
-We can look at the same data a different way. For example, rather than using a scatter plot, we can divide the mean for each dot by the standard error for each dot. @fig-6thisexample shows the result in a histogram.
+Podemos ver estos datos de otra forma. En lugar de graficar directamente las medias y errores, podemos dividir la media de cada muestra por su error estándar. La figura `@fig-6thisexample` muestra un histograma de esos valores.
 
-```{r}
+```{r echo=F}
 #| label: fig-6thisexample
-#| fig-cap: "A histogram of the sample means divided by the sample standard errors, this is a t-distribution."
+#| fig-cap: "Histograma de las medias muestrales divididas por sus errores estándar: una distribución t."
 
-
-hist(sample_mean/sample_se, breaks=30)
+hist(media_muestral/desvío_muestral, breaks=30)
 ```
 
-Interesting, we can see the histogram is shaped like a normal curve. It is centered on 0, which is the most common value. As values become more extreme, they become less common. If you remember, our formula for $t$, was the mean divided by the standard error of the mean. That's what we did here. This histogram is showing you a $t$-distribution.
+Interesante, el histograma tiene forma de campana normal. Está centrado en 0, que es el valor más común. A medida que los valores se alejan de 0, son menos frecuentes. Si recordás, nuestra fórmula para *t* era la media dividida por el error estándar. Eso es exactamente lo que hicimos acá. Este histograma te está mostrando una **distribución t**.
 
-### Calculating t from data
+### Calcular t a partir de datos
 
-Let's briefly calculate a t-value from a small sample. Let's say we had 10 students do a true/false quiz with 5 questions on it. There's a 50% chance of getting each answer correct.
+Probemos calcular un valor de *t* con una muestra chica. Supongamos que 10 estudiantes hicieron un test de verdadero/falso con 5 preguntas. Hay un 50% de chance de acertar cada una al azar.
 
-Every student completes the 5 questions, we grade them, and then we find their performance (mean percent correct). What we want to know is whether the students were guessing. If they were all guessing, then the sample mean should be about 50%, it shouldn't be different from chance, which is 50%. Let's look at @tbl-tsmall.
+Todos completan el test, corregimos, y calculamos el desempeño (porcentaje de respuestas correctas). Queremos saber si estuvieron adivinando. Si fue así, el promedio debería rondar el 50%, que sería igual a azar. Veamos la tabla `@tbl-tsmall`.
 
-```{r, echo=FALSE}
+```{r echo=F}
 #| label: tbl-tsmall
-#| tbl-cap: "Calculating the t-value for a one-sample test."
-
+#| tbl-cap: "Cálculo del valor t para un test de una muestra."
 
 library(dplyr)
-students <- 1:10
-scores <- c(50, 70, 60, 40, 80, 30, 90, 60, 70, 60)
+estudiantes<- 1:10
+puntajes <- c(50, 70, 60, 40, 80, 30, 90, 60, 70, 60)
 
-mean_scores <- mean(scores)
-Difference_from_Mean <- scores - mean_scores
-Squared_Deviations <- Difference_from_Mean ^ 2
-the_df <- data.frame(students,
-                     scores,
-                     mean = rep(mean_scores, 10),
-                     Difference_from_Mean,
-                     Squared_Deviations)
+promedio_puntajes <- mean(puntajes)
+Diferencia_de_la_media <- puntajes - promedio_puntajes
+Desvíos_al_cuadrado <- Diferencia_de_la_media ^ 2
+the_df <- data.frame(estudiantes,
+                     puntajes,
+                     promedio = rep(promedio_puntajes, 10),
+                     Diferencia_de_la_media,
+                     Desvíos_al_cuadrado)
 
 the_df <- the_df %>%
-  rbind(c("Sums", colSums(the_df[1:10, 2:5]))) %>%
-  rbind(c("Means", colMeans(the_df[1:10, 2:5]))) %>%
-  rbind(c(" ", " ", " ", "sd ", round(sd(the_df[1:10, 2]), digits = 2))) %>%
-  rbind(c(" ", " ", " ", "SEM ", round(sd(the_df[1:10, 2]) / sqrt(10), digits =
+  rbind(c("Sumas", colSums(the_df[1:10, 2:5]))) %>%
+  rbind(c("Medias", colMeans(the_df[1:10, 2:5]))) %>%
+  rbind(c(" ", " ", " ", "DE ", round(sd(the_df[1:10, 2]), digits = 2))) %>%
+  rbind(c(" ", " ", " ", "EEM ", round(sd(the_df[1:10, 2]) / sqrt(10), digits =
                                          2))) %>%
   rbind(c(" ", " ", " ", "t", (61 - 50) / round(sd(the_df[1:10, 2]) / sqrt(10), digits =
                                                   2)))
 knitr::kable(the_df)
-
-
 ```
 
-You can see the `scores` column has all of the test scores for each of the 10 students. We did the things we need to do to compute the standard deviation.
+Podés ver que la columna `puntajes` tiene los puntajes de cada uno de los 10 estudiantes. Hicimos todo lo necesario para calcular la desviación estándar. Recordá que la desviación estándar muestral es la raíz cuadrada de la varianza muestral, o sea:
 
-Remember the sample standard deviation is the square root of the sample variance, or:
+$\text{desviación estándar} = \sqrt{\frac{\sum_{i}^{n}({x_{i}-\bar{x})^2}}{N-1}}$
 
-$\text{sample standard deviation} = \sqrt{\frac{\sum_{i}^{n}({x_{i}-\bar{x})^2}}{N-1}}$
+$DE = \sqrt{\frac{2890}{10-1}} = 17.92$
 
-$\text{sd} = \sqrt{\frac{2890}{10-1}} = 17.92$
+El error estándar de la media se obtiene dividiendo la desviación estándar por la raíz de N:
 
-The standard error of the mean, is the standard deviation divided by the square root of N
+$EEM = \frac{s}{\sqrt{N}} = \frac{17.92}{10} = 5.67$
 
-$\text{SEM} = \frac{s}{\sqrt{N}} = \frac{17.92}{10} = 5.67$
+*t* es la diferencia entre nuestra media muestral (61) y la media poblacional (50, si asumimos azar), dividida por el error estándar:
 
-$t$ is the difference between our sample mean (61), and our population mean (50, assuming chance), divided by the standard error of the mean.
+$t = \frac{\bar{X}-\mu}{S_{\bar{X}}} = \frac{61-50}{5.67} = 1.94$
 
-$\text{t} = \frac{\bar{X}-u}{S_{\bar{X}}} = \frac{\bar{X}-u}{SEM} = \frac{61-50}{5.67} = 1.94$
-
-And, that is you how calculate $t$, by hand. It's a pain. I was annoyed doing it this way. In the lab, you learn how to calculate $t$ using software, so it will just spit out $t$. For example in R, all you have to do is this:
+Y así se calcula *t* a mano. Es un embole. A mí ya me molestó hacerlo así. En el laboratorio vas a aprender a calcular *t* con software, que te lo da de una. Por ejemplo, en R solo tenés que escribir:
 
 ```{r, echo=TRUE}
-t.test(scores, mu=50)
+t.test(puntajes, mu=50)
 ```
 
-### How does t behave?
+### ¿Cómo se comporta t?
 
-If $t$ is just a number that we can compute from our sample (it is), what can we do with it? How can we use $t$ for statistical inference?
+Si *t* es solo un número que podemos calcular a partir de una muestra (y lo es), ¿qué hacemos con él? ¿Cómo usamos *t* para inferencia estadística?
 
-Remember back to the chapter on sampling and distributions, that's where we discussed the sampling distribution of the sample mean. Remember, we made a lot of samples, then computed the mean for each sample, then we plotted a histogram of the sample means. Later, in that same section, we mentioned that we could generate sampling distributions for any statistic. For each sample, we could compute the mean, the standard deviation, the standard error, and now even $t$, if we wanted to. We could generate 10,000 samples, and draw four histograms, one for each sampling distribution for each statistic.
-
-This is exactly what I did, and the results are shown in the four panels of @fig-6sampdists below. I used a sample size of 20, and drew random observations for each sample from a normal distribution, with mean = 0, and standard deviation = 1. Let's look at the sampling distributions for each of the statistics. $t$ was computed assuming with the population mean assumed to be 0.
+Volvamos al capítulo sobre muestreo y distribuciones. Ahí hablamos de la distribución muestral de la media. Generamos muchas muestras, calculamos la media de cada una, y armamos un histograma de esas medias. Más adelante dijimos que podíamos hacer eso con **cualquier** estadístico. Para cada muestra podíamos calcular la media, la desviación estándar, el error estándar, e incluso *t*. Podríamos generar 10.000 muestras y hacer cuatro histogramas, uno por cada estadístico. Eso fue exactamente lo que hice, y los resultados están en los cuatro paneles de la figura `@fig-6sampdists`. Usé un tamaño de muestra de 20, y tomé observaciones aleatorias de una distribución normal, con media = 0, y la desviación estándar = 1. Veamos las distribuciones muestrales de cada estadístico. *t* se calculó asumiendo que la media poblacional es 0.
 
 ```{r}
 #| label: fig-6sampdists
-#| fig-cap: "Sampling distributions for the mean, standard deviation, standard error of the mean, and $t$."
+#| fig-cap: "Distribuciones muestrales de la media, la desviación estándar, el error estándar de la media, y $t$."
 #| out-width: "100%"
-
 
 all_df <- data.frame()
 for (i in 1:10000) {
-  sample <- rnorm(20, 0, 1)
-  sample_mean <- mean(sample)
-  sample_sd <- sd(sample)
-  sample_se <- sd(sample) / sqrt(length(sample))
-  sample_t <- as.numeric(t.test(sample, mu = 0)$statistic)
-  t_df <- data.frame(i, sample_mean, sample_sd, sample_se, sample_t)
+  muestra <- rnorm(20, 0, 1)
+  media_muestral<- mean(muestra)
+  desvío_muestral <- sd(muestra)
+  muestra_ee <- sd(muestra) / sqrt(length(muestra))
+  muestra_t <- as.numeric(t.test(muestra, mu = 0)$statistic)
+  t_df <- data.frame(i, media_muestral, desvío_muestral, muestra_ee, muestra_t)
   all_df <- rbind(all_df, t_df)
 }
 
 library(ggpubr)
-a <- ggplot(all_df, aes(x = sample_mean)) +
+a <- ggplot(all_df, aes(x = media_muestral)) +
   geom_histogram(color = "white") +
   theme_classic(base_size=20)
-b <- ggplot(all_df, aes(x = sample_sd)) +
+b <- ggplot(all_df, aes(x = desvío_muestral)) +
   geom_histogram(color = "white") +
   theme_classic(base_size=20)
-c <- ggplot(all_df, aes(x = sample_se)) +
+c <- ggplot(all_df, aes(x = muestra_ee)) +
   geom_histogram(color = "white") +
   theme_classic(base_size=20)
-d <- ggplot(all_df, aes(x = sample_t)) +
+d <- ggplot(all_df, aes(x = muestra_t)) +
   geom_histogram(color = "white") +
   theme_classic(base_size=20)
 
 ggarrange(a, b, c, d,
           ncol = 2, nrow = 2)
-
 ```
 
-We see four sampling distributions. This is how statistical summaries of these summaries behave. We have used the word chance windows before. These are four chance windows, measuring different aspects of the sample. In this case, all of the samples came from the same normal distribution. Because of sampling error, each sample is not identical. The means are not identical, the standard deviations are not identical, sample standard error of the means are not identical, and the $t$s of the samples are not identical. They all have some variation, as shown by the histograms. This is how samples of size 20 behave.
+Vemos cuatro distribuciones muestrales. Así es como se comportan los resúmenes estadísticos de muestras. Antes hablamos de *ventanas de azar* —estas son cuatro ventanas de azar, que miden distintos aspectos de una muestra. En este caso, todas las muestras provienen de la misma distribución normal. Pero por el error muestral, cada muestra es diferente. Las medias no son idénticas, las desviaciones tampoco, los errores estándar tampoco, y los valores de *t* tampoco. Todas varían, como muestran los histogramas. Así se comportan las muestras de tamaño 20.
 
-We can see straight away, that in this case, we are unlikely to get a sample mean of 2. That's way outside the window. The range for the sampling distribution of the mean is around -.5 to +.5, and is centered on 0 (the population mean, would you believe!).
+Podemos ver de entrada que es poco probable obtener una media muestral de 2. Está muy fuera del rango típico. La distribución de las medias va más o menos de -0.5 a +0.5, y está centrada en 0 (¡justo la media poblacional, mirá vos!).
 
-We are unlikely to get sample standard deviations of between .6 and 1.5, that is a different range, specific to the sample standard deviation.
+También es poco probable obtener desviaciones estándar entre 0.6 y 1.5; ese es el rango típico específico para la desviación estándar muestral.
 
-Same thing with the sample standard error of the mean, the range here is even smaller, mostly between .1, and .3. You would rarely find a sample with a standard error of the mean greater than .3. Virtually never would you find one of say 1 (for this situation).
+Lo mismo pasa con el error estándar de la media: el rango es más chico, entre 0.1 y 0.3. Rara vez vas a encontrar una muestra con error estándar mayor a 0.3. Prácticamente nunca uno de 1 (en esta situación).
 
-Now, look at $t$. It's range is basically between -3 and +3 here. 3s barely happen at all. You pretty much never see a 5 or -5 in this situation.
+Y ahora mirá los valores de *t*. El rango va más o menos de -3 a +3. Los valores 3 apenas aparecen. Casi nunca vas a ver un 5 o un -5 acá.
 
-All of these sampling windows are chance windows, and they can all be used in the same way as we have used similar sampling distributions before (e.g., Crump Test, and Randomization Test) for statistical inference. For all of them we would follow the same process:
+Todas estas *ventanas de azar* se pueden usar como usamos las distribuciones muestrales antes (por ejemplo, en el test de Crump o el test de aleatorización), para hacer inferencias estadísticas. El proceso es el mismo para todas:
 
-1.  Generate these distributions
-2.  Look at your sample statistics for the data you have (mean, SD, SEM, and $t$)
-3.  Find the likelihood of obtaining that value or greater
-4.  Obtain that probability
-5.  See if you think your sample statistics were probable or improbable.
+1. Generar estas distribuciones
+2. Mirar tus estadísticos muestrales (media, SD, SEM, y *t*)
+3. Calcular la probabilidad de obtener ese valor de *t* o uno más extremo
+4. Obtener esa probabilidad
+5. Evaluar si tus estadísticas muestrales parecen probables o improbables
 
-We'll formalize this in a second. I just want you to know that what you will be doing is something that you have already done before. For example, in the Crump test and the Randomization test we focused on the distribution of mean differences. We could do that again here, but instead, we will focus on the distribution of $t$ values. We then apply the same kinds of decision rules to the $t$ distribution, as we did for the other distributions. Below you will see a graph you have already seen, except this time it is a distribution of $t$s, not mean differences:
+Enseguida vamos a formalizar todo esto. Por ahora, quiero que veas que esto que vas a hacer es algo que **ya hiciste antes**. Por ejemplo, en el test de Crump y el test de aleatorización, nos enfocamos en la distribución de diferencias de medias. Podríamos hacer lo mismo acá, pero esta vez nos vamos a centrar en la distribución de valores *t*. Después aplicamos las mismas reglas de decisión que usamos con las otras distribuciones.
 
-Remember, if we obtained a single $t$ from one sample we collected, we could consult the chance window in @fig-6tdecision below to find out whether the $t$ we obtained from the sample was likely or unlikely to occur by chance.
+Abajo vas a ver un gráfico que ya viste antes, pero ahora muestra una distribución de *t*, no de diferencias de medias. Recordá: si obtenemos un único valor *t* a partir de una muestra que recolectamos, podemos consultar la *ventana de azar* en `@fig-6tdecision` para ver si ese valor era esperable por azar o no.
 
 ```{r}
 #| label: fig-6tdecision
-#| fig-cap: "Applying decision criteria to the $t$-distribution. Histogram of $t$s from samples (n=20) drawn from the same normal distribution (u=0, sd=1)"
+#| fig-cap: "Aplicación de criterios de decisión a la distribución t. Histograma de valores t de muestras (n = 20) tomadas de una misma distribución normal (μ = 0, sd = 1)"
 
+muestra_t <- all_df$muestra_t
 
-sample_t <- all_df$sample_t
-
-ggplot(all_df, aes(x = sample_t)) +
+ggplot(all_df, aes(x = muestra_t)) +
   annotate(
     "rect",
-    xmin = min(sample_t),
-    xmax = max(sample_t),
+    xmin = min(muestra_t),
+    xmax = max(muestra_t),
     ymin = 0,
     ymax = Inf,
     alpha = 0.5,
@@ -309,7 +289,7 @@ ggplot(all_df, aes(x = sample_t)) +
   ) +
   annotate(
     "rect",
-    xmin = min(sample_t),
+    xmin = min(muestra_t),
     xmax = -1.94,
     ymin = 0,
     ymax = Inf,
@@ -319,7 +299,7 @@ ggplot(all_df, aes(x = sample_t)) +
   annotate(
     "rect",
     xmin = 1.94,
-    xmax = max(sample_t),
+    xmax = max(muestra_t),
     ymin = 0,
     ymax = Inf,
     alpha = 0.7,
@@ -327,14 +307,14 @@ ggplot(all_df, aes(x = sample_t)) +
   ) +
   geom_rect(aes(
     xmin = -Inf,
-    xmax = min(sample_t),
+    xmax = min(muestra_t),
     ymin = 0,
     ymax = Inf
   ),
   alpha = .5,
   fill = "lightgreen") +
   geom_rect(aes(
-    xmin = max(sample_t),
+    xmin = max(muestra_t),
     xmax = Inf,
     ymin = 0,
     ymax = Inf
@@ -343,75 +323,64 @@ ggplot(all_df, aes(x = sample_t)) +
   fill = "lightgreen") +
   geom_histogram(bins = 50, color = "white") +
   theme_classic() +
-  geom_vline(xintercept = min(sample_t)) +
-  geom_vline(xintercept = max(sample_t)) +
+  geom_vline(xintercept = min(muestra_t)) +
+  geom_vline(xintercept = max(muestra_t)) +
   geom_vline(xintercept = -1.94) +
   geom_vline(xintercept = 1.94) +
   xlim(-8, 8) +
-  geom_label(data = data.frame(x = 0, y = 250, label = "CHANCE"), aes(x = x, y = y, label = label)) +
-  geom_label(data = data.frame(x = -7, y = 250, label = "NOT \n CHANCE"),
+  geom_label(data = data.frame(x = 0, y = 250, label = "AZAR"), aes(x = x, y = y, label = label)) +
+  geom_label(data = data.frame(x = -7, y = 250, label = "NO\nAZAR"),
              aes(x = x, y = y, label = label)) +
-  geom_label(data = data.frame(x = 7, y = 250, label = "NOT \n CHANCE"),
+  geom_label(data = data.frame(x = 7, y = 250, label = "NO\nAZAR"),
              aes(x = x, y = y, label = label)) +
-  #  geom_label(data = data.frame(x = min(sample_t), y = 600,
-  #                              label = paste0("min \n",round(min(sample_t)))),
-  #                             aes(x = x, y = y, label = label))+
-  #geom_label(data = data.frame(x = max(sample_t), y = 600,
-  #                            label = paste0("max \n",round(max(sample_t)))),
-  #                           aes(x = x, y = y, label = label))+
   geom_label(data = data.frame(x = -4, y = 250,
                                label = "?"),
              aes(x = x, y = y, label = label)) +
-  geom_label(data = data.frame(x = 4, y = 250,
-                               label = "?"),
-             aes(x = x, y = y, label = label)) +
-  xlab("mean sample_t")
-
+  xlab("media de muestra_t")
 ```
 
-### Making a decision
+### Tomando una decisión
 
-From our early example involving the TRUE/FALSE quizzes, we are now ready to make some kind of decision about what happened there. We found a mean difference of `r mean(scores)-50`. We found a $t$ = `r t.test(scores, mu=50)$statistic`. The probability of this $t$ or larger occurring is $p$ = `r t.test(scores, mu=50)$p.value`. We were testing the idea that our sample mean of `r mean(scores)` could have come from a normal distribution with mean = 50. The $t$ test tells us that the $t$ for our sample, or a larger one, would happen with p = `r t.test(scores, mu=50)$p.value`. In other words, chance can do it a kind of small amount of time, but not often. In English, this means that all of the students could have been guessing, but it wasn't that likely that were just guessing.
+Volvamos a nuestro ejemplo del test de verdadero/falso. Ahora podemos tomar una decisión sobre qué pasó ahí. Encontramos una diferencia de medias de `r mean(puntajes)-50`. El valor de *t* fue `r t.test(puntajes, mu=50)$statistic`. La probabilidad de obtener ese valor de *t* o uno más extremo es $p$ = `r t.test(puntajes, mu=50)$p.value`.
 
-The next $t$-test is called a **paired samples t-test**. And, spoiler alert, we will find out that a paired samples t-test is actually a one-sample t-test in disguise (WHAT!), yes it is. If the one-sample $t$-test didn't make sense to you, read the next section.
+Estábamos probando si nuestra media muestral de `r mean(puntajes)` podría venir de una distribución normal con media = 50. El test *t* nos dice que obtener ese *t*, o uno más grande, pasaría con probabilidad $p$ = `r t.test(puntajes, mu=50)$p.value`. En otras palabras, el azar puede lograrlo, pero no muy seguido. En criollo: todos los estudiantes podrían haber estado adivinando... pero **no es muy probable** que haya sido solo eso.
 
-## Paired-samples t-test
+La próxima prueba-*t* se llama **prueba t de muestras pareadas**. Y, spoiler: vamos a descubrir que en realidad es un **prueba t de una muestra disfrazado** (¡¿QUÉ?!). Sí. Si no entendiste el de una muestra, seguí leyendo.
 
-For me (Crump), many analyses often boil down to a paired samples t-test. It just happens that many things I do reduce down to a test like this.
+## Prueba t de muestras pareadas
 
-I am a cognitive psychologist, I conduct research about how people do things like remember, pay attention, and learn skills. There are lots of Psychologists like me, who do very similar things.
+Para mí (Crump), muchos análisis terminan siendo una prueba t de muestras pareadas. Simplemente porque muchas de las cosas que hago se reducen a eso.
 
-We all often conduct the same kinds of experiments. They go like this, and they are called **repeated measures** designs. They are called **repeated measures** designs, because we measure how one person does something more than once, we **repeat** the measure.
+Soy psicólogo cognitivo. Hago investigación sobre cómo la gente recuerda, presta atención y aprende habilidades. Hay muchos psicólogos como yo que hacen cosas parecidas. Hacemos experimentos muy similares. Son lo que se llama diseños de **medidas repetidas**. Se llaman así porque medimos cómo una persona hace algo más de una vez. Repetimos la medición. Por ejemplo, puedo medir cómo alguien realiza una tarea en la condición A, y luego ver cómo esa misma persona la hace en la condición B. Y veo que hace cosas distintas. Estoy **midiendo repetidamente** a la misma persona en ambas condiciones. Lo que me interesa es si la manipulación experimental cambia algo en cómo la persona realiza la tarea.
 
-So, I might measure somebody doing something in condition A, and measure the same person doing something in Condition B, and then I see that same person does different things in the two conditions. I **repeatedly measure** the same person in both conditions. I am interested in whether the experimental manipulation changes something about how people perform the task in question.
+### Mehr, Song y Spelke (2016)
 
-### Mehr, Song, and Spelke (2016)
+Vamos a introducir la prueba t de muestras pareadas con un ejemplo real, de un estudio real. @mehr20165 investigaron si cantarles canciones a los bebés los ayuda a ser más sensibles a las señales sociales. Por ejemplo, los bebés tienen que aprender a dirigir su atención hacia las personas como parte de aprender a interactuar socialmente. Tal vez cantarle a un bebé ayuda con ese proceso. Cuando un bebé escucha una canción familiar, puede empezar a prestar más atención a la persona que la canta, incluso después de que termina. Esa persona puede volverse más importante para el bebé en términos sociales. Vas a aprender más sobre este estudio en el laboratorio de esta semana. Este ejemplo te prepara para las actividades de ese laboratorio. Acá va un resumen breve de lo que hicieron.
 
-We will introduce the paired-samples t-test with an example using real data, from a real study. @mehr20165 were interested in whether singing songs to infants helps infants become more sensitive to social cues. For example, infants might need to learn to direct their attention toward people as a part of learning how to interact socially with people. Perhaps singing songs to infants aids this process of directing attention. When an infant hears a familiar song, they might start to pay more attention to the person singing that song, even after they are done singing the song. The person who sang the song might become more socially important to the infant. You will learn more about this study in the lab for this week. This example, prepares you for the lab activities. Here is a brief summary of what they did.
+Primero, los padres fueron entrenados para cantarle una canción a sus bebés. Luego de varios días de cantarles esa canción, los padres fueron al laboratorio con sus bebés. En la primera sesión, se sentaron con sus hijos en las rodillas, de forma que los bebés pudieran mirar dos videos. En cada video aparecían dos personas nuevas que el bebé nunca había visto. Cada una de esas personas (los cantantes) les cantaba una canción al bebé. Uno de los cantantes cantaba la canción **familiar**, que el bebé ya conocía por sus padres. El otro cantaba una canción **no familiar**, que el bebé nunca había oído.
 
-First, parents were trained to sing a song to their infants. After many days of singing this song to the infants, a parent came into the lab with their infant. In the first session, parents sat with their infants on their knees, so the infant could watch two video presentations. There were two videos. Each video involved two unfamiliar new people the infant had never seen before. Each new person in the video (the singers) sang one song to the infant. One singer sang the "familiar" song the infant had learned from their parents. The other singer sang an "unfamiliar" song the infant had not hear before.
+Hubo dos fases de medición importantes: la fase de línea base (*baseline*) y la fase de prueba (*test*).
 
-There were two really important measurement phases: the baseline phase, and the test phase.
+La fase de línea base ocurrió **antes** de que los bebés vieran y oyeran a los cantantes. Durante esta fase, los bebés miraban un video con ambos cantantes en simultáneo. Los investigadores registraban qué proporción del tiempo el bebé miraba a cada uno. Esta fase servía para ver si los bebés ya tenían una preferencia por alguno de los dos (antes de escucharlos cantar).
 
-The baseline phase occurred before the infants saw and heard each singer sing a song. During the baseline phase, the infants watched a video of both singers at the same time. The researchers recorded the proportion of time that the infant looked at each singer. The baseline phase was conducted to determine whether infants had a preference to look at either person (who would later sing them a song).
+La fase de prueba fue **después** de que los bebés vieron y oyeron a cada cantante. En esta fase, los bebés veían videos mudos de los mismos cantantes. Se medía la proporción de tiempo que pasaban mirando a cada uno. La pregunta era: ¿los bebés mirarían más tiempo al cantante que había cantado la canción familiar, en comparación con el otro?
 
-The test phase occurred **after** infants saw and heard each song, sung by each singer. During the test phase, each infant had an opportunity to watch silent videos of both singers. The researchers measured the proportion of time the infants spent looking at each person. The question of interest, was whether the infants would spend a greater proportion of time looking at the singer who sang the familiar song, compared to the singer who sang the unfamiliar song.
+Hay más de una forma de describir el diseño del estudio, pero lo vamos a presentar así: fue un diseño de medidas repetidas, con una variable independiente (la manipulación), llamada **fase de visualización**: línea base vs. prueba. Hubo una variable dependiente (la medición), que fue la **proporción de tiempo mirando** al cantante que había cantado la canción familiar. Fue un diseño de medidas repetidas porque esa proporción se midió **dos veces**: una en la línea base (antes de que los bebés oyeran a los cantantes), y otra en la prueba (después de que los oyeran).
 
-There is more than one way to describe the design of this study. We will describe it like this. It was a repeated measures design, with one independent (manipulation) variable called Viewing phase: Baseline versus Test. There was one dependent variable (the measurement), which was proportion looking time (to singer who sung familiar song). This was a repeated measures design because the researchers measured proportion looking time twice (they repeated the measure), once during baseline (before infants heard each singer sing a song), and again during test (after infants head each singer sing a song).
+La pregunta clave era si los bebés cambiarían su tiempo de mirada, mirando **más tiempo al cantante de la canción familiar** durante la fase de prueba que en la línea base. Es una pregunta sobre un cambio **dentro de cada bebé**. En general, los posibles resultados eran:
 
-The important question was whether infants would change their looking time, and look more at the singer who sang the familiar song during the test phase, than they did during the baseline phase. This is a question about a change within individual infants. In general, the possible outcomes for the study are:
+1. **Sin cambio**: la diferencia entre el tiempo de mirada al cantante de la canción familiar durante línea base y prueba es cero.
+2. **Cambio positivo**: los bebés miran más tiempo al cantante de la canción familiar durante la fase de prueba (después de haberlo visto y escuchado), comparado con la fase de línea base (antes de oírlos). Esto da una diferencia positiva si usamos la fórmula:
+   Tiempo de mirada en prueba − Tiempo de mirada en línea base (al cantante de la canción familiar).
 
-1.  No change: The difference between looking time toward the singer of the familiar song during baseline and test is zero, no difference.
+3. **Cambio negativo**: los bebés miran más tiempo al cantante de la canción **no familiar** durante la fase de prueba (después de haberlos escuchado), en comparación con la línea base (antes de oírlos). Esto da una diferencia negativa con la misma fórmula:
+   Tiempo de mirada en prueba − Tiempo de mirada en línea base (al cantante de la canción familiar).
 
-2.  Positive change: Infants will look longer toward the singer of the familiar song during the test phase (after they saw and heard the singers), compared to the baseline phase (before they saw and heard the singers). This is a positive difference if we use the formula: Test Phase Looking time - Baseline phase looking time (to familiar song singer).
+### Los datos
 
-3.  Negative change: Infants will look longer toward the singer of the unfamiliar song during the test phase (after they saw and heard the singers), compared to the baseline phase (before they saw and heard the singers). This is a negative difference if we use the same formula: Test Phase Looking time - Baseline phase looking time (to familiar song singer).
+Veamos los datos de los primeros 5 bebés del estudio. Esto nos va a ayudar a entender mejor algunas propiedades de los datos antes de analizarlos. Vamos a ver que los datos están estructurados de forma que podemos aprovechar con una prueba t de muestras pareadas. (Ojo: miramos solo los primeros 5 bebés para mostrar cómo funcionan los cálculos. El resultado final dla prueba t cambia si usamos todos los datos del estudio).
 
-### The data
-
-Let's take a look at the data for the first 5 infants in the study. This will help us better understand some properties of the data before we analyze it. We will see that the data is structured in a particular way that we can take advantage of with a paired samples t-test. Note, we look at the first 5 infants to show how the computations work. The results of the paired-samples t-test change when we use all of the data from the study.
-
-Here is a table of the data:
+Acá está la tabla con los datos:
 
 ```{r, echo=FALSE}
 library(data.table)
@@ -420,132 +389,111 @@ library(dplyr)
 experiment_one <- all_data %>% filter(exp1==1)
 
 paired_sample_df <-  data.frame(infant=1:5, 
-                               Baseline = round(experiment_one$Baseline_Proportion_Gaze_to_Singer[1:5],digits=2), 
+                               Línea_de_base = round(experiment_one$Baseline_Proportion_Gaze_to_Singer[1:5],digits=2), 
                                Test = round(experiment_one$Test_Proportion_Gaze_to_Singer[1:5], digits=2))
 
-# mean_scores <- mean(scores)
-# Difference_from_Mean <- scores-mean_scores
-# Squared_Deviations <- Difference_from_Mean^2
-# the_df<-data.frame(students,
-#                    scores,
-#                    mean=rep(mean_scores,10),
-#                    Difference_from_Mean,
-#                    Squared_Deviations)
-# 
-# the_df <- the_df %>%
-#   rbind(c("Sums",colSums(the_df[1:10,2:5]))) %>%
-#   rbind(c("Means",colMeans(the_df[1:10,2:5]))) %>%
-#   rbind(c(" "," "," ","sd ",round(sd(the_df[1:10,2]),digits=2))) %>%
-#   rbind(c(" "," "," ","SEM ",round(sd(the_df[1:10,2])/sqrt(10), digits=2))) %>%
-#   rbind(c(" "," "," ","t",(61-50)/round(sd(the_df[1:10,2])/sqrt(10), digits=2)))
 knitr::kable(paired_sample_df)
-
-
-
-
-
 ```
 
-The table shows proportion looking times toward the singer of the familiar song during the Baseline and Test phases. Notice there are five different infants, (1 to 5). Each infant is measured twice, once during the Baseline phase, and once during the Test phase. To repeat from before, this is a repeated-measures design, because the infants are measured repeatedly (twice in this case). Or, this kind of design is also called a **paired-samples** design. Why? because each participant comes with a pair of samples (two samples), one for each level of the design.
+La tabla muestra la **proporción de tiempo mirando** al cantante de la canción familiar durante las fases de línea base y prueba. Fijate que hay cinco bebés (del 1 al 5). Cada uno fue medido dos veces: una en la fase de línea base y otra en la de prueba. Como dijimos antes, esto es un diseño de **medidas repetidas**, porque se mide a cada bebé más de una vez (en este caso, dos). También se le llama diseño de **muestras pareadas**. ¿Por qué? Porque cada participante aporta un **par de mediciones** (una por cada condición del diseño).
 
-Great, so what are we really interested in here? We want to know if the mean looking time toward the singer of the familiar song for the Test phase is higher than the Baseline phase. We are comparing the two sample means against each other and looking for a difference. We already know that differences could be obtained by chance alone, simply because we took two sets of samples, and we know that samples can be different. So, we are interested in knowing whether chance was likely or unlikely to have produced any difference we might observe.
+Buenísimo, entonces... ¿qué nos interesa en realidad? Queremos saber si el **tiempo medio de mirada** al cantante de la canción familiar en la fase de prueba es mayor que en la fase de línea base. Estamos comparando las dos medias muestrales entre sí, buscando una diferencia. Ya sabemos que esas diferencias pueden surgir por azar, simplemente por el hecho de que tomamos dos muestras, y que las muestras naturalmente pueden diferir. Así que lo que queremos saber es si es **probable o improbable** que la diferencia observada se deba al azar.
 
-In other words, we are interested in looking at the difference scores between the baseline and test phase for each infant. The question here is, for each infant, did their proportion looking time to the singer of the familiar song, increase during the test phase as compared to the baseline phase.
+En otras palabras, nos interesa mirar los **valores de diferencia** entre línea base y prueba para cada bebé. La pregunta es: ¿para cada bebé, aumentó su proporción de mirada al cantante de la canción familiar en la fase de prueba comparado con la fase de línea base?
 
-### The difference scores
+### Los puntajes de diferencia
 
-Let's add the difference scores to the table of data so it is easier to see what we are talking about. The first step in creating difference scores is to decide how you will take the difference, there are two options:
+Agreguemos los puntajes de diferencia a la tabla para que sea más fácil ver de qué hablamos. El primer paso es decidir **cómo vamos a calcular la diferencia**. Hay dos opciones:
 
-1.  Test phase score - Baseline Phase Score
-2.  Baseline phase score - Test Phase score
+1. Puntaje en fase de prueba − Puntaje en fase de línea base
+2. Puntaje en fase de línea base − Puntaje en fase de prueba
 
-Let's use the first formula. Why? Because it will give us positive differences when the test phase score is higher than the baseline phase score. This makes a positive score meaningful with respect to the study design, we know (because we defined it to be this way), that positive scores will refer to longer proportion looking times (to singer of familiar song) during the test phase compared to the baseline phase.
+Vamos a usar la **primera fórmula**. ¿Por qué? Porque da **diferencias positivas** cuando el puntaje de la prueba es mayor que el de línea base. Eso hace que los puntajes positivos tengan sentido en este estudio: indican que el bebé miró más al cantante de la canción familiar **después** de escucharlo que **antes**.
 
 ```{r}
 paired_sample_df <- cbind(paired_sample_df, 
-                          differences = (paired_sample_df$Test-
-                                           paired_sample_df$Baseline))
+                          diferencias = (paired_sample_df$Test - 
+                                           paired_sample_df$Línea_de_base))
 knitr::kable(paired_sample_df)
-
 ```
 
-There we have it, the difference scores. The first thing we can do here is look at the difference scores, and ask how many infants showed the effect of interest. Specifically, how many infants showed a positive difference score. We can see that three of five infants showed a positive difference (they looked more at the singer of the familiar song during the test than baseline phase), and two the infants showed the opposite effect (negative difference, they looked more at the singer of the familiar song during baseline than test).
+Listo, ahora tenemos los puntajes de diferencia. Lo primero que podemos hacer es mirar esos valores y preguntar: ¿cuántos bebés mostraron el efecto que nos interesa? Específicamente: ¿cuántos tuvieron una diferencia positiva?
 
-### The mean difference
+Podemos ver que **tres de los cinco** bebés mostraron un puntaje positivo (miraron más al cantante de la canción familiar en la fase de prueba que en la de línea base), y **dos bebés** mostraron lo contrario (miraron más al cantante de la canción familiar durante la línea base que durante la prueba).
 
-As we have been discussing, the effect of interest in this study is the mean difference between the baseline and test phase proportion looking times. We can calculate the **mean difference**, by finding the **mean of the difference scores**. Let's do that, in fact, for fun let's calculate the mean of the baseline scores, the test scores, and the difference scores.
+### La diferencia media
+
+Como venimos diciendo, el efecto de interés en este estudio es la **diferencia media** entre la proporción de tiempo de mirada en línea base y en prueba. Podemos calcularla como la **media de los puntajes de diferencia**. Vamos a hacerlo. De paso, para divertirnos, también vamos a calcular la media de los puntajes en línea base, los de prueba y los de diferencia.
 
 ```{r}
 paired_sample_df <- paired_sample_df %>%
    rbind(c("Sums",colSums(paired_sample_df[1:5,2:4]))) %>%
    rbind(c("Means",colMeans(paired_sample_df[1:5,2:4])))
-  
+
 knitr::kable(paired_sample_df)
-
 ```
+Podemos ver que hubo una diferencia media positiva de 0.054 entre las fases de prueba y línea base. ¿Podemos apurarnos a concluir que los bebés se sienten más atraídos socialmente hacia personas que les cantaron una canción familiar? Espero que no, al menos no con una muestra tan pequeña. Primero, la diferencia en proporción de tiempo mirando no es muy grande, y por supuesto reconocemos que esa diferencia **podría haberse producido por azar**.
 
-We can see there was a positive mean difference of 0.054, between the test and baseline phases.
+Vamos a evaluar más formalmente si esta diferencia pudo haber sido causada por el azar usando una prueba t de muestras pareadas. Pero antes, calculemos de nuevo *t* y pensemos qué nos dice *t* además de lo que ya nos dice la media de los puntajes de diferencia.
 
-Can we rush to judgment and conclude that infants are more socially attracted to individuals who have sung them a familiar song? I would hope not based on this very small sample. First, the difference in proportion looking isn't very large, and of course we recognize that this difference could have been produced by chance.
+### Calcular *t*
 
-We will more formally evaluate whether this difference could have been caused by chance with the paired-samples t-test. But, before we do that, let's again calculate $t$ and discuss what $t$ tells us over and above what our measure of the mean of the difference scores tells us.
+Bueno, ¿cómo se calcula *t* para una prueba t de muestras pareadas? ¡Sorpresa! Usamos la **misma fórmula dla prueba t de una muestra** que ya aprendiste. Específicamente, usamos la fórmula dla prueba t de una muestra **aplicada a los puntajes de diferencia**. Tenemos una sola muestra de puntajes de diferencia (están en una sola columna), así que podemos usar la prueba t de una muestra. Lo que nos interesa es saber si la **media** de esos puntajes de diferencia podría provenir de una distribución con media 0. Esa distribución especial se llama la **distribución nula** (*null distribution*): es la distribución de la ausencia de diferencias. Claro que esta distribución puede generar diferencias pequeñas por error muestral, pero esas diferencias **no** están causadas por ninguna manipulación experimental, sino por el simple azar del muestreo.
 
-### Calculate t
+Vamos a calcular *t* en un momento. Pero antes, pensemos de nuevo: ¿por qué queremos calcular *t*? ¿Por qué no quedarnos solo con la diferencia media?
 
-OK, so how do we calculate $t$ for a paired-samples $t$-test? Surprise, we use the one-sample t-test formula that you already learned about! Specifically, we use the one-sample $t$-test formula on the difference scores. We have one sample of difference scores (you can see they are in one column), so we can use the one-sample $t$-test on the difference scores. Specifically, we are interested in comparing whether the mean of our difference scores came from a distribution with mean difference = 0. This is a special distribution we refer to as the **null distribution**. It is the distribution no differences. Of course, this **null distribution** can produce differences due to to sampling error, but those differences are not caused by any experimental manipulation, they caused by the random sampling process.
+Recordá: toda la idea detrás de *t* es que nos da una indicación de cuánta **confianza** deberíamos tener en nuestra media. El valor de *t* se obtiene al dividir una medida de la media (el numerador) por una medida de variación (el error estándar, en el denominador). *t* será chico cuando la diferencia media es chica, o cuando la variación es grande. O sea, valores bajos de *t* nos dicen que no deberíamos estar muy seguros sobre esa estimación de diferencia. En cambio, cuando la diferencia media es grande y/o la variación es pequeña, obtenemos un valor alto de *t*. Eso nos da **más confianza** en la estimación.
 
-We calculate $t$ in a moment. Let's now consider again why we want to calculate $t$? Why don't we just stick with the mean difference we already have?
-
-Remember, the whole concept behind $t$, is that it gives an indication of how confident we should be in our mean. Remember, $t$ involves a measure of the mean in the numerator, divided by a measure of variation (standard error of the sample mean) in the denominator. The resulting $t$ value is small when the mean difference is small, or when the variation is large. So small $t$-values tell us that we shouldn't be that confident in the estimate of our mean difference. Large $t$-values occur when the mean difference is large and/or when the measure of variation is small. So, large $t$-values tell us that we can be more confident in the estimate of our mean difference. Let's find $t$ for the mean difference scores. We use the same formulas as we did last time:
+Vamos a calcular *t* para los puntajes de diferencia. Usamos las mismas fórmulas de antes:
 
 ```{r, echo=FALSE}
 
 paired_sample_df <-  data.frame(infant=1:5, 
-                               Baseline = round(experiment_one$Baseline_Proportion_Gaze_to_Singer[1:5],digits=2), 
+                               Linea_de_base = round(experiment_one$Baseline_Proportion_Gaze_to_Singer[1:5],digits=2), 
                                Test = round(experiment_one$Test_Proportion_Gaze_to_Singer[1:5], digits=2))
 
-differences <-  paired_sample_df$Test-paired_sample_df$Baseline
-diff_from_mean <- differences-mean(differences)
-Squared_differences <- diff_from_mean^2
-paired_sample_df <- cbind(paired_sample_df, 
-                          differences,
-                          diff_from_mean,
-                          Squared_differences)
- 
+diferencias <-  paired_sample_df$Test - paired_sample_df$Linea_de_base
+diferencias_a_la_media <- diferencias - mean(diferencias)
 
- paired_sample_df <- paired_sample_df %>%
-   rbind(c("Sums",colSums(paired_sample_df[1:5,2:6]))) %>%
-   rbind(c("Means",colMeans(paired_sample_df[1:5,2:6]))) %>%
-   rbind(c(" "," "," "," ","sd ",round(sd(paired_sample_df[1:5,4]),digits=3))) %>%
-   rbind(c(" "," "," "," ","SEM ",round(sd(paired_sample_df[1:5,4])/sqrt(5), digits=3))) %>%
-   rbind(c(" "," "," "," ","t",mean(differences)/round(sd(paired_sample_df[1:5,4])/sqrt(5), digits=3)))
- paired_sample_df[6,5]<-0
-  paired_sample_df[7,5]<-0
+diferencias_al_cuadrado <- diferencias_a_la_media^2
+paired_sample_df <- cbind(paired_sample_df, 
+                          diferencias,
+                          diferencias_a_la_media,
+                          diferencias_al_cuadrado)
+
+paired_sample_df <- paired_sample_df %>%
+  rbind(c("Sumas", colSums(paired_sample_df[1:5, 2:6]))) %>%
+  rbind(c("Medias", colMeans(paired_sample_df[1:5, 2:6]))) %>%
+  rbind(c(" ", " ", " ", " ", "sd ", round(sd(paired_sample_df[1:5, 4]), digits = 3))) %>%
+  rbind(c(" ", " ", " ", " ", "SEM ", round(sd(paired_sample_df[1:5, 4]) / sqrt(5), digits = 3))) %>%
+  rbind(c(" ", " ", " ", " ", "t", mean(diferencias) / round(sd(paired_sample_df[1:5, 4]) / sqrt(5), digits = 3)))
+paired_sample_df[6, 5] <- 0
+paired_sample_df[7, 5] <- 0
 knitr::kable(paired_sample_df)
 
-#t.test(round(differences, digits=2), mu=0)$statistic
-
-
+#t.test(round(diferencias, digits=2), mu=0)$statistic
 ```
-
-If we did this test using R, we would obtain almost the same numbers (there is a little bit of rounding in the table).
+Si hiciéramos este test usando R, obtendríamos casi los mismos números (hay un poco de redondeo en la tabla).
 
 ```{r}
-t.test(differences,mu=0)
+t.test(diferencias, mu = 0)
 ```
 
-Here is a quick write up of our t-test results, t(4) = .72, p = .509.
+Acá va una forma rápida de reportar los resultados dla prueba t: t(4) = .72, p = .509.
 
-What does all of that tell us? There's a few things we haven't gotten into much yet. For example, the 4 represents degrees of freedom, which we discuss later. The important part, the $t$ value should start to be a little bit more meaningful. We got a kind of small t-value didn't we. It's .72. What can we tell from this value? First, it is positive, so we know the mean difference is positive. The sign of the $t$-value is always the same as the sign of the mean difference (ours was +0.054). We can also see that the p-value was .509. We've seen p-values before. This tells us that our $t$ value or larger, occurs about 50.9% of the time... Actually it means more than this. And, to understand it, we need to talk about the concept of two-tailed and one-tailed tests.
+¿Qué nos dice todo esto? Hay algunos detalles que todavía no abordamos mucho. Por ejemplo, ese 4 representa los **grados de libertad**, de eso hablaremos más adelante. Lo importante por ahora es que el valor de *t* empiece a tener un poco más de sentido. Obtuvimos un valor *t* bastante chico: 0.72. ¿Qué podemos decir a partir de eso? Primero, es **positivo**, así que sabemos que la diferencia media también lo fue. El signo del valor *t* siempre es el mismo que el de la diferencia media (en nuestro caso fue +0.054).
 
-### Interpreting $t$s
+También vemos que el valor *p* fue .509. Ya vimos valores *p* antes. Esto nos dice que obtener un valor de *t* igual o mayor al observado ocurre en aproximadamente un 50.9% de los casos... Bueno, en realidad significa **algo más que eso**. Y para entenderlo, tenemos que hablar de los conceptos de test **bilateral** (*two-tailed*) y **unilateral** (*one-tailed*).
 
-Remember what it is we are doing here. We are evaluating whether our sample data could have come from a particular kind of distribution. The null distribution of no differences. This is the distribution of $t$-values that would occur for samples of size 5, with a mean difference of 0, and a standard error of the sample mean of .075 (this is the SEM that we calculated from our sample). We can see what this particular null-distribution looks like in @fig-6tnull.
+### Interpretar valores *t*
+
+Recordá lo que estamos haciendo: estamos evaluando si nuestros datos muestrales podrían haber salido de una distribución específica. La distribución **nula**, de ausencia de diferencias. Esta es la distribución de valores *t* que ocurren con muestras de tamaño 5, con diferencia media igual a 0, y error estándar de la media de .075 (ese es el SEM que calculamos a partir de nuestra muestra).
+
+Podemos ver cómo luce esta distribución nula en `@fig-6tnull`:
 
 ```{r}
 #| label: fig-6tnull
-#| fig-cap: "A distribution of $t$-values that can occur by chance alone, when there is no difference between the sample and a population"
-
+#| fig-cap: "Una distribución de valores t que pueden ocurrir solo por azar, cuando no hay diferencia entre la muestra y la población"
 
 range <- seq(-3, 3, .1)
 null_distribution <- dt(range, 4, log = FALSE)
@@ -553,48 +501,50 @@ plot_df <- data.frame(range, null_distribution)
 
 ggplot(plot_df, aes(x = range, y = null_distribution)) +
   geom_line() +
-  xlab("t-values") +
-  ylab("Probability") +
+  xlab("valores t") +
+  ylab("Probabilidad") +
   theme(axis.text.y = element_blank(), axis.ticks = element_blank()) +
-  scale_x_continuous(breaks = (seq(-3, 3, .5))) +
+  scale_x_continuous(breaks = seq(-3, 3, .5)) +
   geom_label(data = data.frame(x = -.7, y = .1, label = "50% \n (-)"),
              aes(x = x, y = y, label = label)) +
-  geom_label(data = data.frame(x = .7, y = .1, label = "50% \n (+)"), aes(x = x, y = y, label = label)) +
-  geom_vline(xintercept = 0)+
+  geom_label(data = data.frame(x = .7, y = .1, label = '50% \n (+)'), aes(x = x, y = y, label = label)) +
+  geom_vline(xintercept = 0) +
   theme_classic(base_size = 20)
-
-
 ```
 
-The $t$-distribution above shows us the kinds of values $t$ will will take by chance alone, when we measure the mean differences for pairs of 5 samples (like our current). $t$ is most likely to be zero, which is good, because we are looking at the distribution of no-differences, which should most often be 0! But, sometimes, due to sampling error, we can get $t$s that are bigger than 0, either in the positive or negative direction. Notice the distribution is symmetrical, a $t$ from the null-distribution will be positive half of the time, and negative half of the time, that is what we would expect by chance.
+La distribución *t* de arriba muestra los valores que puede tomar *t* solo por azar, cuando medimos diferencias de medias en pares de muestras de tamaño 5 (como en nuestro caso). El valor más probable de *t* es cero, lo cual tiene sentido, porque estamos viendo la distribución de la ausencia de diferencias, que debería tener su mayor densidad en 0. Pero, a veces, por error muestral, pueden aparecer valores de *t* mayores o menores que cero. Notá que la distribución es **simétrica**: los valores *t* de la distribución nula son positivos la mitad de las veces, y negativos la otra mitad. Eso es justo lo que esperaríamos por azar.
 
-So, what kind of information do we want know when we find a particular $t$ value from our sample? We want to know how likely the $t$ value like the one we found occurs just by chance. This is actually a subtly nuanced kind of question. For example, any particular $t$ value doesn't have a specific probability of occurring. When we talk about probabilities, we are talking about ranges of probabilities. Let's consider some probabilities. We will use the letter $p$, to talk about the probabilities of particular $t$ values.
+Entonces, ¿qué queremos saber cuando obtenemos un valor *t* específico de nuestra muestra? Queremos saber **qué tan probable es** que ocurra ese valor *t* solo por azar. Esta es una pregunta con sutilezas. Por ejemplo, un valor específico de *t* no tiene una única probabilidad de ocurrir. Cuando hablamos de probabilidades, nos referimos a **rangos** de valores.
 
-1.  What is the probability that $t$ is zero or positive or negative? The answer is p=1, or 100%. We will always have a $t$ value that is zero or non-zero...Actually, if we can't compute the t-value, for example when the standard deviation is undefined, I guess then we would have a non-number. But, assuming we can calculate $t$, then it will always be 0 or positive or negative.
+Usamos la letra *p* para referirnos a la probabilidad de que ocurran ciertos valores de *t*. Veamos algunos ejemplos:
 
-2.  What is the probability of $t$ = 0 or greater than 0? The answer is p=.5, or 50%. 50% of $t$-values are 0 or greater.
+1. ¿Cuál es la probabilidad de que *t* sea igual a cero, o distinto de cero?
+   La respuesta es *p = 1*, o 100%. Siempre vamos a obtener un valor de *t* que es cero o no cero... Bueno, a menos que no podamos calcularlo (por ejemplo, si la desviación estándar no está definida), pero si lo podemos calcular, será positivo, negativo o cero.
 
-3.  What is the of $t$ = 0 or smaller than 0? The answer is p=.5, or 50%. 50% of $t$-values are 0 or smaller.
+2. ¿Cuál es la probabilidad de que *t* sea mayor o igual a 0?
+   La respuesta es *p = .5*, o 50%. El 50% de los valores *t* son mayores o iguales a 0.
 
-We can answer all of those questions just by looking at our t-distribution, and dividing it into two equal regions, the left side (containing 50% of the $t$ values), and the right side containing 50% of the $t$-values).
+3. ¿Y de que *t* sea menor o igual a 0?
+   También *p = .5*. La mitad de los valores están en esa región.
 
-What if we wanted to take a more fine-grained approach, let's say we were interested in regions of 10%. What kinds of $t$s occur 10% of the time. We would apply lines like the following. Notice, the likelihood of bigger numbers (positive or negative) gets smaller, so we have to increase the width of the bars for each of the intervals between the bars to contain 10% of the $t$-values, it looks like @fig-6percentregions.
+Podemos responder estas preguntas solo mirando la distribución *t* y dividiéndola en dos regiones iguales: la mitad izquierda (50% de los valores *t*) y la mitad derecha (los otros 50%).
+
+¿Y si queremos un enfoque más fino? Por ejemplo, dividir en regiones del 10%. ¿Qué valores de *t* ocurren solo el 10% del tiempo? Podemos marcar líneas que dividan la distribución en regiones así. Notá que los valores extremos (más grandes o más chicos) son menos probables, entonces los intervalos más alejados del centro tienen que ser más anchos para contener el mismo 10%. Así se ve la figura `@fig-6percentregions`:
 
 ```{r}
 #| label: fig-6percentregions
-#| fig-cap: "Splitting the t distribution up into regions each containing 10% of the $t$-values. The width between the bars narrows as they approach the center of the distribution, where there are more $t$-values."
+#| fig-cap: "Dividiendo la distribución t en regiones que contienen cada una el 10% de los valores t. Los intervalos son más angostos cerca del centro, donde hay más valores t."
 #| out-width: "100%"
 
 range <- seq(-3, 3, .1)
 null_distribution <- dt(range, 4, log = FALSE)
 plot_df <- data.frame(range, null_distribution)
-
 t_ps <- qt(seq(.1, .9, .1), 4)
 
 ggplot(plot_df, aes(x = range, y = null_distribution)) +
   geom_line() +
-  xlab("t-values") +
-  ylab("Probability") +
+  xlab("valores t") +
+  ylab("Probabilidad") +
   geom_vline(xintercept = t_ps) +
   theme_classic(base_size = 15) +
   theme(axis.text.y = element_blank(), axis.ticks = element_blank()) +
@@ -603,39 +553,42 @@ ggplot(plot_df, aes(x = range, y = null_distribution)) +
   geom_label(data = data.frame(x = -1.3, y = .2, label = "10%"), aes(x = x, y = y, label = label)) +
   geom_label(data = data.frame(x = 2.5, y = .2, label = "10%"), aes(x = x, y = y, label = label)) +
   geom_label(data = data.frame(x = 1.3, y = .2, label = "10%"), aes(x = x, y = y, label = label))
-
-
 ```
 
-Consider the probabilities ($p$) of $t$ for the different ranges.
+Considerá las probabilidades (*p*) de *t* para los distintos rangos:
 
-1.  $t$ \<= -1.5 ($t$ is less than or equal to -1.5), $p$ = 10%
-2.  -1.5 \>= $t$ \<= -0.9 ($t$ is equal to or between -1.5 and -.9), $p$ = 10%
-3.  -.9 \>= $t$ \<= -0.6 ($t$ is equal to or between -.9 and -.6), $p$ = 10%
-4.  $t$ \>= 1.5 ($t$ is greater than or equal to 1.5), $p$ = 10%
+1. *t* ≤ -1.5 → *p* = 10%
+2. -1.5 ≥ *t* ≤ -0.9 → *p* = 10%
+3. -0.9 ≥ *t* ≤ -0.6 → *p* = 10%
+4. *t* ≥ 1.5 → *p* = 10%
 
-Notice, that the $p$s are always 10%. $t$s occur in these ranges with 10% probability.
+Fijate que en todos los casos la probabilidad es del 10%. Los valores *t* ocurren en esos rangos con un 10% de probabilidad.
 
-### Getting the p-values for $t$-values
+### Obtener valores *p* para valores *t*
 
-You might be wondering where I am getting some of these values from. For example, how do I know that 10% of $t$ values (for this null distribution) have a value of approximately 1.5 or greater than 1.5? The answer is I used R to tell me.
+Capaz te estás preguntando de dónde saqué algunos de estos valores. Por ejemplo, ¿cómo sé que el 10% de los valores *t* en esta distribución nula son aproximadamente 1.5 o mayores? La respuesta es: se lo pedí a R. En la mayoría de los libros de estadística, te dirían: *hay una tabla al final del libro* donde podés buscar estos valores... Este libro **no** tiene esa tabla. Podríamos hacer una para vos. Y tal vez lo hagamos. Pero todavía no...
 
-In most statistics textbooks the answer would be: there is a table at the back of the book where you can look these things up...This textbook has no such table. We could make one for you. And, we might do that. But, we didn't do that yet...
+Entonces, ¿de dónde salen esos valores y cómo podés saberlos? La respuesta complicada es que **no vamos a explicar las matemáticas detrás de cómo se obtienen** estos valores, porque:
 
-So, where do these values come from, how can you figure out what they are? The complicated answer is that we are not going to explain the math behind finding these values because, 1) the authors (some of us) admittedly don't know the math well enough to explain it, and 2) it would sidetrack us to much, 3) you will learn how to get these numbers in the lab with software, 4) you will learn how to get these numbers in lab without the math, just by doing a simulation, and 5) you can do it in R, or excel, or you can use an [online calculator](http://www.socscistatistics.com/pvalues/tdistribution.aspx).
+1. Algunos autores de este libro admiten que **no entienden bien esas matemáticas**;
+2. Nos desviaría mucho del foco del libro;
+3. Vas a aprender cómo obtener estos valores en el laboratorio usando software;
+4. También vas a aprender cómo obtenerlos sin fórmulas, solo haciendo simulaciones;
+5. Podés hacerlo en R, en Excel, o usando [esta calculadora online](http://www.socscistatistics.com/pvalues/tdistribution.aspx).
 
-This is all to say that you can find the $t$s and their associated $p$s using software. But, the software won't tell you what these values mean. That's we are doing here. You will also see that software wants to know a few more things from you, such as the degrees of freedom for the test, and whether the test is one-tailed or two tailed. We haven't explained any of these things yet. That's what we are going to do now. Note, we explain degrees of freedom last. First, we start with a one-tailed test.
+En resumen: podés encontrar los valores *t* y sus *p* asociados usando software. Pero el software **no te explica qué significan** esos valores. Eso es lo que estamos haciendo acá. Además, vas a ver que el software te pide algunos datos más: los **grados de libertad** del test, y si el test es **unilateral o bilateral**. Todavía no explicamos eso. Vamos a hacerlo ahora.
 
-### One-tailed tests
+Ojo: vamos a explicar los grados de libertad **al final**. Primero, vamos con el test **unilateral**.
 
-A **one-tailed test** is sometimes also called a directional test. It is called a directional test, because a researcher might have a hypothesis in mind suggesting that the difference they observe in their means is going to have a particular direction, either a positive difference, or a negative difference.
+### Test unilateral (one-tailed)
 
-Typically, a researcher would set an **alpha criterion**. The alpha criterion describes a line in the sand for the researcher. Often, the alpha criterion is set at $p = .05$. What does this mean? @fig-6critT shows the $t$-distribution and the alpha criterion.
+Un **test unilateral** (*one-tailed test*) también se llama a veces **test direccional**. Se le dice así porque el investigador puede tener una hipótesis en mente que sugiere que la diferencia entre medias va a tener una **dirección específica**: o bien una diferencia positiva, o bien una negativa.
+
+Típicamente, el investigador establece un **criterio alfa** (*alpha criterion*). Este criterio es como una línea en la arena para tomar decisiones. A menudo se fija en \$p = .05\$. ¿Qué significa eso? La figura `@fig-6critT` muestra la distribución *t* con ese criterio alfa:
 
 ```{r}
 #| label: fig-6critT
-#| fig.cap: "The critical value of t for an alpha criterion of 0.05. 5% of all ts are at this value or larger"
-
+#| fig.cap: "El valor crítico de t para un criterio alfa de 0.05. El 5% de todos los valores t son iguales o mayores a este valor."
 
 range <- seq(-3, 3, .1)
 null_distribution <- dt(range, 4, log = FALSE)
@@ -645,10 +598,10 @@ t_ps <- qt(seq(.1, .9, .1), 4)
 
 ggplot(plot_df, aes(x = range, y = null_distribution)) +
   geom_line() +
-  xlab("t-values") +
-  ylab("Probability") +
+  xlab("valores t") +
+  ylab("Probabilidad") +
   geom_vline(xintercept = qt(.95, 4, lower.tail = TRUE)) +
-  ggtitle("Critical t for one-tailed test") +
+  ggtitle("t crítico para test unilateral") +
   theme_classic(base_size = 10) +
   theme(axis.text.y = element_blank(), axis.ticks = element_blank()) +
   annotate(
@@ -664,38 +617,35 @@ ggplot(plot_df, aes(x = range, y = null_distribution)) +
   geom_label(data = data.frame(
     x = qt(.95, 4, lower.tail = TRUE),
     y = .3,
-    label = "Critical t"
+    label = "t crítico"
   ),
   aes(x = x, y = y, label = label)) +
   geom_label(data = data.frame(
     x = qt(.95, 4, lower.tail = TRUE),
     y = .25,
-    label = round(qt(.95, 4, lower.tail = TRUE), digits =
-                    2)
+    label = round(qt(.95, 4, lower.tail = TRUE), digits = 2)
   ),
   aes(x = x, y = y, label = label))
-
-
 ```
 
-The figure shows that $t$ values of +2.13 or greater occur 5% of the time. Because the t-distribution is symmetrical, we also know that $t$ values of -2.13 or smaller also occur 5% of the time. Both of these properties are true under the null distribution of no differences. This means, that when there really are no differences, a researcher can expect to find $t$ values of 2.13 or larger 5% of the time.
+La figura muestra que los valores *t* de **+2.13 o más** ocurren el 5% de las veces. Como la distribución *t* es simétrica, también sabemos que valores de **–2.13 o menos** ocurren el 5% de las veces. Ambas afirmaciones son ciertas bajo la distribución nula (sin diferencias). Esto significa que, cuando realmente no hay diferencias, un investigador puede esperar encontrar un valor *t* de 2.13 o mayor en el 5% de los casos.
 
-Let's review and connect some of the terms:
+Recapitulemos y conectemos algunos conceptos:
 
-1.  **alpha criterion**: the criterion set by the researcher to make decisions about whether they believe chance did or did not cause the difference. The alpha criterion here is set to $p = .05$.
+1. **Criterio alfa**: el criterio que define el investigador para decidir si cree que la diferencia se debe o no al azar. En este caso, es $p = .05$.
 
-2.  **Critical** $t$. The critical $t$ is the $t$-value associated with the alpha-criterion. In this case for a one-tailed test, it is the $t$ value where 5% of all $t$s are this number or greater. In our example, the critical $t$ is 2.13. 5% of all $t$ values (with degrees of freedom = 4) are +2.13, or greater than +2.13.
+2. **t crítico**: el valor *t* asociado al criterio alfa. Para un test unilateral, es el valor tal que el 5% de todos los *t* están en ese valor o más. En nuestro ejemplo, *t* crítico = 2.13. El 5% de los valores *t* (con 4 grados de libertad) son iguales o mayores a 2.13.
 
-3.  **Observed** $t$. The observed $t$ is the one that you calculated from your sample. In our example about the infants, the observed $t$ was $t$ (4) = 0.72.
+3. **t observado**: el valor *t* que calculaste a partir de tu muestra. En el ejemplo de los bebés, fue *t*(4) = 0.72.
 
-4.  **p-value**. The $p$-value is the probability of obtaining the observed $t$ value or larger. Now, you could look back at our previous example, and find that the $p$-value for $t$ (4) = .72, was $p = .509$ . HOWEVER, this p-value was not calculated for a one-directional test...(we talk about what .509 means in the next section).
+4. **Valor *p***: el valor *p* es la probabilidad de obtener el valor *t* observado o uno mayor. En nuestro ejemplo anterior, el valor *p* para *t*(4) = 0.72 fue *p = .509*.
+   SIN EMBARGO, ese valor *p* **no fue calculado** para un test direccional (unilateral)... (hablamos más sobre qué significa ese .509 en la siguiente sección).
 
-@fig-6tonedirection shows what the $p$-value for $t$ (4) = .72 using a one-directional test would would look like:
+La figura `@fig-6tonedirection` muestra cómo se vería el valor *p* para *t*(4) = 0.72 en un test unilateral:
 
 ```{r}
 #| label: fig-6tonedirection
-#| fig-cap: "A case where the observed value of t is much less than the critical value for a one-directional t-test."
-
+#| fig-cap: "Un caso en el que el valor t observado es mucho menor que el valor crítico para un test t unilateral."
 
 range <- seq(-3, 3, .1)
 null_distribution <- dt(range, 4, log = FALSE)
@@ -705,11 +655,11 @@ t_ps <- qt(seq(.1, .9, .1), 4)
 
 ggplot(plot_df, aes(x = range, y = null_distribution)) +
   geom_line() +
-  xlab("t-values") +
-  ylab("Probability") +
+  xlab("valores t") +
+  ylab("Probabilidad") +
   geom_vline(xintercept = .72) +
   geom_vline(xintercept = qt(.95, 4, lower.tail = TRUE)) +
-  ggtitle("t value and p-range for one-directional test") +
+  ggtitle("Valor t y región p para test unilateral") +
   theme_classic(base_size = 10) +
   theme(axis.text.y = element_blank(), axis.ticks = element_blank()) +
   annotate(
@@ -734,51 +684,30 @@ ggplot(plot_df, aes(x = range, y = null_distribution)) +
   geom_label(data = data.frame(
     x = qt(.95, 4, lower.tail = TRUE),
     y = .3,
-    label = "Critical t"
-  ),
-  aes(x = x, y = y, label = label)) +
+    label = "t crítico"
+  ), aes(x = x, y = y, label = label)) +
   geom_label(data = data.frame(
     x = qt(.95, 4, lower.tail = TRUE),
     y = .25,
-    label = round(qt(.95, 4, lower.tail = TRUE), digits =
-                    2)
-  ),
-  aes(x = x, y = y, label = label)) +
-  geom_label(data = data.frame(x = .72, y = .1,
-                               label = "Observed t"),
+    label = round(qt(.95, 4, lower.tail = TRUE), digits = 2)
+  ), aes(x = x, y = y, label = label)) +
+  geom_label(data = data.frame(x = .72, y = .1, label = "t observado"),
              aes(x = x, y = y, label = label)) +
-  geom_label(data = data.frame(x = .72, y = .05,
-                               label = ".72, p="),
+  geom_label(data = data.frame(x = .72, y = .05, label = ".72, p="),
              aes(x = x, y = y, label = label)) +
   geom_label(data = data.frame(
     x = 1.5,
     y = .05,
-    label = round(pt(.72, 4, lower.tail = FALSE), digits =
-                    3)
-  ),
-  aes(x = x, y = y, label = label))
-
-
+    label = round(pt(.72, 4, lower.tail = FALSE), digits = 3)
+  ), aes(x = x, y = y, label = label))
 ```
 
-Let's take this one step at a time. We have located the observed $t$ of .72 on the graph. We shaded the right region all grey. What we see is that the grey region represents .256 or 25.6% of all $t$ values. In other words, 25.6% of $t$ values are .72 or larger than .72. You could expect, by chance alone, to a find a $t$ value of .72 or larger, 25.6% of the time. That's fairly often. We did find a $t$ value of .72. Now that you know this kind of $t$ value or larger occurs 25.6% of the time, would you be confident that the mean difference was not due to chance? Probably not, given that chance can produce this difference fairly often.
+Vamos paso a paso. Marcamos en el gráfico el valor *t* observado (0.72). Sombreamos de gris toda la región a su derecha. Esa región gris representa un 25.6% de todos los valores *t*. En otras palabras, **el 25.6%** de los valores *t* son mayores o iguales a 0.72. Es decir, **por azar**, se puede obtener un valor de *t* igual o mayor a 0.72 en más de una de cada cuatro veces.
 
-Following the "standard" decision making procedure, we would claim that our $t$ value was **not statistically significant**, because it was not large enough. If our observed value was larger than the critical $t$ (larger than 2.13), defined by our alpha criterion, then we would claim that our $t$ value was **statistically significant**. This would be equivalent to saying that we believe it is unlikely that the difference we observed was due to chance. In general, for any observed $t$ value, the associated $p$-value tells you how likely a $t$ of the observed size or larger would be observed. The $p$-value **always** refers to a **range** of $t$-values, never to a single $t$-value. Researchers use the alpha criterion of .05, as a matter of convenience and convention. There are other ways to interpret these values that do not rely on a strict (significant versus not) dichotomy.
-
-### Two-tailed tests
-
-OK, so that was one-tailed tests... What are two tailed tests? The $p$-value that we originally calculated from our paired-samples $t$-test was for a 2-tailed test. Often, the default is that the $p$-value is for a two-tailed test.
-
-The two-tailed test, is asking a more general question about whether a difference is likely to have been produced by chance. The question is: what is probability of any difference. It is also called a **non-directional** test, because here we don't care about the direction or sign of the difference (positive or negative), we just care if there is any kind of difference.
-
-The same basic things as before are involved. We define an alpha criterion ($\alpha = 0.05$). And, we say that any observed $t$ value that has a probability of $p$ \<.05 ($p$ is less than .05) will be called **statistically significant**, and ones that are more likely ($p$ \>.05, $p$ is greater than .05) will be called null-results, or not statistically significant. The only difference is how we draw the alpha range. Before it was on the right side of the $t$ distribution (we were conducting a one-sided test remember, so we were only interested in one side).
-
-@fig-6twotailedt shows what the most extreme 5% of the $t$-values are when we ignore their sign (whether they are positive or negative).
+Y de hecho, eso fue lo que encontramos: un *t* de 0.72. Sabiendo que un valor así o mayor ocurre el 25.6% del tiempo por azar, ¿estarías confiado en que la diferencia media **no** se debe al azar? Probablemente no, ya que el azar puede producir ese valor bastante seguido.
 
 ```{r}
-#| label: fig-6twotailedt
-#| fig.cap: "Critical values for a two-tailed test. Each line represents the location where 2.5% of all $t$s are larger or smaller than critical value. The total for both tails is 5%"
-
+#| fig-cap: "El valor crítico de t para un test bilateral. El 5% total de los valores t son mayores o menores que los valores críticos."
 
 range <- seq(-4, 4, .1)
 null_distribution <- dt(range, 4, log = FALSE)
@@ -788,11 +717,11 @@ t_ps <- qt(seq(.1, .9, .1), 4)
 
 ggplot(plot_df, aes(x = range, y = null_distribution)) +
   geom_line() +
-  xlab("t-values") +
-  ylab("Probability") +
+  xlab("valores t") +
+  ylab("Probabilidad") +
   geom_vline(xintercept = qt(.975, 4, lower.tail = TRUE)) +
   geom_vline(xintercept = qt(.025, 4, lower.tail = TRUE)) +
-  ggtitle("Critical ts for two-tailed test") +
+  ggtitle("Valores t críticos para test bilateral") +
   theme_classic(base_size = 10) +
   theme(axis.text.y = element_blank(), axis.ticks = element_blank()) +
   annotate(
@@ -808,16 +737,13 @@ ggplot(plot_df, aes(x = range, y = null_distribution)) +
   geom_label(data = data.frame(
     x = qt(.975, 4, lower.tail = TRUE),
     y = .3,
-    label = "Critical t"
-  ),
-  aes(x = x, y = y, label = label)) +
+    label = "t crítico"
+  ), aes(x = x, y = y, label = label)) +
   geom_label(data = data.frame(
     x = qt(.975, 4, lower.tail = TRUE),
     y = .25,
-    label = round(qt(.975, 4, lower.tail = TRUE), digits =
-                    2)
-  ),
-  aes(x = x, y = y, label = label)) +
+    label = round(qt(.975, 4, lower.tail = TRUE), digits = 2)
+  ), aes(x = x, y = y, label = label)) +
   annotate(
     "rect",
     xmin = -4,
@@ -831,67 +757,72 @@ ggplot(plot_df, aes(x = range, y = null_distribution)) +
   geom_label(data = data.frame(
     x = qt(.025, 4, lower.tail = TRUE),
     y = .3,
-    label = "Critical t"
-  ),
-  aes(x = x, y = y, label = label)) +
+    label = "t crítico"
+  ), aes(x = x, y = y, label = label)) +
   geom_label(data = data.frame(
     x = qt(.025, 4, lower.tail = TRUE),
     y = .25,
-    label = round(qt(.025, 4, lower.tail = TRUE), digits =
-                    2)
-  ),
-  aes(x = x, y = y, label = label))
-
-
+    label = round(qt(.025, 4, lower.tail = TRUE), digits = 2)
+  ), aes(x = x, y = y, label = label))
 ```
 
-Here is what we are seeing. A distribution of no differences (the null, which is what we are looking at), will produce $t$s that are 2.78 or greater 2.5% of the time, and $t$s that are -2.78 or smaller 2.5% of the time. 2.5% + 2.5% is a total of 5% of the time. We could also say that $t$s larger than +/- 2.78 occur 5% of the time.
+¿Qué estamos viendo acá? Una distribución de ausencia de diferencias (la nula, que es la que estamos considerando) puede producir valores de *t* mayores o iguales a 2.78 el 2.5% del tiempo, y menores o iguales a -2.78 también el 2.5% del tiempo. En total, eso da un 5%. Podemos decir que *t*s mayores que ±2.78 ocurren el 5% de las veces.
 
-As a result, the critical $t$ value is (+/-) 2.78 for a two-tailed test. As you can see, the two-tailed test is blind to the direction or sign of the difference. Because of this, the critical $t$ value is also higher for a two-tailed test, than for the one-tailed test that we did earlier. Hopefully, now you can see why it is called a two-tailed test. There are two tails of the distribution, one on the left and right, both shaded in green.
+Por eso, el valor crítico de *t* para un test bilateral es ±2.78. Como podés ver, el test bilateral **no toma en cuenta la dirección del efecto**. Justamente por eso el valor crítico de *t* es más alto en un test bilateral que en uno unilateral. Esperamos que ahora veas por qué se llama test de **dos colas**: hay **dos colas** de la distribución, a la izquierda y a la derecha, ambas sombreadas en verde.
 
-### One or two tailed, which one?
+### ¿Test unilateral o bilateral?
 
-Now that you know there are two kinds of tests, one-tailed, and two-tailed, which one should you use? There is some conventional wisdom on this, but also some debate. In the end, it is up to you to be able to justify your choice and why it is appropriate for you data. That is the real answer.
+Ahora que sabés que existen los dos tipos —test unilateral y test bilateral—, ¿cuál deberías usar? Hay cierta sabiduría convencional sobre esto... pero también hay debate. Al final, lo importante es que **puedas justificar** tu elección y por qué es adecuada para tus datos. Esa es la respuesta real.
 
-The conventional answer is that you use a one-tailed test when you have a theory or hypothesis that is making a directional prediction (the theory predicts that the difference will be positive, or negative). Similarly, use a two-tailed test when you are looking for any difference, and you don't have a theory that makes a directional prediction (it just makes the prediction that there will be a difference, either positive or negative).
+La respuesta convencional es que usás un **test unilateral** cuando tenés una teoría o hipótesis que hace una **predicción direccional** (la teoría predice que la diferencia será positiva o negativa). Del mismo modo, usás un **test bilateral** cuando estás buscando **cualquier diferencia**, sin una predicción direccional (la teoría solo predice que habrá una diferencia, sin decir si será positiva o negativa).
 
-Also, people appear to choose one or two-tailed tests based on how risky they are as researchers. If you always ran one-tailed tests, your critical $t$ values for your set alpha criterion would always be smaller than the critical $t$s for a two-tailed test. Over the long run, you would make more type I errors, because the criterion to detect an effect is a lower bar for one than two tailed tests.
+También parece que las personas eligen entre test unilaterales o bilaterales según cuán **arriesgados** son como investigadores. Si siempre usaras tests unilaterales, los valores *t* críticos para tu criterio alfa serían **más bajos** que los de un test bilateral. A largo plazo, cometerías **más errores tipo I**, porque el umbral para detectar un efecto es más bajo en un test unilateral que en uno bilateral.
 
-> Remember type 1 errors occur when you reject the idea that chance could have caused your difference. You often never know when you make this error. It happens anytime that sampling error was the actual cause of the difference, but a researcher dismisses that possibility and concludes that their manipulation caused the difference.
+> Recordá: los errores tipo I ocurren cuando rechazás la idea de que la diferencia se deba al azar. Muchas veces no sabés que cometiste este error. Ocurre cuando el **error muestral** fue en realidad la causa de la diferencia, pero el investigador **descarta** esa posibilidad y concluye que su manipulación fue la causa.
 
-Similarly, if you always ran two-tailed tests, even when you had a directional prediction, you would make fewer type I errors over the long run, because the $t$ for a two-tailed test is higher than the $t$ for a one-tailed test. It seems quite common for researchers to use a more conservative two-tailed test, even when they are making a directional prediction based on theory. In practice, researchers tend to adopt a standard for reporting that is common in their field. Whether or not the practice is justifiable can sometimes be an open question. The important task for any researcher, or student learning statistics, is to be able to justify their choice of test.
+De forma similar, si siempre usás tests bilaterales, incluso cuando tenés una predicción direccional, vas a cometer **menos errores tipo I** a largo plazo, porque el *t* crítico es más alto. Es bastante común que los investigadores usen un **test bilateral más conservador**, incluso cuando hacen predicciones direccionales basadas en teoría.
 
-### Degrees of freedom
+En la práctica, los investigadores tienden a adoptar un estándar de reporte común en su disciplina. Si esa práctica está justificada o no, puede ser una cuestión abierta. Lo importante para cualquier investigador (o estudiante que aprende estadística) es **poder justificar** su elección del tipo de test.
 
-Before we finish up with paired-samples $t$-tests, we should talk about degrees of freedom. Our sense is that students don't really understand degrees of freedom very well. If you are reading this textbook, you are probably still wondering what is degrees of freedom, seeing as we haven't really talked about it all.
+### Grados de libertad
 
-For the $t$-test, there is a formula for degrees of freedom. For the one-sample and paired sample $t$-tests, the formula is:
+Antes de cerrar con las pruebas t de muestras pareadas, tenemos que hablar de los **grados de libertad**.
 
-$\text{Degrees of Freedom} = \text{df} = n-1$. Where n is the number of samples in the test.
+Tenemos la impresión de que los estudiantes **no entienden muy bien** qué son los grados de libertad. Si estás leyendo este libro, capaz todavía te estás preguntando qué significa eso, ya que no lo explicamos hasta ahora.
 
-In our paired $t$-test example, there were 5 infants. Therefore, degrees of freedom = 5-1 = 4.
+Para la prueba t, hay una fórmula para los grados de libertad. Para las pruebas t de una muestra y de muestras pareadas, la fórmula es:
 
-OK, that's a formula. Who cares about degrees of freedom, what does the number mean? And why do we report it when we report a $t$-test... you've probably noticed the number in parentheses e.g., $t$(4)=.72, the 4 is the $df$, or degrees of freedom.
+$\text{Grados de libertad} = \text{df} = n - 1$
 
-Degrees of freedom is both a concept, and a correction. The concept is that if you estimate a property of the numbers, and you use this estimate, you will be forcing some constraints on your numbers.
+Donde *n* es el número de muestras del test.
 
-Consider the numbers: 1, 2, 3. The mean of these numbers is 2. Now, let's say I told you that the mean of three numbers is 2. Then, how many of these three numbers have freedom? Funny question right. What we mean is, how many of the three numbers could be any number, or have the freedom to be any number.
+En nuestro ejemplo con la prueba t apareado, había 5 bebés. Entonces:
 
-The first two numbers could be any number. But, once those two numbers are set, the final number (the third number), MUST be a particular number that makes the mean 2. The first two numbers have freedom. The third number has no freedom.
+$df = 5 - 1 = 4$
 
-To illustrate. Let's freely pick two numbers: 51 and -3. I used my personal freedom to pick those two numbers. Now, if our three numbers are 51, -3, and x, and the mean of these three numbers is 2. There is only one solution, x has to be -42, otherwise the mean won't be 2. This is one way to think about degrees of freedom. The degrees of freedom for these three numbers is n-1 = 3-1= 2, because 2 of the numbers can be free, but the last number has no freedom, it becomes fixed after the first two are decided.
+Bueno, eso es una fórmula. Pero, ¿a quién le importan los grados de libertad? ¿Qué significa ese número? ¿Y por qué lo reportamos cuando presentamos una prueba t?
 
-Now, statisticians often apply degrees of freedom to their calculations, especially when a second calculation relies on an estimated value. For example, when we calculate the standard deviation of a sample, we first calculate the mean of the sample right! By estimating the mean, we are fixing an aspect of our sample, and so, our sample now has n-1 degrees of freedom when we calculate the standard deviation (remember for the sample standard deviation, we divide by n-1...there's that n-1 again.)
+Seguro notaste el número entre paréntesis, por ejemplo: *t*(4) = .72. Ese 4 es el *df*, o grados de libertad.
 
-#### Simulating how degrees of freedom affects the $t$ distribution
+Los grados de libertad son tanto un **concepto** como una **corrección**. El concepto es que, si estás estimando alguna propiedad de los datos y usás esa estimación, eso impone ciertas **restricciones** sobre tus datos.
 
-There are at least two ways to think the degrees of freedom for a $t$-test. For example, if you want to use math to compute aspects of the $t$ distribution, then you need the degrees of freedom to plug in to the formula... If you want to see the formulas I'm talking about, scroll down on the [$t$-test wikipedia page](https://en.wikipedia.org/wiki/Student%27s_t-distribution) and look for the probability density or cumulative distribution functions...We think that is quite scary for most people, and one reason why degrees of freedom are not well-understood.
+Por ejemplo, considerá los números: 1, 2, 3. La media de estos números es 2. Ahora imaginá que te digo que **la media de tres números es 2**. Entonces, ¿cuántos de esos tres números tienen libertad? Suena como una pregunta rara, ¿no? Lo que queremos decir es: ¿cuántos de esos tres números pueden ser cualquier número libremente? Los **primeros dos números** pueden ser **cualquier cosa**. Pero una vez que fijás esos dos, el tercer número **ya no tiene libertad**: **tiene que ser un número específico** para que el promedio dé 2. Es decir, los dos primeros tienen libertad, el tercero no.
 
-If we wanted to simulate the $t$ distribution we could more easily see what influence degrees of freedom has on the shape of the distribution. Remember, $t$ is a sample statistic, it is something we measure from the sample. So, we could simulate the process of measuring $t$ from many different samples, then plot the histogram of $t$ to show us the simulated $t$ distribution.
+Para ilustrarlo: elijamos dos números cualquiera —por ejemplo, 51 y -3. Usé mi libertad para elegir esos dos. Ahora, si nuestros tres números son 51, -3 y *x*, y queremos que la media sea 2, solo hay una solución: *x* tiene que ser -42. De otro modo, el promedio no sería 2. 
+
+Esta es una forma de entender los **grados de libertad**. En este ejemplo, hay 3 números y **n–1 = 2** grados de libertad, porque **2** pueden ser libres, pero el tercero queda **determinado**.
+
+En estadística, los grados de libertad se usan mucho, especialmente cuando una estimación depende de otra estimación. Por ejemplo: cuando calculamos la **desviación estándar muestral**, primero calculamos la **media muestral**, ¿no? Al estimar la media, estamos **fijando** un aspecto de la muestra. Entonces, cuando calculamos la desviación estándar, usamos **n–1** en lugar de *n*. Ahí aparece otra vez ese famoso **n–1**.
+
+#### Simulación del efecto de los grados de libertad sobre la distribución *t*
+
+Hay al menos dos formas de pensar los grados de libertad para una prueba t. Por un lado, si querés **usar fórmulas** matemáticas para calcular aspectos de la distribución *t*, necesitás los grados de libertad como **parámetro** de entrada. (Si querés ver las fórmulas, bajá en la [página de Wikipedia dla prueba t](https://es.wikipedia.org/wiki/Distribuci%C3%B3n_t_de_Student) hasta la parte de funciones de densidad de probabilidad o de distribución acumulada. A nosotros eso nos parece bastante intimidante, y quizás por eso los grados de libertad no se entienden bien.)
+
+Pero si queremos simular la distribución *t*, ahí se ve más fácil cómo influyen los grados de libertad en su forma. Recordá: *t* es una estadística muestral, se **calcula a partir de la muestra**. Así que podríamos simular el proceso de calcular *t* en muchas muestras distintas, y luego graficar el histograma de esos valores para ver cómo se ve la distribución *t*.
 
 ```{r}
 #| label: fig-6dft
-#| fig-cap: "The width of the t distribution shrinks as sample size and degrees of freedom (from 4 to 100) increases."
+#| fig-cap: "La distribución t se vuelve más angosta a medida que aumentan el tamaño muestral y los grados de libertad (de 4 a 100)."
 #| fig-asp: 0.5
 #| out-width: "100%"
 
@@ -904,21 +835,29 @@ t_df <- t_df[abs(t_df$ts) < 5, ]
 ggplot(t_df, aes(x = ts, group = dfs, color = dfs)) +
   geom_histogram() +
   theme_classic() +
-  facet_wrap( ~ dfs) +
-  theme_classic(base_size=15)
-
-
+  facet_wrap(~ dfs) +
+  theme_classic(base_size = 15)
 ```
 
-In @fig-6dft notice that the red distribution for $df = 4$, is a little bit shorter, and a little bit wider than the bluey-green distribution for $df = 100$. As degrees of freedom increase the $t$ distribution gets taller (in the middle), and narrower in the range. It gets more peaky. Can you guess the reason for this? Remember, we are estimating a sample statistic, and degrees of freedom is really just a number that refers to the number of subjects (well minus one). And, we already know that as we increase $n$, our sample statistics become better estimates (less variance) of the distributional parameters they are estimating. So, $t$ becomes a better estimate of it's "true" value as sample size increase, resulting in a more narrow distribution of $t$s.
+En la figura `@fig-6dft`, fijate que la distribución roja para \$df = 4\$ es un poco más baja y más ancha que la distribución azul verdosa para \$df = 100\$. A medida que aumentan los grados de libertad, la distribución *t* se vuelve más alta (en el centro) y más angosta en el rango. Se vuelve más picuda. ¿Adivinás por qué?
 
-There is a slightly different $t$ distribution for every degrees of freedom, and the critical regions associated with 5% of the extreme values are thus slightly different every time. This is why we report the degrees of freedom for each t-test, they define the distribution of $t$ values for the sample-size in question. Why do we use n-1 and not n? Well, we calculate $t$ using the sample standard deviation to estimate the standard error or the mean, that estimate uses n-1 in the denominator, so our $t$ distribution is built assuming n-1. That's enough for degrees of freedom...
+Recordá: estamos estimando una estadística muestral, y los grados de libertad son solo un número que representa cuántos sujetos hay (menos uno). Y ya sabemos que, al aumentar *n*, nuestras estadísticas muestrales se vuelven mejores estimaciones (con menos varianza) de los parámetros poblacionales. Entonces, *t* se vuelve una mejor estimación de su "valor verdadero" a medida que crece el tamaño muestral, lo que produce una distribución de *t* más angosta.
 
-## The paired samples t-test strikes back
+Existe una distribución *t* ligeramente distinta para cada grado de libertad, y las regiones críticas asociadas al 5% de los valores extremos cambian cada vez. Por eso **reportamos los grados de libertad** en cada prueba t: definen la distribución de valores *t* para el tamaño muestral que usamos.
 
-You must be wondering if we will ever be finished talking about paired samples t-tests... why are we doing round 2, oh no! Don't worry, we're just going to 1) remind you about what we were doing with the infant study, and 2) do a paired samples t-test on the entire data set and discuss.
+¿Por qué usamos *n–1* y no *n*? Bueno, calculamos *t* usando la desviación estándar muestral para estimar el error estándar de la media, y esa estimación usa *n–1* en el denominador. Por eso, la distribución *t* se construye asumiendo *n–1*.
 
-Remember, we were wondering if the infants would look longer toward the singer who sang the familiar song during the test phase compared to the baseline phase. We showed you data from 5 infants, and walked through the computations for the $t$-test. As a reminder, it looked like this:
+Con eso, ya tenés suficiente sobre grados de libertad...
+
+## La prueba t de muestras pareadas contraataca
+
+Capaz te estás preguntando si **alguna vez vamos a terminar** de hablar sobre la prueba t de muestras pareadas... ¿¡por qué hay una segunda vuelta!? Tranquilo, esto es breve. Solo vamos a:
+
+1. Recordarte qué estábamos haciendo con el estudio con bebés.
+
+2. Hacer una prueba t de muestras pareadas usando **todos** los datos del estudio y discutir los resultados.
+
+Recordá que nos preguntábamos si los bebés mirarían más tiempo al cantante de la canción familiar durante la fase de prueba, comparado con la línea base. Ya te mostramos los datos de 5 bebés, y caminamos paso a paso por los cálculos dla prueba t. A modo de repaso, se veía así:
 
 ```{r, echo=FALSE}
 
@@ -926,335 +865,322 @@ paired_sample_df <-  data.frame(infant=1:5,
                                Baseline = round(experiment_one$Baseline_Proportion_Gaze_to_Singer[1:5],digits=2), 
                                Test = round(experiment_one$Test_Proportion_Gaze_to_Singer[1:5], digits=2))
 
-differences <-  paired_sample_df$Test-paired_sample_df$Baseline
-diff_from_mean <- differences-mean(differences)
-Squared_differences <- diff_from_mean^2
+diferencias <-  paired_sample_df$Test - paired_sample_df$Baseline
+diferencias_a_la_media <- diferencias - mean(diferencias)
+Squared_diferencias <- diferencias_a_la_media^2
 paired_sample_df <- cbind(paired_sample_df, 
-                          differences,
-                          diff_from_mean,
-                          Squared_differences)
- 
+                          diferencias,
+                          diferencias_a_la_media,
+                          Squared_diferencias)
 
- paired_sample_df <- paired_sample_df %>%
-   rbind(c("Sums",colSums(paired_sample_df[1:5,2:6]))) %>%
-   rbind(c("Means",colMeans(paired_sample_df[1:5,2:6]))) %>%
-   rbind(c(" "," "," "," ","sd ",round(sd(paired_sample_df[1:5,4]),digits=3))) %>%
-   rbind(c(" "," "," "," ","SEM ",round(sd(paired_sample_df[1:5,4])/sqrt(5), digits=3))) %>%
-   rbind(c(" "," "," "," ","t",mean(differences)/round(sd(paired_sample_df[1:5,4])/sqrt(5), digits=3)))
- paired_sample_df[6,5]<-0
-  paired_sample_df[7,5]<-0
+paired_sample_df <- paired_sample_df %>%
+   rbind(c("Sumas", colSums(paired_sample_df[1:5, 2:6]))) %>%
+   rbind(c("Medias", colMeans(paired_sample_df[1:5, 2:6]))) %>%
+   rbind(c(" ", " ", " ", " ", "de ", round(sd(paired_sample_df[1:5, 4]), digits = 3))) %>%
+   rbind(c(" ", " ", " ", " ", "EEM ", round(sd(paired_sample_df[1:5, 4]) / sqrt(5), digits = 3))) %>%
+   rbind(c(" ", " ", " ", " ", "t", mean(diferencias) / round(sd(paired_sample_df[1:5, 4]) / sqrt(5), digits = 3)))
+paired_sample_df[6, 5] <- 0
+paired_sample_df[7, 5] <- 0
 knitr::kable(paired_sample_df)
 
-t.test(round(differences, digits=2), mu=0)
-
-
+t.test(round(diferencias, digits = 2), mu = 0)
 ```
 
-Let's write down the finding one more time: The mean difference was 0.054, $t$(4) = .72, $p$ =.509. We can also now confirm, that the $p$-value was from a two-tailed test. So, what does this all really mean.
+Volvamos a escribir el resultado una vez más: la diferencia media fue 0.054, *t*(4) = .72, *p* = .509. Ahora también podemos confirmar que el valor *p* se obtuvo de un **test bilateral**. Entonces, ¿qué significa todo esto?
 
-We can say that a $t$ value with an absolute of .72 or larger occurs 50.9% of the time. More precisely, the distribution of no differences (the null), will produce a $t$ value this large or larger 50.9% of the time. In other words, chance alone good have easily produced the $t$ value from our sample, and the mean difference we observed or .054, could easily have been a result of chance.
+Podemos decir que un valor *t* con valor absoluto de .72 o más ocurre el 50.9% del tiempo. Más precisamente: la distribución de **ausencia de diferencias** (la nula) produce un valor *t* de ese tamaño o mayor el 50.9% de las veces. En otras palabras: **el azar por sí solo podría haber producido perfectamente el valor *t* de nuestra muestra**, y la diferencia media de 0.054 que observamos podría deberse simplemente al azar.
 
-Let's quickly put all of the data in the $t$-test, and re-run the test using all of the infant subjects.
+Ahora metamos **todos los datos** dla prueba t y corramos el análisis con los **32 bebés** del estudio:
 
 ```{r}
+paired_sample_df <-  data.frame(infant = 1:32, 
+                                Baseline = round(experiment_one$Baseline_Proportion_Gaze_to_Singer[1:32], digits = 2), 
+                                Test = round(experiment_one$Test_Proportion_Gaze_to_Singer[1:32], digits = 2))
 
-paired_sample_df <-  data.frame(infant=1:32, 
-                               Baseline = round(experiment_one$Baseline_Proportion_Gaze_to_Singer[1:32],digits=2), 
-                               Test = round(experiment_one$Test_Proportion_Gaze_to_Singer[1:32], digits=2))
-
-differences <-  paired_sample_df$Test-paired_sample_df$Baseline
-t.test(differences,mu=0)
-
+diferencias <- paired_sample_df$Test - paired_sample_df$Baseline
+t.test(diferencias, mu = 0)
 ```
 
-Now we get a very different answer. We would summarize the results saying the mean difference was .073, t(31) = 2.44, p = 0.020. How many total infants were their? Well the degrees of freedom was 31, so there must have been 32 infants in the study. Now we see a much smaller $p$-value. This was also a two-tailed test, so we that observing a $t$ value of 2.4 or greater (absolute value) only occurs 2% of the time. In other words, the distribution of no differences will produce the observed t-value very rarely. So, it is unlikely that the observed mean difference of .073 was due to chance (it could have been due to chance, but that is very unlikely). As a result, we can be somewhat confident in concluding that something about seeing and hearing a unfamiliar person sing a familiar song, causes an infant to draw their attention toward the singer, and this potentially benefits social learning on the part of the infant.
+Ahora obtenemos una respuesta muy distinta. Podríamos resumir los resultados diciendo que la diferencia media fue 0.073, *t*(31) = 2.44, *p* = 0.020. ¿Cuántos bebés hubo en total? Bueno, los grados de libertad fueron 31, así que debió haber **32 bebés** en el estudio.
 
-## Independent samples t-test: The return of the t-test?
+Ahora vemos un valor *p* mucho más bajo. Este también fue un **test bilateral**, así que observar un valor *t* de 2.4 o más (en valor absoluto) ocurre solo el 2% del tiempo. En otras palabras, la **distribución de ausencia de diferencias** rara vez produce un valor *t* como el que observamos. Por lo tanto, es **poco probable** que la diferencia media observada de 0.073 se deba al azar (podría deberse al azar, sí, pero es muy poco probable).
 
-If you've been following the Star Wars references, we are on last movie (of the original trilogy)... the independent t-test. This is were basically the same story plays out as before, only slightly different.
+Como resultado, podemos tener **cierta confianza** en concluir que **ver y escuchar a una persona desconocida cantar una canción familiar** lleva al bebé a prestar más atención a esa persona, y eso **podría beneficiar su aprendizaje social**.
 
-Remember there are different $t$-tests for different kinds of research designs. When your design is a **between-subjects** design, you use an **independent samples t-test**. Between-subjects design involve different people or subjects in each experimental condition. If there are two conditions, and 10 people in each, then there are 20 total people. And, there are no paired scores, because every single person is measured once, not twice, no repeated measures. Because there are no repeated measures we can't look at the difference scores between conditions one and two. The scores are not paired in any meaningful way, to it doesn't make sense to subtract them. So what do we do?
+## Prueba t de muestras independientes: ¿el regreso dla prueba t?
 
-The logic of the independent samples t-test is the very same as the other $t$-tests. We calculated the means for each group, then we find the difference. That goes into the numerator of the t formula. Then we get an estimate of the variation for the denominator. We divide the mean difference by the estimate of the variation, and we get $t$. It's the same as before.
+Si venís siguiendo las referencias a Star Wars, esta sería la última película de la trilogía original... la **prueba t de muestras independientes**. Es básicamente la misma historia de antes, pero con un giro. Recordá que hay distintos tipos de *t*-tests para distintos diseños experimentales. Cuando tu diseño es de **grupos independientes** (*between-subjects*), usás una **prueba t de muestras independientes**.
 
-The only wrinkle here is what goes into the denominator? How should we calculate the estimate of the variance? It would be nice if we could do something very straightforward like this, say for an experiment with two groups A and B:
+Los diseños entre sujetos implican personas diferentes en cada condición experimental. Si hay dos condiciones y 10 personas por condición, entonces hay 20 personas en total. Y no hay puntajes apareados, porque **cada persona se mide una sola vez**. No hay medidas repetidas. Como no hay medidas repetidas, no tiene sentido calcular **diferencias entre condiciones** para cada sujeto. Los puntajes no están emparejados de forma significativa, así que **no tiene sentido restarlos**. Entonces, ¿qué hacemos?
 
-$t = \frac{\bar{A}-\bar{B}}{(\frac{SEM_A+SEM_B}{2})}$
+La lógica dla prueba t de muestras independientes es la **misma** que en las otras pruebas t. Calculamos la media de cada grupo, luego la diferencia. Esa diferencia va al numerador de la fórmula del *t*. Después estimamos la **variación** para el denominador. Dividimos la diferencia de medias por esa estimación, y obtenemos *t*. Es como antes. La única complicación es: ¿qué va en el denominador? ¿Cómo estimamos la varianza? Estaría bueno si pudiéramos hacer algo directo, como esto (en un experimento con dos grupos, A y B):
 
-In plain language, this is just:
+$t = \frac{\bar{A} - \bar{B}}{\left(\frac{SEM_A + SEM_B}{2}\right)}$
 
-1.  Find the mean difference for the top part
-2.  Compute the SEM (standard error of the mean) for each group, and average them together to make a single estimate, pooling over both samples.
+En lenguaje simple, esto sería:
 
-This would be nice, but unfortunately, it turns out that finding the average of two standard errors of the mean is not the best way to do it. This would create a biased estimator of the variation for the hypothesized distribution of no differences. We won't go into the math here, but instead of the above formula, we an use a different one that gives as an **unbiased estimate of the pooled standard error of the sample mean**. Our new and improved $t$ formula would look like this:
+1. Calculás la diferencia de medias y la ponés arriba;
+2. Calculás el **error estándar de la media** (SEM) para cada grupo;
+3. Promediás esos SEMs para obtener una sola estimación, combinando ambas muestras.
 
-$t = \frac{\bar{X_A}-\bar{X_B}}{s_p * \sqrt{\frac{1}{n_A} + \frac{1}{n_B}}}$
+Eso **estaría bueno**, pero lamentablemente **no es la mejor forma de hacerlo**. Tomar el promedio de los errores estándar genera un **estimador sesgado** de la variación en la distribución nula (la de ausencia de diferencias).
 
-and, $s_p$, which is the pooled sample standard deviation is defined as, note the \$s\$es in the formula are variances:
+Tomar el promedio de los errores estándar generaría un **estimador sesgado** de la variación bajo la hipótesis nula (ausencia de diferencias). No vamos a entrar en los detalles matemáticos acá, pero en vez de esa fórmula, podemos usar otra que nos da una **estimación insesgada del error estándar combinado de la media muestral**. Nuestra nueva y mejorada fórmula del *t* se ve así:
 
-$s_p = \sqrt{\frac{(n_A-1)s_A^2 + (n_B-1)s^2_B}{n_A +n_B -2}}$
+$t = \frac{\bar{X}_A - \bar{X}_B}{s_p \cdot \sqrt{\frac{1}{n_A} + \frac{1}{n_B}}}$
 
-Believe you me, that is so much more formula than I wanted to type out. Shall we do one independent $t$-test example by hand, just to see the computations? Let's do it...but in a slightly different way than you expect. I show the steps using R. I made some fake scores for groups A and B. Then, I followed all of the steps from the formula, but made R do each of the calculations. This shows you the needed steps by following the code. At the end, I print the $t$-test values I computed "by hand", and then the $t$-test value that the R software outputs using the $t$-test function. You should be able to get the same values for $t$, if you were brave enough to compute $t$ by hand.
+Y \$s\_p\$, que es la desviación estándar combinada de las muestras, se define así (notá que las *s* en la fórmula son **varianzas**):
+
+$s_p = \sqrt{\frac{(n_A - 1)s_A^2 + (n_B - 1)s_B^2}{n_A + n_B - 2}}$
+
+Créeme: es mucha más fórmula de la que quería tipear. ¿Hacemos un ejemplo de prueba t de muestras independientes **a mano**, para ver cómo se hacen los cálculos? Dale... pero lo vamos a hacer de una forma **ligeramente distinta** a la que esperás. Voy a mostrarte los pasos usando R.
+
+Inventé unos puntajes ficticios para los grupos A y B. Luego seguí todos los pasos de la fórmula, pero hice que R haga cada uno de los cálculos. Esto te muestra los pasos necesarios siguiendo el código. Al final imprimo los valores dla prueba t que calculé "a mano", y luego el valor dla prueba t que da la función `t.test()` de R. Deberías obtener el mismo valor de *t* si te animás a calcularlo a mano.
 
 ```{r, echo=TRUE }
 
-## By "hand" using R r code
+## A mano, usando código en R
 a <- c(1,2,3,4,5)
 b <- c(3,5,4,7,9)
 
-mean_difference <- mean(a)-mean(b) # compute mean difference
+mean_difference <- mean(a) - mean(b) # diferencia de medias
 
-variance_a <- var(a) # compute variance for A
-variance_b <- var(b) # compute variance for B
+variance_a <- var(a) # varianza para A
+variance_b <- var(b) # varianza para B
 
-# Compute top part and bottom part of sp formula
+# Parte superior e inferior de la fórmula de sp
+sp_numerator <- (4 * variance_a + 4 * variance_b) 
+sp_denominator <- 5 + 5 - 2
+sp <- sqrt(sp_numerator / sp_denominator) # calcular sp
 
-sp_numerator <- (4*variance_a + 4* variance_b) 
-sp_denominator <- 5+5-2
-sp <- sqrt(sp_numerator/sp_denominator) # compute sp
+# calcular t según la fórmula
+t <- mean_difference / (sp * sqrt((1/5) + (1/5)))
 
+t # mostrar resultado
 
-# compute t following formulat
-
-t <- mean_difference / ( sp * sqrt( (1/5) +(1/5) ) )
-
-t # print results
-
-
-# using the R function t.test
-t.test(a,b, paired=FALSE, var.equal = TRUE)
-
-
+# usando la función de R
+t.test(a, b, paired = FALSE, var.equal = TRUE)
 ```
 
-## Simulating data for t-tests
+### Simular una prueba t de una muestra
 
-An "advanced" topic for $t$-tests is the idea of using R to conduct simulations for $t$-tests.
+Acá están los pasos que podrías seguir para simular datos para una prueba t de una muestra:
 
-If you recall, $t$ is a property of a sample. We calculate $t$ from our sample. The $t$ distribution is the hypothetical behavior of our sample. That is, if we had taken thousands upon thousands of samples, and calculated $t$ for each one, and then looked at the distribution of those $t$'s, we would have the sampling distribution of $t$!
+1. Hacés algunas suposiciones sobre cómo podría ser tu muestra (que estás planeando recolectar). Por ejemplo, podrías planear recolectar datos de 30 personas. Los puntajes podrían venir de una distribución normal (media = 50, sd = 10).
 
-It can be very useful to get in the habit of using R to simulate data under certain conditions, to see how your sample data, and things like $t$ behave. Why is this useful? It mainly prepares you with some intuitions about how sampling error (random chance) can influence your results, given specific parameters of your design, such as sample-size, the size of the mean difference you expect to find in your data, and the amount of variation you might find. These methods can be used formally to conduct power-analyses. Or more informally for data sense.
+2. Simulás números desde esa distribución y luego hacés una prueba t sobre esos datos simulados. Guardás las estadísticas que te interesan (como los *t* y *p*) y después observás cómo se comportan.
 
-### Simulating a one-sample t-test
-
-Here are the steps you might follow to simulate data for a one sample $t$-test.
-
-1.  Make some assumptions about what your sample (that you might be planning to collect) might look like. For example, you might be planning to collect 30 subjects worth of data. The scores of those data points might come from a normal distribution (mean = 50, sd = 10).
-
-2.  sample simulated numbers from the distribution, then conduct a $t$-test on the simulated numbers. Save the statistics you want (such as $t$s and $p$s), and then see how things behave.
-
-Let's do this a couple different times. First, let's simulate samples with N = 30, taken from a normal (mean= 50, sd = 25). We'll do a simulation with 1000 simulations. For each simulation, we will compare the sample mean with a population mean of 50. There should be no difference on average here. @fig-6nullt is the null distribution that we are simulating.
+Hagámoslo un par de veces. Primero, vamos a simular muestras con N = 30, tomadas de una distribución normal (media = 50, sd = 25). Vamos a hacer una simulación con 1000 repeticiones. En cada repetición, comparamos la media muestral con una media poblacional de 50. En promedio, no debería haber diferencia. La figura `@fig-6nullt` es la distribución nula que estamos simulando.
 
 ```{r}
-# steps to create fake data from a distribution
-# and conduct t-tests on the simulated data
-save_ps <- length(1000)
-save_ts <- length(1000)
+# pasos para crear datos ficticios desde una distribución
+# y hacer pruebas t sobre los datos simulados
+
+guarda_ps <- length(1000)
+guarda_ts <- length(1000)
+
 for (i in 1:1000) {
-  my_sample <- rnorm(n = 30, mean = 50, sd = 25)
-  t_test <- t.test (my_sample, mu = 50)
-  save_ps[i] <- t_test$p.value
-  save_ts[i] <- t_test$statistic
+  mi_muestra <- rnorm(n = 30, mean = 50, sd = 25)
+  t_test <- t.test(mi_muestra, mu = 50)
+  guarda_ps[i] <- t_test$p.value
+  guarda_ts[i] <- t_test$statistic
 }
 ```
 
 ```{r}
 #| label: fig-6nullt
-#| fig-cap: "The distribution of $t$-values under the null. These are the $t$ values that are produced by chance alone."
+#| fig-cap: "Distribución de valores t bajo la nula. Estos son los t que surgen solo por azar."
 
-#plot histograms of t and p values for 1000 simulations
-hist(save_ts)
+# histogramas de t y p para las 1000 simulaciones
+hist(guarda_ts)
 ```
 
 ```{r}
 #| label: fig-6flatp
-#| fig-cap: "The distribution of $p$-values that are observed is flat under the null."
+#| fig-cap: "La distribución de valores p observados es plana bajo la nula."
 
-hist(save_ps)
+hist(guarda_ps)
 ```
 
-Neat. We see both a $t$ distribution, that looks like $t$ distribution as it should. And we see the $p$ distribution. This shows us how often we get $t$ values of particular sizes. You may find it interesting that the $p$-distribution is flat under the null, which we are simulating here. This means that you have the same chances of a getting a $t$ with a p-value between 0 and 0.05, as you would for getting a $t$ with a p-value between .90 and .95. Those ranges are both ranges of 5%, so there are an equal amount of $t$ values in them by definition.
+Buenísimo. Vemos una distribución *t*, que se parece a una *t* como debe ser. Y también vemos la distribución de valores *p*. Esto nos muestra qué tan seguido obtenemos valores *t* de distintos tamaños.
 
-Here's another way to do the same simulation in R, using the replicate function, instead a for loop:
+Capaz te llame la atención que la distribución de *p* es **plana** bajo la nula (que es lo que estamos simulando). Esto significa que tenés **la misma probabilidad** de obtener un valor *p* entre 0 y 0.05 que de obtener uno entre 0.90 y 0.95. Esos rangos tienen un 5% de ancho, así que contienen la **misma cantidad de valores t por definición**.
+
+Acá va otra forma de hacer la misma simulación en R, usando la función `replicate` en vez de un `for`:
 
 ```{r}
 #| label: fig-6simtsRep
-#| fig-cap: "Simulating $t$s in R."
+#| fig-cap: "Simulando valores t en R."
 
-simulated_ts <- replicate(1000,
+t_simulados <- replicate(1000,
                           t.test(rnorm(30, 50, 25), mu = 50)$statistic)
-hist(simulated_ts)
+hist(t_simulados)
 ```
 
 ```{r}
 #| label: fig-6simpsRep
-#| fig-cap: "Simulating $p$s in R."
+#| fig-cap: "Simulando valores p en R."
 
-simulated_ps <- replicate(1000,
+p_simulados <- replicate(1000,
                           t.test(rnorm(30, 50, 25), mu = 50)$p.value)
-hist(simulated_ps)
+hist(p_simulados)
 ```
 
-### Simulating a paired samples t-test
+### Simular una prueba t de muestras pareadas
 
-The code below is set up to sample 10 scores for condition A and B from the same normal distribution. The simulation is conducted 1000 times, and the $t$s and $p$s are saved and plotted for each.
+El código de abajo está preparado para tomar 10 puntajes de la condición A y 10 de la condición B, ambos desde la misma distribución normal. La simulación se corre 1000 veces, y se guardan los *t* y *p* para graficarlos luego.
 
 ```{r, echo=TRUE}
 
-save_ps <- length(1000)
-save_ts <- length(1000)
-for ( i in 1:1000 ){
-  condition_A <- rnorm(10,10,5)
-  condition_B <- rnorm(10,10,5)
-  differences <- condition_A - condition_B
-  t_test <- t.test(differences, mu=0)
-  save_ps[i] <- t_test$p.value
-  save_ts[i] <- t_test$statistic
-}
+guarda_ps <- length(1000)
+guarda_ts <- length(1000)
 
+for (i in 1:1000) {
+  condicion_A <- rnorm(10,10,5)
+  condicion_B <- rnorm(10,10,5)
+  diferencias <- condicion_A - condicion_B
+  t_test <- t.test(diferencias, mu = 0)
+  guarda_ps[i] <- t_test$p.value
+  guarda_ts[i] <- t_test$statistic
+}
 ```
 
 ```{r}
 #| label: fig-6simps1000
-#| fig-cap: "1000 simulated ts from the null distribution"
-hist(save_ts)
-
+#| fig-cap: "1000 valores t simulados de la distribución nula"
+hist(guarda_ts)
 ```
 
 ```{r}
 #| label: fig-6simts1000
-#| fig-cap: "1000 simulated ps from the null distribution"
-hist(save_ps)
-
+#| fig-cap: "1000 valores p simulados de la distribución nula"
+hist(guarda_ps)
 ```
 
-According to the simulation. When there are no differences between the conditions, and the samples are being pulled from the very same distribution, you get these two distributions for $t$ and $p$. These again show how the null distribution of no differences behaves.
+Según la simulación, cuando **no hay diferencias** entre las condiciones y las muestras provienen de **la misma distribución**, se obtienen estas dos distribuciones para *t* y *p*. Una vez más, muestran cómo se comporta la **distribución nula de ausencia de diferencias**.
 
-For any of these simulations, if you rejected the null-hypothesis (that your difference was only due to chance), you would be making a type I error. If you set your alpha criteria to $\alpha = .05$, we can ask how many type I errors were made in these 1000 simulations. The answer is:
+En cualquiera de estas simulaciones, si rechazaras la hipótesis nula (que la diferencia se debe al azar), estarías cometiendo un **error tipo I**. Si fijás tu criterio alfa en \$\alpha = .05\$, podemos preguntar cuántos errores tipo I se cometieron en estas 1000 simulaciones. La respuesta es:
 
 ```{r, echo=TRUE}
-length(save_ps[save_ps<.05])
-length(save_ps[save_ps<.05])/1000
+length(guarda_ps[guarda_ps < .05])
+length(guarda_ps[guarda_ps < .05]) / 1000
 ```
 
-We happened to make `r length(save_ps[save_ps<.05])`. The expectation over the long run is 5% type I error rates (if your alpha is .05).
+Resulta que cometimos `r length(guarda_ps[guarda_ps < .05])`. La expectativa a largo plazo es una tasa de error tipo I del 5% (si tu alfa es .05).
 
-What happens if there actually is a difference in the simulated data, let's set one condition to have a larger mean than the other:
+¿Qué pasa si en realidad **sí hay una diferencia** en los datos simulados? Probemos con una condición que tenga una media mayor que la otra:
 
 ```{r, echo=TRUE}
+guarda_ps <- length(1000)
+guarda_ts <- length(1000)
 
-save_ps <- length(1000)
-save_ts <- length(1000)
-for ( i in 1:1000 ){
-  condition_A <- rnorm(10,10,5)
-  condition_B <- rnorm(10,13,5)
-  differences <- condition_A - condition_B
-  t_test <- t.test(differences, mu=0)
-  save_ps[i] <- t_test$p.value
-  save_ts[i] <- t_test$statistic
+for (i in 1:1000) {
+  condicion_A <- rnorm(10, 10, 5)
+  condicion_B <- rnorm(10, 13, 5)
+  diferencias <- condicion_A - condicion_B
+  t_test <- t.test(diferencias, mu = 0)
+  guarda_ps[i] <- t_test$p.value
+  guarda_ts[i] <- t_test$statistic
 }
-
 ```
 
 ```{r}
 #| label: fig-6simtruets
-#| fig-cap: "1000 ts when there is a true difference"
-hist(save_ts)
-
+#| fig-cap: "1000 valores t cuando hay una diferencia real"
+hist(guarda_ts)
 ```
 
 ```{r}
 #| label: fig-6simtrueps
-#| fig-cap: "1000 ps when there is a true difference"
-hist(save_ps)
+#| fig-cap: "1000 valores p cuando hay una diferencia real"
+hist(guarda_ps)
 ```
 
-Now you can see that the $p$-value distribution is skewed to the left. This is because when there is a true effect, you will get p-values that are less than .05 more often. Or, rather, you get larger $t$ values than you normally would if there were no differences.
+Ahora podés ver que la distribución de valores *p* está **sesgada hacia la izquierda**. Esto pasa porque cuando hay un efecto real, obtenés valores *p* menores a .05 **más seguido**. O sea, obtenés valores *t* mayores de lo que obtendrías si no hubiera diferencias.
 
-In this case, we wouldn't be making a type I error if we rejected the null when p was smaller than .05. How many times would we do that out of our 1000 experiments?
+En este caso, **no estarías cometiendo un error tipo I** si rechazás la nula cuando *p* es menor a .05. ¿Cuántas veces lo harías de las 1000 simulaciones?
 
 ```{r, echo=TRUE}
-length(save_ps[save_ps<.05])
-length(save_ps[save_ps<.05])/1000
+length(guarda_ps[guarda_ps < .05])
+length(guarda_ps[guarda_ps < .05]) / 1000
 ```
 
-We happened to get `r length(save_ps[save_ps<.05])` simulations where p was less than .05, that's only `r length(save_ps[save_ps<.05])/1000` experiments. If you were the researcher, would you want to run an experiment that would be successful only `r length(save_ps[save_ps<.05])/1000` of the time? I wouldn't. I would run a better experiment.
+Obtuvimos `r length(guarda_ps[guarda_ps < .05])` simulaciones donde *p* fue menor a .05, lo cual representa `r length(guarda_ps[guarda_ps < .05]) / 1000` experimentos. Si fueras el investigador, ¿te gustaría correr un experimento que solo tiene éxito `r length(guarda_ps[guarda_ps < .05]) / 1000` del tiempo? Yo no. Yo correría un experimento mejor.
 
-How would you run a better simulated experiment? Well, you could increase $n$, the number of subjects in the experiment. Let's increase $n$ from 10 to 100, and see what happens to the number of "significant" simulated experiments.
+¿Cómo harías una mejor simulación? Bueno, podés aumentar *n*, el número de sujetos. Aumentemos *n* de 10 a 100 y veamos qué pasa con la cantidad de experimentos “significativos”.
 
 ```{r, echo=TRUE}
 
-save_ps <- length(1000)
-save_ts <- length(1000)
-for ( i in 1:1000 ){
-  condition_A <- rnorm(100,10,5)
-  condition_B <- rnorm(100,13,5)
-  differences <- condition_A - condition_B
-  t_test <- t.test(differences, mu=0)
-  save_ps[i] <- t_test$p.value
-  save_ts[i] <- t_test$statistic
+guarda_ps <- length(1000)
+guarda_ts <- length(1000)
+for (i in 1:1000) {
+  condicion_A <- rnorm(100, 10, 5)
+  condicion_B <- rnorm(100, 13, 5)
+  diferencias <- condicion_A - condicion_B
+  t_test <- t.test(diferencias, mu = 0)
+  guarda_ps[i] <- t_test$p.value
+  guarda_ts[i] <- t_test$statistic
 }
-
 ```
 
 ```{r}
 #| label: fig-6simtsB
-#| fig-cap: "1000 ts for n =100, when there is a true effect"
-hist(save_ts)
-
+#| fig-cap: "1000 valores t para n = 100, cuando hay un efecto real"
+hist(guarda_ts)
 ```
 
 ```{r}
 #| label: fig-6simpsB
-#| fig-cap: "1000 ps for n =100, when there is a true effect"
-hist(save_ps)
+#| fig-cap: "1000 valores p para n = 100, cuando hay un efecto real"
+hist(guarda_ps)
 
-
-length(save_ps[save_ps<.05])
-length(save_ps[save_ps<.05])/1000
+length(guarda_ps[guarda_ps < .05])
+length(guarda_ps[guarda_ps < .05]) / 1000
 ```
 
-Cool, now almost all of the experiments show a $p$-value of less than .05 (using a two-tailed test, that's the default in R). See, you could use this simulation process to determine how many subjects you need to reliably find your effect.
+Genial, ahora casi todos los experimentos muestran un valor *p* menor a .05 (usando un test bilateral, que es la opción por defecto en R). ¿Ves? Podés usar este proceso de simulación para determinar **cuántos sujetos necesitás** para detectar confiablemente tu efecto.
 
-### Simulating an independent samples t.test
+### Simular una prueba t de muestras independientes
 
-Just change the t.test function like so... this is for the null, assuming no difference between groups.
+Solo cambiá la función `t.test` de esta forma... esto es para simular bajo la nula, asumiendo que **no hay diferencia entre los grupos**.
 
 ```{r, echo=TRUE}
 
-save_ps <- length(1000)
-save_ts <- length(1000)
-for ( i in 1:1000 ){
-  group_A <- rnorm(10,10,5)
-  group_B <- rnorm(10,10,5)
-  t_test <- t.test(group_A, group_B, paired=FALSE, var.equal=TRUE)
-  save_ps[i] <- t_test$p.value
-  save_ts[i] <- t_test$statistic
+guarda_ps <- length(1000)
+guarda_ts <- length(1000)
+for (i in 1:1000) {
+  group_A <- rnorm(10, 10, 5)
+  group_B <- rnorm(10, 10, 5)
+  t_test <- t.test(group_A, group_B, paired = FALSE, var.equal = TRUE)
+  guarda_ps[i] <- t_test$p.value
+  guarda_ts[i] <- t_test$statistic
 }
-
 ```
 
 ```{r}
 #| label: fig-6simtsC
-#| fig-cap: "1000 ts for n =100, when there is a true effect"
-hist(save_ts)
-
+#| fig-cap: "1000 valores t para n = 100, cuando hay un efecto real"
+hist(guarda_ts)
 ```
 
 ```{r}
 #| label: fig-6simpsC
-#| fig-cap: "1000 ps for n =100, when there is a true effect"
-hist(save_ps)
+#| fig-cap: "1000 valores p para n = 100, cuando hay un efecto real"
+hist(guarda_ps)
 
-
-length(save_ps[save_ps<.05])
-length(save_ps[save_ps<.05])/1000
+length(guarda_ps[guarda_ps < .05])
+length(guarda_ps[guarda_ps < .05]) / 1000
 ```
+
+---
 
 ## Videos
 
-### One or Two tailed tests
+### Test de una o dos colas
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/PuoGsguuY30" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-
 </iframe>
+
+
+
+

@@ -513,7 +513,7 @@ Tal vez lo más importante que podés hacer cuando usás estadísticas descripti
 
 ### El cuarteto de Anscombe
 
-Para ilustrar este punto ---y prepararte para los temas del próximo capítulo--- mirá este ejemplo. Se llama el Cuarteto de Anscombe, porque estos gráficos y valores tan curiosos fueron producidos por \[Anscombe, 1973\]. En la figura @fig-anscombe estás viendo pares de mediciones. Cada gráfico tiene un eje X y un eje Y, y cada punto representa dos valores. A simple vista, cada gráfico se ve muy distinto, ¿no?
+Para ilustrar este punto ---y prepararte para los temas del próximo capítulo--- mirá este ejemplo. Se llama el Cuarteto de Anscombe, porque estos gráficos y valores tan curiosos fueron producidos por \[Anscombe, 1973\]. En la @fig-anscombe estás viendo pares de mediciones. Cada gráfico tiene un eje X y un eje Y, y cada punto representa dos valores. A simple vista, cada gráfico se ve muy distinto, ¿no?
 
 ```{r, echo=F, warning=FALSE}
 #| label: fig-anscombe
@@ -536,7 +536,7 @@ ggplot(ac_long, aes(x = x, y = y, color = quartet)) +
   labs(color="cuarteto")
 ```
 
-Bueno, ¿te sorprendería si te dijera que las estadísticas descriptivas de los valores en estos gráficos son exactamente las mismas? Resulta que sí: tienen las mismas estadísticas descriptivas. En la tabla de abajo se presentan la media y la varianza para los valores de $x$ en cada gráfico, y la media y varianza de los valores de y en cada gráfico:
+Bueno, ¿te sorprendería si te dijera que las estadísticas descriptivas de los valores en estos gráficos son exactamente las mismas? Resulta que sí: tienen las mismas estadísticas descriptivas. En la tabla de abajo se presentan la media y la varianza para los valores de $x$ en cada gráfico, y la media y varianza de los valores de $y$ en cada gráfico:
 
 ```{r, echo=F, warning=FALSE}
 library(dplyr)

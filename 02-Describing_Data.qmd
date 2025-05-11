@@ -468,9 +468,9 @@ knitr::kable(the_df)
 
 ```
 
-La desviación estándar que obtuvimos fue aproximadamente `√5.916`. Notá cómo ese número encaja con las diferencias respecto de la media: la mayoría están más o menos a +/-- `√5.916` de distancia. En cambio, la varianza (5.916) es demasiado grande para dar una buena idea de la dispersión real.
+La desviación estándar que obtuvimos fue aproximadamente `√5,916`. Notá cómo ese número encaja con las diferencias respecto de la media: la mayoría están más o menos a +/-- `√5,916` de distancia. En cambio, la varianza (5,916) es demasiado grande para dar una buena idea de la dispersión real.
 
-¿Qué significa todo esto? Bueno, si alguien te dice que tiene un conjunto de datos con media 4.5 (como los de nuestra tabla) y desviación estándar `√5.916`, ya tenés un muy buen resumen de esos valores: sabés que giran alrededor del 4.5, pero no todos son iguales, y que esa dispersión no es muy grande.
+¿Qué significa todo esto? Bueno, si alguien te dice que tiene un conjunto de datos con media 4,5 (como los de nuestra tabla) y desviación estándar `√5,916`, ya tenés un muy buen resumen de esos valores: sabés que giran alrededor del 4,5, pero no todos son iguales, y que esa dispersión no es muy grande.
 
 Si tuvieras un montón de datos, podrías resumirlos con solo dos números: la media y la desviación estándar. Y eso ya te daría una idea bastante buena del conjunto.
 

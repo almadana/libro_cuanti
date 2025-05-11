@@ -388,7 +388,7 @@ Exacto.
 
 Alguien muy ingenioso ideó una solución al hecho de que las diferencias con respecto a la media siempre suman cero. ¿Se te ocurre alguna? Por ejemplo, ¿qué podrías hacer con esas diferencias para que, al sumarlas, te den algo útil (o sea, que no sea cero)?
 
-La solución ingeniosa es elevarlas al cuadrado. Elevar al cuadrado convierte todos los valores negativos en positivos. Por ejemplo, $2\^2 = 4$, y $(-2)\^2 = 4$. Recordá cómo funciona: $2\^2 = 2 \times 2 = 4$, y $(-2)\^2 = -2 \times -2 = 4$. Usamos el término **desviaciones al cuadrado** para referirnos a las diferencias que han sido elevadas al cuadrado. Las desviaciones son justamente eso: apartamientos. Las diferencias con respecto a la media son desviaciones.
+La solución ingeniosa es elevarlas al cuadrado. Elevar al cuadrado convierte todos los valores negativos en positivos. Por ejemplo,$2^2 = 4$, y $-2^2 = 4$. Recordá cómo funciona: $2^2 = 2 \times 2 = 4$, y $(-2)^2 = -2 \times -2 = 4$. Usamos el término **desviaciones al cuadrado** para referirnos a las diferencias que han sido elevadas al cuadrado. Las desviaciones son justamente eso: apartamientos. Las diferencias con respecto a la media son desviaciones.
 
 Volvamos a mirar la tabla anterior, pero ahora con una columna adicional de desviaciones al cuadrado:
 

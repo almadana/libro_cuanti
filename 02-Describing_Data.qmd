@@ -410,9 +410,9 @@ knitr::kable(the_df)
 
 ```
 
-Bien, ahora tenemos una nueva columna llamada `Desvíos_cuadráticos`. Son simplemente las diferencias elevadas al cuadrado. Por ejemplo, $(-3.5)\^2 = 12.25$, etc. Lo podés comprobar con la calculadora del celular.
+Bien, ahora tenemos una nueva columna llamada `Desvíos_cuadráticos`. Son simplemente las diferencias elevadas al cuadrado. Por ejemplo, $(-3,5)^2 = 12,25$, etc. Lo podés comprobar con la calculadora del celular.
 
-Ahora que todas las desviaciones al cuadrado son positivas, podemos sumarlos. Y al hacerlo obtenemos algo muy importante: la **suma de los cuadrados** (SS, por "sum of squares"), o sea, la suma de las desviaciones al cuadrado respecto de la media. Vamos a hablar mucho de esta SS más adelante, en el capítulo de ANOVA. Pero cuando llegues ahí, ya vas a saber de qué se trata: solo una suma de cuadrados, nada raro.
+Ahora que todas las desviaciones al cuadrado son positivas, podemos sumarlos. Y al hacerlo obtenemos algo muy importante: la **suma de los cuadrados** (SS, por "sum of squares" en ingles), o sea, la suma de las desviaciones al cuadrado respecto de la media. Vamos a hablar mucho de esta SS más adelante, en el capítulo de ANOVA. Pero cuando llegues ahí, ya vas a saber de qué se trata: solo una suma de cuadrados, nada raro.
 
 ### Finalmente, la varianza
 

@@ -27,7 +27,7 @@ Supongamos que querés saber cuán feliz se siente la gente. Entonces salís a l
 
 Bueno, podrías mirar esos números y ver si eso te ayuda a entender algo sobre la felicidad de las personas. ¿Cómo podrían verse esos números? Quizás algo así:
 
-```{r 2toomany,echo=F}
+```{r 2toomany,echo=F, warning=FALSE}
 happiness<-rnorm(500,100,500)
 knitr::kable(matrix(round(happiness),ncol=10,nrow=50))
 ```
@@ -44,7 +44,7 @@ Ya intentamos una forma de mirar los números, y no fue muy útil. Probemos ahor
 
 Convirtamos todos los números en puntos, y mostremos esos puntos en un gráfico. Ojo: cuando hacemos esto, todavía no hemos resumido nada de los datos. Simplemente los estamos observando en formato visual, en vez de mirar los números directamente.
 
-```{r, echo=F}
+```{r, echo=F, warning=FALSE}
 #| label: fig-happyPlot
 #| fig-cap: "Supuestas puntuaciones de felicidad de 500 personas"
 
@@ -59,13 +59,13 @@ Hay muchos puntos por todos lados. Parece que hay 500, porque el índice llega h
 
 > Conclusión: podemos ver todos los números a la vez al ponerlos en un gráfico, y eso es mucho más fácil y útil que mirar los números crudos.
 
-Bien, si estos puntos representan cuán felices están 500 personas, ¿qué podemos decir sobre esa gente? Primero, los puntos están bastante dispersos, así que distintas personas tienen niveles de felicidad diferentes.¿Hay más personas felices que infelices, o al revés? Eso no se ve claramente en el gráfico, así que hagamos otro tipo, llamado **histograma**.
+Bien, si estos puntos representan cuán felices están 500 personas, ¿qué podemos decir sobre esa gente? Primero, los puntos están bastante dispersos, así que distintas personas tienen niveles de felicidad diferentes.¿Hay más personas felices que infelices, o al revés? Eso no se ve claramente en el gráfico, así que hagamos otro tipo de gráfico, llamado **histograma**.
 
 ### Histogramas
 
 Hacer un histograma será nuestro primer acto de resumir oficialmente algo sobre los datos. Ya no vamos a mirar cada punto individualmente, sino que vamos a ver cómo se agrupan los números. Mirá @fig-happyHist, un histograma de los datos de felicidad, y después lo explicamos.
 
-```{r, echo=F}
+```{r, echo=F, warning=FALSE}
 #| label: fig-happyHist
 #| fig-cap: "Un histograma de las puntuaciones de felicidad"
 hist(happiness)
@@ -79,7 +79,7 @@ En general, vemos que hay muchos bins en el eje x. Dividimos los datos en interv
 
 Cuando hacés un histograma, podés elegir qué tan ancho será cada intervalo. Por ejemplo, abajo hay cuatro histogramas diferentes del mismo conjunto de datos de felicidad. Lo que cambia es el ancho de los intervalos.
 
-```{r, echo=F}
+```{r, echo=F, warning=FALSE}
 #| label: fig-manyhistbin
 #| fig-cap: "Cuatro histogramas del mismo conjunto de datos usando diferentes anchos de bin"
 
@@ -236,7 +236,7 @@ Ya sabés que el resultado es 4. Pero, ¿qué está pasando en realidad? Estamos
 
 Para repasar la moda, la mediana y la media, mirá el siguiente histograma en @fig-meanmodemed. Indicamos la ubicación de la media (rojo), la mediana (verde) y la moda (azul). Para este conjunto de datos, las tres medidas de tendencia central dan valores diferentes. La media es la más alta porque se ve influida por valores grandes, incluso si aparecen pocas veces. La moda y la mediana no se ven afectadas por esos valores extremos, por eso tienen valores más bajos.
 
-```{r, echo=F}
+```{r, echo=F, warning=FALSE}
 #| label: fig-meanmodemed
 #| fig-cap: "Un histograma con la media (rojo), la mediana (verde) y la moda (azul)"
 
@@ -281,7 +281,7 @@ Estaría bueno poder resumir cuánto difieren los datos entre sí. ¿Por qué? B
 
 Pero, ¿qué pasa con las diferencias entre ellos? ¿Cómo se ven esas diferencias? Podemos calcular todas las diferencias entre cada par de números y ponerlas en una matriz como esta:
 
-```{r 2diffscores, echo=F}
+```{r 2diffscores, echo=F, warning=FALSE}
 numbers<-c(1, 3, 4, 5, 5, 6, 7, 8, 9, 24)
 mat<-matrix(rep(numbers,10),ncol=10)
 differences<-t(mat)-numbers
@@ -301,7 +301,7 @@ Probemos con estos tres números:
 
 > 1 2 3
 
-```{r 2diffscoreSmall,echo=F}
+```{r 2diffscoreSmall,echo=F, warning=FALSE}
 numbers<-c(1, 2,3)
 mat<-matrix(rep(numbers,3),ncol=3)
 differences<-t(mat)-numbers
@@ -360,11 +360,11 @@ knitr::kable(the_df)
 
 La primera columna muestra que hay 6 valores. La columna `valores` muestra cada uno. La suma y la media aparecen en las dos últimas filas. Se calcularon así:
 
-$\frac{1+6+4+2+6+8}{6} = \frac{27}{6} = 4.5$.
+$\frac{1+6+4+2+6+8}{6} = \frac{27}{6} = 4,5$.
 
-La tercera columna, `medias`, parece medio ridícula: estamos repitiendo la media una y otra vez. Pero si recordás lo que dijimos antes sobre el significado de la media, vas a ver que esto tiene sentido: distribuye la suma total por igual entre todos los valores. Si tratamos cada valor como si fuera la media, todos serían 4.5. Y si sumamos todos esos 4.5 obtenemos 27, que es la suma original de los valores. Y si sacamos la media de esas medias, también nos da 4.5 otra vez.
+La tercera columna, `medias`, parece medio ridícula: estamos repitiendo la media una y otra vez. Pero si recordás lo que dijimos antes sobre el significado de la media, vas a ver que esto tiene sentido: distribuye la suma total por igual entre todos los valores. Si tratamos cada valor como si fuera la media, todos serían 4,5. Y si sumamos todos esos 4,5 obtenemos 27, que es la suma original de los valores. Y si sacamos la media de esas medias, también nos da 4,5 otra vez.
 
-Toda la acción está en la cuarta columna, `Diferencia_a_la_Media`. Ahí estamos mostrando las diferencias respecto de la media, usando ( X_i - \bar{X} ). Es decir, a cada valor le restamos la media. Por ejemplo, el primer valor, 1, está a -3.5 de la media; el segundo valor, 6, está a +1.5 de la media, y así sucesivamente.
+Toda la acción está en la cuarta columna, `Diferencia_a_la_Media`. Ahí estamos mostrando las diferencias respecto de la media, usando $X_{i}-\bar{X}$. Es decir, a cada valor le restamos la media. Por ejemplo, el primer valor, 1, está a -3,5 de la media; el segundo valor, 6, está a +1,5 de la media, y así sucesivamente.
 
 Ahora podemos mirar nuestros valores originales y también sus diferencias con respecto a la media. Fijate que ya no tenemos una matriz completa de diferencias, así que es mucho más fácil de ver. Pero seguimos con un problema:
 
@@ -388,11 +388,11 @@ Exacto.
 
 Alguien muy ingenioso ideó una solución al hecho de que las diferencias con respecto a la media siempre suman cero. ¿Se te ocurre alguna? Por ejemplo, ¿qué podrías hacer con esas diferencias para que, al sumarlas, te den algo útil (o sea, que no sea cero)?
 
-La solución ingeniosa es elevarlas al cuadrado. Elevar al cuadrado convierte todos los valores negativos en positivos. Por ejemplo, $2\^2 = 4$, y $(-2)\^2 = 4$. Recordá cómo funciona: $2\^2 = 2 \times 2 = 4$, y $(-2)\^2 = -2 \times -2 = 4$. Usamos el término **desviaciones al cuadrado** para referirnos a las diferencias que han sido elevadas al cuadrado. Las desviaciones son justamente eso: apartamientos. Las diferencias con respecto a la media son desviaciones.
+La solución ingeniosa es elevarlas al cuadrado. Elevar al cuadrado convierte todos los valores negativos en positivos. Por ejemplo,$2^2 = 4$, y $-2^2 = 4$. Recordá cómo funciona: $2^2 = 2 \times 2 = 4$, y $(-2)^2 = -2 \times -2 = 4$. Usamos el término **desviaciones al cuadrado** para referirnos a las diferencias que han sido elevadas al cuadrado. Las desviaciones son justamente eso: apartamientos. Las diferencias con respecto a la media son desviaciones.
 
 Volvamos a mirar la tabla anterior, pero ahora con una columna adicional de desviaciones al cuadrado:
 
-```{r 2deviationssquared,echo=F}
+```{r 2deviationssquared,echo=F, warning=FALSE}
 medidas<-1:6
 valores<-c(1,6,4,2,6,8)
 mean_scores<-mean(valores)
@@ -410,9 +410,9 @@ knitr::kable(the_df)
 
 ```
 
-Bien, ahora tenemos una nueva columna llamada `Desvíos_cuadráticos`. Son simplemente las diferencias elevadas al cuadrado. Por ejemplo, $(-3.5)\^2 = 12.25$, etc. Lo podés comprobar con la calculadora del celular.
+Bien, ahora tenemos una nueva columna llamada `Desvíos_cuadráticos`. Son simplemente las diferencias elevadas al cuadrado. Por ejemplo, $(-3,5)^2 = 12,25$, etc. Lo podés comprobar con la calculadora del celular.
 
-Ahora que todas las desviaciones al cuadrado son positivas, podemos sumarlos. Y al hacerlo obtenemos algo muy importante: la **suma de los cuadrados** (SS, por "sum of squares"), o sea, la suma de las desviaciones al cuadrado respecto de la media. Vamos a hablar mucho de esta SS más adelante, en el capítulo de ANOVA. Pero cuando llegues ahí, ya vas a saber de qué se trata: solo una suma de cuadrados, nada raro.
+Ahora que todas las desviaciones al cuadrado son positivas, podemos sumarlos. Y al hacerlo obtenemos algo muy importante: la **suma de los cuadrados** (SS, por "sum of squares" en ingles), o sea, la suma de las desviaciones al cuadrado respecto de la media. Vamos a hablar mucho de esta SS más adelante, en el capítulo de ANOVA. Pero cuando llegues ahí, ya vas a saber de qué se trata: solo una suma de cuadrados, nada raro.
 
 ### Finalmente, la varianza
 
@@ -425,17 +425,17 @@ Bueno, antes que nada: ¿te acordás qué problema estábamos tratando de resolv
 
 Exacto: queremos resumir cuán diferentes son los valores. Como hay tantas diferencias como valores, nos gustaría tener un solo número que resuma todo eso, algo como una media que represente el promedio de esas diferencias.
 
-Si mirás la tabla, vas a ver que ya calculamos la media de las desviaciones al cuadrado. Primero obtuvimos la suma (SS), y luego, debajo, la media: 5.916... Esa es **la varianza**. Es la media de las desviaciones al cuadrado:
+Si mirás la tabla, vas a ver que ya calculamos la media de las desviaciones al cuadrado. Primero obtuvimos la suma (SS), y luego, debajo, la media: 5,916... Esa es **la varianza**. Es la media de las desviaciones al cuadrado:
 
 $\text{Varianza} = \frac{SS}{N}$
 
 donde $SS$ es la suma de los cuadrados y $N$ es el número de observaciones.
 
-Y ahora, ¿qué hago con la varianza? ¿Qué significa ese número? Buena pregunta. Muchas veces, la varianza no es un número muy útil para mirar. ¿Por qué? Porque no está en la misma escala que los datos originales. Esto pasa porque al elevar al cuadrado se obtienen números más grandes. Por ejemplo, tenemos un 12.25 por ahí. Ese número es más grande que cualquier diferencia entre dos valores originales. Entonces, ¿cómo hacemos para "bajar" ese número a la escala original?
+Y ahora, ¿qué hago con la varianza? ¿Qué significa ese número? Buena pregunta. Muchas veces, la varianza no es un número muy útil para mirar. ¿Por qué? Porque no está en la misma escala que los datos originales. Esto pasa porque al elevar al cuadrado se obtienen números más grandes. Por ejemplo, tenemos un 12,25 por ahí. Ese número es más grande que cualquier diferencia entre dos valores originales. Entonces, ¿cómo hacemos para "bajar" ese número a la escala original?
 
-Si pensaste en sacar la raíz cuadrada, ¡ding ding ding! Correcto! Siempre podés deshacer un cuadrado sacando la raíz cuadrada. Entonces, hagámoslo con 5.916:
+Si pensaste en sacar la raíz cuadrada, ¡ding ding ding! Correcto! Siempre podés deshacer un cuadrado sacando la raíz cuadrada. Entonces, hagámoslo con 5,916:
 
-$\sqrt{5.916} = \text{desviación estándar}$
+$\sqrt{5,916} = \text{desviación estándar}$
 
 ### La desviación estándar
 
@@ -447,13 +447,13 @@ $\text{Desviación estándar} = \sqrt{\text{Varianza}} = \sqrt{\frac{SS}{N}}$
 
 También se puede expandir así:
 
-\$\text{Desviación estándar} = \sqrt{\frac{\sum_{i}^{n}(x_i - \bar{x})^2}{N}} \$
+$\text{Desviación estándar} = \sqrt{\frac{\sum_{i}^{n}({x_{i}-\bar{x})^2}}{N}}$
 
 No dejes que esas raíces gigantes te asusten. Ahora sabés que están ahí para devolvernos una medida que tenga la misma escala que los datos originales.
 
 Si miramos de nuevo la tabla:
 
-```{r,echo=F}
+```{r,echo=F, warning=FALSE}
 medidas<-1:6
 valores<-c(1,6,4,2,6,8)
 mean_scores<-mean(valores)
@@ -468,9 +468,9 @@ knitr::kable(the_df)
 
 ```
 
-La desviación estándar que obtuvimos fue aproximadamente `√5.916`. Notá cómo ese número encaja con las diferencias respecto de la media: la mayoría están más o menos a +/-- `√5.916` de distancia. En cambio, la varianza (5.916) es demasiado grande para dar una buena idea de la dispersión real.
+La desviación estándar que obtuvimos fue aproximadamente `√5,916`. Notá cómo ese número encaja con las diferencias respecto de la media: la mayoría están más o menos a +/-- `√5,916` de distancia. En cambio, la varianza (5,916) es demasiado grande para dar una buena idea de la dispersión real.
 
-¿Qué significa todo esto? Bueno, si alguien te dice que tiene un conjunto de datos con media 4.5 (como los de nuestra tabla) y desviación estándar `√5.916`, ya tenés un muy buen resumen de esos valores: sabés que giran alrededor del 4.5, pero no todos son iguales, y que esa dispersión no es muy grande.
+¿Qué significa todo esto? Bueno, si alguien te dice que tiene un conjunto de datos con media 4,5 (como los de nuestra tabla) y desviación estándar `√5,916`, ya tenés un muy buen resumen de esos valores: sabés que giran alrededor del 4,5, pero no todos son iguales, y que esa dispersión no es muy grande.
 
 Si tuvieras un montón de datos, podrías resumirlos con solo dos números: la media y la desviación estándar. Y eso ya te daría una idea bastante buena del conjunto.
 
@@ -479,7 +479,7 @@ Si tuvieras un montón de datos, podrías resumirlos con solo dos números: la m
 ¿Y si simplemente tomamos el valor absoluto de las diferencias respecto de la media?\
 Recordá que el valor absoluto convierte cualquier número en un valor positivo. Fijate en la siguiente tabla:
 
-```{r 2absolute, echo=F}
+```{r 2absolute, echo=F, warning=FALSE}
 medidas<-1:6
 valores<-c(1,6,4,2,6,8)
 mean_scores<-mean(valores)
@@ -513,9 +513,9 @@ Tal vez lo más importante que podés hacer cuando usás estadísticas descripti
 
 ### El cuarteto de Anscombe
 
-Para ilustrar este punto ---y prepararte para los temas del próximo capítulo--- mirá este ejemplo. Se llama el Cuarteto de Anscombe, porque estos gráficos y valores tan curiosos fueron producidos por \[Anscombe, 1973\]. En la figura @fig-anscombe estás viendo pares de mediciones. Cada gráfico tiene un eje X y un eje Y, y cada punto representa dos valores. A simple vista, cada gráfico se ve muy distinto, ¿no?
+Para ilustrar este punto ---y prepararte para los temas del próximo capítulo--- mirá este ejemplo. Se llama el Cuarteto de Anscombe, porque estos gráficos y valores tan curiosos fueron producidos por \[Anscombe, 1973\]. En la @fig-anscombe estás viendo pares de mediciones. Cada gráfico tiene un eje X y un eje Y, y cada punto representa dos valores. A simple vista, cada gráfico se ve muy distinto, ¿no?
 
-```{r, echo=F}
+```{r, echo=F, warning=FALSE}
 #| label: fig-anscombe
 #| fig-cap: "El Cuarteto de Anscombe"
 
@@ -536,9 +536,9 @@ ggplot(ac_long, aes(x = x, y = y, color = quartet)) +
   labs(color="cuarteto")
 ```
 
-Bueno, ¿te sorprendería si te dijera que las estadísticas descriptivas de los valores en estos gráficos son exactamente las mismas? Resulta que sí: tienen las mismas estadísticas descriptivas. En la tabla de abajo se presentan la media y la varianza para los valores de $x$ en cada gráfico, y la media y varianza de los valores de y en cada gráfico:
+Bueno, ¿te sorprendería si te dijera que las estadísticas descriptivas de los valores en estos gráficos son exactamente las mismas? Resulta que sí: tienen las mismas estadísticas descriptivas. En la tabla de abajo se presentan la media y la varianza para los valores de $x$ en cada gráfico, y la media y varianza de los valores de $y$ en cada gráfico:
 
-```{r, echo=F}
+```{r, echo=F, warning=FALSE}
 library(dplyr)
 
 ac_long_summary <- ac_long %>%

@@ -360,11 +360,11 @@ knitr::kable(the_df)
 
 La primera columna muestra que hay 6 valores. La columna `valores` muestra cada uno. La suma y la media aparecen en las dos últimas filas. Se calcularon así:
 
-$\frac{1+6+4+2+6+8}{6} = \frac{27}{6} = 4.5$.
+$\frac{1+6+4+2+6+8}{6} = \frac{27}{6} = 4,5$.
 
-La tercera columna, `medias`, parece medio ridícula: estamos repitiendo la media una y otra vez. Pero si recordás lo que dijimos antes sobre el significado de la media, vas a ver que esto tiene sentido: distribuye la suma total por igual entre todos los valores. Si tratamos cada valor como si fuera la media, todos serían 4.5. Y si sumamos todos esos 4.5 obtenemos 27, que es la suma original de los valores. Y si sacamos la media de esas medias, también nos da 4.5 otra vez.
+La tercera columna, `medias`, parece medio ridícula: estamos repitiendo la media una y otra vez. Pero si recordás lo que dijimos antes sobre el significado de la media, vas a ver que esto tiene sentido: distribuye la suma total por igual entre todos los valores. Si tratamos cada valor como si fuera la media, todos serían 4,5. Y si sumamos todos esos 4,5 obtenemos 27, que es la suma original de los valores. Y si sacamos la media de esas medias, también nos da 4,5 otra vez.
 
-Toda la acción está en la cuarta columna, `Diferencia_a_la_Media`. Ahí estamos mostrando las diferencias respecto de la media, usando $X_{i}-\bar{X}$. Es decir, a cada valor le restamos la media. Por ejemplo, el primer valor, 1, está a -3.5 de la media; el segundo valor, 6, está a +1.5 de la media, y así sucesivamente.
+Toda la acción está en la cuarta columna, `Diferencia_a_la_Media`. Ahí estamos mostrando las diferencias respecto de la media, usando $X_{i}-\bar{X}$. Es decir, a cada valor le restamos la media. Por ejemplo, el primer valor, 1, está a -3,5 de la media; el segundo valor, 6, está a +1,5 de la media, y así sucesivamente.
 
 Ahora podemos mirar nuestros valores originales y también sus diferencias con respecto a la media. Fijate que ya no tenemos una matriz completa de diferencias, así que es mucho más fácil de ver. Pero seguimos con un problema:
 

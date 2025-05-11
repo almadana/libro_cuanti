@@ -15,6 +15,7 @@ book:
     - index.qmd
     - 01-Science_Data.qmd
     - 02-Describing_Data.qmd
+    - 02b-tablas_final.qmd
     - 03-Correlation.qmd
     - 04-SamplesPopulations.qmd
     - 05-Foundation_Inference.qmd
@@ -27,8 +28,8 @@ book:
     - 12-Thinking.qmd
     - 13-Gifs.qmd
     - references.qmd
-  site-url: https://crumplab.com/statistics/
-  repo-url: https://github.com/CrumpLab/statistics/
+  site-url: https://almadana.github.io/libro_cuanti/
+  repo-url: https://github.com/almadana/libro_cuanti/
   repo-branch: master
   repo-actions: [edit]
   google-analytics: "G-1116FZ99DZ"

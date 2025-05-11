@@ -1,1 +1,1 @@
-Sitemap: https://crumplab.com/statistics/sitemap.xml
+Sitemap: https://almadana.github.io/libro_cuanti/sitemap.xml

@@ -1,0 +1,221 @@
+---
+author:
+    -GPT4-o y Álvaro Cabana
+lang: es
+abstract-title: Notas
+abstract: Traducido al español rioplatense por ChatGPT4-o bajo la supervisión de Álvaro Cabana.
+aliases: [06b-chi_cuadrado.html]
+---
+
+# Las pruebas de Chi Cuadrado
+
+## Chi cuadrado: contar también es hacer inferencia
+
+¿Te acordás cuando te dijeron que “la estadística no es solo para números continuos”? Bueno, capaz nunca te lo dijeron, pero deberían. Porque la mayoría de los datos que vas a encontrar en psicología no son promedios, ni puntajes en escalas. Son **categorías**. Personas que dijeron “sí” o “no”. Pacientes que respondieron “de acuerdo”, “neutral” o “en desacuerdo”. Estudiantes que eligieron Psicología, Derecho o Ingeniería. Frecuencias. Tablas. Conteos.
+
+Y acá es donde aparece nuestro héroe estadístico del día: la **prueba chi cuadrado**.
+
+Pero antes de contarte cómo funciona, vamos a meternos en un problema real que podrías encontrarte en el pasillo de la facultad.
+
+
+### ¿Importa tu carrera?
+
+Imaginá que hacés una encuesta en la universidad. Les preguntás a 100 estudiantes de diferentes carreras si están a favor o en contra de legalizar la eutanasia.
+
+Cuando juntás los datos, ves algo así:
+
+| Carrera    | A favor | En contra |
+| ---------- | ------- | --------- |
+| Psicología | 30      | 10        |
+| Medicina   | 20      | 20        |
+| Derecho    | 10      | 10        |
+
+Mirá los números. Parece que los de Psicología están más a favor que el resto, ¿no? ¿Y los de Derecho? Parecen más divididos. Pero pará... ¿estas diferencias son reales? ¿O podrían haberse dado por azar?
+
+Eso es lo que queremos saber. Y no lo podemos saber solo “mirando la tabla”.
+
+
+### Contar también puede ser engañoso
+
+En los tests *t* veíamos diferencias entre promedios. Y aprendimos que el azar puede producir diferencias entre medias incluso cuando no hay ningún efecto. Acá pasa lo mismo: **el azar también puede producir diferencias entre frecuencias**.
+
+Entonces, si querés saber si hay una relación entre dos variables categóricas (como carrera y opinión), tenés que hacer lo mismo que hacíamos con medias: **ver qué tan diferente es lo que observás de lo que esperarías si no hubiera relación**.
+
+Pero, ¿qué significa “si no hubiera relación”?
+
+Significa que **la opinión sobre eutanasia no debería depender de la carrera**. Deberías ver más o menos la misma proporción de opiniones en todas las carreras. Si hay más o menos es porque algo está pasando... o porque justo te tocaron respuestas así, de pura suerte.
+
+Ese es el corazón del test chi cuadrado: **comparar lo que observaste con lo que esperarías si las cosas fueran independientes**, y medir cuán grande es esa diferencia.
+
+
+## La gran idea del test chi cuadrado
+
+Acá va una idea poderosa: **el azar también puede producir diferencias llamativas en tablas de frecuencias**.
+
+Cuando lo que estás midiendo son cantidades (como puntajes), lo que cambia de muestra en muestra es el promedio. Pero cuando medís categorías, lo que cambia de muestra en muestra son los **conteos**. Y eso puede ser tan engañoso como cualquier otra cosa.
+
+Así que, como buenos científicos, vamos a hacer lo mismo que en los *t*-tests: vamos a comparar lo que vimos con lo que **esperaríamos si no hubiera ningún efecto**.
+
+En otras palabras: vamos a construir una tabla de **frecuencias esperadas**, y ver qué tan distinta es de la tabla que observamos. Y para eso usamos esta fórmula:
+
+$$
+  \chi^2 = \sum \frac{(O - E)^2}{E}
+$$
+
+Donde:
+
+* $O$ es lo que **observaste** (Observed)
+* $E$ es lo que **esperarías** si no hubiera relación (Expected)
+
+La idea es simple: **mirás cada celda de la tabla**, calculás cuán diferente es de lo esperado, lo elevás al cuadrado (para que las diferencias positivas y negativas no se cancelen), y lo dividís por el valor esperado. Después sumás todo. Y eso te da un número: el valor de chi cuadrado.
+
+### Pero... ¿cómo se calculan las esperadas?
+
+Gran pregunta. Y la respuesta también tiene sentido. Si no hubiera ninguna relación entre las variables (por ejemplo, entre carrera y opinión), entonces la proporción de respuestas “a favor” debería ser la misma en todas las carreras. Lo que esperás en cada celda se calcula así:
+
+$$
+  E_{ij} = \frac{(total\ fila) \times (total\ columna)}{(total\ general)}
+$$
+
+No hace falta memorizarlo. Vamos a hacerlo con los datos de recién.
+
+
+### Cargar los datos y armar la tabla
+
+```{r}
+#| label: tbl-opinion-carrera
+#| tbl-cap: "Frecuencias observadas: opinión sobre eutanasia por carrera"
+
+opinion <- matrix(c(30, 10, 20, 20, 10, 10),
+                  nrow = 3, byrow = TRUE)
+rownames(opinion) <- c("Psicología", "Medicina", "Derecho")
+colnames(opinion) <- c("A favor", "En contra")
+
+opinion
+```
+
+
+### Calcular las esperadas
+
+```{r}
+#| label: tbl-esperadas
+#| tbl-cap: "Frecuencias esperadas bajo la hipótesis nula de independencia"
+
+chisq_expected <- chisq.test(opinion)$expected
+chisq_expected
+```
+
+Listo. Ahora tenés dos tablas: la observada y la esperada. La chi cuadrado compara ambas. Cuanto más distintas sean, más grande será el valor del estadístico, y menos probable será que esas diferencias se deban solo al azar.
+
+En el siguiente paso vamos a visualizar estas diferencias, para que puedas ver con tus propios ojos lo que el test está midiendo.
+
+
+```{r}
+#| label: fig-residuales-heatmap
+#| fig-cap: "Mapa de calor de los residuales (O - E) entre lo observado y lo esperado"
+
+library(tidyverse)
+
+# Crear la tabla
+observado <- matrix(c(30, 10, 20, 20, 10, 10), 
+                    nrow = 3, byrow = TRUE,
+                    dimnames = list(c("Psicología", "Medicina", "Derecho"),
+                                    c("A favor", "En contra")))
+
+# Calcular las esperadas
+esperado <- chisq.test(observado)$expected
+
+# Calcular los residuales
+residual <- observado - esperado
+
+# Pasar a formato largo para ggplot
+resid_df <- as.data.frame(as.table(residual)) |>
+  rename(Carrera = Var1, Opinion = Var2, Residual = Freq)
+
+# Graficar
+ggplot(resid_df, aes(x = Opinion, y = Carrera, fill = Residual)) +
+  geom_tile(color = "white") +
+  geom_text(aes(label = round(Residual, 1)), size = 5) +
+  scale_fill_gradient2(low = "blue", high = "red", mid = "white", midpoint = 0,
+                       name = "O - E") +
+  theme_minimal(base_size = 14) +
+  labs(title = "Mapa de calor de residuales (O - E)",
+       x = NULL, y = NULL)
+```
+
+Este gráfico ayuda a responder visualmente la pregunta: **¿cuáles celdas están más lejos de lo que esperaríamos si no hubiera relación?**
+
+Este mapa de calor muestra visualmente **dónde están las mayores discrepancias** entre lo observado y lo esperado:
+
+* Rojo = más de lo esperado
+* Azul = menos de lo esperado
+* Blanco = cerca de lo esperado
+
+Como ves, Psicología tiene más respuestas “A favor” de lo que esperaría el azar. Medicina está más cerca del equilibrio. Derecho tiene menos “A favor” de lo esperado. Todo eso es lo que está capturando el valor chi cuadrado.
+
+Perfecto, ahora seguimos con el cálculo del estadístico $\chi^2$, su valor *p*, y cómo se interpreta dentro de su distribución.
+
+---
+
+## Calcular el valor chi cuadrado
+
+Ya tenemos nuestras tablas de frecuencias observadas y esperadas, y también los residuales. Ahora vamos a calcular el valor de la estadística chi cuadrado. Como dijimos antes, esta estadística resume **cuán diferentes son en total** las frecuencias observadas de las esperadas.
+
+Lo podés hacer a mano con la fórmula, pero es más común dejar que R lo haga por vos:
+
+```{r}
+#| label: chisq-prueba
+#| tbl-cap: "Resultado de la prueba chi cuadrado"
+
+chisq.test(observado)
+```
+
+Este test te devuelve varias cosas importantes:
+
+* El valor de $\chi^2$
+* Los **grados de libertad** (df), que son $(n_{\text{filas}} - 1) \times (n_{\text{columnas}} - 1)$
+* El **valor *p***, que indica la probabilidad de obtener un $\chi^2$ igual o mayor al observado, si la hipótesis nula fuera verdadera
+
+---
+
+## La distribución chi cuadrado
+
+¿De dónde sale ese valor *p*? Del mismo lugar que en todos los tests: de una **distribución nula**. En este caso, es la distribución **chi cuadrado** con los grados de libertad apropiados.
+
+### 🧠 Gran idea:
+
+> La distribución chi cuadrado te dice **qué tan grandes pueden ser las diferencias por puro azar**, cuando no hay relación entre las variables.
+
+Y tiene una forma particular: empieza en cero (nunca es negativa), y tiene una **cola hacia la derecha**. Cuanto más grandes las diferencias, menos probables.
+
+Podemos visualizarla así:
+
+```{r}
+#| label: fig-chisq-dist
+#| fig-cap: "Distribución chi cuadrado con 2 grados de libertad"
+
+library(ggplot2)
+
+df <- 2
+x_vals <- seq(0, 15, length.out = 300)
+y_vals <- dchisq(x_vals, df = df)
+
+ggplot(data.frame(x = x_vals, y = y_vals), aes(x, y)) +
+  geom_line() +
+  geom_vline(xintercept = chisq.test(observado)$statistic, linetype = "dashed", color = "red") +
+  annotate("text", x = chisq.test(observado)$statistic + 0.5, y = max(y_vals)/2,
+           label = "χ² observado", color = "red") +
+  theme_minimal(base_size = 14) +
+  labs(title = "Distribución chi cuadrado bajo la hipótesis nula",
+       x = "Valor χ²", y = "Densidad")
+```
+
+La línea roja muestra el valor de $\chi^2$ que obtuvimos. El área bajo la curva a su derecha es el **valor *p***.
+
+
+### Interpretar el resultado
+
+En este ejemplo, si el valor *p* es menor a 0.05, diríamos que es **poco probable** que esas diferencias se deban solo al azar. Entonces, **rechazamos la hipótesis nula** de independencia: creemos que **la carrera está asociada con la opinión** sobre la eutanasia.
+
+Pero como siempre, eso no significa que sepamos por qué, ni cuál grupo hizo la diferencia. Para eso miramos los **residuales**, que ya graficamos.
+

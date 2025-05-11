@@ -1,0 +1,1692 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Álvaro Cabana y una inteligencia artificial generativa">
+
+<title>3&nbsp; Tablas – Respondiendo preguntas con datos</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./03-Correlation.html" rel="next">
+<link href="./02-Describing_Data.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1116FZ99DZ"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
+</script>
+
+
+<meta property="og:title" content="3&nbsp; Tablas – Respondiendo preguntas con datos">
+<meta property="og:description" content="">
+<meta property="og:site_name" content="Respondiendo preguntas con datos">
+<meta name="twitter:title" content="3&nbsp; Tablas – Respondiendo preguntas con datos">
+<meta name="twitter:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
+<meta name="twitter:image" content="https://almadana.github.io/libro_cuanti/imgs/TextbookCover.png">
+<meta name="twitter:site" content="@MattCrumpLab">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image-height" content="1310">
+<meta name="twitter:image-width" content="916">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02b-tablas_final.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tablas</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Respondiendo preguntas con datos</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/almadana/libro_cuanti/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-Science_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">¿Por qué estadística?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-Describing_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describir los datos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02b-tablas_final.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tablas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-Correlation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Correlación</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-SamplesPopulations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probabilidad, muestreo y estimación</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-Foundation_Inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Fundamentos de la inferencia</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-ttests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Pruebas t</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-ANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">ANOVA</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-RMANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Repeated Measures ANOVA</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-FactorialANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Factorial ANOVA</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-MixedANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">More On Factorial Designs</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-Simulation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Simulating Data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-Thinking.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Thinking about answering questions with data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-Gifs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">GIFs</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#contar-la-primera-estadística" id="toc-contar-la-primera-estadística" class="nav-link active" data-scroll-target="#contar-la-primera-estadística"><span class="header-section-number">3.1</span> Contar: la primera estadística</a>
+  <ul class="collapse">
+  <li><a href="#ejemplo-animales-favoritos" id="toc-ejemplo-animales-favoritos" class="nav-link" data-scroll-target="#ejemplo-animales-favoritos"><span class="header-section-number">3.1.1</span> Ejemplo: animales favoritos</a></li>
+  </ul></li>
+  <li><a href="#ver-lo-que-contamos" id="toc-ver-lo-que-contamos" class="nav-link" data-scroll-target="#ver-lo-que-contamos"><span class="header-section-number">3.2</span> Ver lo que contamos</a></li>
+  <li><a href="#qué-tan-grande-es-mucho" id="toc-qué-tan-grande-es-mucho" class="nav-link" data-scroll-target="#qué-tan-grande-es-mucho"><span class="header-section-number">3.3</span> ¿Qué tan grande es “mucho”?</a>
+  <ul class="collapse">
+  <li><a href="#del-número-al-total" id="toc-del-número-al-total" class="nav-link" data-scroll-target="#del-número-al-total"><span class="header-section-number">3.3.1</span> Del número al total</a></li>
+  <li><a href="#lo-mismo-pero-con-el-100" id="toc-lo-mismo-pero-con-el-100" class="nav-link" data-scroll-target="#lo-mismo-pero-con-el-100"><span class="header-section-number">3.3.2</span> Lo mismo, pero con el 100%</a></li>
+  <li><a href="#ver-lo-relativo" id="toc-ver-lo-relativo" class="nav-link" data-scroll-target="#ver-lo-relativo"><span class="header-section-number">3.3.3</span> Ver lo relativo</a></li>
+  </ul></li>
+  <li><a href="#sumar-hacia-arriba-la-frecuencia-acumulada" id="toc-sumar-hacia-arriba-la-frecuencia-acumulada" class="nav-link" data-scroll-target="#sumar-hacia-arriba-la-frecuencia-acumulada"><span class="header-section-number">3.4</span> Sumar hacia arriba: la frecuencia acumulada</a>
+  <ul class="collapse">
+  <li><a href="#para-qué-sirve-acumular" id="toc-para-qué-sirve-acumular" class="nav-link" data-scroll-target="#para-qué-sirve-acumular"><span class="header-section-number">3.4.1</span> ¿Para qué sirve acumular?</a></li>
+  <li><a href="#cómo-se-calcula" id="toc-cómo-se-calcula" class="nav-link" data-scroll-target="#cómo-se-calcula"><span class="header-section-number">3.4.2</span> Cómo se calcula</a></li>
+  <li><a href="#qué-aprendemos-con-esto" id="toc-qué-aprendemos-con-esto" class="nav-link" data-scroll-target="#qué-aprendemos-con-esto"><span class="header-section-number">3.4.3</span> ¿Qué aprendemos con esto?</a></li>
+  <li><a href="#ver-la-acumulación" id="toc-ver-la-acumulación" class="nav-link" data-scroll-target="#ver-la-acumulación"><span class="header-section-number">3.4.4</span> Ver la acumulación</a></li>
+  </ul></li>
+  <li><a href="#dos-variables-una-tabla-cuando-las-categorías-se-cruzan" id="toc-dos-variables-una-tabla-cuando-las-categorías-se-cruzan" class="nav-link" data-scroll-target="#dos-variables-una-tabla-cuando-las-categorías-se-cruzan"><span class="header-section-number">3.5</span> Dos variables, una tabla: cuando las categorías se cruzan</a>
+  <ul class="collapse">
+  <li><a href="#qué-es-una-tabla-de-contingencia" id="toc-qué-es-una-tabla-de-contingencia" class="nav-link" data-scroll-target="#qué-es-una-tabla-de-contingencia"><span class="header-section-number">3.5.1</span> ¿Qué es una tabla de contingencia?</a></li>
+  <li><a href="#qué-se-puede-leer-de-esta-tabla" id="toc-qué-se-puede-leer-de-esta-tabla" class="nav-link" data-scroll-target="#qué-se-puede-leer-de-esta-tabla"><span class="header-section-number">3.5.2</span> ¿Qué se puede leer de esta tabla?</a></li>
+  <li><a href="#visualizar-la-tabla" id="toc-visualizar-la-tabla" class="nav-link" data-scroll-target="#visualizar-la-tabla"><span class="header-section-number">3.5.3</span> Visualizar la tabla</a></li>
+  </ul></li>
+  <li><a href="#los-totales-mandan-leer-bien-una-tabla-y-no-cometer-errores" id="toc-los-totales-mandan-leer-bien-una-tabla-y-no-cometer-errores" class="nav-link" data-scroll-target="#los-totales-mandan-leer-bien-una-tabla-y-no-cometer-errores"><span class="header-section-number">3.6</span> Los totales mandan: leer bien una tabla (y no cometer errores)</a>
+  <ul class="collapse">
+  <li><a href="#tres-tipos-de-totales-tres-formas-de-leer" id="toc-tres-tipos-de-totales-tres-formas-de-leer" class="nav-link" data-scroll-target="#tres-tipos-de-totales-tres-formas-de-leer"><span class="header-section-number">3.6.1</span> Tres tipos de totales, tres formas de leer</a></li>
+  <li><a href="#totales-por-fila" id="toc-totales-por-fila" class="nav-link" data-scroll-target="#totales-por-fila"><span class="header-section-number">3.6.2</span> 🧱 1. Totales por fila</a></li>
+  <li><a href="#totales-por-columna" id="toc-totales-por-columna" class="nav-link" data-scroll-target="#totales-por-columna"><span class="header-section-number">3.6.3</span> 🧱 2. Totales por columna</a></li>
+  <li><a href="#total-general" id="toc-total-general" class="nav-link" data-scroll-target="#total-general"><span class="header-section-number">3.6.4</span> 🌐 3. Total general</a></li>
+  </ul></li>
+  <li><a href="#por-qué-importa-esto" id="toc-por-qué-importa-esto" class="nav-link" data-scroll-target="#por-qué-importa-esto"><span class="header-section-number">3.7</span> ⚠️ ¿Por qué importa esto?</a></li>
+  <li><a href="#tablas-de-prevalencia-ver-cuánto-hay-de-algo-dentro-de-algo" id="toc-tablas-de-prevalencia-ver-cuánto-hay-de-algo-dentro-de-algo" class="nav-link" data-scroll-target="#tablas-de-prevalencia-ver-cuánto-hay-de-algo-dentro-de-algo"><span class="header-section-number">3.8</span> Tablas de prevalencia: ver cuánto hay de algo, dentro de algo</a>
+  <ul class="collapse">
+  <li><a href="#qué-es-la-prevalencia" id="toc-qué-es-la-prevalencia" class="nav-link" data-scroll-target="#qué-es-la-prevalencia"><span class="header-section-number">3.8.1</span> ¿Qué es la prevalencia?</a></li>
+  <li><a href="#ejemplo-prevalencia-de-ansiedad-por-nivel-educativo" id="toc-ejemplo-prevalencia-de-ansiedad-por-nivel-educativo" class="nav-link" data-scroll-target="#ejemplo-prevalencia-de-ansiedad-por-nivel-educativo"><span class="header-section-number">3.8.2</span> Ejemplo: prevalencia de ansiedad por nivel educativo</a></li>
+  <li><a href="#cómo-se-calcula-la-prevalencia" id="toc-cómo-se-calcula-la-prevalencia" class="nav-link" data-scroll-target="#cómo-se-calcula-la-prevalencia"><span class="header-section-number">3.8.3</span> ¿Cómo se calcula la prevalencia?</a></li>
+  <li><a href="#visualizar-una-tabla-de-prevalencia" id="toc-visualizar-una-tabla-de-prevalencia" class="nav-link" data-scroll-target="#visualizar-una-tabla-de-prevalencia"><span class="header-section-number">3.8.4</span> Visualizar una tabla de prevalencia</a></li>
+  <li><a href="#cómo-sé-si-estoy-viendo-una-tabla-de-prevalencia" id="toc-cómo-sé-si-estoy-viendo-una-tabla-de-prevalencia" class="nav-link" data-scroll-target="#cómo-sé-si-estoy-viendo-una-tabla-de-prevalencia"><span class="header-section-number">3.8.5</span> ¿Cómo sé si estoy viendo una tabla de prevalencia?</a></li>
+  </ul></li>
+  <li><a href="#dos-historias-una-tabla-cómo-el-mismo-dato-puede-decir-cosas-distintas" id="toc-dos-historias-una-tabla-cómo-el-mismo-dato-puede-decir-cosas-distintas" class="nav-link" data-scroll-target="#dos-historias-una-tabla-cómo-el-mismo-dato-puede-decir-cosas-distintas"><span class="header-section-number">3.9</span> Dos historias, una tabla: cómo el mismo dato puede decir cosas distintas</a>
+  <ul class="collapse">
+  <li><a href="#historia-1-la-tabla-de-prevalencia" id="toc-historia-1-la-tabla-de-prevalencia" class="nav-link" data-scroll-target="#historia-1-la-tabla-de-prevalencia"><span class="header-section-number">3.9.1</span> 🧭 Historia 1: la tabla de prevalencia</a></li>
+  <li><a href="#historia-2-proporciones-por-columna" id="toc-historia-2-proporciones-por-columna" class="nav-link" data-scroll-target="#historia-2-proporciones-por-columna"><span class="header-section-number">3.9.2</span> 🧭 Historia 2: proporciones por columna</a></li>
+  <li><a href="#cuál-está-bien" id="toc-cuál-está-bien" class="nav-link" data-scroll-target="#cuál-está-bien"><span class="header-section-number">3.9.3</span> 🧠 ¿Cuál está “bien”?</a></li>
+  <li><a href="#visualizar-ambas-historias" id="toc-visualizar-ambas-historias" class="nav-link" data-scroll-target="#visualizar-ambas-historias"><span class="header-section-number">3.9.4</span> Visualizar ambas historias</a></li>
+  </ul></li>
+  <li><a href="#lo-que-ves-depende-de-cómo-mirás" id="toc-lo-que-ves-depende-de-cómo-mirás" class="nav-link" data-scroll-target="#lo-que-ves-depende-de-cómo-mirás"><span class="header-section-number">3.10</span> Lo que ves depende de cómo mirás</a></li>
+  <li><a href="#qué-porcentaje-de-qué-pensar-en-condicionales" id="toc-qué-porcentaje-de-qué-pensar-en-condicionales" class="nav-link" data-scroll-target="#qué-porcentaje-de-qué-pensar-en-condicionales"><span class="header-section-number">3.11</span> ¿Qué porcentaje de qué? Pensar en condicionales</a>
+  <ul class="collapse">
+  <li><a href="#dos-preguntas-dos-tablas" id="toc-dos-preguntas-dos-tablas" class="nav-link" data-scroll-target="#dos-preguntas-dos-tablas"><span class="header-section-number">3.11.1</span> Dos preguntas, dos tablas</a></li>
+  <li><a href="#proporciones-por-fila-p1" id="toc-proporciones-por-fila-p1" class="nav-link" data-scroll-target="#proporciones-por-fila-p1"><span class="header-section-number">3.11.2</span> Proporciones por fila (P1)</a></li>
+  <li><a href="#proporciones-por-columna-p2" id="toc-proporciones-por-columna-p2" class="nav-link" data-scroll-target="#proporciones-por-columna-p2"><span class="header-section-number">3.11.3</span> Proporciones por columna (P2)</a></li>
+  <li><a href="#no-confundas-estas-dos" id="toc-no-confundas-estas-dos" class="nav-link" data-scroll-target="#no-confundas-estas-dos"><span class="header-section-number">3.11.4</span> No confundas estas dos</a></li>
+  <li><a href="#cómo-saber-cuál-estás-viendo" id="toc-cómo-saber-cuál-estás-viendo" class="nav-link" data-scroll-target="#cómo-saber-cuál-estás-viendo"><span class="header-section-number">3.11.5</span> ¿Cómo saber cuál estás viendo?</a></li>
+  <li><a href="#entender-condicionales-solo-leer-bien" id="toc-entender-condicionales-solo-leer-bien" class="nav-link" data-scroll-target="#entender-condicionales-solo-leer-bien"><span class="header-section-number">3.11.6</span> Entender condicionales ≠ solo leer bien</a></li>
+  </ul></li>
+  <li><a href="#incidencia-cuando-contar-también-implica-tiempo" id="toc-incidencia-cuando-contar-también-implica-tiempo" class="nav-link" data-scroll-target="#incidencia-cuando-contar-también-implica-tiempo"><span class="header-section-number">3.12</span> Incidencia: cuando contar también implica tiempo</a>
+  <ul class="collapse">
+  <li><a href="#qué-es-la-incidencia" id="toc-qué-es-la-incidencia" class="nav-link" data-scroll-target="#qué-es-la-incidencia"><span class="header-section-number">3.12.1</span> ¿Qué es la incidencia?</a></li>
+  <li><a href="#por-qué-importa" id="toc-por-qué-importa" class="nav-link" data-scroll-target="#por-qué-importa"><span class="header-section-number">3.12.2</span> ¿Por qué importa?</a></li>
+  <li><a href="#ejemplo-ansiedad-en-estudiantes-al-empezar-el-semestre" id="toc-ejemplo-ansiedad-en-estudiantes-al-empezar-el-semestre" class="nav-link" data-scroll-target="#ejemplo-ansiedad-en-estudiantes-al-empezar-el-semestre"><span class="header-section-number">3.12.3</span> Ejemplo: ansiedad en estudiantes al empezar el semestre</a></li>
+  <li><a href="#diferencias-en-visualización" id="toc-diferencias-en-visualización" class="nav-link" data-scroll-target="#diferencias-en-visualización"><span class="header-section-number">3.12.4</span> Diferencias en visualización</a></li>
+  <li><a href="#calcular-la-incidencia" id="toc-calcular-la-incidencia" class="nav-link" data-scroll-target="#calcular-la-incidencia"><span class="header-section-number">3.12.5</span> Calcular la incidencia</a></li>
+  <li><a href="#comparar-no-es-mezclar" id="toc-comparar-no-es-mezclar" class="nav-link" data-scroll-target="#comparar-no-es-mezclar"><span class="header-section-number">3.12.6</span> Comparar no es mezclar</a></li>
+  </ul></li>
+  <li><a href="#lo-que-cuentan-las-tablas-y-lo-que-no" id="toc-lo-que-cuentan-las-tablas-y-lo-que-no" class="nav-link" data-scroll-target="#lo-que-cuentan-las-tablas-y-lo-que-no"><span class="header-section-number">3.13</span> Lo que cuentan las tablas… y lo que no</a></li>
+  <li><a href="#y-si-lo-que-vemos-es-solo-azar" id="toc-y-si-lo-que-vemos-es-solo-azar" class="nav-link" data-scroll-target="#y-si-lo-que-vemos-es-solo-azar"><span class="header-section-number">3.14</span> ¿Y si lo que vemos es solo azar?</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/almadana/libro_cuanti/edit/master/02b-tablas_final.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tablas</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Álvaro Cabana y una inteligencia artificial generativa </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Una de las primeras cosas que aprendemos cuando nos acercamos a la investigación —ya sea como estudiantes o como lectores críticos— es que muchas preguntas importantes no se responden con una única cifra, sino con <strong>una tabla</strong>. Y sin embargo, nadie nos enseña con suficiente detalle a leerlas bien.</p>
+<p>Las tablas están por todos lados. En artículos, en informes, en presentaciones de resultados. Se usan para mostrar diagnósticos, comparar tratamientos, resumir encuestas, registrar elecciones, agrupar síntomas, clasificar pacientes. A veces parecen triviales: solo una cuadrícula con números. Pero un malentendido en cómo leerlas puede llevar a <strong>conclusiones completamente erradas</strong>. De hecho, muchas de las ideas más equivocadas sobre datos sociales surgen de leer mal una tabla.</p>
+<p>En este capítulo vamos a detenernos en ese primer paso, fundamental pero a veces ignorado: <strong>leer una tabla categórica</strong>. No solo verla, sino entender:</p>
+<ul>
+<li>qué representa cada número,</li>
+<li>cómo se comparan las filas y las columnas,</li>
+<li>qué tipo de proporción estamos leyendo (y cuál <em>creemos</em> que estamos leyendo),</li>
+<li>y qué conclusiones podemos (o no podemos) sacar a partir de ella.</li>
+</ul>
+<p>Y lo vamos a hacer paso a paso, desde lo más básico: contar.</p>
+<p>Porque antes de correr modelos, hacer tests, o calcular valores <em>p</em>, hay algo más simple y más poderoso: <strong>mirar con atención qué dicen los datos, y cómo lo dicen</strong>.</p>
+<p>Perfecto. Entonces seguimos con ese estilo narrativo y reflexivo, integrando ejemplos reales y bloques de código en R cuando sea útil. Ahora empiezo con la sección sobre <strong>frecuencias absolutas</strong>:</p>
+<hr>
+<section id="contar-la-primera-estadística" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="contar-la-primera-estadística"><span class="header-section-number">3.1</span> Contar: la primera estadística</h2>
+<p>Antes de hablar de porcentajes, probabilidades o inferencias, hay algo que hacemos todo el tiempo sin pensarlo mucho: <strong>contar</strong>. ¿Cuántas personas dijeron que sí? ¿Cuántos eligieron la opción A? ¿Cuántos pacientes presentaron síntomas?</p>
+<p>Contar es tan básico que a veces no lo tratamos como una operación estadística. Pero lo es. De hecho, en datos categóricos, contar <strong>es</strong> hacer estadística descriptiva.</p>
+<p>Cuando contamos, estamos calculando lo que se llama una <strong>frecuencia absoluta</strong>. Es simplemente eso: el número de veces que aparece una categoría.</p>
+<section id="ejemplo-animales-favoritos" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="ejemplo-animales-favoritos"><span class="header-section-number">3.1.1</span> Ejemplo: animales favoritos</h3>
+<p>Supongamos que en una clase de 40 estudiantes les pedimos que elijan su animal favorito entre tres opciones: gatos, perros y aves. Obtenemos las siguientes respuestas:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>respuestas <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Gato"</span>, <span class="st">"Perro"</span>, <span class="st">"Perro"</span>, <span class="st">"Gato"</span>, <span class="st">"Ave"</span>, <span class="st">"Perro"</span>, <span class="st">"Perro"</span>, <span class="st">"Gato"</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Perro"</span>, <span class="st">"Gato"</span>, <span class="st">"Gato"</span>, <span class="st">"Perro"</span>, <span class="st">"Ave"</span>, <span class="st">"Perro"</span>, <span class="st">"Perro"</span>, <span class="st">"Gato"</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Perro"</span>, <span class="st">"Ave"</span>, <span class="st">"Gato"</span>, <span class="st">"Gato"</span>, <span class="st">"Perro"</span>, <span class="st">"Perro"</span>, <span class="st">"Perro"</span>, <span class="st">"Gato"</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Ave"</span>, <span class="st">"Perro"</span>, <span class="st">"Perro"</span>, <span class="st">"Gato"</span>, <span class="st">"Perro"</span>, <span class="st">"Ave"</span>, <span class="st">"Gato"</span>, <span class="st">"Perro"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Perro"</span>, <span class="st">"Perro"</span>, <span class="st">"Gato"</span>, <span class="st">"Gato"</span>, <span class="st">"Ave"</span>, <span class="st">"Perro"</span>, <span class="st">"Gato"</span>, <span class="st">"Perro"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>tabla_absoluta <span class="ot">&lt;-</span> <span class="fu">table</span>(respuestas)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>tabla_absoluta</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>respuestas
+  Ave  Gato Perro 
+    6    14    20 </code></pre>
+</div>
+</div>
+<p>Esto nos da la tabla de frecuencias absolutas. Es lo más básico, pero ya nos permite ver cuál fue la opción más popular (en este caso, claramente <em>Perro</em>). Pero esa es solo una parte de la historia.</p>
+</section>
+</section>
+<section id="ver-lo-que-contamos" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="ver-lo-que-contamos"><span class="header-section-number">3.2</span> Ver lo que contamos</h2>
+<p>Los humanos somos visuales. Podemos leer la tabla de frecuencias, pero la vemos mucho mejor si la graficamos. Acá va el gráfico de barras correspondiente:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(tabla_absoluta,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Animales favoritos"</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">"skyblue"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Cantidad de estudiantes"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="02b-tablas_final_files/figure-html/grafico-animales-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Frecuencias absolutas de animales favoritos</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Esta es una tabla sencilla. Pero más adelante vamos a ver que a veces, incluso con una tabla simple, se pueden cometer errores de interpretación si no se tiene en cuenta el tipo de frecuencia o el contexto.</p>
+<p>Por ahora, la gran idea es esta:</p>
+<blockquote class="blockquote">
+<p><strong>Contar categorías es el primer paso para entender los datos.</strong></p>
+</blockquote>
+<p>Todo lo que viene después —proporciones, porcentajes, pruebas estadísticas— se construye sobre ese primer conteo.</p>
+<p>Perfecto. Seguimos avanzando en el capítulo, manteniendo el estilo narrativo y el uso de código en R. Pasamos ahora a <strong>frecuencias relativas y porcentuales</strong>.</p>
+<hr>
+</section>
+<section id="qué-tan-grande-es-mucho" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="qué-tan-grande-es-mucho"><span class="header-section-number">3.3</span> ¿Qué tan grande es “mucho”?</h2>
+<p>Contar está bien. Pero a veces no alcanza. Saber que 22 personas eligieron “Perro” está bueno, pero… ¿22 sobre cuántas? ¿Es la mayoría? ¿Es más de la mitad? ¿Es <em>mucho</em>?</p>
+<p>Ahí es donde entra la <strong>frecuencia relativa</strong>. Lo que antes era “cuántas personas eligieron esta opción” ahora se convierte en:</p>
+<blockquote class="blockquote">
+<p><strong>¿Qué proporción del total eligió esta opción?</strong></p>
+</blockquote>
+<p>Es una pregunta diferente. Y muchas veces, <strong>más útil</strong>.</p>
+<hr>
+<section id="del-número-al-total" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="del-número-al-total"><span class="header-section-number">3.3.1</span> Del número al total</h3>
+<p>Volvamos a nuestro ejemplo. Ya teníamos la tabla de frecuencias absolutas. Ahora vamos a calcular la proporción que representa cada categoría respecto al total de respuestas:</p>
+<div class="cell" data-tbl-cap="Frecuencias relativas (proporciones) de animales favoritos">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>tabla_relativa <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tabla_absoluta)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(tabla_relativa, <span class="dv">3</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>respuestas
+  Ave  Gato Perro 
+ 0.15  0.35  0.50 </code></pre>
+</div>
+</div>
+<p>Ahora vemos que:</p>
+<ul>
+<li>“Perro” fue elegido por el 50% de los estudiantes.</li>
+<li>“Gato”, por el 35%.</li>
+<li>“Ave”, por el 15%.</li>
+</ul>
+<p>Más allá del conteo, ahora sabemos qué <strong>fracción del grupo</strong> representa cada preferencia. Y eso nos permite <strong>comparar categorías con tamaños distintos</strong>.</p>
+<hr>
+</section>
+<section id="lo-mismo-pero-con-el-100" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="lo-mismo-pero-con-el-100"><span class="header-section-number">3.3.2</span> Lo mismo, pero con el 100%</h3>
+<p>A veces no queremos ver proporciones con coma. Queremos porcentajes. Porque a veces es más fácil entender: “El 15% eligió Ave” que “0.15 eligió Ave”</p>
+<p>Eso es una <strong>frecuencia porcentual</strong>: la frecuencia relativa multiplicada por 100.</p>
+<div class="cell" data-tbl-cap="Frecuencias porcentuales de animales favoritos">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> tabla_relativa, <span class="dv">1</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>respuestas
+  Ave  Gato Perro 
+   15    35    50 </code></pre>
+</div>
+</div>
+</section>
+<section id="ver-lo-relativo" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="ver-lo-relativo"><span class="header-section-number">3.3.3</span> Ver lo relativo</h3>
+<p>Así como hicimos con los conteos, podemos graficar las proporciones. Ahora, en vez de cantidad de personas, mostramos <strong>porcentaje</strong> sobre el total.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="dv">100</span> <span class="sc">*</span> tabla_relativa,</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Animales favoritos (porcentaje)"</span>,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">"lightgreen"</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Porcentaje"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="02b-tablas_final_files/figure-html/grafico-porcentual-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Frecuencias porcentuales de animales favoritos</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>La tabla y el gráfico muestran lo mismo, pero de otra forma. A veces te conviene contar. A veces, comparar proporciones. Y lo importante es saber <strong>cuál estás usando</strong>.</p>
+<p>Porque, como veremos más adelante, <strong>muchos errores de interpretación</strong> vienen de confundir una tabla con números crudos con otra que muestra proporciones.</p>
+</section>
+</section>
+<section id="sumar-hacia-arriba-la-frecuencia-acumulada" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="sumar-hacia-arriba-la-frecuencia-acumulada"><span class="header-section-number">3.4</span> Sumar hacia arriba: la frecuencia acumulada</h2>
+<p>Hasta ahora hablamos de categorías como si fueran simplemente distintas entre sí. Perros, gatos, aves. Ninguna tiene un “más” o un “menos”, ninguna está antes o después que otra. Solo son distintas. Pero no todas las categorías son así.</p>
+<p>A veces, las categorías tienen <strong>orden</strong>.</p>
+<p>Pensá en escalas de respuesta como estas:</p>
+<ul>
+<li>“Nada”, “Poco”, “Algo”, “Mucho”</li>
+<li>“Nunca”, “A veces”, “Frecuentemente”, “Siempre”</li>
+<li>“Totalmente en desacuerdo” a “Totalmente de acuerdo”</li>
+</ul>
+<p>En estos casos, no estamos eligiendo simplemente una etiqueta. Estamos ubicándonos en una <strong>serie ordenada de niveles</strong>. Esa estructura permite hacer algo que antes no podíamos: <strong>acumular</strong>.</p>
+<section id="para-qué-sirve-acumular" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="para-qué-sirve-acumular"><span class="header-section-number">3.4.1</span> ¿Para qué sirve acumular?</h3>
+<p>Imaginá que estás estudiando el nivel de ansiedad en una población, con una escala ordinal del 1 al 5, donde 1 es “muy baja ansiedad” y 5 es “muy alta ansiedad”.</p>
+<p>Tenés los siguientes resultados de una encuesta a 30 personas:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>ansiedad <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.3</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>))</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>ansiedad_tabla <span class="ot">&lt;-</span> <span class="fu">table</span>(ansiedad)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>ansiedad_tabla</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ansiedad
+1 2 3 4 5 
+6 7 9 4 4 </code></pre>
+</div>
+</div>
+<p>Podés ver cuántas personas hay en cada nivel. Eso es útil. Pero capaz lo que te interesa no es tanto “¿cuántas dijeron 3?”, sino:</p>
+<ul>
+<li>¿Cuántas personas tienen ansiedad de 3 <strong>o menos</strong>?</li>
+<li>¿Qué porcentaje del grupo está en los niveles <strong>más bajos</strong>?</li>
+</ul>
+<p>Ahí es donde entra la <strong>frecuencia acumulada</strong>: sumás progresivamente las frecuencias hasta cada punto del orden.</p>
+</section>
+<section id="cómo-se-calcula" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="cómo-se-calcula"><span class="header-section-number">3.4.2</span> Cómo se calcula</h3>
+<div class="cell" data-tbl-cap="Frecuencias acumuladas de niveles de ansiedad">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>acumulada <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(ansiedad_tabla)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>acumulada</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> 1  2  3  4  5 
+ 6 13 22 26 30 </code></pre>
+</div>
+</div>
+<p>También podés convertirla en proporciones:</p>
+<div class="cell" data-tbl-cap="Frecuencias acumuladas porcentuales">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>acumulada_porcentual <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> <span class="fu">cumsum</span>(<span class="fu">prop.table</span>(ansiedad_tabla)), <span class="dv">1</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>acumulada_porcentual</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    1     2     3     4     5 
+ 20.0  43.3  73.3  86.7 100.0 </code></pre>
+</div>
+</div>
+</section>
+<section id="qué-aprendemos-con-esto" class="level3" data-number="3.4.3">
+<h3 data-number="3.4.3" class="anchored" data-anchor-id="qué-aprendemos-con-esto"><span class="header-section-number">3.4.3</span> ¿Qué aprendemos con esto?</h3>
+<p>Por ejemplo, podemos ver que el <strong>63% de las personas</strong> tiene una puntuación de ansiedad <strong>3 o menos</strong>. Esa información no la da ninguna frecuencia aislada, y es clave si querés responder preguntas como:</p>
+<blockquote class="blockquote">
+<p>¿Qué proporción de la población está en el rango “bajo” o “moderado”?</p>
+</blockquote>
+<p>Las frecuencias acumuladas nos ayudan a identificar <strong>umbrales</strong>, <strong>cortes</strong> y <strong>agrupamientos</strong> en escalas ordinales. Son especialmente útiles en psicología, donde se usan constantemente escalas de Likert, niveles de severidad, o clasificaciones de síntomas.</p>
+<hr>
+</section>
+<section id="ver-la-acumulación" class="level3" data-number="3.4.4">
+<h3 data-number="3.4.4" class="anchored" data-anchor-id="ver-la-acumulación"><span class="header-section-number">3.4.4</span> Ver la acumulación</h3>
+<p>Podemos representar la acumulación como una <strong>línea creciente</strong>, que muestra cómo se van sumando los porcentajes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(acumulada_porcentual, <span class="at">type =</span> <span class="st">"b"</span>, <span class="at">pch =</span> <span class="dv">16</span>,</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Nivel de ansiedad"</span>, <span class="at">ylab =</span> <span class="st">"Porcentaje acumulado"</span>,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Frecuencia acumulada de ansiedad"</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>))</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">50</span>, <span class="at">col =</span> <span class="st">"gray"</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="02b-tablas_final_files/figure-html/grafico-acumulada-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Frecuencia acumulada de ansiedad (escala 1–5)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>La línea gris horizontal marca el 50%. Donde la curva lo cruza, está la <strong>mediana categórica</strong>: el punto donde la mitad de las personas están por debajo.</p>
+<p><strong>Contar</strong> es solo el principio. Pero cuando hay orden, <strong>sumar</strong> nos cuenta una historia diferente. Una historia de acumulación, de corte, de “hasta aquí” y “a partir de acá”. Y eso, en psicología, es a veces la diferencia entre un caso leve y uno severo.</p>
+<p>Perfecto. Voy a continuar con la sección sobre <strong>tablas de contingencia</strong>, cuidando que el tono se mantenga narrativo, reflexivo y accesible, con ejemplos claros y progresivos. Acá vamos.</p>
+<hr>
+</section>
+</section>
+<section id="dos-variables-una-tabla-cuando-las-categorías-se-cruzan" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="dos-variables-una-tabla-cuando-las-categorías-se-cruzan"><span class="header-section-number">3.5</span> Dos variables, una tabla: cuando las categorías se cruzan</h2>
+<p>Hasta ahora veníamos mirando <strong>una sola variable a la vez</strong>. Contábamos cuántas personas eligieron esta opción o aquella. Calculábamos qué porcentaje respondió de cierta manera. Veíamos cómo se acumulaban los niveles de una escala.</p>
+<p>Pero la mayoría de las preguntas interesantes en psicología —y en ciencias sociales en general— no se responden mirando una sola variable. Nos interesa saber <strong>cómo se relacionan entre sí</strong>.</p>
+<ul>
+<li>¿Tienen más actitudes negativas hacia la terapia los varones que las mujeres?</li>
+<li>¿Se diagnostica más ansiedad en quienes tienen trabajos precarios?</li>
+<li>¿Hay más rechazo a la eutanasia entre personas con menor nivel educativo?</li>
+</ul>
+<p>Todas estas preguntas implican <strong>dos variables categóricas</strong>. Y cuando eso pasa, aparece un recurso fundamental: la <strong>tabla de contingencia</strong>.</p>
+<section id="qué-es-una-tabla-de-contingencia" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="qué-es-una-tabla-de-contingencia"><span class="header-section-number">3.5.1</span> ¿Qué es una tabla de contingencia?</h3>
+<p>Es simplemente una forma ordenada de mostrar cuántas personas (o casos) <strong>caen simultáneamente</strong> en cada combinación de categorías de dos variables.</p>
+<p>Por ejemplo, si tenemos información sobre el <strong>género</strong> de una persona (hombre, mujer, otro) y su <strong>opinión</strong> sobre la eficacia de la psicoterapia (positiva o negativa), podemos construir una tabla que muestre cómo se distribuyen esas respuestas:</p>
+<div class="cell" data-tbl-cap="Ejemplo de tabla de contingencia: Género × Opinión sobre terapia">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>genero <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Mujer"</span>, <span class="dv">50</span>), <span class="fu">rep</span>(<span class="st">"Hombre"</span>, <span class="dv">40</span>), <span class="fu">rep</span>(<span class="st">"Otro"</span>, <span class="dv">10</span>))</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>opinion <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Positiva"</span>, <span class="dv">35</span>), <span class="fu">rep</span>(<span class="st">"Negativa"</span>, <span class="dv">15</span>),</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>             <span class="fu">rep</span>(<span class="st">"Positiva"</span>, <span class="dv">20</span>), <span class="fu">rep</span>(<span class="st">"Negativa"</span>, <span class="dv">20</span>),</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>             <span class="fu">rep</span>(<span class="st">"Positiva"</span>, <span class="dv">8</span>), <span class="fu">rep</span>(<span class="st">"Negativa"</span>, <span class="dv">2</span>))</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>tabla_conjunta <span class="ot">&lt;-</span> <span class="fu">table</span>(genero, opinion)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>tabla_conjunta</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        opinion
+genero   Negativa Positiva
+  Hombre       20       20
+  Mujer        15       35
+  Otro          2        8</code></pre>
+</div>
+</div>
+<p>Esta tabla nos muestra <strong>frecuencias absolutas conjuntas</strong>. Es decir, cuántas personas hay en cada cruce de categorías: cuántas mujeres con opinión positiva, cuántos hombres con opinión negativa, etc.</p>
+</section>
+<section id="qué-se-puede-leer-de-esta-tabla" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="qué-se-puede-leer-de-esta-tabla"><span class="header-section-number">3.5.2</span> ¿Qué se puede leer de esta tabla?</h3>
+<p>A simple vista, parece que:</p>
+<ul>
+<li>Hay más mujeres con opinión positiva que negativa.</li>
+<li>Entre los hombres, la distribución es más pareja.</li>
+<li>El grupo “Otro” también tiende a opinar más positivamente.</li>
+</ul>
+<p>Pero, como veremos más adelante, <strong>mirar sólo los números absolutos puede ser engañoso</strong>.</p>
+<p>Por ahora, quedémonos con la idea de que la tabla de contingencia <strong>resume cómo se distribuyen dos variables categóricas</strong>, y que es la puerta de entrada a casi todo lo que vamos a querer analizar después: proporciones condicionales, relaciones, independencias, efectos.</p>
+<p>Y, por supuesto, la vamos a querer ver también como gráfico.</p>
+</section>
+<section id="visualizar-la-tabla" class="level3" data-number="3.5.3">
+<h3 data-number="3.5.3" class="anchored" data-anchor-id="visualizar-la-tabla"><span class="header-section-number">3.5.3</span> Visualizar la tabla</h3>
+<p>Podemos convertir esa tabla en un gráfico de barras apiladas o agrupadas. Por ejemplo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(genero, opinion)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos, <span class="fu">aes</span>(<span class="at">x =</span> genero, <span class="at">fill =</span> opinion)) <span class="sc">+</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Opinión sobre la terapia según género"</span>,</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Género"</span>, <span class="at">y =</span> <span class="st">"Cantidad de personas"</span>) <span class="sc">+</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="02b-tablas_final_files/figure-html/grafico-contingencia-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Distribución conjunta de opinión sobre terapia según género</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Este gráfico nos permite ver <strong>en paralelo</strong> las frecuencias de cada categoría, lo que a veces es más fácil que comparar números en una cuadrícula. Pero —y esto es clave— este gráfico está mostrando los <strong>valores absolutos</strong>, no proporciones. Y ahí es donde pueden empezar los malentendidos.</p>
+<p>Perfecto. Esta sección es clave porque muchos errores de interpretación se originan aquí. Vamos a desarrollar con cuidado y ejemplos cómo los <strong>totales</strong> estructuran la lectura, y cómo se pueden <strong>malinterpretar relaciones</strong> si no se considera esto. Aquí va.</p>
+<hr>
+</section>
+</section>
+<section id="los-totales-mandan-leer-bien-una-tabla-y-no-cometer-errores" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="los-totales-mandan-leer-bien-una-tabla-y-no-cometer-errores"><span class="header-section-number">3.6</span> Los totales mandan: leer bien una tabla (y no cometer errores)</h2>
+<p>Cuando uno mira una tabla de contingencia, lo primero que suele hacer es comparar los números. Cuántos hay en una celda, cuántos en otra. Y a veces esa comparación es útil. Pero otras veces puede ser totalmente engañosa.</p>
+<p>El problema está en no tener en cuenta <strong>de qué total estamos hablando</strong>.</p>
+<hr>
+<section id="tres-tipos-de-totales-tres-formas-de-leer" class="level3" data-number="3.6.1">
+<h3 data-number="3.6.1" class="anchored" data-anchor-id="tres-tipos-de-totales-tres-formas-de-leer"><span class="header-section-number">3.6.1</span> Tres tipos de totales, tres formas de leer</h3>
+<p>Una tabla de contingencia puede organizarse (y leerse) de distintas maneras según <strong>qué total se está usando como referencia</strong>.</p>
+<p>Veamos los tres casos principales:</p>
+</section>
+<section id="totales-por-fila" class="level3" data-number="3.6.2">
+<h3 data-number="3.6.2" class="anchored" data-anchor-id="totales-por-fila"><span class="header-section-number">3.6.2</span> 🧱 1. Totales por fila</h3>
+<p>Esto pasa cuando preguntamos:</p>
+<blockquote class="blockquote">
+<p>“Dado que la persona es mujer, ¿qué opinó sobre la terapia?”</p>
+</blockquote>
+<p>Es decir: <strong>ya sabemos</strong> a qué grupo pertenece (la fila), y queremos ver cómo se distribuyen sus respuestas (las columnas). En este caso, <strong>las proporciones se calculan por fila</strong>.</p>
+<div class="cell" data-tbl-cap="Proporciones por fila: ¿qué opinó cada grupo?">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>prop_filas <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tabla_conjunta, <span class="at">margin =</span> <span class="dv">1</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(prop_filas, <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        opinion
+genero   Negativa Positiva
+  Hombre      0.5      0.5
+  Mujer       0.3      0.7
+  Otro        0.2      0.8</code></pre>
+</div>
+</div>
+<p>Esto responde preguntas del tipo:</p>
+<ul>
+<li>¿Qué porcentaje de mujeres tuvo opinión positiva?</li>
+<li>¿Qué porcentaje de hombres fue negativo?</li>
+</ul>
+<p>Estas proporciones <strong>son condicionales a la fila</strong>. Y se usan todo el tiempo en psicología, especialmente cuando hay <strong>grupos naturales</strong> (género, diagnóstico, condición experimental).</p>
+<hr>
+</section>
+<section id="totales-por-columna" class="level3" data-number="3.6.3">
+<h3 data-number="3.6.3" class="anchored" data-anchor-id="totales-por-columna"><span class="header-section-number">3.6.3</span> 🧱 2. Totales por columna</h3>
+<p>Ahora cambiamos la pregunta:</p>
+<blockquote class="blockquote">
+<p>“Dado que la persona tuvo opinión positiva, ¿de qué grupo fue?”</p>
+</blockquote>
+<p>Es decir: ya sabemos la <strong>respuesta</strong> (la columna), y queremos ver su distribución por <strong>grupo</strong> (la fila). Calculamos <strong>proporciones por columna</strong>.</p>
+<div class="cell" data-tbl-cap="Proporciones por columna: ¿de qué grupo son los que opinaron así?">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>prop_columnas <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tabla_conjunta, <span class="at">margin =</span> <span class="dv">2</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(prop_columnas, <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        opinion
+genero   Negativa Positiva
+  Hombre     0.54     0.32
+  Mujer      0.41     0.56
+  Otro       0.05     0.13</code></pre>
+</div>
+</div>
+<p>Esto responde preguntas como:</p>
+<ul>
+<li>¿De qué género son la mayoría de los que opinaron negativamente?</li>
+<li>¿Qué grupo está sobrerrepresentado entre los que opinan positivamente?</li>
+</ul>
+<p>Estas proporciones <strong>pueden ser útiles</strong>, pero se prestan a confusión si uno cree que está viendo lo mismo que en la tabla anterior. <strong>No lo está.</strong></p>
+</section>
+<section id="total-general" class="level3" data-number="3.6.4">
+<h3 data-number="3.6.4" class="anchored" data-anchor-id="total-general"><span class="header-section-number">3.6.4</span> 🌐 3. Total general</h3>
+<p>A veces lo que queremos es mirar las proporciones respecto al total de la muestra, sin condicionar por fila ni por columna.</p>
+<div class="cell" data-tbl-cap="Proporciones sobre el total general">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>prop_total <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tabla_conjunta)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(prop_total, <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        opinion
+genero   Negativa Positiva
+  Hombre     0.20     0.20
+  Mujer      0.15     0.35
+  Otro       0.02     0.08</code></pre>
+</div>
+</div>
+<p>Esto responde:</p>
+<ul>
+<li>¿Qué fracción de la muestra son mujeres con opinión positiva?</li>
+<li>¿Qué porcentaje total del estudio representa cada celda?</li>
+</ul>
+<p>Es útil para estimar prevalencias conjuntas. Pero no sirve para comparar respuestas dentro de grupos.</p>
+</section>
+</section>
+<section id="por-qué-importa-esto" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="por-qué-importa-esto"><span class="header-section-number">3.7</span> ⚠️ ¿Por qué importa esto?</h2>
+<p>Porque si no sabemos <strong>qué total estamos usando</strong>, podemos decir cosas como:</p>
+<blockquote class="blockquote">
+<p>“La mayoría de los que están en contra de la terapia son hombres”.</p>
+</blockquote>
+<p>Cuando en realidad <strong>hay más hombres en contra simplemente porque hay más hombres en total</strong>.</p>
+<p>O peor:</p>
+<blockquote class="blockquote">
+<p>“Los hombres son más negativos hacia la terapia”.</p>
+</blockquote>
+<p>Cuando al calcular los porcentajes <strong>dentro de cada grupo</strong>, tal vez descubrimos que en realidad <strong>hay más negatividad proporcional entre las mujeres</strong>.</p>
+<p>Estos errores son <strong>muy comunes</strong> en artículos, medios, e incluso investigaciones. Y se derivan de no distinguir claramente <strong>la estructura del total</strong>.</p>
+<blockquote class="blockquote">
+<p>🧠 Regla de oro <strong>Nunca interpretes una tabla de contingencia sin saber primero de qué total estás hablando.</strong></p>
+</blockquote>
+<p>Perfecto. Ahora seguimos con una sección dedicada a las <strong>tablas de prevalencia</strong>, un tipo muy común y muy útil de tabla en psicología y epidemiología, pero que también puede inducir a errores si no se interpreta bien. La idea es seguir desarrollando la intuición del lector y mostrarle cómo identificar este tipo especial de tabla.</p>
+<hr>
+</section>
+<section id="tablas-de-prevalencia-ver-cuánto-hay-de-algo-dentro-de-algo" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="tablas-de-prevalencia-ver-cuánto-hay-de-algo-dentro-de-algo"><span class="header-section-number">3.8</span> Tablas de prevalencia: ver cuánto hay de algo, dentro de algo</h2>
+<p>En psicología clínica, epidemiología y salud mental, una de las preguntas más frecuentes que nos hacemos es:</p>
+<blockquote class="blockquote">
+<p>“¿Cuánta gente presenta esta condición en este grupo?”</p>
+</blockquote>
+<p>Por ejemplo:</p>
+<ul>
+<li>¿Qué porcentaje de adolescentes varones tiene síntomas de depresión?</li>
+<li>¿Cuál es la proporción de pacientes con ansiedad en personas desempleadas?</li>
+<li>¿Cuántas personas con bajo nivel educativo han intentado suicidarse?</li>
+</ul>
+<p>Este tipo de preguntas no apunta a una comparación entre grupos, ni a una inferencia estadística (todavía). Lo que busca es saber <strong>cuánto hay de una característica</strong> (un diagnóstico, un síntoma, una conducta) <strong>dentro de una población determinada</strong>.</p>
+<p>Esa pregunta tiene nombre: se llama <strong>prevalencia</strong>.</p>
+<hr>
+<section id="qué-es-la-prevalencia" class="level3" data-number="3.8.1">
+<h3 data-number="3.8.1" class="anchored" data-anchor-id="qué-es-la-prevalencia"><span class="header-section-number">3.8.1</span> ¿Qué es la prevalencia?</h3>
+<p>Es la proporción de personas que presentan una característica determinada dentro de un grupo dado, en un momento específico.</p>
+<blockquote class="blockquote">
+<p><strong>Prevalencia = casos positivos / total del grupo</strong></p>
+</blockquote>
+<p>Es una proporción condicional. Es decir, está <strong>condicionada al grupo de referencia</strong>.</p>
+<hr>
+</section>
+<section id="ejemplo-prevalencia-de-ansiedad-por-nivel-educativo" class="level3" data-number="3.8.2">
+<h3 data-number="3.8.2" class="anchored" data-anchor-id="ejemplo-prevalencia-de-ansiedad-por-nivel-educativo"><span class="header-section-number">3.8.2</span> Ejemplo: prevalencia de ansiedad por nivel educativo</h3>
+<p>Supongamos que se encuestó a 120 personas, divididas en tres niveles educativos: básico, medio y superior. Se les preguntó si habían experimentado ansiedad clínica el último mes. Obtenemos la siguiente tabla:</p>
+<div class="cell" data-tbl-cap="Casos de ansiedad por nivel educativo">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>educacion <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Básico"</span>, <span class="dv">40</span>), <span class="fu">rep</span>(<span class="st">"Medio"</span>, <span class="dv">40</span>), <span class="fu">rep</span>(<span class="st">"Superior"</span>, <span class="dv">40</span>))</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>ansiedad <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Sí"</span>, <span class="dv">15</span>), <span class="fu">rep</span>(<span class="st">"No"</span>, <span class="dv">25</span>),</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>              <span class="fu">rep</span>(<span class="st">"Sí"</span>, <span class="dv">10</span>), <span class="fu">rep</span>(<span class="st">"No"</span>, <span class="dv">30</span>),</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>              <span class="fu">rep</span>(<span class="st">"Sí"</span>, <span class="dv">5</span>), <span class="fu">rep</span>(<span class="st">"No"</span>, <span class="dv">35</span>))</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>tabla_ansiedad <span class="ot">&lt;-</span> <span class="fu">table</span>(educacion, ansiedad)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>tabla_ansiedad</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          ansiedad
+educacion  No Sí
+  Básico   25 15
+  Medio    30 10
+  Superior 35  5</code></pre>
+</div>
+</div>
+</section>
+<section id="cómo-se-calcula-la-prevalencia" class="level3" data-number="3.8.3">
+<h3 data-number="3.8.3" class="anchored" data-anchor-id="cómo-se-calcula-la-prevalencia"><span class="header-section-number">3.8.3</span> ¿Cómo se calcula la prevalencia?</h3>
+<p>Queremos saber qué proporción de personas de cada nivel educativo reportó ansiedad. Para eso, <strong>normalizamos por fila</strong>: calculamos proporciones <strong>dentro de cada grupo</strong>.</p>
+<div class="cell" data-tbl-cap="Prevalencia de ansiedad por nivel educativo">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>prevalencias <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tabla_ansiedad, <span class="at">margin =</span> <span class="dv">1</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(prevalencias, <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          ansiedad
+educacion    No   Sí
+  Básico   0.62 0.38
+  Medio    0.75 0.25
+  Superior 0.88 0.12</code></pre>
+</div>
+</div>
+<p>Ahora vemos que:</p>
+<ul>
+<li>En el grupo de educación básica, el 37.5% reportó ansiedad.</li>
+<li>En el grupo medio, el 25%.</li>
+<li>En el grupo superior, solo el 12.5%.</li>
+</ul>
+<p>Estas proporciones <strong>son las prevalencias</strong> de ansiedad en cada grupo.</p>
+</section>
+<section id="visualizar-una-tabla-de-prevalencia" class="level3" data-number="3.8.4">
+<h3 data-number="3.8.4" class="anchored" data-anchor-id="visualizar-una-tabla-de-prevalencia"><span class="header-section-number">3.8.4</span> Visualizar una tabla de prevalencia</h3>
+<p>Un gráfico de barras permite ver esto claramente:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ lubridate 1.9.3     ✔ tibble    3.2.1
+✔ purrr     1.0.2     ✔ tidyr     1.3.1
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>datos_prev <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(tabla_ansiedad) <span class="sc">|&gt;</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(educacion) <span class="sc">|&gt;</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Prevalencia =</span> Freq <span class="sc">/</span> <span class="fu">sum</span>(Freq)) <span class="sc">|&gt;</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ansiedad <span class="sc">==</span> <span class="st">"Sí"</span>)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos_prev, <span class="fu">aes</span>(<span class="at">x =</span> educacion, <span class="at">y =</span> Prevalencia)) <span class="sc">+</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"tomato"</span>) <span class="sc">+</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Prevalencia de ansiedad por nivel educativo"</span>,</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Nivel educativo"</span>,</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Prevalencia (porcentaje)"</span>) <span class="sc">+</span></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="02b-tablas_final_files/figure-html/grafico-prevalencia-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Prevalencia de ansiedad por nivel educativo</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="cómo-sé-si-estoy-viendo-una-tabla-de-prevalencia" class="level3" data-number="3.8.5">
+<h3 data-number="3.8.5" class="anchored" data-anchor-id="cómo-sé-si-estoy-viendo-una-tabla-de-prevalencia"><span class="header-section-number">3.8.5</span> ¿Cómo sé si estoy viendo una tabla de prevalencia?</h3>
+<p>Muy fácil. Preguntate:</p>
+<ul>
+<li>¿Estoy viendo <strong>qué porcentaje de cada grupo</strong> presenta cierta condición?</li>
+<li>¿Las proporciones están calculadas por <strong>fila</strong>?</li>
+</ul>
+<p>Si la respuesta es sí, <strong>estás frente a una tabla de prevalencia</strong>.</p>
+<p>Y ahora viene lo más importante:</p>
+<blockquote class="blockquote">
+<p><strong>Nunca confundas una tabla de prevalencia con una tabla de distribución general.</strong></p>
+</blockquote>
+<p>Porque si alguien te dice:</p>
+<blockquote class="blockquote">
+<p>“La mayoría de las personas con ansiedad tienen educación básica”, eso podría ser cierto simplemente porque hay <strong>más personas con ese nivel educativo</strong>.</p>
+</blockquote>
+<p>Pero eso <strong>no significa</strong> que ese grupo tenga <strong>mayor prevalencia</strong>. Por eso, <strong>es clave identificar el tipo de tabla</strong> que estás mirando. Y saber <strong>desde qué total están calculadas las proporciones</strong>.</p>
+<p>Excelente. Esta sección va a mostrar con claridad cómo <strong>dos tablas con los mismos números absolutos</strong> pueden generar interpretaciones muy distintas, dependiendo de cómo se estructuren las proporciones. Es un momento ideal para profundizar en la lectura crítica y el concepto de condicionalidad.</p>
+</section>
+</section>
+<section id="dos-historias-una-tabla-cómo-el-mismo-dato-puede-decir-cosas-distintas" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="dos-historias-una-tabla-cómo-el-mismo-dato-puede-decir-cosas-distintas"><span class="header-section-number">3.9</span> Dos historias, una tabla: cómo el mismo dato puede decir cosas distintas</h2>
+<p>Supongamos que tenés la siguiente tabla. Es simple, clara, y 100% realista. En algún momento de tu formación (o carrera), vas a encontrarte con algo parecido:</p>
+<div class="cell" data-tbl-cap="Casos de ansiedad por nivel educativo">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>tabla <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">25</span>,</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">10</span>, <span class="dv">30</span>,</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">5</span>, <span class="dv">35</span>),</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(tabla) <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Nivel_educativo =</span> <span class="fu">c</span>(<span class="st">"Básico"</span>, <span class="st">"Medio"</span>, <span class="st">"Superior"</span>),</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Ansiedad =</span> <span class="fu">c</span>(<span class="st">"Sí"</span>, <span class="st">"No"</span>)</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>tabla <span class="ot">&lt;-</span> <span class="fu">as.table</span>(tabla)</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>tabla</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               Ansiedad
+Nivel_educativo Sí No
+       Básico   15 25
+       Medio    10 30
+       Superior  5 35</code></pre>
+</div>
+</div>
+<p>Esta tabla muestra cuántas personas de cada nivel educativo reportaron ansiedad clínica (“Sí”) o no (“No”). A simple vista, podrías pensar que el grupo de educación básica tiene más casos de ansiedad que el de nivel medio o superior. Pero, ¿eso significa que la ansiedad es más prevalente en ese grupo?</p>
+<p>Depende. De <strong>cómo leas la tabla</strong>.</p>
+<section id="historia-1-la-tabla-de-prevalencia" class="level3" data-number="3.9.1">
+<h3 data-number="3.9.1" class="anchored" data-anchor-id="historia-1-la-tabla-de-prevalencia"><span class="header-section-number">3.9.1</span> 🧭 Historia 1: la tabla de prevalencia</h3>
+<p>Vamos a calcular <strong>proporciones por fila</strong>, es decir, respecto al total de personas <strong>dentro de cada grupo educativo</strong>:</p>
+<div class="cell" data-tbl-cap="Proporciones por fila: prevalencia de ansiedad por nivel educativo">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>prop_fila <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tabla, <span class="at">margin =</span> <span class="dv">1</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(prop_fila, <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               Ansiedad
+Nivel_educativo   Sí   No
+       Básico   0.38 0.62
+       Medio    0.25 0.75
+       Superior 0.12 0.88</code></pre>
+</div>
+</div>
+<p>Y ahí vemos:</p>
+<ul>
+<li>37.5% de ansiedad en educación básica</li>
+<li>25% en educación media</li>
+<li>12.5% en educación superior</li>
+</ul>
+<p><strong>Historia 1:</strong> la ansiedad es más prevalente entre personas con menor nivel educativo. Cuanto mayor el nivel, menor la prevalencia.</p>
+<blockquote class="blockquote">
+<p>Esta es una tabla de <strong>prevalencia</strong>.</p>
+</blockquote>
+</section>
+<section id="historia-2-proporciones-por-columna" class="level3" data-number="3.9.2">
+<h3 data-number="3.9.2" class="anchored" data-anchor-id="historia-2-proporciones-por-columna"><span class="header-section-number">3.9.2</span> 🧭 Historia 2: proporciones por columna</h3>
+<p>Ahora miremos la misma tabla, pero calculando <strong>proporciones por columna</strong>, es decir, respecto al total de personas que <strong>respondieron “Sí” o “No”</strong>:</p>
+<div class="cell" data-tbl-cap="Proporciones por columna: distribución del nivel educativo dentro de cada respuesta">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>prop_col <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tabla, <span class="at">margin =</span> <span class="dv">2</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(prop_col, <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               Ansiedad
+Nivel_educativo   Sí   No
+       Básico   0.50 0.28
+       Medio    0.33 0.33
+       Superior 0.17 0.39</code></pre>
+</div>
+</div>
+<p>Y ahora vemos otra historia:</p>
+<ul>
+<li>De todas las personas con ansiedad (“Sí”), el 50% tiene educación básica</li>
+<li>El 33% tiene educación media</li>
+<li>El 17% tiene educación superior</li>
+</ul>
+<p><strong>Historia 2:</strong> la mayoría de las personas con ansiedad tienen bajo nivel educativo.</p>
+<blockquote class="blockquote">
+<p>Esta es una tabla de <strong>distribución condicional inversa</strong>: qué tipo de personas hay entre los que dijeron “sí”.</p>
+</blockquote>
+</section>
+<section id="cuál-está-bien" class="level3" data-number="3.9.3">
+<h3 data-number="3.9.3" class="anchored" data-anchor-id="cuál-está-bien"><span class="header-section-number">3.9.3</span> 🧠 ¿Cuál está “bien”?</h3>
+<p>Las dos son válidas. Y las dos cuentan cosas distintas.</p>
+<ul>
+<li>La <strong>tabla de prevalencia</strong> (por fila) te dice cómo <strong>afecta</strong> una condición a un grupo.</li>
+<li>La <strong>tabla por columna</strong> te dice <strong>quiénes componen</strong> una categoría de respuesta.</li>
+</ul>
+<p>El problema no está en cuál tabla usás, sino en <strong>creer que una te está diciendo lo que en realidad dice la otra</strong>.</p>
+</section>
+<section id="visualizar-ambas-historias" class="level3" data-number="3.9.4">
+<h3 data-number="3.9.4" class="anchored" data-anchor-id="visualizar-ambas-historias"><span class="header-section-number">3.9.4</span> Visualizar ambas historias</h3>
+<section id="historia-1-prevalencia" class="level4" data-number="3.9.4.1">
+<h4 data-number="3.9.4.1" class="anchored" data-anchor-id="historia-1-prevalencia"><span class="header-section-number">3.9.4.1</span> Historia 1: prevalencia</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>df_fila <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(prop_fila)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_fila[df_fila<span class="sc">$</span>Ansiedad <span class="sc">==</span> <span class="st">"Sí"</span>, ], <span class="fu">aes</span>(<span class="at">x =</span> Nivel_educativo, <span class="at">y =</span> Freq)) <span class="sc">+</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Prevalencia de ansiedad por nivel educativo"</span>,</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Nivel educativo"</span>, <span class="at">y =</span> <span class="st">"Prevalencia"</span>) <span class="sc">+</span></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="02b-tablas_final_files/figure-html/grafico-prevalencia-comp-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Prevalencia de ansiedad por nivel educativo (proporciones por fila)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="historia-2-composición-del-grupo-ansioso" class="level4" data-number="3.9.4.2">
+<h4 data-number="3.9.4.2" class="anchored" data-anchor-id="historia-2-composición-del-grupo-ansioso"><span class="header-section-number">3.9.4.2</span> Historia 2: composición del grupo ansioso</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df_col <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(prop_col)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_col[df_col<span class="sc">$</span>Ansiedad <span class="sc">==</span> <span class="st">"Sí"</span>, ], <span class="fu">aes</span>(<span class="at">x =</span> Nivel_educativo, <span class="at">y =</span> Freq)) <span class="sc">+</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"darkred"</span>) <span class="sc">+</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"¿Quiénes componen el grupo con ansiedad?"</span>,</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Nivel educativo"</span>, <span class="at">y =</span> <span class="st">"Porcentaje dentro de la columna 'Sí'"</span>) <span class="sc">+</span></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="02b-tablas_final_files/figure-html/grafico-columna-comp-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Distribución del nivel educativo entre quienes reportaron ansiedad (proporciones por columna)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="lo-que-ves-depende-de-cómo-mirás" class="level2" data-number="3.10">
+<h2 data-number="3.10" class="anchored" data-anchor-id="lo-que-ves-depende-de-cómo-mirás"><span class="header-section-number">3.10</span> Lo que ves depende de cómo mirás</h2>
+<p>Este es uno de los momentos clave del capítulo. La misma tabla puede sostener <strong>dos narrativas distintas</strong>, ambas basadas en números reales, pero con énfasis diferente. Y si no sabés cuál estás leyendo, podés llegar a conclusiones <strong>opuestas</strong> sin darte cuenta.</p>
+</section>
+<section id="qué-porcentaje-de-qué-pensar-en-condicionales" class="level2" data-number="3.11">
+<h2 data-number="3.11" class="anchored" data-anchor-id="qué-porcentaje-de-qué-pensar-en-condicionales"><span class="header-section-number">3.11</span> ¿Qué porcentaje de qué? Pensar en condicionales</h2>
+<p>Las proporciones no son neutrales. Siempre están <strong>condicionadas a algo</strong>. Decir que “el 30% de las personas tienen ansiedad” no es lo mismo que decir “el 30% de las personas con ansiedad son estudiantes”.</p>
+<p>A simple vista, ambas frases parecen similares. Pero están diciendo cosas completamente distintas.</p>
+<p>Esta distinción no es un detalle técnico. Es una <strong>herramienta fundamental para pensar correctamente en datos categóricos</strong>. Y es una de las fuentes más comunes de confusión en psicología, salud y ciencias sociales.</p>
+<section id="dos-preguntas-dos-tablas" class="level3" data-number="3.11.1">
+<h3 data-number="3.11.1" class="anchored" data-anchor-id="dos-preguntas-dos-tablas"><span class="header-section-number">3.11.1</span> Dos preguntas, dos tablas</h3>
+<p>Volvamos al ejemplo anterior con ansiedad y nivel educativo. Recordá que teníamos la siguiente tabla:</p>
+<div class="cell" data-tbl-cap="Casos de ansiedad por nivel educativo">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>tabla</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               Ansiedad
+Nivel_educativo Sí No
+       Básico   15 25
+       Medio    10 30
+       Superior  5 35</code></pre>
+</div>
+</div>
+<p>A partir de esta tabla, podés hacer dos preguntas:</p>
+<ul>
+<li><strong>P1.</strong> Entre las personas de nivel educativo <em>básico</em>, ¿qué proporción tiene ansiedad?</li>
+<li><strong>P2.</strong> Entre las personas con <em>ansiedad</em>, ¿qué proporción tiene nivel educativo <em>básico</em>?</li>
+</ul>
+<p>Las dos preguntas son válidas. Pero <strong>están invirtiendo la condicionalidad</strong>.</p>
+</section>
+<section id="proporciones-por-fila-p1" class="level3" data-number="3.11.2">
+<h3 data-number="3.11.2" class="anchored" data-anchor-id="proporciones-por-fila-p1"><span class="header-section-number">3.11.2</span> Proporciones por fila (P1)</h3>
+<div class="cell" data-tbl-cap="Proporciones por fila: ¿quién tiene ansiedad dentro de cada grupo educativo?">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>prop_fila</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               Ansiedad
+Nivel_educativo    Sí    No
+       Básico   0.375 0.625
+       Medio    0.250 0.750
+       Superior 0.125 0.875</code></pre>
+</div>
+</div>
+<p>Esta tabla responde a la primera pregunta: <strong>¿qué porcentaje de cada grupo educativo tiene ansiedad?</strong></p>
+<blockquote class="blockquote">
+<p>Es decir: “Dado el grupo, ¿cuál es la respuesta?”</p>
+</blockquote>
+</section>
+<section id="proporciones-por-columna-p2" class="level3" data-number="3.11.3">
+<h3 data-number="3.11.3" class="anchored" data-anchor-id="proporciones-por-columna-p2"><span class="header-section-number">3.11.3</span> Proporciones por columna (P2)</h3>
+<div class="cell" data-tbl-cap="Proporciones por columna: ¿de qué grupo educativo son quienes tienen ansiedad?">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>prop_col</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               Ansiedad
+Nivel_educativo        Sí        No
+       Básico   0.5000000 0.2777778
+       Medio    0.3333333 0.3333333
+       Superior 0.1666667 0.3888889</code></pre>
+</div>
+</div>
+<p>Esta tabla responde a la segunda pregunta: <strong>¿qué porcentaje de las personas con ansiedad pertenece a cada grupo educativo?</strong></p>
+<blockquote class="blockquote">
+<p>Es decir: “Dada la respuesta, ¿de dónde viene?”</p>
+</blockquote>
+</section>
+<section id="no-confundas-estas-dos" class="level3" data-number="3.11.4">
+<h3 data-number="3.11.4" class="anchored" data-anchor-id="no-confundas-estas-dos"><span class="header-section-number">3.11.4</span> No confundas estas dos</h3>
+<p>Esto puede parecer obvio en teoría, pero en la práctica se confunde todo el tiempo. Y las consecuencias son reales. Por ejemplo:</p>
+<ul>
+<li><p>Podés tener una condición que afecta proporcionalmente más a un grupo (mayor <strong>prevalencia</strong>)… …pero que está compuesta en su mayoría por otro grupo (mayor <strong>peso absoluto</strong>).</p></li>
+<li><p>Podés pensar que hay una “relación fuerte” entre dos variables, solo porque no estás viendo <strong>desde qué total</strong> se calculó cada proporción.</p></li>
+</ul>
+</section>
+<section id="cómo-saber-cuál-estás-viendo" class="level3" data-number="3.11.5">
+<h3 data-number="3.11.5" class="anchored" data-anchor-id="cómo-saber-cuál-estás-viendo"><span class="header-section-number">3.11.5</span> ¿Cómo saber cuál estás viendo?</h3>
+<p>Buena práctica: <strong>mirá cómo están normalizadas las proporciones</strong>. Si cada fila suma 1 (o 100%), entonces estás viendo proporciones <strong>condicionales al grupo</strong>. Si cada columna suma 1, entonces estás viendo proporciones <strong>condicionales a la respuesta</strong>.</p>
+<p>Visualmente, podés graficarlo así:</p>
+<section id="qué-porcentaje-tiene-ansiedad-dentro-de-cada-grupo" class="level4" data-number="3.11.5.1">
+<h4 data-number="3.11.5.1" class="anchored" data-anchor-id="qué-porcentaje-tiene-ansiedad-dentro-de-cada-grupo"><span class="header-section-number">3.11.5.1</span> ¿Qué porcentaje tiene ansiedad dentro de cada grupo?</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>df_f <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(prop_fila)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_f, <span class="fu">aes</span>(<span class="at">x =</span> Nivel_educativo, <span class="at">y =</span> Freq, <span class="at">fill =</span> Ansiedad)) <span class="sc">+</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"¿Qué porcentaje tiene ansiedad dentro de cada grupo educativo?"</span>,</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Proporción dentro del grupo"</span>, <span class="at">x =</span> <span class="st">"Nivel educativo"</span>) <span class="sc">+</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="02b-tablas_final_files/figure-html/grafico-fila-cond-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Proporciones condicionales por grupo educativo (fila)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="de-qué-grupo-vienen-quienes-tienen-ansiedad" class="level4" data-number="3.11.5.2">
+<h4 data-number="3.11.5.2" class="anchored" data-anchor-id="de-qué-grupo-vienen-quienes-tienen-ansiedad"><span class="header-section-number">3.11.5.2</span> ¿De qué grupo vienen quienes tienen ansiedad?</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>df_c <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(prop_col)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_c, <span class="fu">aes</span>(<span class="at">x =</span> Ansiedad, <span class="at">y =</span> Freq, <span class="at">fill =</span> Nivel_educativo)) <span class="sc">+</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"¿De qué grupo educativo vienen quienes tienen ansiedad?"</span>,</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Proporción dentro de cada respuesta"</span>, <span class="at">x =</span> <span class="st">"Respuesta"</span>) <span class="sc">+</span></span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="02b-tablas_final_files/figure-html/grafico-col-cond-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Proporciones condicionales dentro del grupo que reportó ansiedad (columna)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="entender-condicionales-solo-leer-bien" class="level3" data-number="3.11.6">
+<h3 data-number="3.11.6" class="anchored" data-anchor-id="entender-condicionales-solo-leer-bien"><span class="header-section-number">3.11.6</span> Entender condicionales ≠ solo leer bien</h3>
+<p>Entender bien las proporciones condicionales no solo evita errores. También te entrena para algo más grande: <strong>pensar en términos de relaciones causales, probabilísticas y contextuales</strong>. Algo que vas a necesitar en casi todo lo que viene después.</p>
+<p>Perfecto, vamos con la sección sobre <strong>incidencia</strong>, diferenciándola cuidadosamente de la <strong>prevalencia</strong>, usando un tono narrativo y orientado a ejemplos en psicología, como siempre.</p>
+</section>
+</section>
+<section id="incidencia-cuando-contar-también-implica-tiempo" class="level2" data-number="3.12">
+<h2 data-number="3.12" class="anchored" data-anchor-id="incidencia-cuando-contar-también-implica-tiempo"><span class="header-section-number">3.12</span> Incidencia: cuando contar también implica tiempo</h2>
+<p>Hasta ahora veníamos preguntándonos cuántas personas tienen algo. Pero en muchos casos, la pregunta más importante no es quién <strong>tiene</strong>, sino quién <strong>empezó a tener</strong>.</p>
+<p>Esa diferencia —sutil pero crucial— nos lleva a un nuevo concepto: la <strong>incidencia</strong>.</p>
+<section id="qué-es-la-incidencia" class="level3" data-number="3.12.1">
+<h3 data-number="3.12.1" class="anchored" data-anchor-id="qué-es-la-incidencia"><span class="header-section-number">3.12.1</span> ¿Qué es la incidencia?</h3>
+<p>La incidencia es la proporción de <strong>nuevos casos</strong> de una condición que aparecen en una población durante un período determinado de tiempo.</p>
+<p>Si la prevalencia te dice <strong>cuántas personas tienen ansiedad ahora</strong>, la incidencia te dice <strong>cuántas personas desarrollaron ansiedad desde la última vez que mediste</strong>.</p>
+</section>
+<section id="por-qué-importa" class="level3" data-number="3.12.2">
+<h3 data-number="3.12.2" class="anchored" data-anchor-id="por-qué-importa"><span class="header-section-number">3.12.2</span> ¿Por qué importa?</h3>
+<p>Porque no es lo mismo que muchas personas tengan algo, a que muchas personas <strong>empiecen a tenerlo</strong>.</p>
+<p>Un trastorno puede tener:</p>
+<ul>
+<li><strong>Alta prevalencia y baja incidencia</strong>: por ejemplo, una condición crónica que pocas personas desarrollan, pero que dura mucho tiempo (como la esquizofrenia).</li>
+<li><strong>Baja prevalencia y alta incidencia</strong>: por ejemplo, una reacción aguda y breve que mucha gente experimenta pero que se resuelve rápido (como ataques de pánico en situaciones específicas).</li>
+</ul>
+<p>Y eso cambia radicalmente lo que entendemos del fenómeno.</p>
+</section>
+<section id="ejemplo-ansiedad-en-estudiantes-al-empezar-el-semestre" class="level3" data-number="3.12.3">
+<h3 data-number="3.12.3" class="anchored" data-anchor-id="ejemplo-ansiedad-en-estudiantes-al-empezar-el-semestre"><span class="header-section-number">3.12.3</span> Ejemplo: ansiedad en estudiantes al empezar el semestre</h3>
+<p>Supongamos que medimos ansiedad clínica en una muestra de estudiantes <strong>al comienzo</strong> y <strong>al final</strong> del primer mes del semestre. De los 100 estudiantes:</p>
+<ul>
+<li>10 ya tenían ansiedad cuando comenzó el semestre → <strong>prevalencia al inicio</strong>.</li>
+<li>15 desarrollaron ansiedad durante el primer mes → <strong>incidencia en el primer mes</strong>.</li>
+</ul>
+<p>Esto nos dice que hubo 15 nuevos casos, y que la <strong>incidencia mensual</strong> fue del 15%.</p>
+</section>
+<section id="diferencias-en-visualización" class="level3" data-number="3.12.4">
+<h3 data-number="3.12.4" class="anchored" data-anchor-id="diferencias-en-visualización"><span class="header-section-number">3.12.4</span> Diferencias en visualización</h3>
+<p>Para mostrar estas diferencias, necesitamos saber <strong>cuándo</strong> se midió cada cosa.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>estudiantes <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ID =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Ansiedad_inicio =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Sí"</span>, <span class="dv">10</span>), <span class="fu">rep</span>(<span class="st">"No"</span>, <span class="dv">90</span>)),</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Ansiedad_mes1 =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Sí"</span>, <span class="dv">10</span>), <span class="fu">rep</span>(<span class="st">"Sí"</span>, <span class="dv">15</span>), <span class="fu">rep</span>(<span class="st">"No"</span>, <span class="dv">75</span>))</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>tabla_cambios <span class="ot">&lt;-</span> <span class="fu">table</span>(estudiantes<span class="sc">$</span>Ansiedad_inicio, estudiantes<span class="sc">$</span>Ansiedad_mes1)</span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(tabla_cambios) <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"Inicio"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"No"</span>, <span class="st">"Sí"</span>), <span class="st">"Mes1"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"No"</span>, <span class="st">"Sí"</span>))</span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>tabla_cambios</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      Mes1
+Inicio No Sí
+    No 75 15
+    Sí  0 10</code></pre>
+</div>
+</div>
+<p>Esto muestra cuántas personas <strong>desarrollaron ansiedad</strong> (de “No” a “Sí”) durante el mes.</p>
+</section>
+<section id="calcular-la-incidencia" class="level3" data-number="3.12.5">
+<h3 data-number="3.12.5" class="anchored" data-anchor-id="calcular-la-incidencia"><span class="header-section-number">3.12.5</span> Calcular la incidencia</h3>
+<div class="cell" data-tbl-cap="Incidencia de ansiedad: nuevos casos durante el mes">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Casos que pasaron de No a Sí</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>casos_nuevos <span class="ot">&lt;-</span> tabla_cambios[<span class="st">"No"</span>, <span class="st">"Sí"</span>]</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Total de personas que no tenían ansiedad al inicio</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>poblacion_riesgo <span class="ot">&lt;-</span> <span class="fu">sum</span>(tabla_cambios[<span class="st">"No"</span>, ])</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>incidencia <span class="ot">&lt;-</span> casos_nuevos <span class="sc">/</span> poblacion_riesgo</span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(incidencia, <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.17</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Resultado: <strong>15 de 90 personas</strong> sin ansiedad al inicio desarrollaron ansiedad en el primer mes. La incidencia fue del <strong>17%</strong>.</p>
+</blockquote>
+</section>
+<section id="comparar-no-es-mezclar" class="level3" data-number="3.12.6">
+<h3 data-number="3.12.6" class="anchored" data-anchor-id="comparar-no-es-mezclar"><span class="header-section-number">3.12.6</span> Comparar no es mezclar</h3>
+<p>Una tabla puede mostrarte:</p>
+<ul>
+<li>la <strong>prevalencia actual</strong>, si te dice “cuántos tienen ansiedad ahora”;</li>
+<li>o la <strong>incidencia</strong>, si te muestra “cuántos nuevos casos hubo entre los que no tenían”.</li>
+</ul>
+<p>Si no sabés cuál es cuál, podés <strong>malinterpretar el fenómeno</strong>. Por ejemplo, podés pensar que un tratamiento fue efectivo porque bajó la prevalencia, sin darte cuenta de que la incidencia sigue siendo alta.</p>
+</section>
+</section>
+<section id="lo-que-cuentan-las-tablas-y-lo-que-no" class="level2" data-number="3.13">
+<h2 data-number="3.13" class="anchored" data-anchor-id="lo-que-cuentan-las-tablas-y-lo-que-no"><span class="header-section-number">3.13</span> Lo que cuentan las tablas… y lo que no</h2>
+<p>A lo largo de este capítulo recorrimos un camino que parece sencillo: contar cosas. Pero con cada paso, ese conteo se volvió más rico, más preciso… y también más propenso a malinterpretaciones.</p>
+<p>Aprendimos que no todas las frecuencias son iguales. Que contar puede significar:</p>
+<ul>
+<li>simplemente saber <strong>cuántos casos hay</strong> (frecuencia absoluta),</li>
+<li>o <strong>qué proporción representan</strong> (frecuencia relativa y porcentual),</li>
+<li>o incluso, en casos con orden, <strong>cuántos están por debajo de cierto umbral</strong> (frecuencia acumulada).</li>
+</ul>
+<p>Vimos que cuando dos variables se cruzan, todo se vuelve más interesante —y más confuso. Que no basta con ver los números: hay que saber <strong>desde qué total se están leyendo</strong>.</p>
+<p>Nos enfrentamos a la diferencia entre <strong>prevalencia</strong> e <strong>incidencia</strong>, entre contar lo que hay y contar lo que empieza a haber. Entre saber <strong>cuántos</strong> y saber <strong>cuándo</strong>.</p>
+<p>Y, sobre todo, aprendimos algo fundamental:</p>
+<blockquote class="blockquote">
+<p><strong>Los números en una tabla no hablan por sí solos.</strong> Necesitan contexto. Dirección. Una lectura cuidadosa.</p>
+</blockquote>
+</section>
+<section id="y-si-lo-que-vemos-es-solo-azar" class="level2" data-number="3.14">
+<h2 data-number="3.14" class="anchored" data-anchor-id="y-si-lo-que-vemos-es-solo-azar"><span class="header-section-number">3.14</span> ¿Y si lo que vemos es solo azar?</h2>
+<p>Al final de este recorrido, aparece una nueva inquietud. Una que viene acechando desde el principio, aunque no la hayamos dicho en voz alta:</p>
+<blockquote class="blockquote">
+<p><em>¿Y si las diferencias que veo en esta tabla se deben simplemente al azar?</em></p>
+</blockquote>
+<p>Cuando ves que un grupo tiene más casos que otro… Cuando una categoría aparece con más frecuencia… Cuando una proporción parece desbalanceada…</p>
+<p>… ¿cómo sabés que eso no es simplemente un efecto de la muestra? ¿De cómo justo se dieron los datos?</p>
+<p>Ahí es donde empieza la <strong>inferencia estadística</strong>.</p>
+<p>No porque los datos no alcancen, sino porque queremos ir más allá. No para complicarnos, sino para poder decir con mayor confianza:</p>
+<blockquote class="blockquote">
+<p><em>“esto que vemos no es casualidad”</em>.</p>
+</blockquote>
+<p>Y eso, precisamente, es lo que vamos a empezar a explorar en el próximo capítulo.</p>
+<p>Pero antes de probar nada, hay que saber cómo se mide una diferencia. Y para eso, necesitamos dar otro paso.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/almadana\.github\.io\/libro_cuanti\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./02-Describing_Data.html" class="pagination-link" aria-label="Describir los datos">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describir los datos</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./03-Correlation.html" class="pagination-link" aria-label="Correlación">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Correlación</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/almadana/libro_cuanti/edit/master/02b-tablas_final.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li></ul></div></div></div></footer></body></html>

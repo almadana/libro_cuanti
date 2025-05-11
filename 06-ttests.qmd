@@ -89,7 +89,7 @@ Recordá lo que vimos sobre estadística descriptiva y muestreo: la media muestr
 
 Acá va la fórmula, primero en palabras:
 
-### Fórmulas dla prueba t de una muestra
+### Fórmulas de la prueba t de una muestra
 
 $$\text{estadístico} = \frac{\text{efecto}}{\text{error}}$$
 
@@ -98,11 +98,11 @@ $$t = \frac{\text{efecto}}{\text{error}}$$
 $$t = \frac{\text{diferencia de medias}}{\text{error estándar}}$$
 
 
-$t = \frac{\bar{X}-\mu}{S\_{\bar{X}}}$
+$$t = \frac{\bar{X}-\mu}{S_{\bar{X}}}$$
 
-$t = \frac{\text{Media muestral - Media poblacional}}{\text{Error estándar muestral}}$
+$$t = \frac{\text{Media muestral - Media poblacional}}{\text{Error estándar muestral}}$$
 
-$Error estándar estimado = \text{Error estándar de la muestra} = \frac{s}{\sqrt{N}}$
+$$\text{Error estándar estimado} = \text{Error estándar de la muestra} = \frac{s}{\sqrt{N}}$$
 
 donde *s* es la desviación estándar de la muestra.
 

@@ -27,7 +27,7 @@ Supongamos que querés saber cuán feliz se siente la gente. Entonces salís a l
 
 Bueno, podrías mirar esos números y ver si eso te ayuda a entender algo sobre la felicidad de las personas. ¿Cómo podrían verse esos números? Quizás algo así:
 
-```{r 2toomany,echo=F}
+```{r 2toomany,echo=F, warning=FALSE}
 happiness<-rnorm(500,100,500)
 knitr::kable(matrix(round(happiness),ncol=10,nrow=50))
 ```
@@ -44,7 +44,7 @@ Ya intentamos una forma de mirar los números, y no fue muy útil. Probemos ahor
 
 Convirtamos todos los números en puntos, y mostremos esos puntos en un gráfico. Ojo: cuando hacemos esto, todavía no hemos resumido nada de los datos. Simplemente los estamos observando en formato visual, en vez de mirar los números directamente.
 
-```{r, echo=F}
+```{r, echo=F, warning=FALSE}
 #| label: fig-happyPlot
 #| fig-cap: "Supuestas puntuaciones de felicidad de 500 personas"
 
@@ -65,7 +65,7 @@ Bien, si estos puntos representan cuán felices están 500 personas, ¿qué pode
 
 Hacer un histograma será nuestro primer acto de resumir oficialmente algo sobre los datos. Ya no vamos a mirar cada punto individualmente, sino que vamos a ver cómo se agrupan los números. Mirá @fig-happyHist, un histograma de los datos de felicidad, y después lo explicamos.
 
-```{r, echo=F}
+```{r, echo=F, warning=FALSE}
 #| label: fig-happyHist
 #| fig-cap: "Un histograma de las puntuaciones de felicidad"
 hist(happiness)
@@ -79,7 +79,7 @@ En general, vemos que hay muchos bins en el eje x. Dividimos los datos en interv
 
 Cuando hacés un histograma, podés elegir qué tan ancho será cada intervalo. Por ejemplo, abajo hay cuatro histogramas diferentes del mismo conjunto de datos de felicidad. Lo que cambia es el ancho de los intervalos.
 
-```{r, echo=F}
+```{r, echo=F, warning=FALSE}
 #| label: fig-manyhistbin
 #| fig-cap: "Cuatro histogramas del mismo conjunto de datos usando diferentes anchos de bin"
 
@@ -236,7 +236,7 @@ Ya sabés que el resultado es 4. Pero, ¿qué está pasando en realidad? Estamos
 
 Para repasar la moda, la mediana y la media, mirá el siguiente histograma en @fig-meanmodemed. Indicamos la ubicación de la media (rojo), la mediana (verde) y la moda (azul). Para este conjunto de datos, las tres medidas de tendencia central dan valores diferentes. La media es la más alta porque se ve influida por valores grandes, incluso si aparecen pocas veces. La moda y la mediana no se ven afectadas por esos valores extremos, por eso tienen valores más bajos.
 
-```{r, echo=F}
+```{r, echo=F, warning=FALSE}
 #| label: fig-meanmodemed
 #| fig-cap: "Un histograma con la media (rojo), la mediana (verde) y la moda (azul)"
 
@@ -281,7 +281,7 @@ Estaría bueno poder resumir cuánto difieren los datos entre sí. ¿Por qué? B
 
 Pero, ¿qué pasa con las diferencias entre ellos? ¿Cómo se ven esas diferencias? Podemos calcular todas las diferencias entre cada par de números y ponerlas en una matriz como esta:
 
-```{r 2diffscores, echo=F}
+```{r 2diffscores, echo=F, warning=FALSE}
 numbers<-c(1, 3, 4, 5, 5, 6, 7, 8, 9, 24)
 mat<-matrix(rep(numbers,10),ncol=10)
 differences<-t(mat)-numbers
@@ -301,7 +301,7 @@ Probemos con estos tres números:
 
 > 1 2 3
 
-```{r 2diffscoreSmall,echo=F}
+```{r 2diffscoreSmall,echo=F, warning=FALSE}
 numbers<-c(1, 2,3)
 mat<-matrix(rep(numbers,3),ncol=3)
 differences<-t(mat)-numbers
@@ -392,7 +392,7 @@ La solución ingeniosa es elevarlas al cuadrado. Elevar al cuadrado convierte to
 
 Volvamos a mirar la tabla anterior, pero ahora con una columna adicional de desviaciones al cuadrado:
 
-```{r 2deviationssquared,echo=F}
+```{r 2deviationssquared,echo=F, warning=FALSE}
 medidas<-1:6
 valores<-c(1,6,4,2,6,8)
 mean_scores<-mean(valores)
@@ -453,7 +453,7 @@ No dejes que esas raíces gigantes te asusten. Ahora sabés que están ahí para
 
 Si miramos de nuevo la tabla:
 
-```{r,echo=F}
+```{r,echo=F, warning=FALSE}
 medidas<-1:6
 valores<-c(1,6,4,2,6,8)
 mean_scores<-mean(valores)
@@ -479,7 +479,7 @@ Si tuvieras un montón de datos, podrías resumirlos con solo dos números: la m
 ¿Y si simplemente tomamos el valor absoluto de las diferencias respecto de la media?\
 Recordá que el valor absoluto convierte cualquier número en un valor positivo. Fijate en la siguiente tabla:
 
-```{r 2absolute, echo=F}
+```{r 2absolute, echo=F, warning=FALSE}
 medidas<-1:6
 valores<-c(1,6,4,2,6,8)
 mean_scores<-mean(valores)
@@ -515,7 +515,7 @@ Tal vez lo más importante que podés hacer cuando usás estadísticas descripti
 
 Para ilustrar este punto ---y prepararte para los temas del próximo capítulo--- mirá este ejemplo. Se llama el Cuarteto de Anscombe, porque estos gráficos y valores tan curiosos fueron producidos por \[Anscombe, 1973\]. En la figura @fig-anscombe estás viendo pares de mediciones. Cada gráfico tiene un eje X y un eje Y, y cada punto representa dos valores. A simple vista, cada gráfico se ve muy distinto, ¿no?
 
-```{r, echo=F}
+```{r, echo=F, warning=FALSE}
 #| label: fig-anscombe
 #| fig-cap: "El Cuarteto de Anscombe"
 
@@ -538,7 +538,7 @@ ggplot(ac_long, aes(x = x, y = y, color = quartet)) +
 
 Bueno, ¿te sorprendería si te dijera que las estadísticas descriptivas de los valores en estos gráficos son exactamente las mismas? Resulta que sí: tienen las mismas estadísticas descriptivas. En la tabla de abajo se presentan la media y la varianza para los valores de $x$ en cada gráfico, y la media y varianza de los valores de y en cada gráfico:
 
-```{r, echo=F}
+```{r, echo=F, warning=FALSE}
 library(dplyr)
 
 ac_long_summary <- ac_long %>%

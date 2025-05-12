@@ -25,8 +25,6 @@ Porque antes de correr modelos, hacer tests, o calcular valores *p*, hay algo m�
 
 Perfecto. Entonces seguimos con ese estilo narrativo y reflexivo, integrando ejemplos reales y bloques de código en R cuando sea útil. Ahora empiezo con la sección sobre **frecuencias absolutas**:
 
----
-
 ## Contar: la primera estadística
 
 Antes de hablar de porcentajes, probabilidades o inferencias, hay algo que hacemos todo el tiempo sin pensarlo mucho: **contar**. ¿Cuántas personas dijeron que sí? ¿Cuántos eligieron la opción A? ¿Cuántos pacientes presentaron síntomas?
@@ -50,7 +48,7 @@ respuestas <- c("Gato", "Perro", "Perro", "Gato", "Ave", "Perro", "Perro", "Gato
                 "Perro", "Perro", "Gato", "Gato", "Ave", "Perro", "Gato", "Perro")
 
 tabla_absoluta <- table(respuestas)
-tabla_absoluta
+knitr::kable(tabla_absoluta,col.names = c("respuestas","frecuencia"),align="c")
 ```
 
 Esto nos da la tabla de frecuencias absolutas. Es lo más básico, pero ya nos permite ver cuál fue la opción más popular (en este caso, claramente *Perro*). Pero esa es solo una parte de la historia.
@@ -80,7 +78,6 @@ Todo lo que viene después —proporciones, porcentajes, pruebas estadísticas�
 
 Perfecto. Seguimos avanzando en el capítulo, manteniendo el estilo narrativo y el uso de código en R. Pasamos ahora a **frecuencias relativas y porcentuales**.
 
----
 
 ## ¿Qué tan grande es “mucho”?
 
@@ -92,8 +89,6 @@ Ahí es donde entra la **frecuencia relativa**. Lo que antes era “cuántas per
 
 Es una pregunta diferente. Y muchas veces, **más útil**.
 
----
-
 ### Del número al total
 
 Volvamos a nuestro ejemplo. Ya teníamos la tabla de frecuencias absolutas. Ahora vamos a calcular la proporción que representa cada categoría respecto al total de respuestas:
@@ -103,7 +98,8 @@ Volvamos a nuestro ejemplo. Ya teníamos la tabla de frecuencias absolutas. Ahor
 #| tbl-cap: "Frecuencias relativas (proporciones) de animales favoritos"
 
 tabla_relativa <- prop.table(tabla_absoluta)
-round(tabla_relativa, 3)
+knitr::kable(round(tabla_relativa, 3),col.names = c("respuestas","frecuencia"),align="c")
+
 ```
 
 Ahora vemos que:

@@ -28,8 +28,8 @@ Supongamos que querés saber cuán feliz se siente la gente. Entonces salís a l
 Bueno, podrías mirar esos números y ver si eso te ayuda a entender algo sobre la felicidad de las personas. ¿Cómo podrían verse esos números? Quizás algo así:
 
 ```{r 2toomany,echo=F, warning=FALSE}
-happiness<-rnorm(500,100,500)
-knitr::kable(matrix(round(happiness),ncol=10,nrow=50))
+felicidad<-rnorm(500,100,500)
+knitr::kable(matrix(round(felicidad),ncol=10,nrow=50))
 ```
 
 ¿Y qué vas a hacer con esa montaña de números? ¿Mirarlos todo el día? Cuando trabajás con datos, te vas a encontrar con tantos números que te van a abrumar. Por eso necesitamos formas de describirlos de una manera más manejable.
@@ -48,7 +48,7 @@ Convirtamos todos los números en puntos, y mostremos esos puntos en un gráfico
 #| label: fig-happyPlot
 #| fig-cap: "Supuestas puntuaciones de felicidad de 500 personas"
 
-plot(happiness)
+plot(felicidad,xlab = "índice")
 ```
 
 La @fig-happyPlot muestra 500 mediciones de felicidad. El gráfico tiene dos ejes. El eje horizontal **x**, que va de izquierda a derecha, está etiquetado como "Índice". El eje vertical **y**, que va de abajo hacia arriba, está etiquetado como "felicidad". Cada punto representa una medición de felicidad de cada persona en nuestro estudio ficticio.
@@ -68,7 +68,8 @@ Hacer un histograma será nuestro primer acto de resumir oficialmente algo sobre
 ```{r, echo=F, warning=FALSE}
 #| label: fig-happyHist
 #| fig-cap: "Un histograma de las puntuaciones de felicidad"
-hist(happiness)
+hist(felicidad,ylab = "frecuencia",main="Histograma de la variable felicidad")
+
 ```
 
 Los puntos desaparecieron, y ahora vemos unas barras. Cada barra resume varios puntos: representa cuántos puntos (frecuencia) caen dentro de un determinado rango de felicidad, también llamado **bin** o intervalo. Por ejemplo, ¿cuántas personas dieron una puntuación de felicidad entre 0 y 500? La quinta barra ---la que va de 0 a 500 en el eje x--- te lo dice. Mirá qué alta es esa barra. ¿Cuánto mide? La altura se muestra en el eje y, que indica la frecuencia (el número de puntos o valores). Parece que unas 150 personas dijeron que su felicidad estaba entre 0 y 500.
@@ -86,19 +87,19 @@ Cuando hacés un histograma, podés elegir qué tan ancho será cada intervalo. 
 library(ggplot2)
 library(ggpubr)
 
-g1 <- qplot(x=happiness, color="white", bins=5)+
+g1 <- qplot(x=felicidad, color="white", bins=5)+
   theme_classic()+
   theme(legend.position="none")
 
-g2 <- qplot(x=happiness, color="white", bins=10)+
+g2 <- qplot(x=felicidad, color="white", bins=10)+
   theme_classic()+
   theme(legend.position="none")
 
-g3 <- qplot(x=happiness, color="white", bins=20)+
+g3 <- qplot(x=felicidad, color="white", bins=20)+
   theme_classic()+
   theme(legend.position="none")
 
-g4 <- qplot(x=happiness, color="white", bins=50)+
+g4 <- qplot(x=felicidad, color="white", bins=50)+
   theme_classic()+
   theme(legend.position="none")
 
@@ -476,8 +477,7 @@ Si tuvieras un montón de datos, podrías resumirlos con solo dos números: la m
 
 ### Desviaciones absolutas
 
-¿Y si simplemente tomamos el valor absoluto de las diferencias respecto de la media?\
-Recordá que el valor absoluto convierte cualquier número en un valor positivo. Fijate en la siguiente tabla:
+¿Y si simplemente tomamos el valor absoluto de las diferencias respecto de la media? Recordá que el valor absoluto convierte cualquier número en un valor positivo. Fijate en la siguiente tabla:
 
 ```{r 2absolute, echo=F, warning=FALSE}
 medidas<-1:6
@@ -487,19 +487,14 @@ Diferencia_a_la_media<-valores-mean_scores
 Desviaciones_absolutas <- abs(Diferencia_a_la_media)
 the_df<-data.frame(medidas,valores,media=rep(mean_scores,6),Diferencia_a_la_media,Desviaciones_absolutas)
 
-rbind(c("Sumas",colSums(the_df[1:6,2:5]))) %>%
-  rbind(c("Medias",colMeans(the_df[1:6,2:5])))
-knitr::kable(the_df)
+the_df %>% rbind(c("Sumas",colSums(the_df[1:6,2:5]))) %>%
+  rbind(c("Medias",colMeans(the_df[1:6,2:5]))) %>% knitr::kable(align="c")
 
 ```
 
-Esto también funciona bastante bien.\
-Al convertir las diferencias respecto de la media en valores positivos, ahora podemos sumarlas y obtener un valor distinto de cero (si es que hay diferencias). Después, podemos calcular el promedio de la suma de las desviaciones absolutas. Si quisiéramos hacer un paralelismo entre los términos suma de cuadrados (SS), varianza y desviación estándar, y estas nuevas medidas basadas en la desviación absoluta, ¿cómo sería ese mapeo?\
-Por ejemplo, ¿qué valor en la tabla correspondería a la SS?\
-Eso sería la **suma de desviaciones absolutas** en la última columna. ¿Y la varianza y la desviación estándar, a qué corresponderían? Recordá que la varianza es el promedio ($SS/N$), y que la desviación estándar es la raíz cuadrada de ese promedio ($\sqrt{SS/N}$).
+Esto también funciona bastante bien. Al convertir las diferencias respecto de la media en valores positivos, ahora podemos sumarlas y obtener un valor distinto de cero (si es que hay diferencias). Después, podemos calcular el promedio de la suma de las desviaciones absolutas. Si quisiéramos hacer un paralelismo entre los términos suma de cuadrados (SS), varianza y desviación estándar, y estas nuevas medidas basadas en la desviación absoluta, ¿cómo sería ese mapeo? Por ejemplo, ¿qué valor en la tabla correspondería a la SS? Eso sería la **suma de desviaciones absolutas** en la última columna. ¿Y la varianza y la desviación estándar, a qué corresponderían? Recordá que la varianza es el promedio ($SS/N$), y que la desviación estándar es la raíz cuadrada de ese promedio ($\sqrt{SS/N}$).
 
-En la tabla de arriba solo tenemos un promedio: el promedio de la suma de desviaciones absolutas.\
-Entonces, tenemos una medida de **varianza** que **no necesita extraer raíz cuadrada**. Podemos decir que la **desviación media absoluta** cumple un doble rol: es tanto una medida de varianza como de desviación estándar. Gol.
+En la tabla de arriba solo tenemos un promedio: el promedio de la suma de desviaciones absolutas. Entonces, tenemos una medida de **varianza** que **no necesita extraer raíz cuadrada**. Podemos decir que la **desviación media absoluta** cumple un doble rol: es tanto una medida de varianza como de desviación estándar.     Gol.
 
 ### Otras operaciones que invierten el signo
 
@@ -550,7 +545,7 @@ ac_long_summary <- ac_long %>%
     var_y = var(y)
   )
 
-knitr::kable(ac_long_summary)
+knitr::kable(ac_long_summary,col.names = c("cuarteto","media x", "varianza x","media y","varianza y"),align = "c")
 ```
 
 ¡Las estadísticas descriptivas son todas iguales! Anscombe armó estos conjuntos especiales justamente para mostrar por qué es tan importante graficar los datos. Si solo mirás los resúmenes numéricos, no tenés idea de qué patrones están ocultando. Pero si mirás el gráfico, podés comprender mucho más.

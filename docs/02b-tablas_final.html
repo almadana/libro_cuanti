@@ -380,7 +380,6 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <p>Y lo vamos a hacer paso a paso, desde lo más básico: contar.</p>
 <p>Porque antes de correr modelos, hacer tests, o calcular valores <em>p</em>, hay algo más simple y más poderoso: <strong>mirar con atención qué dicen los datos, y cómo lo dicen</strong>.</p>
 <p>Perfecto. Entonces seguimos con ese estilo narrativo y reflexivo, integrando ejemplos reales y bloques de código en R cuando sea útil. Ahora empiezo con la sección sobre <strong>frecuencias absolutas</strong>:</p>
-<hr>
 <section id="contar-la-primera-estadística" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="contar-la-primera-estadística"><span class="header-section-number">3.1</span> Contar: la primera estadística</h2>
 <p>Antes de hablar de porcentajes, probabilidades o inferencias, hay algo que hacemos todo el tiempo sin pensarlo mucho: <strong>contar</strong>. ¿Cuántas personas dijeron que sí? ¿Cuántos eligieron la opción A? ¿Cuántos pacientes presentaron síntomas?</p>
@@ -397,11 +396,30 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Perro"</span>, <span class="st">"Perro"</span>, <span class="st">"Gato"</span>, <span class="st">"Gato"</span>, <span class="st">"Ave"</span>, <span class="st">"Perro"</span>, <span class="st">"Gato"</span>, <span class="st">"Perro"</span>)</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>tabla_absoluta <span class="ot">&lt;-</span> <span class="fu">table</span>(respuestas)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>tabla_absoluta</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>respuestas
-  Ave  Gato Perro 
-    6    14    20 </code></pre>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(tabla_absoluta,<span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"respuestas"</span>,<span class="st">"frecuencia"</span>),<span class="at">align=</span><span class="st">"c"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: center;">respuestas</th>
+<th style="text-align: center;">frecuencia</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Ave</td>
+<td style="text-align: center;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Gato</td>
+<td style="text-align: center;">14</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Perro</td>
+<td style="text-align: center;">20</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <p>Esto nos da la tabla de frecuencias absolutas. Es lo más básico, pero ya nos permite ver cuál fue la opción más popular (en este caso, claramente <em>Perro</em>). Pero esa es solo una parte de la historia.</p>
@@ -411,10 +429,10 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <h2 data-number="3.2" class="anchored" data-anchor-id="ver-lo-que-contamos"><span class="header-section-number">3.2</span> Ver lo que contamos</h2>
 <p>Los humanos somos visuales. Podemos leer la tabla de frecuencias, pero la vemos mucho mejor si la graficamos. Acá va el gráfico de barras correspondiente:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(tabla_absoluta,</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Animales favoritos"</span>,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">"skyblue"</span>,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Cantidad de estudiantes"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(tabla_absoluta,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Animales favoritos"</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">"skyblue"</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Cantidad de estudiantes"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -431,7 +449,6 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 </blockquote>
 <p>Todo lo que viene después —proporciones, porcentajes, pruebas estadísticas— se construye sobre ese primer conteo.</p>
 <p>Perfecto. Seguimos avanzando en el capítulo, manteniendo el estilo narrativo y el uso de código en R. Pasamos ahora a <strong>frecuencias relativas y porcentuales</strong>.</p>
-<hr>
 </section>
 <section id="qué-tan-grande-es-mucho" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="qué-tan-grande-es-mucho"><span class="header-section-number">3.3</span> ¿Qué tan grande es “mucho”?</h2>
@@ -441,17 +458,36 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <p><strong>¿Qué proporción del total eligió esta opción?</strong></p>
 </blockquote>
 <p>Es una pregunta diferente. Y muchas veces, <strong>más útil</strong>.</p>
-<hr>
 <section id="del-número-al-total" class="level3" data-number="3.3.1">
 <h3 data-number="3.3.1" class="anchored" data-anchor-id="del-número-al-total"><span class="header-section-number">3.3.1</span> Del número al total</h3>
 <p>Volvamos a nuestro ejemplo. Ya teníamos la tabla de frecuencias absolutas. Ahora vamos a calcular la proporción que representa cada categoría respecto al total de respuestas:</p>
-<div class="cell" data-tbl-cap="Frecuencias relativas (proporciones) de animales favoritos">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>tabla_relativa <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tabla_absoluta)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(tabla_relativa, <span class="dv">3</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>respuestas
-  Ave  Gato Perro 
- 0.15  0.35  0.50 </code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tabla_relativa <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tabla_absoluta)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">round</span>(tabla_relativa, <span class="dv">3</span>),<span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"respuestas"</span>,<span class="st">"frecuencia"</span>),<span class="at">align=</span><span class="st">"c"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Frecuencias relativas (proporciones) de animales favoritos</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">respuestas</th>
+<th style="text-align: center;">frecuencia</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Ave</td>
+<td style="text-align: center;">0.15</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Gato</td>
+<td style="text-align: center;">0.35</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Perro</td>
+<td style="text-align: center;">0.50</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <p>Ahora vemos que:</p>
@@ -468,7 +504,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <p>A veces no queremos ver proporciones con coma. Queremos porcentajes. Porque a veces es más fácil entender: “El 15% eligió Ave” que “0.15 eligió Ave”</p>
 <p>Eso es una <strong>frecuencia porcentual</strong>: la frecuencia relativa multiplicada por 100.</p>
 <div class="cell" data-tbl-cap="Frecuencias porcentuales de animales favoritos">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> tabla_relativa, <span class="dv">1</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> tabla_relativa, <span class="dv">1</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>respuestas
   Ave  Gato Perro 
@@ -480,10 +516,10 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <h3 data-number="3.3.3" class="anchored" data-anchor-id="ver-lo-relativo"><span class="header-section-number">3.3.3</span> Ver lo relativo</h3>
 <p>Así como hicimos con los conteos, podemos graficar las proporciones. Ahora, en vez de cantidad de personas, mostramos <strong>porcentaje</strong> sobre el total.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="dv">100</span> <span class="sc">*</span> tabla_relativa,</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Animales favoritos (porcentaje)"</span>,</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">"lightgreen"</span>,</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Porcentaje"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="dv">100</span> <span class="sc">*</span> tabla_relativa,</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Animales favoritos (porcentaje)"</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">"lightgreen"</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Porcentaje"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -513,10 +549,10 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <p>Imaginá que estás estudiando el nivel de ansiedad en una población, con una escala ordinal del 1 al 5, donde 1 es “muy baja ansiedad” y 5 es “muy alta ansiedad”.</p>
 <p>Tenés los siguientes resultados de una encuesta a 30 personas:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>ansiedad <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.3</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>))</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>ansiedad_tabla <span class="ot">&lt;-</span> <span class="fu">table</span>(ansiedad)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>ansiedad_tabla</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ansiedad <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.3</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ansiedad_tabla <span class="ot">&lt;-</span> <span class="fu">table</span>(ansiedad)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>ansiedad_tabla</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>ansiedad
 1 2 3 4 5 
@@ -533,8 +569,8 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <section id="cómo-se-calcula" class="level3" data-number="3.4.2">
 <h3 data-number="3.4.2" class="anchored" data-anchor-id="cómo-se-calcula"><span class="header-section-number">3.4.2</span> Cómo se calcula</h3>
 <div class="cell" data-tbl-cap="Frecuencias acumuladas de niveles de ansiedad">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>acumulada <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(ansiedad_tabla)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>acumulada</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>acumulada <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(ansiedad_tabla)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>acumulada</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> 1  2  3  4  5 
  6 13 22 26 30 </code></pre>
@@ -542,8 +578,8 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 </div>
 <p>También podés convertirla en proporciones:</p>
 <div class="cell" data-tbl-cap="Frecuencias acumuladas porcentuales">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>acumulada_porcentual <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> <span class="fu">cumsum</span>(<span class="fu">prop.table</span>(ansiedad_tabla)), <span class="dv">1</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>acumulada_porcentual</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>acumulada_porcentual <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> <span class="fu">cumsum</span>(<span class="fu">prop.table</span>(ansiedad_tabla)), <span class="dv">1</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>acumulada_porcentual</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    1     2     3     4     5 
  20.0  43.3  73.3  86.7 100.0 </code></pre>
@@ -563,11 +599,11 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <h3 data-number="3.4.4" class="anchored" data-anchor-id="ver-la-acumulación"><span class="header-section-number">3.4.4</span> Ver la acumulación</h3>
 <p>Podemos representar la acumulación como una <strong>línea creciente</strong>, que muestra cómo se van sumando los porcentajes.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(acumulada_porcentual, <span class="at">type =</span> <span class="st">"b"</span>, <span class="at">pch =</span> <span class="dv">16</span>,</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Nivel de ansiedad"</span>, <span class="at">ylab =</span> <span class="st">"Porcentaje acumulado"</span>,</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Frecuencia acumulada de ansiedad"</span>,</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>))</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">50</span>, <span class="at">col =</span> <span class="st">"gray"</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(acumulada_porcentual, <span class="at">type =</span> <span class="st">"b"</span>, <span class="at">pch =</span> <span class="dv">16</span>,</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Nivel de ansiedad"</span>, <span class="at">ylab =</span> <span class="st">"Porcentaje acumulado"</span>,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Frecuencia acumulada de ansiedad"</span>,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>))</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">50</span>, <span class="at">col =</span> <span class="st">"gray"</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -598,13 +634,13 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <p>Es simplemente una forma ordenada de mostrar cuántas personas (o casos) <strong>caen simultáneamente</strong> en cada combinación de categorías de dos variables.</p>
 <p>Por ejemplo, si tenemos información sobre el <strong>género</strong> de una persona (hombre, mujer, otro) y su <strong>opinión</strong> sobre la eficacia de la psicoterapia (positiva o negativa), podemos construir una tabla que muestre cómo se distribuyen esas respuestas:</p>
 <div class="cell" data-tbl-cap="Ejemplo de tabla de contingencia: Género × Opinión sobre terapia">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>genero <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Mujer"</span>, <span class="dv">50</span>), <span class="fu">rep</span>(<span class="st">"Hombre"</span>, <span class="dv">40</span>), <span class="fu">rep</span>(<span class="st">"Otro"</span>, <span class="dv">10</span>))</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>opinion <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Positiva"</span>, <span class="dv">35</span>), <span class="fu">rep</span>(<span class="st">"Negativa"</span>, <span class="dv">15</span>),</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>             <span class="fu">rep</span>(<span class="st">"Positiva"</span>, <span class="dv">20</span>), <span class="fu">rep</span>(<span class="st">"Negativa"</span>, <span class="dv">20</span>),</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>             <span class="fu">rep</span>(<span class="st">"Positiva"</span>, <span class="dv">8</span>), <span class="fu">rep</span>(<span class="st">"Negativa"</span>, <span class="dv">2</span>))</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>tabla_conjunta <span class="ot">&lt;-</span> <span class="fu">table</span>(genero, opinion)</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>tabla_conjunta</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>genero <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Mujer"</span>, <span class="dv">50</span>), <span class="fu">rep</span>(<span class="st">"Hombre"</span>, <span class="dv">40</span>), <span class="fu">rep</span>(<span class="st">"Otro"</span>, <span class="dv">10</span>))</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>opinion <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Positiva"</span>, <span class="dv">35</span>), <span class="fu">rep</span>(<span class="st">"Negativa"</span>, <span class="dv">15</span>),</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>             <span class="fu">rep</span>(<span class="st">"Positiva"</span>, <span class="dv">20</span>), <span class="fu">rep</span>(<span class="st">"Negativa"</span>, <span class="dv">20</span>),</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>             <span class="fu">rep</span>(<span class="st">"Positiva"</span>, <span class="dv">8</span>), <span class="fu">rep</span>(<span class="st">"Negativa"</span>, <span class="dv">2</span>))</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>tabla_conjunta <span class="ot">&lt;-</span> <span class="fu">table</span>(genero, opinion)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>tabla_conjunta</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        opinion
 genero   Negativa Positiva
@@ -631,15 +667,15 @@ genero   Negativa Positiva
 <h3 data-number="3.5.3" class="anchored" data-anchor-id="visualizar-la-tabla"><span class="header-section-number">3.5.3</span> Visualizar la tabla</h3>
 <p>Podemos convertir esa tabla en un gráfico de barras apiladas o agrupadas. Por ejemplo:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(genero, opinion)</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos, <span class="fu">aes</span>(<span class="at">x =</span> genero, <span class="at">fill =</span> opinion)) <span class="sc">+</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Opinión sobre la terapia según género"</span>,</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Género"</span>, <span class="at">y =</span> <span class="st">"Cantidad de personas"</span>) <span class="sc">+</span></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(genero, opinion)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos, <span class="fu">aes</span>(<span class="at">x =</span> genero, <span class="at">fill =</span> opinion)) <span class="sc">+</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Opinión sobre la terapia según género"</span>,</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Género"</span>, <span class="at">y =</span> <span class="st">"Cantidad de personas"</span>) <span class="sc">+</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -672,8 +708,8 @@ genero   Negativa Positiva
 </blockquote>
 <p>Es decir: <strong>ya sabemos</strong> a qué grupo pertenece (la fila), y queremos ver cómo se distribuyen sus respuestas (las columnas). En este caso, <strong>las proporciones se calculan por fila</strong>.</p>
 <div class="cell" data-tbl-cap="Proporciones por fila: ¿qué opinó cada grupo?">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>prop_filas <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tabla_conjunta, <span class="at">margin =</span> <span class="dv">1</span>)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(prop_filas, <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>prop_filas <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tabla_conjunta, <span class="at">margin =</span> <span class="dv">1</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(prop_filas, <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        opinion
 genero   Negativa Positiva
@@ -698,8 +734,8 @@ genero   Negativa Positiva
 </blockquote>
 <p>Es decir: ya sabemos la <strong>respuesta</strong> (la columna), y queremos ver su distribución por <strong>grupo</strong> (la fila). Calculamos <strong>proporciones por columna</strong>.</p>
 <div class="cell" data-tbl-cap="Proporciones por columna: ¿de qué grupo son los que opinaron así?">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>prop_columnas <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tabla_conjunta, <span class="at">margin =</span> <span class="dv">2</span>)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(prop_columnas, <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>prop_columnas <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tabla_conjunta, <span class="at">margin =</span> <span class="dv">2</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(prop_columnas, <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        opinion
 genero   Negativa Positiva
@@ -719,8 +755,8 @@ genero   Negativa Positiva
 <h3 data-number="3.6.4" class="anchored" data-anchor-id="total-general"><span class="header-section-number">3.6.4</span> 🌐 3. Total general</h3>
 <p>A veces lo que queremos es mirar las proporciones respecto al total de la muestra, sin condicionar por fila ni por columna.</p>
 <div class="cell" data-tbl-cap="Proporciones sobre el total general">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>prop_total <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tabla_conjunta)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(prop_total, <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>prop_total <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tabla_conjunta)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(prop_total, <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        opinion
 genero   Negativa Positiva
@@ -784,13 +820,13 @@ genero   Negativa Positiva
 <h3 data-number="3.8.2" class="anchored" data-anchor-id="ejemplo-prevalencia-de-ansiedad-por-nivel-educativo"><span class="header-section-number">3.8.2</span> Ejemplo: prevalencia de ansiedad por nivel educativo</h3>
 <p>Supongamos que se encuestó a 120 personas, divididas en tres niveles educativos: básico, medio y superior. Se les preguntó si habían experimentado ansiedad clínica el último mes. Obtenemos la siguiente tabla:</p>
 <div class="cell" data-tbl-cap="Casos de ansiedad por nivel educativo">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>educacion <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Básico"</span>, <span class="dv">40</span>), <span class="fu">rep</span>(<span class="st">"Medio"</span>, <span class="dv">40</span>), <span class="fu">rep</span>(<span class="st">"Superior"</span>, <span class="dv">40</span>))</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>ansiedad <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Sí"</span>, <span class="dv">15</span>), <span class="fu">rep</span>(<span class="st">"No"</span>, <span class="dv">25</span>),</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>              <span class="fu">rep</span>(<span class="st">"Sí"</span>, <span class="dv">10</span>), <span class="fu">rep</span>(<span class="st">"No"</span>, <span class="dv">30</span>),</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>              <span class="fu">rep</span>(<span class="st">"Sí"</span>, <span class="dv">5</span>), <span class="fu">rep</span>(<span class="st">"No"</span>, <span class="dv">35</span>))</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>tabla_ansiedad <span class="ot">&lt;-</span> <span class="fu">table</span>(educacion, ansiedad)</span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>tabla_ansiedad</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>educacion <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Básico"</span>, <span class="dv">40</span>), <span class="fu">rep</span>(<span class="st">"Medio"</span>, <span class="dv">40</span>), <span class="fu">rep</span>(<span class="st">"Superior"</span>, <span class="dv">40</span>))</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>ansiedad <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Sí"</span>, <span class="dv">15</span>), <span class="fu">rep</span>(<span class="st">"No"</span>, <span class="dv">25</span>),</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>              <span class="fu">rep</span>(<span class="st">"Sí"</span>, <span class="dv">10</span>), <span class="fu">rep</span>(<span class="st">"No"</span>, <span class="dv">30</span>),</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>              <span class="fu">rep</span>(<span class="st">"Sí"</span>, <span class="dv">5</span>), <span class="fu">rep</span>(<span class="st">"No"</span>, <span class="dv">35</span>))</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>tabla_ansiedad <span class="ot">&lt;-</span> <span class="fu">table</span>(educacion, ansiedad)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>tabla_ansiedad</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          ansiedad
 educacion  No Sí
@@ -804,8 +840,8 @@ educacion  No Sí
 <h3 data-number="3.8.3" class="anchored" data-anchor-id="cómo-se-calcula-la-prevalencia"><span class="header-section-number">3.8.3</span> ¿Cómo se calcula la prevalencia?</h3>
 <p>Queremos saber qué proporción de personas de cada nivel educativo reportó ansiedad. Para eso, <strong>normalizamos por fila</strong>: calculamos proporciones <strong>dentro de cada grupo</strong>.</p>
 <div class="cell" data-tbl-cap="Prevalencia de ansiedad por nivel educativo">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>prevalencias <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tabla_ansiedad, <span class="at">margin =</span> <span class="dv">1</span>)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(prevalencias, <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>prevalencias <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tabla_ansiedad, <span class="at">margin =</span> <span class="dv">1</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(prevalencias, <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          ansiedad
 educacion    No   Sí
@@ -826,7 +862,7 @@ educacion    No   Sí
 <h3 data-number="3.8.4" class="anchored" data-anchor-id="visualizar-una-tabla-de-prevalencia"><span class="header-section-number">3.8.4</span> Visualizar una tabla de prevalencia</h3>
 <p>Un gráfico de barras permite ver esto claramente:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
@@ -838,18 +874,18 @@ educacion    No   Sí
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>datos_prev <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(tabla_ansiedad) <span class="sc">|&gt;</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(educacion) <span class="sc">|&gt;</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Prevalencia =</span> Freq <span class="sc">/</span> <span class="fu">sum</span>(Freq)) <span class="sc">|&gt;</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ansiedad <span class="sc">==</span> <span class="st">"Sí"</span>)</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos_prev, <span class="fu">aes</span>(<span class="at">x =</span> educacion, <span class="at">y =</span> Prevalencia)) <span class="sc">+</span></span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"tomato"</span>) <span class="sc">+</span></span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Prevalencia de ansiedad por nivel educativo"</span>,</span>
-<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Nivel educativo"</span>,</span>
-<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Prevalencia (porcentaje)"</span>) <span class="sc">+</span></span>
-<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>datos_prev <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(tabla_ansiedad) <span class="sc">|&gt;</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(educacion) <span class="sc">|&gt;</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Prevalencia =</span> Freq <span class="sc">/</span> <span class="fu">sum</span>(Freq)) <span class="sc">|&gt;</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ansiedad <span class="sc">==</span> <span class="st">"Sí"</span>)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos_prev, <span class="fu">aes</span>(<span class="at">x =</span> educacion, <span class="at">y =</span> Prevalencia)) <span class="sc">+</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"tomato"</span>) <span class="sc">+</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Prevalencia de ansiedad por nivel educativo"</span>,</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Nivel educativo"</span>,</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Prevalencia (porcentaje)"</span>) <span class="sc">+</span></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -884,18 +920,18 @@ educacion    No   Sí
 <h2 data-number="3.9" class="anchored" data-anchor-id="dos-historias-una-tabla-cómo-el-mismo-dato-puede-decir-cosas-distintas"><span class="header-section-number">3.9</span> Dos historias, una tabla: cómo el mismo dato puede decir cosas distintas</h2>
 <p>Supongamos que tenés la siguiente tabla. Es simple, clara, y 100% realista. En algún momento de tu formación (o carrera), vas a encontrarte con algo parecido:</p>
 <div class="cell" data-tbl-cap="Casos de ansiedad por nivel educativo">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>tabla <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">25</span>,</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">10</span>, <span class="dv">30</span>,</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">5</span>, <span class="dv">35</span>),</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(tabla) <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Nivel_educativo =</span> <span class="fu">c</span>(<span class="st">"Básico"</span>, <span class="st">"Medio"</span>, <span class="st">"Superior"</span>),</span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Ansiedad =</span> <span class="fu">c</span>(<span class="st">"Sí"</span>, <span class="st">"No"</span>)</span>
-<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>tabla <span class="ot">&lt;-</span> <span class="fu">as.table</span>(tabla)</span>
-<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>tabla</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>tabla <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">25</span>,</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">10</span>, <span class="dv">30</span>,</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">5</span>, <span class="dv">35</span>),</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(tabla) <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Nivel_educativo =</span> <span class="fu">c</span>(<span class="st">"Básico"</span>, <span class="st">"Medio"</span>, <span class="st">"Superior"</span>),</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Ansiedad =</span> <span class="fu">c</span>(<span class="st">"Sí"</span>, <span class="st">"No"</span>)</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>tabla <span class="ot">&lt;-</span> <span class="fu">as.table</span>(tabla)</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>tabla</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>               Ansiedad
 Nivel_educativo Sí No
@@ -910,8 +946,8 @@ Nivel_educativo Sí No
 <h3 data-number="3.9.1" class="anchored" data-anchor-id="historia-1-la-tabla-de-prevalencia"><span class="header-section-number">3.9.1</span> 🧭 Historia 1: la tabla de prevalencia</h3>
 <p>Vamos a calcular <strong>proporciones por fila</strong>, es decir, respecto al total de personas <strong>dentro de cada grupo educativo</strong>:</p>
 <div class="cell" data-tbl-cap="Proporciones por fila: prevalencia de ansiedad por nivel educativo">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>prop_fila <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tabla, <span class="at">margin =</span> <span class="dv">1</span>)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(prop_fila, <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>prop_fila <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tabla, <span class="at">margin =</span> <span class="dv">1</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(prop_fila, <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>               Ansiedad
 Nivel_educativo   Sí   No
@@ -935,8 +971,8 @@ Nivel_educativo   Sí   No
 <h3 data-number="3.9.2" class="anchored" data-anchor-id="historia-2-proporciones-por-columna"><span class="header-section-number">3.9.2</span> 🧭 Historia 2: proporciones por columna</h3>
 <p>Ahora miremos la misma tabla, pero calculando <strong>proporciones por columna</strong>, es decir, respecto al total de personas que <strong>respondieron “Sí” o “No”</strong>:</p>
 <div class="cell" data-tbl-cap="Proporciones por columna: distribución del nivel educativo dentro de cada respuesta">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>prop_col <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tabla, <span class="at">margin =</span> <span class="dv">2</span>)</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(prop_col, <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>prop_col <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tabla, <span class="at">margin =</span> <span class="dv">2</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(prop_col, <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>               Ansiedad
 Nivel_educativo   Sí   No
@@ -970,14 +1006,14 @@ Nivel_educativo   Sí   No
 <section id="historia-1-prevalencia" class="level4" data-number="3.9.4.1">
 <h4 data-number="3.9.4.1" class="anchored" data-anchor-id="historia-1-prevalencia"><span class="header-section-number">3.9.4.1</span> Historia 1: prevalencia</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>df_fila <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(prop_fila)</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_fila[df_fila<span class="sc">$</span>Ansiedad <span class="sc">==</span> <span class="st">"Sí"</span>, ], <span class="fu">aes</span>(<span class="at">x =</span> Nivel_educativo, <span class="at">y =</span> Freq)) <span class="sc">+</span></span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Prevalencia de ansiedad por nivel educativo"</span>,</span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Nivel educativo"</span>, <span class="at">y =</span> <span class="st">"Prevalencia"</span>) <span class="sc">+</span></span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>df_fila <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(prop_fila)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_fila[df_fila<span class="sc">$</span>Ansiedad <span class="sc">==</span> <span class="st">"Sí"</span>, ], <span class="fu">aes</span>(<span class="at">x =</span> Nivel_educativo, <span class="at">y =</span> Freq)) <span class="sc">+</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Prevalencia de ansiedad por nivel educativo"</span>,</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Nivel educativo"</span>, <span class="at">y =</span> <span class="st">"Prevalencia"</span>) <span class="sc">+</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -991,14 +1027,14 @@ Nivel_educativo   Sí   No
 <section id="historia-2-composición-del-grupo-ansioso" class="level4" data-number="3.9.4.2">
 <h4 data-number="3.9.4.2" class="anchored" data-anchor-id="historia-2-composición-del-grupo-ansioso"><span class="header-section-number">3.9.4.2</span> Historia 2: composición del grupo ansioso</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df_col <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(prop_col)</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_col[df_col<span class="sc">$</span>Ansiedad <span class="sc">==</span> <span class="st">"Sí"</span>, ], <span class="fu">aes</span>(<span class="at">x =</span> Nivel_educativo, <span class="at">y =</span> Freq)) <span class="sc">+</span></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"darkred"</span>) <span class="sc">+</span></span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"¿Quiénes componen el grupo con ansiedad?"</span>,</span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Nivel educativo"</span>, <span class="at">y =</span> <span class="st">"Porcentaje dentro de la columna 'Sí'"</span>) <span class="sc">+</span></span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>df_col <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(prop_col)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_col[df_col<span class="sc">$</span>Ansiedad <span class="sc">==</span> <span class="st">"Sí"</span>, ], <span class="fu">aes</span>(<span class="at">x =</span> Nivel_educativo, <span class="at">y =</span> Freq)) <span class="sc">+</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"darkred"</span>) <span class="sc">+</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"¿Quiénes componen el grupo con ansiedad?"</span>,</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Nivel educativo"</span>, <span class="at">y =</span> <span class="st">"Porcentaje dentro de la columna 'Sí'"</span>) <span class="sc">+</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1024,7 +1060,7 @@ Nivel_educativo   Sí   No
 <h3 data-number="3.11.1" class="anchored" data-anchor-id="dos-preguntas-dos-tablas"><span class="header-section-number">3.11.1</span> Dos preguntas, dos tablas</h3>
 <p>Volvamos al ejemplo anterior con ansiedad y nivel educativo. Recordá que teníamos la siguiente tabla:</p>
 <div class="cell" data-tbl-cap="Casos de ansiedad por nivel educativo">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>tabla</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>tabla</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>               Ansiedad
 Nivel_educativo Sí No
@@ -1043,7 +1079,7 @@ Nivel_educativo Sí No
 <section id="proporciones-por-fila-p1" class="level3" data-number="3.11.2">
 <h3 data-number="3.11.2" class="anchored" data-anchor-id="proporciones-por-fila-p1"><span class="header-section-number">3.11.2</span> Proporciones por fila (P1)</h3>
 <div class="cell" data-tbl-cap="Proporciones por fila: ¿quién tiene ansiedad dentro de cada grupo educativo?">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>prop_fila</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>prop_fila</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>               Ansiedad
 Nivel_educativo    Sí    No
@@ -1060,7 +1096,7 @@ Nivel_educativo    Sí    No
 <section id="proporciones-por-columna-p2" class="level3" data-number="3.11.3">
 <h3 data-number="3.11.3" class="anchored" data-anchor-id="proporciones-por-columna-p2"><span class="header-section-number">3.11.3</span> Proporciones por columna (P2)</h3>
 <div class="cell" data-tbl-cap="Proporciones por columna: ¿de qué grupo educativo son quienes tienen ansiedad?">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>prop_col</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>prop_col</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>               Ansiedad
 Nivel_educativo        Sí        No
@@ -1089,14 +1125,14 @@ Nivel_educativo        Sí        No
 <section id="qué-porcentaje-tiene-ansiedad-dentro-de-cada-grupo" class="level4" data-number="3.11.5.1">
 <h4 data-number="3.11.5.1" class="anchored" data-anchor-id="qué-porcentaje-tiene-ansiedad-dentro-de-cada-grupo"><span class="header-section-number">3.11.5.1</span> ¿Qué porcentaje tiene ansiedad dentro de cada grupo?</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>df_f <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(prop_fila)</span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_f, <span class="fu">aes</span>(<span class="at">x =</span> Nivel_educativo, <span class="at">y =</span> Freq, <span class="at">fill =</span> Ansiedad)) <span class="sc">+</span></span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"¿Qué porcentaje tiene ansiedad dentro de cada grupo educativo?"</span>,</span>
-<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Proporción dentro del grupo"</span>, <span class="at">x =</span> <span class="st">"Nivel educativo"</span>) <span class="sc">+</span></span>
-<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>df_f <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(prop_fila)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_f, <span class="fu">aes</span>(<span class="at">x =</span> Nivel_educativo, <span class="at">y =</span> Freq, <span class="at">fill =</span> Ansiedad)) <span class="sc">+</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"¿Qué porcentaje tiene ansiedad dentro de cada grupo educativo?"</span>,</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Proporción dentro del grupo"</span>, <span class="at">x =</span> <span class="st">"Nivel educativo"</span>) <span class="sc">+</span></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1110,14 +1146,14 @@ Nivel_educativo        Sí        No
 <section id="de-qué-grupo-vienen-quienes-tienen-ansiedad" class="level4" data-number="3.11.5.2">
 <h4 data-number="3.11.5.2" class="anchored" data-anchor-id="de-qué-grupo-vienen-quienes-tienen-ansiedad"><span class="header-section-number">3.11.5.2</span> ¿De qué grupo vienen quienes tienen ansiedad?</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>df_c <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(prop_col)</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_c, <span class="fu">aes</span>(<span class="at">x =</span> Ansiedad, <span class="at">y =</span> Freq, <span class="at">fill =</span> Nivel_educativo)) <span class="sc">+</span></span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
-<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"¿De qué grupo educativo vienen quienes tienen ansiedad?"</span>,</span>
-<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Proporción dentro de cada respuesta"</span>, <span class="at">x =</span> <span class="st">"Respuesta"</span>) <span class="sc">+</span></span>
-<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>df_c <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(prop_col)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_c, <span class="fu">aes</span>(<span class="at">x =</span> Ansiedad, <span class="at">y =</span> Freq, <span class="at">fill =</span> Nivel_educativo)) <span class="sc">+</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"¿De qué grupo educativo vienen quienes tienen ansiedad?"</span>,</span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Proporción dentro de cada respuesta"</span>, <span class="at">x =</span> <span class="st">"Respuesta"</span>) <span class="sc">+</span></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1167,17 +1203,17 @@ Nivel_educativo        Sí        No
 <h3 data-number="3.12.4" class="anchored" data-anchor-id="diferencias-en-visualización"><span class="header-section-number">3.12.4</span> Diferencias en visualización</h3>
 <p>Para mostrar estas diferencias, necesitamos saber <strong>cuándo</strong> se midió cada cosa.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>estudiantes <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ID =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,</span>
-<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Ansiedad_inicio =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Sí"</span>, <span class="dv">10</span>), <span class="fu">rep</span>(<span class="st">"No"</span>, <span class="dv">90</span>)),</span>
-<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Ansiedad_mes1 =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Sí"</span>, <span class="dv">10</span>), <span class="fu">rep</span>(<span class="st">"Sí"</span>, <span class="dv">15</span>), <span class="fu">rep</span>(<span class="st">"No"</span>, <span class="dv">75</span>))</span>
-<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>tabla_cambios <span class="ot">&lt;-</span> <span class="fu">table</span>(estudiantes<span class="sc">$</span>Ansiedad_inicio, estudiantes<span class="sc">$</span>Ansiedad_mes1)</span>
-<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(tabla_cambios) <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"Inicio"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"No"</span>, <span class="st">"Sí"</span>), <span class="st">"Mes1"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"No"</span>, <span class="st">"Sí"</span>))</span>
-<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>tabla_cambios</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>estudiantes <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ID =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Ansiedad_inicio =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Sí"</span>, <span class="dv">10</span>), <span class="fu">rep</span>(<span class="st">"No"</span>, <span class="dv">90</span>)),</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Ansiedad_mes1 =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Sí"</span>, <span class="dv">10</span>), <span class="fu">rep</span>(<span class="st">"Sí"</span>, <span class="dv">15</span>), <span class="fu">rep</span>(<span class="st">"No"</span>, <span class="dv">75</span>))</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>tabla_cambios <span class="ot">&lt;-</span> <span class="fu">table</span>(estudiantes<span class="sc">$</span>Ansiedad_inicio, estudiantes<span class="sc">$</span>Ansiedad_mes1)</span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(tabla_cambios) <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"Inicio"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"No"</span>, <span class="st">"Sí"</span>), <span class="st">"Mes1"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"No"</span>, <span class="st">"Sí"</span>))</span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>tabla_cambios</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      Mes1
 Inicio No Sí
@@ -1190,14 +1226,14 @@ Inicio No Sí
 <section id="calcular-la-incidencia" class="level3" data-number="3.12.5">
 <h3 data-number="3.12.5" class="anchored" data-anchor-id="calcular-la-incidencia"><span class="header-section-number">3.12.5</span> Calcular la incidencia</h3>
 <div class="cell" data-tbl-cap="Incidencia de ansiedad: nuevos casos durante el mes">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Casos que pasaron de No a Sí</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>casos_nuevos <span class="ot">&lt;-</span> tabla_cambios[<span class="st">"No"</span>, <span class="st">"Sí"</span>]</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Total de personas que no tenían ansiedad al inicio</span></span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>poblacion_riesgo <span class="ot">&lt;-</span> <span class="fu">sum</span>(tabla_cambios[<span class="st">"No"</span>, ])</span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>incidencia <span class="ot">&lt;-</span> casos_nuevos <span class="sc">/</span> poblacion_riesgo</span>
-<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(incidencia, <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Casos que pasaron de No a Sí</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>casos_nuevos <span class="ot">&lt;-</span> tabla_cambios[<span class="st">"No"</span>, <span class="st">"Sí"</span>]</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Total de personas que no tenían ansiedad al inicio</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>poblacion_riesgo <span class="ot">&lt;-</span> <span class="fu">sum</span>(tabla_cambios[<span class="st">"No"</span>, ])</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>incidencia <span class="ot">&lt;-</span> casos_nuevos <span class="sc">/</span> poblacion_riesgo</span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(incidencia, <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.17</code></pre>
 </div>

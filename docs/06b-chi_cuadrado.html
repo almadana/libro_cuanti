@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="ChatGPT4o y Álvaro Cabana">
+
+<title>Respondiendo preguntas con datos - 8&nbsp; Pruebas chi cuadrado</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./07-ANOVA.html" rel="next">
+<link href="./06-ttests.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1116FZ99DZ"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
+</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<meta property="og:title" content="Respondiendo preguntas con datos - 8&nbsp; Pruebas chi cuadrado">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://almadana.github.io/libro_cuanti/06b-chi_cuadrado_files/figure-html/grafico-caramelos-1.png">
+<meta property="og:site-name" content="Respondiendo preguntas con datos">
+<meta property="og:image:height" content="960">
+<meta property="og:image:width" content="1344">
+<meta name="twitter:title" content="Respondiendo preguntas con datos - 8&nbsp; Pruebas chi cuadrado">
+<meta name="twitter:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
+<meta name="twitter:image" content="https://almadana.github.io/libro_cuanti/imgs/TextbookCover.png">
+<meta name="twitter:site" content="@MattCrumpLab">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image-height" content="1310">
+<meta name="twitter:image-width" content="916">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06b-chi_cuadrado.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Pruebas chi cuadrado</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Respondiendo preguntas con datos</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/almadana/libro_cuanti/" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-Science_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">¿Por qué estadística?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-Describing_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describir los datos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02b-tablas_final.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tablas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-Correlation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Correlación</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-SamplesPopulations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probabilidad, muestreo y estimación</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-Foundation_Inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Fundamentos de la inferencia</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-ttests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Pruebas t</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06b-chi_cuadrado.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Pruebas chi cuadrado</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-ANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">ANOVA</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-RMANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Repeated Measures ANOVA</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-FactorialANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Factorial ANOVA</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-MixedANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">More On Factorial Designs</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-Simulation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Simulating Data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-Thinking.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Thinking about answering questions with data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-Gifs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">GIFs</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#de-promedios-a-categorías" id="toc-de-promedios-a-categorías" class="nav-link active" data-scroll-target="#de-promedios-a-categorías"><span class="header-section-number">8.1</span> De promedios a categorías</a></li>
+  <li><a href="#una-tabla-que-da-que-pensar" id="toc-una-tabla-que-da-que-pensar" class="nav-link" data-scroll-target="#una-tabla-que-da-que-pensar"><span class="header-section-number">8.2</span> Una tabla que da que pensar</a></li>
+  <li><a href="#la-lógica-inferencial-otra-vez" id="toc-la-lógica-inferencial-otra-vez" class="nav-link" data-scroll-target="#la-lógica-inferencial-otra-vez"><span class="header-section-number">8.3</span> La lógica inferencial, otra vez</a></li>
+  <li><a href="#el-plan-para-este-capítulo" id="toc-el-plan-para-este-capítulo" class="nav-link" data-scroll-target="#el-plan-para-este-capítulo"><span class="header-section-number">8.4</span> El plan para este capítulo</a></li>
+  <li><a href="#observar-no-es-lo-mismo-que-esperar" id="toc-observar-no-es-lo-mismo-que-esperar" class="nav-link" data-scroll-target="#observar-no-es-lo-mismo-que-esperar"><span class="header-section-number">8.5</span> Observar no es lo mismo que esperar</a></li>
+  <li><a href="#un-ejemplo-simple" id="toc-un-ejemplo-simple" class="nav-link" data-scroll-target="#un-ejemplo-simple"><span class="header-section-number">8.6</span> Un ejemplo simple</a></li>
+  <li><a href="#pongámoslos-uno-al-lado-del-otro" id="toc-pongámoslos-uno-al-lado-del-otro" class="nav-link" data-scroll-target="#pongámoslos-uno-al-lado-del-otro"><span class="header-section-number">8.7</span> Pongámoslos uno al lado del otro</a></li>
+  <li><a href="#dónde-están-las-diferencias-más-fuertes" id="toc-dónde-están-las-diferencias-más-fuertes" class="nav-link" data-scroll-target="#dónde-están-las-diferencias-más-fuertes"><span class="header-section-number">8.8</span> ¿Dónde están las diferencias más fuertes?</a></li>
+  <li><a href="#residuales-estandarizados-cuánto-se-desvía-cada-celda" id="toc-residuales-estandarizados-cuánto-se-desvía-cada-celda" class="nav-link" data-scroll-target="#residuales-estandarizados-cuánto-se-desvía-cada-celda"><span class="header-section-number">8.9</span> Residuales estandarizados: cuánto se desvía cada celda</a></li>
+  <li><a href="#un-número-para-resumir-toda-la-discrepancia" id="toc-un-número-para-resumir-toda-la-discrepancia" class="nav-link" data-scroll-target="#un-número-para-resumir-toda-la-discrepancia"><span class="header-section-number">8.10</span> Un número para resumir toda la discrepancia</a>
+  <ul class="collapse">
+  <li><a href="#cómo-se-calcula" id="toc-cómo-se-calcula" class="nav-link" data-scroll-target="#cómo-se-calcula"><span class="header-section-number">8.10.1</span> Cómo se calcula</a></li>
+  <li><a href="#calculemos-el-chi2-de-los-caramelos" id="toc-calculemos-el-chi2-de-los-caramelos" class="nav-link" data-scroll-target="#calculemos-el-chi2-de-los-caramelos"><span class="header-section-number">8.10.2</span> Calculemos el <span class="math inline">\(\chi^2\)</span> de los caramelos</a></li>
+  </ul></li>
+  <li><a href="#la-distribución-chi-cuadrado" id="toc-la-distribución-chi-cuadrado" class="nav-link" data-scroll-target="#la-distribución-chi-cuadrado"><span class="header-section-number">8.11</span> La distribución chi cuadrado</a></li>
+  <li><a href="#cómo-cambia-la-distribución-chi-cuadrado" id="toc-cómo-cambia-la-distribución-chi-cuadrado" class="nav-link" data-scroll-target="#cómo-cambia-la-distribución-chi-cuadrado"><span class="header-section-number">8.12</span> Cómo cambia la distribución chi cuadrado</a>
+  <ul class="collapse">
+  <li><a href="#una-animación-para-verlo-mejor" id="toc-una-animación-para-verlo-mejor" class="nav-link" data-scroll-target="#una-animación-para-verlo-mejor"><span class="header-section-number">8.12.1</span> Una animación para verlo mejor</a></li>
+  <li><a href="#qué-muestra-la-animación" id="toc-qué-muestra-la-animación" class="nav-link" data-scroll-target="#qué-muestra-la-animación"><span class="header-section-number">8.12.2</span> ¿Qué muestra la animación?</a></li>
+  </ul></li>
+  <li><a href="#qué-tan-grande-es-grande-simular-para-entender" id="toc-qué-tan-grande-es-grande-simular-para-entender" class="nav-link" data-scroll-target="#qué-tan-grande-es-grande-simular-para-entender"><span class="header-section-number">8.13</span> ¿Qué tan grande es grande? Simular para entender</a>
+  <ul class="collapse">
+  <li><a href="#simulemos-caramelos-honestos" id="toc-simulemos-caramelos-honestos" class="nav-link" data-scroll-target="#simulemos-caramelos-honestos"><span class="header-section-number">8.13.1</span> Simulemos caramelos honestos</a></li>
+  <li><a href="#el-valor-p-una-vez-más" id="toc-el-valor-p-una-vez-más" class="nav-link" data-scroll-target="#el-valor-p-una-vez-más"><span class="header-section-number">8.13.2</span> El valor <em>p</em>, una vez más</a></li>
+  </ul></li>
+  <li><a href="#dos-variables-una-pregunta-están-relacionadas" id="toc-dos-variables-una-pregunta-están-relacionadas" class="nav-link" data-scroll-target="#dos-variables-una-pregunta-están-relacionadas"><span class="header-section-number">8.14</span> Dos variables, una pregunta: ¿están relacionadas?</a></li>
+  <li><a href="#un-ejemplo-realista-eutanasia-y-nivel-educativo" id="toc-un-ejemplo-realista-eutanasia-y-nivel-educativo" class="nav-link" data-scroll-target="#un-ejemplo-realista-eutanasia-y-nivel-educativo"><span class="header-section-number">8.15</span> Un ejemplo realista: eutanasia y nivel educativo</a></li>
+  <li><a href="#visualizar-la-tabla-proporciones-por-fila" id="toc-visualizar-la-tabla-proporciones-por-fila" class="nav-link" data-scroll-target="#visualizar-la-tabla-proporciones-por-fila"><span class="header-section-number">8.16</span> Visualizar la tabla: proporciones por fila</a></li>
+  <li><a href="#qué-esperaríamos-ver-si-no-hubiera-relación" id="toc-qué-esperaríamos-ver-si-no-hubiera-relación" class="nav-link" data-scroll-target="#qué-esperaríamos-ver-si-no-hubiera-relación"><span class="header-section-number">8.17</span> ¿Qué esperaríamos ver si no hubiera relación?</a></li>
+  <li><a href="#dónde-están-las-mayores-discrepancias" id="toc-dónde-están-las-mayores-discrepancias" class="nav-link" data-scroll-target="#dónde-están-las-mayores-discrepancias"><span class="header-section-number">8.18</span> ¿Dónde están las mayores discrepancias?</a></li>
+  <li><a href="#aplicar-la-prueba-chi-cuadrado" id="toc-aplicar-la-prueba-chi-cuadrado" class="nav-link" data-scroll-target="#aplicar-la-prueba-chi-cuadrado"><span class="header-section-number">8.19</span> Aplicar la prueba chi cuadrado</a></li>
+  <li><a href="#errores-comunes-y-buenas-prácticas" id="toc-errores-comunes-y-buenas-prácticas" class="nav-link" data-scroll-target="#errores-comunes-y-buenas-prácticas"><span class="header-section-number">8.20</span> Errores comunes y buenas prácticas</a>
+  <ul class="collapse">
+  <li><a href="#error-1-usar-chi-cuadrado-con-frecuencias-esperadas-muy-bajas" id="toc-error-1-usar-chi-cuadrado-con-frecuencias-esperadas-muy-bajas" class="nav-link" data-scroll-target="#error-1-usar-chi-cuadrado-con-frecuencias-esperadas-muy-bajas"><span class="header-section-number">8.20.1</span> ❌ Error 1: Usar chi cuadrado con frecuencias esperadas muy bajas</a></li>
+  <li><a href="#error-2-interpretar-el-valor-p-como-tamaño-del-efecto" id="toc-error-2-interpretar-el-valor-p-como-tamaño-del-efecto" class="nav-link" data-scroll-target="#error-2-interpretar-el-valor-p-como-tamaño-del-efecto"><span class="header-section-number">8.20.2</span> ❌ Error 2: Interpretar el valor <em>p</em> como tamaño del efecto</a></li>
+  <li><a href="#error-3-leer-mal-las-proporciones-condicionales" id="toc-error-3-leer-mal-las-proporciones-condicionales" class="nav-link" data-scroll-target="#error-3-leer-mal-las-proporciones-condicionales"><span class="header-section-number">8.20.3</span> ❌ Error 3: Leer mal las proporciones condicionales</a></li>
+  <li><a href="#error-4-pensar-que-una-relación-estadística-implica-causalidad" id="toc-error-4-pensar-que-una-relación-estadística-implica-causalidad" class="nav-link" data-scroll-target="#error-4-pensar-que-una-relación-estadística-implica-causalidad"><span class="header-section-number">8.20.4</span> ❌ Error 4: Pensar que una relación estadística implica causalidad</a></li>
+  <li><a href="#error-5-usar-chi-cuadrado-para-variables-que-no-son-categóricas" id="toc-error-5-usar-chi-cuadrado-para-variables-que-no-son-categóricas" class="nav-link" data-scroll-target="#error-5-usar-chi-cuadrado-para-variables-que-no-son-categóricas"><span class="header-section-number">8.20.5</span> ❌ Error 5: Usar chi cuadrado para variables que no son categóricas</a></li>
+  </ul></li>
+  <li><a href="#lo-que-aprendimos" id="toc-lo-que-aprendimos" class="nav-link" data-scroll-target="#lo-que-aprendimos"><span class="header-section-number">8.21</span> Lo que aprendimos</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/almadana/libro_cuanti/edit/master/06b-chi_cuadrado.qmd" class="toc-action">Editar esta página</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Pruebas chi cuadrado</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>ChatGPT4o y Álvaro Cabana </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="de-promedios-a-categorías" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="de-promedios-a-categorías"><span class="header-section-number">8.1</span> De promedios a categorías</h2>
+<p>Hasta ahora, cuando queríamos saber si había una diferencia entre grupos, lo hacíamos comparando promedios. Por ejemplo: ¿tienen más ansiedad las personas que hacen ejercicio que las que no? ¿Tienen mayor rendimiento los estudiantes que duermen más horas? Para responder eso, usábamos la prueba <em>t</em>.</p>
+<p>Pero no todas las preguntas se contestan con medias. Muchas veces, especialmente en psicología y ciencias sociales, lo que tenemos no son números continuos, sino <strong>categorías</strong>. Personas que dijeron “sí” o “no”. Participantes que eligieron una opción. Pacientes con o sin diagnóstico. Grupos definidos por género, edad, nivel educativo. Respuestas a ítems cerrados. Datos que no se miden en una escala, sino que <strong>se cuentan</strong>.</p>
+<p>Y entonces, lo que cambia no es solo el tipo de dato. Cambia también <strong>la pregunta estadística</strong>. Ya no preguntamos si el promedio de un grupo es mayor que el del otro. Preguntamos algo más básico, pero igual de importante: <em>¿Lo que estamos viendo en estas categorías podría haber ocurrido solo por azar?</em></p>
+</section>
+<section id="una-tabla-que-da-que-pensar" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="una-tabla-que-da-que-pensar"><span class="header-section-number">8.2</span> Una tabla que da que pensar</h2>
+<p>Imaginemos que queremos saber si hay una relación entre el nivel educativo y la postura frente a la eutanasia. Entrevistamos a un grupo de personas y les preguntamos dos cosas:</p>
+<ol type="1">
+<li>¿Cuál es su nivel educativo?</li>
+<li>¿Está usted a favor o en contra de la legalización de la eutanasia?</li>
+</ol>
+<p>Los datos nos dan esta tabla:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Nivel educativo</th>
+<th style="text-align: right;">A favor</th>
+<th style="text-align: right;">En contra</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Bajo</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="even">
+<td>Medio</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="odd">
+<td>Alto</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">5</td>
+</tr>
+</tbody>
+</table>
+<p>A simple vista, parece haber una tendencia. Cuanto mayor el nivel educativo, mayor el apoyo a la eutanasia. Pero… ¿esa diferencia es real? ¿O podría deberse simplemente al azar?</p>
+</section>
+<section id="la-lógica-inferencial-otra-vez" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="la-lógica-inferencial-otra-vez"><span class="header-section-number">8.3</span> La lógica inferencial, otra vez</h2>
+<p>Esta pregunta —que parece nueva— en realidad <strong>es la misma que nos hacíamos con las medias</strong>. Lo único que cambió es el tipo de dato.</p>
+<p>Con la prueba <em>t</em>, comparamos dos promedios. Con chi cuadrado, comparamos <strong>lo que observamos</strong> en una tabla de frecuencias con <strong>lo que esperaríamos ver si no hubiera ninguna diferencia</strong>.</p>
+<p>La lógica es la misma:</p>
+<ul>
+<li>Tenemos una hipótesis nula: no hay relación entre las variables.</li>
+<li>Tenemos una observación: en la muestra, las frecuencias no son iguales.</li>
+<li>Y queremos saber: <em>¿esas diferencias son demasiado grandes como para explicarlas por azar?</em></li>
+</ul>
+</section>
+<section id="el-plan-para-este-capítulo" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="el-plan-para-este-capítulo"><span class="header-section-number">8.4</span> El plan para este capítulo</h2>
+<p>A lo largo de este capítulo vamos a aprender a responder esa pregunta. Pero, como siempre, lo haremos paso a paso:</p>
+<ol type="1">
+<li><p>Primero vamos a aprender a mirar una tabla y preguntarnos <strong>qué esperaríamos ver</strong> si no hubiera relación.</p></li>
+<li><p>Después vamos a aprender a <strong>medir cuán distintas</strong> son las frecuencias observadas de las esperadas.</p></li>
+<li><p>Vamos a ver <strong>dos tipos de prueba chi cuadrado</strong>:</p>
+<ul>
+<li>una para ver si una variable sigue cierta distribución (bondad de ajuste),</li>
+<li>otra para ver si dos variables están relacionadas (independencia).</li>
+</ul></li>
+<li><p>Vamos a usar <strong>gráficos y simulaciones</strong> para entender mejor qué está en juego.</p></li>
+<li><p>Y vamos a terminar con un repaso de lo que <strong>podemos y no podemos concluir</strong> con esta herramienta.</p></li>
+</ol>
+<p>Pero antes de hacer cuentas, fórmulas o tests, hay algo que siempre conviene hacer primero: <strong>mirar bien los datos</strong>, y preguntarse si lo que estamos viendo <strong>coincide con lo que esperaríamos ver si no pasara nada especial</strong>.</p>
+</section>
+<section id="observar-no-es-lo-mismo-que-esperar" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="observar-no-es-lo-mismo-que-esperar"><span class="header-section-number">8.5</span> Observar no es lo mismo que esperar</h2>
+<p>Cuando miramos una tabla de frecuencias, solemos enfocarnos en los números que están ahí. Cuántas personas dijeron sí. Cuántas dijeron no. Cuántas eligieron cada opción. Pero si queremos hacer inferencia, no alcanza con ver <strong>qué hay</strong>. Tenemos que preguntarnos: <em>¿Esto que hay… es lo que uno esperaría ver si no hubiera ningún efecto?</em></p>
+<p>Esa es la clave. Porque las diferencias entre grupos, por sí solas, no dicen nada. En cualquier muestra real vamos a tener variaciones. Lo importante es saber <strong>si esas variaciones son demasiado grandes como para atribuirlas al azar</strong>. Y para eso, primero tenemos que imaginar <strong>cómo se verían los datos si no hubiera ninguna relación</strong> entre las variables.</p>
+</section>
+<section id="un-ejemplo-simple" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="un-ejemplo-simple"><span class="header-section-number">8.6</span> Un ejemplo simple</h2>
+<p>Supongamos que queremos saber si hay una preferencia de colores en los caramelos que vende una empresa. Según la etiqueta, cada paquete debería tener la misma cantidad de cinco colores: rojo, azul, verde, amarillo y violeta.</p>
+<p>Compramos un paquete, lo abrimos, y contamos los caramelos. Obtenemos:</p>
+<div class="cell" data-tbl-cap="Frecuencias observadas de colores de caramelos" data-hash="06b-chi_cuadrado_cache/html/caramelos-observados_f418c30319308b5ef2685ebd4d1d7c01">
+<pre><code>#&gt;     Rojo     Azul    Verde Amarillo  Violeta 
+#&gt;        6        2        5        3        4</code></pre>
+</div>
+<p>Lo que vemos es que hay <strong>más rojos</strong>, <strong>menos azules</strong>, y los otros colores más o menos cerca de lo prometido. Pero la pregunta no es si hay diferencias. Las hay. La pregunta es: <em>¿Estas diferencias son lo suficientemente grandes como para pensar que los caramelos no están bien distribuidos?</em></p>
+<p>Si la empresa cumpliera con su promesa, y la distribución fuera perfectamente equitativa, deberíamos haber visto 4 caramelos de cada color:</p>
+<div class="cell" data-hash="06b-chi_cuadrado_cache/html/caramelos-esperados_4e6f9ff799dd618ce645a1335992797c">
+<pre><code>#&gt;     Rojo     Azul    Verde Amarillo  Violeta 
+#&gt;        4        4        4        4        4</code></pre>
+</div>
+</section>
+<section id="pongámoslos-uno-al-lado-del-otro" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="pongámoslos-uno-al-lado-del-otro"><span class="header-section-number">8.7</span> Pongámoslos uno al lado del otro</h2>
+<p>Para verlo más claro, vamos a graficar las frecuencias observadas y esperadas:</p>
+<div class="cell" data-hash="06b-chi_cuadrado_cache/html/grafico-caramelos_980f5db35bc31b705566103946224a07">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="06b-chi_cuadrado_files/figure-html/grafico-caramelos-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Frecuencias observadas y esperadas por color de caramelo</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Ahora sí podemos ver la diferencia. El color <strong>rojo</strong> tiene 6 caramelos, cuando deberían ser 4. El <strong>azul</strong>, apenas 2. El resto está más cerca de lo esperado, pero también hay pequeñas desviaciones.</p>
+<p>A simple vista, podríamos decir: <em>parece haber un pequeño desequilibrio</em>. Pero, otra vez, lo que importa no es solo que haya diferencia, sino <strong>cuánto importa esa diferencia</strong>.</p>
+<p>Por eso, vamos a dar un paso más: vamos a mirar <strong>celda por celda</strong>, y tratar de identificar <strong>dónde están las discrepancias más grandes</strong>, y si pueden ser explicadas por el azar.</p>
+<p>Perfecto, seguimos con la sección que pone el foco en las <strong>discrepancias observadas–esperadas</strong>, no solo para ver “cuánto se desviaron” los datos, sino para visualizar <strong>qué tan fuerte es esa discrepancia</strong> en cada categoría. Esta sección culmina con un <strong>mapa de calor interpretativo</strong>, que ilustra el nivel de evidencia <em>a favor</em> o <em>en contra</em> de la hipótesis nula.</p>
+</section>
+<section id="dónde-están-las-diferencias-más-fuertes" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="dónde-están-las-diferencias-más-fuertes"><span class="header-section-number">8.8</span> ¿Dónde están las diferencias más fuertes?</h2>
+<p>Ya vimos los datos observados. Ya sabemos lo que esperaríamos ver si los caramelos estuvieran perfectamente distribuidos. Pero una pregunta sigue abierta:</p>
+<blockquote class="blockquote">
+<p><em>¿Qué tanto se desvió cada color de lo que debería haber sido?</em></p>
+</blockquote>
+<p>Y más aún:</p>
+<blockquote class="blockquote">
+<p><em>¿Cuáles de esas diferencias son suficientemente grandes como para dudar de la hipótesis nula?</em></p>
+</blockquote>
+<p>Porque en la práctica, incluso si la empresa es honesta y mezcla bien los colores, es normal que en un paquete aparezcan 3 verdes o 5 amarillos. Lo que necesitamos es una forma de <strong>medir cada discrepancia en su contexto</strong>. Que nos diga: <em>esto está dentro de lo esperable</em>, o <em>esto sí parece demasiado</em>.</p>
+</section>
+<section id="residuales-estandarizados-cuánto-se-desvía-cada-celda" class="level2" data-number="8.9">
+<h2 data-number="8.9" class="anchored" data-anchor-id="residuales-estandarizados-cuánto-se-desvía-cada-celda"><span class="header-section-number">8.9</span> Residuales estandarizados: cuánto se desvía cada celda</h2>
+<p>Para cada color, podemos calcular una medida que nos diga cuánto se aleja lo observado de lo esperado, pero ajustado al valor esperado. Se llama <strong>residual estandarizado</strong> y se calcula así:</p>
+<p><span class="math display">\[
+\text{Residual estandarizado} = \frac{O - E}{\sqrt{E}}
+\]</span></p>
+<ul>
+<li>Si el valor está cerca de 0, lo observado es parecido a lo esperado → no hay evidencia de problema.</li>
+<li>Si el valor es mayor a +2 o menor a -2, la discrepancia es <strong>grande</strong> en relación a lo esperado → evidencia en contra de la hipótesis nula.</li>
+<li>Si es menor a ±1, podemos decir que <strong>la diferencia es irrelevante</strong> → evidencia a favor de la nula.</li>
+</ul>
+<div class="cell" data-hash="06b-chi_cuadrado_cache/html/mapa-evidencia-caramelos_e8dcfbf4efb9b1dbb5899baec44f46e9">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="06b-chi_cuadrado_files/figure-html/mapa-evidencia-caramelos-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">¿Dónde están las mayores discrepancias? Evidencia por celda</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Esta visualización no reemplaza el test estadístico. Pero <strong>lo complementa de forma poderosa</strong>. Nos dice, sin fórmulas, sin cálculo manual:</p>
+<ul>
+<li><strong>Dónde</strong> están las discrepancias más marcadas.</li>
+<li>En <strong>qué dirección</strong> van (más o menos de lo esperado).</li>
+<li>Y si esas discrepancias son lo bastante grandes como para generar sospechas.</li>
+</ul>
+<p>En este ejemplo:</p>
+<ul>
+<li>El color <strong>rojo</strong> aparece bastante más de lo esperado → residual positivo grande → evidencia <em>en contra</em> de la hipótesis nula.</li>
+<li>El <strong>azul</strong> aparece bastante menos → residual negativo → también evidencia <em>en contra</em>.</li>
+<li>Otros colores están cerca de lo esperado → residual bajo → evidencia <em>a favor</em> de la nula.</li>
+</ul>
+<p>Y ahora que sabemos <strong>qué tanto se desvían los datos celda por celda</strong>, podemos avanzar al siguiente paso: resumir todas esas discrepancias en un único número. Ese número es el <strong>estadístico chi cuadrado</strong>.</p>
+<p>Perfecto, vamos a seguir con la sección donde presentamos de forma intuitiva el <strong>estadístico chi cuadrado</strong> y lo conectamos con su <strong>distribución de referencia</strong>, ilustrando cómo cambia con los grados de libertad y cómo se interpreta el valor <em>p</em>. Incluiré visualizaciones y dejaré preparado el terreno para una animación opcional de simulación más adelante.</p>
+<hr>
+</section>
+<section id="un-número-para-resumir-toda-la-discrepancia" class="level2" data-number="8.10">
+<h2 data-number="8.10" class="anchored" data-anchor-id="un-número-para-resumir-toda-la-discrepancia"><span class="header-section-number">8.10</span> Un número para resumir toda la discrepancia</h2>
+<p>Ya calculamos las diferencias entre lo observado y lo esperado. Las miramos una por una, y hasta las coloreamos según si apoyaban o desafiaban la hipótesis nula. Ahora vamos a dar el siguiente paso: <strong>resumir todas esas diferencias en un solo número</strong>.</p>
+<p>Ese número es el <strong>estadístico chi cuadrado</strong>, y su lógica es simple:</p>
+<blockquote class="blockquote">
+<p>Cuanto más lejos estén los valores observados de los esperados, más grande será el valor de <span class="math inline">\(\chi^2\)</span>.</p>
+</blockquote>
+<p>Y si el valor de <span class="math inline">\(\chi^2\)</span> es muy grande, tenemos motivos para pensar que <strong>las diferencias no se deben solo al azar</strong>.</p>
+<hr>
+<section id="cómo-se-calcula" class="level3" data-number="8.10.1">
+<h3 data-number="8.10.1" class="anchored" data-anchor-id="cómo-se-calcula"><span class="header-section-number">8.10.1</span> Cómo se calcula</h3>
+<p>El estadístico chi cuadrado se define así:</p>
+<p><span class="math display">\[
+\chi^2 = \sum \frac{(O - E)^2}{E}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(O\)</span> = frecuencia observada</li>
+<li><span class="math inline">\(E\)</span> = frecuencia esperada</li>
+</ul>
+<p>Esto se hace <strong>celda por celda</strong>, y después se suman todos los valores. El resultado es un único número, que representa <strong>el total de discrepancia relativa</strong> en la tabla.</p>
+<hr>
+</section>
+<section id="calculemos-el-chi2-de-los-caramelos" class="level3" data-number="8.10.2">
+<h3 data-number="8.10.2" class="anchored" data-anchor-id="calculemos-el-chi2-de-los-caramelos"><span class="header-section-number">8.10.2</span> Calculemos el <span class="math inline">\(\chi^2\)</span> de los caramelos</h3>
+<div class="cell" data-tbl-cap="Resultado del test chi cuadrado para la distribución de caramelos" data-hash="06b-chi_cuadrado_cache/html/chisq-caramelos_fe7138b1dd0f4585875a54b21eb7f812">
+<pre><code>#&gt; 
+#&gt;  Chi-squared test for given probabilities
+#&gt; 
+#&gt; data:  observado
+#&gt; X-squared = 2.5, df = 4, p-value = 0.6446</code></pre>
+</div>
+<p>Este resultado nos da:</p>
+<ul>
+<li>El valor de <span class="math inline">\(\chi^2\)</span></li>
+<li>Los <strong>grados de libertad</strong>, que en este caso son: número de categorías − 1 = 4</li>
+<li>El valor <em>p</em></li>
+</ul>
+<p>Pero… ¿qué significa ese número de <span class="math inline">\(\chi^2\)</span>? ¿Es grande? ¿Es chico? ¿Cómo lo interpretamos?</p>
+<p>Para eso, necesitamos ver la <strong>distribución chi cuadrado</strong>.</p>
+</section>
+</section>
+<section id="la-distribución-chi-cuadrado" class="level2" data-number="8.11">
+<h2 data-number="8.11" class="anchored" data-anchor-id="la-distribución-chi-cuadrado"><span class="header-section-number">8.11</span> La distribución chi cuadrado</h2>
+<p>Igual que la <em>t</em>, el estadístico <span class="math inline">\(\chi^2\)</span> tiene una distribución de referencia. Esa distribución nos dice <strong>qué tan comunes o raros</strong> son distintos valores de <span class="math inline">\(\chi^2\)</span> <strong>si la hipótesis nula fuera cierta</strong>.</p>
+<p>La distribución chi cuadrado:</p>
+<ul>
+<li>Solo tiene valores <strong>positivos</strong> (porque las discrepancias al cuadrado nunca dan negativo).</li>
+<li>Tiene una <strong>forma asimétrica</strong>: es más alta cerca de 0, y cae rápidamente.</li>
+<li><strong>Cambia de forma según los grados de libertad (df)</strong>.</li>
+</ul>
+<p>Veamos cómo se ve:</p>
+<div class="cell" data-hash="06b-chi_cuadrado_cache/html/distribucion-chi_63e42b2ad5ea0de680ebc0fa69935af1">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="06b-chi_cuadrado_files/figure-html/distribucion-chi-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Distribuciones chi cuadrado para diferentes grados de libertad</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Con <strong>df = 1</strong>, la curva es muy sesgada: muchas observaciones cerca de 0, y pocas muy grandes.</li>
+<li>A medida que aumentan los <strong>grados de libertad</strong>, la curva se “desplaza” hacia la derecha y se va haciendo más simétrica.</li>
+<li>Siempre se mantiene positiva: no hay valores negativos de <span class="math inline">\(\chi^2\)</span>.</li>
+</ul>
+<p>El valor <em>p</em> es el área <strong>bajo la curva, a la derecha del valor observado</strong>. Eso representa: <em>¿qué tan probable es obtener un valor así (o mayor) si la hipótesis nula fuera cierta?</em></p>
+</section>
+<section id="cómo-cambia-la-distribución-chi-cuadrado" class="level2" data-number="8.12">
+<h2 data-number="8.12" class="anchored" data-anchor-id="cómo-cambia-la-distribución-chi-cuadrado"><span class="header-section-number">8.12</span> Cómo cambia la distribución chi cuadrado</h2>
+<p>Ya vimos que la distribución chi cuadrado es la que usamos para decidir si un valor observado de <span class="math inline">\(\chi^2\)</span> es raro o no, bajo la hipótesis nula. Pero algo que aún no exploramos es <strong>cómo cambia esa distribución dependiendo de los grados de libertad</strong>.</p>
+<p>Esto es importante por dos motivos:</p>
+<ol type="1">
+<li>El <strong>número de grados de libertad</strong> (df) depende de la cantidad de categorías que estamos comparando.</li>
+<li>La <strong>forma de la distribución</strong> determina qué valores de <span class="math inline">\(\chi^2\)</span> son considerados grandes o raros.</li>
+</ol>
+<p>A menor df, la curva es muy sesgada hacia la izquierda, y valores grandes son extremadamente improbables. A mayor df, la curva se desplaza y se vuelve más simétrica.</p>
+<section id="una-animación-para-verlo-mejor" class="level3" data-number="8.12.1">
+<h3 data-number="8.12.1" class="anchored" data-anchor-id="una-animación-para-verlo-mejor"><span class="header-section-number">8.12.1</span> Una animación para verlo mejor</h3>
+<p>En lugar de mostrar una curva estática para cada valor de df, vamos a ver cómo evoluciona la forma de la distribución chi cuadrado cuando los grados de libertad aumentan.</p>
+<div class="cell" data-hash="06b-chi_cuadrado_cache/html/animacion-chi2_54f4db647b538bb43e3efddedf7e0bbf">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>knitr::include_graphics(<span class="st">"imgs/gifs/distribucion_chi2_animada.gif"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="blockquote">
+<p><strong>Nota:</strong> Este bloque debe ejecutarse en un entorno Python con matplotlib y pillow instalados. El resultado será una animación <code>.gif</code> que puede incrustarse en el documento.</p>
+</blockquote>
+</section>
+<section id="qué-muestra-la-animación" class="level3" data-number="8.12.2">
+<h3 data-number="8.12.2" class="anchored" data-anchor-id="qué-muestra-la-animación"><span class="header-section-number">8.12.2</span> ¿Qué muestra la animación?</h3>
+<ul>
+<li>Con <strong>df = 1</strong>, la curva es muy concentrada cerca de 0 y cae abruptamente.</li>
+<li>A medida que df aumenta, la curva <strong>se desplaza hacia la derecha</strong> y se vuelve más suave.</li>
+<li>Siempre es una distribución <strong>de cola positiva</strong> (nunca hay valores negativos).</li>
+</ul>
+<p>Esto es fundamental para interpretar el valor <em>p</em>. Lo que consideramos “inusual” depende del <strong>df</strong>. Un valor de <span class="math inline">\(\chi^2 = 10\)</span> puede ser muy raro si df = 2, pero bastante común si df = 10. Perfecto. A continuación integro la <strong>sección completa</strong> al estilo del capítulo, donde mostramos mediante simulación cómo varía el valor de <span class="math inline">\(\chi^2\)</span> cuando los datos <strong>no contienen un efecto real</strong>, es decir, cuando la hipótesis nula es verdadera. Esto complementa la intuición sobre el valor <em>p</em>, mostrando cómo se genera su distribución bajo la nula.</p>
+</section>
+</section>
+<section id="qué-tan-grande-es-grande-simular-para-entender" class="level2" data-number="8.13">
+<h2 data-number="8.13" class="anchored" data-anchor-id="qué-tan-grande-es-grande-simular-para-entender"><span class="header-section-number">8.13</span> ¿Qué tan grande es grande? Simular para entender</h2>
+<p>Ya sabemos que el estadístico chi cuadrado mide <strong>cuán distintas son las frecuencias observadas de las esperadas</strong>, y que su valor aumenta cuando las diferencias son grandes. Y también sabemos que para interpretar ese valor, lo comparamos con una distribución teórica: la <strong>distribución chi cuadrado</strong>.</p>
+<p>Pero ahora vamos a hacer algo distinto. No vamos a mirar la fórmula. Vamos a <strong>simular el azar</strong>. Vamos a generar miles de situaciones donde la <strong>hipótesis nula sea cierta</strong>, y vamos a ver <strong>qué valores de <span class="math inline">\(\chi^2\)</span></strong> produce el azar por sí solo.</p>
+<p>La idea es simple:</p>
+<blockquote class="blockquote">
+<p>Si el azar genera a veces valores como el que observamos, entonces lo que vimos podría no ser tan raro. Pero si el azar casi nunca produce valores así… entonces lo que vimos <strong>probablemente no sea azar</strong>.</p>
+</blockquote>
+<section id="simulemos-caramelos-honestos" class="level3" data-number="8.13.1">
+<h3 data-number="8.13.1" class="anchored" data-anchor-id="simulemos-caramelos-honestos"><span class="header-section-number">8.13.1</span> Simulemos caramelos honestos</h3>
+<p>Supongamos que la empresa de caramelos efectivamente <strong>cumple con la proporción uniforme</strong> (20% para cada color). Simulamos muchos paquetes de 80 caramelos, cada uno con colores elegidos al azar con esa distribución, y para cada uno calculamos su <span class="math inline">\(\chi^2\)</span>.</p>
+<div class="cell" data-hash="06b-chi_cuadrado_cache/html/simular-caramelos_27765c25b05264cde6ee07ec9f0a118e">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="06b-chi_cuadrado_files/figure-html/simular-caramelos-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Distribución simulada del estadístico chi cuadrado bajo la hipótesis nula</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>La línea roja muestra el valor de <span class="math inline">\(\chi^2\)</span> que obtuvimos con nuestro paquete de caramelos. Las barras muestran <strong>qué tan comunes</strong> son distintos valores de <span class="math inline">\(\chi^2\)</span> si la distribución es justa. Si la línea roja está muy a la derecha —en la cola de la distribución— entonces el valor observado es <em>raro</em> bajo la nula. Y eso es exactamente lo que nos dice el valor <em>p</em>.</p>
+</section>
+<section id="el-valor-p-una-vez-más" class="level3" data-number="8.13.2">
+<h3 data-number="8.13.2" class="anchored" data-anchor-id="el-valor-p-una-vez-más"><span class="header-section-number">8.13.2</span> El valor <em>p</em>, una vez más</h3>
+<p>Podemos calcular el valor <em>p</em> directamente desde esta simulación:</p>
+<div class="cell" data-hash="06b-chi_cuadrado_cache/html/unnamed-chunk-2_ce055c7f62b21c887afb610102ccbd8a">
+<pre><code>#&gt; [1] 0.673</code></pre>
+</div>
+<p>Este número es la <strong>proporción de simulaciones</strong> que dieron un valor de <span class="math inline">\(\chi^2\)</span> igual o mayor al observado. Es decir: una versión empírica del valor <em>p</em>. Y debería coincidir bastante bien con el valor <em>p</em> que calculamos antes con <code>chisq.test()</code>.</p>
+<p>¿Por qué esto importa? Porque a veces, mirar un número no alcanza. Pero ver cuán frecuente —o infrecuente— es ese número en un mundo donde <strong>no hay efecto real</strong>, puede ayudar a construir una mejor intuición. Y eso es lo que hace el valor <em>p</em>: te dice <strong>qué tan probable es tu resultado si todo fuera azar</strong>.</p>
+<p>Perfecto, vamos ahora con la <strong>segunda gran aplicación</strong> de la prueba chi cuadrado: la <strong>prueba de independencia entre dos variables categóricas</strong>. Retomamos el estilo narrativo y visual, incorporando código en R y guiando al lector paso a paso para entender qué significa “independencia”, cómo se construyen las esperadas, cómo se ve la discrepancia y cómo se interpreta el test.</p>
+<hr>
+</section>
+</section>
+<section id="dos-variables-una-pregunta-están-relacionadas" class="level2" data-number="8.14">
+<h2 data-number="8.14" class="anchored" data-anchor-id="dos-variables-una-pregunta-están-relacionadas"><span class="header-section-number">8.14</span> Dos variables, una pregunta: ¿están relacionadas?</h2>
+<p>Hasta ahora usamos chi cuadrado para ver si una <strong>sola variable</strong> se distribuía como esperábamos. Pero la pregunta más común en psicología y ciencias sociales es otra:</p>
+<blockquote class="blockquote">
+<p><em>¿Están relacionadas estas dos variables?</em></p>
+</blockquote>
+<p>Por ejemplo:</p>
+<ul>
+<li>¿Están asociadas la orientación política y la actitud frente a la legalización del cannabis?</li>
+<li>¿Varía el apoyo a la eutanasia según el nivel educativo?</li>
+<li>¿Hay diferencias de género en la elección de carrera?</li>
+</ul>
+<p>Lo que queremos saber no es si los porcentajes son iguales. Lo que queremos saber es si <strong>las diferencias que vemos en la tabla podrían haberse generado por azar</strong>.</p>
+<hr>
+</section>
+<section id="un-ejemplo-realista-eutanasia-y-nivel-educativo" class="level2" data-number="8.15">
+<h2 data-number="8.15" class="anchored" data-anchor-id="un-ejemplo-realista-eutanasia-y-nivel-educativo"><span class="header-section-number">8.15</span> Un ejemplo realista: eutanasia y nivel educativo</h2>
+<p>Supongamos que en una encuesta preguntamos dos cosas:</p>
+<ol type="1">
+<li>¿Está usted a favor o en contra de la legalización de la eutanasia?</li>
+<li>¿Cuál es su nivel educativo (bajo, medio, alto)?</li>
+</ol>
+<p>Las respuestas nos dan esta tabla:</p>
+<div class="cell" data-tbl-cap="Opinión sobre eutanasia según nivel educativo" data-hash="06b-chi_cuadrado_cache/html/tabla-eutanasia_c6ce9e1d19703393348764f1ce039eb7">
+<pre><code>#&gt;        
+#&gt;         A favor En contra
+#&gt;   Alto       35         5
+#&gt;   Bajo       25        15
+#&gt;   Medio      30        10</code></pre>
+</div>
+<hr>
+</section>
+<section id="visualizar-la-tabla-proporciones-por-fila" class="level2" data-number="8.16">
+<h2 data-number="8.16" class="anchored" data-anchor-id="visualizar-la-tabla-proporciones-por-fila"><span class="header-section-number">8.16</span> Visualizar la tabla: proporciones por fila</h2>
+<p>Para ver mejor la tendencia, graficamos la proporción de personas a favor y en contra dentro de cada nivel educativo.</p>
+<div class="cell" data-hash="06b-chi_cuadrado_cache/html/grafico-eutanasia_988da5d7707f1c0c2380e08f4540b4f3">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="06b-chi_cuadrado_files/figure-html/grafico-eutanasia-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Distribución de opiniones por nivel educativo</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Parece haber un patrón: cuanto mayor el nivel educativo, mayor el apoyo a la eutanasia. Pero… ¿es esa diferencia suficientemente grande como para pensar que las variables están asociadas?</p>
+</section>
+<section id="qué-esperaríamos-ver-si-no-hubiera-relación" class="level2" data-number="8.17">
+<h2 data-number="8.17" class="anchored" data-anchor-id="qué-esperaríamos-ver-si-no-hubiera-relación"><span class="header-section-number">8.17</span> ¿Qué esperaríamos ver si no hubiera relación?</h2>
+<p>Si <strong>nivel educativo y opinión fueran independientes</strong>, esperaríamos ver una distribución en la que <strong>la proporción de personas a favor o en contra fuera la misma en todos los niveles</strong>.</p>
+<p>Eso significa que las frecuencias esperadas <strong>se calculan como producto de los totales marginales</strong>. R lo hace por nosotros:</p>
+<div class="cell" data-tbl-cap="Frecuencias esperadas bajo independencia" data-hash="06b-chi_cuadrado_cache/html/esperadas-eutanasia_c4b0352a7ca60e391f70901782c3c409">
+<pre><code>#&gt;        
+#&gt;         A favor En contra
+#&gt;   Alto       30        10
+#&gt;   Bajo       30        10
+#&gt;   Medio      30        10</code></pre>
+</div>
+</section>
+<section id="dónde-están-las-mayores-discrepancias" class="level2" data-number="8.18">
+<h2 data-number="8.18" class="anchored" data-anchor-id="dónde-están-las-mayores-discrepancias"><span class="header-section-number">8.18</span> ¿Dónde están las mayores discrepancias?</h2>
+<p>Podemos usar el mismo enfoque visual que antes: calcular <strong>residuales estandarizados</strong> y clasificarlos según el nivel de evidencia frente a la hipótesis nula.</p>
+<div class="cell" data-hash="06b-chi_cuadrado_cache/html/mapa-evidencia-eutanasia_5577ae63b15d6842fc1dd49760921ef7">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="06b-chi_cuadrado_files/figure-html/mapa-evidencia-eutanasia-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Evidencia por celda: diferencias entre observadas y esperadas</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="aplicar-la-prueba-chi-cuadrado" class="level2" data-number="8.19">
+<h2 data-number="8.19" class="anchored" data-anchor-id="aplicar-la-prueba-chi-cuadrado"><span class="header-section-number">8.19</span> Aplicar la prueba chi cuadrado</h2>
+<div class="cell" data-tbl-cap="Resultado de la prueba chi cuadrado de independencia" data-hash="06b-chi_cuadrado_cache/html/chisq-eutanasia_495a46eeb65222d898cefa4e634463ef">
+<pre><code>#&gt; 
+#&gt;  Pearson's Chi-squared test
+#&gt; 
+#&gt; data:  tabla
+#&gt; X-squared = 6.6667, df = 2, p-value = 0.03567</code></pre>
+</div>
+<p>La prueba nos da el valor de <span class="math inline">\(\chi^2\)</span>, los grados de libertad, y el valor <em>p</em>.</p>
+<ul>
+<li>Si <em>p</em> &lt; 0.05 → rechazamos la hipótesis de independencia → hay evidencia de asociación.</li>
+<li>Si <em>p</em> &gt; 0.05 → no tenemos evidencia suficiente para decir que las variables están relacionadas.</li>
+</ul>
+<p>Excelente, tiene todo el sentido cerrar con ambos: primero una sección que advierta sobre <strong>errores comunes</strong>, para prevenir malos usos, y luego un <strong>resumen conceptual</strong> que refuerce los aprendizajes clave del capítulo.</p>
+</section>
+<section id="errores-comunes-y-buenas-prácticas" class="level2" data-number="8.20">
+<h2 data-number="8.20" class="anchored" data-anchor-id="errores-comunes-y-buenas-prácticas"><span class="header-section-number">8.20</span> Errores comunes y buenas prácticas</h2>
+<p>Aunque la prueba chi cuadrado es simple y poderosa, también es fácil de malinterpretar. Acá te dejamos una lista de errores típicos, con sus respectivas recomendaciones.</p>
+<section id="error-1-usar-chi-cuadrado-con-frecuencias-esperadas-muy-bajas" class="level3" data-number="8.20.1">
+<h3 data-number="8.20.1" class="anchored" data-anchor-id="error-1-usar-chi-cuadrado-con-frecuencias-esperadas-muy-bajas"><span class="header-section-number">8.20.1</span> ❌ Error 1: Usar chi cuadrado con frecuencias esperadas muy bajas</h3>
+<p>La prueba chi cuadrado <strong>asume que las frecuencias esperadas no son demasiado pequeñas</strong>. Si hay celdas con valores esperados menores a 5, especialmente en tablas pequeñas, el test puede volverse poco fiable.</p>
+<p>✅ <em>Buena práctica:</em> Si tenés celdas con esperadas &lt; 5, intentá agrupar categorías o considerá una prueba exacta (como la de Fisher).</p>
+</section>
+<section id="error-2-interpretar-el-valor-p-como-tamaño-del-efecto" class="level3" data-number="8.20.2">
+<h3 data-number="8.20.2" class="anchored" data-anchor-id="error-2-interpretar-el-valor-p-como-tamaño-del-efecto"><span class="header-section-number">8.20.2</span> ❌ Error 2: Interpretar el valor <em>p</em> como tamaño del efecto</h3>
+<p>Un valor <em>p</em> bajo te dice que la diferencia <strong>es improbable bajo la nula</strong>, pero <strong>no te dice cuán grande o importante es la diferencia</strong>.</p>
+<p>✅ <em>Buena práctica:</em> Complementá la prueba con una visualización de las discrepancias y, si es posible, medidas de efecto (como el V de Cramer para tablas grandes).</p>
+</section>
+<section id="error-3-leer-mal-las-proporciones-condicionales" class="level3" data-number="8.20.3">
+<h3 data-number="8.20.3" class="anchored" data-anchor-id="error-3-leer-mal-las-proporciones-condicionales"><span class="header-section-number">8.20.3</span> ❌ Error 3: Leer mal las proporciones condicionales</h3>
+<p>A veces se malinterpreta una tabla normalizada por filas como si fuera por columnas, o viceversa. Eso puede llevar a conclusiones completamente erróneas.</p>
+<p>✅ <em>Buena práctica:</em> Siempre chequeá qué representa cada celda: ¿proporción dentro de qué grupo? Acompañar las tablas con gráficos ayuda muchísimo.</p>
+</section>
+<section id="error-4-pensar-que-una-relación-estadística-implica-causalidad" class="level3" data-number="8.20.4">
+<h3 data-number="8.20.4" class="anchored" data-anchor-id="error-4-pensar-que-una-relación-estadística-implica-causalidad"><span class="header-section-number">8.20.4</span> ❌ Error 4: Pensar que una relación estadística implica causalidad</h3>
+<p>La prueba chi cuadrado detecta asociación, no dirección ni causalidad. Dos variables pueden estar relacionadas por muchos motivos.</p>
+<p>✅ <em>Buena práctica:</em> Interpretá los resultados con cautela. Preguntate siempre qué otra variable podría estar influyendo.</p>
+</section>
+<section id="error-5-usar-chi-cuadrado-para-variables-que-no-son-categóricas" class="level3" data-number="8.20.5">
+<h3 data-number="8.20.5" class="anchored" data-anchor-id="error-5-usar-chi-cuadrado-para-variables-que-no-son-categóricas"><span class="header-section-number">8.20.5</span> ❌ Error 5: Usar chi cuadrado para variables que no son categóricas</h3>
+<p>No tiene sentido aplicar esta prueba a datos continuos discretizados sin justificación, o a variables numéricas que deberían analizarse con una prueba de medias.</p>
+<p>✅ <em>Buena práctica:</em> Reservá chi cuadrado para variables nominales u ordinales con pocos niveles. Para otras situaciones, hay mejores herramientas.</p>
+</section>
+</section>
+<section id="lo-que-aprendimos" class="level2" data-number="8.21">
+<h2 data-number="8.21" class="anchored" data-anchor-id="lo-que-aprendimos"><span class="header-section-number">8.21</span> Lo que aprendimos</h2>
+<p>Este capítulo fue una expansión natural del anterior. Aprendimos a aplicar la lógica de la inferencia —comparar lo que observamos con lo que esperaríamos por azar— al mundo de los <strong>datos categóricos</strong>.</p>
+<p>Vimos que hay <strong>dos grandes usos</strong> de la prueba chi cuadrado:</p>
+<ol type="1">
+<li><p><strong>Prueba de bondad de ajuste</strong> ¿Una sola variable se reparte como debería?</p></li>
+<li><p><strong>Prueba de independencia</strong> ¿Dos variables categóricas están relacionadas?</p></li>
+</ol>
+<p>En ambos casos:</p>
+<ul>
+<li>Calculamos las <strong>frecuencias esperadas</strong> bajo la hipótesis nula.</li>
+<li>Comparamos esas esperadas con las observadas.</li>
+<li>Sumamos las diferencias, ponderadas por el tamaño esperado.</li>
+<li>Obtenemos un valor <span class="math inline">\(\chi^2\)</span>.</li>
+<li>Y con ese valor, consultamos la <strong>distribución chi cuadrado</strong> para saber si ese resultado <strong>es raro</strong> o no bajo la nula.</li>
+</ul>
+<p>Vimos que el valor <em>p</em> representa <strong>la probabilidad de ver un resultado así (o más extremo)</strong> si no hubiera relación. Y aprendimos a visualizar las diferencias celda por celda, para entender <strong>dónde</strong> están las mayores discrepancias.</p>
+<p>Una tabla puede contener una historia. La prueba chi cuadrado te ayuda a saber si esa historia es <strong>una coincidencia pasajera</strong>… o <strong>algo más profundo que vale la pena investigar</strong>.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./06-ttests.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Pruebas t</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./07-ANOVA.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">ANOVA</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

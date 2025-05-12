@@ -6,7 +6,7 @@ Primera traducción al español (versión 0.1 = 7 Abril 2025) Compilado: `r Sys.
 
 **Cita original**: Crump, M. J. C., Navarro, D. J., & Suzuki, J. (2019, June 5). Answering Questions with Data (Textbook): Introductory Statistics for Psychology Students. https://doi.org/10.17605/OSF.IO/JZE52
 
-## Notas importantes
+## Notas importantes 
 
 This is a free textbook teaching introductory statistics for undergraduates in Psychology. This textbook is part of a larger OER course package for teaching undergraduate statistics in Psychology, including this textbook, a lab manual, and a course website. All of the materials are free and copiable, with source code maintained in Github repositories. The links below connect to various components of the project. The main OSF project link is <https://osf.io/3s68c/>.
 

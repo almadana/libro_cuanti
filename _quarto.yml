@@ -20,6 +20,7 @@ book:
     - 04-SamplesPopulations.qmd
     - 05-Foundation_Inference.qmd
     - 06-ttests.qmd
+    - 06b-chi_cuadrado.qmd
     - 07-ANOVA.qmd
     - 08-RMANOVA.qmd
     - 09-FactorialANOVA.qmd

@@ -48,11 +48,15 @@ ggsave(figura,file="simpson.pdf")
 
 
 
-### -- GIF ANIMACIONES ---------
+# -- GIF ANIMACIONES ---------
 library(tidyverse)
 library(gganimate)
 
-#- corUnifn10-1.gif
+
+
+# cap 3 --------
+
+##- corUnifn10-1.gif
 
 all_df<-data.frame()
 for(sim in 1:10){
@@ -115,7 +119,7 @@ gif1 = ggplot(all_df,aes(x=North_pole,y=South_pole))+
 
 anim_save("imgs/gifs/corUnifFourNs-1_es.gif", animation = animate(gif1, width = 480, height = 480, fps = 10))
 
-# - corReal
+## - corReal
 
 library(MASS)
 r<-.7
@@ -164,7 +168,7 @@ gif = ggplot(all_df,aes(x=North_pole,y=South_pole))+
 anim_save("imgs/gifs/corRealgif-1_es.gif", animation = animate(gif, width = 480, height = 480, fps = 10))
 
 
-# ----corNormFourNsgif -------------
+## ----corNormFourNsgif -------------
 
 
 all_df<-data.frame()
@@ -197,7 +201,7 @@ gif = ggplot(all_df,aes(x=North_pole,y=South_pole))+
 anim_save("imgs/gifs/corNormFourNs-1_es.gif", animation = animate(gif, width = 480, height = 480, fps = 10))
 
 
-#---fig-4sample20unif---------
+##---fig-4sample20unif---------
 
 # Este bloque genera 10 muestras de tamaño 20 tomadas de una distribución uniforme (números del 1 al 10)
 a <- round(runif(20 * 10, 1, 10))
@@ -226,6 +230,9 @@ gif = ggplot(df, aes(x = a, group = sample, frame = sample)) +
   exit_shrink()
 
 anim_save("imgs/gifs/sampleHistUnif-1_es.gif", animation = animate(gif, width = 480, height = 480, fps = 10))
+
+
+
 
 # capitulo 4 -------------
 ##fig-4normalMeanShift-----
@@ -447,5 +454,27 @@ a<-ggplot(raw_df,aes(x=IV,y=values,color=rand_order,size=3))+
 anim_save("imgs/gifs/randomizationTest-1_es.gif", animation = animate(a,nframes = 100, fps = 5))
 
 
+# cap - chi cuadrado
+
+# distribucion_chi2_animada.gif
+# Crear los datos para múltiples distribuciones chi cuadrado
+x_vals <- seq(0, 30, length.out = 500)
+df_vals <- 1:10
+
+# Generar densidades para cada df
+chi_data <- expand.grid(x = x_vals, df = df_vals) |>
+  mutate(densidad = dchisq(x, df = df))
+
+# Crear el gráfico animado
+p <- ggplot(chi_data, aes(x = x, y = densidad)) +
+  geom_line(size = 1.2, color = "steelblue") +
+  labs(title = "Distribución χ² con df = {closest_state}",
+       x = "Valor χ²", y = "Densidad") +
+  theme_minimal(base_size = 14) +
+  transition_states(df, transition_length = 1, state_length = 1, wrap = FALSE) +
+  ease_aes("linear")
+
+# Guardar como .gif
+anim_save("imgs/gifs/distribucion_chi2_animada.gif", p, duration = 10, fps = 5, width = 480, height = 480)
 
 

@@ -223,8 +223,8 @@ Algunas reglas básicas que deben cumplir las probabilidades. No necesitás cono
 | $A$ o $B$  | $P(A \cup B)$   | =   | $P(A) + P(B) - P(A \cap B)$                     |
 | $A$ y $B$  | $P(A \cap B)$   | =   | $P(A|B) \cdot P(B)$                             |
 
-Ahora que tenemos la capacidad de “definir” eventos no elementales en términos de eventos elementales, en realidad podemos usar eso para construir (o, si querés sonar matemáticamente refinadx, “derivar”) algunas de las otras reglas de probabilidad.
-Estas reglas están listadas arriba, y aunque estoy bastante seguro de que muy pocxs lectorxs realmente están interesadxs en **cómo** se construyen, te las voy a mostrar igual:
+Ahora que tenemos la capacidad de “definir” eventos no elementales en términos de eventos elementales, en realidad podemos usar eso para construir (o, si querés sonar matemáticamente refinado, “derivar”) algunas de las otras reglas de probabilidad.
+Estas reglas están listadas arriba, y aunque estoy bastante seguro de que muy pocos lectores realmente están interesados en **cómo** se construyen, te las voy a mostrar igual:
 aunque sea aburrido y probablemente nunca les encuentres mucho uso práctico, si lo leés un par de veces y tratás de entender cómo funciona, vas a ver que la probabilidad deja de parecer tan misteriosa, y con suerte te va a intimidar menos.
 Así que ahí vamos.
 
@@ -400,58 +400,28 @@ que es la **tercera regla** que habíamos listado en la tabla anterior.
 
 ## La distribución binomial
 
-Como te podés imaginar, las distribuciones de probabilidad varían muchísimo, y hay una enorme cantidad de distribuciones ahí afuera.
-Sin embargo, **no todas son igual de importantes**.
-De hecho, la gran mayoría del contenido de este libro se basa en una de **cinco distribuciones**: la distribución binomial, la distribución normal, la distribución \( t \), la distribución \( \chi^2 \) (“ji-cuadrado”) y la distribución \( F \).
+Como te podés imaginar, las distribuciones de probabilidad varían muchísimo, y hay una enorme cantidad de distribuciones ahí afuera. Sin embargo, no todas son igual de importantes. De hecho, la gran mayoría del contenido de este libro se basa en una de cinco distribuciones: la distribución binomial, la distribución normal, la distribución \( t \), la distribución \( \chi^2 \) (“ji-cuadrado”) y la distribución \( F \).
 
-Dicho esto, lo que voy a hacer en las próximas secciones es darte una breve introducción a esas cinco, prestando especial atención a la binomial y a la normal.
-Voy a empezar con la distribución binomial, porque es la más sencilla de las cinco.
-
-
+Dicho esto, lo que voy a hacer en las próximas secciones es darte una breve introducción a esas cinco, prestando especial atención a la binomial y a la normal. Voy a empezar con la distribución binomial, porque es la más sencilla de las cinco.
 
 ### Introducción a la binomial
 
-La teoría de la probabilidad se originó como un intento de describir cómo funcionan los juegos de azar, así que parece apropiado que nuestra discusión sobre la *distribución binomial* empiece con tirar dados y lanzar monedas.
-Imaginá un experimento simple: en mi mano tengo 20 dados idénticos de seis caras. En una de las caras de cada dado hay una calavera; las otras cinco están en blanco.
-Si lanzo los 20 dados, ¿cuál es la probabilidad de que salgan exactamente 4 calaveras?
+La teoría de la probabilidad se originó como un intento de describir cómo funcionan los juegos de azar, así que parece apropiado que nuestra discusión sobre la *distribución binomial* empiece con tirar dados y lanzar monedas. Imaginá un experimento simple: en mi mano tengo 20 dados idénticos de seis caras. En una de las caras de cada dado hay una calavera; las otras cinco están en blanco. Si lanzo los 20 dados, ¿cuál es la probabilidad de que salgan exactamente 4 calaveras? Asumiendo que los dados son justos, sabemos que la chance de que cualquier dado salga calavera es 1 en 6; dicho de otra forma, la probabilidad de calavera para un solo dado es aproximadamente \( 0{,}167 \). Con eso ya tenemos suficiente información para responder la pregunta, así que veamos cómo se hace.
 
-Asumiendo que los dados son justos, sabemos que la chance de que cualquier dado salga calavera es 1 en 6; dicho de otra forma, la probabilidad de calavera para un solo dado es aproximadamente \( 0{,}167 \).
-Con eso ya tenemos suficiente información para responder la pregunta, así que veamos cómo se hace.
-
-Como siempre, vamos a introducir algunos nombres y notación.
-Vamos a usar \( N \) para referirnos al número de lanzamientos en nuestro experimento; esto es lo que se conoce como el **parámetro de tamaño** de la distribución binomial.
-También vamos a usar \( \theta \) para referirnos a la **probabilidad de éxito** de un solo lanzamiento, es decir, la probabilidad de que salga calavera.
-
-Finalmente, usaremos \( X \) para referirnos al resultado de nuestro experimento, es decir, la cantidad de calaveras que obtengo al lanzar los dados.
-Como el valor concreto de \( X \) depende del azar, nos referimos a él como una **variable aleatoria**.
-
-Con toda esta terminología y notación, podemos expresar el problema de forma un poco más precisa:
-la cantidad que queremos calcular es la probabilidad de que \( X = 4 \), dado que sabemos que \( \theta = 0{,}167 \) y \( N = 20 \).
-La forma general de lo que queremos calcular se puede escribir como:
+Como siempre, vamos a introducir algunos nombres y notación. Vamos a usar \( N \) para referirnos al número de lanzamientos en nuestro experimento; esto es lo que se conoce como el **parámetro de tamaño** de la distribución binomial.
+También vamos a usar \( \theta \) para referirnos a la **probabilidad de éxito** de un solo lanzamiento, es decir, la probabilidad de que salga calavera. Finalmente, usaremos \( X \) para referirnos al resultado de nuestro experimento, es decir, la cantidad de calaveras que obtengo al lanzar los dados. Como el valor concreto de \( X \) depende del azar, nos referimos a él como una **variable aleatoria**. Con toda esta terminología y notación, podemos expresar el problema de forma un poco más precisa: la cantidad que queremos calcular es la probabilidad de que \( X = 4 \), dado que sabemos que \( \theta = 0{,}167 \) y \( N = 20 \). La forma general de lo que queremos calcular se puede escribir como:
 
 \[
 P(X \mid \theta, N)
 \]
 
-y nos interesa el caso particular en el que \( X = 4 \), \( \theta = 0{,}167 \) y \( N = 20 \).
-
-Hay una última notación que quiero mencionar antes de pasar a cómo resolver el problema.
-Si quiero decir que \( X \) fue generado aleatoriamente a partir de una distribución binomial con parámetros \( \theta \) y \( N \), lo escribo así:
+y nos interesa el caso particular en el que \( X = 4 \), \( \theta = 0{,}167 \) y \( N = 20 \). Hay una última notación que quiero mencionar antes de pasar a cómo resolver el problema. Si quiero decir que \( X \) fue generado aleatoriamente a partir de una distribución binomial con parámetros \( \theta \) y \( N \), lo escribo así:
 
 \[
 X \sim \mbox{Binomial}(\theta, N)
 \]
 
-Sí, sí, ya sé lo que estás pensando: notación, notación, notación. ¿A quién le importa?
-Muy pocxs lectorxs están acá por la notación, así que mejor sigo y explico **cómo usar** la distribución binomial.
-
-Para eso, la figura @fig-4binomial1 muestra las probabilidades binomiales para todos los valores posibles de \( X \) en nuestro experimento con los dados, desde \( X = 0 \) (ninguna calavera) hasta \( X = 20 \) (todas calaveras).
-
-Notá que básicamente es un gráfico de barras, y no es distinto del gráfico de “probabilidad de pantalones” que hicimos en @fig-4pantsprob.
-En el eje horizontal están todos los eventos posibles, y en el eje vertical podemos ver la probabilidad de cada uno de esos eventos.
-
-Por ejemplo, la probabilidad de obtener 4 calaveras al lanzar 20 dados es de aproximadamente 0.20 (la respuesta exacta es 0.2022036, como veremos enseguida).
-En otras palabras, esperarías que eso ocurra alrededor del 20% de las veces que repitas este experimento.
+Sí, sí, ya sé lo que estás pensando: notación, notación, notación. ¿A quién le importa? Muy pocos lectores están acá por la notación, así que mejor sigo y explico **cómo usar** la distribución binomial. Para eso, la figura @fig-4binomial1 muestra las probabilidades binomiales para todos los valores posibles de \( X \) en nuestro experimento con los dados, desde \( X = 0 \) (ninguna calavera) hasta \( X = 20 \) (todas calaveras). Notá que básicamente es un gráfico de barras, y no es distinto del gráfico de “probabilidad de pantalones” que hicimos en @fig-4pantsprob. En el eje horizontal están todos los eventos posibles, y en el eje vertical podemos ver la probabilidad de cada uno de esos eventos. Entonces, la probabilidad de obtener 4 calaveras al lanzar 20 dados es de aproximadamente 0.20 (la respuesta exacta es 0.2022036, como veremos enseguida). En otras palabras, esperarías que eso ocurra alrededor del 20% de las veces que repitas este experimento.
 
 ```{r echo=F}
 #| label: fig-4binomial1
@@ -460,12 +430,9 @@ En otras palabras, esperarías que eso ocurra alrededor del 20% de las veces que
 knitr::include_graphics("imgs/navarro_img/probability/binomSkulls20_es.png")
 ```
 
-
-
-
 ### Trabajando con la distribución binomial en R
 
-R tiene una función llamada `dbinom` que calcula probabilidades binomiales por nosotros.
+La mayoría de las personas solo quiere saber cómo usar las distribuciones sin preocuparse demasiado por las matemáticas. R tiene una función llamada `dbinom` que calcula probabilidades binomiales por nosotros.
 Los argumentos principales de la función son:
 
 - `x`: Un número (o vector de números) que especifica los valores para los que querés calcular la probabilidad.
@@ -478,12 +445,10 @@ Entonces, para calcular la probabilidad de obtener 4 calaveras en un experimento
 dbinom(x = 4, size = 20, prob = 1/6)
 ```
 
-Para que veas cómo cambia la distribución binomial cuando alteramos los valores de \( \theta \) y \( N \), supongamos ahora que, en lugar de tirar dados, estoy lanzando monedas.
-En este caso, el experimento consiste en lanzar una moneda justa repetidamente, y el resultado que me interesa es cuántas veces sale cara.
-En este escenario, la probabilidad de éxito es ahora \( \theta = 1/2 \).
-Supongamos que lanzo la moneda \( N = 20 \) veces.
+Para que veas cómo cambia la distribución binomial cuando alteramos los valores de \( \theta \) y \( N \), supongamos ahora que, en lugar de tirar dados, estoy lanzando monedas. En este caso, el experimento consiste en lanzar una moneda justa repetidamente, y el resultado que me interesa es cuántas veces sale cara. En este escenario, la probabilidad de éxito es ahora \( \theta = 1/2 \). Supongamos que lanzo la moneda \( N = 20 \) veces. En este ejemplo, cambié la probabilidad de éxito, pero mantuve igual el tamaño del experimento. ¿Qué le pasa a la distribución binomial?
 
-En este ejemplo, cambié la probabilidad de éxito, pero mantuve igual el tamaño del experimento. ¿Qué le pasa a la distribución binomial?
+Bueno, como se ve en @fig-4binomial2 (a), el efecto principal es que la distribución se desplaza, como cabría esperar.
+Ahora, ¿qué pasa si lanzo la moneda \( N = 100 \) veces? En ese caso, obtenemos la figura @fig-4binomial2 (b). La distribución se mantiene más o menos centrada, pero hay más variabilidad en los posibles resultados.
 
 ```{r echo=F}
 #| label: fig-4binomial2
@@ -492,49 +457,34 @@ En este ejemplo, cambié la probabilidad de éxito, pero mantuve igual el tamañ
 knitr::include_graphics("imgs/navarro_img/probability/Binomial2_es.png")
 ```
 
-Bueno, como se ve en @fig-4binomial2 (a), el efecto principal es que la distribución se desplaza hacia el centro, como cabría esperar.
-Ahora, ¿qué pasa si lanzo la moneda \( N = 100 \) veces? En ese caso, obtenemos la figura @fig-4binomial2 (b).
-La distribución se mantiene más o menos centrada, pero hay más variabilidad en los posibles resultados.R incluye **cuatro funciones** para trabajar con la distribución binomial. Estas funciones son `dbinom`, `pbinom`, `rbinom` y `qbinom`, y cada una calcula una cantidad distinta de interés. No solo eso: **R hace lo mismo para todas las distribuciones de probabilidad** que implementa. No importa de qué distribución se trate, siempre vas a encontrar una función `d`, una función `p`, una función `r` y una función `q`.
+En este punto, probablemente debería explicar el nombre de la función `dbinom()`. Obviamente, la parte “binom” proviene del hecho de que estamos trabajando con la distribución binomial, pero el prefijo “d” probablemente sea un pequeño misterio. En esta sección voy a dar una explicación parcial: específicamente, voy a explicar por qué existe un prefijo. En cuanto a por qué es precisamente una “d”, vas a tener que esperar hasta la próxima sección. R incluye **cuatro funciones** para trabajar con la distribución binomial. Estas funciones son `dbinom`, `pbinom`, `rbinom` y `qbinom`, y cada una calcula una cantidad distinta de interés. No solo eso: **R hace lo mismo para todas las distribuciones de probabilidad** que implementa. No importa de qué distribución se trate, siempre vas a encontrar una función `d`, una función `p`, una función `r` y una función `q`. Esto se ilustra en la Tabla, usando como ejemplos la distribución binomial y la distribución normal.
 
-Veamos qué hace cada una de estas funciones. Primero, las cuatro versiones de la función requieren que le indiques los argumentos `size` y `prob`: no importa qué querés que R calcule, siempre necesita saber cuáles son los parámetros de la distribución. Pero lo que cambia entre funciones es **cuál es el argumento principal** y **qué devuelve como resultado**. Así que veámoslas una por una:
+Veamos qué hace cada una de estas funciones. Primero, las cuatro versiones de la función requieren que le indiques los argumentos `size` y `prob`: no importa qué querés que R calcule, siempre necesita saber cuáles son los parámetros de la distribución. Sin embargo, difieren en cuanto a cuál es el otro argumento y cuál es la salida. Así que veámoslas una por una:
 
-- La versión `d` ya la vimos: le pasás un valor específico `x`, y la salida es la probabilidad de obtener **exactamente** ese valor. (La “d” viene de *density*, aunque por ahora podés ignorarlo).
+- La versión `d` ya la vimos. Se especifica un resultado particular `x`, y lo que devuelve es la probabilidad de obtener **exactamente** ese resultado (la “d” viene de *density*, aunque por ahora podés ignorarlo).
 
-- La versión `p` calcula la **probabilidad acumulada**. Le pasás un valor cuantil `q`, y te devuelve la probabilidad de obtener un resultado **menor o igual que** `q`.
+- La versión `p` calcula la **probabilidad acumulada**. Se especifica un valor cuantil `q`, y te devuelve la probabilidad de obtener un resultado **menor o igual que** `q`.
 
-- La versión `q` calcula los **cuantiles** de la distribución. Le pasás un valor de probabilidad `p`, y te devuelve el valor correspondiente de la variable aleatoria. Es decir, el valor tal que la probabilidad de obtener un número menor que él es igual a `p`.
+- La versión `q` calcula los **cuantiles** de la distribución. Se especifica un valor de probabilidad `p`, y te devuelve el percentil correspondiente. Es decir, el valor de la variable para el cual hay una probabilidad `p` de obtener un resultado inferior a ese valor.
 
 - La versión `r` es un **generador de números aleatorios**: genera `n` resultados aleatorios tomados de la distribución.
 
-Esto puede sonar algo abstracto, así que veamos algunos ejemplos concretos. Como ya vimos `dbinom`, vamos a concentrarnos en las otras tres.
-Empecemos con `pbinom`, y volvamos al ejemplo de los dados con calaveras.
-Recordá: lanzo 20 dados, cada uno tiene una chance de 1 en 6 de mostrar una calavera.
-Supongamos ahora que quiero saber la probabilidad de obtener **4 o menos** calaveras.
-
-Podría usar `dbinom` para calcular la probabilidad exacta de obtener 0, 1, 2, 3 y 4 calaveras, y luego sumar esos valores.
-Pero hay una forma más rápida: usar la función `pbinom`. El comando sería:
+Esto puede sonar algo abstracto, así que veamos algunos ejemplos concretos. Como ya vimos `dbinom`, vamos a concentrarnos en las otras tres. Empecemos con `pbinom`, y volvamos al ejemplo de los dados con calaveras. Recordá: lanzo 20 dados, cada uno tiene una chance de 1 en 6 de mostrar una calavera. Supongamos, en cambio, que quiero saber la probabilidad de obtener **4 o menos** calaveras. Podría usar `dbinom` para calcular la probabilidad exacta de obtener 0, 1, 2, 3 y 4 calaveras, y luego sumar esos valores. Pero hay una forma más rápida: usar la función `pbinom`. El comando sería:
 
 ```{r}
 pbinom(q = 4, size = 20, prob = 1/6)
 ```
 
-En otras palabras, hay un 76.9% de probabilidad de que al lanzar los 20 dados obtenga 4 calaveras **o menos**.
-O, dicho de otra manera, R nos está diciendo que 4 es el **percentil 76.9** de esta distribución binomial.
+En otras palabras, hay un 76.9% de probabilidad de que al lanzar los 20 dados obtenga 4 calaveras o menos.
+O, dicho de otra manera, R nos está diciendo que 4 es el percentil 76.9 de esta distribución binomial.
 
-Ahora consideremos la función `qbinom`.
-Supongamos que quiero calcular el percentil 75 de la distribución binomial.
+Ahora consideremos la función `qbinom`. Supongamos que quiero calcular el percentil 75 de la distribución binomial.
 Siguiendo con el ejemplo de las calaveras, el comando sería:
 
 ```{r }
 qbinom(p = 0.75, size = 20, prob = 1/6)
 ```
-Mmm. Hay algo raro acá. Pensemos bien esto.
-Lo que parece decir la función `qbinom` es que el percentil 75 de la distribución binomial es 4, aunque vimos recién que 4 es **en realidad** el percentil 76.9. Y la función `pbinom` es la correcta, te lo prometo.
-
-Lo raro acá surge del hecho de que nuestra distribución binomial en realidad **no tiene** un percentil 75. No del todo.
-¿Por qué no? Bueno, hay un 56.7% de chance de obtener 3 o menos calaveras (podés escribir `pbinom(3, 20, 1/6)` para comprobarlo), y un 76.9% de chance de obtener 4 o menos calaveras.
-Entonces, en cierto sentido, el percentil 75 “debería estar entre medio” de 3 y 4 calaveras.
-Pero eso no tiene sentido. ¡No podés tirar 20 dados y que salgan 3.9 calaveras!
+Mmm. Hay algo raro acá. Pensemos bien esto. Lo que parece decir la función `qbinom` es que el percentil 75 de la distribución binomial es 4, aunque vimos recién que 4 es **en realidad** el percentil 76.9. Y la función `pbinom` es la correcta, te lo prometo. Lo raro acá surge del hecho de que nuestra distribución binomial en realidad **no tiene** un percentil 75. ¿Por qué no? Bueno, hay un 56.7% de chance de obtener 3 o menos calaveras (podés escribir `pbinom(3, 20, 1/6)` para comprobarlo), y un 76.9% de chance de obtener 4 o menos calaveras. Entonces, en cierto sentido, el percentil 75 debería estar "entre medio" de 3 y 4 calaveras. Pero eso no tiene sentido. ¡No podés tirar 20 dados y que salgan 3.9 calaveras!
 
 Este problema se puede manejar de distintas formas:
 podrías reportar un valor intermedio (o **interpolado**, como se dice técnicamente), como 3.9;
@@ -542,23 +492,16 @@ podrías redondear hacia abajo (a 3);
 o podrías redondear hacia arriba (a 4).
 
 La función `qbinom` **redondea hacia arriba**: si pedís un percentil que no existe literalmente (como el 75 en este ejemplo), R encuentra el valor más pequeño cuyo percentil acumulado sea **al menos** el que pediste.
-En este caso, como el “verdadero” percentil 75 (sea lo que sea que eso signifique) está entre 3 y 4 calaveras, R redondea hacia arriba y te da 4.
+En este caso, como el “verdadero” percentil 75 (sea lo que sea que eso signifique) está entre 3 y 4 calaveras, R redondea hacia arriba y te da 4. 
 
-Esta sutileza puede ser molesta, lo admito, pero por suerte **solo es un problema en distribuciones discretas** como la binomial.
-Las otras distribuciones de las que voy a hablar (normal, \( t \), \( \chi^2 \) y \( F \)) son todas **continuas**, así que R siempre puede devolver un cuantil exacto cuando se lo pedís.
+Esta sutileza puede ser molesta, lo admito, pero por suerte **solo es un problema en distribuciones discretas** como la binomial. Las otras distribuciones de las que voy a hablar (normal, \( t \), \( \chi^2 \) y \( F \)) son todas **continuas**, así que R siempre puede devolver un cuantil exacto cuando se lo pedís.
 
-Finalmente, tenemos el generador de números aleatorios.
-Para usar la función `rbinom`, tenés que especificar cuántas veces querés que R “simule” el experimento usando el argumento `n`, y te va a generar resultados aleatorios tomados de la distribución binomial.
-
-Por ejemplo, si quisiera repetir el experimento de tirar dados 100 veces, puedo hacer que R simule esos resultados así:
+Finalmente, tenemos el generador de números aleatorios. Para usar la función `rbinom`, tenés que especificar cuántas veces querés que R “simule” el experimento usando el argumento `n`, y te va a generar resultados aleatorios tomados de la distribución binomial. Por ejemplo, si quisiera repetir el experimento de tirar dados 100 veces, puedo hacer que R simule esos resultados así:
 
 ```{r}
 rbinom(n = 100, size = 20, prob = 1/6)
 ```
-Como podés ver, los números que aparecen son bastante lo que uno esperaría, dados los resultados en @fig-4binomial1.
-La mayoría de las veces saco entre 1 y 5 calaveras.
-
-Hay muchas sutilezas sobre cómo se generan números aleatorios en una computadora, pero para los fines de este libro no necesitamos preocuparnos demasiado.
+Como podés ver, los números que aparecen son lo que uno esperaría, dada la distribución que se muestra en @fig-4binomial1. La mayoría de las veces saco entre 1 y 5 calaveras. Hay muchas sutilezas sobre cómo se generan números aleatorios en una computadora, pero para los fines de este libro no necesitamos preocuparnos demasiado.
 
 ## La distribución normal
 

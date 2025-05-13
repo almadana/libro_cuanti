@@ -14,85 +14,50 @@ source("global_stuff.R")
 
 # Probabilidad, muestreo y estimación
 
-> He estudiado muchos idiomas —francés, español y un poco de italiano—, pero nadie me dijo que la estadística era una lengua extranjera.
-> —Charmaine J. Forde
+> Dios solo nos ha concedido el crepúsculo… de la probabilidad.
+> —John Locke
 
-Hasta ahora en el libro, hablamos sobre algunas de las ideas clave en el diseño experimental, y comentamos un poco cómo podés resumir un conjunto de datos. Para muchas personas, eso es todo lo que hay en estadística: se trata de calcular promedios, juntar números, hacer gráficos y poner todo eso en un informe. Algo así como coleccionar estampillas, pero con números.
-Sin embargo, la estadística abarca mucho más que eso. De hecho, la estadística descriptiva es una de las partes más chicas —y menos potentes— de la estadística.
+Hasta ahora en el libro, hablamos sobre algunas de las ideas clave en el diseño experimental, y comentamos un poco cómo podés resumir un conjunto de datos. Para muchas personas, eso es todo lo que hay en estadística: se trata de calcular promedios, juntar números, hacer gráficos y poner todo eso en un informe. Algo así como coleccionar estampillas, pero con números. Sin embargo, la estadística abarca mucho más que eso. De hecho, la estadística descriptiva es una de las partes más pequeñas —y menos potentes— de la estadística.
 La parte más grande y útil de la estadística es que nos da herramientas **para hacer inferencias a partir de los datos**.
 
 Cuando empezás a pensar en la estadística en estos términos —que está ahí para ayudarnos a sacar conclusiones a partir de los datos—, empezás a ver ejemplos por todas partes. Por ejemplo, acá hay un pequeño extracto de un artículo del *Sydney Morning Herald* (30 de octubre de 2010):
 
 > “Tengo un trabajo difícil”, dijo la Premier en respuesta a una encuesta que reveló que su gobierno es ahora la administración laborista más impopular de la historia de los sondeos, con una intención de voto primaria de apenas el 23 por ciento.
 
-Este tipo de afirmación es totalmente común en los diarios y en la vida cotidiana, pero pensemos por un momento qué implica.
-Una encuestadora hizo un sondeo —probablemente bastante grande porque pueden pagarlo—. No tengo ganas de buscar el informe original, así que imaginemos que llamaron a 1000 personas al azar, y que 230 (23%) dijeron que pensaban votar al partido.
-Para las elecciones federales de 2010, la Comisión Electoral Australiana informó que había 4.610.795 votantes registrados en New South Wales; así que las opiniones de los 4.609.795 votantes restantes (aproximadamente el 99,98%) **no las conocemos**.
-Incluso suponiendo que nadie le mintió a la encuestadora, lo único que podemos decir con 100% de certeza es que el voto real está entre 230/4.610.795 (aprox. 0,005%) y 4.610.025/4.610.795 (aprox. 99,83%).
-Entonces, ¿en qué se basa la encuestadora, el diario y la opinión pública para concluir que el voto al ALP es aproximadamente del 23%?
+Este tipo de afirmación es totalmente común en los diarios y en la vida cotidiana, pero pensemos por un momento qué implica. Una encuestadora hizo un sondeo —probablemente bastante grande porque pueden pagarlo—. No tengo ganas de buscar el informe original, así que imaginemos que llamaron a 1000 votantes de New South Wales al azar, y que 230 (23%) dijeron que pensaban votar al Partido Laborista Australiano. Para las elecciones federales de 2010, la Comisión Electoral Australiana informó que había 4.610.795 votantes registrados en New South Wales; así que las opiniones de los 4.609.795 votantes restantes (aproximadamente el 99,98%) **no las conocemos**. Incluso suponiendo que nadie le mintió a la encuestadora, lo único que podemos decir con 100% de certeza es que el voto real está entre 230/4.610.795 (aprox. 0,005%) y 4.610.025/4.610.795 (aprox. 99,83%). Entonces, ¿en qué se basa la encuestadora, el diario y la opinión pública para concluir que el voto al partido es aproximadamente del 23%?
 
-La respuesta es bastante obvia: si llamo a 1000 personas al azar y 230 dicen que votarían al ALP, parece muy poco probable que **sean las únicas** 230 personas en toda la población que lo harían.
-En otras palabras, asumimos que los datos recolectados por la encuestadora **representan bastante bien a toda la población**.
-Pero, ¿cuán representativos son? ¿Nos sorprendería descubrir que el verdadero apoyo al ALP es en realidad del 24%? ¿Del 29%? ¿Del 37%?
-Acá es donde la intuición cotidiana empieza a fallar.
-A nadie le sorprendería un 24%, y a todo el mundo le sorprendería un 37%, pero no es tan fácil decidir si un 29% sería plausible.
-Necesitamos herramientas más potentes que simplemente mirar los números y adivinar.
+La respuesta es bastante obvia: si llamo a 1000 personas al azar y 230 dicen que votarían a ese partido, parece muy poco probable que **sean las únicas** 230 personas en toda la población que lo harían. En otras palabras, asumimos que los datos recolectados por la encuestadora **representan bastante bien a toda la población**. Pero, ¿cuán representativos son? ¿Nos sorprendería descubrir que el verdadero apoyo al partido es en realidad del 24%? ¿Del 29%? ¿Del 37%?
+Acá es donde la intuición cotidiana empieza a fallar. A nadie le sorprendería un 24%, y a todo el mundo le sorprendería un 37%, pero no es tan fácil decidir si un 29% sería plausible. Necesitamos herramientas más potentes que simplemente mirar los números y adivinar.
 
 La **estadística inferencial** proporciona las herramientas necesarias para responder ese tipo de preguntas.
-Y como ese tipo de preguntas están en el corazón del trabajo científico, ocupan la mayor parte de cualquier curso introductorio de estadística o métodos de investigación.
-Sin embargo, nuestras herramientas para hacer inferencias estadísticas están:
-1. construidas sobre la base de la **teoría de la probabilidad**, y
-2. requieren entender cómo se comportan las muestras cuando se extraen de distribuciones (definidas por la teoría de la probabilidad…).
-
-Así que este capítulo tiene dos partes principales:
-una breve introducción a la teoría de la probabilidad,
-y una introducción al muestreo a partir de distribuciones.
+Y como ese tipo de preguntas están en el corazón del trabajo científico, ocupan la mayor parte de cualquier curso introductorio de estadística o métodos de investigación. Sin embargo, la teoría de la inferencia estadística se basa en la **teoría de la probabilidad**. Y es a la teoría de la probabilidad a la que debemos dirigirnos ahora. Esta sección sobre teoría de la probabilidad funciona, en esencia, como un repaso contextual: no hay demasiada estadística propiamente dicha en este capítulo, y no es necesario que comprendas este contenido con tanta profundidad como los demás capítulos de esta parte del libro. Aun así, dado que la teoría de la probabilidad sustenta gran parte de la estadística, vale la pena revisar algunos conceptos básicos.
 
 ## ¿En qué se diferencian la probabilidad y la estadística?
 
-Antes de empezar a hablar de teoría de la probabilidad, conviene dedicar un momento a pensar en la relación entre probabilidad y estadística. Las dos disciplinas están muy relacionadas, pero **no son lo mismo**.
+Antes de empezar a hablar de teoría de la probabilidad, conviene dedicar un momento a pensar en la relación entre probabilidad y estadística. Las dos disciplinas están muy relacionadas, pero **no son lo mismo**. La teoría de la probabilidad es “la doctrina del azar”. Es una rama de las matemáticas que te dice **con qué frecuencia** ocurren distintos tipos de eventos. Por ejemplo, todas estas preguntas pueden responderse usando teoría de la probabilidad:
 
-La teoría de la probabilidad es “la doctrina del azar”.
-Es una rama de las matemáticas que te dice **con qué frecuencia** ocurren distintos tipos de eventos.
-Por ejemplo, todas estas preguntas pueden responderse usando teoría de la probabilidad:
-
-- ¿Cuál es la probabilidad de que una moneda justa salga cara 10 veces seguidas?
+- ¿Cuál es la probabilidad de que una moneda salga cara 10 veces seguidas?
 - Si tiro dos dados de seis caras, ¿qué tan probable es que salgan dos seises?
 - ¿Qué probabilidad hay de que cinco cartas extraídas al azar de un mazo bien mezclado sean todas corazones?
 - ¿Qué chance tengo de ganar la lotería?
 
-Fijate que todas estas preguntas tienen algo en común:
-en cada caso, **conocemos cómo funciona el mundo**, y lo que queremos saber es **qué clase de eventos** pueden ocurrir.
-En la primera pregunta, **sabemos** que la moneda es justa, así que hay un 50% de probabilidad de que cualquier lanzamiento individual salga cara.
-En la segunda, **sabemos** que la chance de sacar un 6 con un dado es 1 en 6.
-En la tercera, **sabemos** que el mazo está bien mezclado.
-Y en la cuarta, **sabemos** que la lotería sigue reglas bien definidas.
-
-Lo importante es que las preguntas de probabilidad **parten de un modelo conocido del mundo**, y usamos ese modelo para hacer cálculos.
-
-El modelo puede ser muy simple.
-Por ejemplo, en el caso de la moneda, podemos escribir el modelo así:
+Fijate que todas estas preguntas tienen algo en común. En cada caso la **verdad del mundo** es conocida, y mi pregunta se relaciona con **qué clase de eventos** van a ocurrir. En la primera pregunta, **sabemos** que la moneda es justa, así que hay un 50% de probabilidad de que cualquier lanzamiento individual salga cara. En la segunda, **sabemos** que la chance de sacar un 6 con un dado es 1 en 6. En la tercera, **sabemos** que el mazo está bien mezclado. Y en la cuarta, **sabemos** que la lotería sigue reglas específicas. Ya te hacés una idea. Lo importante es que las preguntas de probabilidad parten de un **modelo** conocido del mundo, y usamos ese modelo para hacer algunos cálculos. El modelo subyacente puede ser muy simple. Por ejemplo, en el caso de la moneda, podemos escribir el modelo así:
 
 $P(\text{cara}) = 0.5$
 
 que se lee: “la probabilidad de que salga cara es 0.5”.
 
-Como veremos más adelante, así como los porcentajes van de 0% a 100%, las probabilidades son simplemente números que van de 0 a 1.
-Cuando usamos este modelo para responder la primera pregunta, en realidad **no sabemos exactamente qué va a pasar**.
-Tal vez salgan 10 caras, como plantea la pregunta.
-Pero también podrían salir 3 caras.
-Eso es lo importante: en la teoría de la probabilidad, el **modelo es conocido**, pero los **datos no lo son**.
+Como veremos más adelante, así como los porcentajes van de 0% a 100%, las probabilidades son simplemente números que van de 0 a 1. Cuando usamos este modelo para responder la primera pregunta, en realidad no sabemos exactamente qué va a pasar.
+Tal vez salgan 10 caras, como plantea la pregunta. Pero también podrían salir 3 caras. Eso es lo importante: en la teoría de la probabilidad, el **modelo** es conocido, pero los **datos** no lo son.
 
 Eso es la probabilidad. ¿Y la estadística? Las preguntas estadísticas **funcionan al revés**.
-En estadística, **no sabemos cómo es el mundo en realidad**.
-Lo único que tenemos son datos, y a partir de ellos queremos **aprender** cómo es el mundo.
-Las preguntas estadísticas suelen ser más del tipo:
+En estadística, **no sabemos cómo es el mundo en realidad**. Lo único que tenemos son datos, y a partir de ellos queremos **aprender** la verdad sobre el mundo. Las preguntas estadísticas suelen ser más del tipo:
 
 - Si mi amiga lanza una moneda 10 veces y sale cara todas las veces, ¿me está haciendo trampa?
 - Si saco cinco cartas y todas son corazones, ¿qué tan probable es que el mazo estuviera mezclado?
 - Si la pareja del comisario de la lotería gana la lotería, ¿qué tan probable es que esté arreglada?
 
-Esta vez, lo único que tenemos son los datos. Lo que **sé** es que vi a mi amiga lanzar la moneda 10 veces y salió cara cada vez. Y lo que quiero *inferir* es si debería concluir que lo que acabo de ver fue realmente una moneda justa siendo lanzada 10 veces seguidas, o si debería sospechar que mi amiga me está haciendo una trampa.
+Esta vez, lo único que tenemos son los datos. Lo que **sé** es que vi a mi amiga lanzar la moneda 10 veces y salió cara todas las veces. Y lo que quiero *inferir* es si debería concluir que lo que acabo de ver fue realmente una moneda justa siendo lanzada 10 veces seguidas, o si debería sospechar que mi amiga me está haciendo una trampa.
 
 Los datos que tengo se ven así:
 
@@ -108,54 +73,33 @@ $P(\text{cara}) = 0.5$
 Si la moneda **no** es justa, entonces debería concluir que la probabilidad de que salga cara **no** es 0.5, lo que escribiríamos como:
 $P(\text{cara}) \neq 0.5$
 
-En otras palabras, el problema de la inferencia estadística consiste en decidir **cuál de estos modelos de probabilidad es el correcto**.
-
-Está claro que la pregunta estadística **no es la misma** que la pregunta de probabilidad, pero están profundamente relacionadas.
-Por eso, una buena introducción a la teoría estadística tiene que comenzar con una discusión sobre qué es la probabilidad y cómo funciona.
-
-Gracias. A continuación va la **traducción fiel y continua** desde la sección `## What does probability mean?`:
+En otras palabras, el problema de la inferencia estadística consiste en darme cuenta cuál de estos modelos de probabilidad es el correcto. Está claro que la pregunta estadística no es la misma que la pregunta de probabilidad, pero están profundamente relacionadas. Por eso, una buena introducción a la teoría estadística comienza con una discusión sobre qué es la probabilidad y cómo funciona. 
 
 ---
 
-## ¿Qué significa “probabilidad”?
+## ¿Qué significa probabilidad?
 
-Empecemos con la primera de estas preguntas: ¿qué es la “probabilidad”?
-Puede parecerte sorprendente, pero aunque lxs estadísticxs y matemáticxs (en general) están de acuerdo sobre cuáles son las **reglas** de la probabilidad, hay mucho menos consenso sobre qué significa **realmente** la palabra.
+Empecemos con la primera de estas preguntas: ¿qué es la “probabilidad”? Puede parecerte sorprendente, pero aunque los estadísticos y matemáticos (en general) están de acuerdo sobre cuáles son las **reglas** de la probabilidad, hay mucho menos consenso sobre qué significa **realmente** la palabra. Suena raro, porque todos usamos palabras como “chance”, “posibilidad” y “probable” sin problema, y no parece una pregunta difícil de responder. Si tuvieras que explicarle a una persona de cinco años qué es la probabilidad, probablemente te las arreglarías bastante bien. Pero si alguna vez viviste esa situación en la vida real, tal vez te fuiste con la sensación de que no lo explicaste tan bien, y que —como pasa con muchos conceptos cotidianos— en realidad no sabés **del todo bien** de qué se trata.
 
-Suena raro, porque todes usamos palabras como “azar”, “posibilidad”, “probable” o “chance” sin problema, y no parece una pregunta difícil de responder.
-Si tuvieras que explicarle a una niña de cinco años qué es la probabilidad, probablemente te las arreglarías bastante bien.
-Pero si alguna vez viviste esa situación en la vida real, tal vez te fuiste con la sensación de que **no lo explicaste tan bien**, y que —como pasa con muchos conceptos cotidianos— en realidad **no sabés del todo bien de qué se trata**.
-
-Así que voy a intentarlo. Supongamos que quiero apostar en un partido de fútbol entre dos equipos de robots, **Arduino Arsenal** y **C Milan**.
-Después de pensarlo, decido que hay una probabilidad del 80% de que **Arduino Arsenal** gane. ¿Qué quiero decir con eso? Acá hay tres posibles interpretaciones:
+Así que voy a intentarlo. Supongamos que quiero apostar en un partido de fútbol entre dos equipos de robots, **Arduino Arsenal** y **C Milan**. Después de pensarlo, decido que hay una probabilidad del 80% de que **Arduino Arsenal** gane. ¿Qué quiero decir con eso? Acá hay tres posibles interpretaciones:
 
 - Son equipos robot, así que puedo hacerlos jugar muchas veces. Si lo hiciera, **Arduino Arsenal** ganaría 8 de cada 10 partidos, en promedio.
 
-- Para cualquier partido en particular, yo solo aceptaría que apostar es “justo” si una apuesta de \$1 por **C Milan** paga \$5 (es decir, recupero el \$1 más \$4 de premio), o si una apuesta de \$4 por **Arduino Arsenal** también paga \$5 (mi apuesta más \$1 de ganancia).
+- Para cualquier partido en particular, solo estaría de acuerdo en que apostar es “justo” si una apuesta de \$1 a favor de **C Milan** paga \$5 (es decir, recupero mi \$1 más \$4 de ganancia), al igual que lo sería una apuesta de \$4 a favor de **Arduino Arsenal** (recupero mis \$4 más \$1 de ganancia).
 
-- Mi creencia o confianza subjetiva en que gana **Arduino Arsenal** es cuatro veces más fuerte que la que tengo en que gane **C Milan**.
+- Mi "creencia" o "confianza" subjetiva en que gana **Arduino Arsenal** es cuatro veces más fuerte que la que tengo en que gane **C Milan**.
 
-Todas estas opciones parecen razonables.
-Sin embargo, **no son idénticas**, y no todes lxs estadísticxs estarían de acuerdo con todas.
-La razón es que existen diferentes ideologías estadísticas (¡sí, en serio!), y dependiendo de cuál suscribas, podrías decir que algunas de esas afirmaciones **no tienen sentido** o son irrelevantes.
-
-En esta sección, voy a presentar brevemente los dos enfoques principales que existen en la literatura.
-No son los únicos, pero sí son los más importantes.
+Todas estas opciones parecen razonables. Sin embargo, no son idénticas, y no todes los estadísticos estarían de acuerdo con todas. La razón es que existen diferentes ideologías estadísticas (¡sí, en serio!), y dependiendo de cuál suscribas, podrías decir que algunas de esas afirmaciones no tienen sentido o son irrelevantes. En esta sección, voy a presentar brevemente los dos enfoques principales que existen en la literatura. No son los únicos, pero sí son los más importantes.
 
 
 ### La visión frecuentista
 
-El primero de los dos enfoques principales —y el más dominante en estadística— se conoce como la **visión frecuentista**, que define la probabilidad como una **frecuencia a largo plazo**.
-
-Supongamos que empezamos a lanzar una moneda justa, una y otra vez. Por definición, es una moneda en la que $P(H) = 0.5$.
-¿Qué podríamos observar? Una posibilidad es que los primeros 20 lanzamientos se vean así:
+El primero de los dos enfoques principales —y el más dominante en estadística— se conoce como la **visión frecuentista**, que define la probabilidad como una **frecuencia a largo plazo**. Supongamos que empezamos a lanzar una moneda justa, una y otra vez. Por definición, es una moneda en la que $P(H) = 0.5$. ¿Qué podríamos observar? Una posibilidad es que los primeros 20 lanzamientos se vean así:
 
 ```
 T, H, H, H, H, T, T, H, H, H, H, T, H, H, T, T, T, T, T, H
 ```
-En este caso, 11 de los 20 lanzamientos (55%) salieron cara.
-Ahora supongamos que fui llevando la cuenta del número de caras (que voy a llamar $ N_H $) en los primeros $ N $ lanzamientos, y que cada vez calculo la proporción de caras $ N_H / N $.
-Esto es lo que obtendría (¡sí, de verdad lancé monedas para obtener esto!):
+En este caso, 11 de los 20 lanzamientos (55%) salieron cara. Ahora supongamos que fui llevando la cuenta del número de caras (que voy a llamar $ N_H $) en los primeros $ N $ lanzamientos, y que cada vez calculo la proporción de caras $ N_H / N $. Esto es lo que obtendría (¡sí, de verdad lancé monedas para obtener esto!):
 
 | número de lanzamientos |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 | 10 |
 |------------------------|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
@@ -168,18 +112,10 @@ Esto es lo que obtendría (¡sí, de verdad lancé monedas para obtener esto!):
 | proporción             |.73 |.67 |.69 |.71 |.67 |.63 |.59 |.56 |.53 |.55 |
 
 Fijate que al principio de la secuencia, la **proporción** de caras fluctúa bastante, empezando en .00 y subiendo hasta .80. Más adelante, da la impresión de que se estabiliza, con valores que se acercan cada vez más al valor “correcto” de 0.50.
-Esta es la definición frecuentista de probabilidad en pocas palabras: lanzá una moneda justa muchas veces, y a medida que $ N $ crece (se acerca al infinito, denotado $ N \rightarrow \infty $), la proporción de caras converge a 50%.
-
-Hay algunas sutilezas técnicas que le importan a lxs matemáticxs, pero en términos cualitativos, así es como lxs frecuentistas definen la probabilidad.
-
-Por supuesto, no tengo un número infinito de monedas, ni la paciencia infinita para lanzarlas eternamente.
+Esta es la definición frecuentista de probabilidad en pocas palabras: lanzá una moneda justa muchas veces, y a medida que $ N $ crece (se acerca al infinito, denotado $ N \rightarrow \infty $), la proporción de caras converge a 50%. Hay algunas sutilezas técnicas que le importan a los matemáticos, pero en términos cualitativos, así es como los frecuentistas definen la probabilidad. Por supuesto, no tengo un número infinito de monedas, ni la paciencia infinita para lanzarlas eternamente.
 Pero sí tengo una computadora, y las computadoras son excelentes para tareas repetitivas.
-Así que le pedí a la computadora que simulara lanzar una moneda 1000 veces, y luego grafiqué lo que pasa con la proporción $ N_H / N $ a medida que $ N $ aumenta.
-En realidad, lo hice cuatro veces, solo para asegurarme de que no fuera casualidad.
-Los resultados se muestran en la figura @fig-4FreqProb.
-
-Como podés ver, la **proporción de caras observadas** eventualmente deja de fluctuar, y se estabiliza.
-Cuando eso ocurre, el número al que se estabiliza es la verdadera probabilidad de cara.
+Así que le pedí a la computadora que simulara lanzar una moneda 1000 veces, y luego grafiqué lo que pasa con la proporción $ N_H / N $ a medida que $ N $ aumenta. En realidad, lo hice cuatro veces, solo para asegurarme de que no fuera casualidad.
+Los resultados se muestran en la figura @fig-4FreqProb. Como podés ver, la **proporción de caras observadas** eventualmente deja de fluctuar, y se estabiliza. Cuando eso ocurre, el número al que se estabiliza es la verdadera probabilidad de cara.
 
 ```{r echo=F}
 #| label: fig-4FreqProb
@@ -188,27 +124,12 @@ knitr::include_graphics("imgs/navarro_img/probability/frequentistProb_es.png")
 ```
 
 La definición frecuentista de probabilidad tiene algunas características deseables. Primero, es **objetiva**: la probabilidad de un evento está necesariamente anclada en el mundo. La única forma en que las afirmaciones probabilísticas tienen sentido es si se refieren a (una secuencia de) eventos que ocurren en el universo físico.
-Segundo, es **no ambigua**: dos personas que observan la misma secuencia de eventos y tratan de calcular la probabilidad de un evento, necesariamente deben llegar a la misma respuesta.
+Segundo, no es ambigua: dos personas que observan la misma secuencia de eventos y tratan de calcular la probabilidad de un evento, necesariamente deben llegar a la misma respuesta.
 
-Sin embargo, también tiene características indeseables. Las secuencias infinitas **no existen** en el mundo físico.
-Supongamos que agarrás una moneda de tu bolsillo y empezás a lanzarla. Cada vez que cae, impacta contra el suelo. Cada impacto desgasta un poco la moneda; eventualmente, la moneda se va a destruir.
-Entonces, uno podría preguntarse si realmente tiene sentido fingir que una “secuencia infinita” de lanzamientos de moneda es un concepto significativo, o incluso **objetivo**.
-No podemos decir que una secuencia infinita de eventos sea algo real en el universo físico, porque **el universo físico no permite nada infinito**.
+Sin embargo, también tiene características indeseables. Las secuencias infinitas no existen en el mundo físico.
+Supongamos que agarrás una moneda de tu bolsillo y empezás a lanzarla. Cada vez que cae, impacta contra el suelo. Cada impacto desgasta un poco la moneda; eventualmente, la moneda se va a destruir. Entonces, uno podría preguntarse si realmente tiene sentido fingir que una “secuencia infinita” de lanzamientos de moneda es un concepto significativo, o incluso objetivo. No podemos decir que una "secuencia infinita" de eventos sea algo real en el universo físico, porque el universo físico no permite nada infinito.
 
-Más seriamente, la definición frecuentista tiene un **alcance muy limitado**.
-Hay un montón de cosas a las que les asignamos probabilidades en el lenguaje cotidiano, pero que **no pueden** (ni siquiera en teoría) ser representadas como una secuencia hipotética de eventos.
-Por ejemplo, si una meteoróloga aparece en la tele y dice: “la probabilidad de que llueva en Adelaida el 2 de noviembre de 2048 es del 60%”, las personas aceptamos esa afirmación sin problemas.
-Pero no está claro cómo definir eso en términos frecuentistas.
-Solo hay una ciudad de Adelaida, y solo hay un 2 de noviembre de 2048. No hay ninguna secuencia infinita de eventos acá: es algo que ocurre **una sola vez**.
-
-Desde la perspectiva frecuentista, **está prohibido** hacer afirmaciones de probabilidad sobre un evento único.
-Para un frecuentista, mañana **o va a llover o no va a llover**; no hay ninguna “probabilidad” asociada a un evento no repetible.
-
-Ahora bien, hay que decir que lxs frecuentistas tienen algunos trucos muy ingeniosos para sortear esta limitación.
-Una posibilidad es que lo que quiso decir la meteoróloga sea algo así como:
-“Hay una categoría de días para los que yo predigo un 60% de chance de lluvia; si miramos sólo esos días en los que hice esa predicción, entonces en el 60% de ellos efectivamente llueve”.
-
-Es una forma rara e **intuitivamente extraña** de pensarlo, pero sí: lxs frecuentistas hacen esto a veces.
+Más seriamente, la definición frecuentista tiene un alcance muy limitado. Hay un montón de cosas a las que les asignamos probabilidades en el lenguaje cotidiano, pero que **no pueden** (ni siquiera en teoría) ser representadas como una secuencia hipotética de eventos. Por ejemplo, si una meteoróloga aparece en la tele y dice: “la probabilidad de que llueva en Adelaida el 2 de noviembre de 2048 es del 60%”, las personas aceptamos esa afirmación sin problemas. Pero no está claro cómo definir eso en términos frecuentistas. Solo hay una ciudad de Adelaida, y solo hay un 2 de noviembre de 2048. No hay ninguna secuencia infinita de eventos acá: es algo que ocurre una sola vez. Desde la perspectiva frecuentista, **está prohibido** hacer afirmaciones de probabilidad sobre un evento único. Para un frecuentista, mañana o va a llover o no va a llover; no hay ninguna “probabilidad” asociada a un evento no repetible. Ahora bien, hay que decir que los frecuentistas tienen algunos trucos muy ingeniosos para sortear esta limitación. Una posibilidad es que lo que quiso decir la meteoróloga sea algo así como: “Hay una categoría de días para los que yo predigo un 60% de chance de lluvia; si miramos sólo esos días en los que hice esa predicción, entonces en el 60% de ellos efectivamente llueve”. Es una forma rara de pensarlo y contraria a la intuición, pero sí: los frecuentistas hacen esto a veces.
 
 ### La visión bayesiana
 

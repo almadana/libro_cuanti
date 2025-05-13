@@ -133,32 +133,11 @@ Más seriamente, la definición frecuentista tiene un alcance muy limitado. Hay 
 
 ### La visión bayesiana
 
-La **visión bayesiana** de la probabilidad también se llama la visión subjetivista. Es una posición minoritaria entre lxs estadísticxs, pero que ha ido ganando terreno de forma sostenida en las últimas décadas.
-Hay muchas variantes del bayesianismo, lo que dificulta definir exactamente cuál es “la” visión bayesiana.
-La forma más común de pensar en la probabilidad subjetiva es definir la probabilidad de un evento como el **grado de creencia** que una persona (o agente racional e inteligente) asigna a la verdad de ese evento.
+La **visión bayesiana** de la probabilidad también se llama la visión subjetivista. Es una posición minoritaria entre los estadísticos, pero que ha ido ganando terreno de forma sostenida en las últimas décadas. Hay muchas variantes del bayesianismo, lo que dificulta definir exactamente cuál es “la” visión bayesiana. La forma más común de pensar en la probabilidad subjetiva es definir la probabilidad de un evento como el **grado de creencia** que una persona (o agente racional e inteligente) asigna a la verdad de ese evento. Desde esta perspectiva, las probabilidades no existen en el mundo, sino que viven en los pensamientos y suposiciones de las personas (o seres inteligentes). Sin embargo, para que este enfoque funcione, necesitamos alguna forma de operacionalizar ese “grado de creencia”. Una manera de hacerlo es formalizarlo en términos de "apuestas racionales", aunque existen otras formas. Supongamos que creo que hay un 60% de probabilidad de que mañana llueva. Si alguien me ofrece una apuesta que dice: si llueve, ganás \$5; si no llueve, perdés \$5, desde mi perspectiva es una buena apuesta. En cambio, si creo que hay solo un 40% de probabilidad de lluvia, entonces esa misma apuesta sería una mala idea. Así, podemos operacionalizar el concepto de “probabilidad subjetiva” en función de qué apuestas estoy dispuesto a aceptar.
 
-Desde esta perspectiva, las probabilidades **no existen en el mundo**, sino que viven en los pensamientos y suposiciones de las personas (o seres inteligentes).
-Sin embargo, para que este enfoque funcione, necesitamos alguna forma de operacionalizar ese “grado de creencia”.
-Una manera de hacerlo es formalizarlo en términos de **apuestas racionales**, aunque existen otras formas.
+¿Cuáles son las ventajas y desventajas de este enfoque bayesiano? La principal ventaja es que permite asignar probabilidades a cualquier evento que queramos. No es necesario que el evento sea repetible. La principal desventaja (para muchas personas) es que no podemos ser completamente objetivos: al asignar una probabilidad, es necesario especificar una entidad que posea el grado de creencia pertinente. Esa entidad puede ser una persona, un extraterrestre, un robot, o incluso un estadístico, pero tiene que haber un agente inteligente que tenga creencias.
 
-Supongamos que creo que hay un 60% de probabilidad de que mañana llueva.
-Si alguien me ofrece una apuesta que dice: *si llueve, ganás \$5; si no llueve, perdés \$5*, desde mi perspectiva **es una buena apuesta**.
-En cambio, si creo que hay solo un 40% de probabilidad de lluvia, entonces esa misma apuesta sería **una mala idea**.
-Así, podemos operacionalizar el concepto de “probabilidad subjetiva” en función de qué apuestas estoy dispuestx a aceptar.
-
-¿Cuáles son las ventajas y desventajas de este enfoque bayesiano? La principal **ventaja** es que permite asignar probabilidades a **cualquier evento que queramos**.
-No es necesario que el evento sea repetible.
-La principal **desventaja** (para muchxs) es que no se puede ser puramente objetivx:
-asignar una probabilidad **requiere especificar quién cree en qué**.
-Esa entidad puede ser una persona, un robot, un extraterrestre, o una estadística… pero **tiene que haber un agente racional que tenga creencias**.
-
-Para muchxs esto resulta incómodo: hace que la probabilidad parezca arbitraria.
-Aunque el enfoque bayesiano exige que ese agente cumpla las reglas de la probabilidad (es decir, que sea racional), **permite que cada quien tenga sus propias creencias**.
-Yo puedo creer que una moneda es justa, y vos no tenés por qué estar de acuerdo —ambxs podemos ser racionales.
-
-En cambio, desde la visión frecuentista, **dos observadorxs no pueden asignar probabilidades distintas al mismo evento**: si lo hacen, por lo menos unx de lxs dos está equivocado.
-El enfoque bayesiano no impone esta restricción: dos personas con conocimientos previos distintos **pueden asignar probabilidades distintas al mismo evento**, y ambas ser coherentes y racionales.
-
+Para muchos esto resulta incómodo: hace que la probabilidad parezca arbitraria. Mientras que el enfoque bayesiano exige que el agente en cuestión sea racional (es decir, que respete las reglas de la probabilidad), permite que cada quien tenga sus propias creencias; yo puedo creer que la moneda está equilibrada y vos no, y aun así ambos ser racionales. La visión frecuentista no permite que dos observadores asignen probabilidades distintas al mismo evento: si eso ocurre, al menos uno de los dos está equivocado. La perspectiva bayesiana no impone esa restricción. Dos personas con conocimientos previos diferentes pueden, de forma legítima, tener creencias distintas sobre un mismo evento. En resumen, mientras que la visión frecuentista a veces se considera demasiado restrictiva (prohíbe asignar probabilidades a muchas cosas que nos interesa evaluar), la visión bayesiana a veces se percibe como demasiado amplia (permite demasiadas diferencias entre observadores).
 
 ### ¿Cuál es la diferencia? ¿Y quién tiene razón?
 
@@ -167,69 +146,43 @@ Volvé al partido hipotético de fútbol robot al comienzo de la sección.
 ¿Qué pensás que dirían un frecuentista y un bayesiano sobre estas tres afirmaciones?
 ¿Cuál de ellas consideraría un frecuentista como la definición correcta de probabilidad?
 ¿Y cuál aceptaría un bayesiano?
-¿Algunas de estas afirmaciones serían sin sentido para un frecuentista o para un bayesiano?
+¿Algunas de estas afirmaciones carecerían de sentido para un frecuentista o para un bayesiano?
 Si entendiste bien las dos perspectivas, deberías tener una idea de cómo responder esas preguntas.
 
 Bien, suponiendo que entendiste la diferencia, tal vez te estés preguntando cuál de ellas es la **correcta**.
-Sinceramente, no sé si hay una respuesta correcta.
-Hasta donde puedo decir, no hay nada matemáticamente incorrecto en la forma en que lxs frecuentistas piensan las secuencias de eventos, y tampoco hay nada matemáticamente incorrecto en la forma en que lxs bayesianos definen las creencias de un agente racional.
-De hecho, cuando uno se mete en los detalles, lxs bayesianos y lxs frecuentistas en realidad están de acuerdo en muchas cosas.
-Muchos métodos frecuentistas llevan a decisiones que lxs bayesianos aceptarían como consistentes con un agente racional.
-Y muchos métodos bayesianos tienen muy buenas propiedades frecuentistas.
+Sinceramente, no sé si hay una respuesta correcta. Hasta donde puedo decir, no hay nada matemáticamente incorrecto en la forma en que los frecuentistas piensan las secuencias de eventos, y tampoco hay nada matemáticamente incorrecto en la forma en que los bayesianos definen las creencias de un agente racional. De hecho, cuando uno se mete en los detalles, los bayesianos y los frecuentistas en realidad están de acuerdo en muchas cosas. Muchos métodos frecuentistas llevan a decisiones que los bayesianos aceptarían como consistentes con un agente racional. Y muchos métodos bayesianos tienen muy buenas propiedades frecuentistas.
 
-En general, yo soy pragmático, así que uso cualquier método estadístico en el que confíe.
-Resulta que eso me hace preferir los métodos bayesianos, por razones que voy a explicar hacia el final del libro, pero no estoy fundamentalmente en contra de los métodos frecuentistas.
-No todes son tan relajades.
+En general, yo soy pragmática, así que uso cualquier método estadístico en el que confíe. Resulta que eso me hace preferir los métodos bayesianos, por razones que voy a explicar hacia el final del libro, pero no estoy fundamentalmente en contra de los métodos frecuentistas. No todos son tan relajados. Por ejemplo, pensemos en Sir Ronald Fisher, una de las figuras más importantes de la estadística del siglo XX y un ferviente opositor de todo lo bayesiano, cuyo artículo sobre los fundamentos matemáticos de la estadística se refiere a la probabilidad bayesiana como “una selva impenetrable [que] detiene el progreso hacia la precisión de los conceptos estadísticos” @Fisher1922b [p. 311]. O el psicólogo Paul Meehl, quien sugiere que confiar en métodos frecuentistas podría convertirte en “un libertino intelectual potente pero estéril, que deja a su paso alegre una larga estela de doncellas seducidas, pero ninguna descendencia científica viable” @Meehl1967 [p. 114]. La historia de la estadística, como podés ver, no carece de entretenimiento.
 
-Por ejemplo, pensemos en Sir Ronald Fisher, una de las figuras más importantes de la estadística del siglo XX y un ferviente opositor de todo lo bayesiano, cuyo artículo sobre los fundamentos matemáticos de la estadística se refiere a la probabilidad bayesiana como “una selva impenetrable [que] detiene el progreso hacia la precisión de los conceptos estadísticos” @Fisher1922b [p. 311].
-
-O el psicólogo Paul Meehl, quien sugiere que confiar en métodos frecuentistas podría convertirte en “un brillante pero estéril libertino intelectual que deja en su alegre camino una larga estela de doncellas seducidas pero sin descendencia científica viable” @Meehl1967 [p. 114]. La historia de la estadística, como podés ver, no carece de entretenimiento.
-erés que siga con la próxima sección del libro?
+En cualquier caso, aunque personalmente prefiero la perspectiva bayesiana, la mayoría de los análisis estadísticos se basan en el enfoque frecuentista. Mi razonamiento es pragmático: el objetivo de este libro es cubrir, más o menos, el mismo contenido que una clase típica de estadística de grado en psicología, y si querés entender las herramientas estadísticas que usan la mayoría de los psicólogos, necesitás tener un buen dominio de los métodos frecuentistas. Te prometo que no será un esfuerzo en vano. Incluso si más adelante decidís pasarte a la perspectiva bayesiana, realmente deberías leer al menos un libro sobre la visión "ortodoxa" frecuentista. Y como R es el lenguaje estadístico más utilizado entre quienes trabajan con Bayes, bien podrías leer un libro que use R. Además, no voy a ignorar por completo la perspectiva bayesiana.
 
 ## Teoría básica de la probabilidad
 
-Más allá de las discusiones ideológicas entre bayesianos y frecuentistas, resulta que en general hay bastante consenso sobre **las reglas que deben seguir las probabilidades**.
-Hay muchas maneras de llegar a estas reglas. El enfoque más común se basa en el trabajo de Andrey Kolmogorov, uno de los grandes matemáticos soviéticos del siglo XX.
-No voy a entrar en demasiados detalles, pero voy a intentar darte una idea general de cómo funciona.
-Y para hacerlo, voy a tener que hablar de mis pantalones.
-
-
+Más allá de las discusiones ideológicas entre bayesianos y frecuentistas, resulta que en general hay bastante consenso sobre las reglas que deben seguir las probabilidades. Hay muchas maneras de llegar a estas reglas. El enfoque más común se basa en el trabajo de Andrey Kolmogorov, uno de los grandes matemáticos soviéticos del siglo XX. No voy a entrar en demasiados detalles, pero voy a intentar darte una idea general de cómo funciona. Y para hacerlo, voy a tener que hablar de mis pantalones.
 
 ### Introducción a las distribuciones de probabilidad
 
-Una de las verdades perturbadoras de mi vida es que solo tengo cinco pares de pantalones: tres jeans, la parte de abajo de un traje, y un pantalón deportivo.
-Más triste aún: les puse nombre. Los llamo $ X_1 $, $ X_2 $, $ X_3 $, $ X_4 $ y $ X_5 $.
-De verdad lo hago: por eso me dicen “Señor Imaginativo”.
+Una de las verdades perturbadoras de mi vida es que solo tengo cinco pares de pantalones: tres jeans, la parte de abajo de un traje, y un pantalón deportivo. Más triste aún: les puse nombre. Los llamo $ X_1 $, $ X_2 $, $ X_3 $, $ X_4 $ y $ X_5 $.
+De verdad lo hago: por eso me dicen “Señora Imaginativa”. Cada día, elijo exactamente un par de pantalones para usar. Ni yo soy tan tonta como para tratar de usar dos al mismo tiempo, y gracias a años de entrenamiento ya no salgo de casa sin pantalones.
 
-Cada día, elijo exactamente **un** par de pantalones para usar. Ni yo soy tan tonto como para tratar de usar dos al mismo tiempo, y gracias a años de entrenamiento ya no salgo de casa sin pantalones.
-
-Si quisiera describir esta situación usando el lenguaje de la teoría de la probabilidad, diría que cada par de pantalones (es decir, cada $ X $) es un **evento elemental**.
-La característica clave de los eventos elementales es que **cada vez que hacemos una observación** (por ejemplo, cada vez que me pongo un par de pantalones), el resultado será uno y solo uno de esos eventos.
-Como dije, hoy en día siempre uso exactamente un par, así que mis pantalones cumplen con esa condición.
-
-De forma similar, al conjunto de todos los posibles eventos se lo llama **espacio muestral** (*sample space*).
-Es verdad que algunas personas lo llamarían “guardarropa”, pero eso es porque se niegan a pensar en mis pantalones desde una perspectiva probabilística. Triste.
+Si quisiera describir esta situación usando el lenguaje de la teoría de la probabilidad, diría que cada par de pantalones (es decir, cada $ X $) es un **evento elemental**. La característica clave de los eventos elementales es que **cada vez que hacemos una observación** (por ejemplo, cada vez que me pongo un par de pantalones), el resultado será uno y solo uno de esos eventos. Como dije, hoy en día siempre uso exactamente un par, así que mis pantalones cumplen con esa condición.
+De forma similar, al conjunto de todos los posibles eventos se lo llama **espacio muestral**. Es verdad que algunas personas lo llamarían “guardarropa”, pero eso es porque se niegan a pensar en mis pantalones desde una perspectiva probabilística. Triste.
 
 Bien, ahora que tenemos un espacio muestral (un guardarropa), formado por varios eventos elementales (pantalones), lo que queremos hacer es asignar una **probabilidad** a cada uno de esos eventos.
 
 Para un evento $ X $, la probabilidad de ese evento $ P(X) $ es un número entre 0 y 1.
-Cuanto mayor es $ P(X) $, más probable es que ocurra ese evento.
+Cuanto mayor es el valor de $ P(X) $, más probable es que ocurra ese evento.
 
 Por ejemplo:
 
 - Si $ P(X) = 0 $, significa que el evento $ X $ es **imposible** (nunca uso ese pantalón).
 - Si $ P(X) = 1 $, significa que el evento $ X $ es **seguro** (siempre uso ese pantalón).
-- Si $ P(X) = 0.5 $, significa que uso ese pantalón **la mitad de las veces**.
+- Valores de probabilidad intermedios significan que a veces uso ese pantalón. Por ejemplo, si $ P(X) = 0.5 $, significa que uso ese pantalón la mitad del tiempo.
 
-A esta altura, ya casi terminamos.
-Lo último que necesitamos reconocer es que “**algo siempre ocurre**”.
+A esta altura, ya casi terminamos. Lo último que necesitamos reconocer es que “algo siempre ocurre”.
 Cada vez que me pongo pantalones, efectivamente termino con un par puesto (una locura, ¿no?).
-Esta afirmación algo trillada quiere decir, en términos probabilísticos, que **las probabilidades de todos los eventos elementales deben sumar 1**.
-
-Esto se conoce como la **ley de probabilidad total**, aunque a nadie le importe demasiado.
-Más importante aún, si se cumplen estos requisitos, lo que tenemos es una **distribución de probabilidad**.
-
-
+Esta afirmación algo trillada quiere decir, en términos probabilísticos, que las probabilidades de todos los eventos elementales deben sumar 1. Esto se conoce como la **ley de probabilidad total**, aunque a nadie le importe demasiado.
+Más importante, si se cumplen estos requisitos, lo que tenemos es una **distribución de probabilidad**.
 
 Por ejemplo, esta es una distribución de probabilidad:
 
@@ -243,8 +196,7 @@ Por ejemplo, esta es una distribución de probabilidad:
 
 Cada uno de estos eventos tiene una probabilidad que está entre 0 y 1, y si sumamos todas las probabilidades, el total es 1. Genial.
 
-Incluso podemos hacer un lindo gráfico de barras para visualizar esta distribución, como se muestra en la figura @fig-4pantsprob.
-Y en este punto, todes logramos algo: vos aprendiste qué es una distribución de probabilidad, y yo por fin encontré la forma de hacer un gráfico que trata exclusivamente sobre mis pantalones. ¡Ganamos todes!
+Incluso podemos hacer un lindo gráfico de barras para visualizar esta distribución, como se muestra en la figura @fig-4pantsprob. Y en este punto, todos logramos algo. Vos aprendiste qué es una distribución de probabilidad, y yo por fin encontré la forma de hacer un gráfico que trata exclusivamente sobre mis pantalones. ¡Ganamos todos!
 
 ```{r echo=F}
 #| label: fig-4pantsprob
@@ -253,16 +205,7 @@ Y en este punto, todes logramos algo: vos aprendiste qué es una distribución d
 knitr::include_graphics("imgs/navarro_img/probability/pantsDistribution_es.png")
 ```
 
-La única otra cosa que necesito señalar es que la teoría de la probabilidad también te permite hablar de **eventos no elementales**, además de los elementales.
-
-La forma más fácil de ilustrar esto es con un ejemplo. En el caso de los pantalones, es perfectamente válido referirse a la probabilidad de que use jeans.
-En este caso, decimos que el evento “Dan usa jeans” ocurre si el evento elemental que ocurrió fue uno de los apropiados; en este caso, “jean azul”, “jean negro” o “jean gris”.
-
-En términos matemáticos, definimos el evento “jeans” $ E $ como el conjunto de eventos elementales $ (X_1, X_2, X_3) $.
-Si ocurre cualquiera de esos eventos, entonces se dice que ocurrió $ E $.
-
-Una vez definida así la variable $ E $, es muy fácil calcular la probabilidad $ P(E) $: simplemente sumamos los valores.
-En este caso:
+La única otra cosa que necesito señalar es que la teoría de la probabilidad también te permite hablar de **eventos no elementales**, además de los elementales. La forma más fácil de ilustrar esto es con un ejemplo. En el caso de los pantalones, es perfectamente válido referirse a la probabilidad de que use jeans. En este caso, decimos que el evento “Dan usa jeans” ocurre si el evento elemental que ocurrió fue uno de los apropiados; en este caso, “jean azul”, “jean negro” o “jean gris”. En términos matemáticos, definimos el evento “jeans” $ E $ como el conjunto de eventos elementales $ (X_1, X_2, X_3) $. Si ocurre cualquiera de esos eventos, entonces se dice que ocurrió $ E $. Una vez definida así la $ E $, es muy fácil calcular la probabilidad $ P(E) $: simplemente sumamos todo. En este caso:
 
 $$
 P(E) = P(X_1) + P(X_2) + P(X_3)
@@ -270,20 +213,15 @@ $$
 
 Y como las probabilidades de jean azul, gris y negro son 0.5, 0.3 y 0.1 respectivamente, la probabilidad de que use jeans es igual a 0.9.
 
-A esta altura tal vez estés pensando que todo esto es increíblemente obvio y simple, y tenés razón.
-Lo único que hicimos fue envolver algunas intuiciones de sentido común con un poco de matemática básica.
+A esta altura tal vez estés pensando que todo esto es increíblemente obvio y simple, y tenés razón. Lo único que hicimos fue envolver algunas intuiciones de sentido común con un poco de matemática básica. Sin embargo, a partir de estos comienzos simples se pueden construir herramientas matemáticas extremadamente poderosas. Definitivamente no voy a entrar en esos detalles en este libro, pero lo que sí voy a hacer es listar algunas otras reglas que las probabilidades deben cumplir. Estas reglas se pueden derivar de los supuestos básicos que acabamos de ver, pero como no las vamos a usar directamente en este libro, no me voy a detener en eso.
 
-Sin embargo, a partir de estos comienzos simples se pueden construir herramientas matemáticas extremadamente poderosas.
-Definitivamente **no** voy a entrar en esos detalles en este libro, pero lo que sí voy a hacer es listar algunas otras reglas que las probabilidades deben cumplir.
-Estas reglas se pueden derivar de los supuestos básicos que acabamos de ver, pero como **no las vamos a usar directamente en este libro**, no me voy a detener en eso.
+Algunas reglas básicas que deben cumplir las probabilidades. No necesitás conocerlas para entender los análisis que vamos a ver más adelante en el libro, pero son importantes si querés entender la teoría de la probabilidad con más profundidad.
 
 | Evento         | Notación         | =   | Regla                                            |
 |----------------|------------------|-----|--------------------------------------------------|
 | no $A$       | $P(\neg A)$     | =   | $1 - P(A)$                                      |
 | $A$ o $B$  | $P(A \cup B)$   | =   | $P(A) + P(B) - P(A \cap B)$                     |
 | $A$ y $B$  | $P(A \cap B)$   | =   | $P(A|B) \cdot P(B)$                             |
-
-: Algunas reglas básicas que deben cumplir las probabilidades. No necesitás conocerlas para entender los análisis que vamos a ver más adelante en el libro, pero son importantes si querés entender la teoría de la probabilidad con más profundidad.
 
 Ahora que tenemos la capacidad de “definir” eventos no elementales en términos de eventos elementales, en realidad podemos usar eso para construir (o, si querés sonar matemáticamente refinadx, “derivar”) algunas de las otras reglas de probabilidad.
 Estas reglas están listadas arriba, y aunque estoy bastante seguro de que muy pocxs lectorxs realmente están interesadxs en **cómo** se construyen, te las voy a mostrar igual:

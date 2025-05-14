@@ -14,8 +14,7 @@ source("global_stuff.R")
 
 # Probabilidad, muestreo y estimación
 
->  He estudiado muchos idiomas —francés, español y un poco de italiano, pero nadie me dijo que la 
-estadística era una lengua extranjera. ---Charmaine J. Forde
+>  He estudiado muchos idiomas —francés, español y un poco de italiano, pero nadie me dijo que la estadística era una lengua extranjera. ---Charmaine J. Forde
 
 Hasta ahora en el libro, hablamos sobre algunas de las ideas clave en el diseño experimental, y comentamos un poco cómo podés resumir un conjunto de datos. Para muchas personas, eso es todo lo que hay en estadística: se trata de calcular promedios, juntar números, hacer gráficos y poner todo eso en un informe. Algo así como coleccionar estampillas, pero con números. Sin embargo, la estadística abarca mucho más que eso. De hecho, la estadística descriptiva es una de las partes más pequeñas —y menos potentes— de la estadística. La parte más grande y útil de la estadística es que nos da herramientas **para hacer inferencias a partir de los datos**.
 
@@ -431,25 +430,22 @@ Como podés ver, los números que aparecen son lo que uno esperaría, dada la di
 ## La distribución normal
 
 Aunque la distribución binomial es conceptualmente la más fácil de entender, **no es la más importante**.
-Ese honor particular le corresponde a la *distribución normal*, también conocida como “la campana de Gauss” o simplemente “la curva de campana”.
+Ese honor particular le corresponde a la *distribución normal*, también conocida como “curva de campana” o “distribución gaussiana”.
 
 ```{r}
 #| label: fig-4normal
-#| fig-cap: "La distribución normal con media = 0 y desviación estándar = 1. El eje x representa los valores posibles de una variable, y el eje y nos dice qué tan probable es observar ese valor. Sin embargo, notá que el eje y está etiquetado como Densidad de Probabilidad y no como Probabilidad. Esto se debe a una característica sutil —y algo frustrante— de las distribuciones continuas, que hace que el eje y se comporte de manera un poco extraña: la altura de la curva no representa literalmente la probabilidad de observar un valor x en particular. Sin embargo, sí es cierto que los valores de x más probables corresponden a las alturas mayores de la curva."
+#| fig-cap: "La distribución normal con media = 0 y desviación estándar = 1. El eje x representa los valores posibles de una variable, y el eje y nos dice qué tan probable es observar ese valor. Sin embargo, notá que el eje y está etiquetado como Densidad de Probabilidad y no como Probabilidad. Esto se debe a una característica sutil —y algo frustrante— de las distribuciones continuas, que hace que el eje y se comporte de manera un poco extraña: la altura de la curva no representa literalmente la probabilidad de observar un valor x en particular. Por otro lado, es cierto que las alturas de la curva te indican cuáles valores de x son más probables (¡los más altos!)."
 
 knitr::include_graphics("imgs/navarro_img/probability/standardNormal_es.png")
 ```
 
-Una distribución normal se describe usando dos parámetros: la **media** de la distribución (\( \mu \)) y la **desviación estándar** (\( \sigma \)).
-La notación que usamos a veces para indicar que una variable \( X \) tiene distribución normal es:
+Una distribución normal se describe usando dos parámetros: la media de la distribución (\( \mu \)) y la desviación estándar (\( \sigma \)). La notación que usamos a veces para indicar que una variable \( X \) tiene distribución normal es:
 
 \[
 X \sim \text{Normal}(\mu, \sigma)
 \]
 
-Claro que eso es solo notación. No nos dice nada especialmente interesante sobre la distribución normal en sí.
-
-La fórmula matemática de la distribución normal es:
+Claro que eso es solo notación. No nos dice nada especialmente interesante sobre la distribución normal en sí. La fórmula matemática de la distribución normal es:
 
 ```{r echo=F}
 #| label: 4normalformula
@@ -458,29 +454,11 @@ knitr::include_graphics("imgs/navarro_img/probability/Normal_formula.png")
 ```
 
 La fórmula es lo suficientemente importante como para que cualquiera que aprenda estadística la mire al menos una vez,
-pero como este es un texto introductorio, no quiero enfocarme demasiado en eso.
+pero como este es un texto introductorio, no quiero enfocarme demasiado en eso. En cambio, vamos a ver cómo se puede usar R para trabajar con distribuciones normales. Las funciones en R para la distribución normal son `dnorm()`, `pnorm()`, `qnorm()` y `rnorm()`. Sin embargo, se comportan exactamente igual que sus equivalentes para la distribución binomial, así que no hay mucho que necesites saber. Lo único que vale la pena señalar es que los argumentos para los parámetros se llaman `mean` y `sd`. En casi todo lo demás, no hay más que agregar.
 
-En cambio, vamos a ver cómo se puede trabajar con distribuciones normales en R.
-Las funciones en R para la distribución normal son `dnorm()`, `pnorm()`, `qnorm()` y `rnorm()`.
-Sin embargo, **se comportan exactamente igual que sus equivalentes para la distribución binomial**, así que no hay mucho que necesites aprender nuevo.
-Lo único que vale la pena señalar es que los argumentos para los parámetros se llaman `mean` y `sd`.
-En casi todo lo demás, no hay diferencia.
+En lugar de enfocarnos en las matemáticas, tratemos de entender qué significa que una variable tenga distribución normal. Para eso, mirá la figura @fig-4normal, que muestra una distribución normal con media \( \mu = 0 \) y desviación estándar \( \sigma = 1 \). Podés ver de dónde viene el nombre “curva de campana”: se parece un poco a una campana. Notá que, a diferencia de los gráficos que dibujé para ilustrar la distribución binomial, la figura @fig-4normal muestra una curva suave, no un gráfico tipo histograma. Esto no es una elección arbitraria: la distribución normal es continua, mientras que la binomial es discreta. En el ejemplo anterior, era posible obtener 3 calaveras o 4 calaveras, pero era imposible obtener 3.9 calaveras. 
 
-En lugar de enfocarnos en las matemáticas, tratemos de entender **qué significa que una variable tenga distribución normal**.
-Para eso, mirá la figura @fig-4normal, que muestra una distribución normal con media \( \mu = 0 \) y desviación estándar \( \sigma = 1 \).
-Podés ver de dónde viene el nombre “curva de campana”: se parece un poco a una campana.
-
-Notá que, a diferencia de los gráficos que dibujé para ilustrar la distribución binomial, la figura @fig-4normal muestra una **curva suave**, no un gráfico tipo histograma.
-Esto **no es una elección arbitraria**: la distribución normal es **continua**, mientras que la binomial es **discreta**.
-
-En el ejemplo anterior, era posible obtener 3 calaveras o 4 calaveras, pero **era imposible obtener 3.9 calaveras**. Teniendo eso en cuenta, veamos si podemos desarrollar una intuición de cómo funciona la distribución normal.
-Primero, vamos a ver qué pasa cuando jugamos con los parámetros de la distribución.
-Uno de los parámetros que podemos modificar es la media.
-Esto desplaza la distribución hacia la derecha o hacia la izquierda.
-
-La animación en @fig-4normalMeanShift muestra una distribución normal con media = 0, que se va moviendo desde media = 0 hasta media = 5.
-Notá que, cuando cambiás la media, **la forma de la distribución no cambia**: simplemente se traslada de izquierda a derecha.
-En la animación, la curva normal sube y baja un poco, pero eso es solo una característica visual de la animación (además queda lindo así).
+Teniendo eso en cuenta, veamos si podemos desarrollar una intuición de cómo funciona la distribución normal. Primero, vamos a ver qué pasa cuando jugamos con los parámetros de la distribución. Uno de los parámetros que podemos modificar es la media. Esto desplaza la distribución hacia la derecha o hacia la izquierda. La animación en @fig-4normalMeanShift muestra una distribución normal con media = 0, que se va moviendo desde media = 0 hasta media = 5. Notá que, cuando cambiás la media, la forma de la distribución no cambia: simplemente se traslada de izquierda a derecha. En la animación, la curva normal sube y baja un poco, pero eso es solo una característica visual de la animación (además queda lindo así).
 
 ::: {.content-visible when-format="html"}
 ```{r echo=F}
@@ -492,9 +470,7 @@ knitr::include_graphics(path="imgs/gifs/normalMovingMean-1_es.gif")
 ```
 :::
 
-En cambio, si aumentamos la desviación estándar manteniendo constante la media, la cima de la distribución se queda en el mismo lugar, **pero la distribución se ensancha**.
-La animación en @fig-4normalSDShift muestra lo que pasa cuando empezamos con una desviación estándar pequeña (sd = 0.5), y la aumentamos gradualmente hasta sd = 5.
-Como podés ver, la distribución se expande y se vuelve más ancha a medida que aumenta la desviación estándar.
+En cambio, si aumentamos la desviación estándar manteniendo constante la media, el pico de la distribución se queda en el mismo lugar, pero la distribución se ensancha. La animación en @fig-4normalSDShift muestra lo que pasa cuando empezamos con una desviación estándar pequeña (sd = 0.5), y la aumentamos gradualmente hasta sd = 5. Como podés ver, la distribución se expande y se vuelve más ancha a medida que aumenta la desviación estándar.
 
 ::: {.content-visible when-format="html"}
 ```{r echo=F}
@@ -506,13 +482,7 @@ knitr::include_graphics(path="imgs/gifs/normalMovingSD-1_es.gif")
 ```
 :::
 
-Fijate que cuando ensanchamos la distribución, **la altura del pico disminuye**.
-Eso **tiene que ocurrir**: al igual que las alturas de las barras en la distribución binomial debían **sumar 1**, el área **bajo la curva** de la distribución normal también debe ser igual a 1.
-
-Antes de continuar, quiero señalar una característica importante de la distribución normal.
-Sin importar cuál sea la media o la desviación estándar específica, el **68.3% del área** cae dentro de 1 desviación estándar de la media.
-De forma similar, **el 95.4%** cae dentro de 2 desviaciones estándar, y **el 99.7%** está dentro de 3 desviaciones estándar.
-
+Fijate que cuando ensanchamos la distribución, la altura del pico disminuye. Eso tiene que ocurrir: al igual que las alturas de las barras en la distribución binomial debían *sumar* 1, el *área bajo la curva* de la distribución normal también debe ser igual a 1. Antes de continuar, quiero señalar una característica importante de la distribución normal. Sin importar cuál sea la media o la desviación estándar específica, el 68.3% del área cae dentro de 1 desviación estándar de la media. De forma similar, el 95.4% cae dentro de 2 desviaciones estándar, y el 99.7% está dentro de 3 desviaciones estándar.
 
 ### Densidad de probabilidad
 

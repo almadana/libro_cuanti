@@ -486,164 +486,81 @@ Fijate que cuando ensanchamos la distribución, la altura del pico disminuye. Es
 
 ### Densidad de probabilidad
 
-Hay algo que estuve intentando ocultar durante toda mi discusión sobre la distribución normal.
-Algo que algunos libros introductorios directamente omiten por completo.
-Tal vez tengan razón en hacerlo: esta “cosa” que estoy ocultando es rara y contraintuitiva, incluso según los estándares algo retorcidos que rigen en estadística.
-Afortunadamente, **no es algo que necesites entender a fondo** para hacer estadística básica: es algo que empieza a volverse importante más adelante, cuando salís de lo introductorio.
-Así que si no te queda completamente claro, no te preocupes: tratá de captar la idea general.
+Hay algo que estuve intentando ocultar durante toda mi discusión sobre la distribución normal. Algo que algunos libros introductorios directamente omiten por completo. Tal vez tengan razón en hacerlo: esta “cosa” que estoy ocultando es rara y contraintuitiva, incluso según los estándares algo retorcidos que rigen en estadística. Afortunadamente, no es algo que necesites entender a fondo para hacer estadística básica: es algo que empieza a volverse importante más adelante, cuando salís de lo introductorio. Así que si no te queda completamente claro, no te preocupes: tratá de captar la idea general.
 
-A lo largo de esta discusión sobre la distribución normal, hay una o dos cosas que **no cierran del todo**.
-Quizás notaste que el eje \( y \) en esas figuras está etiquetado como “Densidad de probabilidad” y no como “Probabilidad”.
-Tal vez notaste que usé \( p(X) \) en lugar de \( P(X) \) al dar la fórmula de la normal.
-Quizás te preguntás por qué R usa el prefijo `"d"` para funciones como `dnorm()`.
-Y tal vez, solo tal vez, estuviste jugando con la función `dnorm()` y escribiste un comando como este:
+A lo largo de esta discusión sobre la distribución normal, hay una o dos cosas que no cierran del todo. Quizás notaste que el eje \( y \) en esas figuras está etiquetado como “Densidad de probabilidad” y no como “Probabilidad”. Tal vez notaste que usé \( p(X) \) en lugar de \( P(X) \) al mostrar la fórmula de la normal. Quizás te preguntás por qué R usa el prefijo `"d"` para funciones como `dnorm()`. Y tal vez, solo tal vez, estuviste jugando con la función `dnorm()` y accidentamente escribiste un comando como este:
 
 ```{r}
 dnorm(x = 1, mean = 1, sd = 0.1)
 ```
 
-Y si hiciste eso, seguramente quedaste muy confundidx.
-Le pedí a R que calcule la **probabilidad de que \( x = 1 \)** para una variable normalmente distribuida con media = 1 y desviación estándar = 0.1; y R me responde que la “probabilidad” es 3.99.
+Y si hiciste eso, seguramente quedaste muy confundido. Le pedí a R que calcule la probabilidad de que \( x = 1 \) para una variable con distribución normal, media = 1 y desviación estándar = 0.1; y R me responde que la “probabilidad” es 3.99. Pero, como discutimos antes, las probabilidades **no pueden** ser mayores que 1. Entonces, o me equivoqué, o eso que R me dio no es una probabilidad.
 
-Pero, como discutimos antes, las probabilidades **no pueden** ser mayores que 1.
-Entonces, o me equivoqué, o eso que R me dio **no es una probabilidad**.
+Resulta que la segunda opción es la correcta. Lo que calculamos ahí no es una probabilidad: es otra cosa. Para entender qué es esa otra cosa, tenemos que dedicar un momento a pensar qué *significa* realmente decir que \( X \) es una variable continua. Supongamos que estamos hablando de la temperatura exterior. El termómetro me dice que hace 23 grados, pero yo sé que eso no es del todo cierto. No son exactamente 23 grados. Quizás sean 23.1. Pero tampoco es del todo cierto, porque podrían ser 23.09. Pero, claro, también podrían ser 23.091. Bueno... ya entendés la idea. El problema con las cantidades verdaderamente continuas es que nunca sabés exactamente qué son. 
 
-Resulta que la segunda opción es la correcta.
-Lo que calculamos ahí no es una probabilidad: **es otra cosa**.
-Para entender qué es esa otra cosa, tenemos que dedicar un momento a pensar qué significa realmente decir que \( X \) es una variable continua.
+Ahora pensá qué implica esto cuando hablamos de probabilidades. Supongamos que la temperatura máxima de mañana se extrae de una distribución normal con media 23 y desviación estándar 1. ¿Cuál es la probabilidad de que la temperatura sea *exactamente* 23 grados? La respuesta es “cero”, o si querés, “un número tan cercano a cero que es indistinguible de cero”. ¿Por qué?
 
-Supongamos que estamos hablando de la temperatura exterior. El termómetro me dice que hace 23 grados, pero yo sé que eso no es del todo cierto.
-No son *exactamente* 23 grados. Quizás sean 23.1, me digo.
-Pero tampoco es del todo cierto, porque podrían ser 23.09. Pero, claro, también podrían ser 23.091.
-Bueno... ya entendés la idea.
+Es como intentar tirar un dardo a un blanco infinitamente pequeño: no importa qué tan buena sea tu puntería, nunca lo vas a acertar. En la vida real, nunca vas a obtener un valor exactamente igual a 23. Siempre va a ser algo como 23,1 o 22,99998 o algo por el estilo. En otras palabras, no tiene ningún sentido hablar de la probabilidad de que la temperatura sea exactamente 23 grados. Sin embargo, en el lenguaje cotidiano, si yo te dijera que afuera hace 23 grados y en realidad son 22,9998, probablemente no me dirías que estoy mintiendo. Porque en la vida diaria, decir “23 grados” suele significar algo así como “entre 22,5 y 23,5 grados”. Y aunque no tiene mucho sentido preguntar cuál es la probabilidad de que la temperatura sea exactamente 23 grados, sí parece razonable preguntar cuál es la probabilidad de que esté entre 22,5 y 23,5, o entre 20 y 30, o dentro de cualquier otro rango de temperaturas.
 
-El problema con las cantidades verdaderamente continuas es que **nunca sabés exactamente cuál es su valor**. Ahora pensá qué implica esto cuando hablamos de probabilidades.
-Supongamos que la temperatura máxima de mañana se extrae de una distribución normal con media 23 y desviación estándar 1. ¿Cuál es la probabilidad de que la temperatura sea *exactamente* 23 grados?
-La respuesta es “cero”, o si querés, “un número tan cercano a cero que es indistinguible de cero”.  ¿Por qué?
+El punto de toda esta discusión es dejar en claro que, cuando hablamos de distribuciones continuas, no tiene sentido hablar de la probabilidad de un valor específico. Sin embargo, **sí podemos** hablar de la **probabilidad de que el valor esté dentro de un cierto rango**. Y para calcular esa probabilidad, lo que necesitamos hacer es calcular el "área bajo la curva".
 
-Porque hay una cantidad **infinita** de números reales entre 22.9999999 y 23.0000001.
-La probabilidad de que cualquier número en particular sea el valor exacto que obtengamos es prácticamente cero.  No importa cuán precisa sea tu medición, **siempre** hay infinitos valores más que podrían haber sido el resultado “real”.
-
-Esto hace que tenga **mucho menos sentido** hablar de la probabilidad de que la temperatura sea *exactamente* 23 grados.
-Sin embargo, en el lenguaje cotidiano, si te digo que hace 23 grados afuera y en realidad son 22.9998, probablemente no me digas que te mentí.
-Porque en la vida real, cuando decimos “23 grados”, en realidad queremos decir algo así como “entre 22.5 y 23.5 grados”.
-
-Y aunque no parezca muy útil preguntar por la probabilidad de que la temperatura sea **exactamente** 23 grados, sí parece razonable preguntar por la probabilidad de que esté **entre 22.5 y 23.5**, o entre 20 y 30, o cualquier otro rango de valores.El punto de toda esta discusión es dejar en claro que, cuando hablamos de **distribuciones continuas**, no tiene sentido hablar de la probabilidad de un valor específico.
-Sin embargo, **sí podemos** hablar de la **probabilidad de que el valor esté dentro de un cierto rango**. Y para calcular esa probabilidad, lo que necesitamos hacer es calcular el **área bajo la curva**.
-
-Ok, eso explica parte del asunto.
-Hablamos un poco sobre cómo deberían interpretarse las distribuciones continuas (es decir, el área bajo la curva es la clave),
-pero todavía no expliqué realmente **qué calcula la función `dnorm()`**.
-O, equivalente, ¿qué significa la fórmula de \( p(x) \) que presentamos antes?
-
-Evidentemente, \( p(x) \) **no describe una probabilidad**. Entonces, ¿qué es?
-
-El nombre técnico de esa cantidad \( p(x) \) es **densidad de probabilidad**,
-y en los gráficos que venimos dibujando, corresponde a la **altura** de la curva.
-Las densidades en sí **no tienen sentido por sí solas**; pero están “diseñadas” de manera que el **área** bajo la curva sea **una probabilidad verdadera**.
-
-Para ser sincerx, eso es más o menos **todo lo que necesitás saber por ahora**.
+Ok, eso explica parte del asunto. Hablamos un poco sobre cómo deberían interpretarse las distribuciones continuas (es decir, el área bajo la curva es la clave), pero todavía no expliqué realmente qué calcula la función *`dnorm()`*.
+O, en forma equivalente, ¿qué significa la fórmula de \( p(x) \) que presentamos antes? Evidentemente, \( p(x) \) no describe una probabilidad. Entonces, ¿qué es? El nombre técnico de esa cantidad \( p(x) \) es *densidad de probabilidad*, y en los gráficos que venimos dibujando, corresponde a la *altura* de la curva. Las densidades no tienen sentido por sí solas; pero están “diseñadas” de manera que el *área* bajo la curva sea siempre interpretable como probabilidades genuinas. Para ser sincero, eso es más o menos todo lo que necesitás saber por ahora.
 
 ## Otras distribuciones útiles
 
-Hay muchas otras distribuciones útiles, entre ellas la distribución `t`, la distribución `F` y la distribución chi cuadrado (`χ²`).
-Pronto vamos a aprender más sobre las distribuciones `t` y `F` cuando discutamos los t-tests y los ANOVA en capítulos posteriores.
-
-Perfecto. Gracias por compartir el texto original completo. A continuación te doy la **traducción fiel** de esta sección final, que no habíamos incluido antes:
+Hay muchas otras distribuciones útiles, entre ellas la distribución `t`, la distribución `F` y la distribución chi cuadrado (`χ²`). Pronto vamos a aprender más sobre las distribuciones `t` y `F` cuando discutamos los t-tests y los ANOVA en capítulos posteriores.
 
 ## Resumen sobre la probabilidad
 
-Hablamos sobre qué significa la probabilidad, y por qué lxs estadísticxs no logran ponerse de acuerdo sobre su significado.
-Hablamos de las reglas que deben cumplir las probabilidades.
-Y presentamos la idea de una **distribución de probabilidad**, dedicando una buena parte del capítulo a algunas de las distribuciones más importantes con las que trabajan lxs estadísticxs.
-Discutimos cosas como:
+Hablamos sobre qué significa la probabilidad, y por qué los estadísticos no logran ponerse de acuerdo sobre su significado.
+Hablamos de las reglas que deben cumplir las probabilidades. Y presentamos la idea de una distribución de probabilidad, dedicando una buena parte del capítulo a algunas de las distribuciones más importantes con las que trabajan los estadísticos. Discutimos cosas como:
 
 - Teoría de la probabilidad versus estadística
-- Visiones frecuentista y bayesiana de la probabilidad
+
+- Visiones frecuentista versus bayesiana de la probabilidad
+
 - Fundamentos básicos de la teoría de la probabilidad
+
 - Distribuciones binomial y normal
 
-Como era de esperarse, esta cobertura **está lejos de ser exhaustiva**.
-La teoría de la probabilidad es una rama amplia de las matemáticas, con entidad propia, separada de su aplicación a la estadística y al análisis de datos.
-Hay miles de libros escritos sobre el tema, y en general las universidades ofrecen varias materias dedicadas exclusivamente a la teoría de la probabilidad.
-Incluso la tarea “más sencilla” de documentar las distribuciones de probabilidad estándar es un tema extenso.
+Como era de esperarse, esta cobertura está lejos de ser exhaustiva. La teoría de la probabilidad es una rama amplia de las matemáticas, con entidad propia, separada de su aplicación a la estadística y al análisis de datos. Hay miles de libros escritos sobre el tema, y en general las universidades ofrecen varias materias dedicadas exclusivamente a la teoría de la probabilidad. Incluso la tarea “más sencilla” de documentar las distribuciones de probabilidad estándar es un tema extenso. Por suerte para vos, muy poco de todo eso es necesario. Es poco probable que necesites conocer decenas de distribuciones estadísticas para hacer análisis de datos en el mundo real, y definitivamente no las vas a necesitar para este libro. Pero nunca está de más saber que existen otras posibilidades.
 
-Por suerte para vos, **muy poco de todo eso es necesario**.
-Es poco probable que necesites conocer decenas de distribuciones estadísticas para hacer análisis de datos en el mundo real,
-y definitivamente no las vas a necesitar para este libro.
-Pero nunca está de más saber que existen otras posibilidades.
-
-Retomando ese último punto, en cierto sentido **todo este capítulo es una especie de digresión**.
-Muchas materias de estadística en psicología a nivel de grado pasan muy por arriba este contenido (sé que así fue en mi caso),
-e incluso las materias más avanzadas suelen “olvidarse” de volver sobre los fundamentos básicos del campo.
-La mayoría de lxs psicólogxs académicxs no sabría explicar la diferencia entre probabilidad y densidad,
-y hasta hace poco, muy pocxs sabían que había una diferencia entre la probabilidad bayesiana y la frecuentista.
-
-Sin embargo, creo que **es importante entender estas cosas antes de pasar a las aplicaciones**.
-Por ejemplo, hay muchas reglas sobre lo que se puede o no se puede decir cuando hacés inferencia estadística,
-y muchas de esas reglas pueden parecer arbitrarias o extrañas.
-Pero empiezan a tener sentido cuando entendés que existe esta distinción entre lo bayesiano y lo frecuentista.
+Retomando ese último punto, en cierto sentido todo este capítulo es una especie de digresión. Muchas materias de estadística en psicología a nivel de grado pasan muy por arriba este contenido (sé que así fue en mi caso), e incluso las materias más avanzadas suelen “olvidarse” de volver sobre los fundamentos básicos del campo. La mayoría de los psicólogos académicos no sabría explicar la diferencia entre probabilidad y densidad, y hasta hace poco, muy pocos sabían que había una diferencia entre la probabilidad bayesiana y la frecuentista. Sin embargo, creo que es importante entender estas cosas antes de pasar a las aplicaciones. Por ejemplo, hay muchas reglas sobre lo que se puede o no se puede decir cuando hacés inferencia estadística, y muchas de esas reglas pueden parecer arbitrarias o extrañas. Pero empiezan a tener sentido cuando entendés que existe esta distinción entre lo bayesiano y lo frecuentista.
 
 ## Muestras, poblaciones y muestreo
 
-Recordá que el rol de la estadística descriptiva es resumir de forma concisa lo que **sí** sabemos.
-En cambio, el propósito de la estadística inferencial es “aprender lo que no sabemos a partir de lo que sí sabemos”.
-¿Qué tipo de cosas nos gustaría aprender? ¿Y cómo las aprendemos?
+Recordá que el rol de la estadística descriptiva es resumir de forma concisa lo que **sí** sabemos. En cambio, el propósito de la estadística inferencial es “aprender lo que no sabemos a partir de lo que sí sabemos”. ¿Qué tipo de cosas nos gustaría aprender? ¿Y cómo las aprendemos? Estas son las preguntas que están en el corazón de la estadística inferencial, y que tradicionalmente se dividen en dos "grandes ideas": estimación y pruebas de hipótesis. El objetivo de este capítulo es presentar la primera de estas ideas, la teoría de la estimación, pero antes vamos a hablar sobre teoría del muestreo, porque la estimación no tiene sentido si no entendés cómo funciona el muestreo. Así que este capítulo se divide en dos partes: teoría del muestreo, y cómo usar esa teoría para hablar sobre cómo piensan los estadísticos el problema de la estimación. Ya hicimos bastante muestreo, así que ya estás familiarizado con algunas de las ideas principales.
 
-Estas son las preguntas que están en el corazón de la estadística inferencial, y que tradicionalmente se dividen en dos grandes ideas: **estimación** y **pruebas de hipótesis**.
-El objetivo de este capítulo es presentar la primera de estas ideas, la teoría de la estimación,
-pero antes vamos a hablar sobre teoría del muestreo, porque **la estimación no tiene sentido si no entendés cómo funciona el muestreo**.
-
-Así que este capítulo se divide en dos partes: teoría del muestreo, y cómo usar esa teoría para hablar sobre cómo piensan lxs estadísticxs el problema de la estimación.
-Ya hicimos bastante muestreo, así que ya estás familiarizadx con algunas de las ideas principales.
-
-La **teoría del muestreo** cumple un rol enorme a la hora de definir los supuestos sobre los que se apoyan tus inferencias estadísticas.
-Y para poder hablar de “hacer inferencias” como lo hacen lxs estadísticxs, tenemos que ser un poco más explícitxs sobre **de dónde** extraemos inferencias (la muestra)
-y **sobre qué** extraemos inferencias (la población).
+La **teoría del muestreo** cumple un rol enorme a la hora de definir los supuestos sobre los que se apoyan tus inferencias estadísticas. Y para poder hablar de hacer inferencias como lo hacen los estadísticos, tenemos que ser un poco más explícitos sobre **de dónde** extraemos inferencias (la muestra) y **sobre qué** extraemos inferencias (la población).
 
 En casi cualquier situación de interés, lo que tenemos disponible como investigadores es una **muestra** de datos.
-Podés haber hecho un experimento con cierta cantidad de participantes; una encuestadora puede haber llamado a cierta cantidad de personas para preguntarles su intención de voto; etc.
-En todos los casos: el conjunto de datos que tenemos es **finito e incompleto**.
-No podemos hacer que cada persona del mundo participe en nuestro experimento; una encuestadora no tiene ni el tiempo ni el dinero para llamar a cada votante del país, etc.
-
-En nuestra discusión anterior sobre estadística descriptiva, la muestra era **lo único** que nos interesaba.
-Nuestro único objetivo era encontrar formas de describir, resumir y graficar **esa muestra**. Pero eso está por cambiar.
-
+Podés haber hecho un experimento con cierta cantidad de participantes; una encuestadora puede haber llamado a cierta cantidad de personas para preguntarles su intención de voto; etc. En todos los casos: el conjunto de datos que tenemos es finito e incompleto. No podemos hacer que cada persona del mundo participe en nuestro experimento; una encuestadora no tiene ni el tiempo ni el dinero para llamar a cada votante del país, etc. En nuestra discusión anterior sobre estadística descriptiva, la muestra era lo único que nos interesaba. Nuestro único objetivo era encontrar formas de describir, resumir y graficar esa muestra. Pero eso está por cambiar.
 
 ### Definir una población
 
-Una muestra es algo concreto. Podés abrir un archivo de datos y ver los valores de tu muestra ahí.
-Una **población**, en cambio, es un concepto más abstracto.
-Se refiere al conjunto de **todas** las personas, o de **todas** las observaciones, sobre las que querés sacar conclusiones,
-y generalmente es **mucho** más grande que la muestra.
+Una muestra es algo concreto. Podés abrir un archivo de datos y ver los valores de tu muestra ahí. Una **población**, en cambio, es un concepto más abstracto. Se refiere al conjunto de todas las personas, o de **todas** las observaciones, sobre las que querés sacar conclusiones, y generalmente es mucho más grande que la muestra. En un mundo ideal, los investigadores empezarían cada estudio con una idea clara de cuál es su población de interés, ya que el proceso de diseñar un estudio y poner a prueba hipótesis con los datos obtenidos depende de esa población sobre la que queremos hablar. Sin embargo, eso no siempre ocurre en la práctica: en general, los investigadores tienen solo una idea vaga de cuál es la población, y diseñan el estudio lo mejor que pueden con base en eso.
 
-En un mundo ideal, lxs investigadores empezarían cada estudio con una idea clara de cuál es su población de interés,
-ya que el proceso de diseñar un estudio y poner a prueba hipótesis con los datos obtenidos **depende de esa población sobre la que queremos hablar**.
+A veces es fácil definir la población de interés. Por ejemplo, en el caso de la “encuestadora”, la población está compuesta por todas las personas habilitadas para votar en el momento de la encuesta —millones de personas. La muestra era un conjunto de 1000 personas y todas pertenecen a esa población. En la mayoría de los casos, la situación es mucho menos clara. En un experimento psicológico típico, determinar cuál es la población de interés puede ser algo más complicado. Supongamos que hago un experimento con 100 estudiantes universitarios como participantes. Mi objetivo, como científica cognitiva, es aprender algo sobre cómo funciona la mente. Entonces, ¿cuál de las siguientes opciones debería contar como “la población”?
 
-Sin embargo, eso **no siempre** ocurre en la práctica: en general, lxs investigadores tienen solo una idea vaga de cuál es la población,
-y diseñan el estudio **lo mejor que pueden** con base en eso.
+- ¿Todxs los estudiantes de psicología de grado de la Universidad de Adelaide?
 
-A veces es fácil definir la población de interés.
-Por ejemplo, en el caso de la “encuestadora”, la población está compuesta por **todas las personas habilitadas para votar** en el momento de la encuesta —millones de personas. La muestra era un conjunto de 1000 personas que todas pertenecen a esa población.
-
-En la mayoría de los casos, la situación es mucho menos clara.
-En un experimento psicológico típico, determinar cuál es la población de interés puede ser algo más complicado.
-
-Supongamos que hago un experimento con 100 estudiantes universitarios como participantes.
-Mi objetivo, como científica cognitiva, es aprender algo sobre cómo funciona la mente.
-Entonces, ¿cuál de las siguientes opciones debería contar como “la población”?
-
-- ¿Todxs lxs estudiantes de psicología de grado de la Universidad de Adelaida?
 - ¿Estudiantes de psicología de grado en general, en cualquier parte del mundo?
+
 - ¿Personas que viven actualmente en Australia?
+
 - ¿Personas australianas de edades similares a mi muestra?
+
 - ¿Cualquier persona viva en la actualidad?
+
 - ¿Cualquier ser humano, pasado, presente o futuro?
+
 - ¿Cualquier organismo biológico con suficiente inteligencia y que opere en un entorno terrestre?
+
 - ¿Cualquier ser inteligente?
 
 Cada una de estas opciones define un grupo real de entidades con mente, que podrían interesarme como científica cognitiva,
-y **no está nada claro cuál de ellas debería considerarse la verdadera población de interés**.
+y no está nada claro cuál de ellas debería considerarse la verdadera población de interés.
 
 
 ### Muestras aleatorias simples

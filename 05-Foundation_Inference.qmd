@@ -45,7 +45,7 @@ Lo que viene a continuación puede parecer un poco repetitivo con respecto al ca
 
 Como recordatorio del capítulo anterior, la figura `@fig-5unifagain` muestra que la forma de una distribución uniforme es completamente plana.
 
-Gracias. Acá va la traducción fiel del bloque `fig-5unifagain`, incluyendo el código R y el texto que lo acompaña:
+
 
 ```{r, echo=F}
 #| label: fig-5unifagain

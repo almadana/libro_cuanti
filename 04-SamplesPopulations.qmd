@@ -1182,19 +1182,19 @@ Finalmente, los puntajes z también se llaman **puntajes estandarizados**, porqu
 
 ## Estimación de parámetros poblacionales
 
-Paremos un momento para ubicarnos. Estamos por meternos en el tema de la **estimación**. ¿Qué es eso, y por qué debería importarte? Primero: los **parámetros poblacionales** son cosas que describen una distribución. Por ejemplo, las distribuciones tienen medias. La media es un parámetro de la distribución. La desviación estándar también es un parámetro. Cualquier cosa que describa una distribución es un posible parámetro. OK, ¿y por qué importa? Buena pregunta. Hay razones concretas para que te importe. Y también hay muy buenas razones abstractas. Desafortunadamente, en investigación, casi siempre son las razones abstractas las que más importan —y también las más difíciles de entender al principio.
+Paremos un momento para ubicarnos. Estamos por meternos en el tema de la **estimación**. ¿Qué es eso, y por qué debería importarte? Primero: los **parámetros poblacionales** son cosas que describen una distribución. Por ejemplo, las distribuciones tienen medias. La media es un parámetro de la distribución. La desviación estándar también es un parámetro. Cualquier cosa que describa una distribución es un posible parámetro. 
+
+OK, ¿y por qué importa? Buena pregunta. Hay razones concretas para que te importe. Y también hay muy buenas razones abstractas. Desafortunadamente, en investigación, casi siempre son las razones abstractas las que más importan —y también las más difíciles de entender al principio.
 
 ### Parámetros poblacionales concretos
 
-Primero, algunas razones concretas. Existen poblaciones reales ahí afuera, y a veces queremos conocer sus parámetros. Por ejemplo, si sos una empresa que fabrica calzado, te interesaría conocer los parámetros poblacionales del **tamaño de los pies**. Como primera aproximación, querrías saber la media y la desviación estándar de la población. Si tu empresa conoce esto, y otras no, probablemente te vaya mejor (asumiendo que todas fabrican zapatos de calidad similar). ¿Por qué te iría mejor y cómo podrías usar esos parámetros? Acá va una buena razón: como empresa, querés que la oferta coincida con la demanda. Si fabricás demasiados zapatos de talles muy chicos o muy grandes, y no hay suficientes personas que los compren, estás haciendo un montón de calzado que no se va a vender. Y si no fabricás suficientes zapatos de los talles más comunes, vas a estar dejando plata sobre la mesa. ¿Verdad? Sí. Entonces, ¿qué sería lo óptimo? Tal vez fabricarías diferentes cantidades de zapatos en cada talle, de acuerdo a la demanda de cada uno. Y sabrías algo sobre la demanda si conocieras la **frecuencia de cada talle** en la población. Para eso, necesitarías conocer los **parámetros poblacionales**.
+Primero, algunas razones concretas. Existen poblaciones reales ahí afuera, y a veces queremos conocer sus parámetros. Por ejemplo, si sos una empresa que fabrica calzado, te interesaría conocer los parámetros poblacionales del **tamaño de los pies**. Como primera aproximación, querrías saber la media y la desviación estándar de la población. Si tu empresa conoce esto, y otras no, probablemente te vaya mejor (asumiendo que todas fabrican zapatos de calidad similar). ¿Por qué te iría mejor y cómo podrías usar esos parámetros? Acá va una buena razón: como empresa, querés que la oferta coincida con la demanda. Si fabricás demasiados zapatos de talles muy chicos o muy grandes, y no hay suficientes personas que los compren, estás haciendo un montón de calzado que no se va a vender. Y si no fabricás suficientes zapatos de los talles más comunes, vas a estar dejando plata sobre la mesa. ¿Verdad? Sí. Entonces, ¿qué sería lo óptimo? Tal vez fabricarías diferentes cantidades de zapatos en cada talle, de acuerdo a la demanda de cada uno. Y sabrías algo sobre la demanda si conocieras la frecuencia de cada talle en la población. Para eso, necesitarías conocer los parámetros poblacionales.
 
-Por suerte, no es tan difícil obtener los parámetros poblacionales sin medir a toda la población. ¿Quién tiene tiempo para medirle los pies a todo el mundo? Nadie. Lo que hacés, en cambio, es seleccionar al azar un grupo de personas, medirles los pies, y después calcular los parámetros de esa muestra. Si la muestra es suficientemente grande, ya aprendimos que **la media muestral** es una muy buena estimación de **la media poblacional**. Y pronto vamos a ver que también hay versiones del desvío estándar muestral que estiman bastante bien **la desviación estándar poblacional**. Quizás la distribución de talles de calzado no tenga una forma exactamente normal. Aun así, si recolectás una muestra lo bastante grande, **la forma de la distribución muestral** será una buena aproximación a la forma de la distribución poblacional. Todas estas son buenas razones para interesarse por la **estimación de parámetros poblacionales**. Pero... ¿acaso dirigís una empresa de calzado? Probablemente no.
+Por suerte, no es tan difícil obtener los parámetros poblacionales sin medir a toda la población. ¿Quién tiene tiempo para medirle los pies a todo el mundo? Nadie. Lo que hacés, en cambio, es seleccionar al azar un grupo de personas, medirles los pies, y después calcular los parámetros de esa muestra. Si la muestra es suficientemente grande, ya aprendimos que la media muestral es una muy buena estimación de la media poblacional. Y pronto vamos a ver que también hay versiones del desvío estándar muestral que estiman bastante bien la desviación estándar poblacional. Quizás la distribución de talles de calzado no tenga una forma exactamente normal. Aun así, si recolectás una muestra lo bastante grande, la forma de la distribución muestral será una buena aproximación a la forma de la distribución poblacional. Todas estas son buenas razones para interesarse por la estimación de parámetros poblacionales. Pero... ¿acaso dirigís una empresa de calzado? Probablemente no.
 
 ### Parámetros poblacionales abstractos
 
-Incluso cuando pensamos que estamos hablando de algo concreto en psicología, a menudo enseguida se vuelve abstracto. En lugar de medir la población de talles de calzado, ¿qué tal si intentamos medir la población de la **felicidad humana**? Todos creemos saber lo que es la felicidad. Todos tienen más o menos cantidad de ella. Hay mucha gente, así que... debe haber una “población de felicidad”, ¿no?
-
-Tal vez. Pero no es algo muy concreto. El primer problema es cómo **medir** la felicidad. Supongamos que usamos un cuestionario. Considerá estas preguntas:
+Incluso cuando pensamos que estamos hablando de algo concreto en psicología, a menudo enseguida se vuelve abstracto. En lugar de medir la población de talles de calzado, ¿qué tal si intentamos medir la población de la **felicidad humana**? Todos creemos saber lo que es la felicidad. Todos tienen más o menos cantidad de ella. Hay mucha gente, así que... debe haber una “población de felicidad”, ¿no? Tal vez. Pero no es algo muy concreto. El primer problema es cómo medir la felicidad. Supongamos que usamos un cuestionario. Considerá estas preguntas:
 
 > ¿Qué tan feliz te sentís ahora mismo en una escala del 1 al 7? ¿Qué tan feliz sos en general en una escala del 1 al 7?  ¿Qué tan feliz te sentís a la mañana en una escala del 1 al 7? ¿Qué tan feliz te sentís a la tarde en una escala del 1 al 7?
   
@@ -1202,50 +1202,31 @@ Tal vez. Pero no es algo muy concreto. El primer problema es cómo **medir** la 
 1  = muy infeliz
 2  = infeliz
 3 = algo infeliz
-4 = más o menos
+4 = en el medio
 5 = algo feliz
 6 = feliz
 7 = muy feliz
 
-Olvidémonos de preguntarle esto a todo el mundo. Supongamos que se lo preguntamos a mucha gente (nuestra muestra). ¿Qué creés que va a pasar? Bueno, obviamente, la gente va a dar **todo tipo de respuestas**, ¿no? Podemos contar cuántas veces se eligió cada opción y graficarlas en un histograma. Eso nos mostraría la **distribución de puntajes de felicidad** en nuestra muestra.
-“¡Genial, fantástico!”, decís. Sí, está todo muy bien.
+Olvidémonos de preguntarle esto a todo el mundo. Supongamos que se lo preguntamos a mucha gente (nuestra muestra). ¿Qué creés que va a pasar? Bueno, obviamente, la gente va a dar todo tipo de respuestas, ¿no? Podemos contar cuántas veces se eligió cada opción y graficarlas en un histograma. Eso nos mostraría la distribución de puntajes de felicidad en nuestra muestra. “¡Genial, fantástico!”, decís. Sí, está todo muy bien.
 
-Por un lado, podemos decir un montón de cosas sobre las personas **en nuestra muestra**. Podemos decir quién dijo que es feliz y quién no —¡al fin y al cabo, nos lo acaban de decir!
+Por un lado, podemos decir un montón de cosas sobre las personas en nuestra muestra. Podemos decir quién dijo que es feliz y quién no —¡al fin y al cabo, nos lo acaban de decir!
 
-Pero... ¿qué podemos decir sobre la **población más grande**? ¿Podemos usar los parámetros de nuestra muestra (media, desvío, forma, etc.) para **estimar algo sobre la población completa**? ¿Podemos inferir qué tan feliz es “todo el mundo” a partir de lo que dijo nuestra muestra?
-
-**¡PAREN TODO!**
+Pero... ¿qué podemos decir sobre la población más grande? ¿Podemos usar los parámetros de nuestra muestra (media, desvío, forma, etc.) para estimar algo sobre la población completa? ¿Podemos inferir qué tan feliz es “todo el mundo” a partir de lo que dijo nuestra muestra?
 
 #### Complicaciones de la inferencia
 
-Antes de listar un montón de complicaciones, dejame decirte qué creo que **sí** podemos hacer con nuestra muestra. Siempre que sea lo suficientemente grande, los parámetros de nuestra muestra serán **una muy buena estimación de cómo se vería otra muestra** tomada de la misma población. Y por los motivos que vamos a discutir, muchas veces eso es todo lo que podemos decir. Pero está bien: como vas a ver a lo largo de este libro, **podemos trabajar con eso**.
+Antes de listar un montón de complicaciones, dejame decirte qué creo que sí podemos hacer con nuestra muestra. Siempre que sea lo suficientemente grande, los parámetros de nuestra muestra serán una bastante buena estimación de cómo se vería otra muestra tomada de la misma población. Y por los motivos que vamos a discutir, muchas veces eso es todo lo que podemos decir. Pero está bien: como vas a ver a lo largo de este libro, podemos trabajar con eso.
 
 
 **Problema 1: múltiples poblaciones**
-Si observás una muestra grande de respuestas a un cuestionario, vas a encontrar evidencia de **múltiples distribuciones** dentro de tu muestra. Las personas responden de maneras distintas. Algunas personas son muy cautas y evitan los extremos. Sus respuestas tienden a concentrarse en el centro de la escala, con muchos 3, 4 y 5. Otras personas responden de manera muy bimodal: se sienten muy felices o muy infelices dependiendo del momento del día. Sus respuestas se agrupan mayormente en los extremos: 1, 2, 6 y 7. Esos números parecen provenir de una distribución completamente distinta.
-También hay personas que son completamente felices o completamente infelices. Una vez más, estos dos “grupos” de personas generan respuestas que parecen venir de **dos distribuciones diferentes**: una con casi todos 6 y 7, y otra con casi todos 1 y 2. Otras personas responden de forma bastante aleatoria, y sus respuestas se distribuyen de manera casi uniforme en toda la escala.  Entonces, ¿existe una única población con parámetros que podamos estimar a partir de nuestra muestra? **Probablemente no.** Podría tratarse de una **mezcla de muchas poblaciones**, cada una con su propia distribución.
-
+Si observás una muestra grande de respuestas a un cuestionario, vas a encontrar evidencia de múltiples distribuciones dentro de tu muestra. Las personas responden de maneras distintas. Algunas personas son muy cautas y evitan los extremos. Sus respuestas tienden a concentrarse en el centro de la escala, con muchos 3, 4 y 5. Otras personas responden de manera muy bimodal: se sienten muy felices o muy infelices dependiendo del momento del día. Sus respuestas se agrupan mayormente en los extremos: 1, 2, 6 y 7. Esos números parecen provenir de una distribución completamente distinta. También hay personas que son completamente felices o completamente infelices. Una vez más, estos dos “grupos” de personas generan respuestas que parecen venir de dos distribuciones diferentes: una con casi todos 6 y 7, y otra con casi todos 1 y 2. Otras personas responden de forma bastante aleatoria, y sus respuestas se distribuyen de manera casi uniforme en toda la escala.  Entonces, ¿existe una única población con parámetros que podamos estimar a partir de nuestra muestra? **Probablemente no. Podría tratarse de una mezcla de muchas poblaciones, cada una con su propia distribución.
 
 **Problema 2: ¿Qué miden realmente estas preguntas?**
-Si todo el propósito de hacer el cuestionario es estimar la felicidad de la población, entonces realmente tenemos que preguntarnos si nuestras mediciones **nos dicen algo sobre la felicidad en primer lugar**.
+Si todo el propósito de hacer el cuestionario es estimar la felicidad de la población, entonces realmente tenemos que preguntarnos si nuestras mediciones nos dicen algo sobre la felicidad en primer lugar. Algunas preguntas que surgen: ¿Las personas son precisas al decir cuán felices son? ¿La medición de felicidad depende de la escala usada? Por ejemplo, ¿los resultados serían distintos si usáramos una escala de 0 a 100, o de -100 a +100, o si no usáramos números en absoluto? ¿La medición de felicidad depende de cómo está redactada la pregunta? ¿Una medida como esta nos dice **todo** lo que queremos saber sobre la felicidad? (probablemente no). ¿Qué cosas está dejando afuera? (¿quién sabe? probablemente muchas).
 
-Algunas preguntas que surgen:
+En resumen, nadie sabe con certeza si este tipo de preguntas miden lo que queremos que midan, solo esperamos que lo hagan. Lo que sí sabemos bastante bien es qué tipo de cosas miden realmente este tipo de preguntas. Es algo bastante evidente, que está justo frente a nosotros: las mediciones de cuestionarios miden cómo la gente responde cuestionarios. Dicho de otro modo: miden cómo se comportan las personas cuando se les da un cuestionario para responder. Esto puede también reflejar algo sobre la felicidad, si la pregunta trata sobre felicidad. Pero, resulta que las personas son notablemente consistentes en cómo responden, incluso cuando las preguntas son totalmente absurdas, o cuando ni siquiera hay preguntas (¡solo números para elegir!) [@maul\_rethinking\_2017]. 
 
-* ¿Las personas son precisas al decir cuán felices son?
-* ¿La medición de felicidad depende de la escala usada? Por ejemplo, ¿los resultados serían distintos si usáramos una escala de 0 a 100, o de -100 a +100, o si no usáramos números en absoluto?
-* ¿La medición de felicidad depende de cómo está redactada la pregunta?
-* ¿Una medida como esta nos dice **todo** lo que queremos saber sobre la felicidad? (probablemente no).
-* ¿Qué cosas está dejando afuera? (¿quién sabe? probablemente muchas).
-
-En resumen, **nadie sabe con certeza si este tipo de preguntas miden lo que queremos que midan**. Solo **esperamos** que lo hagan. Lo que **sí** sabemos bastante bien es **qué tipo de cosas miden realmente este tipo de preguntas**. Es algo bastante evidente, que está justo frente a nosotros: **las mediciones de cuestionarios miden cómo la gente responde cuestionarios**. Dicho de otro modo: miden **cómo se comportan las personas cuando se les da un cuestionario para responder**. Esto puede también reflejar algo sobre la felicidad, si la pregunta trata sobre felicidad. Pero, resulta que las personas son notablemente **consistentes** en cómo responden, incluso cuando las preguntas son totalmente absurdas, o cuando **ni siquiera hay preguntas** (¡solo números para elegir!) [@maul\_rethinking\_2017]. La enseñanza que nos dejan estas complicaciones es que, en psicología, podemos recolectar muestras… pero muchas veces **no tenemos una idea clara de qué población está asociada a esas muestras**. Puede que haya muchas poblaciones… o que ni siquiera haya una única población bien definida.
-
-
-### Algunas complicaciones importantes para llevarse
-
-La enseñanza aquí es que, aunque podemos recolectar muestras, **en psicología a menudo no tenemos una buena idea de cuál es la población que podría estar asociada a esas muestras**.
-Puede haber muchas poblaciones distintas.
-O la población puede variar dependiendo de a quién le preguntes.
-Y finalmente, la “población” quizás **no sea la que vos querés que sea**.
+La enseñanza que nos dejan estas complicaciones es que, en psicología, podemos recolectar muestras… pero muchas veces no tenemos una idea clara de qué población está asociada a esas muestras. Puede haber muchas poblaciones distintas. O la población puede variar dependiendo de a quién le preguntes. Y finalmente, la “población” quizás no sea la que vos querés que sea.
 
 ### Experimentos y parámetros poblacionales
 

@@ -565,15 +565,9 @@ y no está nada claro cuál de ellas debería considerarse la verdadera poblaci�
 
 ### Muestras aleatorias simples
 
-Independientemente de cómo definamos la población, el punto clave es que la muestra es un **subconjunto** de la población,
-y nuestro objetivo es usar lo que sabemos de la muestra para hacer inferencias sobre las propiedades de la población.
+Independientemente de cómo definamos la población, el punto clave es que la muestra es un subconjunto de la población, y nuestro objetivo es usar lo que sabemos de la muestra para hacer inferencias sobre las propiedades de la población. La relación entre la muestra y la población depende del **procedimiento** por el cual se seleccionó la muestra. Este procedimiento se conoce como **método de muestreo**, y es importante entender por qué eso importa.
 
-La relación entre la muestra y la población **depende del procedimiento** por el cual se seleccionó la muestra.
-Este procedimiento se conoce como **método de muestreo**, y es importante entender por qué eso importa.
-
-Para mantenerlo simple, imaginá que tenemos una bolsa con 10 fichas.
-Cada ficha tiene una letra única impresa, así que podemos distinguirlas.
-Las fichas vienen en dos colores: negro y blanco.
+Para mantenerlo simple, imaginá que tenemos una bolsa con 10 fichas. Cada ficha tiene una letra única impresa, así que podemos distinguirlas. Las fichas vienen en dos colores: negro y blanco.
 
 ```{r echo=F}
 #| label: fig-srs1
@@ -584,20 +578,9 @@ knitr::include_graphics("imgs/navarro_img/estimation/srs1_es.png")
 
 Este conjunto de fichas es la población de interés, y está representada gráficamente en la parte izquierda de la figura @fig-srs1.
 
-Como podés ver en la imagen, hay 4 fichas negras y 6 fichas blancas,
-pero en la vida real **no sabríamos eso a menos que miremos dentro de la bolsa**.
+Como podés ver en la imagen, hay 4 fichas negras y 6 fichas blancas, pero en la vida real no sabríamos eso a menos que miremos dentro de la bolsa. Ahora imaginá que hacés el siguiente “experimento”: agitás la bolsa, cerrás los ojos y sacás 4 fichas, sin devolverlas después de sacarlas. Primero sale la ficha $a$ (negra), luego la $c$ (blanca), después la $j$ (blanca), y finalmente la $b$ (negra). Si quisieras, podrías volver a meter todas las fichas en la bolsa y repetir el experimento, como se muestra en el lado derecho de la figura @fig-srs1. Cada vez vas a obtener resultados distintos, pero el procedimiento es idéntico en todos los casos. El hecho de que el mismo procedimiento pueda producir distintos resultados cada vez es lo que hace que lo llamemos un **proceso aleatorio**. Sin embargo, como agitamos la bolsa antes de sacar cualquier ficha, parece razonable pensar que cada ficha tenía la misma probabilidad de ser elegida. Un procedimiento en el que cada miembro de la población tiene la misma probabilidad de ser seleccionado se llama una **muestra aleatoria simple**. El hecho de que **no** devolvimos las fichas a la bolsa después de sacarlas significa que no podés observar la misma ficha dos veces, y en estos casos se dice que las observaciones fueron tomadas **sin reemplazo**.
 
-Ahora imaginá que hacés el siguiente “experimento”: agitás la bolsa, cerrás los ojos y sacás 4 fichas, sin devolverlas después de sacarlas.
-Primero sale la ficha $a$ (negra), luego la $c$ (blanca), después la $j$ (blanca), y finalmente la $b$ (negra).
-Si quisieras, podrías volver a meter todas las fichas en la bolsa y repetir el experimento, como se muestra en el lado derecho de la figura @fig-srs1.
-
-Cada vez vas a obtener resultados distintos, pero el procedimiento es **idéntico** en todos los casos.
-El hecho de que el mismo procedimiento pueda producir distintos resultados cada vez es lo que hace que lo llamemos un **proceso aleatorio**.
-Sin embargo, como agitamos la bolsa antes de sacar cualquier ficha, parece razonable pensar que **cada ficha tenía la misma probabilidad de ser elegida**. Un procedimiento en el que **cada miembro de la población tiene la misma probabilidad de ser seleccionado** se llama una **muestra aleatoria simple**.El hecho de que **no** devolvimos las fichas a la bolsa después de sacarlas significa que **no podés observar la misma ficha dos veces**, y en estos casos se dice que las observaciones fueron tomadas **sin reemplazo**.
-
-Para ayudarte a entender la importancia del procedimiento de muestreo, considerá una alternativa.
-Supongamos que mi hijo de 5 años abre la bolsa y decide sacar cuatro fichas negras, sin devolver ninguna.
-Este esquema de muestreo **sesgado** se muestra en la figura @fig-brs.
+Para ayudarte a entender la importancia del procedimiento de muestreo, considerá una alternativa. Supongamos que mi hijo de 5 años abre la bolsa y decide sacar cuatro fichas negras, sin devolver ninguna. Este esquema de muestreo **sesgado** se muestra en la figura @fig-brs.
 
 ```{r echo=F}
 #| label: fig-brs
@@ -606,19 +589,10 @@ Este esquema de muestreo **sesgado** se muestra en la figura @fig-brs.
 knitr::include_graphics("imgs/navarro_img/estimation/brs_es.png")
 ```
 
-Ahora considerá el valor informativo de observar 4 fichas negras y 0 blancas.
-Claramente, eso **depende del esquema de muestreo**, ¿no?
-Si sabés que el procedimiento estaba sesgado a seleccionar solo fichas negras, entonces una muestra compuesta únicamente por fichas negras **no te dice mucho** sobre la población. Por esta razón, a lxs estadísticxs **les encanta** cuando un conjunto de datos puede considerarse una muestra aleatoria simple, porque hace que el análisis de los datos sea **mucho** más fácil.
+Ahora considerá el valor informativo de observar 4 fichas negras y 0 blancas. Claramente, eso depende del esquema de muestreo, ¿no? Si sabés que el procedimiento estaba sesgado a seleccionar solo fichas negras, entonces una muestra compuesta únicamente por fichas negras no te dice mucho sobre la población. Por esta razón, a los estadísticos les encanta cuando un conjunto de datos puede considerarse una muestra aleatoria simple, porque hace que el análisis de los datos sea **mucho** más fácil.
 
-Hay un tercer procedimiento que vale la pena mencionar.
-Esta vez, cerramos los ojos, agitamos la bolsa y sacamos una ficha.
-**Pero ahora**, registramos la ficha y luego la devolvemos a la bolsa.
-De nuevo, cerramos los ojos, agitamos la bolsa y sacamos otra ficha.
-Repetimos este procedimiento hasta tener 4 fichas.
-
-Los conjuntos de datos generados de esta manera **también** se consideran muestras aleatorias simples,
-pero como devolvemos las fichas a la bolsa después de cada extracción, se dice que es un muestreo **con reemplazo**.
-La diferencia con el primer caso es que ahora **es posible observar el mismo miembro de la población más de una vez**, como se muestra en la figura @fig-srs2.
+Hay un tercer procedimiento que vale la pena mencionar. Esta vez, cerramos los ojos, agitamos la bolsa y sacamos una ficha.
+Pero ahora, registramos la ficha y luego la devolvemos a la bolsa. De nuevo, cerramos los ojos, agitamos la bolsa y sacamos otra ficha. Repetimos este procedimiento hasta tener 4 fichas. Los conjuntos de datos generados de esta manera también se consideran muestras aleatorias simples, pero como devolvemos las fichas a la bolsa después de cada extracción, se dice que es un muestreo **con reemplazo**. La diferencia con el primer caso es que ahora es posible observar el mismo miembro de la población más de una vez, como se muestra en la figura @fig-srs2.
 
 ```{r echo=F}
 #| label: fig-srs2
@@ -627,126 +601,35 @@ La diferencia con el primer caso es que ahora **es posible observar el mismo mie
 knitr::include_graphics("imgs/navarro_img/estimation/srs2_es.png")
 ```
 
-La mayoría de los experimentos en psicología tienden a ser sin reemplazo,
-porque **no se permite que una misma persona participe dos veces** en el mismo experimento.
-Sin embargo, la mayoría de la teoría estadística **asume** que los datos provienen de una muestra aleatoria simple **con reemplazo**.
-
-En la vida real, esto **rara vez importa**.
-Si la población es grande (por ejemplo, más de 10 elementos),
-la diferencia entre muestreo con o sin reemplazo es **demasiado pequeña como para preocuparse**.
-
-En cambio, la diferencia entre una **muestra aleatoria simple** y una **muestra sesgada** **no** es algo que podamos ignorar tan fácilmente.
-
+La mayoría de los experimentos en psicología tienden a ser sin reemplazo, porque no se permite que una misma persona participe dos veces en el mismo experimento. Sin embargo, la mayoría de la teoría estadística asume que los datos provienen de una muestra aleatoria simple **con** reemplazo. En la vida real, esto rara vez importa. Si la población es grande (por ejemplo, más de 10 elementos), la diferencia entre muestreo con o sin reemplazo es demasiado pequeña como para preocuparse. En cambio, la diferencia entre una muestra aleatoria simple y una muestra sesgada no es algo que podamos ignorar tan fácilmente.
 
 ### La mayoría de las muestras no son aleatorias simples
 
-Como pudiste ver en la lista de posibles poblaciones que mostré antes, es casi imposible obtener una muestra aleatoria simple de la mayoría de las poblaciones de interés.
-Cuando hago experimentos, ya considero un pequeño milagro que mis participantes sean una muestra aleatoria de lxs estudiantes de psicología de grado en la Universidad de Adelaida,
-¡y eso que esa es por lejos la población más acotada a la que podría querer generalizar!
+Como pudiste ver en la lista de posibles poblaciones que mostré antes, es casi imposible obtener una muestra aleatoria simple de la mayoría de las poblaciones de interés. Cuando hago experimentos, ya considero un pequeño milagro que mis participantes sean una muestra aleatoria de los estudiantes de psicología de grado en la Universidad de Adelaide, ¡y eso que esa es por lejos la población más acotada a la que podría querer generalizar! Una discusión detallada de otros esquemas de muestreo está más allá del alcance de este libro, pero para que tengas una idea de lo que existe, acá listo algunos de los más importantes:
 
-Una discusión detallada de otros esquemas de muestreo está más allá del alcance de este libro,
-pero para que tengas una idea de lo que existe, acá listo algunos de los más importantes:
+- **Muestreo estratificado**. Supongamos que tu población se divide (o se puede dividir) en varias subpoblaciones diferentes, o **estratos**. Por ejemplo, tal vez estés haciendo un estudio en varios sitios distintos. En lugar de intentar muestrear al azar de la población total, podés intentar recolectar una muestra aleatoria separada de cada uno de los estratos. El muestreo estratificado a veces es más fácil de realizar que el muestreo aleatorio simple, especialmente cuando la población ya está dividida en estratos definidos. También puede ser más eficiente, sobre todo si algunas subpoblaciones son poco frecuentes. Por ejemplo, al estudiar esquizofrenia, sería mucho mejor dividir la población en dos estratos (con y sin esquizofrenia), y luego seleccionar la misma cantidad de personas de cada grupo. Si seleccionaras gente al azar, obtendrías tan pocas personas con esquizofrenia que el estudio sería inútil. Este tipo específico de muestreo estratificado se conoce como **sobremuestreo**, porque busca deliberadamente sobre-representar grupos poco frecuentes.
 
-- **Muestreo estratificado**. Supongamos que tu población se divide (o se puede dividir) en varias subpoblaciones diferentes, o **estratos**.
-  Por ejemplo, tal vez estés haciendo un estudio en varios sitios distintos.
-  En lugar de intentar muestrear al azar de la población total, podés intentar recolectar una muestra aleatoria separada de cada uno de los estratos.
-  El muestreo estratificado a veces es más fácil de realizar que el muestreo aleatorio simple, especialmente cuando la población ya está dividida en estratos definidos.
-  También puede ser más eficiente, sobre todo si algunas subpoblaciones son poco frecuentes.
-  Por ejemplo, al estudiar esquizofrenia, sería mucho mejor dividir la población en dos estratos (con y sin esquizofrenia), y luego seleccionar la misma cantidad de personas de cada grupo.
-  Si seleccionaras gente al azar, obtendrías tan pocas personas con esquizofrenia que el estudio sería inútil.
-  Este tipo específico de muestreo estratificado se conoce como **sobremuestreo** (*oversampling*), porque busca deliberadamente sobre-representar grupos poco frecuentes.
+- **Muestreo en bola de nieve** es una técnica especialmente útil cuando la población de interés es “oculta” o difícil de acceder, y es bastante común en las ciencias sociales. Por ejemplo, supongamos que los investigadores quieren hacer una encuesta de opinión entre personas trans. El equipo de investigación tal vez tenga datos de contacto de unas pocas personas trans, así que la encuesta empieza por invitarlas a participar (etapa 1). Al final de la encuesta, se les pide a los participantes que proporcionen contactos de otras personas que podrían querer participar. En la etapa 2, se encuesta a esas nuevas personas. El proceso continúa hasta que los investigadores hayan reunido suficientes datos. La gran ventaja del muestreo en bola de nieve es que te permite obtener datos en situaciones donde de otro modo sería imposible. En el plano estadístico, la principal desventaja es que la muestra realmente es no aleatoria, y en formas difíciles de compensar. En el plano ético, la desventaja es que el procedimiento puede ser problemático si no se maneja bien, porque las poblaciones ocultas a menudo están ocultas por una razón. Elegí a las personas trans como ejemplo para destacar esto: si no sos cuidadoso, podrías terminar exponiendo a alguien que no quiere ser expuesto (algo realmente inaceptable). Y eso puede tener consecuencias personales o profesionales graves para esa persona. Incluso si no cometés ese error, sigue siendo una intromisión usar las redes sociales de las personas para estudiarlas. Es muy difícil obtener consentimiento informado **antes** de contactarlas, y en muchos casos el simple hecho de decirles “hola, queremos estudiar tus datos” puede ser molesto o invasivo. Las redes sociales son cosas complejas, y el hecho de que puedas usarlas para recolectar datos no siempre significa que debas hacerlo.
 
-- **Muestreo en bola de nieve** (*snowball sampling*) es una técnica especialmente útil cuando la población de interés es “oculta” o difícil de acceder, y es bastante común en las ciencias sociales.
-  Por ejemplo, supongamos que lxs investigadorxs quieren hacer una encuesta de opinión entre personas trans.
-  El equipo de investigación tal vez tenga datos de contacto de unas pocas personas trans, así que la encuesta empieza por invitarlas a participar (etapa 1).
-  Al final de la encuesta, se les pide a lxs participantes que proporcionen contactos de otras personas que podrían querer participar.
-  En la etapa 2, se encuesta a esas nuevas personas.
-  El proceso continúa hasta que lxs investigadorxs hayan reunido suficientes datos.
-
-  La gran **ventaja** del muestreo en bola de nieve es que te permite obtener datos en situaciones donde de otro modo sería **imposible**.
-  En el plano estadístico, la principal **desventaja** es que la muestra es fuertemente no aleatoria, y en formas difíciles de compensar.
-  En el plano ético, la desventaja es que el procedimiento puede ser problemático si no se maneja bien, porque las poblaciones ocultas a menudo están ocultas **por una razón**.
-
-  Elegí a las personas trans como ejemplo para destacar esto: si no sos cuidadoso, podrías terminar **exponiendo a alguien que no quiere ser visibilizadx** (algo realmente inaceptable).
-  Y eso puede tener consecuencias personales o profesionales graves para esa persona. Incluso si no cometés ese error, **sigue siendo una intromisión** usar las redes sociales de las personas para estudiarlas. Es muy difícil obtener consentimiento informado **antes** de contactarlas, y en muchos casos el simple hecho de decirles “hola, queremos estudiar tus datos” puede ser molesto o invasivo. Las redes sociales son cosas complejas, y el hecho de que *puedas* usarlas para recolectar datos no siempre significa que *debás* hacerlo.
-
-- **Muestreo por conveniencia** es más o menos lo que suena: las muestras se eligen de una forma que le resulte conveniente al/la investigador/a,
-  y no son seleccionadas al azar de la población de interés.
-  El muestreo en bola de nieve es una forma de muestreo por conveniencia, pero hay muchas otras.
-  Un ejemplo común en psicología son los estudios que se hacen con estudiantes de grado en psicología.
-  Estas muestras suelen ser no aleatorias en dos sentidos: primero, porque limitás los datos a una sola subpoblación (estudiantes de psicología);
-  segundo, porque lxs estudiantes suelen elegir en qué estudios participar,
-  así que la muestra es un subconjunto **autoseleccionado** de estudiantes de psicología,
-  no un subconjunto seleccionado aleatoriamente.
-  En la vida real, **la mayoría de los estudios son muestras por conveniencia** de algún tipo.
-  A veces eso es una limitación seria... pero **no siempre**.
-
+- **Muestreo por conveniencia** es más o menos lo que suena: las muestras se eligen de una forma que le resulte conveniente al investigador, y no son seleccionadas al azar de la población de interés. El muestreo en bola de nieve es una forma de muestreo por conveniencia, pero hay muchas otras. Un ejemplo común en psicología son los estudios que se hacen con estudiantes de grado en psicología. Estas muestras suelen no ser aleatorias en dos sentidos: primero, depender de estudiantes de psicología de grado implica automáticamente que los datos se limitan a una única subpoblación. Segundo, los propios estudiantes suelen elegir en qué estudios participar, por lo que la muestra termina siendo un subconjunto autoseleccionado de estudiantes de psicología, y no uno seleccionado al azar. En la práctica, la mayoría de los estudios se basan en muestras por conveniencia de una forma u otra. A veces esto representa una limitación importante, pero no siempre.
 
 ### ¿Qué tan grave es no tener una muestra aleatoria simple?
 
-Ok, entonces recolectar datos en el mundo real **casi nunca** involucra una muestra aleatoria simple. ¿Y eso importa?
+Ok, entonces recolectar datos en el mundo real casi nunca involucra una muestra aleatoria simple. ¿Y eso importa? Con un poco de reflexión, te debería quedar claro que **puede** importar si tus datos no son una muestra aleatoria simple: basta con pensar en la diferencia entre la figura @fig-srs1 y la figura @fig-brs. Sin embargo, no es tan grave como suena. Algunos tipos de muestras sesgadas no son problemáticas en absoluto. Por ejemplo, cuando usás muestreo estratificado, en realidad **sabés** cuál es el sesgo porque vos mismo lo generaste a propósito, a menudo para **incrementar** la efectividad de tu estudio. Y existen técnicas estadísticas que permiten ajustar los análisis para tener en cuenta esos sesgos (¡aunque este libro no las cubre!).
 
-Con un poco de reflexión, te debería quedar claro que **puede** importar si tus datos **no** son una muestra aleatoria simple:
-basta con pensar en la diferencia entre la figura @fig-srs1 y la figura @fig-brs.
+En general, es importante recordar que el muestreo aleatorio es un medio para un fin, no un fin en sí mismo. Supongamos que usaste una muestra por conveniencia, y por eso podés asumir que tiene algún sesgo. Un sesgo en el método de muestreo solo es problemático si te lleva a sacar conclusiones equivocadas. Desde esa perspectiva, no necesitamos que la muestra sea aleatoria en absolutamente **todos** los aspectos: solo necesitamos que sea aleatoria en relación al fenómeno psicológico que estamos estudiando. Supongamos que estoy haciendo un estudio sobre la capacidad de memoria de trabajo. En el estudio 1, tengo la capacidad de muestrear al azar a toda la población humana viva, con una sola excepción: solo puedo muestrear personas nacidas un lunes. En el estudio 2, puedo muestrear al azar a la población australiana. Quiero generalizar mis resultados a toda la población humana actual. ¿Cuál de los dos estudios preferirías? La respuesta, obviamente, es el estudio 1. ¿Por qué? Porque no hay ninguna razón para pensar que “haber nacido un lunes” tenga alguna relación interesante con la capacidad de memoria de trabajo. En cambio, sí puedo imaginar varias razones por las que “ser australiano” podría importar. Australia es un país rico, industrializado, con un sistema educativo muy desarrollado. Las personas que crecieron en ese sistema habrán tenido experiencias de vida mucho más parecidas a las de quienes diseñaron los tests de capacidad de memoria de trabajo. Esa experiencia compartida podría traducirse en creencias similares sobre cómo “hacer un test”, en supuestos comunes sobre cómo funcionan los experimentos psicológicos, y así. Estas cosas podrían importar. Por ejemplo, el “estilo de rendir exámenes” puede haber enseñado a los participantes australianos a concentrarse exclusivamente en materiales bastante abstractos, comparado con personas que no crecieron en un entorno similar, lo que podría llevar a una imagen distorsionada de lo que realmente es la capacidad de memoria de trabajo.
 
-Sin embargo, **no es tan grave como suena**.
-Algunos tipos de muestras sesgadas **no son problemáticos en absoluto**.
-Por ejemplo, cuando usás muestreo estratificado, en realidad **sabés** cuál es el sesgo porque **vos mismx lo generaste a propósito**,
-a menudo para hacer que tu estudio sea más efectivo.
-Y existen técnicas estadísticas que permiten ajustar los análisis para tener en cuenta esos sesgos (¡aunque este libro no las cubre!).
+Hay dos ideas importantes escondidas en esta discusión: Primero, cuando diseñás tus propios estudios, es importante pensar cuál es la población que te interesa, y esforzarte por muestrear de una forma apropiada para esa población. En la práctica, muchas veces no te queda otra que trabajar con una “muestra por conveniencia” (por ejemplo, docentes de psicología que muestrean estudiantes de psicología porque es la forma más barata de recolectar datos, y nuestros presupuestos no son exactamente desbordantes de oro). Pero si hacés eso, al menos tendrías que dedicar algo de tiempo a pensar cuáles son los posibles riesgos de esta práctica.
 
-En general, es importante recordar que el muestreo aleatorio **es un medio para un fin**, no un fin en sí mismo.
-Supongamos que usaste una muestra por conveniencia, y por eso podés asumir que tiene algún sesgo.
-Un sesgo en el método de muestreo **solo es problemático si te lleva a sacar conclusiones equivocadas**.
-
-Desde esa perspectiva, **no necesitamos que la muestra sea aleatoria en absolutamente todos los aspectos**:
-solo necesitamos que sea aleatoria **en relación al fenómeno psicológico que estamos estudiando**.
-
-Supongamos que estoy haciendo un estudio sobre la capacidad de memoria de trabajo.
-En el estudio 1, tengo la capacidad de muestrear al azar de toda la población humana viva, **con una sola excepción**: solo puedo muestrear personas nacidas un lunes.
-En el estudio 2, puedo muestrear al azar de la población australiana.
-
-Quiero generalizar mis resultados a **toda la población humana actual**.
-
-¿Cuál de los dos estudios preferirías? La respuesta, obviamente, es el estudio 1. ¿Por qué? Porque **no hay ninguna razón** para pensar que “haber nacido un lunes” tenga alguna relación interesante con la capacidad de memoria de trabajo. En cambio, **sí puedo imaginar varias razones** por las que “ser australianx” podría importar. Australia es un país rico, industrializado, con un sistema educativo muy desarrollado. Las personas que crecieron en ese sistema habrán tenido experiencias de vida **mucho más parecidas** a las de quienes diseñaron los tests de capacidad de memoria de trabajo.
-Esa experiencia compartida podría traducirse en creencias similares sobre cómo “hacer un test”, en supuestos comunes sobre cómo funcionan los experimentos psicológicos, y así.
-
-Estas cosas **podrían importar**. Por ejemplo, el “estilo de rendir exámenes” puede haber enseñado a lxs participantes australianxs a concentrarse exclusivamente en materiales bastante abstractos,
-comparado con personas que no crecieron en un entorno similar, lo que podría llevar a una **imagen distorsionada** de lo que realmente es la capacidad de memoria de trabajo.
-
-Hay dos ideas importantes escondidas en esta discusión: Primero, cuando diseñás tus propios estudios, es importante pensar **cuál es la población que te interesa**,
-y esforzarte por muestrear de una forma apropiada para esa población. En la práctica, muchas veces no te queda otra que trabajar con una “muestra por conveniencia”
-(por ejemplo, docentes de psicología que usan estudiantes de psicología porque es la forma más barata de recolectar datos, y nuestros presupuestos no son exactamente desbordantes de oro). Pero si hacés eso, al menos tendrías que dedicar algo de tiempo a pensar **cuáles son los posibles riesgos** de trabajar así.
-
-Segundo, si vas a criticar el estudio de otra persona porque usó una muestra por conveniencia,en lugar de haber hecho el esfuerzo enorme de muestrear aleatoriamente de toda la población humana, al menos tené la cortesía de ofrecer una **hipótesis concreta** sobre **cómo** podría haberse distorsionado el resultado. Recordá: toda persona que trabaja en ciencia es consciente de este problema,
-y hace lo que puede por compensarlo.
-
-Decir simplemente “el estudio solo incluyó personas del grupo TAL” **no ayuda en nada**,
-y roza lo insultante para lxs investigadorxs, que probablemente **sí estaban al tanto del problema**,
-pero no disponían de la **infinita cantidad de tiempo y dinero** que haría falta para construir la muestra perfecta. En resumen: si querés ofrecer una crítica **responsable** sobre el muestreo, entonces sé **útil**. Repetir verdades obvias como las que acabo de presentar en esta sección **no sirve de nada**.
+Segundo, si vas a criticar el estudio de otra persona porque usó una muestra por conveniencia, en lugar de haber hecho el esfuerzo enorme de muestrear aleatoriamente de toda la población humana, al menos tené la cortesía de ofrecer una hipótesis concreta sobre **cómo** podría haberse distorsionado el resultado. Recordá: toda persona que trabaja en ciencia es consciente de este problema, y hace lo que puede por compensarlo. Decir simplemente “el estudio solo incluyó personas del grupo TAL” no ayuda en nada, y roza lo insultante para los investigadores, que probablemente sí estaban al tanto del problema, pero no disponían de la infinita cantidad de tiempo y dinero que haría falta para construir la muestra perfecta. En resumen: si querés ofrecer una crítica responsable sobre el muestreo, entonces sé *útil*. Repetir verdades obvias como las que acabo de presentar en esta sección es inútil.
 
 ### Parámetros poblacionales y estadísticas muestrales
 
-Bien. Dejando de lado los espinosos problemas metodológicos asociados con obtener una muestra aleatoria, consideremos un tema algo distinto.
+Bien. Dejando de lado los espinosos problemas metodológicos asociados con obtener una muestra aleatoria, consideremos un tema algo distinto. Hasta este punto, venimos hablando de poblaciones como lo haría una persona científica. Para una psicóloga, una población podría ser un grupo de personas. Para una ecóloga, una población podría ser un grupo de osos. En la mayoría de los casos, las poblaciones que interesan a la ciencia son cosas concretas que realmente existen en el mundo.
 
-Hasta este punto, venimos hablando de poblaciones como lo haría una persona científica.
-Para una psicóloga, una población podría ser un grupo de personas.
-Para una ecóloga, una población podría ser un grupo de osos.
-En la mayoría de los casos, las poblaciones que interesan a la ciencia son cosas concretas que realmente existen en el mundo.
+Los estadísticos, sin embargo, son un grupo curioso. Por un lado, **sí** se interesan en datos reales y en la ciencia, del mismo modo que los científicos. Pero por otro lado, también trabajan en el plano de la abstracción pura, como lo hacen los matemáticos. Como consecuencia, la teoría estadística tiende a definir las poblaciones de forma algo más abstracta. Del mismo modo que lxs psicólogxs convierten ideas teóricas abstractas en mediciones concretas, los estadísticos operacionalizan el concepto de “población” en términos de **objetos matemáticos** con los que saben trabajar. Ya te cruzaste con estos objetos: se llaman **distribuciones de probabilidad** (¿te acordás? el lugar del que vienen los datos).
 
-Lxs estadísticxs, sin embargo, son un grupo curioso.
-Por un lado, **sí** se interesan en datos reales y en la ciencia, del mismo modo que lxs científicxs.
-Pero por otro lado, también trabajan en el plano de la abstracción pura, como lo hacen lxs matemáticxs.
-Como consecuencia, la teoría estadística tiende a definir las poblaciones de forma algo más abstracta.
-
-Del mismo modo que lxs psicólogxs convierten ideas teóricas abstractas en mediciones concretas,
-lxs estadísticxs operacionalizan el concepto de “población” en términos de **objetos matemáticos** con los que saben trabajar.
-
-Ya te cruzaste con estos objetos: se llaman **distribuciones de probabilidad** (¿te acordás? el lugar del que vienen los datos).
-
-La idea es muy simple. Supongamos que hablamos de puntuaciones de CI (coeficiente intelectual).
-Para una psicóloga, la población de interés es un grupo de personas reales que tienen puntajes de CI.
-Una estadística “simplifica” eso definiendo operativamente la población como la distribución de probabilidad mostrada en la figura @fig-IQdist (panel a).
+La idea es muy simple. Supongamos que hablamos de puntuaciones de CI (coeficiente intelectual). Para una psicóloga, la población de interés es un grupo de personas reales que tienen puntajes de CI. Una estadística “simplifica” eso definiendo operativamente la población como la distribución de probabilidad mostrada en la figura @fig-IQdist (panel a).
 
 ```{r echo=F}
 #| label: fig-IQdist

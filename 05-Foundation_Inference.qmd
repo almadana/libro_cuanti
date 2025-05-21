@@ -335,7 +335,7 @@ ggplot(sum_df, aes(x=mano,y=bolita))+
   facet_wrap(~experiment, nrow = 2)
 ```
 
-Estos 10 experimentos nos permiten observar mejor lo que el azar puede hacer. Y tam bién debería coincidir con tus expectativas: si todo está determinado por el azar (como lo diseñamos acá), entonces a veces tu mano izquierda va a sacar más bolitas verdes, otras veces será la derecha, y otras veces ambas sacarán la misma cantidad. ¿Correcto? Correcto.
+Estos 10 experimentos nos permiten observar mejor lo que el azar puede hacer. Y también debería coincidir con tus expectativas: si todo está determinado por el azar (como lo diseñamos acá), entonces a veces tu mano izquierda va a sacar más bolitas verdes, otras veces será la derecha, y otras veces ambas sacarán la misma cantidad. ¿Correcto? Correcto.
 
 ## El azar hace que algunas diferencias sean más probables que otras
 

@@ -343,7 +343,7 @@ Bien, ya vimos que el azar puede producir diferencias. Pero todavía no tenemos 
 
 Pensemos en nuestra medición de bolitas verdes en términos de una **diferencia**. Por ejemplo, en cada experimento contamos las bolitas verdes para la mano izquierda y la derecha. Lo que realmente queremos saber es si hay una diferencia entre ellas. Así que podemos calcular el **puntaje de diferencia**. Vamos a definir ese puntaje de diferencia como: **\# de bolitas verdes con la izquierda menos \# de bolitas verdes con la derecha**. Ahora vamos a simular este experimento mil veces. Cada vez, vamos a contar la cantidad de bolitas verdes para cada mano y calcular la diferencia. Luego, vamos a graficar los puntajes de diferencia para ver qué tipo de valores produce el azar.
 
-```{r, ehco=F}
+```{r, echo=F}
 #| label: fig-5bolitadiffs
 #| fig-cap: "Un vistazo a las diferencias en el número de bolitas verdes entre manos en distintas repeticiones. La diferencia esperada es cero, pero el error muestral produce diferencias distintas de cero."
 

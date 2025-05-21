@@ -236,7 +236,7 @@ ggplot(df, aes(x = a)) +
 
 Ahora que aumentamos `N`, podemos ver que el patrón en cada muestra se vuelve más evidente. El histograma de la muestra 1 tiene barras cercanas a 100; no son perfectamente planas, pero **se parece** a una distribución uniforme. El histograma de la muestra 2 no es plano **en absoluto**.
 
-¡Felicitaciones para nosotrxs! Acabamos de hacer inferencias estadísticas sin usar fórmulas.
+¡Felicitaciones! Acabamos de hacer inferencias estadísticas sin usar fórmulas.
 
 “¿Lo hicimos?” Sí: al mirar nuestras dos muestras, inferimos que la muestra 2 **no** provino de una distribución uniforme. También inferimos que la muestra 1 **podría** haber venido de una distribución uniforme. Fantástico. Este tipo de inferencias son las mismas que vamos a hacer durante el resto del curso.
 

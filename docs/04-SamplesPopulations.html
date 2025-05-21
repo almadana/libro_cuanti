@@ -479,7 +479,7 @@ window.Quarto = {
 <p>En este caso, 11 de los 20 lanzamientos (55%) salieron cara. Ahora supongamos que fui llevando la cuenta del número de caras (que voy a llamar $ N_H $) en los primeros $ N $ lanzamientos, y que cada vez calculo la proporción de caras $ N_H / N $. Esto es lo que obtendría (¡sí, de verdad lancé monedas para obtener esto!):</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 37%">
+<col style="width: 32%">
 <col style="width: 6%">
 <col style="width: 6%">
 <col style="width: 6%">
@@ -537,7 +537,7 @@ window.Quarto = {
 </table>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 37%">
+<col style="width: 32%">
 <col style="width: 6%">
 <col style="width: 6%">
 <col style="width: 6%">
@@ -599,7 +599,7 @@ window.Quarto = {
 <div id="fig-4FreqProb" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4FreqProb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="imgs/navarro_img/probability/frequentistProb_es.png" class="img-fluid figure-img" style="width:75.0%">
+<img src="imgs/navarro_img/probability/frequentistProb_es.png" class="img-fluid figure-img" width="3600">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4FreqProb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5.1: Ilustración de cómo funciona la probabilidad frecuentista. Si lanzás una moneda justa muchas veces, la proporción de caras observadas se estabiliza y converge hacia la probabilidad verdadera de 0.5. Cada panel muestra un experimento simulado distinto: en cada caso, se simula lanzar una moneda 1000 veces y se lleva un registro de la proporción de caras acumuladas. Aunque ninguna secuencia termina exactamente en 0.5, si el experimento se extendiera indefinidamente, lo haría.
@@ -674,7 +674,7 @@ Figure&nbsp;5.1: Ilustración de cómo funciona la probabilidad frecuentista. Si
 <div id="fig-4pantsprob" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4pantsprob-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="imgs/navarro_img/probability/pantsDistribution_es.png" class="img-fluid figure-img" style="width:75.0%">
+<img src="imgs/navarro_img/probability/pantsDistribution_es.png" class="img-fluid figure-img" width="2400">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4pantsprob-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5.2: Representación visual de la distribución de probabilidad de los pantalones. Hay cinco eventos elementales, que corresponden a los cinco pares de pantalones que tengo. Cada evento tiene alguna probabilidad de ocurrir: ese valor es un número entre 0 y 1. La suma de estas probabilidades es igual a 1.
@@ -691,12 +691,6 @@ P(E) = P(X_1) + P(X_2) + P(X_3)
 <p>A esta altura tal vez estés pensando que todo esto es increíblemente obvio y simple, y tenés razón. Lo único que hicimos fue envolver algunas intuiciones de sentido común con un poco de matemática básica. Sin embargo, a partir de estos comienzos simples se pueden construir herramientas matemáticas extremadamente poderosas. Definitivamente no voy a entrar en esos detalles en este libro, pero lo que sí voy a hacer es listar algunas otras reglas que las probabilidades deben cumplir. Estas reglas se pueden derivar de los supuestos básicos que acabamos de ver, pero como no las vamos a usar directamente en este libro, no me voy a detener en eso.</p>
 <table class="caption-top table">
 <caption>Algunas reglas básicas que deben cumplir las probabilidades. No necesitás conocerlas para entender los análisis que vamos a ver más adelante en el libro, pero son importantes si querés entender la teoría de la probabilidad con más profundidad.</caption>
-<colgroup>
-<col style="width: 17%">
-<col style="width: 20%">
-<col style="width: 5%">
-<col style="width: 56%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Evento</th>
@@ -798,15 +792,15 @@ A \cup B &amp;=&amp; (x_1, x_2, x_3, x_4)
 <p>Usando las definiciones anteriores, sabemos que: <span class="math inline">\(A \cup B = (x_1, x_2, x_3, x_4)\)</span>, entonces <span class="math display">\[
 P(A \cup B) = P(x_1) + P(x_2) + P(x_3) + P(x_4)
 \]</span></p>
-y usando el hecho de que sabemos qué eventos elementales pertenecen a $ A $, $ B $, y $ A B <span class="math inline">\(, tenemos:\)</span>$
+<p>y usando el hecho de que sabemos qué eventos elementales pertenecen a $ A $, $ B $, y $ A B <span class="math inline">\(, tenemos:\)</span>$</p>
 <span class="math display">\[\begin{array}{rcl}
 P(A) &amp;=&amp; P(x_1) + P(x_2) + P(x_3) \\
 P(B) &amp;=&amp; P(x_3) + P(x_4) \\
 P(A \cap B) &amp;=&amp; P(x_3)
 \end{array}\]</span>
-<span class="math display">\[
+<p><span class="math display">\[
 y por lo tanto:
-\]</span>
+\]</span></p>
 <span class="math display">\[\begin{array}{rcl}
 P(A) + P(B) - P(A \cap B)
 &amp;=&amp; P(x_1) + P(x_2) + P(x_3) + P(x_3) + P(x_4) - P(x_3) \\
@@ -823,10 +817,10 @@ P(A) + P(B) - P(A \cap B)
 <p>Solo hay una forma de satisfacer estas restricciones: asignar probabilidad cero a los eventos imposibles (es decir, <span class="math inline">\(P(x | A) = 0\)</span> si <span class="math inline">\(x\)</span> no está en <span class="math inline">\(A\)</span>), y luego dividir las probabilidades de todos los demás por <span class="math inline">\(P(A)\)</span>. En este caso, como <span class="math inline">\(P(A) = 0.9\)</span>, dividimos entre 0.9. Esto da:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 20%">
-<col style="width: 18%">
-<col style="width: 28%">
-<col style="width: 32%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -870,7 +864,7 @@ P(A) + P(B) - P(A \cap B)
 </tbody>
 </table>
 <p>En términos matemáticos, decimos que: [ P(x A) = x A, P(x A) = 0 x A ]</p>
-Por lo tanto: [
+<p>Por lo tanto: [</p>
 <span class="math display">\[\begin{array}{rcl}
 P(B \mid A) &amp;=&amp; P(x_3 \mid A) + P(x_4 \mid A) \\\\
 &amp;=&amp; \displaystyle \frac{P(x_3)}{P(A)} + 0 \\\\
@@ -898,7 +892,7 @@ P(B \mid A) &amp;=&amp; P(x_3 \mid A) + P(x_4 \mid A) \\\\
 <div id="fig-4binomial1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4binomial1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="imgs/navarro_img/probability/binomSkulls20_es.png" class="img-fluid figure-img" style="width:75.0%">
+<img src="imgs/navarro_img/probability/binomSkulls20_es.png" class="img-fluid figure-img" width="2400">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4binomial1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5.3: La distribución binomial con parámetro de tamaño <span class="math inline">\(N = 20\)</span> y una probabilidad de éxito de 1/6. Cada barra vertical representa la probabilidad de un resultado específico (es decir, un valor posible de <span class="math inline">\(X\)</span>). Como se trata de una distribución de probabilidad, cada probabilidad debe ser un número entre 0 y 1, y la suma de las alturas de las barras también debe ser 1.
@@ -918,7 +912,10 @@ Figure&nbsp;5.3: La distribución binomial con parámetro de tamaño <span class
 </ul>
 <p>Entonces, para calcular la probabilidad de obtener 4 calaveras en un experimento de 20 lanzamientos, donde la probabilidad de calavera en cada lanzamiento es 1/6, el comando sería simplemente:</p>
 <div class="cell">
-<pre><code>#&gt; [1] 0.2022036</code></pre>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="at">x =</span> <span class="dv">4</span>, <span class="at">size =</span> <span class="dv">20</span>, <span class="at">prob =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2022036</code></pre>
+</div>
 </div>
 <p>Para que veas cómo cambia la distribución binomial cuando alteramos los valores de ( ) y ( N ), supongamos ahora que, en lugar de tirar dados, estoy lanzando monedas. En este caso, el experimento consiste en lanzar una moneda justa repetidamente, y el resultado que me interesa es cuántas veces sale cara. En este escenario, la probabilidad de éxito es ahora ( = 1/2 ). Supongamos que lanzo la moneda ( N = 20 ) veces. En este ejemplo, cambié la probabilidad de éxito, pero mantuve igual el tamaño del experimento. ¿Qué le pasa a la distribución binomial?</p>
 <div class="cell">
@@ -926,7 +923,7 @@ Figure&nbsp;5.3: La distribución binomial con parámetro de tamaño <span class
 <div id="fig-4binomial2" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4binomial2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="imgs/navarro_img/probability/Binomial2_es.png" class="img-fluid figure-img" style="width:75.0%">
+<img src="imgs/navarro_img/probability/Binomial2_es.png" class="img-fluid figure-img" width="2400">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4binomial2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5.4: Dos distribuciones binomiales, en un escenario donde lanzo una moneda justa, con probabilidad de éxito <span class="math inline">\(1/2\)</span>. En el panel (a), se supone que lanzo la moneda <span class="math inline">\(N = 20\)</span> veces. En el panel (b), que la lanzo <span class="math inline">\(N = 100\)</span> veces.
@@ -946,20 +943,29 @@ Figure&nbsp;5.4: Dos distribuciones binomiales, en un escenario donde lanzo una 
 </ul>
 <p>Esto puede sonar algo abstracto, así que veamos algunos ejemplos concretos. Como ya vimos <code>dbinom</code>, vamos a concentrarnos en las otras tres. Empecemos con <code>pbinom</code>, y volvamos al ejemplo de los dados con calaveras. Recordá: lanzo 20 dados, cada uno tiene una chance de 1 en 6 de mostrar una calavera. Supongamos, en cambio, que quiero saber la probabilidad de obtener 4 <strong>o menos</strong> calaveras. Podría usar <code>dbinom</code> para calcular la probabilidad exacta de obtener 0, 1, 2, 3 y 4 calaveras, y luego sumar esos valores. Pero hay una forma más rápida: usar la función <code>pbinom</code>. El comando sería:</p>
 <div class="cell">
-<pre><code>#&gt; [1] 0.7687492</code></pre>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="at">q =</span> <span class="dv">4</span>, <span class="at">size =</span> <span class="dv">20</span>, <span class="at">prob =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7687492</code></pre>
+</div>
 </div>
 <p>En otras palabras, hay un 76.9% de probabilidad de que al lanzar los 20 dados obtenga 4 calaveras o menos. O, dicho de otra manera, R nos está diciendo que 4 es el percentil 76.9 de esta distribución binomial.</p>
 <p>Ahora consideremos la función <code>qbinom</code>. Supongamos que quiero calcular el percentil 75 de la distribución binomial. Siguiendo con el ejemplo de las calaveras, el comando sería:</p>
 <div class="cell">
-<pre><code>#&gt; [1] 4</code></pre>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qbinom</span>(<span class="at">p =</span> <span class="fl">0.75</span>, <span class="at">size =</span> <span class="dv">20</span>, <span class="at">prob =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
 </div>
 <p>Mmm. Hay algo raro acá. Pensemos bien esto. Lo que parece decir la función <code>qbinom</code> es que el percentil 75 de la distribución binomial es 4, aunque vimos recién en la función que 4 es <strong>en realidad</strong> el percentil 76.9. Y la función <code>pbinom</code> es la correcta, te lo prometo. Lo raro acá surge del hecho de que nuestra distribución binomial en realidad <strong>no tiene</strong> un percentil 75. ¿Por qué no? Bueno, hay un 56.7% de chance de obtener 3 o menos calaveras (podés escribir <code>pbinom(3, 20, 1/6)</code> para comprobarlo), y un 76.9% de chance de obtener 4 o menos calaveras. Entonces, en cierto sentido, el percentil 75 debería estar “entre medio” de 3 y 4 calaveras. ¡Pero eso no tiene sentido! No podés tirar 20 dados y que salgan 3.9 calaveras. Este problema se puede manejar de distintas formas: podrías reportar un valor intermedio (o <strong>interpolado</strong>, como se dice técnicamente), como 3.9 podrías redondear hacia abajo (a 3) o podrías redondear hacia arriba (a 4).</p>
 <p>La función <code>qbinom</code> redondea hacia arriba: si pedís un percentil que no existe literalmente (como el 75 en este ejemplo), R encuentra el valor más pequeño cuyo percentil acumulado sea <strong>al menos</strong> el que pediste. En este caso, como el “verdadero” percentil 75 (sea lo que sea que eso signifique) está entre 3 y 4 calaveras, R redondea hacia arriba y te da 4. Esta sutileza puede ser molesta, lo admito, pero por suerte solo es un problema en distribuciones discretas como la binomial. Las otras distribuciones de las que voy a hablar (normal, ( t ), ( ^2 ) y ( F )) son todas continuas, así que R siempre puede devolver un cuantil exacto cuando se lo pedís.</p>
 <p>Finalmente, tenemos el generador de números aleatorios. Para usar la función <code>rbinom</code>, tenés que especificar cuántas veces querés que R “simule” el experimento usando el argumento <code>n</code>, y te va a generar resultados aleatorios tomados de la distribución binomial. Por ejemplo, si quisiera repetir el experimento de tirar dados 100 veces, puedo hacer que R simule esos resultados así:</p>
 <div class="cell">
-<pre><code>#&gt;   [1] 4 2 4 7 3 2 4 2 3 1 3 2 5 3 3 0 3 4 4 4 5 3 5 5 3 5 2 5 5 4 2 2 3 3 2 4 1
-#&gt;  [38] 4 2 6 2 2 5 2 0 3 3 1 7 2 5 1 3 3 6 1 2 2 2 4 6 5 2 3 4 9 6 4 2 5 3 2 1 6
-#&gt;  [75] 2 2 3 4 1 4 4 4 4 2 1 2 4 5 4 3 3 2 5 6 4 3 0 3 2 2</code></pre>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">size =</span> <span class="dv">20</span>, <span class="at">prob =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] 4 1 4 6 4 4 4 2 3 6 3 3 3 3 4 4 2 3 4 5 5 4 2 2 2 0 4 2 3 4 6 4 4 4 4 5 2
+ [38] 1 4 3 6 6 4 4 6 2 4 5 7 7 4 2 4 4 7 2 5 4 3 4 2 4 4 1 4 3 4 4 4 1 4 3 6 4
+ [75] 4 2 5 0 3 3 2 4 1 5 4 2 4 0 8 3 1 1 1 3 3 4 3 3 2 3</code></pre>
+</div>
 </div>
 <p>Como podés ver, los números que aparecen son lo que uno esperaría, dada la distribución que se muestra en <a href="#fig-4binomial1" class="quarto-xref">Figure&nbsp;<span>5.3</span></a>. La mayoría de las veces saco entre 1 y 5 calaveras. Hay muchas sutilezas sobre cómo se generan números aleatorios en una computadora, pero para los fines de este libro no necesitamos preocuparnos demasiado.</p>
 </section>
@@ -968,11 +974,12 @@ Figure&nbsp;5.4: Dos distribuciones binomiales, en un escenario donde lanzo una 
 <h2 data-number="5.5" class="anchored" data-anchor-id="la-distribución-normal"><span class="header-section-number">5.5</span> La distribución normal</h2>
 <p>Aunque la distribución binomial es conceptualmente la más fácil de entender, <strong>no es la más importante</strong>. Ese honor particular le corresponde a la <em>distribución normal</em>, también conocida como “curva de campana” o “distribución gaussiana”.</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"imgs/navarro_img/probability/standardNormal_es.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-4normal" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4normal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="imgs/navarro_img/probability/standardNormal_es.png" class="img-fluid figure-img" style="width:75.0%">
+<img src="imgs/navarro_img/probability/standardNormal_es.png" class="img-fluid figure-img" width="2400">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4normal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5.5: La distribución normal con media = 0 y desviación estándar = 1. El eje x representa los valores posibles de una variable, y el eje y nos dice qué tan probable es observar ese valor. Sin embargo, notá que el eje y está etiquetado como Densidad de Probabilidad y no como Probabilidad. Esto se debe a una característica sutil —y algo frustrante— de las distribuciones continuas, que hace que el eje y se comporte de manera un poco extraña: la altura de la curva no representa literalmente la probabilidad de observar un valor x en particular. Por otro lado, es cierto que las alturas de la curva te indican cuáles valores de x son más probables (¡los más altos!).
@@ -988,7 +995,7 @@ Figure&nbsp;5.5: La distribución normal con media = 0 y desviación estándar =
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="imgs/navarro_img/probability/Normal_formula.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p><img src="imgs/navarro_img/probability/Normal_formula.png" class="img-fluid figure-img" width="268"></p>
 <figcaption>Fórmula de la distribución normal</figcaption>
 </figure>
 </div>
@@ -1032,7 +1039,10 @@ Figure&nbsp;5.7: Una distribución normal con desviación estándar variable.
 <p>Hay algo que estuve intentando ocultar durante toda mi discusión sobre la distribución normal. Algo que algunos libros introductorios directamente omiten por completo. Tal vez tengan razón en hacerlo: esta “cosa” que estoy ocultando es rara y contraintuitiva, incluso según los estándares algo retorcidos que rigen en estadística. Afortunadamente, no es algo que necesites entender a fondo para hacer estadística básica: es algo que empieza a volverse importante más adelante, cuando salís de lo introductorio. Así que si no te queda completamente claro, no te preocupes: tratá de captar la idea general.</p>
 <p>A lo largo de esta discusión sobre la distribución normal, hay una o dos cosas que no cierran del todo. Quizás notaste que el eje ( y ) en esas figuras está etiquetado como “Densidad de probabilidad” y no como “Probabilidad”. Tal vez notaste que usé ( p(X) ) en lugar de ( P(X) ) al mostrar la fórmula de la normal. Quizás te preguntás por qué R usa el prefijo <code>"d"</code> para funciones como <code>dnorm()</code>. Y tal vez, solo tal vez, estuviste jugando con la función <code>dnorm()</code> y accidentamente escribiste un comando como este:</p>
 <div class="cell">
-<pre><code>#&gt; [1] 3.989423</code></pre>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dnorm</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">mean =</span> <span class="dv">1</span>, <span class="at">sd =</span> <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.989423</code></pre>
+</div>
 </div>
 <p>Y si hiciste eso, seguramente quedaste muy confundido. Le pedí a R que calcule la probabilidad de que ( x = 1 ) para una variable con distribución normal, media = 1 y desviación estándar = 0.1; y R me responde que la “probabilidad” es 3.99. Pero, como discutimos antes, las probabilidades <strong>no pueden</strong> ser mayores que 1. Entonces, o me equivoqué, o eso que R me dio no es una probabilidad.</p>
 <p>Resulta que la segunda opción es la correcta. Lo que calculamos ahí no es una probabilidad: es otra cosa. Para entender qué es esa otra cosa, tenemos que dedicar un momento a pensar qué <em>significa</em> realmente decir que ( X ) es una variable continua. Supongamos que estamos hablando de la temperatura exterior. El termómetro me dice que hace 23 grados, pero yo sé que eso no es del todo cierto. No son exactamente 23 grados. Quizás sean 23.1. Pero tampoco es del todo cierto, porque podrían ser 23.09. Pero, claro, también podrían ser 23.091. Bueno… ya entendés la idea. El problema con las cantidades verdaderamente continuas es que nunca sabés exactamente qué son.</p>
@@ -1088,7 +1098,7 @@ Figure&nbsp;5.7: Una distribución normal con desviación estándar variable.
 <div id="fig-srs1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-srs1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="imgs/navarro_img/estimation/srs1_es.png" class="img-fluid figure-img" style="width:75.0%">
+<img src="imgs/navarro_img/estimation/srs1_es.png" class="img-fluid figure-img" width="562">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-srs1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5.8: Muestreo aleatorio simple sin reemplazo a partir de una población finita.
@@ -1105,7 +1115,7 @@ Figure&nbsp;5.8: Muestreo aleatorio simple sin reemplazo a partir de una poblaci
 <div id="fig-brs" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-brs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="imgs/navarro_img/estimation/brs_es.png" class="img-fluid figure-img" style="width:75.0%">
+<img src="imgs/navarro_img/estimation/brs_es.png" class="img-fluid figure-img" width="550">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-brs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5.9: Muestreo sesgado sin reemplazo a partir de una población finita.
@@ -1121,7 +1131,7 @@ Figure&nbsp;5.9: Muestreo sesgado sin reemplazo a partir de una población finit
 <div id="fig-srs2" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-srs2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="imgs/navarro_img/estimation/srs2_es.png" class="img-fluid figure-img" style="width:75.0%">
+<img src="imgs/navarro_img/estimation/srs2_es.png" class="img-fluid figure-img" width="562">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-srs2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5.10: Muestreo aleatorio simple con reemplazo a partir de una población finita.
@@ -1177,14 +1187,21 @@ Figure&nbsp;5.11: Distribución poblacional de puntuaciones de CI (panel a) y do
 <h2 data-number="5.9" class="anchored" data-anchor-id="la-ley-de-los-grandes-números"><span class="header-section-number">5.9</span> La ley de los grandes números</h2>
 <p>En el ejemplo anterior mostramos los resultados de un experimento ficticio sobre CI con un tamaño muestral de <span class="math inline">\(N = 100\)</span>. Los resultados fueron bastante alentadores: la verdadera media poblacional es 100, y la media muestral fue 98.5, una aproximación bastante razonable. En muchos estudios científicos, ese nivel de precisión es perfectamente aceptable, pero en otras situaciones quizás necesitemos ser mucho más precisos. Entonces, si queremos que nuestras estadísticas muestrales se acerquen más a los parámetros poblacionales, ¿qué podemos hacer?</p>
 <p>La respuesta obvia es: recolectar más datos. Supongamos que hacemos un experimento mucho más grande, esta vez midiendo el CI de 10.000 personas. Podemos simular los resultados de este experimento usando R y la función <code>rnorm()</code>, que genera números aleatorios extraídos de una distribución normal. Para un experimento con tamaño muestral <span class="math inline">\(n = 10000\)</span>, y una población con media 100 y desviación estándar 15, R puede generar datos simulados de CI así:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>IQ <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10000</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">15</span>)  <span class="co"># generar los CI</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>IQ <span class="ot">&lt;-</span> <span class="fu">round</span>(IQ)  <span class="co"># redondear a números enteros</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Y listo, ya generamos 10.000 valores de CI simulados. ¿Dónde están esos datos? En la variable <code>IQ</code> de mi computadora. Podés hacer lo mismo en tu propia computadora copiando el código. Ver los 10.000 números sería demasiado, pero podés mirar los primeros 100 así:</p>
 <div class="cell">
-<pre><code>#&gt;   [1]  76  94 103  93  97  64  88 102 122  72  88  88  79 105  97 112  97 113
-#&gt;  [19]  88 124 114 114 104  83  79 110 123  80 111  94  92 108  82  89 101  82
-#&gt;  [37] 117 104  81 103  70 124  97 109 117 131  97 118  98  93 107  97  93  92
-#&gt;  [55] 100 109  97  80 117  94  89 102  87  91  96  68  88 118  87 110  85 100
-#&gt;  [73]  76  78  95 103  89 102  80  83  85 113 106 102 116  75 119 108 108  80
-#&gt;  [91]  87  99  80  95  76 123 121  93  87  82</code></pre>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(IQ[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] 111  93  83  98  88 112 116 117  89 109 109  76  71  87  97  88 110 113
+ [19] 111 113  68  85 122  72  85 106  97 123  92 120  78  79 100 118  96  83
+ [37] 107  89 119  78  86  88  80 115 114 102  75 102  63 100 111 100 117  91
+ [55]  94 124  98  97 105 101 115  73 112  97  90  85  95  91  87  96  84 120
+ [73] 107  87 119 105 105 102 103  84  99  99  70 110 108  95  82 100 100  74
+ [91] 112  65 107  79  71 123  95 111  80  99</code></pre>
+</div>
 </div>
 <p>También podés calcular la media con <code>mean(IQ)</code> y la desviación estándar con <code>sd(IQ)</code>, y hacer un histograma con <code>hist()</code>. El histograma de esta muestra mucho más grande se muestra en el panel c de la figura <a href="#fig-IQdist" class="quarto-xref">Figure&nbsp;<span>5.11</span></a>. Con solo mirarlo, se nota que esta muestra es una mejor aproximación a la distribución poblacional real que la muestra más pequeña. Eso también se ve en las estadísticas muestrales: la media muestral es 99.9 y la desviación estándar es 15.1. Estos valores son ahora cercanos a los valores reales de la población.</p>
 <p>Me siento un poco tonta al decir esto, pero lo que quiero que te lleves de todo esto es que las muestras grandes, en general, te dan mejor información. Me siento tonta porque es tan tremendamente obvio que no debería hacer falta decirlo. De hecho, es tan obvio que cuando Jacob Bernoulli —uno de los fundadores de la teoría de la probabilidad— formalizó esta idea allá por 1713, fue medio arrogante al respecto. Así fue como describió el hecho de que todos compartimos esta intuición:</p>
@@ -1198,7 +1215,7 @@ Figure&nbsp;5.11: Distribución poblacional de puntuaciones de CI (panel a) y do
 <h2 data-number="5.10" class="anchored" data-anchor-id="distribuciones-muestrales-y-el-teorema-central-del-límite"><span class="header-section-number">5.10</span> Distribuciones muestrales y el teorema central del límite</h2>
 <p>La ley de los grandes números es una herramienta muy poderosa, pero no alcanza para responder todas nuestras preguntas. Entre otras cosas, lo único que nos ofrece es una “garantía en el largo plazo”. A largo plazo, si de alguna manera pudiéramos recolectar una cantidad infinita de datos, entonces la ley de los grandes números garantiza que nuestras estadísticas muestrales serán correctas. Pero como John Maynard Keynes argumentó con razón en economía, una garantía en el largo plazo tiene poca utilidad en la vida real:</p>
 <blockquote class="blockquote">
-<p><strong>[El] largo plazo es una guía engañosa para los asuntos actuales. A largo plazo, todos estaremos muertos. Los economistas se asignan una tarea demasiado fácil, y por lo tanto inútil, si en tiempos tormentosos sólo pueden decirnos que, cuando la tormenta haya pasado hace tiempo, el océano volverá a estar calmo.</strong> — <span class="citation" data-cites="Keynes1923">Keynes (<a href="references.html#ref-Keynes1923" role="doc-biblioref">1923</a>)</span> [p.80]</p>
+<p>[**El] largo plazo es una guía engañosa para los asuntos actuales. A largo plazo, todos estaremos muertos. Los economistas se asignan una tarea demasiado fácil, y por lo tanto inútil, si en tiempos tormentosos sólo pueden decirnos que, cuando la tormenta haya pasado hace tiempo, el océano volverá a estar calmo.** — <span class="citation" data-cites="Keynes1923">Keynes (<a href="references.html#ref-Keynes1923" role="doc-biblioref">1923, 80</a>)</span></p>
 </blockquote>
 <p>Lo mismo que en economía vale también para la psicología y la estadística. No basta con saber que <strong>eventualmente</strong> llegaremos a la respuesta correcta al calcular la media muestral. Saber que un conjunto de datos infinitamente grande nos dará el valor correcto no resuelve nuestros problemas prácticos en el presente. Saber que un conjunto de datos infinitamente grande me dará el valor exacto de la media poblacional no es precisamente reconfortante cuando mi conjunto de datos <strong>real</strong> tiene un tamaño de muestra de $N=100$. En la vida real, entonces, necesitamos saber algo sobre el comportamiento de la media muestral cuando se calcula a partir de un conjunto de datos más modesto.</p>
 <section id="distribución-muestral-de-las-medias-muestrales" class="level3" data-number="5.10.1">
@@ -1227,7 +1244,7 @@ Figure&nbsp;5.11: Distribución poblacional de puntuaciones de CI (panel a) y do
 <div id="fig-4Unif" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4Unif-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="04-SamplesPopulations_files/figure-html/fig-4Unif-1.png" class="img-fluid figure-img" style="width:75.0%">
+<img src="04-SamplesPopulations_files/figure-html/fig-4Unif-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4Unif-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5.12: Ilustración de las probabilidades de muestreo para los números del 1 al 10. En una distribución uniforme, todos los números tienen igual probabilidad, así que la línea es plana, indicando que todos tienen la misma chance.
@@ -1238,21 +1255,35 @@ Figure&nbsp;5.12: Ilustración de las probabilidades de muestreo para los númer
 </div>
 <p>La figura <code>@fig-4sample20unif</code> anima el proceso de tomar un montón de muestras de la distribución uniforme. Vamos a fijar el tamaño de muestra en 20. Es más fácil ver cómo se comporta la media muestral en una animación. Cada histograma muestra una nueva muestra. La línea roja indica dónde está la media de esa muestra. Las muestras son todas bastante distintas entre sí, pero la línea roja no se mueve mucho: siempre queda cerca del centro. Sin embargo, sí se desplaza un poco, y esa variabilidad es lo que llamamos la <strong>distribución muestral de la media muestral</strong>.</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">b =</span> <span class="fu">seq</span>(.<span class="dv">1</span>, <span class="dv">1</span>, .<span class="dv">1</span>))</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>a <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(df<span class="sc">$</span>a)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> a, <span class="at">y =</span> b)) <span class="sc">+</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> .<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> .<span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Probabilidad"</span>) <span class="sc">+</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Número"</span>) <span class="sc">+</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Distribución uniforme para los números del 1 al 10"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="04-SamplesPopulations_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p><img src="04-SamplesPopulations_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>La figura <code>@fig-4sample20unif</code> anima el proceso de tomar muchas muestras de la distribución uniforme. Vamos a fijar el tamaño de muestra en 20. Es más fácil ver cómo se comporta la media muestral en una animación. Cada histograma muestra una nueva muestra. La línea roja indica la media de esa muestra. Las muestras entre sí son muy diferentes, pero la línea roja no se mueve tanto: siempre se queda más o menos cerca del centro. Sin embargo, sí se mueve un poco, y esa variación es lo que llamamos la <strong>distribución muestral de la media muestral</strong>.</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="at">path =</span> <span class="st">"imgs/gifs/sampleHistUnif-1_es.gif"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-4sample20unif" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4sample20unif-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="imgs/gifs/sampleHistUnif-1_es.gif" class="img-fluid figure-img" style="width:75.0%">
+<img src="imgs/gifs/sampleHistUnif-1_es.gif" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4sample20unif-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5.13: Animación que muestra histogramas para diferentes muestras de tamaño 20 tomadas de la distribución uniforme. La línea roja indica la media de cada muestra.
@@ -1265,11 +1296,14 @@ Figure&nbsp;5.13: Animación que muestra histogramas para diferentes muestras de
 <p>Primera pregunta: ¿Las medias muestrales son todas iguales? La respuesta es no. Aunque son todas más o menos parecidas, están todas alrededor de cinco, más o menos un par de números. Esto es interesante. Aunque nuestras muestras se ven bastante diferentes entre sí, las medias de esas muestras se ven más similares que distintas.</p>
 <p>Segunda pregunta: ¿Qué deberíamos hacer con las medias de nuestras muestras? Bueno, ¿qué tal si las juntamos todas y graficamos un histograma de ellas? Eso nos permitiría ver cómo se ve la distribución de las medias muestrales. El próximo histograma muestra exactamente eso. Solo que, en lugar de tomar 10 muestras, vamos a tomar 10.000. Y para cada una vamos a calcular su media. Así que vamos a tener 10.000 medias muestrales. La figura <code>@fig-4unifmany</code> muestra ese histograma:</p>
 <div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
 <div class="cell-output-display">
 <div id="fig-4unifmany" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4unifmany-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="04-SamplesPopulations_files/figure-html/fig-4unifmany-1.png" class="img-fluid figure-img" style="width:75.0%">
+<img src="04-SamplesPopulations_files/figure-html/fig-4unifmany-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4unifmany-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5.14: Histograma de las medias muestrales de 10.000 muestras, cada una de tamaño 20, tomadas de una distribución uniforme de números del 1 al 10. La media esperada es 5.5, y el histograma está centrado en 5.5. La media de cada muestra no es siempre 5.5, debido al error muestral o al azar.
@@ -1290,6 +1324,12 @@ Figure&nbsp;5.14: Histograma de las medias muestrales de 10.000 muestras, cada u
 <p>Algo importante a tener en cuenta cuando hablamos de distribuciones muestrales es que <strong>cualquier</strong> estadístico muestral que quieras calcular tiene su propia distribución muestral. Por ejemplo, supongamos que cada vez que tomás una muestra de números, anotás el valor más alto de esa muestra. Si repetís esto muchas veces, vas a obtener una distribución muestral completamente distinta: la <strong>distribución muestral del máximo</strong>. Podrías calcular el número más pequeño, o la moda, o la mediana, o la varianza, o el desvío estándar, o cualquier otra cosa a partir de tu muestra. Luego podrías repetir ese procedimiento muchas veces y obtener la distribución muestral de esos estadísticos. ¡Qué genial!</p>
 <p>Solo por diversión, acá van algunas distribuciones muestrales para distintos estadísticos. Vamos a tomar una distribución normal con media = 100 y desvío estándar = 20. Luego tomamos muchas muestras de tamaño n = 50 (50 observaciones por muestra). Guardamos todos los estadísticos muestrales y graficamos sus histogramas en la figura <code>@fig-4samplestats</code>. Hagámoslo:</p>
 <div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
 <div class="cell-output-display">
 <div id="fig-4samplestats" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1317,7 +1357,7 @@ Figure&nbsp;5.15: Cada panel muestra un histograma de un estadístico muestral d
 <div id="fig-4samplingmean" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4samplingmean-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="imgs/gifs/sampleDistNormal-1_es.gif" class="img-fluid figure-img" style="width:75.0%">
+<img src="imgs/gifs/sampleDistNormal-1_es.gif" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4samplingmean-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5.16: Animación de muestras (el histograma gris muestra la frecuencia de los datos en cada muestra) y de la distribución muestral de la media (histograma azul de medias muestrales de muchas muestras). Cada muestra proviene de la distribución normal mostrada en rojo. La línea roja móvil es la media de una muestra individual. La línea azul es la media del histograma azul, que representa la distribución muestral de la media para muchas muestras.
@@ -1333,6 +1373,13 @@ Figure&nbsp;5.16: Animación de muestras (el histograma gris muestra la frecuenc
 <p>Empecemos. La figura <code>@fig-4sampledistmeannorm</code> muestra un muestreo a partir de una distribución normal. La línea roja es la distribución normal de la que se extraen las muestras. Para cada muestra se calcula la media, y la distribución de esas medias se muestra con las barras azules. Notá que la forma de la línea roja y de las barras azules es similar: ambas se ven como una distribución normal.</p>
 <p>Hagámoslo de nuevo. Esta vez vamos a tomar muestras de una distribución uniforme plana, representada por la línea roja. Sin embargo, la figura <code>@fig-4samplemeanunif</code> muestra que la distribución de las medias muestrales, representada por las barras azules, no es plana: se parece a una distribución normal.</p>
 <div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The dot-dot notation (`..density..`) was deprecated in ggplot2 3.4.0.
+ℹ Please use `after_stat(density)` instead.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 4 rows containing missing values (`geom_bar()`).</code></pre>
+</div>
 <div class="cell-output-display">
 <div id="fig-4samplemeanunif" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1348,11 +1395,59 @@ Figure&nbsp;5.17: Ilustración de que la forma de la distribución muestral de l
 </div>
 <p>Una vez más, ahora con una distribución exponencial (mostrada en rojo), donde es más probable que se muestren valores pequeños que grandes. Aunque muchos más números en cada muestra serán pequeños en comparación con los grandes, según la figura <code>@fig-4samplemeanExp</code>, la distribución muestral de la media no se parece a la línea roja. En cambio, la distribución muestral de la media se parece a una curva en forma de campana: una distribución normal. Esto es el teorema central del límite en acción.</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Función para obtener medias muestrales a partir de una distribución exponencial</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>get_sampling_means <span class="ot">&lt;-</span> <span class="cf">function</span>(s_size, r, iter) {</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  save_means <span class="ot">&lt;-</span> <span class="fu">length</span>(iter)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>iter) {</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    save_means[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">rexp</span>(s_size, r))</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(save_means)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>all_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>sims <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Tamaños de muestra: 10 y 50</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (n <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">50</span>)) {</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>  sample <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="dv">0</span>, <span class="dv">1</span>)  <span class="co"># Nota: como antes, sample no se usa luego</span></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>  sample_means <span class="ot">&lt;-</span> <span class="fu">get_sampling_means</span>(n, <span class="dv">2</span>, <span class="dv">1000</span>)</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>  t_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">sims =</span> <span class="fu">rep</span>(sims, <span class="dv">1000</span>),</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>    sample,</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>    sample_means,</span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">sample_size =</span> <span class="fu">rep</span>(n, <span class="dv">1000</span>),</span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">sample_mean =</span> <span class="fu">rep</span>(<span class="fu">mean</span>(sample), <span class="dv">1000</span>),</span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">sampling_mean =</span> <span class="fu">rep</span>(<span class="fu">mean</span>(sample_means), <span class="dv">1000</span>)</span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>  all_df <span class="ot">&lt;-</span> <span class="fu">rbind</span>(all_df, t_df)</span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(all_df, <span class="fu">aes</span>(<span class="at">x =</span> sample)) <span class="sc">+</span></span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(</span>
+<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> sample_means, <span class="at">y =</span> (..density..) <span class="sc">/</span> <span class="fu">max</span>(..density..)),</span>
+<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"blue"</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">alpha =</span> .<span class="dv">5</span>, <span class="at">bins =</span> <span class="dv">75</span></span>
+<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dexp,</span>
+<span id="cb23-34"><a href="#cb23-34" aria-hidden="true" tabindex="-1"></a>                <span class="at">args =</span> <span class="fu">list</span>(<span class="at">rate =</span> <span class="dv">2</span>),</span>
+<span id="cb23-35"><a href="#cb23-35" aria-hidden="true" tabindex="-1"></a>                <span class="at">lwd =</span> .<span class="dv">75</span>,</span>
+<span id="cb23-36"><a href="#cb23-36" aria-hidden="true" tabindex="-1"></a>                <span class="at">col =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb23-37"><a href="#cb23-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>sample_size) <span class="sc">+</span></span>
+<span id="cb23-38"><a href="#cb23-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb23-39"><a href="#cb23-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb23-40"><a href="#cb23-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Distribución muestral de la media</span><span class="sc">\n</span><span class="st"> para muestras tomadas de una distribución exponencial"</span>) <span class="sc">+</span></span>
+<span id="cb23-41"><a href="#cb23-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Verosimilitudes aproximadas"</span>) <span class="sc">+</span></span>
+<span id="cb23-42"><a href="#cb23-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"valor"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 6 rows containing non-finite values (`stat_bin()`).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 4 rows containing missing values (`geom_bar()`).</code></pre>
+</div>
 <div class="cell-output-display">
 <div id="fig-4samplemeanExp" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4samplemeanExp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="04-SamplesPopulations_files/figure-html/fig-4samplemeanExp-1.png" class="img-fluid figure-img" style="width:75.0%">
+<img src="04-SamplesPopulations_files/figure-html/fig-4samplemeanExp-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4samplemeanExp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5.18: Ilustración de que la forma de la distribución muestral de la media es normal, incluso cuando las muestras provienen de una distribución exponencial
@@ -1384,7 +1479,7 @@ Figure&nbsp;5.18: Ilustración de que la forma de la distribución muestral de l
 <div id="fig-4normalSDspercents" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4normalSDspercents-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="04-SamplesPopulations_files/figure-html/fig-4normalSDspercents-1.png" class="img-fluid figure-img" style="width:75.0%">
+<img src="04-SamplesPopulations_files/figure-html/fig-4normalSDspercents-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4normalSDspercents-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5.19: Una distribución normal. Cada línea representa una desviación estándar desde la media. Las etiquetas muestran la proporción de puntajes que caen entre cada barra.
@@ -1400,7 +1495,7 @@ Figure&nbsp;5.19: Una distribución normal. Cada línea representa una desviaci�
 <div id="fig-4normalSDspercentsB" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4normalSDspercentsB-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="04-SamplesPopulations_files/figure-html/fig-4normalSDspercentsB-1.png" class="img-fluid figure-img" style="width:75.0%">
+<img src="04-SamplesPopulations_files/figure-html/fig-4normalSDspercentsB-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4normalSDspercentsB-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5.20: Una distribución normal. Cada línea representa una desviación estándar desde la media. Las etiquetas muestran la proporción de puntajes que caen entre cada barra.
@@ -1417,6 +1512,10 @@ Figure&nbsp;5.20: Una distribución normal. Cada línea representa una desviaci�
 <p>Ahora también sabemos, gracias al teorema central del límite, que muchas de nuestras medidas —como las medias muestrales— se distribuyen normalmente. Por eso, muchas veces conviene expresar los puntajes brutos en términos de sus desviaciones estándar.</p>
 <p>Veamos cómo se ve esto en una tabla, sin fórmulas. Vamos a considerar puntajes que provienen de una distribución normal con media = 100 y desviación estándar = 25. Vamos a listar algunos puntajes originales junto con sus correspondientes puntajes z:</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>original <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">50</span>, <span class="dv">75</span>, <span class="dv">100</span>, <span class="dv">125</span>, <span class="dv">150</span>, <span class="dv">175</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>z   <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(original, z)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
@@ -1477,10 +1576,10 @@ Figure&nbsp;5.20: Una distribución normal. Cada línea representa una desviaci�
 z = \frac{\text{puntaje bruto} - \text{media}}{\text{desvío estándar}}
 \]</span></p>
 <p>Por ejemplo, si tenemos estos 10 puntajes tomados de una distribución normal con media = 100 y desvío estándar = 25:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">25</span>), <span class="at">digits =</span> <span class="dv">2</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(scores)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">25</span>), <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(scores)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Los puntajes z correspondientes serían:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(scores <span class="sc">-</span> <span class="dv">100</span>) <span class="sc">/</span> <span class="dv">25</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>(scores <span class="sc">-</span> <span class="dv">100</span>) <span class="sc">/</span> <span class="dv">25</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Una vez que tenés los puntajes z, podés usarlos como una forma alternativa de describir tus datos. Por ejemplo, ahora con solo mirar un puntaje sabés si es más o menos probable que ocurra, porque ya conocés cómo funciona el área bajo la curva normal. Puntajes z entre -1 y 1 ocurren bastante seguido; mayores que ±1 todavía ocurren, pero con menos frecuencia; y los que superan ±2 son bastante poco comunes. Esta es una forma práctica de mirar tus números y tener una idea general de qué tan seguido ocurren.</p>
 <p>En general, no conocés la media ni el desvío estándar de la población de la que provienen tus datos. Por eso, podés usar la <strong>media y el desvío estándar de tu muestra</strong> como estimaciones, y usarlos para calcular los puntajes z.</p>
 <p>Finalmente, los puntajes z también se llaman <strong>puntajes estandarizados</strong>, porque cada puntaje bruto se expresa en términos de cuántas desviaciones estándar se encuentra respecto de la media. Es muy probable que esta sea la última vez que hablemos de puntajes z en este libro. Y podrías preguntarte por qué nos molestamos en explicarlos. Primero, porque vale la pena saber que existen. Segundo, porque se vuelven importantes a medida que tu conocimiento estadístico se vuelve más avanzado. Tercero, porque algunos conceptos estadísticos —como la correlación— pueden expresarse en términos de puntajes z, y eso ilumina aspectos de esos estadísticos. Y por último, porque los puntajes z son muy útiles cuando estás trabajando con una distribución normal cuya media y desviación estándar son conocidas.</p>
@@ -1516,33 +1615,31 @@ z = \frac{\text{puntaje bruto} - \text{media}}{\text{desvío estándar}}
 </section>
 <section id="experimentos-y-parámetros-poblacionales" class="level3" data-number="5.12.3">
 <h3 data-number="5.12.3" class="anchored" data-anchor-id="experimentos-y-parámetros-poblacionales"><span class="header-section-number">5.12.3</span> Experimentos y parámetros poblacionales</h3>
-<p>OK, entonces no tenemos una empresa de calzado, y tampoco podemos identificar con claridad la población que nos interesa en psicología… ¿podemos saltearnos esta sección sobre estimación? Después de todo, eso de “la población” parece demasiado raro, abstracto, inútil y polémico. <strong>¡UN MOMENTO!</strong></p>
-<p>Resulta que <strong>sí</strong> podemos aplicar todo lo que venimos aprendiendo para resolver <strong>un montón de problemas importantes en investigación</strong>. Estas herramientas nos permiten <strong>responder preguntas a partir de los datos que recolectamos</strong>. La estimación de parámetros es una de esas herramientas. Solo necesitamos ser un poco más <strong>creativos</strong> y un poco más <strong>abstractos</strong> para poder usarlas.</p>
-<p>Ya sabemos algunas cosas. Los números que medimos <strong>vienen de algún lado</strong>. A eso le llamamos “distribuciones”. Las distribuciones controlan <strong>cómo aparecen los números</strong>. Algunos valores ocurren más que otros, según la distribución. Asumimos —incluso si no sabemos cuál es la distribución, ni qué significa— que los números <strong>provienen de una</strong>.</p>
-<p>Segundo: cuando tenemos algunos números, a eso le llamamos <strong>una muestra</strong>. Y todo este capítulo te enseñó una cosa fundamental: <strong>Cuando tu muestra es grande, se parece a la distribución de la que proviene.</strong> Y cuando tu muestra es grande, <strong>también se va a parecer mucho a otra muestra grande de la misma población</strong>. <strong>¡Podemos usar este conocimiento!</strong></p>
-<p>Muy a menudo, como psicólogos, lo que queremos saber es <strong>qué causa qué</strong>. Queremos saber si <strong>X causa un cambio en Y</strong>. ¿Comer chocolate te hace más feliz? ¿Estudiar mejora tus notas? Hay millones de preguntas como estas. Y queremos respuestas.</p>
-<p>Hasta ahora traté de mantenerme en ejemplos concretos en este libro —por eso hablamos de chocolate y felicidad, al menos son cosas tangibles. Pero ahora intentemos ponernos <strong>abstractos</strong>. Podemos hacerlo.</p>
-<p>Queremos saber si <strong>X causa un cambio en Y</strong>. ¿Qué es X? ¿Qué es Y? <strong>X es algo que cambiás</strong>, es decir, la <strong>variable independiente</strong>. <strong>Y</strong> es algo que medís. Entonces, vamos a tomar <strong>muestras de Y</strong>. “¡Ah, ya entendí! Tomamos muestras de Y, y luego podemos usar los parámetros muestrales para estimar los parámetros poblacionales de Y.” <strong>NO. Bueno, más o menos.</strong> Vamos a tomar muestras de Y, eso sí. De hecho, eso es <strong>todo lo que hacemos siempre</strong>, por eso hablar de “la población de Y” es un poco sin sentido. Lo que nos interesa de verdad son nuestras muestras de Y, y <strong>cómo se comportan</strong>.</p>
-<p>Entonces, ¿qué pasaría si elimináramos completamente X del universo, y luego tomáramos una gran muestra de Y? Vamos a suponer que Y mide algo en un experimento de psicología. Así que sabemos, desde ya, que <strong>Y es una variable</strong>. Cuando tomamos una muestra grande, va a tener una distribución (porque Y varía). Entonces podemos hacer cosas como calcular la media de Y, medir su desviación estándar, y cualquier otra cosa que nos interese saber sobre Y. Perfecto. ¿Y si repitiésemos esa medición? Es decir, tomamos <strong>otra muestra aleatoria de Y</strong>, del mismo tamaño que la anterior. ¿Qué debería pasar? Nuestra primera muestra debería parecerse mucho a la segunda. Después de todo, no hicimos <strong>nada</strong> a Y, simplemente tomamos dos muestras grandes, en dos momentos diferentes. Ambas muestras serán un poco distintas (por el <strong>error muestral</strong>), pero se parecerán bastante. Cuanto más grandes sean nuestras muestras, más similares serán entre sí, <strong>especialmente si no hicimos nada para que sean diferentes</strong>. En otras palabras: podemos usar los <strong>parámetros de una muestra</strong> para estimar los de otra, <strong>porque tienden a ser iguales</strong>… sobre todo cuando las muestras son grandes. Tus muestras grandes de Y deberían ser bastante similares.</p>
-<p>Sin embargo, <strong>si X realmente tiene un efecto sobre Y</strong>, entonces una de tus muestras grandes de Y <strong>va a ser distinta</strong> de la otra. Habrás cambiado algo en Y. Tal vez X hace que cambie <strong>la media</strong> de Y. O tal vez X cambia <strong>la variabilidad</strong> de Y. O incluso, puede que X cambie <strong>toda la forma de la distribución</strong>. Si encontramos algún cambio importante que <strong>no pueda explicarse por error muestral</strong>, entonces podemos concluir que <strong>algo en X causó un cambio en Y</strong>. ¡Podemos usar este enfoque para aprender <strong>qué causa qué</strong>!</p>
-<p>La idea muy importante sigue siendo la de <strong>estimación</strong>, solo que no se trata exactamente de estimar un parámetro poblacional. Sabemos que cuando tomamos muestras, <strong>hay variación natural</strong>. Entonces, cuando estimamos un parámetro de una muestra —como la media— sabemos que esa estimación <strong>va a estar equivocada en alguna medida</strong>. Cuando encontramos que dos muestras son distintas, lo que necesitamos averiguar es si la <strong>magnitud de esa diferencia</strong> es compatible con lo que esperaría del <strong>error muestral</strong>, o si la diferencia es <strong>más grande que eso</strong>. Si la diferencia es más grande, entonces podemos tener confianza en que <strong>no fue el error muestral</strong> lo que la produjo. Entonces, podemos inferir con confianza que <strong>otra cosa</strong> (como X) <strong>causó la diferencia</strong>. Este tipo de pensamiento más abstracto es el que ocupa la mayor parte del resto del libro. Se trata de <strong>determinar si hubo una diferencia causada por tu manipulación experimental</strong>. Hay mucho más para contar, siempre lo hay. Podemos ir más allá de simplemente preguntar si hay una diferencia, pero para fines introductorios, nos vamos a enfocar en <strong>encontrar diferencias</strong> como concepto fundamental.</p>
+<p>OK, entonces no tenemos una empresa de calzado, y tampoco podemos identificar con claridad la población que nos interesa en psicología… ¿podemos saltearnos esta sección sobre estimación? Después de todo, eso de “la población” parece demasiado raro, abstracto, inútil y polémico. ¡ESPERÁ!</p>
+<p>Resulta que sí podemos aplicar todo lo que venimos aprendiendo para resolver un montón de problemas importantes en investigación. Estas herramientas nos permiten responder preguntas a partir de los datos que recolectamos. La estimación de parámetros es una de esas herramientas. Solo necesitamos ser un poco más creativos y un poco más abstractos para poder usarlas.</p>
+<p>Ya sabemos algunas cosas. Los números que medimos vienen de algún lado. A eso le llamamos “distribuciones”. Las distribuciones controlan cómo aparecen los números. Algunos valores ocurren más que otros, según la distribución. Asumimos —incluso si no sabemos cuál es la distribución, ni qué significa— que los números provienen de una. Segundo: cuando tenemos algunos números, a eso le llamamos una muestra. Y todo este capítulo te enseñó una cosa fundamental: Cuando tu muestra es grande, se parece a la distribución de la que proviene. Y cuando tu muestra es grande, también se va a parecer mucho a otra muestra grande de la misma población. ¡Podemos usar este conocimiento!</p>
+<p>Muy a menudo, como psicólogos, lo que queremos saber es qué causa qué. Queremos saber si X causa un cambio en Y. ¿Comer chocolate te hace más feliz? ¿Estudiar mejora tus notas? Hay millones de preguntas como estas. Y queremos respuestas.</p>
+<p>Hasta ahora traté de mantenerme en ejemplos concretos en este libro —por eso hablamos de chocolate y felicidad, al menos son cosas tangibles. Pero ahora intentemos ponernos abstractos. Podemos hacerlo.</p>
+<p>Queremos saber si X causa un cambio en Y. ¿Qué es X? ¿Qué es Y? X es algo que cambiás, es decir, la variable independiente. Y es algo que medís. Entonces, vamos a tomar muestras de Y. “¡Ah, ya entendí! Tomamos muestras de Y, y luego podemos usar los parámetros muestrales para estimar los parámetros poblacionales de Y.” NO, bueno, más o menos. Vamos a tomar muestras de Y, eso sí. De hecho, eso es todo lo que hacemos siempre, por eso hablar de “la población de Y” es un poco sin sentido. Lo que nos interesa de verdad son nuestras muestras de Y, y cómo se comportan.</p>
+<p>Entonces, ¿qué pasaría si elimináramos completamente X del universo, y luego tomáramos una gran muestra de Y? Vamos a suponer que Y mide algo en un experimento de psicología. Así que sabemos, desde ya, que Y es una variable. Cuando tomamos una muestra grande, va a tener una distribución (porque Y varía). Entonces podemos hacer cosas como calcular la media de Y, medir su desviación estándar, y cualquier otra cosa que nos interese saber sobre Y. Perfecto. ¿Y si repitiésemos esa medición? Es decir, tomamos otra muestra aleatoria de Y, del mismo tamaño que la anterior. ¿Qué debería pasar? Nuestra primera muestra debería parecerse mucho a la segunda. Después de todo, no hicimos nada a Y, simplemente tomamos dos muestras grandes, en dos momentos diferentes. Ambas muestras serán un poco distintas (por el error muestral), pero se parecerán bastante. Cuanto más grandes sean nuestras muestras, más similares serán entre sí, especialmente si no hicimos nada para que sean diferentes. En otras palabras: podemos usar los parámetros de una muestra para estimar los de otra, porque tienden a ser iguales, sobre todo cuando las muestras son grandes.</p>
+<p>Ahora estamos listos para el segundo paso. Vos querés saber si X cambia Y. ¿Qué hacés? Hacés que X suba y tomás una muestra grande de Y, y después la mirás. Después hacés que X baje, tomás otra muestra grande de Y y la mirás también. Lo que sigue es comparar las dos muestras de Y. Si X no cambia nada, ¿qué tendrías que encontrar? Eso ya lo hablamos en el párrafo anterior. Si X no hace nada, entonces las dos muestras grandes de Y tendrían que ser bastante parecidas. Sin embargo, si X realmente tiene un efecto sobre Y, entonces una de tus muestras grandes de Y va a ser distinta de la otra. Habrás cambiado algo en Y. Tal vez X hace que cambie la media de Y. O tal vez X cambia la variabilidad de Y. O incluso, puede que X cambie toda la forma de la distribución. Si encontramos algún cambio importante que no pueda explicarse por error muestral, entonces podemos concluir que algo en X causó un cambio en Y. ¡Podemos usar este enfoque para aprender qué causa qué!</p>
+<p>La idea muy importante sigue siendo la de estimación, solo que no se trata exactamente de estimar un parámetro poblacional. Sabemos que cuando tomamos muestras, hay variación natural. Entonces, cuando estimamos un parámetro de una muestra —como la media— sabemos que esa estimación va a estar equivocada en alguna medida. Cuando encontramos que dos muestras son distintas, lo que necesitamos averiguar es si la magnitud de esa diferencia es compatible con lo que esperaría del error muestral, o si la diferencia es más grande que eso. Si la diferencia es más grande, entonces podemos tener confianza en que no fue el error muestral lo que la produjo. Entonces, podemos inferir con confianza que otra cosa (como X) causó la diferencia. Este tipo de pensamiento más abstracto es el que ocupa la mayor parte del resto del libro. Se trata de determinar si hubo una diferencia causada por tu manipulación experimental. Hay mucho más para contar, siempre lo hay. Podemos ir más allá de simplemente preguntar si hay una diferencia, pero para fines introductorios, nos vamos a enfocar en encontrar diferencias como concepto fundamental.</p>
 </section>
 <section id="resumen-intermedio" class="level3" data-number="5.12.4">
 <h3 data-number="5.12.4" class="anchored" data-anchor-id="resumen-intermedio"><span class="header-section-number">5.12.4</span> Resumen intermedio</h3>
-<p>Hemos hablado bastante sobre <strong>estimación</strong>, aunque hasta ahora no hemos hecho muchas estimaciones concretas. Así que en la próxima sección vamos a empezar <strong>a estimar la media y la desviación estándar</strong>.</p>
-<p>Formalmente, esto se conoce como el uso de una muestra para estimar un parámetro poblacional. Pero sentite libre de pensar en “la población” de distintas maneras. Podría ser una población concreta, como la distribución de tamaños de calzado. O podría ser algo más abstracto, como una <strong>estimación del parámetro que típicamente producen las muestras</strong>, si las repitieras muchas veces. Por ejemplo, si realizás muchas muestras grandes bajo condiciones similares, ¿qué promedio suelen darte? Eso es un parámetro. La mayoría de las veces, no podemos ver directamente ese parámetro. Lo que podemos ver es <strong>una muestra</strong>. Y lo que podemos hacer es usar esa muestra para <strong>estimar</strong> el parámetro que no podemos observar.</p>
+<p>Hemos hablado bastante sobre estimación, aunque hasta ahora no hemos hecho muchas estimaciones concretas. Así que en la próxima sección vamos a empezar a estimar la media y la desviación estándar. Formalmente, esto se conoce como el uso de una muestra para estimar un parámetro poblacional. Pero sentite libre de pensar en “la población” de distintas maneras. Podría ser una población concreta, como la distribución de tamaños de calzado. O podría ser algo más abstracto, como una estimación del parámetro que típicamente producen las muestras, si las repitieras muchas veces. Por ejemplo, si realizás muchas muestras grandes bajo condiciones similares, ¿qué promedio suelen darte? Eso es un parámetro. La mayoría de las veces, no podemos ver directamente ese parámetro. Lo que podemos ver es una muestra. Y lo que podemos hacer es usar esa muestra para estimar el parámetro que no podemos observar.</p>
 </section>
 <section id="estimación-de-la-media-poblacional" class="level3" data-number="5.12.5">
 <h3 data-number="5.12.5" class="anchored" data-anchor-id="estimación-de-la-media-poblacional"><span class="header-section-number">5.12.5</span> Estimación de la media poblacional</h3>
-<p>Supongamos que vamos a Brooklyn y 100 personas locales tienen la amabilidad de hacer una prueba de CI. El puntaje promedio de CI entre esas personas resulta ser ${X} = 98.5$. Entonces, ¿cuál es la verdadera media del CI en toda la población de Brooklyn? Obviamente, no lo sabemos. Podría ser 97.2, o también podría ser 103.5. Como nuestra muestra no es exhaustiva, no podemos dar una respuesta definitiva. Sin embargo, si nos obligaran a dar una “mejor suposición”, tendría que decir 98.5. Esa es la esencia de la estimación estadística: dar una mejor conjetura. Estamos usando la media muestral como nuestra mejor estimación de la media poblacional.</p>
-<p>En este ejemplo, estimar el parámetro poblacional desconocido es bastante directo. Calculamos la media muestral y la usamos como nuestra <strong>estimación de la media poblacional</strong>. Es bastante simple, y en la próxima sección vamos a ver la justificación estadística de por qué esta respuesta intuitiva tiene sentido. Pero por ahora, asegurémonos de distinguir bien que la estadística muestral y la estimación del parámetro poblacional <strong>no son lo mismo</strong>. Una estadística muestral describe tus datos; en cambio, una estimación es una conjetura sobre la población.</p>
-<p>Con eso en mente, lxs estadísticxs suelen usar notaciones distintas para diferenciarlas. Por ejemplo, si la media poblacional verdadera se denota <span class="math inline">\(\mu\)</span>, entonces usamos <span class="math inline">\(\hat{\mu}\)</span> para referirnos a nuestra estimación de esa media. En contraste, la media muestral se denota <span class="math inline">\(\bar{X}\)</span>, o a veces <span class="math inline">\(m\)</span>. Sin embargo, en muestras aleatorias simples, la estimación de la media poblacional es idéntica a la media muestral: si observo una media muestral de <span class="math inline">\(\bar{X} = 98.5\)</span>, entonces mi estimación de la media poblacional es también <span class="math inline">\(\hat{\mu} = 98.5\)</span>.</p>
+<p>Supongamos que vamos a Brooklyn y 100 personas locales tienen la amabilidad de hacer una prueba de CI. El puntaje promedio de CI entre esas personas resulta ser ${X} = 98.5$. Entonces, ¿cuál es la verdadera media del CI en toda la población de Brooklyn? Obviamente, no lo sabemos. Podría ser 97.2, o también podría ser 103.5. Como nuestra muestra no es exhaustiva, no podemos dar una respuesta definitiva. Sin embargo, si nos obligaran a dar nuestra “mejor aproximación”, tendría que decir 98.5. Esa es la esencia de la estimación estadística. Estamos usando la media muestral como nuestra mejor aproximación a la media poblacional.</p>
+<p>En este ejemplo, estimar el parámetro poblacional desconocido es bastante directo. Calculamos la media muestral y la usamos como nuestra <strong>estimación de la media poblacional</strong>. Es bastante simple, y en la próxima sección vamos a ver la justificación estadística de por qué esta respuesta intuitiva tiene sentido. Pero por ahora, asegurémonos de distinguir bien que el estadístico muestral y la estimación del parámetro poblacional son conceptualmente distintos. El estadístico muestral describe tus datos; en cambio, una estimación es una conjetura sobre la población.</p>
+<p>Con eso en mente, los profesionales de la estadística suelen usar notaciones distintas para diferenciarlas. Por ejemplo, si la media poblacional verdadera se denota <span class="math inline">\(\mu\)</span>, entonces usamos <span class="math inline">\(\hat{\mu}\)</span> para referirnos a nuestra estimación de esa media poblacional. En contraste, la media muestral se denota <span class="math inline">\(\bar{X}\)</span>, o a veces <span class="math inline">\(m\)</span>. Sin embargo, en muestras aleatorias simples, la estimación de la media poblacional es idéntica a la media muestral: si observo una media muestral de <span class="math inline">\(\bar{X} = 98.5\)</span>, entonces mi estimación de la media poblacional es también <span class="math inline">\(\hat{\mu} = 98.5\)</span>.</p>
 <p>Para dejar clara la notación, acá va una tabla útil:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 14%">
-<col style="width: 37%">
-<col style="width: 47%">
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1572,32 +1669,38 @@ z = \frac{\text{puntaje bruto} - \text{media}}{\text{desvío estándar}}
 </section>
 <section id="estimación-del-desvío-estándar-poblacional" class="level3" data-number="5.12.6">
 <h3 data-number="5.12.6" class="anchored" data-anchor-id="estimación-del-desvío-estándar-poblacional"><span class="header-section-number">5.12.6</span> Estimación del desvío estándar poblacional</h3>
-<p>Hasta ahora, la estimación parece bastante sencilla, y tal vez te estés preguntando por qué te hice leer todo ese material sobre teoría del muestreo. En el caso de la media, nuestra estimación del parámetro poblacional ($$) resultó ser idéntica a la estadística muestral correspondiente (${X}$). Sin embargo, <strong>eso no siempre es así</strong>.</p>
-<p>Para verlo, pensemos cómo construir una <strong>estimación del desvío estándar poblacional</strong>, que vamos a denotar como $$. ¿Qué deberíamos usar como estimación en este caso? Tu primera reacción podría ser hacer lo mismo que con la media, y simplemente usar la estadística muestral como estimación. Eso está <strong>casi</strong> bien, pero no del todo.</p>
-<p>Veamos por qué. Supongamos que tengo una muestra que contiene <strong>una sola observación</strong>. Para este ejemplo, ayuda pensar en una situación donde no tengas ninguna intuición previa sobre cuál podría ser el valor real en la población. Así que usemos algo completamente ficticio: supongamos que la observación mide la <strong>cromulencia</strong> de mis zapatos. Resulta que mis zapatos tienen una cromulencia de 20. Así que mi muestra es: <code>20</code> Esta es una muestra perfectamente válida, aunque tenga un tamaño muestral de $N = 1$. Tiene una media muestral de 20, y como <strong>cada observación en esta muestra es igual a la media muestral</strong> (¡obviamente!), el desvío estándar muestral es 0.</p>
-<p>Como <strong>descripción de la muestra</strong>, esto está perfecto: la muestra contiene una sola observación, así que no hay variabilidad observada. Un desvío estándar muestral de $s = 0$ es la respuesta correcta acá. Pero como <strong>estimación del desvío estándar poblacional</strong>, eso suena completamente absurdo, ¿no? Por ejemplo, imaginá que la media muestral <strong>siempre</strong> fuera menor que la media poblacional. Si eso fuera cierto (no lo es), no podríamos usar la media muestral como estimador. Estaría sesgada, estaríamos usando un valor sistemáticamente incorrecto.</p>
-<p>Bueno, resulta que el <strong>desvío estándar muestral</strong> es un <strong>estimador sesgado</strong> del desvío estándar poblacional. Ya veníamos intuyéndolo con lo que estuvimos discutiendo. Cuando el tamaño muestral es 1, el desvío estándar es 0, lo cual claramente es demasiado bajo. Cuando el tamaño muestral es 2, el desvío estándar empieza a ser mayor que 0, pero como solo tenemos dos datos, sospechamos que <strong>sigue siendo demasiado bajo</strong>. Y resulta que esta intuición es correcta.</p>
-<p>Estaría bueno poder demostrar esto de alguna forma. Hay pruebas matemáticas que confirman esta intuición, pero salvo que tengas una formación matemática bastante sólida, no van a ayudarte mucho. Así que en vez de eso, lo que voy a hacer es usar <strong>R</strong> para simular los resultados de algunos experimentos.</p>
-<p>Volvamos a nuestros estudios sobre CI. Supongamos que la verdadera media poblacional de CI es 100, y la desviación estándar poblacional es 15. Podemos usar la función <code>rnorm()</code> para generar los resultados de un experimento en el que medimos $N = 2$ puntuaciones de CI, y luego calculamos el <strong>desvío estándar muestral</strong>.</p>
-<p>Si repetimos este procedimiento una y otra vez, y graficamos un histograma de esos desvíos estándar muestrales, obtenemos la <strong>distribución muestral del desvío estándar</strong>. Esa distribución está graficada en la figura <code>@fig-sampdistsd</code>.</p>
+<p>Hasta ahora, la estimación parece bastante sencilla, y tal vez te estés preguntando por qué te hice leer todo ese material sobre teoría del muestreo. En el caso de la media, nuestra estimación del parámetro poblacional ($$) resultó ser idéntica a la estadística muestral correspondiente (${X}$). Sin embargo, eso no siempre es así. Para verlo, pensemos cómo construir una <strong>estimación del desvío estándar poblacional</strong>, que vamos a denotar como $$. ¿Qué deberíamos usar como estimación en este caso? Tu primera reacción podría ser hacer lo mismo que con la media, y simplemente usar el estadístico muestral como estimación. Eso está casi bien, pero no del todo.</p>
+<p>Veamos por qué. Supongamos que tengo una muestra que contiene una sola observación. Para este ejemplo, ayuda pensar en una situación donde no tengas ninguna intuición previa sobre cuál podría ser el valor real en la población. Así que usemos algo completamente ficticio: supongamos que la observación mide la <strong>cromulencia</strong> de mis zapatos. Resulta que mis zapatos tienen una cromulencia de 20. Así que mi muestra es:</p>
+<p><code>20</code></p>
+<p>Esta es una muestra perfectamente legítima, aunque tenga un tamaño muestral de $N = 1$. Tiene una media muestral de 20, y como cada observación en esta muestra es igual a la media muestral (¡obviamente!), el desvío estándar muestral es 0. Como descripción de la <strong>muestra</strong>, esto está bien: la muestra contiene una sola observación, así que no hay variabilidad observada en la muestra. Un desvío estándar muestral de $s = 0$ es la respuesta correcta acá. Pero como estimación del desvío estándar <strong>poblacional</strong>, eso suena completamente absurdo, ¿no? Seamos sinceros: vos y yo no tenemos ni idea de qué es la “cromulencia”, pero sabemos algo sobre datos. La única razón por la que no vemos ninguna variabilidad en la <strong>muestra</strong> es que la muestra es demasiado chica como para mostrar alguna variación. Entonces, si tenés un tamaño muestral de <span class="math inline">\(N=1\)</span>, lo que se <strong>siente</strong> como la respuesta correcta es simplemente decir: “ni idea, la verdad”.</p>
+<p>Fijate que <strong>no</strong> tenemos la misma intuición cuando se trata de la media muestral y la media poblacional. Si alguien nos obliga a hacer una mejor aproximación sobre la media de la población, no suena completamente descabellado decir que la media poblacional es 20. Obvio, probablemente no te sientas muy seguro de esa aproximación, porque solo tenés una observación, pero sigue siendo la mejor aproximación que podés hacer.</p>
+<p>Extendamos un poco este ejemplo. Supongamos que ahora hago una segunda observación. Mi conjunto de datos ahora tiene <span class="math inline">\(N=2\)</span> observaciones de la cromulencia de los zapatos, y la muestra completa se ve así:</p>
+<p><code>20, 22</code></p>
+<p>Esta vez, nuestra muestra es <strong>justo</strong> lo suficientemente grande como para que podamos ver algo de variabilidad: dos observaciones es el número mínimo necesario para que pueda observarse alguna variación. Para este nuevo conjunto de datos, el promedio muestral es <span class="math inline">\(\bar{X}=21\)</span> y la desviación estándar muestral es <span class="math inline">\(s=1\)</span>.</p>
+<p>¿Qué intuiciones tenemos ahora sobre la población? De nuevo, en lo que respecta a la media poblacional, la mejor aproximación que podemos hacer es la media muestral: si nos obligaran a adivinar, probablemente diríamos que la media de cromulencia poblacional es 21. ¿Y la desviación estándar? Acá la cosa se pone un poco más complicada. La desviación estándar muestral está basada solamente en dos observaciones, y si sos como yo, seguramente tenés la intuición de que, con solo dos datos, no le estamos dando a la población “suficiente oportunidad” de mostrarnos su verdadera variabilidad. No es solo que sospechamos que la estimación está <strong>equivocada</strong> —porque con solo dos observaciones ya esperamos que haya algún error—. La preocupación más grande es que el error sea <strong>sistemático</strong>.</p>
+<p>Si el error es sistemático, entonces está <strong>sesgado</strong>. Por ejemplo, imaginate que el promedio muestral siempre fuera menor que el promedio poblacional. Si eso fuera cierto (no lo es), entonces no podríamos usar el promedio muestral como estimador. Estaría sesgado, estaríamos usando el número equivocado.</p>
+<p>Bueno, resulta que el desvío estándar muestral es un <strong>estimador sesgado</strong> del desvío estándar poblacional. Ya veníamos intuyéndolo con lo que estuvimos discutiendo. Cuando el tamaño muestral es 1, el desvío estándar es 0, lo cual claramente es demasiado bajo. Cuando el tamaño muestral es 2, el desvío estándar empieza a ser mayor que 0, pero como solo tenemos dos datos, sospechamos que sigue siendo demasiado bajo. Y resulta que esta intuición es correcta.</p>
+<p>Estaría bueno poder demostrar esto de alguna forma. Hay pruebas matemáticas que confirman esta intuición, pero salvo que tengas una formación matemática bastante sólida, no van a ayudarte mucho. Así que en vez de eso, lo que voy a hacer es usar R para simular los resultados de algunos experimentos. Con esto en mente, volvamos a nuestros estudios sobre CI. Supongamos que la verdadera media poblacional de CI es 100, y la desviación estándar poblacional es 15. Podemos usar la función <strong>rnorm()</strong> para generar los resultados de un experimento en el que medimos $N = 2$ puntuaciones de CI, y luego calculamos el desvío estándar muestral. Si repetimos este procedimiento una y otra vez, y graficamos un histograma de esos desvíos estándar muestrales, obtenemos la <strong>distribución muestral del desvío estándar</strong>. Esa distribución está graficada en la figura <code>@fig-sampdistsd</code>.</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"imgs/navarro_img/estimation/sampdistsd_es.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="imgs/navarro_img/estimation/sampdistsd_es.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p><img src="imgs/navarro_img/estimation/sampdistsd_es.png" class="img-fluid figure-img" width="2025"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Aunque la verdadera desviación estándar poblacional es 15, el promedio de los <strong>desvíos estándar muestrales</strong> es solo 8.5. Notá que esto es <strong>muy distinto</strong> de lo que pasaba cuando graficábamos distribuciones muestrales de la media: esas siempre estaban centradas en la media poblacional.</p>
+<p>Aunque la verdadera desviación estándar poblacional es 15, el promedio de los desvíos estándar <strong>muestrales</strong> es solo 8.5. Notá que esto es muy distinto de lo que pasaba cuando graficábamos distribuciones muestrales de la media: esas siempre estaban centradas en la media poblacional.</p>
 <p>Ahora ampliemos la simulación. En lugar de restringirnos a un tamaño muestral de $N=2$, repitamos el experimento para tamaños muestrales del 1 al 10. Si graficamos el promedio de la media muestral y el promedio del desvío estándar muestral como función del tamaño de la muestra, obtenemos los siguientes resultados.</p>
-<p>La figura <code>@fig-estimatorbiasA</code> muestra cómo cambia la media muestral según el tamaño de la muestra. Notá que la línea es <strong>plana</strong>: la media muestral <strong>no sobrestima ni subestima</strong> la media poblacional. Es un <strong>estimador insesgado</strong>.</p>
+<p>La figura <code>@fig-estimatorbiasA</code> muestra cómo cambia la media muestral según el tamaño de la muestra. Notá que la línea es plana: la media muestral no sobrestima ni subestima la media poblacional. Es un estimador insesgado.</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"imgs/navarro_img/estimation/biasMean_es.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-estimatorbiasA" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-estimatorbiasA-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="imgs/navarro_img/estimation/biasMean_es.png" class="img-fluid figure-img" style="width:75.0%">
+<img src="imgs/navarro_img/estimation/biasMean_es.png" class="img-fluid figure-img" width="1800">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-estimatorbiasA-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5.21: Una ilustración del hecho de que la media muestral es un estimador insesgado de la media poblacional.
@@ -1608,11 +1711,12 @@ Figure&nbsp;5.21: Una ilustración del hecho de que la media muestral es un esti
 </div>
 <p>La figura <code>@fig-estimatorbiasB</code> muestra cómo cambia el <strong>desvío estándar muestral</strong> con el tamaño de muestra. Notá que <strong>no</strong> es una línea plana: el desvío estándar muestral <strong>subestima sistemáticamente</strong> la desviación estándar poblacional.</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"imgs/navarro_img/estimation/biasSD_es.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-estimatorbiasB" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-estimatorbiasB-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="imgs/navarro_img/estimation/biasSD_es.png" class="img-fluid figure-img" style="width:75.0%">
+<img src="imgs/navarro_img/estimation/biasSD_es.png" class="img-fluid figure-img" width="1800">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-estimatorbiasB-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5.22: Una ilustración del hecho de que el desvío estándar muestral es un estimador sesgado de la desviación estándar poblacional.
@@ -1621,33 +1725,30 @@ Figure&nbsp;5.22: Una ilustración del hecho de que el desvío estándar muestra
 </div>
 </div>
 </div>
-<p>En otras palabras, si queremos hacer nuestra <strong>mejor conjetura</strong> sobre el valor de la desviación estándar poblacional $$ (lo que llamamos $$), deberíamos asegurarnos de que sea <strong>un poco más grande</strong> que el desvío estándar muestral $s$.</p>
-<p>Volvamos a mirar la varianza. Si recordás del segundo capítulo, la <strong>varianza muestral</strong> se define como el promedio de los cuadrados de las desviaciones respecto de la media muestral. Es decir:</p>
+<p>En otras palabras, si queremos hacer una “mejor aproximación” (<span class="math inline">\(\hat\sigma\)</span>, nuestra estimación de la desviación estándar poblacional) sobre el valor real de la desviación estándar de la población <span class="math inline">\(\sigma\)</span>, deberíamos asegurarnos de que nuestra aproximación sea un poquito más grande que la desviación estándar muestral <span class="math inline">\(s\)</span>.</p>
+<p>La solución a este sesgo sistemático resulta ser bastante simple. Así es como funciona. Antes de meternos con la desviación estándar, vamos a mirar la varianza. Si recordás el segundo capítulo, la varianza muestral se define como el promedio de los cuadrados de las desviaciones respecto de la media muestral. Es decir:</p>
 <p><span class="math display">\[
 s^2 = \frac{1}{N} \sum_{i=1}^N (X_i - \bar{X})^2
 \]</span></p>
-<p>La varianza muestral $s^2$ es un <strong>estimador sesgado</strong> de la varianza poblacional $^2$. Pero resulta que solo necesitamos hacer un pequeño ajuste para transformarla en un estimador <strong>insesgado</strong>. Todo lo que hay que hacer es dividir por $N-1$ en lugar de por $N$. Si hacemos eso, obtenemos la siguiente fórmula:</p>
+<p>La varianza muestral $s^2$ es un estimador sesgado de la varianza poblacional $^2$. Pero resulta que solo necesitamos hacer un pequeño ajuste para transformarla en un estimador insesgado. Todo lo que hay que hacer es dividir por $N-1$ en lugar de por $N$. Si hacemos eso, obtenemos la siguiente fórmula:</p>
 <p><span class="math display">\[
 \hat\sigma^2 = \frac{1}{N-1} \sum_{i=1}^N (X_i - \bar{X})^2
 \]</span></p>
-<p>Esto <strong>sí</strong> es un estimador insesgado de la varianza poblacional $^2$.</p>
-<p>Una historia similar se aplica al <strong>desvío estándar</strong>. Si dividimos por $N-1$ en lugar de por $N$, nuestra estimación del desvío estándar poblacional se convierte en:</p>
+<p>Esto sí es un estimador insesgado de la varianza poblacional $^2$.</p>
+<p>Una historia similar se aplica al desvío estándar. Si dividimos por $N-1$ en lugar de por $N$, nuestra estimación del desvío estándar poblacional se convierte en:</p>
 <p><span class="math display">\[
 \hat\sigma = \sqrt{\frac{1}{N-1} \sum_{i=1}^N (X_i - \bar{X})^2}
 \]</span></p>
-<p>Vale la pena señalar que los programas de software toman <strong>decisiones por vos</strong> sobre qué tipo de varianza y desvío estándar estás calculando. Algunos programas dividen automáticamente por $N-1$, otros no. Necesitás verificar qué están haciendo. <strong>No dejes que el software decida por vos.</strong> El software está para que vos le digas qué hacer.</p>
-<p>Un último punto: en la práctica, muchas personas se refieren a $$ (la fórmula con $N-1$) como el <strong>desvío estándar muestral</strong>. Técnicamente, esto es incorrecto: el <strong>desvío estándar muestral</strong>, como propiedad de la muestra, debería ser igual a $s$ (la fórmula con $N$). No son la misma cosa, ni conceptualmente ni numéricamente. Una es una propiedad de la muestra; la otra, una estimación del parámetro poblacional. Sin embargo, en casi todas las aplicaciones reales, lo que realmente nos importa es la estimación del parámetro poblacional. Por eso, la gente casi siempre reporta $$ en lugar de $s$.</p>
-<p>::: {.callout-note}</p>
-<blockquote class="blockquote">
-<p>Si lo que estás haciendo es estimar un parámetro poblacional, ¿por qué dividirías por $N-1$? Además, cuando $N$ es grande, no importa tanto. La diferencia entre un $N$ grande y un $N-1$ grande es solo… -1. :::</p>
-</blockquote>
+<p>Vale la pena señalar que los programas de software toman decisiones <strong>por vos</strong> sobre qué tipo de varianza y desvío estándar estás calculando. Algunos programas dividen automáticamente por $N-1$, otros no. Necesitás verificar qué están haciendo. No dejes que el software decida por <strong>vos</strong>. El software está para que vos le digas qué hacer.</p>
+<p>Un último punto: en la práctica, muchas personas se refieren a $$ (la fórmula con $N-1$) como el desvío estándar <strong>muestral</strong>. Técnicamente, esto es incorrecto: el desvío estándar muestral, como propiedad de la muestra, debería ser igual a $s$ (la fórmula con $N$). No son la misma cosa, ni conceptualmente ni numéricamente. Una es una propiedad de la muestra; la otra, una estimación del parámetro poblacional. Sin embargo, en casi todas las aplicaciones reales, lo que realmente nos importa es la estimación del parámetro poblacional. Por eso, la gente casi siempre reporta $$ en lugar de $s$.</p>
+<p>::: {.callout-note} &gt; Ojo, si hay que dividir por 𝑁 o por 𝑁−1 también depende de cómo pensás lo que estás haciendo. Por ejemplo, si no creés que lo que estás haciendo es estimar un parámetro poblacional, entonces, ¿por qué dividirías por N−1? Además, cuando 𝑁 es grande, no importa tanto. La diferencia entre un 𝑁 grande y un 𝑁−1 grande es… simplemente 1. &gt; :::</p>
 <p>Este es el número correcto que hay que reportar, claro. Pero la gente tiende a ser un poco imprecisa con la terminología cuando lo escribe, porque “desvío estándar muestral” es más corto que “estimación del desvío estándar poblacional”. No es gran cosa, y en la práctica yo hago lo mismo que todos los demás. Sin embargo, creo que es importante mantener los dos <strong>conceptos</strong> separados: nunca es buena idea confundir “propiedades conocidas de tu muestra” con “conjeturas sobre la población de la que proviene”. En el momento en que empezás a pensar que $s$ y $$ son lo mismo, empezás a hacer justamente eso.</p>
 <p>Para cerrar esta sección, acá tenés un par de tablas más para ayudarte a mantener todo claro:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 17%">
-<col style="width: 35%">
-<col style="width: 46%">
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1681,53 +1782,54 @@ s^2 = \frac{1}{N} \sum_{i=1}^N (X_i - \bar{X})^2
 <blockquote class="blockquote">
 <p>La estadística es no tener que decir nunca que estás seguro — Autor desconocido</p>
 </blockquote>
-<p>Hasta este punto del capítulo, describimos los fundamentos de la teoría del muestreo en los que se apoyan lxs estadísticxs para hacer conjeturas sobre los parámetros poblacionales a partir de una muestra de datos. Como muestra esta discusión, una de las razones por las que necesitamos toda esta teoría es que <strong>todo conjunto de datos deja un cierto grado de incertidumbre</strong>, así que nuestras estimaciones nunca van a ser perfectamente precisas. Lo que falta en esta discusión hasta ahora es un intento de <strong>cuantificar</strong> cuánto es esa incertidumbre.</p>
-<p>Lo que falta en nuestra discusión hasta ahora es un intento de <strong>cuantificar</strong> cuánta incertidumbre hay en nuestra estimación. No alcanza con poder decir que el CI promedio de estudiantes de psicología es 115 (sí, me acabo de inventar ese número). También queremos poder decir <strong>qué tan seguros estamos de esa estimación</strong>. Por ejemplo, estaría bueno poder decir que hay un 95% de probabilidad de que el valor real esté entre 109 y 121. A eso se le llama un <strong>intervalo de confianza</strong> para la media.</p>
-<p>Armados con lo que ya sabemos sobre distribuciones muestrales, construir un intervalo de confianza para la media es bastante fácil. Así es como funciona:</p>
-<p>Supongamos que la verdadera media poblacional es $$ y la desviación estándar poblacional es $$. Acabo de terminar mi estudio con $N$ participantes, y la media muestral de CI fue ${X}$. Sabemos, gracias al teorema central del límite, que la distribución muestral de la media es aproximadamente normal. También sabemos, por lo que aprendimos sobre la distribución normal, que hay un 95% de probabilidad de que un valor normalmente distribuido caiga dentro de dos desviaciones estándar de la media verdadera.</p>
-<p>Para ser más precisos, podemos usar la función <code>qnorm()</code> para calcular los percentiles 2.5 y 97.5 de la distribución normal:</p>
+<p>Hasta este punto del capítulo, describimos los fundamentos de la teoría del muestreo en los que se apoyan los estadísticos para hacer conjeturas sobre los parámetros poblacionales a partir de una muestra de datos. Como muestra esta discusión, una de las razones por las que necesitamos toda esta teoría es que todo conjunto de datos deja un cierto grado de incertidumbre, así que nuestras estimaciones nunca van a ser perfectamente precisas. Lo que falta en esta discusión hasta ahora es un intento de <strong>cuantificar</strong> cuánto es esa incertidumbre. No alcanza con poder decir que el CI promedio de estudiantes de psicología es 115 (sí, me acabo de inventar ese número). También queremos poder decir qué tan seguros estamos de esa estimación. Por ejemplo, estaría bueno poder decir que hay un 95% de probabilidad de que el valor real esté entre 109 y 121. A eso se le llama un <strong>intervalo de confianza</strong> para la media.</p>
+<p>Armados con lo que ya sabemos sobre distribuciones muestrales, construir un intervalo de confianza para la media es bastante fácil. Así es como funciona: Supongamos que la verdadera media poblacional es $$ y la desviación estándar poblacional es $$. Acabo de terminar mi estudio con $N$ participantes, y la media muestral de CI fue ${X}$. Sabemos, gracias al teorema central del límite, que la distribución muestral de la media es aproximadamente normal. También sabemos, por lo que aprendimos sobre la distribución normal, que hay un 95% de probabilidad de que un valor normalmente distribuido caiga dentro de dos desviaciones estándar de la media verdadera. Para ser más precisos, podemos usar la función <code>qnorm()</code> para calcular los percentiles 2.5 y 97.5 de la distribución normal:</p>
 <div class="cell">
-<pre><code>#&gt; [1] -1.959964  1.959964</code></pre>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>( <span class="at">p =</span> <span class="fu">c</span>(.<span class="dv">025</span>, .<span class="dv">975</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -1.959964  1.959964</code></pre>
 </div>
-<p>Ok, así que te mentí un poco antes: lo más correcto es decir que hay un 95% de probabilidad de que una cantidad normalmente distribuida caiga dentro de <strong>1.96</strong> desviaciones estándar de la media verdadera.</p>
-<p>Ahora recordá que la desviación estándar de la distribución muestral se llama <strong>error estándar</strong>, y que el error estándar de la media se denota como <strong>SEM</strong>. Cuando juntamos todas estas piezas, aprendemos que hay un 95% de probabilidad de que la media muestral ${X}$ que obtuvimos esté <strong>a no más de 1.96 errores estándar de la media poblacional</strong>.</p>
-<p>Uf, eso fue mucha matemática junta. Tranquilo, ahora lo aclaramos. En notación matemática, esto se escribe así:</p>
+</div>
+<p>Ok, así que te mentí un poco antes: lo más correcto es decir que hay un 95% de probabilidad de que una cantidad normalmente distribuida caiga dentro de 1.96 desviaciones estándar de la media verdadera.</p>
+<p>Ahora recordá que la desviación estándar de la distribución muestral se llama error estándar, y que el error estándar de la media se denota como SEM. Cuando juntamos todas estas piezas, aprendemos que hay un 95% de probabilidad de que la media muestral ${X}$ que observamos esté a no más de 1.96 errores estándar de la media poblacional. Uf, eso fue mucha matemática junta. Tranquilo, ahora lo aclaramos.</p>
+<p>En notación matemática, esto se escribe así:</p>
 <p><span class="math display">\[
 \mu - \left(1.96 \times \text{SEM} \right) \ \leq\ \bar{X} \ \leq\ \mu + \left(1.96 \times \text{SEM} \right)
 \]</span> donde el SEM es igual a $/ $, y podemos estar un 95% seguros de que esto es cierto.</p>
-<p>Sin embargo, esto <strong>no</strong> responde la pregunta que realmente nos interesa. La ecuación anterior nos dice qué deberíamos esperar sobre la <strong>media muestral</strong>, dado que <strong>conocemos</strong> los parámetros poblacionales. Pero lo que <strong>queremos</strong> es que funcione al revés: queremos saber qué deberíamos creer sobre los <strong>parámetros poblacionales</strong>, dado que <strong>observamos</strong> una muestra particular.</p>
-<p>Sin embargo, no es muy difícil lograrlo. Con un poco de álgebra de secundaria, podemos reescribir nuestra ecuación así:</p>
+<p>Sin embargo, esto no responde la pregunta que realmente nos interesa. La ecuación anterior nos dice qué deberíamos esperar sobre la media muestral, dado que conocemos los parámetros poblacionales. Pero lo que queremos es que funcione al revés: queremos saber qué deberíamos creer sobre los parámetros poblacionales, dado que observamos una muestra particular. Sin embargo, no es muy difícil lograrlo. Con un poco de álgebra de secundaria, podemos reescribir nuestra ecuación así:</p>
 <p><span class="math display">\[
 \bar{X} - \left( 1.96 \times \text{SEM} \right) \leq \mu \leq \bar{X} + \left( 1.96 \times \text{SEM} \right)
 \]</span></p>
-<p>Esto nos dice que <strong>el rango de valores delimitado por esa desigualdad tiene una probabilidad del 95% de contener la media poblacional $$</strong>. A este rango lo llamamos <strong>intervalo de confianza del 95%</strong>, denotado como $_{95}$.</p>
+<p>Esto nos dice que el rango de valores tiene una probabilidad del 95% de contener la media poblacional $$. A este rango lo llamamos <strong>intervalo de confianza del 95%</strong>, denotado como $_{95}$.</p>
 <p>En resumen, siempre que $N$ sea lo suficientemente grande —lo suficientemente grande como para que la distribución muestral de la media se parezca a una normal— podemos usar la siguiente fórmula para el intervalo de confianza del 95%:</p>
 <p><span class="math display">\[
 \text{CI}_{95} = \bar{X} \pm \left( 1.96 \times \frac{\sigma}{\sqrt{N}} \right)
 \]</span></p>
-<p>Por supuesto, no hay nada especial en el número 1.96: simplemente es el multiplicador que necesitás usar si querés un intervalo de confianza del 95%.</p>
-<p>Si quisiera un intervalo de confianza del 70%, podría usar la función <code>qnorm()</code> para calcular los cuantiles 15 y 85:</p>
+<p>Por supuesto, no hay nada especial en el número 1.96: simplemente es el multiplicador que necesitás usar si querés un intervalo de confianza del 95%. Si quisiera un intervalo de confianza del 70%, podría usar la función <strong>qnorm()</strong> para calcular los cuantiles 15 y 85:</p>
 <div class="cell">
-<pre><code>#&gt; [1] -1.036433  1.036433</code></pre>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>( <span class="at">p =</span> <span class="fu">c</span>(.<span class="dv">15</span>, .<span class="dv">85</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -1.036433  1.036433</code></pre>
 </div>
-<p>Así que la fórmula para el <span class="math inline">\(\text{CI}*{70}\)</span> sería igual a la del <span class="math inline">\(\text{CI}*{95}\)</span>, excepto que usaríamos <strong>1.04</strong> como nuestro número mágico, en lugar de 1.96.</p>
+</div>
+<p>Así que la fórmula para el <span class="math inline">\(\text{CI}*{70}\)</span> sería igual a la del <span class="math inline">\(\text{CI}*{95}\)</span>, excepto que usaríamos 1.04 como nuestro número mágico, en lugar de 1.96.</p>
 <section id="un-pequeño-error-en-la-fórmula" class="level3" data-number="5.13.1">
 <h3 data-number="5.13.1" class="anchored" data-anchor-id="un-pequeño-error-en-la-fórmula"><span class="header-section-number">5.13.1</span> Un pequeño error en la fórmula</h3>
-<p>Como de costumbre, te mentí un poco. La fórmula que te di arriba para el intervalo de confianza del 95% es aproximadamente correcta, pero omití un detalle importante… Usa el <strong>error estándar de la media</strong> (SEM), que a su vez requiere conocer la <strong>desviación estándar poblacional verdadera</strong> <span class="math inline">\(\sigma\)</span>.</p>
-<p>Sin embargo, ya dijimos antes que en general <strong>no conocemos</strong> los parámetros poblacionales verdaderos. Y como no conocemos el valor real de <span class="math inline">\(\sigma\)</span>, tenemos que usar una <strong>estimación</strong> del desvío estándar poblacional, es decir, <span class="math inline">\(\hat{\sigma}\)</span>. Eso no es difícil de hacer, pero tiene una consecuencia: ahora tenemos que usar los <strong>cuantiles de la distribución <span class="math inline">\(t\)</span></strong> en lugar de la distribución normal para calcular nuestro “número mágico”; y ese número <strong>depende del tamaño muestral</strong>. Además, todavía <strong>no hablamos de la distribución <span class="math inline">\(t\)</span></strong> en este capítulo.</p>
-<p>Cuando usamos la distribución <span class="math inline">\(t\)</span> en lugar de la normal, los valores críticos son más grandes. Eso refleja el hecho de que tenemos <strong>mayor incertidumbre</strong>. ¿Y por qué tenemos esa incertidumbre extra? Bueno, porque nuestra estimación del desvío estándar poblacional <span class="math inline">\(\hat{\sigma}\)</span> <strong>podría estar equivocada</strong>. Si lo está, eso implica que <strong>no estamos tan seguros</strong> de cómo es realmente la distribución muestral de la media… y esa incertidumbre <strong>termina reflejándose</strong> en un <strong>intervalo de confianza más amplio</strong>.</p>
+<p>Como de costumbre, te mentí un poco. La fórmula que te di más arriba para el intervalo de confianza del 95% es aproximadamente correcta, pero me salté un detalle importante en la explicación. Fijate que mi fórmula requiere que uses el error estándar de la media (SEM), que a su vez necesita que conozcas la desviación estándar real de la población, <span class="math inline">\(\sigma\)</span>.</p>
+<p>Sin embargo, ya dijimos antes que en general <strong>no conocemos</strong> los parámetros poblacionales verdaderos. Y como no conocemos el valor real de <span class="math inline">\(\sigma\)</span>, tenemos que usar una <strong>estimación</strong> del desvío estándar poblacional <span class="math inline">\(\hat{\sigma}\)</span>. Eso no es difícil de hacer, pero tiene una consecuencia: tenemos que usar los cuantiles de la distribución <span class="math inline">\(t\)</span> en lugar de la distribución normal para calcular nuestro número mágico; y ese número depende del tamaño muestral. Además, todavía no hablamos de la distribución <span class="math inline">\(t\)</span> en este capítulo.</p>
+<p>Cuando usamos la distribución <span class="math inline">\(t\)</span> en lugar de la distribución normal, obtenemos números más grandes, lo que indica que tenemos más incertidumbre. ¿Y por qué tenemos esa incertidumbre extra? Bueno, porque nuestra estimación de la desviación estándar poblacional, <span class="math inline">\(\hat\sigma\)</span>, puede estar equivocada. Y si está equivocada, eso significa que estamos menos seguros de cómo es realmente la distribución muestral de la media… y esa incertidumbre termina reflejándose en un intervalo de confianza más amplio.</p>
 </section>
 </section>
 <section id="resumen" class="level2" data-number="5.14">
 <h2 data-number="5.14" class="anchored" data-anchor-id="resumen"><span class="header-section-number">5.14</span> Resumen</h2>
 <p>En este capítulo cubrimos dos grandes temas. La primera mitad trató sobre la teoría del muestreo, y la segunda mitad sobre cómo podemos usar esa teoría para construir <strong>estimaciones de parámetros poblacionales</strong>. La estructura fue más o menos así:</p>
 <ul>
-<li>Ideas básicas sobre muestras, muestreo y poblaciones</li>
-<li>Teoría estadística del muestreo: ley de los grandes números, distribuciones muestrales y el teorema central del límite</li>
-<li>Estimación de medias y desviaciones estándar</li>
-<li>Intervalos de confianza</li>
+<li><p>Ideas básicas sobre muestras, muestreo y poblaciones</p></li>
+<li><p>Teoría estadística del muestreo: ley de los grandes números, distribuciones muestrales y el teorema central del límite</p></li>
+<li><p>Estimación de medias y desviaciones estándar</p></li>
+<li><p>Intervalos de confianza</p></li>
 </ul>
-<p>Como siempre, hay muchos otros temas relacionados con muestreo y estimación que <strong>no</strong> se abordaron en este capítulo. Pero para un curso introductorio de psicología, creo que esto es bastante completo. Para la mayoría de lxs investigadores aplicadxs, no se necesita mucha más teoría que esta.</p>
+<p>Como siempre, hay un montón de temas relacionados con el muestreo y la estimación que no se cubren en este capítulo, pero para una materia introductoria de psicología, creo que esto es bastante completo. Para la mayoría de quienes hacen investigación aplicada, no vas a necesitar mucha más teoría que esta. Una gran pregunta que no toqué en este capítulo es: ¿qué hacés cuando no tenés una muestra aleatoria simple? Hay muchísima teoría estadística que se puede usar para manejar esa situación, pero queda muy por fuera del alcance de este libro.</p>
 </section>
 <section id="videos" class="level2" data-number="5.15">
 <h2 data-number="5.15" class="anchored" data-anchor-id="videos"><span class="header-section-number">5.15</span> Videos</h2>

@@ -272,17 +272,6 @@ Hagamos un experimento ficticio en el que **no esperamos encontrar diferencias**
 
 Vos sos el experimentador y estás parado frente a una máquina expendedora de bolitas. Es muy grande, tiene miles de bolitas. El 50% son verdes y el 50% son rojas. Querés averiguar si sacar bolitas con la mano derecha o con la izquierda te hace sacar más bolitas verdes. Además, vas a estar con los ojos vendados todo el tiempo. La variable independiente es **mano**: derecha vs. izquierda. La variable dependiente es **el color** de cada bolita que sacás.
 
-El experimento se desarrolla así:
-
-1.  te colocás una venda en los ojos;
-2.  sacás 10 bolitas al azar con la mano izquierda, y las dejás a un lado;
-3.  sacás 10 bolitas al azar con la mano derecha, y también las dejás aparte;
-4.  contás cuántas verdes salieron en cada mano.
-
-Gracias. Acá tenés la traducción fiel del fragmento completo, incluyendo el bloque de código:
-
-------------------------------------------------------------------------
-
 Realizás el experimento así:
 
 1.  te colocás una venda en los ojos.

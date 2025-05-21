@@ -110,7 +110,8 @@ library(ggplot2)
 ggplot(df, aes(x = x)) +
   geom_bar() +
   facet_wrap(~sample, nrow = 2) +
-  theme_classic(base_size = 20)
+  theme_classic(base_size = 20)+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
 Probablemente notes enseguida que ninguno de los histogramas es igual. Aunque estamos tomando aleatoriamente 20 números de la misma distribución uniforme, **cada muestra de 20 números resulta diferente**. Esto es **variabilidad muestral**, o **error de muestreo**.

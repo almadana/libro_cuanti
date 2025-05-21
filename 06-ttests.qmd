@@ -7,6 +7,7 @@ aliases: [t-tests.html]
 ```{r, include = FALSE}
 source("global_stuff.R")
 ```
+
 # Pruebas t
 
 Volvamos atrás en el tiempo. William Sealy Gosset consiguió trabajo en la cervecería Guinness. Sí, la que hace la famosa stout irlandesa. Lo que pasó después fue más o menos así (lo estoy inventando, pero la idea general es cierta).
@@ -21,9 +22,9 @@ Guinness tenía un problema de población y muestreo. Querían saber si toda la 
 
 Ahí entra William Sealy Gosset. Gosset resolvió el problema. Se hizo preguntas como:
 
-1. ¿Cuántas muestras necesito tomar para saber si toda la población es de 5 sobre 5?
+1.  ¿Cuántas muestras necesito tomar para saber si toda la población es de 5 sobre 5?
 
-2. ¿Cuál es la menor cantidad de muestras que puedo tomar para saber eso, de forma que Guinness pueda testear menos cervezas, vender más, y acortar el tiempo de control de calidad?
+2.  ¿Cuál es la menor cantidad de muestras que puedo tomar para saber eso, de forma que Guinness pueda testear menos cervezas, vender más, y acortar el tiempo de control de calidad?
 
 Gosset resolvió esas preguntas e inventó algo llamado la *prueba t de Student*. Como trabajaba para Guinness, podía ser despedido si divulgaba secretos comerciales (como la prueba t). Pero igual publicó su trabajo, bajo un seudónimo [@Student1908]. Se hizo llamar "Student", y por eso el test se llama *prueba t de Student*. Ahora ya sabés el resto de la historia.
 
@@ -96,7 +97,6 @@ $$\text{estadístico} = \frac{\text{efecto}}{\text{error}}$$
 $$t = \frac{\text{efecto}}{\text{error}}$$
 
 $$t = \frac{\text{diferencia de medias}}{\text{error estándar}}$$
-
 
 $$t = \frac{\bar{X}-\mu}{S_{\bar{X}}}$$
 
@@ -261,11 +261,11 @@ Y ahora mirá los valores de *t*. El rango va más o menos de -3 a +3. Los valor
 
 Todas estas *ventanas de azar* se pueden usar como usamos las distribuciones muestrales antes (por ejemplo, en el test de Crump o el test de aleatorización), para hacer inferencias estadísticas. El proceso es el mismo para todas:
 
-1. Generar estas distribuciones
-2. Mirar tus estadísticos muestrales (media, SD, SEM, y *t*)
-3. Calcular la probabilidad de obtener ese valor de *t* o uno más extremo
-4. Obtener esa probabilidad
-5. Evaluar si tus estadísticas muestrales parecen probables o improbables
+1.  Generar estas distribuciones
+2.  Mirar tus estadísticos muestrales (media, SD, SEM, y *t*)
+3.  Calcular la probabilidad de obtener ese valor de *t* o uno más extremo
+4.  Obtener esa probabilidad
+5.  Evaluar si tus estadísticas muestrales parecen probables o improbables
 
 Enseguida vamos a formalizar todo esto. Por ahora, quiero que veas que esto que vas a hacer es algo que **ya hiciste antes**. Por ejemplo, en el test de Crump y el test de aleatorización, nos enfocamos en la distribución de diferencias de medias. Podríamos hacer lo mismo acá, pero esta vez nos vamos a centrar en la distribución de valores *t*. Después aplicamos las mismas reglas de decisión que usamos con las otras distribuciones.
 
@@ -369,12 +369,11 @@ Hay más de una forma de describir el diseño del estudio, pero lo vamos a prese
 
 La pregunta clave era si los bebés cambiarían su tiempo de mirada, mirando **más tiempo al cantante de la canción familiar** durante la fase de prueba que en la línea base. Es una pregunta sobre un cambio **dentro de cada bebé**. En general, los posibles resultados eran:
 
-1. **Sin cambio**: la diferencia entre el tiempo de mirada al cantante de la canción familiar durante línea base y prueba es cero.
-2. **Cambio positivo**: los bebés miran más tiempo al cantante de la canción familiar durante la fase de prueba (después de haberlo visto y escuchado), comparado con la fase de línea base (antes de oírlos). Esto da una diferencia positiva si usamos la fórmula:
-   Tiempo de mirada en prueba − Tiempo de mirada en línea base (al cantante de la canción familiar).
+1.  **Sin cambio**: la diferencia entre el tiempo de mirada al cantante de la canción familiar durante línea base y prueba es cero.
 
-3. **Cambio negativo**: los bebés miran más tiempo al cantante de la canción **no familiar** durante la fase de prueba (después de haberlos escuchado), en comparación con la línea base (antes de oírlos). Esto da una diferencia negativa con la misma fórmula:
-   Tiempo de mirada en prueba − Tiempo de mirada en línea base (al cantante de la canción familiar).
+2.  **Cambio positivo**: los bebés miran más tiempo al cantante de la canción familiar durante la fase de prueba (después de haberlo visto y escuchado), comparado con la fase de línea base (antes de oírlos). Esto da una diferencia positiva si usamos la fórmula: Tiempo de mirada en prueba − Tiempo de mirada en línea base (al cantante de la canción familiar).
+
+3.  **Cambio negativo**: los bebés miran más tiempo al cantante de la canción **no familiar** durante la fase de prueba (después de haberlos escuchado), en comparación con la línea base (antes de oírlos). Esto da una diferencia negativa con la misma fórmula: Tiempo de mirada en prueba − Tiempo de mirada en línea base (al cantante de la canción familiar).
 
 ### Los datos
 
@@ -405,8 +404,8 @@ En otras palabras, nos interesa mirar los **valores de diferencia** entre línea
 
 Agreguemos los puntajes de diferencia a la tabla para que sea más fácil ver de qué hablamos. El primer paso es decidir **cómo vamos a calcular la diferencia**. Hay dos opciones:
 
-1. Puntaje en fase de prueba − Puntaje en fase de línea base
-2. Puntaje en fase de línea base − Puntaje en fase de prueba
+1.  Puntaje en fase de prueba − Puntaje en fase de línea base
+2.  Puntaje en fase de línea base − Puntaje en fase de prueba
 
 Vamos a usar la **primera fórmula**. ¿Por qué? Porque da **diferencias positivas** cuando el puntaje de la prueba es mayor que el de línea base. Eso hace que los puntajes positivos tengan sentido en este estudio: indican que el bebé miró más al cantante de la canción familiar **después** de escucharlo que **antes**.
 
@@ -432,6 +431,7 @@ paired_sample_df <- paired_sample_df %>%
 
 knitr::kable(paired_sample_df)
 ```
+
 Podemos ver que hubo una diferencia media positiva de 0.054 entre las fases de prueba y línea base. ¿Podemos apurarnos a concluir que los bebés se sienten más atraídos socialmente hacia personas que les cantaron una canción familiar? Espero que no, al menos no con una muestra tan pequeña. Primero, la diferencia en proporción de tiempo mirando no es muy grande, y por supuesto reconocemos que esa diferencia **podría haberse producido por azar**.
 
 Vamos a evaluar más formalmente si esta diferencia pudo haber sido causada por el azar usando una prueba t de muestras pareadas. Pero antes, calculemos de nuevo *t* y pensemos qué nos dice *t* además de lo que ya nos dice la media de los puntajes de diferencia.
@@ -473,6 +473,7 @@ knitr::kable(paired_sample_df)
 
 #t.test(round(diferencias, digits=2), mu=0)$statistic
 ```
+
 Si hiciéramos este test usando R, obtendríamos casi los mismos números (hay un poco de redondeo en la tabla).
 
 ```{r}
@@ -518,14 +519,11 @@ Entonces, ¿qué queremos saber cuando obtenemos un valor *t* específico de nue
 
 Usamos la letra *p* para referirnos a la probabilidad de que ocurran ciertos valores de *t*. Veamos algunos ejemplos:
 
-1. ¿Cuál es la probabilidad de que *t* sea igual a cero, o distinto de cero?
-   La respuesta es *p = 1*, o 100%. Siempre vamos a obtener un valor de *t* que es cero o no cero... Bueno, a menos que no podamos calcularlo (por ejemplo, si la desviación estándar no está definida), pero si lo podemos calcular, será positivo, negativo o cero.
+1.  ¿Cuál es la probabilidad de que *t* sea igual a cero, o distinto de cero? La respuesta es *p = 1*, o 100%. Siempre vamos a obtener un valor de *t* que es cero o no cero... Bueno, a menos que no podamos calcularlo (por ejemplo, si la desviación estándar no está definida), pero si lo podemos calcular, será positivo, negativo o cero.
 
-2. ¿Cuál es la probabilidad de que *t* sea mayor o igual a 0?
-   La respuesta es *p = .5*, o 50%. El 50% de los valores *t* son mayores o iguales a 0.
+2.  ¿Cuál es la probabilidad de que *t* sea mayor o igual a 0? La respuesta es *p = .5*, o 50%. El 50% de los valores *t* son mayores o iguales a 0.
 
-3. ¿Y de que *t* sea menor o igual a 0?
-   También *p = .5*. La mitad de los valores están en esa región.
+3.  ¿Y de que *t* sea menor o igual a 0? También *p = .5*. La mitad de los valores están en esa región.
 
 Podemos responder estas preguntas solo mirando la distribución *t* y dividiéndola en dos regiones iguales: la mitad izquierda (50% de los valores *t*) y la mitad derecha (los otros 50%).
 
@@ -557,10 +555,10 @@ ggplot(plot_df, aes(x = range, y = null_distribution)) +
 
 Considerá las probabilidades (*p*) de *t* para los distintos rangos:
 
-1. *t* ≤ -1.5 → *p* = 10%
-2. -1.5 ≥ *t* ≤ -0.9 → *p* = 10%
-3. -0.9 ≥ *t* ≤ -0.6 → *p* = 10%
-4. *t* ≥ 1.5 → *p* = 10%
+1.  *t* ≤ -1.5 → *p* = 10%
+2.  -1.5 ≥ *t* ≤ -0.9 → *p* = 10%
+3.  -0.9 ≥ *t* ≤ -0.6 → *p* = 10%
+4.  *t* ≥ 1.5 → *p* = 10%
 
 Fijate que en todos los casos la probabilidad es del 10%. Los valores *t* ocurren en esos rangos con un 10% de probabilidad.
 
@@ -570,11 +568,11 @@ Capaz te estás preguntando de dónde saqué algunos de estos valores. Por ejemp
 
 Entonces, ¿de dónde salen esos valores y cómo podés saberlos? La respuesta complicada es que **no vamos a explicar las matemáticas detrás de cómo se obtienen** estos valores, porque:
 
-1. Algunos autores de este libro admiten que **no entienden bien esas matemáticas**;
-2. Nos desviaría mucho del foco del libro;
-3. Vas a aprender cómo obtener estos valores en el laboratorio usando software;
-4. También vas a aprender cómo obtenerlos sin fórmulas, solo haciendo simulaciones;
-5. Podés hacerlo en R, en Excel, o usando [esta calculadora online](http://www.socscistatistics.com/pvalues/tdistribution.aspx).
+1.  Algunos autores de este libro admiten que **no entienden bien esas matemáticas**;
+2.  Nos desviaría mucho del foco del libro;
+3.  Vas a aprender cómo obtener estos valores en el laboratorio usando software;
+4.  También vas a aprender cómo obtenerlos sin fórmulas, solo haciendo simulaciones;
+5.  Podés hacerlo en R, en Excel, o usando [esta calculadora online](http://www.socscistatistics.com/pvalues/tdistribution.aspx).
 
 En resumen: podés encontrar los valores *t* y sus *p* asociados usando software. Pero el software **no te explica qué significan** esos valores. Eso es lo que estamos haciendo acá. Además, vas a ver que el software te pide algunos datos más: los **grados de libertad** del test, y si el test es **unilateral o bilateral**. Todavía no explicamos eso. Vamos a hacerlo ahora.
 
@@ -632,14 +630,13 @@ La figura muestra que los valores *t* de **+2.13 o más** ocurren el 5% de las v
 
 Recapitulemos y conectemos algunos conceptos:
 
-1. **Criterio alfa**: el criterio que define el investigador para decidir si cree que la diferencia se debe o no al azar. En este caso, es $p = .05$.
+1.  **Criterio alfa**: el criterio que define el investigador para decidir si cree que la diferencia se debe o no al azar. En este caso, es $p = .05$.
 
-2. **t crítico**: el valor *t* asociado al criterio alfa. Para un test unilateral, es el valor tal que el 5% de todos los *t* están en ese valor o más. En nuestro ejemplo, *t* crítico = 2.13. El 5% de los valores *t* (con 4 grados de libertad) son iguales o mayores a 2.13.
+2.  **t crítico**: el valor *t* asociado al criterio alfa. Para un test unilateral, es el valor tal que el 5% de todos los *t* están en ese valor o más. En nuestro ejemplo, *t* crítico = 2.13. El 5% de los valores *t* (con 4 grados de libertad) son iguales o mayores a 2.13.
 
-3. **t observado**: el valor *t* que calculaste a partir de tu muestra. En el ejemplo de los bebés, fue *t*(4) = 0.72.
+3.  **t observado**: el valor *t* que calculaste a partir de tu muestra. En el ejemplo de los bebés, fue *t*(4) = 0.72.
 
-4. **Valor *p***: el valor *p* es la probabilidad de obtener el valor *t* observado o uno mayor. En nuestro ejemplo anterior, el valor *p* para *t*(4) = 0.72 fue *p = .509*.
-   SIN EMBARGO, ese valor *p* **no fue calculado** para un test direccional (unilateral)... (hablamos más sobre qué significa ese .509 en la siguiente sección).
+4.  **Valor *p***: el valor *p* es la probabilidad de obtener el valor *t* observado o uno mayor. En nuestro ejemplo anterior, el valor *p* para *t*(4) = 0.72 fue *p = .509*. SIN EMBARGO, ese valor *p* **no fue calculado** para un test direccional (unilateral)... (hablamos más sobre qué significa ese .509 en la siguiente sección).
 
 La figura `@fig-6tonedirection` muestra cómo se vería el valor *p* para *t*(4) = 0.72 en un test unilateral:
 
@@ -808,7 +805,7 @@ Los grados de libertad son tanto un **concepto** como una **corrección**. El co
 
 Por ejemplo, considerá los números: 1, 2, 3. La media de estos números es 2. Ahora imaginá que te digo que **la media de tres números es 2**. Entonces, ¿cuántos de esos tres números tienen libertad? Suena como una pregunta rara, ¿no? Lo que queremos decir es: ¿cuántos de esos tres números pueden ser cualquier número libremente? Los **primeros dos números** pueden ser **cualquier cosa**. Pero una vez que fijás esos dos, el tercer número **ya no tiene libertad**: **tiene que ser un número específico** para que el promedio dé 2. Es decir, los dos primeros tienen libertad, el tercero no.
 
-Para ilustrarlo: elijamos dos números cualquiera —por ejemplo, 51 y -3. Usé mi libertad para elegir esos dos. Ahora, si nuestros tres números son 51, -3 y *x*, y queremos que la media sea 2, solo hay una solución: *x* tiene que ser -42. De otro modo, el promedio no sería 2. 
+Para ilustrarlo: elijamos dos números cualquiera —por ejemplo, 51 y -3. Usé mi libertad para elegir esos dos. Ahora, si nuestros tres números son 51, -3 y *x*, y queremos que la media sea 2, solo hay una solución: *x* tiene que ser -42. De otro modo, el promedio no sería 2.
 
 Esta es una forma de entender los **grados de libertad**. En este ejemplo, hay 3 números y **n–1 = 2** grados de libertad, porque **2** pueden ser libres, pero el tercero queda **determinado**.
 
@@ -853,9 +850,9 @@ Con eso, ya tenés suficiente sobre grados de libertad...
 
 Capaz te estás preguntando si **alguna vez vamos a terminar** de hablar sobre la prueba t de muestras pareadas... ¿¡por qué hay una segunda vuelta!? Tranquilo, esto es breve. Solo vamos a:
 
-1. Recordarte qué estábamos haciendo con el estudio con bebés.
+1.  Recordarte qué estábamos haciendo con el estudio con bebés.
 
-2. Hacer una prueba t de muestras pareadas usando **todos** los datos del estudio y discutir los resultados.
+2.  Hacer una prueba t de muestras pareadas usando **todos** los datos del estudio y discutir los resultados.
 
 Recordá que nos preguntábamos si los bebés mirarían más tiempo al cantante de la canción familiar durante la fase de prueba, comparado con la línea base. Ya te mostramos los datos de 5 bebés, y caminamos paso a paso por los cálculos dla prueba t. A modo de repaso, se veía así:
 
@@ -919,9 +916,9 @@ $t = \frac{\bar{A} - \bar{B}}{\left(\frac{SEM_A + SEM_B}{2}\right)}$
 
 En lenguaje simple, esto sería:
 
-1. Calculás la diferencia de medias y la ponés arriba;
-2. Calculás el **error estándar de la media** (SEM) para cada grupo;
-3. Promediás esos SEMs para obtener una sola estimación, combinando ambas muestras.
+1.  Calculás la diferencia de medias y la ponés arriba;
+2.  Calculás el **error estándar de la media** (SEM) para cada grupo;
+3.  Promediás esos SEMs para obtener una sola estimación, combinando ambas muestras.
 
 Eso **estaría bueno**, pero lamentablemente **no es la mejor forma de hacerlo**. Tomar el promedio de los errores estándar genera un **estimador sesgado** de la variación en la distribución nula (la de ausencia de diferencias).
 
@@ -929,7 +926,7 @@ Tomar el promedio de los errores estándar generaría un **estimador sesgado** d
 
 $t = \frac{\bar{X}_A - \bar{X}_B}{s_p \cdot \sqrt{\frac{1}{n_A} + \frac{1}{n_B}}}$
 
-Y \$s\_p\$, que es la desviación estándar combinada de las muestras, se define así (notá que las *s* en la fórmula son **varianzas**):
+Y \$s_p\$, que es la desviación estándar combinada de las muestras, se define así (notá que las *s* en la fórmula son **varianzas**):
 
 $s_p = \sqrt{\frac{(n_A - 1)s_A^2 + (n_B - 1)s_B^2}{n_A + n_B - 2}}$
 
@@ -966,9 +963,9 @@ t.test(a, b, paired = FALSE, var.equal = TRUE)
 
 Acá están los pasos que podrías seguir para simular datos para una prueba t de una muestra:
 
-1. Hacés algunas suposiciones sobre cómo podría ser tu muestra (que estás planeando recolectar). Por ejemplo, podrías planear recolectar datos de 30 personas. Los puntajes podrían venir de una distribución normal (media = 50, sd = 10).
+1.  Hacés algunas suposiciones sobre cómo podría ser tu muestra (que estás planeando recolectar). Por ejemplo, podrías planear recolectar datos de 30 personas. Los puntajes podrían venir de una distribución normal (media = 50, sd = 10).
 
-2. Simulás números desde esa distribución y luego hacés una prueba t sobre esos datos simulados. Guardás las estadísticas que te interesan (como los *t* y *p*) y después observás cómo se comportan.
+2.  Simulás números desde esa distribución y luego hacés una prueba t sobre esos datos simulados. Guardás las estadísticas que te interesan (como los *t* y *p*) y después observás cómo se comportan.
 
 Hagámoslo un par de veces. Primero, vamos a simular muestras con N = 30, tomadas de una distribución normal (media = 50, sd = 25). Vamos a hacer una simulación con 1000 repeticiones. En cada repetición, comparamos la media muestral con una media poblacional de 50. En promedio, no debería haber diferencia. La figura `@fig-6nullt` es la distribución nula que estamos simulando.
 
@@ -1172,15 +1169,12 @@ length(guarda_ps[guarda_ps < .05])
 length(guarda_ps[guarda_ps < .05]) / 1000
 ```
 
----
+------------------------------------------------------------------------
 
 ## Videos
 
 ### Test de una o dos colas
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/PuoGsguuY30" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+
 </iframe>
-
-
-
-

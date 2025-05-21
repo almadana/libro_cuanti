@@ -769,7 +769,7 @@ Por ejemplo, podríamos correr nuestro experimento con 20 sujetos por grupo. O p
 
 Fijate en los histogramas de `@fig-5sampleDistNormal`. Es la misma simulación de antes, pero con cuatro tamaños muestrales distintos: 20, 40, 80, 160. Vamos duplicando el tamaño muestral en cada simulación, solo para ver qué pasa con el **ancho de la ventana del azar**.
 
-```{r}
+```{r, echo=F}
 #| label: fig-5sampleDistNormal
 #| fig-cap: "El rango (o ancho) de las diferencias producidas por azar se reduce a medida que aumenta el tamaño muestral."
 
@@ -790,7 +790,7 @@ Ahí lo tenés. La **distribución muestral de las diferencias de medias** se co
 
 La tabla `@tbl-5minmax` muestra los valores mínimos y máximos que el azar produjo para cada uno de los cuatro tamaños muestrales:
 
-```{r}
+```{r, echo=F}
 #| label: tbl-5minmax
 #| tbl-cap: "La diferencia de medias más pequeña y más grande producida por azar en función del tamaño muestral." 
 

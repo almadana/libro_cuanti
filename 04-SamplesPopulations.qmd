@@ -1230,52 +1230,35 @@ La enseñanza que nos dejan estas complicaciones es que, en psicología, podemos
 
 ### Experimentos y parámetros poblacionales
 
-OK, entonces no tenemos una empresa de calzado, y tampoco podemos identificar con claridad la población que nos interesa en psicología... ¿podemos saltearnos esta sección sobre estimación?
-Después de todo, eso de “la población” parece demasiado raro, abstracto, inútil y polémico. **¡UN MOMENTO!**
+OK, entonces no tenemos una empresa de calzado, y tampoco podemos identificar con claridad la población que nos interesa en psicología... ¿podemos saltearnos esta sección sobre estimación? Después de todo, eso de “la población” parece demasiado raro, abstracto, inútil y polémico. ¡ESPERÁ!
 
-Resulta que **sí** podemos aplicar todo lo que venimos aprendiendo para resolver **un montón de problemas importantes en investigación**. Estas herramientas nos permiten **responder preguntas a partir de los datos que recolectamos**. La estimación de parámetros es una de esas herramientas. Solo necesitamos ser un poco más **creativos** y un poco más **abstractos** para poder usarlas.
+Resulta que sí podemos aplicar todo lo que venimos aprendiendo para resolver un montón de problemas importantes en investigación. Estas herramientas nos permiten responder preguntas a partir de los datos que recolectamos. La estimación de parámetros es una de esas herramientas. Solo necesitamos ser un poco más creativos y un poco más abstractos para poder usarlas.
 
-Ya sabemos algunas cosas. Los números que medimos **vienen de algún lado**. A eso le llamamos “distribuciones”. Las distribuciones controlan **cómo aparecen los números**. Algunos valores ocurren más que otros, según la distribución. Asumimos —incluso si no sabemos cuál es la distribución, ni qué significa— que los números **provienen de una**.
+Ya sabemos algunas cosas. Los números que medimos vienen de algún lado. A eso le llamamos “distribuciones”. Las distribuciones controlan cómo aparecen los números. Algunos valores ocurren más que otros, según la distribución. Asumimos —incluso si no sabemos cuál es la distribución, ni qué significa— que los números provienen de una. Segundo: cuando tenemos algunos números, a eso le llamamos una muestra. Y todo este capítulo te enseñó una cosa fundamental: Cuando tu muestra es grande, se parece a la distribución de la que proviene. Y cuando tu muestra es grande, también se va a parecer mucho a otra muestra grande de la misma población. ¡Podemos usar este conocimiento!
 
-Segundo: cuando tenemos algunos números, a eso le llamamos **una muestra**. Y todo este capítulo te enseñó una cosa fundamental: **Cuando tu muestra es grande, se parece a la distribución de la que proviene.** Y cuando tu muestra es grande, **también se va a parecer mucho a otra muestra grande de la misma población**. **¡Podemos usar este conocimiento!**
+Muy a menudo, como psicólogos, lo que queremos saber es qué causa qué. Queremos saber si X causa un cambio en Y. ¿Comer chocolate te hace más feliz? ¿Estudiar mejora tus notas? Hay millones de preguntas como estas. Y queremos respuestas.
 
-Muy a menudo, como psicólogos, lo que queremos saber es **qué causa qué**. Queremos saber si **X causa un cambio en Y**. ¿Comer chocolate te hace más feliz? ¿Estudiar mejora tus notas? Hay millones de preguntas como estas. Y queremos respuestas.
+Hasta ahora traté de mantenerme en ejemplos concretos en este libro —por eso hablamos de chocolate y felicidad, al menos son cosas tangibles. Pero ahora intentemos ponernos abstractos. Podemos hacerlo.
 
-Hasta ahora traté de mantenerme en ejemplos concretos en este libro —por eso hablamos de chocolate y felicidad, al menos son cosas tangibles. Pero ahora intentemos ponernos **abstractos**. Podemos hacerlo.
+Queremos saber si X causa un cambio en Y. ¿Qué es X? ¿Qué es Y? X es algo que cambiás, es decir, la variable independiente. Y es algo que medís. Entonces, vamos a tomar muestras de Y. “¡Ah, ya entendí! Tomamos muestras de Y, y luego podemos usar los parámetros muestrales para estimar los parámetros poblacionales de Y.” NO, bueno, más o menos. Vamos a tomar muestras de Y, eso sí. De hecho, eso es todo lo que hacemos siempre, por eso hablar de “la población de Y” es un poco sin sentido. Lo que nos interesa de verdad son nuestras muestras de Y, y cómo se comportan.
 
-Queremos saber si **X causa un cambio en Y**. ¿Qué es X? ¿Qué es Y? **X es algo que cambiás**, es decir, la **variable independiente**. **Y** es algo que medís. Entonces, vamos a tomar **muestras de Y**. 
-“¡Ah, ya entendí! Tomamos muestras de Y, y luego podemos usar los parámetros muestrales para estimar los parámetros poblacionales de Y.”
-**NO. Bueno, más o menos.** Vamos a tomar muestras de Y, eso sí. De hecho, eso es **todo lo que hacemos siempre**, por eso hablar de “la población de Y” es un poco sin sentido. Lo que nos interesa de verdad son nuestras muestras de Y, y **cómo se comportan**.
+Entonces, ¿qué pasaría si elimináramos completamente X del universo, y luego tomáramos una gran muestra de Y? Vamos a suponer que Y mide algo en un experimento de psicología. Así que sabemos, desde ya, que Y es una variable. Cuando tomamos una muestra grande, va a tener una distribución (porque Y varía). Entonces podemos hacer cosas como calcular la media de Y, medir su desviación estándar, y cualquier otra cosa que nos interese saber sobre Y. Perfecto. ¿Y si repitiésemos esa medición? Es decir, tomamos otra muestra aleatoria de Y, del mismo tamaño que la anterior. ¿Qué debería pasar? Nuestra primera muestra debería parecerse mucho a la segunda. Después de todo, no hicimos nada a Y, simplemente tomamos dos muestras grandes, en dos momentos diferentes. Ambas muestras serán un poco distintas (por el error muestral), pero se parecerán bastante. Cuanto más grandes sean nuestras muestras, más similares serán entre sí, especialmente si no hicimos nada para que sean diferentes. En otras palabras: podemos usar los parámetros de una muestra para estimar los de otra, porque tienden a ser iguales, sobre todo cuando las muestras son grandes. 
 
-Entonces, ¿qué pasaría si elimináramos completamente X del universo, y luego tomáramos una gran muestra de Y? Vamos a suponer que Y mide algo en un experimento de psicología. Así que sabemos, desde ya, que **Y es una variable**. Cuando tomamos una muestra grande, va a tener una distribución (porque Y varía). Entonces podemos hacer cosas como calcular la media de Y, medir su desviación estándar, y cualquier otra cosa que nos interese saber sobre Y. Perfecto. ¿Y si repitiésemos esa medición? Es decir, tomamos **otra muestra aleatoria de Y**, del mismo tamaño que la anterior. ¿Qué debería pasar? Nuestra primera muestra debería parecerse mucho a la segunda. Después de todo, no hicimos **nada** a Y, simplemente tomamos dos muestras grandes, en dos momentos diferentes. Ambas muestras serán un poco distintas (por el **error muestral**), pero se parecerán bastante. Cuanto más grandes sean nuestras muestras, más similares serán entre sí, **especialmente si no hicimos nada para que sean diferentes**. En otras palabras: podemos usar los **parámetros de una muestra** para estimar los de otra, **porque tienden a ser iguales**… sobre todo cuando las muestras son grandes.  Tus muestras grandes de Y deberían ser bastante similares.
+Ahora estamos listos para el segundo paso. Vos querés saber si X cambia Y. ¿Qué hacés? Hacés que X suba y tomás una muestra grande de Y, y después la mirás. Después hacés que X baje, tomás otra muestra grande de Y y la mirás también. Lo que sigue es comparar las dos muestras de Y. Si X no cambia nada, ¿qué tendrías que encontrar? Eso ya lo hablamos en el párrafo anterior. Si X no hace nada, entonces las dos muestras grandes de Y tendrían que ser bastante parecidas. Sin embargo, si X realmente tiene un efecto sobre Y, entonces una de tus muestras grandes de Y va a ser distinta de la otra. Habrás cambiado algo en Y. Tal vez X hace que cambie la media de Y. O tal vez X cambia la variabilidad de Y. O incluso, puede que X cambie toda la forma de la distribución. Si encontramos algún cambio importante que no pueda explicarse por error muestral, entonces podemos concluir que algo en X causó un cambio en Y. ¡Podemos usar este enfoque para aprender qué causa qué!
 
-Sin embargo, **si X realmente tiene un efecto sobre Y**, entonces una de tus muestras grandes de Y **va a ser distinta** de la otra.
-Habrás cambiado algo en Y. Tal vez X hace que cambie **la media** de Y. O tal vez X cambia **la variabilidad** de Y. O incluso, puede que X cambie **toda la forma de la distribución**. Si encontramos algún cambio importante que **no pueda explicarse por error muestral**, entonces podemos concluir que **algo en X causó un cambio en Y**. ¡Podemos usar este enfoque para aprender **qué causa qué**!
-
-La idea muy importante sigue siendo la de **estimación**, solo que no se trata exactamente de estimar un parámetro poblacional. Sabemos que cuando tomamos muestras, **hay variación natural**. Entonces, cuando estimamos un parámetro de una muestra —como la media— sabemos que esa estimación **va a estar equivocada en alguna medida**. Cuando encontramos que dos muestras son distintas, lo que necesitamos averiguar es si la **magnitud de esa diferencia** es compatible con lo que esperaría del **error muestral**, o si la diferencia es **más grande que eso**. Si la diferencia es más grande, entonces podemos tener confianza en que **no fue el error muestral** lo que la produjo. Entonces, podemos inferir con confianza que **otra cosa** (como X) **causó la diferencia**. Este tipo de pensamiento más abstracto es el que ocupa la mayor parte del resto del libro. Se trata de **determinar si hubo una diferencia causada por tu manipulación experimental**. Hay mucho más para contar, siempre lo hay. Podemos ir más allá de simplemente preguntar si hay una diferencia, pero para fines introductorios, nos vamos a enfocar en **encontrar diferencias** como concepto fundamental.
-
+La idea muy importante sigue siendo la de estimación, solo que no se trata exactamente de estimar un parámetro poblacional. Sabemos que cuando tomamos muestras, hay variación natural. Entonces, cuando estimamos un parámetro de una muestra —como la media— sabemos que esa estimación va a estar equivocada en alguna medida. Cuando encontramos que dos muestras son distintas, lo que necesitamos averiguar es si la magnitud de esa diferencia es compatible con lo que esperaría del error muestral, o si la diferencia es más grande que eso. Si la diferencia es más grande, entonces podemos tener confianza en que no fue el error muestral lo que la produjo. Entonces, podemos inferir con confianza que otra cosa (como X) causó la diferencia. Este tipo de pensamiento más abstracto es el que ocupa la mayor parte del resto del libro. Se trata de determinar si hubo una diferencia causada por tu manipulación experimental. Hay mucho más para contar, siempre lo hay. Podemos ir más allá de simplemente preguntar si hay una diferencia, pero para fines introductorios, nos vamos a enfocar en encontrar diferencias como concepto fundamental.
 
 ### Resumen intermedio
 
-Hemos hablado bastante sobre **estimación**, aunque hasta ahora no hemos hecho muchas estimaciones concretas. Así que en la próxima sección vamos a empezar **a estimar la media y la desviación estándar**.
-
-Formalmente, esto se conoce como el uso de una muestra para estimar un parámetro poblacional. Pero sentite libre de pensar en “la población” de distintas maneras. Podría ser una población concreta, como la distribución de tamaños de calzado.
-O podría ser algo más abstracto, como una **estimación del parámetro que típicamente producen las muestras**, si las repitieras muchas veces.
-Por ejemplo, si realizás muchas muestras grandes bajo condiciones similares, ¿qué promedio suelen darte? Eso es un parámetro.
-La mayoría de las veces, no podemos ver directamente ese parámetro.
-Lo que podemos ver es **una muestra**.
-Y lo que podemos hacer es usar esa muestra para **estimar** el parámetro que no podemos observar.
-
-
+Hemos hablado bastante sobre estimación, aunque hasta ahora no hemos hecho muchas estimaciones concretas. Así que en la próxima sección vamos a empezar a estimar la media y la desviación estándar. Formalmente, esto se conoce como el uso de una muestra para estimar un parámetro poblacional. Pero sentite libre de pensar en “la población” de distintas maneras. Podría ser una población concreta, como la distribución de tamaños de calzado. O podría ser algo más abstracto, como una estimación del parámetro que típicamente producen las muestras, si las repitieras muchas veces. Por ejemplo, si realizás muchas muestras grandes bajo condiciones similares, ¿qué promedio suelen darte? Eso es un parámetro. La mayoría de las veces, no podemos ver directamente ese parámetro. Lo que podemos ver es una muestra. Y lo que podemos hacer es usar esa muestra para estimar el parámetro que no podemos observar.
 
 ### Estimación de la media poblacional
 
-Supongamos que vamos a Brooklyn y 100 personas locales tienen la amabilidad de hacer una prueba de CI. El puntaje promedio de CI entre esas personas resulta ser \$\bar{X} = 98.5\$. Entonces, ¿cuál es la verdadera media del CI en toda la población de Brooklyn? Obviamente, no lo sabemos. Podría ser 97.2, o también podría ser 103.5. Como nuestra muestra no es exhaustiva, no podemos dar una respuesta definitiva. Sin embargo, si nos obligaran a dar una “mejor suposición”, tendría que decir 98.5.
-Esa es la esencia de la estimación estadística: dar una mejor conjetura. Estamos usando la media muestral como nuestra mejor estimación de la media poblacional.
+Supongamos que vamos a Brooklyn y 100 personas locales tienen la amabilidad de hacer una prueba de CI. El puntaje promedio de CI entre esas personas resulta ser \$\bar{X} = 98.5\$. Entonces, ¿cuál es la verdadera media del CI en toda la población de Brooklyn? Obviamente, no lo sabemos. Podría ser 97.2, o también podría ser 103.5. Como nuestra muestra no es exhaustiva, no podemos dar una respuesta definitiva. Sin embargo, si nos obligaran a dar nuestra “mejor aproximación”, tendría que decir 98.5. Esa es la esencia de la estimación estadística. Estamos usando la media muestral como nuestra mejor aproximación a la media poblacional.
 
-En este ejemplo, estimar el parámetro poblacional desconocido es bastante directo. Calculamos la media muestral y la usamos como nuestra **estimación de la media poblacional**. Es bastante simple, y en la próxima sección vamos a ver la justificación estadística de por qué esta respuesta intuitiva tiene sentido. Pero por ahora, asegurémonos de distinguir bien que la estadística muestral y la estimación del parámetro poblacional **no son lo mismo**. Una estadística muestral describe tus datos; en cambio, una estimación es una conjetura sobre la población.
+En este ejemplo, estimar el parámetro poblacional desconocido es bastante directo. Calculamos la media muestral y la usamos como nuestra **estimación de la media poblacional**. Es bastante simple, y en la próxima sección vamos a ver la justificación estadística de por qué esta respuesta intuitiva tiene sentido. Pero por ahora, asegurémonos de distinguir bien que el estadístico muestral y la estimación del parámetro poblacional son conceptualmente distintos. El estadístico muestral describe tus datos; en cambio, una estimación es una conjetura sobre la población.
 
-Con eso en mente, lxs estadísticxs suelen usar notaciones distintas para diferenciarlas. Por ejemplo, si la media poblacional verdadera se denota $\mu$, entonces usamos $\hat{\mu}$ para referirnos a nuestra estimación de esa media. En contraste, la media muestral se denota $\bar{X}$, o a veces $m$. Sin embargo, en muestras aleatorias simples, la estimación de la media poblacional es idéntica a la media muestral: si observo una media muestral de $\bar{X} = 98.5$, entonces mi estimación de la media poblacional es también $\hat{\mu} = 98.5$.
+Con eso en mente, los profesionales de la estadística suelen usar notaciones distintas para diferenciarlas. Por ejemplo, si la media poblacional verdadera se denota $\mu$, entonces usamos $\hat{\mu}$ para referirnos a nuestra estimación de esa media poblacional. En contraste, la media muestral se denota $\bar{X}$, o a veces $m$. Sin embargo, en muestras aleatorias simples, la estimación de la media poblacional es idéntica a la media muestral: si observo una media muestral de $\bar{X} = 98.5$, entonces mi estimación de la media poblacional es también $\hat{\mu} = 98.5$.
 
 Para dejar clara la notación, acá va una tabla útil:
 
@@ -1288,33 +1271,39 @@ Para dejar clara la notación, acá va una tabla útil:
 
 ### Estimación del desvío estándar poblacional
 
-Hasta ahora, la estimación parece bastante sencilla, y tal vez te estés preguntando por qué te hice leer todo ese material sobre teoría del muestreo. En el caso de la media, nuestra estimación del parámetro poblacional (\$\hat{\mu}\$) resultó ser idéntica a la estadística muestral correspondiente (\$\bar{X}\$). Sin embargo, **eso no siempre es así**.
+Hasta ahora, la estimación parece bastante sencilla, y tal vez te estés preguntando por qué te hice leer todo ese material sobre teoría del muestreo. En el caso de la media, nuestra estimación del parámetro poblacional (\$\hat{\mu}\$) resultó ser idéntica a la estadística muestral correspondiente (\$\bar{X}\$). Sin embargo, eso no siempre es así. Para verlo, pensemos cómo construir una **estimación del desvío estándar poblacional**, que vamos a denotar como \$\hat{\sigma}\$. ¿Qué deberíamos usar como estimación en este caso? Tu primera reacción podría ser hacer lo mismo que con la media, y simplemente usar el estadístico muestral como estimación. Eso está casi bien, pero no del todo.
 
-Para verlo, pensemos cómo construir una **estimación del desvío estándar poblacional**, que vamos a denotar como \$\hat{\sigma}\$. ¿Qué deberíamos usar como estimación en este caso? Tu primera reacción podría ser hacer lo mismo que con la media, y simplemente usar la estadística muestral como estimación. Eso está **casi** bien, pero no del todo.
+Veamos por qué. Supongamos que tengo una muestra que contiene una sola observación. Para este ejemplo, ayuda pensar en una situación donde no tengas ninguna intuición previa sobre cuál podría ser el valor real en la población. Así que usemos algo completamente ficticio: supongamos que la observación mide la **cromulencia** de mis zapatos. Resulta que mis zapatos tienen una cromulencia de 20. Así que mi muestra es: 
 
-Veamos por qué. Supongamos que tengo una muestra que contiene **una sola observación**. Para este ejemplo, ayuda pensar en una situación donde no tengas ninguna intuición previa sobre cuál podría ser el valor real en la población. Así que usemos algo completamente ficticio: supongamos que la observación mide la **cromulencia** de mis zapatos. Resulta que mis zapatos tienen una cromulencia de 20. Así que mi muestra es: `20` Esta es una muestra perfectamente válida, aunque tenga un tamaño muestral de \$N = 1\$.
-Tiene una media muestral de 20, y como **cada observación en esta muestra es igual a la media muestral** (¡obviamente!), el desvío estándar muestral es 0.
+`20` 
 
-Como **descripción de la muestra**, esto está perfecto: la muestra contiene una sola observación, así que no hay variabilidad observada. Un desvío estándar muestral de \$s = 0\$ es la respuesta correcta acá. Pero como **estimación del desvío estándar poblacional**, eso suena completamente absurdo, ¿no? Por ejemplo, imaginá que la media muestral **siempre** fuera menor que la media poblacional. Si eso fuera cierto (no lo es), no podríamos usar la media muestral como estimador. Estaría sesgada, estaríamos usando un valor sistemáticamente incorrecto.
+Esta es una muestra perfectamente legítima, aunque tenga un tamaño muestral de \$N = 1\$. Tiene una media muestral de 20, y como cada observación en esta muestra es igual a la media muestral (¡obviamente!), el desvío estándar muestral es 0. Como descripción de la **muestra**, esto está bien: la muestra contiene una sola observación, así que no hay variabilidad observada en la muestra. Un desvío estándar muestral de \$s = 0\$ es la respuesta correcta acá. Pero como estimación del desvío estándar **poblacional**, eso suena completamente absurdo, ¿no? Seamos sinceros: vos y yo no tenemos ni idea de qué es la "cromulencia", pero sabemos algo sobre datos. La única razón por la que no vemos ninguna variabilidad en la **muestra** es que la muestra es demasiado chica como para mostrar alguna variación. Entonces, si tenés un tamaño muestral de $N=1$, lo que se **siente** como la respuesta correcta es simplemente decir: "ni idea, la verdad".
 
-Bueno, resulta que el **desvío estándar muestral** es un **estimador sesgado** del desvío estándar poblacional. Ya veníamos intuyéndolo con lo que estuvimos discutiendo. Cuando el tamaño muestral es 1, el desvío estándar es 0, lo cual claramente es demasiado bajo. Cuando el tamaño muestral es 2, el desvío estándar empieza a ser mayor que 0, pero como solo tenemos dos datos, sospechamos que **sigue siendo demasiado bajo**. Y resulta que esta intuición es correcta.
+Fijate que **no** tenemos la misma intuición cuando se trata de la media muestral y la media poblacional. Si alguien nos obliga a hacer una mejor aproximación sobre la media de la población, no suena completamente descabellado decir que la media poblacional es 20. Obvio, probablemente no te sientas muy seguro de esa aproximación, porque solo tenés una observación, pero sigue siendo la mejor aproximación que podés hacer.
 
-Estaría bueno poder demostrar esto de alguna forma. Hay pruebas matemáticas que confirman esta intuición, pero salvo que tengas una formación matemática bastante sólida, no van a ayudarte mucho. Así que en vez de eso, lo que voy a hacer es usar **R** para simular los resultados de algunos experimentos.
+Extendamos un poco este ejemplo. Supongamos que ahora hago una segunda observación. Mi conjunto de datos ahora tiene $N=2$ observaciones de la cromulencia de los zapatos, y la muestra completa se ve así:
 
-Volvamos a nuestros estudios sobre CI. Supongamos que la verdadera media poblacional de CI es 100, y la desviación estándar poblacional es 15. Podemos usar la función `rnorm()` para generar los resultados de un experimento en el que medimos \$N = 2\$ puntuaciones de CI, y luego calculamos el **desvío estándar muestral**.
+`20, 22`
 
-Si repetimos este procedimiento una y otra vez, y graficamos un histograma de esos desvíos estándar muestrales, obtenemos la **distribución muestral del desvío estándar**. Esa distribución está graficada en la figura `@fig-sampdistsd`.
+Esta vez, nuestra muestra es **justo** lo suficientemente grande como para que podamos ver algo de variabilidad: dos observaciones es el número mínimo necesario para que pueda observarse alguna variación. Para este nuevo conjunto de datos, el promedio muestral es $\bar{X}=21$ y la desviación estándar muestral es $s=1$.
 
+¿Qué intuiciones tenemos ahora sobre la población? De nuevo, en lo que respecta a la media poblacional, la mejor aproximación que podemos hacer es la media muestral: si nos obligaran a adivinar, probablemente diríamos que la media de cromulencia poblacional es 21. ¿Y la desviación estándar? Acá la cosa se pone un poco más complicada. La desviación estándar muestral está basada solamente en dos observaciones, y si sos como yo, seguramente tenés la intuición de que, con solo dos datos, no le estamos dando a la población "suficiente oportunidad" de mostrarnos su verdadera variabilidad. No es solo que sospechamos que la estimación está **equivocada** —porque con solo dos observaciones ya esperamos que haya algún error—. La preocupación más grande es que el error sea **sistemático**.
+
+Si el error es sistemático, entonces está **sesgado**. Por ejemplo, imaginate que el promedio muestral siempre fuera menor que el promedio poblacional. Si eso fuera cierto (no lo es), entonces no podríamos usar el promedio muestral como estimador. Estaría sesgado, estaríamos usando el número equivocado.
+
+Bueno, resulta que el desvío estándar muestral es un **estimador sesgado** del desvío estándar poblacional. Ya veníamos intuyéndolo con lo que estuvimos discutiendo. Cuando el tamaño muestral es 1, el desvío estándar es 0, lo cual claramente es demasiado bajo. Cuando el tamaño muestral es 2, el desvío estándar empieza a ser mayor que 0, pero como solo tenemos dos datos, sospechamos que sigue siendo demasiado bajo. Y resulta que esta intuición es correcta.
+
+Estaría bueno poder demostrar esto de alguna forma. Hay pruebas matemáticas que confirman esta intuición, pero salvo que tengas una formación matemática bastante sólida, no van a ayudarte mucho. Así que en vez de eso, lo que voy a hacer es usar R para simular los resultados de algunos experimentos. Con esto en mente, volvamos a nuestros estudios sobre CI. Supongamos que la verdadera media poblacional de CI es 100, y la desviación estándar poblacional es 15. Podemos usar la función **rnorm()** para generar los resultados de un experimento en el que medimos \$N = 2\$ puntuaciones de CI, y luego calculamos el desvío estándar muestral. Si repetimos este procedimiento una y otra vez, y graficamos un histograma de esos desvíos estándar muestrales, obtenemos la **distribución muestral del desvío estándar**. Esa distribución está graficada en la figura `@fig-sampdistsd`.
 
 ```{r}
 knitr::include_graphics("imgs/navarro_img/estimation/sampdistsd_es.png")
 ```
 
-Aunque la verdadera desviación estándar poblacional es 15, el promedio de los **desvíos estándar muestrales** es solo 8.5. Notá que esto es **muy distinto** de lo que pasaba cuando graficábamos distribuciones muestrales de la media: esas siempre estaban centradas en la media poblacional.
+Aunque la verdadera desviación estándar poblacional es 15, el promedio de los desvíos estándar **muestrales** es solo 8.5. Notá que esto es muy distinto de lo que pasaba cuando graficábamos distribuciones muestrales de la media: esas siempre estaban centradas en la media poblacional.
 
 Ahora ampliemos la simulación. En lugar de restringirnos a un tamaño muestral de \$N=2\$, repitamos el experimento para tamaños muestrales del 1 al 10. Si graficamos el promedio de la media muestral y el promedio del desvío estándar muestral como función del tamaño de la muestra, obtenemos los siguientes resultados.
 
-La figura `@fig-estimatorbiasA` muestra cómo cambia la media muestral según el tamaño de la muestra. Notá que la línea es **plana**: la media muestral **no sobrestima ni subestima** la media poblacional. Es un **estimador insesgado**.
+La figura `@fig-estimatorbiasA` muestra cómo cambia la media muestral según el tamaño de la muestra. Notá que la línea es plana: la media muestral no sobrestima ni subestima la media poblacional. Es un estimador insesgado.
 
 ```{r}
 #| label: fig-estimatorbiasA
@@ -1332,52 +1321,38 @@ La figura `@fig-estimatorbiasB` muestra cómo cambia el **desvío estándar mues
 knitr::include_graphics("imgs/navarro_img/estimation/biasSD_es.png")
 ```
 
-En otras palabras, si queremos hacer nuestra **mejor conjetura** sobre el valor de la desviación estándar poblacional \$\sigma\$ (lo que llamamos \$\hat{\sigma}\$), deberíamos asegurarnos de que sea **un poco más grande** que el desvío estándar muestral \$s\$.
+En otras palabras, si queremos hacer una “mejor aproximación” ($\hat\sigma$, nuestra estimación de la desviación estándar poblacional) sobre el valor real de la desviación estándar de la población $\sigma$, deberíamos asegurarnos de que nuestra aproximación sea un poquito más grande que la desviación estándar muestral $s$.
 
-Volvamos a mirar la varianza. Si recordás del segundo capítulo, la **varianza muestral** se define como el promedio de los cuadrados de las desviaciones respecto de la media muestral. Es decir:
+La solución a este sesgo sistemático resulta ser bastante simple. Así es como funciona. Antes de meternos con la desviación estándar, vamos a mirar la varianza. Si recordás el segundo capítulo, la varianza muestral se define como el promedio de los cuadrados de las desviaciones respecto de la media muestral. Es decir:
 
 $$
 s^2 = \frac{1}{N} \sum_{i=1}^N (X_i - \bar{X})^2
 $$
 
-La varianza muestral \$s^2\$ es un **estimador sesgado** de la varianza poblacional \$\sigma^2\$.
-Pero resulta que solo necesitamos hacer un pequeño ajuste para transformarla en un estimador **insesgado**.
-Todo lo que hay que hacer es dividir por \$N-1\$ en lugar de por \$N\$.
-Si hacemos eso, obtenemos la siguiente fórmula:
+La varianza muestral \$s^2\$ es un estimador sesgado de la varianza poblacional \$\sigma^2\$. Pero resulta que solo necesitamos hacer un pequeño ajuste para transformarla en un estimador insesgado. Todo lo que hay que hacer es dividir por \$N-1\$ en lugar de por \$N\$. Si hacemos eso, obtenemos la siguiente fórmula:
 
 $$
 \hat\sigma^2 = \frac{1}{N-1} \sum_{i=1}^N (X_i - \bar{X})^2
 $$
 
-Esto **sí** es un estimador insesgado de la varianza poblacional \$\sigma^2\$.
+Esto sí es un estimador insesgado de la varianza poblacional \$\sigma^2\$.
 
-Una historia similar se aplica al **desvío estándar**.
-Si dividimos por \$N-1\$ en lugar de por \$N\$, nuestra estimación del desvío estándar poblacional se convierte en:
+Una historia similar se aplica al desvío estándar. Si dividimos por \$N-1\$ en lugar de por \$N\$, nuestra estimación del desvío estándar poblacional se convierte en:
 
 $$
 \hat\sigma = \sqrt{\frac{1}{N-1} \sum_{i=1}^N (X_i - \bar{X})^2}
 $$
 
-Vale la pena señalar que los programas de software toman **decisiones por vos** sobre qué tipo de varianza y desvío estándar estás calculando.
-Algunos programas dividen automáticamente por \$N-1\$, otros no.
-Necesitás verificar qué están haciendo.
-**No dejes que el software decida por vos.** El software está para que vos le digas qué hacer.
+Vale la pena señalar que los programas de software toman decisiones **por vos** sobre qué tipo de varianza y desvío estándar estás calculando. Algunos programas dividen automáticamente por \$N-1\$, otros no. Necesitás verificar qué están haciendo. No dejes que el software decida por **vos**. El software está para que vos le digas qué hacer.
 
-Un último punto: en la práctica, muchas personas se refieren a \$\hat{\sigma}\$ (la fórmula con \$N-1\$) como el **desvío estándar muestral**.
-Técnicamente, esto es incorrecto: el **desvío estándar muestral**, como propiedad de la muestra, debería ser igual a \$s\$ (la fórmula con \$N\$).
-No son la misma cosa, ni conceptualmente ni numéricamente.
-Una es una propiedad de la muestra; la otra, una estimación del parámetro poblacional.
-Sin embargo, en casi todas las aplicaciones reales, lo que realmente nos importa es la estimación del parámetro poblacional.
-Por eso, la gente casi siempre reporta \$\hat{\sigma}\$ en lugar de \$s\$.
+Un último punto: en la práctica, muchas personas se refieren a \$\hat{\sigma}\$ (la fórmula con \$N-1\$) como el desvío estándar **muestral**. Técnicamente, esto es incorrecto: el desvío estándar muestral, como propiedad de la muestra, debería ser igual a \$s\$ (la fórmula con \$N\$). No son la misma cosa, ni conceptualmente ni numéricamente. Una es una propiedad de la muestra; la otra, una estimación del parámetro poblacional. Sin embargo, en casi todas las aplicaciones reales, lo que realmente nos importa es la estimación del parámetro poblacional. Por eso, la gente casi siempre reporta \$\hat{\sigma}\$ en lugar de \$s\$.
 
 \::: {.callout-note}
-
-> Si lo que estás haciendo es estimar un parámetro poblacional, ¿por qué dividirías por \$N-1\$? Además, cuando \$N\$ es grande, no importa tanto. La diferencia entre un \$N\$ grande y un \$N-1\$ grande es solo… -1.
+> Ojo, si hay que dividir por 𝑁 o por 𝑁−1 también depende de cómo pensás lo que estás haciendo. Por ejemplo, si no creés que lo que estás haciendo es estimar un parámetro poblacional, entonces, ¿por qué dividirías por N−1? Además, cuando 
+𝑁 es grande, no importa tanto. La diferencia entre un 𝑁 grande y un 𝑁−1 grande es… simplemente 1.
 > \:::
 
-Este es el número correcto que hay que reportar, claro. Pero la gente tiende a ser un poco imprecisa con la terminología cuando lo escribe, porque "desvío estándar muestral" es más corto que "estimación del desvío estándar poblacional". No es gran cosa, y en la práctica yo hago lo mismo que todos los demás.
-Sin embargo, creo que es importante mantener los dos **conceptos** separados: nunca es buena idea confundir “propiedades conocidas de tu muestra” con “conjeturas sobre la población de la que proviene”.
-En el momento en que empezás a pensar que \$s\$ y \$\hat{\sigma}\$ son lo mismo, empezás a hacer justamente eso.
+Este es el número correcto que hay que reportar, claro. Pero la gente tiende a ser un poco imprecisa con la terminología cuando lo escribe, porque "desvío estándar muestral" es más corto que "estimación del desvío estándar poblacional". No es gran cosa, y en la práctica yo hago lo mismo que todos los demás. Sin embargo, creo que es importante mantener los dos **conceptos** separados: nunca es buena idea confundir “propiedades conocidas de tu muestra” con “conjeturas sobre la población de la que proviene”. En el momento en que empezás a pensar que \$s\$ y \$\hat{\sigma}\$ son lo mismo, empezás a hacer justamente eso.
 
 Para cerrar esta sección, acá tenés un par de tablas más para ayudarte a mantener todo claro:
 

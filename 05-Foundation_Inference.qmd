@@ -541,7 +541,7 @@ Las regiones están definidas por el valor mínimo y el valor máximo observados
 
 Se ve así en la figura `@fig-5crumpdecision`:
 
-```{r}
+```{r, echo=F}
 #| label: fig-5crumpdecision
 #| fig-cap: "Aplicación de límites de decisión al histograma de diferencias de medias. Los límites identifican qué diferencias produjo (o no produjo) el azar en la simulación."
 
@@ -583,7 +583,7 @@ Veamos dónde podrían estar algunas zonas grises. Digo “podrían”, porque l
 
 La figura `@fig-5crumpuncertainty` muestra **mi** opinión sobre dónde se ubican las zonas grises:
 
-```{r}
+```{r, echo=F}
 #| label: fig-5crumpuncertainty
 #| fig-cap: "Los signos de interrogación indican una zona donde hay cierta incertidumbre. Las diferencias dentro de esta zona no ocurren muy seguido por azar. Cuando encontrás diferencias de ese tamaño, ¿deberías rechazar la idea de que fueron causadas por azar? Siempre vas a tener algo de incertidumbre asociada a esa decisión, porque está claro que el azar podría haber causado la diferencia. Pero, el azar usualmente no produce diferencias de ese tamaño."
 
@@ -683,7 +683,7 @@ Otra cosa en la que pensar es en tu **política de decisión**. ¿Qué vas a hac
 
 Así que vamos a ilustrar **otro tipo de estrategia** para tomar decisiones. Recién hablamos de una que incluía líneas y regiones. Eso hace que parezca una elección binaria: podemos **descartar** o **no descartar** el papel del azar. Otra perspectiva es que **todo es un matiz de gris**, como en la figura `@fig-5crumpshade`.
 
-```{r}
+```{r, echo=F,warning=FALSE}
 #| label: fig-5crumpshade
 #| fig-cap: "El sombreado de las barras azules indica los niveles de confianza en si una diferencia podría haber sido producida por azar. Las barras más oscuras representan mayor confianza en que la diferencia no fue causada por azar. Las barras se oscurecen a medida que la diferencia de medias aumenta en valor absoluto."
 

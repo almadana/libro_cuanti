@@ -67,7 +67,7 @@ ggplot(df, aes(x = a, y = b)) +
   ggtitle("Distribución uniforme para los números del 1 al 10")
 ```
 
-OK, eso no parece gran cosa. ¿Qué está pasando acá? El eje y está etiquetado como `Probabilidad`, y va de 0 a 1. El eje x está etiquetado como `Número`, y va del 1 al 10. Hay una línea horizontal atravesando el gráfico. Esa línea indica la probabilidad de cada número del 1 al 10. Notá que la línea es plana. Esto significa que **todos los números tienen la misma probabilidad de ocurrir**. Más específicamente, hay 10 números del 1 al 10 (1,2,3,4,5,6,7,8,9,10), y todos tienen la misma chance de aparecer. 1 dividido 10 es 0.1, que es la probabilidad indicada por la línea horizontal.
+OK, eso no parece gran cosa. ¿Qué está pasando acá? El eje y está etiquetado como `Probabilidad`, y va de 0 a 1. El eje x está etiquetado como `Número`, y va del 1 al 10. Hay una línea horizontal atravesando el gráfico. Esa línea indica la probabilidad de cada número del 1 al 10. Notá que la línea es plana. Esto significa que **todos los números tienen la misma probabilidad de ocurrir**. Más específicamente, hay 10 números del 1 al 10 (1,2,3,4,5,6,7,8,9,10), y todos tienen la misma chance de aparecer. 1 dividido 10 es 0,1, que es la probabilidad indicada por la línea horizontal.
 
 “¿Y qué con eso?” Imaginá que esta distribución uniforme es una máquina generadora de números. Escupe números, pero escupe **cada número con la probabilidad indicada por la línea**. Si esta distribución comenzara a generar números, escupiría un 10% de unos, un 10% de doses, un 10% de treses, y así sucesivamente, hasta un 10% de dieces. ¿Querés ver cómo se vería eso? Hagamos que escupa 100 números y pongámoslos en la tabla `@tbl-5100rand`.
 

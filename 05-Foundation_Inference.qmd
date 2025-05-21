@@ -154,7 +154,7 @@ La respuesta es que **ambas** vinieron de una distribución uniforme. Pero ningu
 
 Así que aumentemos el número de observaciones en cada muestra, de 20 a 100. Vamos a crear 10 muestras (cada una con 100 observaciones), y a graficar un histograma para cada una. Todas estas muestras se extraen de la **misma** distribución uniforme. Esto significa que deberíamos esperar que **cada número del 1 al 10 ocurra unas 10 veces** en cada muestra. Los histogramas están en la figura `@fig-5unifsamp100`.
 
-```{r}
+```{r, echo = F}
 #| label: fig-5unifsamp100
 #| fig-cap: "Histogramas de diferentes muestras de una distribución uniforme. N = 100 para cada muestra."
 #| out-width: "100%"
@@ -165,7 +165,8 @@ df <- data.frame(a, sample = rep(1:10, each = 100))
 ggplot(df, aes(x = a)) +
   geom_histogram(bins = 10, color = "white") +
   facet_wrap(~sample) +
-  theme_classic()
+  theme_classic()+
+  labs(y = "conteo")
 ```
 
 La figura `@fig-5unifsamp1000` muestra que los histogramas empiezan a aplanarse. Las barras todavía no están perfectamente en 100, porque sigue habiendo error muestral (siempre lo habrá). Pero si vieras un histograma que se ve plano y supieras que la muestra contiene muchas observaciones, podrías tener más confianza en que esos números provienen de una distribución uniforme.

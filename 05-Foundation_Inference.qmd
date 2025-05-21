@@ -870,7 +870,7 @@ La figura `@fig-5crumpminmax` muestra una ventana de sensibilidad razonablemente
 
 Otra forma de decirlo es la siguiente: ¿Cuáles de los tamaños muestrales son sensibles a una diferencia de +10 o -10? Es decir, si se observa una diferencia de +10 o -10, entonces podríamos decir con mucha confianza que **esa diferencia no fue causada por azar**, porque según estas simulaciones, el azar **nunca** produjo diferencias tan grandes. Para ayudarnos a ver cuáles son sensibles, la figura `@fig-5crumpredline` traza líneas horizontales en -10 y +10:
 
-```{r}
+```{r, echo=F}
 #| label: fig-5crumpredline
 #| fig-cap: "La línea roja representa el tamaño de una diferencia de medias que un investigador podría estar interesado en detectar. Todos los puntos que están por fuera (por encima o por debajo) de la línea roja representan diseños con tamaños muestrales pequeños. Cuando ocurre una diferencia de 10 en esos diseños, podemos descartar con confianza que haya sido causada por azar. Los puntos entre las líneas rojas representan diseños con tamaños muestrales grandes. Estos diseños nunca producen diferencias tan grandes como 10, así que cuando ocurren, podemos confiar en que no fueron producto del azar."
 
@@ -1014,7 +1014,7 @@ Volvamos al ejemplo del chicle. Después de aleatorizar nuestras notas muchas ve
 
 Este es el histograma de las diferencias de medias obtenidas con la prueba de aleatorización. Para esta simulación, aleatorizamos los resultados del experimento original 1000 veces. Esto es lo que **podría haber pasado**. La línea azul en `@fig-5randhist` muestra **dónde se ubica la diferencia observada** sobre el eje x.
 
-```{r}
+```{r, echo=F,warning=FALSE}
 #| label: fig-5randhist
 #| fig-cap: "Histograma de diferencias de medias simuladas en una prueba de aleatorización"
 
@@ -1045,7 +1045,7 @@ Como podés ver, las diferencias de medias varían de negativas a positivas. La 
 
 OK, ahora vamos a fingir que obtuvimos una diferencia de medias **mucho más pequeña** cuando ejecutamos el experimento. Podemos trazar nuevas líneas (azul y roja) para representar una media más pequeña que podríamos haber encontrado.
 
-```{r}
+```{r, echo = F, warning=FALSE}
 #| label: fig-5randquestion
 #| fig-cap: "¿Esperarías que una diferencia de medias representada por la línea azul ocurra más o menos seguido por azar, en comparación con la diferencia representada por la línea roja?"
 

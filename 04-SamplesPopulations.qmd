@@ -1367,87 +1367,68 @@ Para cerrar esta sección, acá tenés un par de tablas más para ayudarte a man
 
 > La estadística es no tener que decir nunca que estás seguro — Autor desconocido
 
-Hasta este punto del capítulo, describimos los fundamentos de la teoría del muestreo en los que se apoyan lxs estadísticxs para hacer conjeturas sobre los parámetros poblacionales a partir de una muestra de datos. Como muestra esta discusión, una de las razones por las que necesitamos toda esta teoría es que **todo conjunto de datos deja un cierto grado de incertidumbre**, así que nuestras estimaciones nunca van a ser perfectamente precisas. Lo que falta en esta discusión hasta ahora es un intento de **cuantificar** cuánto es esa incertidumbre.
+Hasta este punto del capítulo, describimos los fundamentos de la teoría del muestreo en los que se apoyan los estadísticos para hacer conjeturas sobre los parámetros poblacionales a partir de una muestra de datos. Como muestra esta discusión, una de las razones por las que necesitamos toda esta teoría es que todo conjunto de datos deja un cierto grado de incertidumbre, así que nuestras estimaciones nunca van a ser perfectamente precisas. Lo que falta en esta discusión hasta ahora es un intento de **cuantificar** cuánto es esa incertidumbre. No alcanza con poder decir que el CI promedio de estudiantes de psicología es 115 (sí, me acabo de inventar ese número). También queremos poder decir qué tan seguros estamos de esa estimación. Por ejemplo, estaría bueno poder decir que hay un 95% de probabilidad de que el valor real esté entre 109 y 121. A eso se le llama un **intervalo de confianza** para la media.
 
-Lo que falta en nuestra discusión hasta ahora es un intento de **cuantificar** cuánta incertidumbre hay en nuestra estimación. No alcanza con poder decir que el CI promedio de estudiantes de psicología es 115 (sí, me acabo de inventar ese número). También queremos poder decir **qué tan seguros estamos de esa estimación**. Por ejemplo, estaría bueno poder decir que hay un 95% de probabilidad de que el valor real esté entre 109 y 121. A eso se le llama un **intervalo de confianza** para la media.
-
-Armados con lo que ya sabemos sobre distribuciones muestrales, construir un intervalo de confianza para la media es bastante fácil.
-Así es como funciona:
-
-Supongamos que la verdadera media poblacional es \$\mu\$ y la desviación estándar poblacional es \$\sigma\$.
-Acabo de terminar mi estudio con \$N\$ participantes, y la media muestral de CI fue \$\bar{X}\$.
-Sabemos, gracias al teorema central del límite, que la distribución muestral de la media es aproximadamente normal.
-También sabemos, por lo que aprendimos sobre la distribución normal, que hay un 95% de probabilidad de que un valor normalmente distribuido caiga dentro de dos desviaciones estándar de la media verdadera.
-
-Para ser más precisos, podemos usar la función `qnorm()` para calcular los percentiles 2.5 y 97.5 de la distribución normal:
+Armados con lo que ya sabemos sobre distribuciones muestrales, construir un intervalo de confianza para la media es bastante fácil. Así es como funciona: Supongamos que la verdadera media poblacional es \$\mu\$ y la desviación estándar poblacional es \$\sigma\$. Acabo de terminar mi estudio con \$N\$ participantes, y la media muestral de CI fue \$\bar{X}\$. Sabemos, gracias al teorema central del límite, que la distribución muestral de la media es aproximadamente normal. También sabemos, por lo que aprendimos sobre la distribución normal, que hay un 95% de probabilidad de que un valor normalmente distribuido caiga dentro de dos desviaciones estándar de la media verdadera. Para ser más precisos, podemos usar la función `qnorm()` para calcular los percentiles 2.5 y 97.5 de la distribución normal:
 
 ```{r }
 qnorm( p = c(.025, .975) )
 ```
-Ok, así que te mentí un poco antes: lo más correcto es decir que hay un 95% de probabilidad de que una cantidad normalmente distribuida caiga dentro de **1.96** desviaciones estándar de la media verdadera.
+Ok, así que te mentí un poco antes: lo más correcto es decir que hay un 95% de probabilidad de que una cantidad normalmente distribuida caiga dentro de 1.96 desviaciones estándar de la media verdadera.
 
-Ahora recordá que la desviación estándar de la distribución muestral se llama **error estándar**, y que el error estándar de la media se denota como **SEM**.
-Cuando juntamos todas estas piezas, aprendemos que hay un 95% de probabilidad de que la media muestral \$\bar{X}\$ que obtuvimos esté **a no más de 1.96 errores estándar de la media poblacional**.
+Ahora recordá que la desviación estándar de la distribución muestral se llama error estándar, y que el error estándar de la media se denota como SEM. Cuando juntamos todas estas piezas, aprendemos que hay un 95% de probabilidad de que la media muestral \$\bar{X}\$ que observamos esté a no más de 1.96 errores estándar de la media poblacional. Uf, eso fue mucha matemática junta. Tranquilo, ahora lo aclaramos. 
 
-Uf, eso fue mucha matemática junta. Tranquilo, ahora lo aclaramos. En notación matemática, esto se escribe así:
+En notación matemática, esto se escribe así:
 
 $$
 \mu - \left(1.96 \times \text{SEM} \right) \ \leq\ \bar{X} \ \leq\ \mu + \left(1.96 \times \text{SEM} \right)
 $$
 donde el SEM es igual a \$\sigma / \sqrt{N}\$, y podemos estar un 95% seguros de que esto es cierto.
 
-Sin embargo, esto **no** responde la pregunta que realmente nos interesa.
-La ecuación anterior nos dice qué deberíamos esperar sobre la **media muestral**, dado que **conocemos** los parámetros poblacionales.
-Pero lo que **queremos** es que funcione al revés: queremos saber qué deberíamos creer sobre los **parámetros poblacionales**, dado que **observamos** una muestra particular.
-
-Sin embargo, no es muy difícil lograrlo.
-Con un poco de álgebra de secundaria, podemos reescribir nuestra ecuación así:
+Sin embargo, esto no responde la pregunta que realmente nos interesa. La ecuación anterior nos dice qué deberíamos esperar sobre la media muestral, dado que conocemos los parámetros poblacionales. Pero lo que queremos es que funcione al revés: queremos saber qué deberíamos creer sobre los parámetros poblacionales, dado que observamos una muestra particular. Sin embargo, no es muy difícil lograrlo. Con un poco de álgebra de secundaria, podemos reescribir nuestra ecuación así:
 
 $$
 \bar{X} - \left( 1.96 \times \text{SEM} \right) \leq \mu \leq \bar{X} + \left( 1.96 \times \text{SEM} \right)
 $$
 
-Esto nos dice que **el rango de valores delimitado por esa desigualdad tiene una probabilidad del 95% de contener la media poblacional \$\mu\$**.
+Esto nos dice que el rango de valores tiene una probabilidad del 95% de contener la media poblacional \$\mu\$.
 A este rango lo llamamos **intervalo de confianza del 95%**, denotado como \$\text{CI}\_{95}\$.
 
-En resumen, siempre que \$N\$ sea lo suficientemente grande —lo suficientemente grande como para que la distribución muestral de la media se parezca a una normal—
-podemos usar la siguiente fórmula para el intervalo de confianza del 95%:
+En resumen, siempre que \$N\$ sea lo suficientemente grande —lo suficientemente grande como para que la distribución muestral de la media se parezca a una normal— podemos usar la siguiente fórmula para el intervalo de confianza del 95%:
 
 $$
 \text{CI}_{95} = \bar{X} \pm \left( 1.96 \times \frac{\sigma}{\sqrt{N}} \right)
 $$
 
-Por supuesto, no hay nada especial en el número 1.96: simplemente es el multiplicador que necesitás usar si querés un intervalo de confianza del 95%.
-
-Si quisiera un intervalo de confianza del 70%, podría usar la función `qnorm()` para calcular los cuantiles 15 y 85:
+Por supuesto, no hay nada especial en el número 1.96: simplemente es el multiplicador que necesitás usar si querés un intervalo de confianza del 95%. Si quisiera un intervalo de confianza del 70%, podría usar la función **qnorm()** para calcular los cuantiles 15 y 85:
 
 ```{r}
 qnorm( p = c(.15, .85) )
 ```
 
-Así que la fórmula para el $\text{CI}*{70}$ sería igual a la del $\text{CI}*{95}$, excepto que usaríamos **1.04** como nuestro número mágico, en lugar de 1.96.
+Así que la fórmula para el $\text{CI}*{70}$ sería igual a la del $\text{CI}*{95}$, excepto que usaríamos 1.04 como nuestro número mágico, en lugar de 1.96.
 
 ### Un pequeño error en la fórmula
 
-Como de costumbre, te mentí un poco. La fórmula que te di arriba para el intervalo de confianza del 95% es aproximadamente correcta, pero omití un detalle importante…
-Usa el **error estándar de la media** (SEM), que a su vez requiere conocer la **desviación estándar poblacional verdadera** $\sigma$.
+Como de costumbre, te mentí un poco. La fórmula que te di más arriba para el intervalo de confianza del 95% es aproximadamente correcta, pero me salté un detalle importante en la explicación. Fijate que mi fórmula requiere que uses el error estándar de la media (SEM), que a su vez necesita que conozcas la desviación estándar real de la población, $\sigma$.
 
-Sin embargo, ya dijimos antes que en general **no conocemos** los parámetros poblacionales verdaderos. Y como no conocemos el valor real de $\sigma$, tenemos que usar una **estimación** del desvío estándar poblacional, es decir, $\hat{\sigma}$. Eso no es difícil de hacer, pero tiene una consecuencia: ahora tenemos que usar los **cuantiles de la distribución $t$** en lugar de la distribución normal para calcular nuestro “número mágico”; y ese número **depende del tamaño muestral**. Además, todavía **no hablamos de la distribución $t$** en este capítulo.
+Sin embargo, ya dijimos antes que en general **no conocemos** los parámetros poblacionales verdaderos. Y como no conocemos el valor real de $\sigma$, tenemos que usar una **estimación** del desvío estándar poblacional $\hat{\sigma}$. Eso no es difícil de hacer, pero tiene una consecuencia: tenemos que usar los cuantiles de la distribución $t$ en lugar de la distribución normal para calcular nuestro número mágico; y ese número depende del tamaño muestral. Además, todavía no hablamos de la distribución $t$ en este capítulo.
 
-Cuando usamos la distribución $t$ en lugar de la normal, los valores críticos son más grandes. Eso refleja el hecho de que tenemos **mayor incertidumbre**. ¿Y por qué tenemos esa incertidumbre extra?
-Bueno, porque nuestra estimación del desvío estándar poblacional $\hat{\sigma}$ **podría estar equivocada**. Si lo está, eso implica que **no estamos tan seguros** de cómo es realmente la distribución muestral de la media… y esa incertidumbre **termina reflejándose** en un **intervalo de confianza más amplio**.
+Cuando usamos la distribución $t$ en lugar de la distribución normal, obtenemos números más grandes, lo que indica que tenemos más incertidumbre. ¿Y por qué tenemos esa incertidumbre extra? Bueno, porque nuestra estimación de la desviación estándar poblacional, $\hat\sigma$, puede estar equivocada. Y si está equivocada, eso significa que estamos menos seguros de cómo es realmente la distribución muestral de la media... y esa incertidumbre termina reflejándose en un intervalo de confianza más amplio.
 
 ## Resumen
 
 En este capítulo cubrimos dos grandes temas. La primera mitad trató sobre la teoría del muestreo, y la segunda mitad sobre cómo podemos usar esa teoría para construir **estimaciones de parámetros poblacionales**. La estructura fue más o menos así:
 
 - Ideas básicas sobre muestras, muestreo y poblaciones
+
 - Teoría estadística del muestreo: ley de los grandes números, distribuciones muestrales y el teorema central del límite
+
 - Estimación de medias y desviaciones estándar
+
 - Intervalos de confianza
 
-Como siempre, hay muchos otros temas relacionados con muestreo y estimación que **no** se abordaron en este capítulo. Pero para un curso introductorio de psicología, creo que esto es bastante completo. Para la mayoría de lxs investigadores aplicadxs, no se necesita mucha más teoría que esta.
-
+Como siempre, hay un montón de temas relacionados con el muestreo y la estimación que no se cubren en este capítulo, pero para una materia introductoria de psicología, creo que esto es bastante completo. Para la mayoría de quienes hacen investigación aplicada, no vas a necesitar mucha más teoría que esta. Una gran pregunta que no toqué en este capítulo es: ¿qué hacés cuando no tenés una muestra aleatoria simple? Hay muchísima teoría estadística que se puede usar para manejar esa situación, pero queda muy por fuera del alcance de este libro.
 
 ## Videos
 

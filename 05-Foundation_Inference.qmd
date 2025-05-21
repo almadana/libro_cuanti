@@ -133,7 +133,7 @@ Observar los histogramas anteriores nos muestra que puede ser difícil averiguar
 
 Volvamos a la pregunta: ¿cuál de las dos muestras en `@fig-5whichone` te parece que vino de una distribución uniforme?
 
-```{r}
+```{r, echo=F}
 #| label: fig-5whichone
 #| fig-cap: "¿Cuál de estas dos muestras proviene de una distribución uniforme?"
 
@@ -144,7 +144,8 @@ ggplot(df, aes(x = a)) +
   geom_histogram(bins = 10, color = "white") +
   facet_wrap(~sample) +
   theme_classic() +
-  scale_x_continuous(breaks = seq(1, 10, 1))
+  scale_x_continuous(breaks = seq(1, 10, 1))+
+  labs(y = "conteo")
 ```
 
 La respuesta es que **ambas** vinieron de una distribución uniforme. Pero ninguna **parece** que lo haya hecho.

@@ -364,7 +364,7 @@ Las barras faltantes significan que se extrajo la misma cantidad de bolitas verd
 
 Empezamos a ver mejor qué tipo de diferencias puede generar el azar. Los puntajes de diferencia están mayormente entre -2 y +2. Podríamos hacernos una idea más clara si corremos este experimento ficticio **100 veces** en lugar de solo 10. Los resultados se muestran en `@fig-5manydiffs`.
 
-```{r, ehco=F}
+```{r, echo=F}
 #| label: fig-5manydiffs
 #| fig-cap: "Repetimos el experimento 100 veces y observamos las diferencias en cada repetición. Hay muchas diferencias que pueden ser causadas solo por el azar."
 
@@ -384,7 +384,8 @@ ggplot(dif_df, aes(y = diferencias, x = experiment)) +
   geom_bar(stat = "identity") +
   geom_hline(yintercept = 0) +
   theme_classic(base_size = 20) +
-  labs(y="Puntajes de diferencia",x="experimento")
+  labs(y="Puntajes de diferencia",x="experimento") +
+  scale_x_discrete(breaks = seq(0, 100, by = 10))
 ```
 
 Para cerrar este experimento, veamos un histograma de los puntajes de diferencia. El histograma en `@fig-5histdiffbolita` ofrece una imagen más clara de qué diferencias ocurren con mayor frecuencia, y cuáles no. Esta será otra ventana para observar qué tipo de diferencias puede producir el azar.

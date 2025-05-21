@@ -384,11 +384,13 @@ ggplot(dif_df, aes(y = diferencias, x = experiment)) +
   geom_bar(stat = "identity") +
   geom_hline(yintercept = 0) +
   theme_classic(base_size = 20) +
-  labs(y="Puntajes de diferencia",x="experimento") +
-  scale_x_discrete(breaks = seq(0, 100, by = 10))
+  labs(y="Puntajes de diferencia",x="experimento")
 ```
+Upss, acabamos de realizar tantos experimentos simulados que el eje x es ilegible, pero va de 1 a 100. Cada barra representa la diferencia de número de bolas verdes elegidas al azar por la mano izquierda o derecha. ¿Empiezas a notar algo? Mira el eje y, éste muestra el tamaño de la diferencia. Sí, hay muchas barras de diferentes tamaños, esto nos muestra que muchos tipos de diferencias ocurren por azar. Sin embargo, el eje y también está restringido. No va de -10 a +10. Las grandes diferencias superiores a 5 o -5 no ocurren muy a menudo.
 
-Para cerrar este experimento, veamos un histograma de los puntajes de diferencia. El histograma en `@fig-5histdiffbolita` ofrece una imagen más clara de qué diferencias ocurren con mayor frecuencia, y cuáles no. Esta será otra ventana para observar qué tipo de diferencias puede producir el azar.
+Ahora que tenemos un método para simular las diferencias debidas al azar, vamos a realizar 10.000 experimentos simulados. Pero, en lugar de trazar las diferencias en un gráfico de barras para cada experimento, ¿qué tal si observamos el histograma de puntuaciones de diferencia? El histograma en `fig-5histdiffbolita` proporciona una imagen más clara sobre qué diferencias ocurren con más frecuencia y cuáles no. Esta será otra ventana para observar qué tipo de diferencias es capaz de producir el azar.
+
+Traducción realizada con la versión gratuita del traductor DeepL.com
 
 ```{r, echo=F}
 #| label: fig-5histdiffbolita

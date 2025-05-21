@@ -412,10 +412,10 @@ study<-round(runif(10,80,100))
 no_study<-round(runif(10,40,90))
 
 study_df<-data.frame(student=seq(1:10),study,no_study)
-mean_original<-data.frame(IV=c("studied","didnt_study"),
+mean_original<-data.frame(IV=c("estudió","no estudió"),
                           means=c(mean(study),mean(no_study)))
 t_df<-data.frame(sims=rep(1,20),
-                 IV=rep(c("studied","didnt_study"),each=10),
+                 IV=rep(c("estudió","no estudió"),each=10),
                  values=c(study,no_study),
                  rand_order=rep(c(0,1),each=10))
 
@@ -440,9 +440,10 @@ a<-ggplot(raw_df,aes(x=IV,y=values,color=rand_order,size=3))+
   theme_classic(base_size = 15)+
   coord_cartesian(ylim=c(40, 100))+
   theme(legend.position="none") +
-  ggtitle("Randomization test: Original Means (purple),
-          \n Randomized means (yellow)
-          \n Original scores (red,greenish)")+
+  labs(x="Variable independiente",y="valores")+
+  ggtitle("Prueba de randomización: Medias originales (violeta),
+          \n Medias randomizadas (amarillo)
+          \n Puntuaciones originales (magenta,cian)")+
   transition_states(
     sims,
     transition_length = 1,

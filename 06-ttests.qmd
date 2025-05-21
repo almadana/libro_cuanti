@@ -124,7 +124,7 @@ Empecemos con un ejemplo simple. Imaginá que tu media muestral es 5, y querés 
 
 Hagamos una cosa más para afinar la intuición. ¿Qué tal si generamos varias muestras, calculamos la media muestral **y** el error estándar de la media, y graficamos esas dos cosas entre sí? Así vamos a ver cómo varía típicamente la media con respecto al error estándar.
 
-En la figura `@fig-6muestraMSEM`, tomé 1.000 muestras de tamaño \$N = 10\$ de una distribución normal (media = 0, desviación estándar = 1). En cada caso, calculé la media y el error estándar. Eso nos da dos estadísticas descriptivas por muestra, y podemos graficarlas como puntos en un scatterplot.
+En la @fig-6muestraMSEM, tomé 1.000 muestras de tamaño \$N = 10\$ de una distribución normal (media = 0, desviación estándar = 1). En cada caso, calculé la media y el error estándar. Eso nos da dos estadísticas descriptivas por muestra, y podemos graficarlas como puntos en un scatterplot.
 
 ```{r}
 #| label: fig-6muestraMSEM
@@ -144,7 +144,7 @@ plot(media_muestral, desvío_muestral)
 
 Lo que obtenemos es una nube de puntos. Podés notar que tiene una forma más o menos circular. Hay más puntos en el centro, y menos a medida que se alejan. La nube muestra el rango típico de las medias muestrales: la mayoría está entre -1 y 1. El error estándar también varía entre aproximadamente 0.2 y 0.5. Recordá que cada punto representa una muestra.
 
-Podemos ver estos datos de otra forma. En lugar de graficar directamente las medias y errores, podemos dividir la media de cada muestra por su error estándar. La figura `@fig-6thisexample` muestra un histograma de esos valores.
+Podemos ver estos datos de otra forma. En lugar de graficar directamente las medias y errores, podemos dividir la media de cada muestra por su error estándar. La @fig-6thisexample muestra un histograma de esos valores.
 
 ```{r echo=F}
 #| label: fig-6thisexample
@@ -213,7 +213,7 @@ t.test(puntajes, mu=50)
 
 Si *t* es solo un número que podemos calcular a partir de una muestra (y lo es), ¿qué hacemos con él? ¿Cómo usamos *t* para inferencia estadística?
 
-Volvamos al capítulo sobre muestreo y distribuciones. Ahí hablamos de la distribución muestral de la media. Generamos muchas muestras, calculamos la media de cada una, y armamos un histograma de esas medias. Más adelante dijimos que podíamos hacer eso con **cualquier** estadístico. Para cada muestra podíamos calcular la media, la desviación estándar, el error estándar, e incluso *t*. Podríamos generar 10.000 muestras y hacer cuatro histogramas, uno por cada estadístico. Eso fue exactamente lo que hice, y los resultados están en los cuatro paneles de la figura `@fig-6sampdists`. Usé un tamaño de muestra de 20, y tomé observaciones aleatorias de una distribución normal, con media = 0, y la desviación estándar = 1. Veamos las distribuciones muestrales de cada estadístico. *t* se calculó asumiendo que la media poblacional es 0.
+Volvamos al capítulo sobre muestreo y distribuciones. Ahí hablamos de la distribución muestral de la media. Generamos muchas muestras, calculamos la media de cada una, y armamos un histograma de esas medias. Más adelante dijimos que podíamos hacer eso con **cualquier** estadístico. Para cada muestra podíamos calcular la media, la desviación estándar, el error estándar, e incluso *t*. Podríamos generar 10.000 muestras y hacer cuatro histogramas, uno por cada estadístico. Eso fue exactamente lo que hice, y los resultados están en los cuatro paneles de la @fig-6sampdists. Usé un tamaño de muestra de 20, y tomé observaciones aleatorias de una distribución normal, con media = 0, y la desviación estándar = 1. Veamos las distribuciones muestrales de cada estadístico. *t* se calculó asumiendo que la media poblacional es 0.
 
 ```{r}
 #| label: fig-6sampdists
@@ -269,7 +269,7 @@ Todas estas *ventanas de azar* se pueden usar como usamos las distribuciones mue
 
 Enseguida vamos a formalizar todo esto. Por ahora, quiero que veas que esto que vas a hacer es algo que **ya hiciste antes**. Por ejemplo, en el test de Crump y el test de aleatorización, nos enfocamos en la distribución de diferencias de medias. Podríamos hacer lo mismo acá, pero esta vez nos vamos a centrar en la distribución de valores *t*. Después aplicamos las mismas reglas de decisión que usamos con las otras distribuciones.
 
-Abajo vas a ver un gráfico que ya viste antes, pero ahora muestra una distribución de *t*, no de diferencias de medias. Recordá: si obtenemos un único valor *t* a partir de una muestra que recolectamos, podemos consultar la *ventana de azar* en `@fig-6tdecision` para ver si ese valor era esperable por azar o no.
+Abajo vas a ver un gráfico que ya viste antes, pero ahora muestra una distribución de *t*, no de diferencias de medias. Recordá: si obtenemos un único valor *t* a partir de una muestra que recolectamos, podemos consultar la *ventana de azar* en @fig-6tdecision para ver si ese valor era esperable por azar o no.
 
 ```{r}
 #| label: fig-6tdecision
@@ -490,7 +490,7 @@ También vemos que el valor *p* fue .509. Ya vimos valores *p* antes. Esto nos d
 
 Recordá lo que estamos haciendo: estamos evaluando si nuestros datos muestrales podrían haber salido de una distribución específica. La distribución **nula**, de ausencia de diferencias. Esta es la distribución de valores *t* que ocurren con muestras de tamaño 5, con diferencia media igual a 0, y error estándar de la media de .075 (ese es el SEM que calculamos a partir de nuestra muestra).
 
-Podemos ver cómo luce esta distribución nula en `@fig-6tnull`:
+Podemos ver cómo luce esta distribución nula en @fig-6tnull:
 
 ```{r}
 #| label: fig-6tnull
@@ -527,7 +527,7 @@ Usamos la letra *p* para referirnos a la probabilidad de que ocurran ciertos val
 
 Podemos responder estas preguntas solo mirando la distribución *t* y dividiéndola en dos regiones iguales: la mitad izquierda (50% de los valores *t*) y la mitad derecha (los otros 50%).
 
-¿Y si queremos un enfoque más fino? Por ejemplo, dividir en regiones del 10%. ¿Qué valores de *t* ocurren solo el 10% del tiempo? Podemos marcar líneas que dividan la distribución en regiones así. Notá que los valores extremos (más grandes o más chicos) son menos probables, entonces los intervalos más alejados del centro tienen que ser más anchos para contener el mismo 10%. Así se ve la figura `@fig-6percentregions`:
+¿Y si queremos un enfoque más fino? Por ejemplo, dividir en regiones del 10%. ¿Qué valores de *t* ocurren solo el 10% del tiempo? Podemos marcar líneas que dividan la distribución en regiones así. Notá que los valores extremos (más grandes o más chicos) son menos probables, entonces los intervalos más alejados del centro tienen que ser más anchos para contener el mismo 10%. Así se ve la figura @fig-6percentregions:
 
 ```{r}
 #| label: fig-6percentregions
@@ -582,7 +582,7 @@ Ojo: vamos a explicar los grados de libertad **al final**. Primero, vamos con el
 
 Un **test unilateral** (*one-tailed test*) también se llama a veces **test direccional**. Se le dice así porque el investigador puede tener una hipótesis en mente que sugiere que la diferencia entre medias va a tener una **dirección específica**: o bien una diferencia positiva, o bien una negativa.
 
-Típicamente, el investigador establece un **criterio alfa** (*alpha criterion*). Este criterio es como una línea en la arena para tomar decisiones. A menudo se fija en \$p = .05\$. ¿Qué significa eso? La figura `@fig-6critT` muestra la distribución *t* con ese criterio alfa:
+Típicamente, el investigador establece un **criterio alfa** (*alpha criterion*). Este criterio es como una línea en la arena para tomar decisiones. A menudo se fija en \$p = .05\$. ¿Qué significa eso? La figura @fig-6critT muestra la distribución *t* con ese criterio alfa:
 
 ```{r}
 #| label: fig-6critT
@@ -638,7 +638,7 @@ Recapitulemos y conectemos algunos conceptos:
 
 4.  **Valor *p***: el valor *p* es la probabilidad de obtener el valor *t* observado o uno mayor. En nuestro ejemplo anterior, el valor *p* para *t*(4) = 0.72 fue *p = .509*. SIN EMBARGO, ese valor *p* **no fue calculado** para un test direccional (unilateral)... (hablamos más sobre qué significa ese .509 en la siguiente sección).
 
-La figura `@fig-6tonedirection` muestra cómo se vería el valor *p* para *t*(4) = 0.72 en un test unilateral:
+La @fig-6tonedirection muestra cómo se vería el valor *p* para *t*(4) = 0.72 en un test unilateral:
 
 ```{r}
 #| label: fig-6tonedirection
@@ -836,7 +836,7 @@ ggplot(t_df, aes(x = ts, group = dfs, color = dfs)) +
   theme_classic(base_size = 15)
 ```
 
-En la figura `@fig-6dft`, fijate que la distribución roja para \$df = 4\$ es un poco más baja y más ancha que la distribución azul verdosa para \$df = 100\$. A medida que aumentan los grados de libertad, la distribución *t* se vuelve más alta (en el centro) y más angosta en el rango. Se vuelve más picuda. ¿Adivinás por qué?
+En la @fig-6dft, fijate que la distribución roja para \$df = 4\$ es un poco más baja y más ancha que la distribución azul verdosa para \$df = 100\$. A medida que aumentan los grados de libertad, la distribución *t* se vuelve más alta (en el centro) y más angosta en el rango. Se vuelve más picuda. ¿Adivinás por qué?
 
 Recordá: estamos estimando una estadística muestral, y los grados de libertad son solo un número que representa cuántos sujetos hay (menos uno). Y ya sabemos que, al aumentar *n*, nuestras estadísticas muestrales se vuelven mejores estimaciones (con menos varianza) de los parámetros poblacionales. Entonces, *t* se vuelve una mejor estimación de su "valor verdadero" a medida que crece el tamaño muestral, lo que produce una distribución de *t* más angosta.
 
@@ -967,7 +967,7 @@ Acá están los pasos que podrías seguir para simular datos para una prueba t d
 
 2.  Simulás números desde esa distribución y luego hacés una prueba t sobre esos datos simulados. Guardás las estadísticas que te interesan (como los *t* y *p*) y después observás cómo se comportan.
 
-Hagámoslo un par de veces. Primero, vamos a simular muestras con N = 30, tomadas de una distribución normal (media = 50, sd = 25). Vamos a hacer una simulación con 1000 repeticiones. En cada repetición, comparamos la media muestral con una media poblacional de 50. En promedio, no debería haber diferencia. La figura `@fig-6nullt` es la distribución nula que estamos simulando.
+Hagámoslo un par de veces. Primero, vamos a simular muestras con N = 30, tomadas de una distribución normal (media = 50, sd = 25). Vamos a hacer una simulación con 1000 repeticiones. En cada repetición, comparamos la media muestral con una media poblacional de 50. En promedio, no debería haber diferencia. La @fig-6nullt es la distribución nula que estamos simulando.
 
 ```{r}
 # pasos para crear datos ficticios desde una distribución

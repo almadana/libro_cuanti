@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -72,10 +72,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-1c4f673b5ad71a23e38d87f497bd0754.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -116,7 +116,10 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 
 <meta property="og:title" content="6&nbsp; Fundamentos de la inferencia – Respondiendo preguntas con datos">
 <meta property="og:description" content="Traducido al español rioplatense por ChatGPT4-o bajo la supervisión de Álvaro Cabana.">
+<meta property="og:image" content="https://almadana.github.io/libro_cuanti/05-Foundation_Inference_files/figure-html/fig-5unifagain-1.png">
 <meta property="og:site_name" content="Respondiendo preguntas con datos">
+<meta property="og:image:height" content="960">
+<meta property="og:image:width" content="1344">
 <meta name="twitter:title" content="6&nbsp; Fundamentos de la inferencia – Respondiendo preguntas con datos">
 <meta name="twitter:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
 <meta name="twitter:image" content="https://almadana.github.io/libro_cuanti/imgs/TextbookCover.png">
@@ -367,7 +370,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <p>Lo que viene a continuación puede parecer un poco repetitivo con respecto al capítulo anterior. Volvemos a mirar muestreo de números desde una distribución uniforme. Mostramos que las muestras individuales pueden lucir bastante diferentes entre sí. Gran parte del comienzo de este capítulo ya te va a resultar familiar, pero llevamos los conceptos en una dirección un poco distinta: la dirección es cómo hacer inferencias sobre el papel del azar en tu experimento.</p>
 <section id="distribución-uniforme" class="level3" data-number="6.2.1">
 <h3 data-number="6.2.1" class="anchored" data-anchor-id="distribución-uniforme"><span class="header-section-number">6.2.1</span> Distribución uniforme</h3>
-<p>Como recordatorio del capítulo anterior, la figura <code>@fig-5unifagain</code> muestra que la forma de una distribución uniforme es completamente plana.</p>
+<p>Como recordatorio del capítulo anterior, la <a href="#fig-5unifagain" class="quarto-xref">Figura&nbsp;<span>6.1</span></a> muestra que la forma de una distribución uniforme es completamente plana.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-5unifagain" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -383,7 +386,7 @@ Figura&nbsp;6.1: Distribución uniforme que muestra que los números del 1 al 10
 </div>
 </div>
 <p>OK, eso no parece gran cosa. ¿Qué está pasando acá? El eje y está etiquetado como <code>Probabilidad</code>, y va de 0 a 1. El eje x está etiquetado como <code>Número</code>, y va del 1 al 10. Hay una línea horizontal atravesando el gráfico. Esa línea indica la probabilidad de cada número del 1 al 10. Notá que la línea es plana. Esto significa que <strong>todos los números tienen la misma probabilidad de ocurrir</strong>. Más específicamente, hay 10 números del 1 al 10 (1,2,3,4,5,6,7,8,9,10), y todos tienen la misma chance de aparecer. 1 dividido 10 es 0,1, que es la probabilidad indicada por la línea horizontal.</p>
-<p>“¿Y qué con eso?” Imaginá que esta distribución uniforme es una máquina generadora de números. Escupe números, pero escupe <strong>cada número con la probabilidad indicada por la línea</strong>. Si esta distribución comenzara a generar números, escupiría un 10% de unos, un 10% de doses, un 10% de treses, y así sucesivamente, hasta un 10% de dieces. ¿Querés ver cómo se vería eso? Hagamos que escupa 100 números y pongámoslos en la tabla <code>@tbl-5100rand</code>.</p>
+<p>“¿Y qué con eso?” Imaginá que esta distribución uniforme es una máquina generadora de números. Escupe números, pero escupe <strong>cada número con la probabilidad indicada por la línea</strong>. Si esta distribución comenzara a generar números, escupiría un 10% de unos, un 10% de doses, un 10% de treses, y así sucesivamente, hasta un 10% de dieces. ¿Querés ver cómo se vería eso? Hagamos que escupa 100 números y pongámoslos en la <a href="#tbl-5100rand" class="quarto-xref">Tabla&nbsp;<span>6.1</span></a>.</p>
 <div class="cell">
 <div id="tbl-5100rand" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -522,7 +525,7 @@ Tabla&nbsp;6.1: 100 números muestreados aleatoriamente de una distribución uni
 </div>
 </div>
 <p>Usamos la distribución uniforme para generar estos números. Formalmente, a esto lo llamamos <strong>muestreo</strong> desde una <strong>distribución</strong>. Muestrear es lo que hacés en el supermercado cuando hay comida para degustar. Podés seguir tomando más. Sin embargo, si tomás <strong>todas</strong> las muestras, lo que tenés se llama <strong>población</strong>. Vamos a hablar más sobre muestras y poblaciones más adelante. Como usamos la distribución uniforme para generar los números, ya sabemos de dónde vienen. Pero por ahora, podemos fingir que alguien aparece en tu puerta, te muestra estos números, y vos te preguntás de dónde salieron. ¿Podés decir, solo mirando los números, que provienen de una distribución uniforme?</p>
-<p>¿Qué deberías observar? Quizás quieras saber si todos los números ocurren con <strong>aproximadamente la misma frecuencia</strong> —después de todo, eso es lo que <strong>debería</strong> pasar, ¿no? Es decir, si cada número tiene la misma chance de ocurrir, deberíamos ver que <strong>cada número ocurre más o menos la misma cantidad de veces</strong>. Ya sabemos qué es un histograma, así que podemos poner nuestra muestra de 100 números en un histograma y ver cómo se distribuyen los conteos. Si todos los números del 1 al 10 aparecen con igual frecuencia, entonces cada número individual debería aparecer unas 10 veces. La figura <code>@fig-5histunif</code> muestra el histograma:</p>
+<p>¿Qué deberías observar? Quizás quieras saber si todos los números ocurren con <strong>aproximadamente la misma frecuencia</strong> —después de todo, eso es lo que <strong>debería</strong> pasar, ¿no? Es decir, si cada número tiene la misma chance de ocurrir, deberíamos ver que <strong>cada número ocurre más o menos la misma cantidad de veces</strong>. Ya sabemos qué es un histograma, así que podemos poner nuestra muestra de 100 números en un histograma y ver cómo se distribuyen los conteos. Si todos los números del 1 al 10 aparecen con igual frecuencia, entonces cada número individual debería aparecer unas 10 veces. La <a href="#fig-5histunif" class="quarto-xref">Figura&nbsp;<span>6.2</span></a> muestra el histograma:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-5histunif" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -542,7 +545,7 @@ Figura&nbsp;6.2: Histograma de 100 números muestreados aleatoriamente de una di
 <section id="no-todas-las-muestras-son-iguales-de-hecho-suelen-ser-bastante-distintas" class="level3" data-number="6.2.2">
 <h3 data-number="6.2.2" class="anchored" data-anchor-id="no-todas-las-muestras-son-iguales-de-hecho-suelen-ser-bastante-distintas"><span class="header-section-number">6.2.2</span> No todas las muestras son iguales — de hecho, suelen ser bastante distintas</h3>
 <p>Veamos más de cerca el error muestral. Vamos a tomar una muestra de 20 números de la distribución uniforme. Deberíamos esperar que cada número entre 1 y 10 ocurra unas dos veces. Como antes, esta expectativa puede visualizarse con un histograma.</p>
-<p>Para tener una mejor idea de la variabilidad muestral, repitamos ese proceso <strong>diez veces</strong>. La figura <code>@fig-5manysamples</code> muestra 10 histogramas, cada uno representando una muestra distinta de 20 números:</p>
+<p>Para tener una mejor idea de la variabilidad muestral, repitamos ese proceso <strong>diez veces</strong>. La <a href="#fig-5manysamples" class="quarto-xref">Figura&nbsp;<span>6.3</span></a> muestra 10 histogramas, cada uno representando una muestra distinta de 20 números:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-5manysamples" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -558,7 +561,7 @@ Figura&nbsp;6.3: Histogramas de 10 muestras distintas de la distribución unifor
 </div>
 </div>
 <p>Probablemente notes enseguida que ninguno de los histogramas es igual. Aunque estamos tomando aleatoriamente 20 números de la misma distribución uniforme, <strong>cada muestra de 20 números resulta diferente</strong>. Esto es <strong>variabilidad muestral</strong>, o <strong>error de muestreo</strong>.</p>
-<p>La figura <code>@fig-5expectedUnif</code> muestra una versión animada del proceso de elegir repetidamente 20 números aleatorios nuevos y graficar un histograma. La línea horizontal muestra la forma plana de la distribución uniforme. La línea cruza el eje y en el valor 2; y esperamos que cada número (del 1 al 10) ocurra unas 2 veces en una muestra de 20. Sin embargo, cada muestra varía bastante, debido al azar.</p>
+<p>La <a href="#fig-5expectedUnif" class="quarto-xref">Figura&nbsp;<span>6.4</span></a> muestra una versión animada del proceso de elegir repetidamente 20 números aleatorios nuevos y graficar un histograma. La línea horizontal muestra la forma plana de la distribución uniforme. La línea cruza el eje y en el valor 2; y esperamos que cada número (del 1 al 10) ocurra unas 2 veces en una muestra de 20. Sin embargo, cada muestra varía bastante, debido al azar.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-5expectedUnif" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -578,7 +581,7 @@ Figura&nbsp;6.4: Animación de histogramas para diferentes muestras de 20 valore
 </section>
 <section id="las-muestras-grandes-se-parecen-más-a-la-distribución-de-la-que-provienen" class="level3" data-number="6.2.3">
 <h3 data-number="6.2.3" class="anchored" data-anchor-id="las-muestras-grandes-se-parecen-más-a-la-distribución-de-la-que-provienen"><span class="header-section-number">6.2.3</span> Las muestras grandes se parecen más a la distribución de la que provienen</h3>
-<p>Volvamos a la pregunta: ¿cuál de las dos muestras en <code>@fig-5whichone</code> te parece que vino de una distribución uniforme?</p>
+<p>Volvamos a la pregunta: ¿cuál de las dos muestras en <a href="#fig-5whichone" class="quarto-xref">Figura&nbsp;<span>6.5</span></a> te parece que vino de una distribución uniforme?</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-5whichone" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -595,7 +598,7 @@ Figura&nbsp;6.5: ¿Cuál de estas dos muestras proviene de una distribución uni
 </div>
 <p>La respuesta es que <strong>ambas</strong> vinieron de una distribución uniforme. Pero ninguna <strong>parece</strong> que lo haya hecho.</p>
 <p>¿Podemos mejorar las cosas y facilitar ver si una muestra proviene de una distribución uniforme? Sí, podemos. Lo único que necesitamos hacer es <strong>aumentar el tamaño de la muestra</strong>. A menudo usamos la letra <code>n</code> para referirnos al tamaño muestral. <code>n</code> es el número de observaciones en la muestra.</p>
-<p>Así que aumentemos el número de observaciones en cada muestra, de 20 a 100. Vamos a crear 10 muestras (cada una con 100 observaciones), y a graficar un histograma para cada una. Todas estas muestras se extraen de la <strong>misma</strong> distribución uniforme. Esto significa que deberíamos esperar que <strong>cada número del 1 al 10 ocurra unas 10 veces</strong> en cada muestra. Los histogramas están en la figura <code>@fig-5unifsamp100</code>.</p>
+<p>Así que aumentemos el número de observaciones en cada muestra, de 20 a 100. Vamos a crear 10 muestras (cada una con 100 observaciones), y a graficar un histograma para cada una. Todas estas muestras se extraen de la <strong>misma</strong> distribución uniforme. Esto significa que deberíamos esperar que <strong>cada número del 1 al 10 ocurra unas 10 veces</strong> en cada muestra. Los histogramas están en la <a href="#fig-5unifsamp100" class="quarto-xref">Figura&nbsp;<span>6.6</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-5unifsamp100" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -610,7 +613,7 @@ Figura&nbsp;6.6: Histogramas de diferentes muestras de una distribución uniform
 </div>
 </div>
 </div>
-<p>La figura <code>@fig-5unifsamp1000</code> muestra que los histogramas empiezan a aplanarse. Las barras todavía no están perfectamente en 100, porque sigue habiendo error muestral (siempre lo habrá). Pero si vieras un histograma que se ve plano y supieras que la muestra contiene muchas observaciones, podrías tener más confianza en que esos números provienen de una distribución uniforme.</p>
+<p>La <span class="quarto-unresolved-ref">?fig-5unifsamp1000</span> muestra que los histogramas empiezan a aplanarse. Las barras todavía no están perfectamente en 100, porque sigue habiendo error muestral (siempre lo habrá). Pero si vieras un histograma que se ve plano y supieras que la muestra contiene muchas observaciones, podrías tener más confianza en que esos números provienen de una distribución uniforme.</p>
 <p>Solo por diversión, hagamos muestras realmente grandes. Digamos, 100.000 observaciones por muestra. En ese caso, deberíamos esperar que cada número ocurra unas 10.000 veces. ¿Qué pasa?</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -626,7 +629,7 @@ Figura&nbsp;6.7: Histogramas de distintas muestras de una distribución uniforme
 </div>
 </div>
 </div>
-<p>La figura <code>@fig-5sampunifALOT</code> muestra que los histogramas de cada muestra empiezan a parecerse entre sí. Todas tienen 100.000 observaciones, y eso le da suficiente oportunidad al azar para distribuir los números de manera más equitativa, asegurándose aproximadamente de que todos ocurran más o menos la misma cantidad de veces. Como podés ver, las barras están todas muy cerca de 10.000, que es donde deberían estar si la muestra realmente proviene de una distribución uniforme. De nuevo, <strong>no todas las barras tienen exactamente el mismo alto</strong> —todavía hay error muestral—, pero <strong>el patrón general</strong> es ahora mucho más claro. Cada número ocurre más o menos la misma cantidad de veces, y las diferencias entre muestras son mucho menores.</p>
+<p>La <a href="#fig-5sampunifALOT" class="quarto-xref">Figura&nbsp;<span>6.7</span></a> muestra que los histogramas de cada muestra empiezan a parecerse entre sí. Todas tienen 100.000 observaciones, y eso le da suficiente oportunidad al azar para distribuir los números de manera más equitativa, asegurándose aproximadamente de que todos ocurran más o menos la misma cantidad de veces. Como podés ver, las barras están todas muy cerca de 10.000, que es donde deberían estar si la muestra realmente proviene de una distribución uniforme. De nuevo, <strong>no todas las barras tienen exactamente el mismo alto</strong> —todavía hay error muestral—, pero <strong>el patrón general</strong> es ahora mucho más claro. Cada número ocurre más o menos la misma cantidad de veces, y las diferencias entre muestras son mucho menores.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -640,7 +643,7 @@ Consejo pro
 <p>El patrón que muestra una muestra tiende a estabilizarse a medida que aumenta el tamaño muestral. Las muestras pequeñas pueden mostrar todo tipo de patrones, debido al error muestral (el azar).</p>
 </div>
 </div>
-<p>Antes de volver al tema de los experimentos con el que comenzamos, hagamos dos preguntas más. Primero: ¿cuál de las dos muestras en <code>@fig-5whichoneB</code> creés que proviene de una distribución uniforme? Dato: cada una de estas muestras tiene 20 observaciones.</p>
+<p>Antes de volver al tema de los experimentos con el que comenzamos, hagamos dos preguntas más. Primero: ¿cuál de las dos muestras en <a href="#fig-5whichoneB" class="quarto-xref">Figura&nbsp;<span>6.8</span></a> creés que proviene de una distribución uniforme? Dato: cada una de estas muestras tiene 20 observaciones.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-5whichoneB" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -656,7 +659,7 @@ Figura&nbsp;6.8: ¿Cuál de estas muestras proviene de una distribución uniform
 </div>
 </div>
 <p>Si no estás muy segurx de la respuesta, es porque el <strong>error muestral</strong> (el azar) está “difuminando” los histogramas.</p>
-<p>Acá va exactamente la misma pregunta, solo que esta vez tomamos <strong>1.000 observaciones por muestra</strong>. ¿Cuál histograma en <code>@fig-5whichoneC</code> creés que proviene de una distribución uniforme, y cuál no?</p>
+<p>Acá va exactamente la misma pregunta, solo que esta vez tomamos <strong>1.000 observaciones por muestra</strong>. ¿Cuál histograma en <a href="#fig-5whichoneC" class="quarto-xref">Figura&nbsp;<span>6.9</span></a> creés que proviene de una distribución uniforme, y cuál no?</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-5whichoneC" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -826,7 +829,7 @@ Figura&nbsp;6.10: Conteo de bolitas verdes seleccionadas al azar por cada mano.
 <h3 data-number="6.3.2" class="anchored" data-anchor-id="las-diferencias-causadas-por-el-azar-se-pueden-simular"><span class="header-section-number">6.3.2</span> Las diferencias causadas por el azar se pueden simular</h3>
 <p>Recordá cuando mostramos que el azar puede producir correlaciones. También mostramos que el azar tiene <strong>limitaciones</strong> en su capacidad para producir correlaciones. Por ejemplo, el azar <strong>genera con más frecuencia correlaciones débiles que fuertes</strong>. ¿Te acordás de la “ventana del azar”? Antes descubrimos que las correlaciones que caen fuera de esa ventana son muy poco probables.</p>
 <p>Podemos hacer lo mismo con las diferencias. Vamos a investigar exactamente qué puede hacer el azar en nuestro experimento. Una vez que sepamos de lo que el azar es capaz, vamos a estar en una mejor posición para juzgar si nuestra manipulación causó una diferencia, o si simplemente <strong>podría haber sido el azar</strong>.</p>
-<p>Lo primero que vamos a hacer es simular que realizás el experimento de las bolitas <strong>10 veces seguidas</strong>. Eso va a producir 10 conjuntos distintos de resultados. La figura <code>@fig-5bolitasims</code> muestra gráficos de barras para cada repetición del experimento. Ahora podemos ver si la mano izquierda sacó más bolitas verdes que la derecha.</p>
+<p>Lo primero que vamos a hacer es simular que realizás el experimento de las bolitas <strong>10 veces seguidas</strong>. Eso va a producir 10 conjuntos distintos de resultados. La <a href="#fig-5bolitasims" class="quarto-xref">Figura&nbsp;<span>6.11</span></a> muestra gráficos de barras para cada repetición del experimento. Ahora podemos ver si la mano izquierda sacó más bolitas verdes que la derecha.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-5bolitasims" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -952,7 +955,7 @@ Nota
 <p>Pero vamos a hacer <strong>algo muy importante</strong>: vamos a fingir que <strong>no hicimos ninguna manipulación</strong>. Si hacemos esto —no hacemos nada, ninguna intervención que pudiera causar una diferencia—, entonces sabemos que <strong>cualquier diferencia entre las medias de los grupos A y B solo puede deberse al error muestral</strong>. Eliminamos todas las demás causas: solo queda el azar. Haciendo esto, vamos a poder ver exactamente qué puede hacer el azar. Más importante aún, vamos a ver qué tipo de diferencias ocurren frecuentemente, y cuáles no.</p>
 <p>Antes de hacer la simulación, necesitamos responder una pregunta: <strong>¿cuánto es “mucho”?</strong> Podríamos elegir cualquier número. Yo voy a elegir 10.000. Eso es mucho. Si algo ocurre solo 1 vez en 10.000, estoy dispuesto a decir que <strong>eso no es mucho</strong>.</p>
 <p>Bien, ya tenemos nuestro número. Vamos a simular las diferencias de medias entre los grupos A y B <strong>que podrían surgir solo por azar</strong>. Lo vamos a hacer 10.000 veces. Eso le da al azar muchas oportunidades para mostrarnos qué puede hacer y qué no.</p>
-<p>Esto es lo que hice: muestreé 20 números para el grupo A y 20 para el grupo B. Ambos grupos provienen de la misma distribución normal, con media = 100 y desviación estándar = 15. Como las muestras provienen de la <strong>misma distribución</strong>, esperamos que, en promedio, sean similares (aunque ya sabemos que las muestras siempre difieren entre sí). Después calculo la media de cada grupo, y luego la diferencia entre esas medias. Guardo ese <strong>puntaje de diferencia de medias</strong>, y repito esto hasta tener 10.000 de ellos. Después, dibujo un histograma como el de la figura <code>@fig-5crumptestdiff</code>.</p>
+<p>Esto es lo que hice: muestreé 20 números para el grupo A y 20 para el grupo B. Ambos grupos provienen de la misma distribución normal, con media = 100 y desviación estándar = 15. Como las muestras provienen de la <strong>misma distribución</strong>, esperamos que, en promedio, sean similares (aunque ya sabemos que las muestras siempre difieren entre sí). Después calculo la media de cada grupo, y luego la diferencia entre esas medias. Guardo ese <strong>puntaje de diferencia de medias</strong>, y repito esto hasta tener 10.000 de ellos. Después, dibujo un histograma como el de la <a href="#fig-5crumptestdiff" class="quarto-xref">Figura&nbsp;<span>6.15</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-5crumptestdiff" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -1014,7 +1017,7 @@ Nota
 <li><strong>Región del no azar</strong>. El azar <strong>no</strong> lo hizo. El azar <strong>no podría</strong> haberlo hecho.</li>
 </ol>
 <p>Las regiones están definidas por el valor mínimo y el valor máximo observados en la simulación. El azar <strong>nunca produjo un número menor ni mayor</strong> que esos extremos. La región <strong>dentro del rango</strong> es lo que el azar <strong>sí hizo</strong>, y la región <strong>fuera del rango</strong>, en ambos extremos, es lo que el azar <strong>nunca hizo</strong>.</p>
-<p>Se ve así en la figura <code>@fig-5crumpdecision</code>:</p>
+<p>Se ve así en la <a href="#fig-5crumpdecision" class="quarto-xref">Figura&nbsp;<span>6.16</span></a>:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-5crumpdecision" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -1040,7 +1043,7 @@ Figura&nbsp;6.16: Aplicación de límites de decisión al histograma de diferenc
 <p>Estas son afirmaciones ambiguas, imprecisas, entre el “sí” y el “no”. Y está bien. El gris también es un color. Vamos a darle un poco de respeto al gris.</p>
 <p>—“¿De qué zonas grises estás hablando? ¡Solo veo rojo y verde! ¿Tengo daltonismo para el gris?”—</p>
 <p>Veamos dónde podrían estar algunas zonas grises. Digo “podrían”, porque la gente no se pone de acuerdo sobre <strong>dónde empieza el gris</strong>. Las personas tienen distintos niveles de tolerancia al gris.</p>
-<p>La figura <code>@fig-5crumpuncertainty</code> muestra <strong>mi</strong> opinión sobre dónde se ubican las zonas grises:</p>
+<p>La <a href="#fig-5crumpuncertainty" class="quarto-xref">Figura&nbsp;<span>6.17</span></a> muestra <strong>mi</strong> opinión sobre dónde se ubican las zonas grises:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-5crumpuncertainty" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -1059,7 +1062,7 @@ Figura&nbsp;6.17: Los signos de interrogación indican una zona donde hay cierta
 <p>¿Qué podés concluir o decir sobre ese 15 que encontraste? ¿Podés decir, sin lugar a dudas, que el azar <strong>no</strong> produjo esa diferencia? Por supuesto que no. Sabés que el azar <strong>podría haberla producido</strong>. Aun así, es una de esas cosas que <strong>no ocurren mucho</strong>. Eso hace que el azar sea una explicación <strong>poco probable</strong>. En lugar de pensar que fue el azar, quizás estés dispuesto a <strong>tomar el riesgo</strong> y decir que tu manipulación experimental <strong>causó la diferencia</strong>. Estás haciendo una apuesta de que no fue el azar… pero podría ser una apuesta razonable, ya que sabés que <strong>las probabilidades están de tu lado</strong>.</p>
 <p>Tal vez estés pensando que tus zonas grises no son iguales a las que dibujé yo. Quizás quieras ser más conservador y hacerlas más chicas. O, tal vez seas más arriesgado y prefieras hacerlas más grandes. O incluso, quizás quieras extender la zona gris un poco <strong>dentro de la zona verde</strong> (después de todo, el azar podría producir diferencias más grandes alguna que otra vez, y para evitarlas tendrías que hacer que la zona gris invada un poco el área verde).</p>
 <p>Otra cosa en la que pensar es en tu <strong>política de decisión</strong>. ¿Qué vas a hacer cuando tu diferencia observada caiga dentro de la zona gris? ¿Siempre vas a tomar la misma decisión sobre el papel del azar? ¿O a veces vas a cambiar de parecer, según cómo te sientas? Tal vez pienses que no debería haber una política estricta, y que deberías aceptar cierto nivel de incertidumbre. La diferencia que encontraste <strong>podría ser real… o tal vez no lo sea</strong>. Hay incertidumbre, es difícil evitarla.</p>
-<p>Así que vamos a ilustrar <strong>otro tipo de estrategia</strong> para tomar decisiones. Recién hablamos de una que incluía líneas y regiones. Eso hace que parezca una elección binaria: podemos <strong>descartar</strong> o <strong>no descartar</strong> el papel del azar. Otra perspectiva es que <strong>todo es un matiz de gris</strong>, como en la figura <code>@fig-5crumpshade</code>.</p>
+<p>Así que vamos a ilustrar <strong>otro tipo de estrategia</strong> para tomar decisiones. Recién hablamos de una que incluía líneas y regiones. Eso hace que parezca una elección binaria: podemos <strong>descartar</strong> o <strong>no descartar</strong> el papel del azar. Otra perspectiva es que <strong>todo es un matiz de gris</strong>, como en la <a href="#fig-5crumpshade" class="quarto-xref">Figura&nbsp;<span>6.18</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-5crumpshade" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -1096,9 +1099,9 @@ Figura&nbsp;6.18: El sombreado de las barras azules indica los niveles de confia
 <p>¿Tenés alguna idea de cómo se puede hacer esto? Acá va una pista: es todo eso que aprendiste sobre la distribución muestral de la media muestral, y el papel del tamaño muestral. ¿Qué le pasa a la distribución muestral de la media cuando <code>N</code> (el tamaño de muestra) aumenta? La distribución <strong>se vuelve más y más angosta</strong>, y empieza a parecerse a un único número (la media hipotética de la población hipotética). Eso es genial.</p>
 <p>Si cambiás el enfoque y pensás en las <strong>diferencias de medias</strong>, como la distribución que creamos en esta prueba, ¿qué creés que va a pasar con esa distribución a medida que aumentamos <code>N</code>? También se va a <strong>achicar</strong>. A medida que aumentamos <code>N</code> hacia el infinito, esa distribución se reduce a 0. Lo que significa que, cuando <code>N</code> es infinito, el azar <strong>nunca produce diferencias</strong>. Podemos usar esto a nuestro favor.</p>
 <p>Por ejemplo, podríamos correr nuestro experimento con 20 sujetos por grupo. O podríamos decidir invertir más tiempo y correrlo con 40 sujetos por grupo, o 80, o 150. Cuando vos sos quien ejecuta el experimento, <strong>vos decidís el diseño</strong>. Y esas decisiones importan muchísimo. Básicamente, <strong>cuantos más sujetos tenés, más sensible es tu experimento</strong>. Con un <code>N</code> más grande, vas a poder detectar de manera confiable diferencias de medias más pequeñas, y podés concluir con confianza que esas diferencias <strong>no fueron producidas por azar</strong>.</p>
-<p>Fijate en los histogramas de <code>@fig-5sampleDistNormal</code>. Es la misma simulación de antes, pero con cuatro tamaños muestrales distintos: 20, 40, 80, 160. Vamos duplicando el tamaño muestral en cada simulación, solo para ver qué pasa con el <strong>ancho de la ventana del azar</strong>.</p>
+<p>Fijate en los histogramas de <span class="quarto-unresolved-ref">?fig-5sampleDistNormal</span>. Es la misma simulación de antes, pero con cuatro tamaños muestrales distintos: 20, 40, 80, 160. Vamos duplicando el tamaño muestral en cada simulación, solo para ver qué pasa con el <strong>ancho de la ventana del azar</strong>.</p>
 <p>Ahí lo tenés. La <strong>distribución muestral de las diferencias de medias</strong> se contrae hacia 0 a medida que aumenta el tamaño muestral. Esto significa que, si ejecutás un experimento con un tamaño muestral mayor, vas a poder detectar diferencias de medias más pequeñas, y estar seguro de que <strong>no se deben al azar</strong>.</p>
-<p>La tabla <code>@tbl-5minmax</code> muestra los valores mínimos y máximos que el azar produjo para cada uno de los cuatro tamaños muestrales:</p>
+<p>La <a href="#tbl-5minmax" class="quarto-xref">Tabla&nbsp;<span>6.2</span></a> muestra los valores mínimos y máximos que el azar produjo para cada uno de los cuatro tamaños muestrales:</p>
 <div class="cell">
 <div id="tbl-5minmax" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -1171,8 +1174,8 @@ Figura&nbsp;6.19: Gráfico del máximo y mínimo de las diferencias de medias pr
 </div>
 </div>
 </div>
-<p>La figura <code>@fig-5crumpminmax</code> muestra una ventana de sensibilidad razonablemente precisa en función del tamaño muestral. Para cada tamaño muestral, podemos ver la diferencia máxima que el azar produjo y la mínima. En esas simulaciones, <strong>el azar nunca produjo diferencias mayores ni menores</strong> que esos valores extremos. Así que cada diseño es sensible a cualquier diferencia que esté <strong>por debajo de la línea inferior o por encima de la línea superior</strong>.</p>
-<p>Otra forma de decirlo es la siguiente: ¿Cuáles de los tamaños muestrales son sensibles a una diferencia de +10 o -10? Es decir, si se observa una diferencia de +10 o -10, entonces podríamos decir con mucha confianza que <strong>esa diferencia no fue causada por azar</strong>, porque según estas simulaciones, el azar <strong>nunca</strong> produjo diferencias tan grandes. Para ayudarnos a ver cuáles son sensibles, la figura <code>@fig-5crumpredline</code> traza líneas horizontales en -10 y +10:</p>
+<p>La <a href="#fig-5crumpminmax" class="quarto-xref">Figura&nbsp;<span>6.19</span></a> muestra una ventana de sensibilidad razonablemente precisa en función del tamaño muestral. Para cada tamaño muestral, podemos ver la diferencia máxima que el azar produjo y la mínima. En esas simulaciones, <strong>el azar nunca produjo diferencias mayores ni menores</strong> que esos valores extremos. Así que cada diseño es sensible a cualquier diferencia que esté <strong>por debajo de la línea inferior o por encima de la línea superior</strong>.</p>
+<p>Otra forma de decirlo es la siguiente: ¿Cuáles de los tamaños muestrales son sensibles a una diferencia de +10 o -10? Es decir, si se observa una diferencia de +10 o -10, entonces podríamos decir con mucha confianza que <strong>esa diferencia no fue causada por azar</strong>, porque según estas simulaciones, el azar <strong>nunca</strong> produjo diferencias tan grandes. Para ayudarnos a ver cuáles son sensibles, la <a href="#fig-5crumpredline" class="quarto-xref">Figura&nbsp;<span>6.20</span></a> traza líneas horizontales en -10 y +10:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-5crumpredline" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -1492,7 +1495,7 @@ Figura&nbsp;6.20: La línea roja representa el tamaño de una diferencia de medi
 <h4 data-number="6.6.1.2" class="anchored" data-anchor-id="simulando-las-diferencias-de-medias-en-distintas-aleatorizaciones"><span class="header-section-number">6.6.1.2</span> Simulando las diferencias de medias en distintas aleatorizaciones</h4>
 <p>En nuestro experimento ficticio encontramos que la media para los estudiantes que masticaron chicle fue 88.75, y la media para los que no lo hicieron fue 59.9. La diferencia de medias (chicle – sin chicle) fue 28.85. Esa es una diferencia bastante grande. Eso es <strong>lo que pasó</strong>. Pero, <strong>¿qué podría haber pasado</strong>? Si probáramos todos los experimentos posibles en los que los sujetos se asignan de forma diferente, ¿cómo luciría la distribución de las posibles diferencias de medias?</p>
 <p>Vamos a averiguarlo. De eso se trata exactamente la prueba de aleatorización. Cuando hacemos nuestra prueba de aleatorización, vamos a medir la diferencia de medias en los puntajes del examen entre el grupo con chicle y el grupo sin chicle. Cada vez que hagamos una aleatorización, guardaremos la diferencia de medias.</p>
-<p>Veamos una pequeña animación de lo que ocurre durante la prueba de aleatorización. La figura <code>@fig-5randtest</code> muestra datos de otro experimento ficticio, pero los principios son los mismos. Después volveremos al experimento del chicle.</p>
+<p>Veamos una pequeña animación de lo que ocurre durante la prueba de aleatorización. La <a href="#fig-5randtest" class="quarto-xref">Figura&nbsp;<span>6.21</span></a> muestra datos de otro experimento ficticio, pero los principios son los mismos. Después volveremos al experimento del chicle.</p>
 <p>La animación muestra tres cosas importantes: Primero, los puntos púrpuras muestran las medias de los puntajes en dos grupos (no estudió vs.&nbsp;estudió). Parece que hay una diferencia, ya que un punto está más bajo que el otro. Queremos saber si <strong>el azar podría producir una diferencia tan grande</strong>.</p>
 <p>Al comienzo de la animación, los puntos verde claro y rojo muestran los puntajes individuales de cada uno de los 10 sujetos en el diseño (los puntos púrpura son las medias de estos puntajes originales). Luego, durante las aleatorizaciones, mezclamos aleatoriamente los puntajes originales entre los grupos. Podés ver esto ocurriendo a lo largo de la animación, mientras los puntos verde y rojo aparecen en diferentes combinaciones aleatorias. Los puntos amarillos en movimiento te muestran las <strong>nuevas medias para cada grupo después de la aleatorización</strong>. Las diferencias entre los puntos amarillos te muestran el <strong>rango de diferencias que el azar podría producir</strong>.</p>
 <div class="cell">
@@ -1512,7 +1515,7 @@ Figura&nbsp;6.21: Animación de una prueba de aleatorización. Los puntos púrpu
 <p>Estamos haciendo una inferencia estadística <strong>visual</strong>. Al observar el rango de movimiento de los puntos amarillos, estamos viendo qué tipo de diferencias puede producir el azar. En esta animación, los puntos púrpura —que representan la diferencia original— están generalmente <strong>fuera del rango del azar</strong>. Los puntos amarillos <strong>no se mueven más allá</strong> de los puntos púrpura, así que el azar parece ser una explicación poco probable de la diferencia.</p>
 <p>Si los puntos púrpura estuvieran <strong>dentro del rango de los puntos amarillos</strong>, entonces sabríamos que el azar <strong>es capaz de producir</strong> la diferencia que observamos, y que lo hace <strong>con bastante frecuencia</strong>. En ese caso, <strong>no deberíamos concluir</strong> que la manipulación causó la diferencia, porque <strong>podría haber ocurrido fácilmente por azar</strong>.</p>
 <p>Volvamos al ejemplo del chicle. Después de aleatorizar nuestras notas muchas veces, y de calcular las nuevas medias y las diferencias de medias, vamos a tener <strong>un montón de diferencias</strong> para observar, que podemos representar en un histograma. Ese histograma da una imagen de <strong>lo que podría haber pasado</strong>. Luego, podemos comparar <strong>lo que pasó realmente</strong> con <strong>lo que podría haber pasado</strong>.</p>
-<p>Este es el histograma de las diferencias de medias obtenidas con la prueba de aleatorización. Para esta simulación, aleatorizamos los resultados del experimento original 1000 veces. Esto es lo que <strong>podría haber pasado</strong>. La línea azul en <code>@fig-5randhist</code> muestra <strong>dónde se ubica la diferencia observada</strong> sobre el eje x.</p>
+<p>Este es el histograma de las diferencias de medias obtenidas con la prueba de aleatorización. Para esta simulación, aleatorizamos los resultados del experimento original 1000 veces. Esto es lo que <strong>podría haber pasado</strong>. La línea azul en la <a href="#fig-5randhist" class="quarto-xref">Figura&nbsp;<span>6.22</span></a> muestra <strong>dónde se ubica la diferencia observada</strong> sobre el eje x.</p>
 <div class="cell">
 <div class="cell-output cell-output-stderr">
 <pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
@@ -1553,7 +1556,7 @@ Figura&nbsp;6.23: ¿Esperarías que una diferencia de medias representada por la
 </div>
 </div>
 </div>
-<p>Fijate en la línea azul de <code>@fig-5randquestion</code>. Si encontraras una diferencia de medias de 10, ¿te convencería de que esa diferencia <strong>no fue causada por azar</strong>? Como podés ver, la línea azul <strong>está dentro de la ventana del azar</strong>. Aunque las diferencias de +10 <strong>no ocurren muy seguido</strong>, podrías inferir que <strong>probablemente no fueron causadas por azar</strong> (pero tal vez te mantendrías algo escéptico, porque <strong>sí podrían haberlo sido</strong>).</p>
+<p>Fijate en la línea azul de la <a href="#fig-5randquestion" class="quarto-xref">Figura&nbsp;<span>6.23</span></a>. Si encontraras una diferencia de medias de 10, ¿te convencería de que esa diferencia <strong>no fue causada por azar</strong>? Como podés ver, la línea azul <strong>está dentro de la ventana del azar</strong>. Aunque las diferencias de +10 <strong>no ocurren muy seguido</strong>, podrías inferir que <strong>probablemente no fueron causadas por azar</strong> (pero tal vez te mantendrías algo escéptico, porque <strong>sí podrían haberlo sido</strong>).</p>
 <p>¿Y qué pasa con la línea roja? La línea roja representa una diferencia de +5. Si encontraras una diferencia de +5 acá, ¿estarías seguro de que <strong>no fue causada por azar</strong>? Yo no lo estaría. La línea roja está completamente dentro de la ventana del azar —<strong>este tipo de diferencia ocurre con bastante frecuencia</strong>. Necesitaría <strong>más evidencia</strong> para considerar la afirmación de que alguna variable independiente realmente <strong>causó la diferencia</strong>. Me sentiría mucho más cómodo asumiendo que la diferencia fue probablemente <strong>causada por error muestral</strong>.</p>
 </section>
 </section>
@@ -1669,8 +1672,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -1781,7 +1782,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

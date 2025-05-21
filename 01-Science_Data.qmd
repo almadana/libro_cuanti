@@ -54,26 +54,26 @@ Y uno inválido con una conclusión poco creíble:
 
 Ahora bien, supongamos que las personas realmente pueden dejar de lado sus sesgos previos sobre qué es verdadero y qué no, y evaluar un argumento únicamente por su lógica. Esperaríamos que el 100% diga que los argumentos válidos son válidos, y que el 0% diga que los inválidos lo son. Si hiciéramos un experimento sobre esto, esperaríamos ver datos así:
 
-|                          | la conclusión parece verdadera | la conclusión parece falsa |
-|----------------------|:-------------------------:|:----------------------:|
-| el argumento es válido   |       100% dice "válido"       |     100% dice "válido"     |
-| el argumento es inválido |        0% dice "válido"        |      0% dice "válido"      |
+|   | la conclusión parece verdadera | la conclusión parece falsa |
+|----|:--:|:--:|
+| el argumento es válido | 100% dice "válido" | 100% dice "válido" |
+| el argumento es inválido | 0% dice "válido" | 0% dice "válido" |
 
 Si los datos psicológicos se vieran así (o incluso se acercaran bastante), podríamos sentirnos seguros confiando en nuestras corazonadas. O sea, estaría perfecto dejar que los científicos evaluaran los datos según su sentido común, sin molestarse con todo este asunto turbio de la estadística. Pero ustedes ya han cursado psicología, y a esta altura seguro sospechan hacia dónde va esto.
 
 En un estudio clásico, @Evans1983 hicieron un experimento sobre esto mismo. Y lo que encontraron fue que, cuando las creencias previas (o sea, los sesgos) coincidían con la estructura lógica del argumento, todo iba bastante bien:
 
-|                          | la conclusión parece verdadera | la conclusión parece falsa |
-|----------------------|:-------------------------:|:----------------------:|
-| el argumento es válido   |       92% dice "válido"        |             --             |
-| el argumento es inválido |               --               |      8% dice "válido"      |
+|   | la conclusión parece verdadera | la conclusión parece falsa |
+|----|:--:|:--:|
+| el argumento es válido | 92% dice "válido" | -- |
+| el argumento es inválido | -- | 8% dice "válido" |
 
 No es perfecto, pero está bastante bien. Ahora mirá lo que pasa cuando la intuición sobre la verdad de la conclusión entra en conflicto con la lógica del argumento:
 
-|                          | la conclusión parece verdadera | la conclusión parece falsa |
-|----------------------|:-------------------------:|:----------------------:|
-| el argumento es válido   |       92% dice "válido"        |   **46% dice "válido"**    |
-| el argumento es inválido |     **92% dice "válido"**      |      8% dice "válido"      |
+|   | la conclusión parece verdadera | la conclusión parece falsa |
+|----|:--:|:--:|
+| el argumento es válido | 92% dice "válido" | **46% dice "válido"** |
+| el argumento es inválido | **92% dice "válido"** | 8% dice "válido" |
 
 Ay. Eso ya no está tan bien. Al parecer, cuando a la gente se le presenta un argumento fuerte que contradice sus creencias previas, le cuesta bastante incluso reconocer que es un buen argumento (solo el 46% lo logró). Y peor todavía: cuando se les da un argumento débil que coincide con sus creencias, casi nadie nota que es débil (¡el 92% se equivocó!).
 
@@ -289,12 +289,12 @@ Fijate que estas cuatro afirmaciones tienen un orden natural, en cuanto al "grad
 
 Ahora supongamos que les hago esta pregunta a 100 personas y obtengo las siguientes respuestas:
 
-|                                                                    | Personas |
-|-------------------------------------------------------|:---------------:|
-| \(1\) Las temperaturas están subiendo debido a la actividad humana |    51    |
-| \(2\) Las temperaturas están subiendo, pero no sabemos por qué     |    20    |
-| \(3\) Las temperaturas están subiendo, pero no por causa humana    |    10    |
-| \(4\) Las temperaturas no están subiendo                           |    19    |
+|   | Personas |
+|----|:--:|
+| \(1\) Las temperaturas están subiendo debido a la actividad humana | 51 |
+| \(2\) Las temperaturas están subiendo, pero no sabemos por qué | 20 |
+| \(3\) Las temperaturas están subiendo, pero no por causa humana | 10 |
+| \(4\) Las temperaturas no están subiendo | 19 |
 
 Al analizar estos datos, parece bastante razonable agrupar las respuestas (1), (2) y (3), y decir que 81 de 100 personas están dispuestas a *al menos en parte* avalar la ciencia. Y también es razonable agrupar (2), (3) y (4), y decir que 49 de 100 expresan *al menos cierto desacuerdo* con el consenso científico. Pero sería completamente extraño agrupar (1), (2) y (4) y decir que 90 de 100 personas dijeron... ¿qué? No hay nada sensato que permita agrupar esas respuestas.
 

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -92,10 +92,10 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-1c4f673b5ad71a23e38d87f497bd0754.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -165,7 +165,10 @@ window.Quarto = {
 
 <meta property="og:title" content="7&nbsp; Pruebas t – Respondiendo preguntas con datos">
 <meta property="og:description" content="">
+<meta property="og:image" content="https://almadana.github.io/libro_cuanti/06-ttests_files/figure-html/fig-6muestraMSEM-1.png">
 <meta property="og:site_name" content="Respondiendo preguntas con datos">
+<meta property="og:image:height" content="960">
+<meta property="og:image:width" content="1344">
 <meta name="twitter:title" content="7&nbsp; Pruebas t – Respondiendo preguntas con datos">
 <meta name="twitter:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
 <meta name="twitter:image" content="https://almadana.github.io/libro_cuanti/imgs/TextbookCover.png">
@@ -464,7 +467,7 @@ Note
 <p>Empecemos con un ejemplo simple. Imaginá que tu media muestral es 5, y querés saber si viene de una población con media 5. ¿Cuál sería el valor de <em>t</em>? Cero: restamos 5 - 5 = 0. Como el numerador es 0, <em>t</em> también lo es. Así que <em>t</em> = 0 ocurre cuando <strong>no hay diferencia</strong>. Ahora tomás otra muestra. ¿La media será siempre 5? Probablemente no. Supongamos que da 6. ¿Qué valor tendrá <em>t</em>? El numerador es positivo: 6 - 5 = +1. Pero <em>t</em> no necesariamente será 1, eso depende del error estándar. Si es 1, entonces <em>t</em> será 1, porque 1/1 = 1. Si el error estándar es menor que 1, ¿qué pasa con <em>t</em>? Aumenta. Por ejemplo, 1 dividido por 0.5 da 2. Si el error estándar fuera 0.5, entonces <em>t</em> sería 2. Y con ese valor podríamos tener más confianza en que la diferencia que observamos no es casual.</p>
 <p>¿Puede <em>t</em> ser menor que 1? Claro. Si el error estándar es grande, digamos 2, entonces <em>t</em> será más chico (1/2 = 0.5). La dirección de la diferencia entre la media muestral y la poblacional también puede hacer que <em>t</em> sea negativo. Si la media muestral fuera 4, entonces la diferencia es negativa, y <em>t</em> también lo será, porque el numerador es negativo. El denominador (el error estándar) siempre será positivo (acordate por qué: se calcula a partir de la desviación estándar de la muestra, que siempre es positiva porque usamos cuadrados al calcularla). Así que estas son algunas intuiciones sobre los valores posibles de <em>t</em>. Puede ser positivo o negativo, grande o chico.</p>
 <p>Hagamos una cosa más para afinar la intuición. ¿Qué tal si generamos varias muestras, calculamos la media muestral <strong>y</strong> el error estándar de la media, y graficamos esas dos cosas entre sí? Así vamos a ver cómo varía típicamente la media con respecto al error estándar.</p>
-<p>En la figura <code>@fig-6muestraMSEM</code>, tomé 1.000 muestras de tamaño $N = 10$ de una distribución normal (media = 0, desviación estándar = 1). En cada caso, calculé la media y el error estándar. Eso nos da dos estadísticas descriptivas por muestra, y podemos graficarlas como puntos en un scatterplot.</p>
+<p>En la <a href="#fig-6muestraMSEM" class="quarto-xref">Figure&nbsp;<span>7.1</span></a>, tomé 1.000 muestras de tamaño $N = 10$ de una distribución normal (media = 0, desviación estándar = 1). En cada caso, calculé la media y el error estándar. Eso nos da dos estadísticas descriptivas por muestra, y podemos graficarlas como puntos en un scatterplot.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>media_muestral <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>desvío_muestral <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
@@ -490,7 +493,7 @@ Figure&nbsp;7.1: Diagrama de dispersión con la media muestral en el eje x y el 
 </div>
 </div>
 <p>Lo que obtenemos es una nube de puntos. Podés notar que tiene una forma más o menos circular. Hay más puntos en el centro, y menos a medida que se alejan. La nube muestra el rango típico de las medias muestrales: la mayoría está entre -1 y 1. El error estándar también varía entre aproximadamente 0.2 y 0.5. Recordá que cada punto representa una muestra.</p>
-<p>Podemos ver estos datos de otra forma. En lugar de graficar directamente las medias y errores, podemos dividir la media de cada muestra por su error estándar. La figura <code>@fig-6thisexample</code> muestra un histograma de esos valores.</p>
+<p>Podemos ver estos datos de otra forma. En lugar de graficar directamente las medias y errores, podemos dividir la media de cada muestra por su error estándar. La <a href="#fig-6thisexample" class="quarto-xref">Figure&nbsp;<span>7.2</span></a> muestra un histograma de esos valores.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-6thisexample" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -677,7 +680,7 @@ mean of x
 <section id="cómo-se-comporta-t" class="level3" data-number="7.2.4">
 <h3 data-number="7.2.4" class="anchored" data-anchor-id="cómo-se-comporta-t"><span class="header-section-number">7.2.4</span> ¿Cómo se comporta t?</h3>
 <p>Si <em>t</em> es solo un número que podemos calcular a partir de una muestra (y lo es), ¿qué hacemos con él? ¿Cómo usamos <em>t</em> para inferencia estadística?</p>
-<p>Volvamos al capítulo sobre muestreo y distribuciones. Ahí hablamos de la distribución muestral de la media. Generamos muchas muestras, calculamos la media de cada una, y armamos un histograma de esas medias. Más adelante dijimos que podíamos hacer eso con <strong>cualquier</strong> estadístico. Para cada muestra podíamos calcular la media, la desviación estándar, el error estándar, e incluso <em>t</em>. Podríamos generar 10.000 muestras y hacer cuatro histogramas, uno por cada estadístico. Eso fue exactamente lo que hice, y los resultados están en los cuatro paneles de la figura <code>@fig-6sampdists</code>. Usé un tamaño de muestra de 20, y tomé observaciones aleatorias de una distribución normal, con media = 0, y la desviación estándar = 1. Veamos las distribuciones muestrales de cada estadístico. <em>t</em> se calculó asumiendo que la media poblacional es 0.</p>
+<p>Volvamos al capítulo sobre muestreo y distribuciones. Ahí hablamos de la distribución muestral de la media. Generamos muchas muestras, calculamos la media de cada una, y armamos un histograma de esas medias. Más adelante dijimos que podíamos hacer eso con <strong>cualquier</strong> estadístico. Para cada muestra podíamos calcular la media, la desviación estándar, el error estándar, e incluso <em>t</em>. Podríamos generar 10.000 muestras y hacer cuatro histogramas, uno por cada estadístico. Eso fue exactamente lo que hice, y los resultados están en los cuatro paneles de la <a href="#fig-6sampdists" class="quarto-xref">Figure&nbsp;<span>7.3</span></a>. Usé un tamaño de muestra de 20, y tomé observaciones aleatorias de una distribución normal, con media = 0, y la desviación estándar = 1. Veamos las distribuciones muestrales de cada estadístico. <em>t</em> se calculó asumiendo que la media poblacional es 0.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>all_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>) {</span>
@@ -739,7 +742,7 @@ Figure&nbsp;7.3: Distribuciones muestrales de la media, la desviación estándar
 <li>Evaluar si tus estadísticas muestrales parecen probables o improbables</li>
 </ol>
 <p>Enseguida vamos a formalizar todo esto. Por ahora, quiero que veas que esto que vas a hacer es algo que <strong>ya hiciste antes</strong>. Por ejemplo, en el test de Crump y el test de aleatorización, nos enfocamos en la distribución de diferencias de medias. Podríamos hacer lo mismo acá, pero esta vez nos vamos a centrar en la distribución de valores <em>t</em>. Después aplicamos las mismas reglas de decisión que usamos con las otras distribuciones.</p>
-<p>Abajo vas a ver un gráfico que ya viste antes, pero ahora muestra una distribución de <em>t</em>, no de diferencias de medias. Recordá: si obtenemos un único valor <em>t</em> a partir de una muestra que recolectamos, podemos consultar la <em>ventana de azar</em> en <code>@fig-6tdecision</code> para ver si ese valor era esperable por azar o no.</p>
+<p>Abajo vas a ver un gráfico que ya viste antes, pero ahora muestra una distribución de <em>t</em>, no de diferencias de medias. Recordá: si obtenemos un único valor <em>t</em> a partir de una muestra que recolectamos, podemos consultar la <em>ventana de azar</em> en <a href="#fig-6tdecision" class="quarto-xref">Figure&nbsp;<span>7.4</span></a> para ver si ese valor era esperable por azar o no.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>muestra_t <span class="ot">&lt;-</span> all_df<span class="sc">$</span>muestra_t</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1161,7 +1164,7 @@ mean of x
 <section id="interpretar-valores-t" class="level3" data-number="7.3.6">
 <h3 data-number="7.3.6" class="anchored" data-anchor-id="interpretar-valores-t"><span class="header-section-number">7.3.6</span> Interpretar valores <em>t</em></h3>
 <p>Recordá lo que estamos haciendo: estamos evaluando si nuestros datos muestrales podrían haber salido de una distribución específica. La distribución <strong>nula</strong>, de ausencia de diferencias. Esta es la distribución de valores <em>t</em> que ocurren con muestras de tamaño 5, con diferencia media igual a 0, y error estándar de la media de .075 (ese es el SEM que calculamos a partir de nuestra muestra).</p>
-<p>Podemos ver cómo luce esta distribución nula en <code>@fig-6tnull</code>:</p>
+<p>Podemos ver cómo luce esta distribución nula en <a href="#fig-6tnull" class="quarto-xref">Figure&nbsp;<span>7.5</span></a>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>range <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, .<span class="dv">1</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>null_distribution <span class="ot">&lt;-</span> <span class="fu">dt</span>(range, <span class="dv">4</span>, <span class="at">log =</span> <span class="cn">FALSE</span>)</span>
@@ -1200,7 +1203,7 @@ Figure&nbsp;7.5: Una distribución de valores t que pueden ocurrir solo por azar
 <li><p>¿Y de que <em>t</em> sea menor o igual a 0? También <em>p = .5</em>. La mitad de los valores están en esa región.</p></li>
 </ol>
 <p>Podemos responder estas preguntas solo mirando la distribución <em>t</em> y dividiéndola en dos regiones iguales: la mitad izquierda (50% de los valores <em>t</em>) y la mitad derecha (los otros 50%).</p>
-<p>¿Y si queremos un enfoque más fino? Por ejemplo, dividir en regiones del 10%. ¿Qué valores de <em>t</em> ocurren solo el 10% del tiempo? Podemos marcar líneas que dividan la distribución en regiones así. Notá que los valores extremos (más grandes o más chicos) son menos probables, entonces los intervalos más alejados del centro tienen que ser más anchos para contener el mismo 10%. Así se ve la figura <code>@fig-6percentregions</code>:</p>
+<p>¿Y si queremos un enfoque más fino? Por ejemplo, dividir en regiones del 10%. ¿Qué valores de <em>t</em> ocurren solo el 10% del tiempo? Podemos marcar líneas que dividan la distribución en regiones así. Notá que los valores extremos (más grandes o más chicos) son menos probables, entonces los intervalos más alejados del centro tienen que ser más anchos para contener el mismo 10%. Así se ve la figura <a href="#fig-6percentregions" class="quarto-xref">Figure&nbsp;<span>7.6</span></a>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>range <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, .<span class="dv">1</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>null_distribution <span class="ot">&lt;-</span> <span class="fu">dt</span>(range, <span class="dv">4</span>, <span class="at">log =</span> <span class="cn">FALSE</span>)</span>
@@ -1258,7 +1261,7 @@ Figure&nbsp;7.6: Dividiendo la distribución t en regiones que contienen cada un
 <section id="test-unilateral-one-tailed" class="level3" data-number="7.3.8">
 <h3 data-number="7.3.8" class="anchored" data-anchor-id="test-unilateral-one-tailed"><span class="header-section-number">7.3.8</span> Test unilateral (one-tailed)</h3>
 <p>Un <strong>test unilateral</strong> (<em>one-tailed test</em>) también se llama a veces <strong>test direccional</strong>. Se le dice así porque el investigador puede tener una hipótesis en mente que sugiere que la diferencia entre medias va a tener una <strong>dirección específica</strong>: o bien una diferencia positiva, o bien una negativa.</p>
-<p>Típicamente, el investigador establece un <strong>criterio alfa</strong> (<em>alpha criterion</em>). Este criterio es como una línea en la arena para tomar decisiones. A menudo se fija en $p = .05$. ¿Qué significa eso? La figura <code>@fig-6critT</code> muestra la distribución <em>t</em> con ese criterio alfa:</p>
+<p>Típicamente, el investigador establece un <strong>criterio alfa</strong> (<em>alpha criterion</em>). Este criterio es como una línea en la arena para tomar decisiones. A menudo se fija en $p = .05$. ¿Qué significa eso? La figura <a href="#fig-6critT" class="quarto-xref">Figure&nbsp;<span>7.7</span></a> muestra la distribución <em>t</em> con ese criterio alfa:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>range <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, .<span class="dv">1</span>)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>null_distribution <span class="ot">&lt;-</span> <span class="fu">dt</span>(range, <span class="dv">4</span>, <span class="at">log =</span> <span class="cn">FALSE</span>)</span>
@@ -1317,7 +1320,7 @@ Figure&nbsp;7.7: El valor crítico de t para un criterio alfa de 0.05. El 5% de 
 <li><p><strong>t observado</strong>: el valor <em>t</em> que calculaste a partir de tu muestra. En el ejemplo de los bebés, fue <em>t</em>(4) = 0.72.</p></li>
 <li><p><strong>Valor <em>p</em></strong>: el valor <em>p</em> es la probabilidad de obtener el valor <em>t</em> observado o uno mayor. En nuestro ejemplo anterior, el valor <em>p</em> para <em>t</em>(4) = 0.72 fue <em>p = .509</em>. SIN EMBARGO, ese valor <em>p</em> <strong>no fue calculado</strong> para un test direccional (unilateral)… (hablamos más sobre qué significa ese .509 en la siguiente sección).</p></li>
 </ol>
-<p>La figura <code>@fig-6tonedirection</code> muestra cómo se vería el valor <em>p</em> para <em>t</em>(4) = 0.72 en un test unilateral:</p>
+<p>La <a href="#fig-6tonedirection" class="quarto-xref">Figure&nbsp;<span>7.8</span></a> muestra cómo se vería el valor <em>p</em> para <em>t</em>(4) = 0.72 en un test unilateral:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>range <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, .<span class="dv">1</span>)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>null_distribution <span class="ot">&lt;-</span> <span class="fu">dt</span>(range, <span class="dv">4</span>, <span class="at">log =</span> <span class="cn">FALSE</span>)</span>
@@ -1514,7 +1517,7 @@ Figure&nbsp;7.9: La distribución t se vuelve más angosta a medida que aumentan
 </div>
 </div>
 </div>
-<p>En la figura <code>@fig-6dft</code>, fijate que la distribución roja para $df = 4$ es un poco más baja y más ancha que la distribución azul verdosa para $df = 100$. A medida que aumentan los grados de libertad, la distribución <em>t</em> se vuelve más alta (en el centro) y más angosta en el rango. Se vuelve más picuda. ¿Adivinás por qué?</p>
+<p>En la <a href="#fig-6dft" class="quarto-xref">Figure&nbsp;<span>7.9</span></a>, fijate que la distribución roja para $df = 4$ es un poco más baja y más ancha que la distribución azul verdosa para $df = 100$. A medida que aumentan los grados de libertad, la distribución <em>t</em> se vuelve más alta (en el centro) y más angosta en el rango. Se vuelve más picuda. ¿Adivinás por qué?</p>
 <p>Recordá: estamos estimando una estadística muestral, y los grados de libertad son solo un número que representa cuántos sujetos hay (menos uno). Y ya sabemos que, al aumentar <em>n</em>, nuestras estadísticas muestrales se vuelven mejores estimaciones (con menos varianza) de los parámetros poblacionales. Entonces, <em>t</em> se vuelve una mejor estimación de su “valor verdadero” a medida que crece el tamaño muestral, lo que produce una distribución de <em>t</em> más angosta.</p>
 <p>Existe una distribución <em>t</em> ligeramente distinta para cada grado de libertad, y las regiones críticas asociadas al 5% de los valores extremos cambian cada vez. Por eso <strong>reportamos los grados de libertad</strong> en cada prueba t: definen la distribución de valores <em>t</em> para el tamaño muestral que usamos.</p>
 <p>¿Por qué usamos <em>n–1</em> y no <em>n</em>? Bueno, calculamos <em>t</em> usando la desviación estándar muestral para estimar el error estándar de la media, y esa estimación usa <em>n–1</em> en el denominador. Por eso, la distribución <em>t</em> se construye asumiendo <em>n–1</em>.</p>
@@ -1741,7 +1744,7 @@ mean of x mean of y
 <li><p>Hacés algunas suposiciones sobre cómo podría ser tu muestra (que estás planeando recolectar). Por ejemplo, podrías planear recolectar datos de 30 personas. Los puntajes podrían venir de una distribución normal (media = 50, sd = 10).</p></li>
 <li><p>Simulás números desde esa distribución y luego hacés una prueba t sobre esos datos simulados. Guardás las estadísticas que te interesan (como los <em>t</em> y <em>p</em>) y después observás cómo se comportan.</p></li>
 </ol>
-<p>Hagámoslo un par de veces. Primero, vamos a simular muestras con N = 30, tomadas de una distribución normal (media = 50, sd = 25). Vamos a hacer una simulación con 1000 repeticiones. En cada repetición, comparamos la media muestral con una media poblacional de 50. En promedio, no debería haber diferencia. La figura <code>@fig-6nullt</code> es la distribución nula que estamos simulando.</p>
+<p>Hagámoslo un par de veces. Primero, vamos a simular muestras con N = 30, tomadas de una distribución normal (media = 50, sd = 25). Vamos a hacer una simulación con 1000 repeticiones. En cada repetición, comparamos la media muestral con una media poblacional de 50. En promedio, no debería haber diferencia. La <a href="#fig-6nullt" class="quarto-xref">Figure&nbsp;<span>7.10</span></a> es la distribución nula que estamos simulando.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pasos para crear datos ficticios desde una distribución</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># y hacer pruebas t sobre los datos simulados</span></span>
@@ -2153,8 +2156,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -2265,7 +2266,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

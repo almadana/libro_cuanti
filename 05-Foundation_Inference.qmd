@@ -43,9 +43,7 @@ Lo que viene a continuación puede parecer un poco repetitivo con respecto al ca
 
 ### Distribución uniforme
 
-Como recordatorio del capítulo anterior, la figura `@fig-5unifagain` muestra que la forma de una distribución uniforme es completamente plana.
-
-
+Como recordatorio del capítulo anterior, la @fig-5unifagain muestra que la forma de una distribución uniforme es completamente plana.
 
 ```{r, echo=F}
 #| label: fig-5unifagain
@@ -61,7 +59,7 @@ ggplot(df, aes(x = a, y = b)) +
   geom_point(color = "white") +
   geom_hline(yintercept = .1) +
   scale_y_continuous(limits = c(0, 1), breaks = seq(0, 1, by = .1)) +
-  theme_classic(base_size = 14) +
+  theme_classic(base_size = 12) +
   ylab("Probabilidad") +
   xlab("Número") +
   ggtitle("Distribución uniforme para los números del 1 al 10")
@@ -69,7 +67,7 @@ ggplot(df, aes(x = a, y = b)) +
 
 OK, eso no parece gran cosa. ¿Qué está pasando acá? El eje y está etiquetado como `Probabilidad`, y va de 0 a 1. El eje x está etiquetado como `Número`, y va del 1 al 10. Hay una línea horizontal atravesando el gráfico. Esa línea indica la probabilidad de cada número del 1 al 10. Notá que la línea es plana. Esto significa que **todos los números tienen la misma probabilidad de ocurrir**. Más específicamente, hay 10 números del 1 al 10 (1,2,3,4,5,6,7,8,9,10), y todos tienen la misma chance de aparecer. 1 dividido 10 es 0,1, que es la probabilidad indicada por la línea horizontal.
 
-“¿Y qué con eso?” Imaginá que esta distribución uniforme es una máquina generadora de números. Escupe números, pero escupe **cada número con la probabilidad indicada por la línea**. Si esta distribución comenzara a generar números, escupiría un 10% de unos, un 10% de doses, un 10% de treses, y así sucesivamente, hasta un 10% de dieces. ¿Querés ver cómo se vería eso? Hagamos que escupa 100 números y pongámoslos en la tabla `@tbl-5100rand`.
+“¿Y qué con eso?” Imaginá que esta distribución uniforme es una máquina generadora de números. Escupe números, pero escupe **cada número con la probabilidad indicada por la línea**. Si esta distribución comenzara a generar números, escupiría un 10% de unos, un 10% de doses, un 10% de treses, y así sucesivamente, hasta un 10% de dieces. ¿Querés ver cómo se vería eso? Hagamos que escupa 100 números y pongámoslos en la @tbl-5100rand.
 
 ```{r echo=F}
 #| label: tbl-5100rand
@@ -80,13 +78,13 @@ knitr::kable(a)
 
 Usamos la distribución uniforme para generar estos números. Formalmente, a esto lo llamamos **muestreo** desde una **distribución**. Muestrear es lo que hacés en el supermercado cuando hay comida para degustar. Podés seguir tomando más. Sin embargo, si tomás **todas** las muestras, lo que tenés se llama **población**. Vamos a hablar más sobre muestras y poblaciones más adelante. Como usamos la distribución uniforme para generar los números, ya sabemos de dónde vienen. Pero por ahora, podemos fingir que alguien aparece en tu puerta, te muestra estos números, y vos te preguntás de dónde salieron. ¿Podés decir, solo mirando los números, que provienen de una distribución uniforme?
 
-¿Qué deberías observar? Quizás quieras saber si todos los números ocurren con **aproximadamente la misma frecuencia** —después de todo, eso es lo que **debería** pasar, ¿no? Es decir, si cada número tiene la misma chance de ocurrir, deberíamos ver que **cada número ocurre más o menos la misma cantidad de veces**. Ya sabemos qué es un histograma, así que podemos poner nuestra muestra de 100 números en un histograma y ver cómo se distribuyen los conteos. Si todos los números del 1 al 10 aparecen con igual frecuencia, entonces cada número individual debería aparecer unas 10 veces. La figura `@fig-5histunif` muestra el histograma:
+¿Qué deberías observar? Quizás quieras saber si todos los números ocurren con **aproximadamente la misma frecuencia** —después de todo, eso es lo que **debería** pasar, ¿no? Es decir, si cada número tiene la misma chance de ocurrir, deberíamos ver que **cada número ocurre más o menos la misma cantidad de veces**. Ya sabemos qué es un histograma, así que podemos poner nuestra muestra de 100 números en un histograma y ver cómo se distribuyen los conteos. Si todos los números del 1 al 10 aparecen con igual frecuencia, entonces cada número individual debería aparecer unas 10 veces. La @fig-5histunif muestra el histograma:
 
 ```{r, echo=F}
 #| label: fig-5histunif
 #| fig-cap: "Histograma de 100 números muestreados aleatoriamente de una distribución uniforme que contiene los enteros del 1 al 10"
 
-hist(a)
+hist(a,main = "Histograma",xlab = "número",ylab="frecuencia")
 ```
 
 Uy… como podés ver, **no** todos los números ocurrieron exactamente 10 veces. Las barras no tienen toda la misma altura. Esto muestra que el muestreo aleatorio de números desde esta distribución **no garantiza** que los números muestrados se vean exactamente como la distribución original. A esto lo llamamos **error muestral**, o **variabilidad del muestreo**.
@@ -95,7 +93,7 @@ Uy… como podés ver, **no** todos los números ocurrieron exactamente 10 veces
 
 Veamos más de cerca el error muestral. Vamos a tomar una muestra de 20 números de la distribución uniforme. Deberíamos esperar que cada número entre 1 y 10 ocurra unas dos veces. Como antes, esta expectativa puede visualizarse con un histograma.
 
-Para tener una mejor idea de la variabilidad muestral, repitamos ese proceso **diez veces**. La figura `@fig-5manysamples` muestra 10 histogramas, cada uno representando una muestra distinta de 20 números:
+Para tener una mejor idea de la variabilidad muestral, repitamos ese proceso **diez veces**. La @fig-5manysamples muestra 10 histogramas, cada uno representando una muestra distinta de 20 números:
 
 ```{r, echo=F}
 #| label: fig-5manysamples
@@ -116,7 +114,7 @@ ggplot(df, aes(x = x)) +
 
 Probablemente notes enseguida que ninguno de los histogramas es igual. Aunque estamos tomando aleatoriamente 20 números de la misma distribución uniforme, **cada muestra de 20 números resulta diferente**. Esto es **variabilidad muestral**, o **error de muestreo**.
 
-La figura `@fig-5expectedUnif` muestra una versión animada del proceso de elegir repetidamente 20 números aleatorios nuevos y graficar un histograma. La línea horizontal muestra la forma plana de la distribución uniforme. La línea cruza el eje y en el valor 2; y esperamos que cada número (del 1 al 10) ocurra unas 2 veces en una muestra de 20. Sin embargo, cada muestra varía bastante, debido al azar.
+La @fig-5expectedUnif muestra una versión animada del proceso de elegir repetidamente 20 números aleatorios nuevos y graficar un histograma. La línea horizontal muestra la forma plana de la distribución uniforme. La línea cruza el eje y en el valor 2; y esperamos que cada número (del 1 al 10) ocurra unas 2 veces en una muestra de 20. Sin embargo, cada muestra varía bastante, debido al azar.
 
 ```{r, echo=F}
 #| label: fig-5expectedUnif
@@ -131,7 +129,7 @@ Observar los histogramas anteriores nos muestra que puede ser difícil averiguar
 
 ### Las muestras grandes se parecen más a la distribución de la que provienen
 
-Volvamos a la pregunta: ¿cuál de las dos muestras en `@fig-5whichone` te parece que vino de una distribución uniforme?
+Volvamos a la pregunta: ¿cuál de las dos muestras en @fig-5whichone te parece que vino de una distribución uniforme?
 
 ```{r, echo=F}
 #| label: fig-5whichone
@@ -152,7 +150,7 @@ La respuesta es que **ambas** vinieron de una distribución uniforme. Pero ningu
 
 ¿Podemos mejorar las cosas y facilitar ver si una muestra proviene de una distribución uniforme? Sí, podemos. Lo único que necesitamos hacer es **aumentar el tamaño de la muestra**. A menudo usamos la letra `n` para referirnos al tamaño muestral. `n` es el número de observaciones en la muestra.
 
-Así que aumentemos el número de observaciones en cada muestra, de 20 a 100. Vamos a crear 10 muestras (cada una con 100 observaciones), y a graficar un histograma para cada una. Todas estas muestras se extraen de la **misma** distribución uniforme. Esto significa que deberíamos esperar que **cada número del 1 al 10 ocurra unas 10 veces** en cada muestra. Los histogramas están en la figura `@fig-5unifsamp100`.
+Así que aumentemos el número de observaciones en cada muestra, de 20 a 100. Vamos a crear 10 muestras (cada una con 100 observaciones), y a graficar un histograma para cada una. Todas estas muestras se extraen de la **misma** distribución uniforme. Esto significa que deberíamos esperar que **cada número del 1 al 10 ocurra unas 10 veces** en cada muestra. Los histogramas están en la @fig-5unifsamp100.
 
 ```{r, echo = F}
 #| label: fig-5unifsamp100
@@ -169,7 +167,7 @@ ggplot(df, aes(x = a)) +
   labs(y = "conteo")
 ```
 
-La figura `@fig-5unifsamp1000` muestra que los histogramas empiezan a aplanarse. Las barras todavía no están perfectamente en 100, porque sigue habiendo error muestral (siempre lo habrá). Pero si vieras un histograma que se ve plano y supieras que la muestra contiene muchas observaciones, podrías tener más confianza en que esos números provienen de una distribución uniforme.
+La @fig-5unifsamp1000 muestra que los histogramas empiezan a aplanarse. Las barras todavía no están perfectamente en 100, porque sigue habiendo error muestral (siempre lo habrá). Pero si vieras un histograma que se ve plano y supieras que la muestra contiene muchas observaciones, podrías tener más confianza en que esos números provienen de una distribución uniforme.
 
 Solo por diversión, hagamos muestras realmente grandes. Digamos, 100.000 observaciones por muestra. En ese caso, deberíamos esperar que cada número ocurra unas 10.000 veces. ¿Qué pasa?
 
@@ -190,7 +188,7 @@ ggplot(df, aes(x = a)) +
   labs(y = "conteo")
 ```
 
-La figura `@fig-5sampunifALOT` muestra que los histogramas de cada muestra empiezan a parecerse entre sí. Todas tienen 100.000 observaciones, y eso le da suficiente oportunidad al azar para distribuir los números de manera más equitativa, asegurándose aproximadamente de que todos ocurran más o menos la misma cantidad de veces. Como podés ver, las barras están todas muy cerca de 10.000, que es donde deberían estar si la muestra realmente proviene de una distribución uniforme. De nuevo, **no todas las barras tienen exactamente el mismo alto** —todavía hay error muestral—, pero **el patrón general** es ahora mucho más claro. Cada número ocurre más o menos la misma cantidad de veces, y las diferencias entre muestras son mucho menores.
+La @fig-5sampunifALOT muestra que los histogramas de cada muestra empiezan a parecerse entre sí. Todas tienen 100.000 observaciones, y eso le da suficiente oportunidad al azar para distribuir los números de manera más equitativa, asegurándose aproximadamente de que todos ocurran más o menos la misma cantidad de veces. Como podés ver, las barras están todas muy cerca de 10.000, que es donde deberían estar si la muestra realmente proviene de una distribución uniforme. De nuevo, **no todas las barras tienen exactamente el mismo alto** —todavía hay error muestral—, pero **el patrón general** es ahora mucho más claro. Cada número ocurre más o menos la misma cantidad de veces, y las diferencias entre muestras son mucho menores.
 
 ::: callout-tip
 ## Consejo pro
@@ -198,7 +196,7 @@ La figura `@fig-5sampunifALOT` muestra que los histogramas de cada muestra empie
 El patrón que muestra una muestra tiende a estabilizarse a medida que aumenta el tamaño muestral. Las muestras pequeñas pueden mostrar todo tipo de patrones, debido al error muestral (el azar).
 :::
 
-Antes de volver al tema de los experimentos con el que comenzamos, hagamos dos preguntas más. Primero: ¿cuál de las dos muestras en `@fig-5whichoneB` creés que proviene de una distribución uniforme? Dato: cada una de estas muestras tiene 20 observaciones.
+Antes de volver al tema de los experimentos con el que comenzamos, hagamos dos preguntas más. Primero: ¿cuál de las dos muestras en @fig-5whichoneB creés que proviene de una distribución uniforme? Dato: cada una de estas muestras tiene 20 observaciones.
 
 ```{r, echo=F}
 #| label: fig-5whichoneB
@@ -217,7 +215,7 @@ ggplot(df, aes(x = a)) +
 
 Si no estás muy segurx de la respuesta, es porque el **error muestral** (el azar) está “difuminando” los histogramas.
 
-Acá va exactamente la misma pregunta, solo que esta vez tomamos **1.000 observaciones por muestra**. ¿Cuál histograma en `@fig-5whichoneC` creés que proviene de una distribución uniforme, y cuál no?
+Acá va exactamente la misma pregunta, solo que esta vez tomamos **1.000 observaciones por muestra**. ¿Cuál histograma en @fig-5whichoneC creés que proviene de una distribución uniforme, y cuál no?
 
 ```{r, echo=F}
 #| label: fig-5whichoneC
@@ -316,7 +314,7 @@ Recordá cuando mostramos que el azar puede producir correlaciones. También mos
 
 Podemos hacer lo mismo con las diferencias. Vamos a investigar exactamente qué puede hacer el azar en nuestro experimento. Una vez que sepamos de lo que el azar es capaz, vamos a estar en una mejor posición para juzgar si nuestra manipulación causó una diferencia, o si simplemente **podría haber sido el azar**.
 
-Lo primero que vamos a hacer es simular que realizás el experimento de las bolitas **10 veces seguidas**. Eso va a producir 10 conjuntos distintos de resultados. La figura `@fig-5bolitasims` muestra gráficos de barras para cada repetición del experimento. Ahora podemos ver si la mano izquierda sacó más bolitas verdes que la derecha.
+Lo primero que vamos a hacer es simular que realizás el experimento de las bolitas **10 veces seguidas**. Eso va a producir 10 conjuntos distintos de resultados. La @fig-5bolitasims muestra gráficos de barras para cada repetición del experimento. Ahora podemos ver si la mano izquierda sacó más bolitas verdes que la derecha.
 
 ```{r echo=F}
 #| label: fig-5bolitasims
@@ -386,6 +384,7 @@ ggplot(dif_df, aes(y = diferencias, x = experiment)) +
   theme_classic(base_size = 20) +
   labs(y="Puntajes de diferencia",x="experimento")
 ```
+
 Upss, acabamos de realizar tantos experimentos simulados que el eje x es ilegible, pero va de 1 a 100. Cada barra representa la diferencia de número de bolas verdes elegidas al azar por la mano izquierda o derecha. ¿Empiezas a notar algo? Mira el eje y, éste muestra el tamaño de la diferencia. Sí, hay muchas barras de diferentes tamaños, esto nos muestra que muchos tipos de diferencias ocurren por azar. Sin embargo, el eje y también está restringido. No va de -10 a +10. Las grandes diferencias superiores a 5 o -5 no ocurren muy a menudo.
 
 Ahora que tenemos un método para simular las diferencias debidas al azar, vamos a realizar 10.000 experimentos simulados. Pero, en lugar de trazar las diferencias en un gráfico de barras para cada experimento, ¿qué tal si observamos el histograma de puntuaciones de diferencia? El histograma en `fig-5histdiffbolita` proporciona una imagen más clara sobre qué diferencias ocurren con más frecuencia y cuáles no. Esta será otra ventana para observar qué tipo de diferencias es capaz de producir el azar.
@@ -405,7 +404,10 @@ sum_df <- aggregate(bolita~ experiment * mano, df, sum)
 diferencias <- sum_df[sum_df$mano== "izquierda", ]$bolita-
   sum_df[sum_df$mano== "derecha", ]$bolita
 
-hist(diferencias, breaks = seq(-10, 10, 1))
+hist(diferencias, breaks = seq(-10, 10, 1),
+     main="Histograma",
+     xlab="tamaño de diferencia",
+     ylab="Frecuencia")
 ```
 
 Nuestra simulación por computadora nos permite forzar al azar a actuar miles de veces; cada vez produce una diferencia. Registramos la diferencia, y al final de la simulación graficamos el histograma de esas diferencias. Ese histograma empieza a mostrarnos **de dónde vinieron esas diferencias**. Recordá la idea de que los números provienen de una distribución, y que la distribución nos dice con qué frecuencia aparece cada número. Estamos viendo una de esas distribuciones. Nos está mostrando que el azar **produce algunas diferencias más a menudo que otras**.
@@ -473,7 +475,7 @@ Antes de hacer la simulación, necesitamos responder una pregunta: **¿cuánto e
 
 Bien, ya tenemos nuestro número. Vamos a simular las diferencias de medias entre los grupos A y B **que podrían surgir solo por azar**. Lo vamos a hacer 10.000 veces. Eso le da al azar muchas oportunidades para mostrarnos qué puede hacer y qué no.
 
-Esto es lo que hice: muestreé 20 números para el grupo A y 20 para el grupo B. Ambos grupos provienen de la misma distribución normal, con media = 100 y desviación estándar = 15. Como las muestras provienen de la **misma distribución**, esperamos que, en promedio, sean similares (aunque ya sabemos que las muestras siempre difieren entre sí). Después calculo la media de cada grupo, y luego la diferencia entre esas medias. Guardo ese **puntaje de diferencia de medias**, y repito esto hasta tener 10.000 de ellos. Después, dibujo un histograma como el de la figura `@fig-5crumptestdiff`.
+Esto es lo que hice: muestreé 20 números para el grupo A y 20 para el grupo B. Ambos grupos provienen de la misma distribución normal, con media = 100 y desviación estándar = 15. Como las muestras provienen de la **misma distribución**, esperamos que, en promedio, sean similares (aunque ya sabemos que las muestras siempre difieren entre sí). Después calculo la media de cada grupo, y luego la diferencia entre esas medias. Guardo ese **puntaje de diferencia de medias**, y repito esto hasta tener 10.000 de ellos. Después, dibujo un histograma como el de la @fig-5crumptestdiff.
 
 ```{r, echo=F}
 #| label: fig-5crumptestdiff
@@ -539,7 +541,7 @@ Hablemos ahora de algunos hechos objetivos que **sabemos con certeza** a partir 
 
 Las regiones están definidas por el valor mínimo y el valor máximo observados en la simulación. El azar **nunca produjo un número menor ni mayor** que esos extremos. La región **dentro del rango** es lo que el azar **sí hizo**, y la región **fuera del rango**, en ambos extremos, es lo que el azar **nunca hizo**.
 
-Se ve así en la figura `@fig-5crumpdecision`:
+Se ve así en la @fig-5crumpdecision:
 
 ```{r, echo=F}
 #| label: fig-5crumpdecision
@@ -581,7 +583,7 @@ Estas son afirmaciones ambiguas, imprecisas, entre el “sí” y el “no”. Y
 
 Veamos dónde podrían estar algunas zonas grises. Digo “podrían”, porque la gente no se pone de acuerdo sobre **dónde empieza el gris**. Las personas tienen distintos niveles de tolerancia al gris.
 
-La figura `@fig-5crumpuncertainty` muestra **mi** opinión sobre dónde se ubican las zonas grises:
+La @fig-5crumpuncertainty muestra **mi** opinión sobre dónde se ubican las zonas grises:
 
 ```{r, echo=F}
 #| label: fig-5crumpuncertainty
@@ -681,7 +683,7 @@ Tal vez estés pensando que tus zonas grises no son iguales a las que dibujé yo
 
 Otra cosa en la que pensar es en tu **política de decisión**. ¿Qué vas a hacer cuando tu diferencia observada caiga dentro de la zona gris? ¿Siempre vas a tomar la misma decisión sobre el papel del azar? ¿O a veces vas a cambiar de parecer, según cómo te sientas? Tal vez pienses que no debería haber una política estricta, y que deberías aceptar cierto nivel de incertidumbre. La diferencia que encontraste **podría ser real... o tal vez no lo sea**. Hay incertidumbre, es difícil evitarla.
 
-Así que vamos a ilustrar **otro tipo de estrategia** para tomar decisiones. Recién hablamos de una que incluía líneas y regiones. Eso hace que parezca una elección binaria: podemos **descartar** o **no descartar** el papel del azar. Otra perspectiva es que **todo es un matiz de gris**, como en la figura `@fig-5crumpshade`.
+Así que vamos a ilustrar **otro tipo de estrategia** para tomar decisiones. Recién hablamos de una que incluía líneas y regiones. Eso hace que parezca una elección binaria: podemos **descartar** o **no descartar** el papel del azar. Otra perspectiva es que **todo es un matiz de gris**, como en la @fig-5crumpshade.
 
 ```{r, echo=F,warning=FALSE}
 #| label: fig-5crumpshade
@@ -767,7 +769,7 @@ Si cambiás el enfoque y pensás en las **diferencias de medias**, como la distr
 
 Por ejemplo, podríamos correr nuestro experimento con 20 sujetos por grupo. O podríamos decidir invertir más tiempo y correrlo con 40 sujetos por grupo, o 80, o 150. Cuando vos sos quien ejecuta el experimento, **vos decidís el diseño**. Y esas decisiones importan muchísimo. Básicamente, **cuantos más sujetos tenés, más sensible es tu experimento**. Con un `N` más grande, vas a poder detectar de manera confiable diferencias de medias más pequeñas, y podés concluir con confianza que esas diferencias **no fueron producidas por azar**.
 
-Fijate en los histogramas de `@fig-5sampleDistNormal`. Es la misma simulación de antes, pero con cuatro tamaños muestrales distintos: 20, 40, 80, 160. Vamos duplicando el tamaño muestral en cada simulación, solo para ver qué pasa con el **ancho de la ventana del azar**.
+Fijate en los histogramas de @fig-5sampleDistNormal. Es la misma simulación de antes, pero con cuatro tamaños muestrales distintos: 20, 40, 80, 160. Vamos duplicando el tamaño muestral en cada simulación, solo para ver qué pasa con el **ancho de la ventana del azar**.
 
 ```{r, echo=F}
 #| label: fig-5sampleDistNormal
@@ -788,7 +790,7 @@ all_df <- data.frame(
 
 Ahí lo tenés. La **distribución muestral de las diferencias de medias** se contrae hacia 0 a medida que aumenta el tamaño muestral. Esto significa que, si ejecutás un experimento con un tamaño muestral mayor, vas a poder detectar diferencias de medias más pequeñas, y estar seguro de que **no se deben al azar**.
 
-La tabla `@tbl-5minmax` muestra los valores mínimos y máximos que el azar produjo para cada uno de los cuatro tamaños muestrales:
+La @tbl-5minmax muestra los valores mínimos y máximos que el azar produjo para cada uno de los cuatro tamaños muestrales:
 
 ```{r, echo=F}
 #| label: tbl-5minmax
@@ -866,9 +868,9 @@ ggplot(the_range, aes(x = sample_size, y = smallest)) +
   xlab("Tamaño muestral")
 ```
 
-La figura `@fig-5crumpminmax` muestra una ventana de sensibilidad razonablemente precisa en función del tamaño muestral. Para cada tamaño muestral, podemos ver la diferencia máxima que el azar produjo y la mínima. En esas simulaciones, **el azar nunca produjo diferencias mayores ni menores** que esos valores extremos. Así que cada diseño es sensible a cualquier diferencia que esté **por debajo de la línea inferior o por encima de la línea superior**.
+La @fig-5crumpminmax muestra una ventana de sensibilidad razonablemente precisa en función del tamaño muestral. Para cada tamaño muestral, podemos ver la diferencia máxima que el azar produjo y la mínima. En esas simulaciones, **el azar nunca produjo diferencias mayores ni menores** que esos valores extremos. Así que cada diseño es sensible a cualquier diferencia que esté **por debajo de la línea inferior o por encima de la línea superior**.
 
-Otra forma de decirlo es la siguiente: ¿Cuáles de los tamaños muestrales son sensibles a una diferencia de +10 o -10? Es decir, si se observa una diferencia de +10 o -10, entonces podríamos decir con mucha confianza que **esa diferencia no fue causada por azar**, porque según estas simulaciones, el azar **nunca** produjo diferencias tan grandes. Para ayudarnos a ver cuáles son sensibles, la figura `@fig-5crumpredline` traza líneas horizontales en -10 y +10:
+Otra forma de decirlo es la siguiente: ¿Cuáles de los tamaños muestrales son sensibles a una diferencia de +10 o -10? Es decir, si se observa una diferencia de +10 o -10, entonces podríamos decir con mucha confianza que **esa diferencia no fue causada por azar**, porque según estas simulaciones, el azar **nunca** produjo diferencias tan grandes. Para ayudarnos a ver cuáles son sensibles, la @fig-5crumpredline traza líneas horizontales en -10 y +10:
 
 ```{r, echo=F}
 #| label: fig-5crumpredline
@@ -991,7 +993,7 @@ En nuestro experimento ficticio encontramos que la media para los estudiantes qu
 
 Vamos a averiguarlo. De eso se trata exactamente la prueba de aleatorización. Cuando hacemos nuestra prueba de aleatorización, vamos a medir la diferencia de medias en los puntajes del examen entre el grupo con chicle y el grupo sin chicle. Cada vez que hagamos una aleatorización, guardaremos la diferencia de medias.
 
-Veamos una pequeña animación de lo que ocurre durante la prueba de aleatorización. La figura `@fig-5randtest` muestra datos de otro experimento ficticio, pero los principios son los mismos. Después volveremos al experimento del chicle.
+Veamos una pequeña animación de lo que ocurre durante la prueba de aleatorización. La @fig-5randtest muestra datos de otro experimento ficticio, pero los principios son los mismos. Después volveremos al experimento del chicle.
 
 La animación muestra tres cosas importantes: Primero, los puntos púrpuras muestran las medias de los puntajes en dos grupos (no estudió vs. estudió). Parece que hay una diferencia, ya que un punto está más bajo que el otro. Queremos saber si **el azar podría producir una diferencia tan grande**.
 
@@ -1012,7 +1014,7 @@ Si los puntos púrpura estuvieran **dentro del rango de los puntos amarillos**, 
 
 Volvamos al ejemplo del chicle. Después de aleatorizar nuestras notas muchas veces, y de calcular las nuevas medias y las diferencias de medias, vamos a tener **un montón de diferencias** para observar, que podemos representar en un histograma. Ese histograma da una imagen de **lo que podría haber pasado**. Luego, podemos comparar **lo que pasó realmente** con **lo que podría haber pasado**.
 
-Este es el histograma de las diferencias de medias obtenidas con la prueba de aleatorización. Para esta simulación, aleatorizamos los resultados del experimento original 1000 veces. Esto es lo que **podría haber pasado**. La línea azul en `@fig-5randhist` muestra **dónde se ubica la diferencia observada** sobre el eje x.
+Este es el histograma de las diferencias de medias obtenidas con la prueba de aleatorización. Para esta simulación, aleatorizamos los resultados del experimento original 1000 veces. Esto es lo que **podría haber pasado**. La línea azul en la @fig-5randhist muestra **dónde se ubica la diferencia observada** sobre el eje x.
 
 ```{r, echo=F,warning=FALSE}
 #| label: fig-5randhist
@@ -1057,7 +1059,7 @@ ggplot(rand_df, aes(x = mean_diferencias)) +
   labs(x="Diferencias promedio",y="frecuencia")
 ```
 
-Fijate en la línea azul de `@fig-5randquestion`. Si encontraras una diferencia de medias de 10, ¿te convencería de que esa diferencia **no fue causada por azar**? Como podés ver, la línea azul **está dentro de la ventana del azar**. Aunque las diferencias de +10 **no ocurren muy seguido**, podrías inferir que **probablemente no fueron causadas por azar** (pero tal vez te mantendrías algo escéptico, porque **sí podrían haberlo sido**).
+Fijate en la línea azul de la @fig-5randquestion. Si encontraras una diferencia de medias de 10, ¿te convencería de que esa diferencia **no fue causada por azar**? Como podés ver, la línea azul **está dentro de la ventana del azar**. Aunque las diferencias de +10 **no ocurren muy seguido**, podrías inferir que **probablemente no fueron causadas por azar** (pero tal vez te mantendrías algo escéptico, porque **sí podrían haberlo sido**).
 
 ¿Y qué pasa con la línea roja? La línea roja representa una diferencia de +5. Si encontraras una diferencia de +5 acá, ¿estarías seguro de que **no fue causada por azar**? Yo no lo estaría. La línea roja está completamente dentro de la ventana del azar —**este tipo de diferencia ocurre con bastante frecuencia**. Necesitaría **más evidencia** para considerar la afirmación de que alguna variable independiente realmente **causó la diferencia**. Me sentiría mucho más cómodo asumiendo que la diferencia fue probablemente **causada por error muestral**.
 
@@ -1092,4 +1094,5 @@ Entonces, ¿cómo podemos llegar a esos números? Para llegar a eso, vamos a pre
 <iframe width="560" height="315" src="https://www.youtube.com/embed/zhhDCFPzlkw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 
 </iframe>
+
 :::::

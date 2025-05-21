@@ -260,7 +260,7 @@ Considerá el ejemplo del interruptor de luz:
 
 **Experimento del interruptor de luz**: manipulás el interruptor hacia arriba (condición 1 de la variable independiente), la luz se enciende (medición). Manipulás el interruptor hacia abajo (condición 2 de la variable independiente), la luz se apaga (otra medición). La medición (la luz) **cambia** (se enciende o se apaga) como función de la manipulación (mover el interruptor hacia arriba o hacia abajo).
 
-Podés ver el cambio en la medición entre condiciones, es tan obvio como el día y la noche. Entonces, cuando realizás una manipulación y **ves la diferencia** (el cambio) en tu medición, podés estar bastante segurx de que tu manipulación **está causando el cambio**.
+Podés ver el cambio en la medición entre condiciones, es tan obvio como el día y la noche. Entonces, cuando realizás una manipulación y **ves la diferencia** (el cambio) en tu medición, podés estar bastante seguro de que tu manipulación **está causando el cambio**.
 
 > Nota: para ser cautos, podemos decir que **“algo”** relacionado con tu manipulación está causando el cambio; tal vez no sea exactamente lo que pensás que es, si tu manipulación es muy complicada e involucra muchos elementos en juego.
 

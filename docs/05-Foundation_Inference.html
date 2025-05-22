@@ -825,8 +825,7 @@ SHINY APP acá
 </div>
 </div>
 <p>Upss, acabamos de realizar tantos experimentos simulados que el eje x es ilegible, pero va de 1 a 100. Cada barra representa la diferencia de número de bolas verdes elegidas al azar por la mano izquierda o derecha. ¿Empiezas a notar algo? Mira el eje y, éste muestra el tamaño de la diferencia. Sí, hay muchas barras de diferentes tamaños, esto nos muestra que muchos tipos de diferencias ocurren por azar. Sin embargo, el eje y también está restringido. No va de -10 a +10. Las grandes diferencias superiores a 5 o -5 no ocurren muy a menudo.</p>
-<p>Ahora que tenemos un método para simular las diferencias debidas al azar, vamos a realizar 10.000 experimentos simulados. Pero, en lugar de trazar las diferencias en un gráfico de barras para cada experimento, ¿qué tal si observamos el histograma de puntuaciones de diferencia? El histograma en <code>fig-5histdiffbolita</code> proporciona una imagen más clara sobre qué diferencias ocurren con más frecuencia y cuáles no. Esta será otra ventana para observar qué tipo de diferencias es capaz de producir el azar.</p>
-<p>Traducción realizada con la versión gratuita del traductor DeepL.com</p>
+<p>Ahora que tenemos un método para simular las diferencias debidas al azar, vamos a realizar 10.000 experimentos simulados. Pero, en lugar de trazar las diferencias en un gráfico de barras para cada experimento, ¿qué tal si observamos el histograma de puntuaciones de diferencia? El histograma en la <a href="#fig-5histdiffbolita">Figura&nbsp;<span>6.15</span></a> proporciona una imagen más clara sobre qué diferencias ocurren con más frecuencia y cuáles no. Esta será otra ventana para observar qué tipo de diferencias es capaz de producir el azar.</p>
 <div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5histdiffbolita_8d116f9d3878eff25f05584f1ba95c96">
 <div class="cell-output-display">
 <div id="fig-5histdiffbolita" class="quarto-figure quarto-figure-center anchored">
@@ -990,7 +989,7 @@ Nota
 <p>Tal vez estés pensando que tus zonas grises no son iguales a las que dibujé yo. Quizás quieras ser más conservador y hacerlas más chicas. O, tal vez seas más arriesgado y prefieras hacerlas más grandes. O incluso, quizás quieras extender la zona gris un poco <strong>dentro de la zona verde</strong> (después de todo, el azar podría producir diferencias más grandes alguna que otra vez, y para evitarlas tendrías que hacer que la zona gris invada un poco el área verde).</p>
 <p>Otra cosa en la que pensar es en tu <strong>política de decisión</strong>. ¿Qué vas a hacer cuando tu diferencia observada caiga dentro de la zona gris? ¿Siempre vas a tomar la misma decisión sobre el papel del azar? ¿O a veces vas a cambiar de parecer, según cómo te sientas? Tal vez pienses que no debería haber una política estricta, y que deberías aceptar cierto nivel de incertidumbre. La diferencia que encontraste <strong>podría ser real… o tal vez no lo sea</strong>. Hay incertidumbre, es difícil evitarla.</p>
 <p>Así que vamos a ilustrar <strong>otro tipo de estrategia</strong> para tomar decisiones. Recién hablamos de una que incluía líneas y regiones. Eso hace que parezca una elección binaria: podemos <strong>descartar</strong> o <strong>no descartar</strong> el papel del azar. Otra perspectiva es que <strong>todo es un matiz de gris</strong>, como en la <a href="#fig-5crumpshade">Figura&nbsp;<span>6.19</span></a>.</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5crumpshade_acd23a9ba91faa761fa8a1ca683ca270">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5crumpshade_da18d512b8e5a4346a3c3bfd387bf66c">
 <div class="cell-output-display">
 <div id="fig-5crumpshade" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
@@ -1421,7 +1420,7 @@ Nota
 <p>Si los puntos púrpura estuvieran <strong>dentro del rango de los puntos amarillos</strong>, entonces sabríamos que el azar <strong>es capaz de producir</strong> la diferencia que observamos, y que lo hace <strong>con bastante frecuencia</strong>. En ese caso, <strong>no deberíamos concluir</strong> que la manipulación causó la diferencia, porque <strong>podría haber ocurrido fácilmente por azar</strong>.</p>
 <p>Volvamos al ejemplo del chicle. Después de aleatorizar nuestras notas muchas veces, y de calcular las nuevas medias y las diferencias de medias, vamos a tener <strong>un montón de diferencias</strong> para observar, que podemos representar en un histograma. Ese histograma da una imagen de <strong>lo que podría haber pasado</strong>. Luego, podemos comparar <strong>lo que pasó realmente</strong> con <strong>lo que podría haber pasado</strong>.</p>
 <p>Este es el histograma de las diferencias de medias obtenidas con la prueba de aleatorización. Para esta simulación, aleatorizamos los resultados del experimento original 1000 veces. Esto es lo que <strong>podría haber pasado</strong>. La línea azul en la <a href="#fig-5randhist">Figura&nbsp;<span>6.23</span></a> muestra <strong>dónde se ubica la diferencia observada</strong> sobre el eje x.</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5randhist_9d0d739b2ebbb67114871540edc867e5">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5randhist_34347f3e68270a35a690515f2384b81a">
 <div class="cell-output cell-output-stderr">
 <pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 </div>
@@ -1438,9 +1437,8 @@ Nota
 <p>Estamos mirando otra ventana del azar. Estamos viendo un histograma de los tipos de diferencias de medias que podrían haber ocurrido en nuestro experimento, si hubiéramos asignado a los sujetos al grupo con chicle y al grupo sin chicle de otra forma.</p>
 <p>Como podés ver, las diferencias de medias varían de negativas a positivas. La diferencia más frecuente es 0. Además, la distribución parece simétrica en torno al cero, lo que muestra que teníamos aproximadamente las mismas probabilidades de obtener una diferencia positiva o negativa. También notá que a medida que las diferencias se hacen más grandes (ya sea en dirección positiva o negativa), <strong>se vuelven menos frecuentes</strong>. La línea azul nos muestra <strong>la diferencia observada</strong>, la que encontramos en nuestro experimento inventado. ¿Dónde está? Muy a la derecha. Está <strong>bien fuera del histograma</strong>. En otras palabras, cuando miramos <strong>lo que podría haber pasado</strong>, vemos que <strong>lo que pasó realmente</strong> no ocurre muy seguido.</p>
 <p><strong>IMPORTANTE:</strong> En este caso, cuando hablamos de <strong>lo que podría haber pasado</strong>, nos referimos a lo que <strong>podría haber pasado por azar</strong>. Cuando comparamos lo que pasó con lo que el azar podría haber producido, podemos tener una mejor idea de si nuestro resultado fue o no <strong>causado por azar</strong>.</p>
-<hr>
 <p>OK, ahora vamos a fingir que obtuvimos una diferencia de medias <strong>mucho más pequeña</strong> cuando ejecutamos el experimento. Podemos trazar nuevas líneas (azul y roja) para representar una media más pequeña que podríamos haber encontrado.</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5randquestion_606cee8c9b75c42c6792dfd8aa5d5528">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5randquestion_24c64bfca5916090f4299909cc298baa">
 <div class="cell-output cell-output-stderr">
 <pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 </div>

@@ -13,9 +13,9 @@ source("global_stuff.R")
 
 # Fundamentos de la inferencia
 
-> Los datos y los conjuntos de datos no son objetivos; son creaciones del diseño humano. Les damos voz a los números, inferimos a partir de ellos, y definimos su significado a través de nuestras interpretaciones. — Katie Crawford
+> Los datos y los conjuntos de datos no son objetivos; son creaciones del diseño humano. Les damos voz a los números, inferimos a partir de ellos, y definimos su significado a través de nuestras interpretaciones. --- Katie Crawford
 
-Hasta ahora hemos estado hablando sobre cómo describir datos y buscar posibles relaciones entre las cosas que medimos. Comenzamos con el problema de tener demasiados números y discutimos cómo podían resumirse con estadísticas descriptivas y comunicarse a través de gráficos. También analizamos la idea de relaciones entre cosas. Si una cosa causa un cambio en otra, entonces, si medimos cómo una varía, deberíamos ver que la otra también varía, o que cambia de forma sistemática como consecuencia de la primera. Al final del capítulo sobre correlación, mostramos cómo las correlaciones —que implican una relación entre dos cosas— son muy difíciles de interpretar. ¿Por qué? Porque una correlación observada puede ser causada por una tercera variable oculta, o puede ser un hallazgo espurio “causado” por el azar.
+Hasta ahora hemos estado hablando sobre cómo describir datos y buscar posibles relaciones entre las cosas que medimos. Comenzamos con el problema de tener demasiados números y discutimos cómo podían resumirse con estadísticas descriptivas y comunicarse a través de gráficos. También analizamos la idea de relaciones entre cosas. Si una cosa causa un cambio en otra, entonces, si medimos cómo una varía, deberíamos ver que la otra también varía, o que cambia de forma sistemática como consecuencia de la primera. Al final del capítulo sobre correlación, mostramos cómo las correlaciones ---que implican una relación entre dos cosas--- son muy difíciles de interpretar. ¿Por qué? Porque una correlación observada puede ser causada por una tercera variable oculta, o puede ser un hallazgo espurio "causado" por el azar.
 
 Ahora comenzamos nuestro recorrido por la **estadística inferencial**. Estas son herramientas que se utilizan para hacer inferencias sobre de dónde provienen nuestros datos, y para hacer inferencias sobre qué causa qué.
 
@@ -31,13 +31,13 @@ Un experimento tiene dos partes: una manipulación y una medición. La **manipul
 
 Ahora podemos plantear una gran pregunta general: **¿cómo sabemos si los datos cambiaron entre condiciones?** Si podemos estar razonablemente seguros de que hubo un cambio entre condiciones, entonces podemos inferir que nuestra manipulación causó un cambio en la medición. Si no podemos estar seguros de que hubo un cambio, entonces **no podemos** inferir que la manipulación haya causado una diferencia. Necesitamos construir herramientas que nos permitan **detectar cambios**, para poder reconocer un cambio cuando ocurra.
 
-“Pará un poco, si solo estamos buscando un cambio, ¿no sería fácil ver eso mirando los números y viendo si son diferentes? ¿Qué tiene de difícil eso?” Buena pregunta. Ahora necesitamos hacer un desvío. La respuesta breve es que **siempre** va a haber cambio en los datos (recordá la varianza).
+"Pará un poco, si solo estamos buscando un cambio, ¿no sería fácil ver eso mirando los números y viendo si son diferentes? ¿Qué tiene de difícil eso?" Buena pregunta. Ahora necesitamos hacer un desvío. La respuesta breve es que **siempre** va a haber cambio en los datos (recordá la varianza).
 
 ## Los datos provienen de una distribución
 
-En el capítulo anterior hablamos sobre muestras y distribuciones, y sobre la idea de que podés tomar muestras desde una distribución. Así que, de ahora en más, cada vez que veas un conjunto de números deberías preguntarte: “¿De dónde vienen estos números?”. ¿Qué causó que algunos tipos de números aparecieran más que otros? La respuesta a esta pregunta nos lleva de nuevo al mundo abstracto de las distribuciones.
+En el capítulo anterior hablamos sobre muestras y distribuciones, y sobre la idea de que podés tomar muestras desde una distribución. Así que, de ahora en más, cada vez que veas un conjunto de números deberías preguntarte: "¿De dónde vienen estos números?". ¿Qué causó que algunos tipos de números aparecieran más que otros? La respuesta a esta pregunta nos lleva de nuevo al mundo abstracto de las distribuciones.
 
-Una **distribución** es un lugar de donde pueden salir los números. La distribución establece las restricciones: determina qué números es probable que ocurran y cuáles no. Las distribuciones son ideas abstractas, pero pueden hacerse concretas, y podemos representarlas con dibujos —como ya has visto antes— llamados histogramas.
+Una **distribución** es un lugar de donde pueden salir los números. La distribución establece las restricciones: determina qué números es probable que ocurran y cuáles no. Las distribuciones son ideas abstractas, pero pueden hacerse concretas, y podemos representarlas con dibujos ---como ya has visto antes--- llamados histogramas.
 
 Lo que viene a continuación puede parecer un poco repetitivo con respecto al capítulo anterior. Volvemos a mirar muestreo de números desde una distribución uniforme. Mostramos que las muestras individuales pueden lucir bastante diferentes entre sí. Gran parte del comienzo de este capítulo ya te va a resultar familiar, pero llevamos los conceptos en una dirección un poco distinta: la dirección es cómo hacer inferencias sobre el papel del azar en tu experimento.
 
@@ -67,7 +67,7 @@ ggplot(df, aes(x = a, y = b)) +
 
 OK, eso no parece gran cosa. ¿Qué está pasando acá? El eje y está etiquetado como `Probabilidad`, y va de 0 a 1. El eje x está etiquetado como `Número`, y va del 1 al 10. Hay una línea horizontal atravesando el gráfico. Esa línea indica la probabilidad de cada número del 1 al 10. Notá que la línea es plana. Esto significa que **todos los números tienen la misma probabilidad de ocurrir**. Más específicamente, hay 10 números del 1 al 10 (1,2,3,4,5,6,7,8,9,10), y todos tienen la misma chance de aparecer. 1 dividido 10 es 0,1, que es la probabilidad indicada por la línea horizontal.
 
-“¿Y qué con eso?” Imaginá que esta distribución uniforme es una máquina generadora de números. Escupe números, pero escupe **cada número con la probabilidad indicada por la línea**. Si esta distribución comenzara a generar números, escupiría un 10% de unos, un 10% de doses, un 10% de treses, y así sucesivamente, hasta un 10% de dieces. ¿Querés ver cómo se vería eso? Hagamos que escupa 100 números y pongámoslos en la @tbl-5100rand.
+"¿Y qué con eso?" Imaginá que esta distribución uniforme es una máquina generadora de números. Escupe números, pero escupe **cada número con la probabilidad indicada por la línea**. Si esta distribución comenzara a generar números, escupiría un 10% de unos, un 10% de doses, un 10% de treses, y así sucesivamente, hasta un 10% de dieces. ¿Querés ver cómo se vería eso? Hagamos que escupa 100 números y pongámoslos en la @tbl-5100rand.
 
 ```{r echo=F}
 #| label: tbl-5100rand
@@ -78,7 +78,7 @@ knitr::kable(a)
 
 Usamos la distribución uniforme para generar estos números. Formalmente, a esto lo llamamos **muestreo** desde una **distribución**. Muestrear es lo que hacés en el supermercado cuando hay comida para degustar. Podés seguir tomando más. Sin embargo, si tomás **todas** las muestras, lo que tenés se llama **población**. Vamos a hablar más sobre muestras y poblaciones más adelante. Como usamos la distribución uniforme para generar los números, ya sabemos de dónde vienen. Pero por ahora, podemos fingir que alguien aparece en tu puerta, te muestra estos números, y vos te preguntás de dónde salieron. ¿Podés decir, solo mirando los números, que provienen de una distribución uniforme?
 
-¿Qué deberías observar? Quizás quieras saber si todos los números ocurren con **aproximadamente la misma frecuencia** —después de todo, eso es lo que **debería** pasar, ¿no? Es decir, si cada número tiene la misma chance de ocurrir, deberíamos ver que **cada número ocurre más o menos la misma cantidad de veces**. Ya sabemos qué es un histograma, así que podemos poner nuestra muestra de 100 números en un histograma y ver cómo se distribuyen los conteos. Si todos los números del 1 al 10 aparecen con igual frecuencia, entonces cada número individual debería aparecer unas 10 veces. La @fig-5histunif muestra el histograma:
+¿Qué deberías observar? Quizás quieras saber si todos los números ocurren con **aproximadamente la misma frecuencia** ---después de todo, eso es lo que **debería** pasar, ¿no? Es decir, si cada número tiene la misma chance de ocurrir, deberíamos ver que **cada número ocurre más o menos la misma cantidad de veces**. Ya sabemos qué es un histograma, así que podemos poner nuestra muestra de 100 números en un histograma y ver cómo se distribuyen los conteos. Si todos los números del 1 al 10 aparecen con igual frecuencia, entonces cada número individual debería aparecer unas 10 veces. La @fig-5histunif muestra el histograma:
 
 ```{r, echo=F}
 #| label: fig-5histunif
@@ -87,9 +87,9 @@ Usamos la distribución uniforme para generar estos números. Formalmente, a est
 hist(a,main = "Histograma",xlab = "número",ylab="frecuencia")
 ```
 
-Uy… como podés ver, **no** todos los números ocurrieron exactamente 10 veces. Las barras no tienen toda la misma altura. Esto muestra que el muestreo aleatorio de números desde esta distribución **no garantiza** que los números muestrados se vean exactamente como la distribución original. A esto lo llamamos **error muestral**, o **variabilidad del muestreo**.
+Uy... como podés ver, **no** todos los números ocurrieron exactamente 10 veces. Las barras no tienen toda la misma altura. Esto muestra que el muestreo aleatorio de números desde esta distribución **no garantiza** que los números muestrados se vean exactamente como la distribución original. A esto lo llamamos **error muestral**, o **variabilidad del muestreo**.
 
-### No todas las muestras son iguales — de hecho, suelen ser bastante distintas
+### No todas las muestras son iguales --- de hecho, suelen ser bastante distintas
 
 Veamos más de cerca el error muestral. Vamos a tomar una muestra de 20 números de la distribución uniforme. Deberíamos esperar que cada número entre 1 y 10 ocurra unas dos veces. Como antes, esta expectativa puede visualizarse con un histograma.
 
@@ -164,10 +164,27 @@ ggplot(df, aes(x = a)) +
   geom_histogram(bins = 10, color = "white") +
   facet_wrap(~sample) +
   theme_classic()+
+  ylim(0,20)+
   labs(y = "conteo")
 ```
 
 La @fig-5unifsamp1000 muestra que los histogramas empiezan a aplanarse. Las barras todavía no están perfectamente en 100, porque sigue habiendo error muestral (siempre lo habrá). Pero si vieras un histograma que se ve plano y supieras que la muestra contiene muchas observaciones, podrías tener más confianza en que esos números provienen de una distribución uniforme.
+
+```{r, echo = F}
+#| label: fig-5unifsamp1000
+#| fig-cap: "Histogramas de diferentes muestras de una distribución uniforme. N = 100 para cada muestra."
+#| out-width: "100%"
+
+a <- sample(1:10, 1000 * 10, replace = TRUE)
+df <- data.frame(a, sample = rep(1:10, each = 1000))
+
+ggplot(df, aes(x = a)) +
+  geom_histogram(bins = 10, color = "white") +
+  facet_wrap(~sample) +
+  theme_classic()+
+  ylim(0,200)+
+  labs(y = "conteo")
+```
 
 Solo por diversión, hagamos muestras realmente grandes. Digamos, 100.000 observaciones por muestra. En ese caso, deberíamos esperar que cada número ocurra unas 10.000 veces. ¿Qué pasa?
 
@@ -188,7 +205,7 @@ ggplot(df, aes(x = a)) +
   labs(y = "conteo")
 ```
 
-La @fig-5sampunifALOT muestra que los histogramas de cada muestra empiezan a parecerse entre sí. Todas tienen 100.000 observaciones, y eso le da suficiente oportunidad al azar para distribuir los números de manera más equitativa, asegurándose aproximadamente de que todos ocurran más o menos la misma cantidad de veces. Como podés ver, las barras están todas muy cerca de 10.000, que es donde deberían estar si la muestra realmente proviene de una distribución uniforme. De nuevo, **no todas las barras tienen exactamente el mismo alto** —todavía hay error muestral—, pero **el patrón general** es ahora mucho más claro. Cada número ocurre más o menos la misma cantidad de veces, y las diferencias entre muestras son mucho menores.
+La @fig-5sampunifALOT muestra que los histogramas de cada muestra empiezan a parecerse entre sí. Todas tienen 100.000 observaciones, y eso le da suficiente oportunidad al azar para distribuir los números de manera más equitativa, asegurándose aproximadamente de que todos ocurran más o menos la misma cantidad de veces. Como podés ver, las barras están todas muy cerca de 10.000, que es donde deberían estar si la muestra realmente proviene de una distribución uniforme. De nuevo, **no todas las barras tienen exactamente el mismo alto** ---todavía hay error muestral---, pero **el patrón general** es ahora mucho más claro. Cada número ocurre más o menos la misma cantidad de veces, y las diferencias entre muestras son mucho menores.
 
 ::: callout-tip
 ## Consejo pro
@@ -213,7 +230,7 @@ ggplot(df, aes(x = a)) +
   labs(y = "conteo")
 ```
 
-Si no estás muy segurx de la respuesta, es porque el **error muestral** (el azar) está “difuminando” los histogramas.
+Si no estás muy segurx de la respuesta, es porque el **error muestral** (el azar) está "difuminando" los histogramas.
 
 Acá va exactamente la misma pregunta, solo que esta vez tomamos **1.000 observaciones por muestra**. ¿Cuál histograma en @fig-5whichoneC creés que proviene de una distribución uniforme, y cuál no?
 
@@ -236,7 +253,7 @@ Ahora que aumentamos `N`, podemos ver que el patrón en cada muestra se vuelve m
 
 ¡Felicitaciones! Acabamos de hacer inferencias estadísticas sin usar fórmulas.
 
-“¿Lo hicimos?” Sí: al mirar nuestras dos muestras, inferimos que la muestra 2 **no** provino de una distribución uniforme. También inferimos que la muestra 1 **podría** haber venido de una distribución uniforme. Fantástico. Este tipo de inferencias son las mismas que vamos a hacer durante el resto del curso.
+"¿Lo hicimos?" Sí: al mirar nuestras dos muestras, inferimos que la muestra 2 **no** provino de una distribución uniforme. También inferimos que la muestra 1 **podría** haber venido de una distribución uniforme. Fantástico. Este tipo de inferencias son las mismas que vamos a hacer durante el resto del curso.
 
 Vamos a mirar algunos números, preguntarnos de dónde salieron, y luego organizarlos de forma tal que podamos hacer inferencias sobre **el tipo de distribución** de la que provinieron. Eso es todo.
 
@@ -249,7 +266,6 @@ Hablar sobre algunas distribuciones distintas. Incluir app de Shiny.
 SHINY APP acá
 -->
 ```
-
 ## ¿Hay una diferencia?
 
 Volvamos a los experimentos. En un experimento, queremos saber si una **variable independiente** (nuestra manipulación) **causa un cambio** en una **variable dependiente** (la medición). Si esto ocurre, entonces esperamos ver **alguna diferencia** en nuestra medición como función de la manipulación.
@@ -260,7 +276,7 @@ Considerá el ejemplo del interruptor de luz:
 
 Podés ver el cambio en la medición entre condiciones, es tan obvio como el día y la noche. Entonces, cuando realizás una manipulación y **ves la diferencia** (el cambio) en tu medición, podés estar bastante seguro de que tu manipulación **está causando el cambio**.
 
-> Nota: para ser cautos, podemos decir que **“algo”** relacionado con tu manipulación está causando el cambio; tal vez no sea exactamente lo que pensás que es, si tu manipulación es muy complicada e involucra muchos elementos en juego.
+> Nota: para ser cautos, podemos decir que **"algo"** relacionado con tu manipulación está causando el cambio; tal vez no sea exactamente lo que pensás que es, si tu manipulación es muy complicada e involucra muchos elementos en juego.
 
 ### El azar puede producir diferencias
 
@@ -279,7 +295,7 @@ Realizás el experimento así:
 
 Esperamos que estés de acuerdo en que tus manos no pueden distinguir entre bolitas verdes y rojas. Si no estás de acuerdo, vamos a estipular además que las bolitas son completamente idénticas en todo, salvo en el color, así que sería imposible diferenciarlas usando el tacto. Entonces, ¿qué debería pasar en este experimento?
 
-—“Eh... quizás saques 5 bolitas rojas y 5 verdes con la mano izquierda, y lo mismo con la derecha?” Más o menos, eso es lo que usualmente pasaría. Pero no es lo único que podría pasar. Acá tenés algunos datos de un experimento ficticio:
+---"Eh... quizás saques 5 bolitas rojas y 5 verdes con la mano izquierda, y lo mismo con la derecha?" Más o menos, eso es lo que usualmente pasaría. Pero no es lo único que podría pasar. Acá tenés algunos datos de un experimento ficticio:
 
 ```{r, echo=F}
 mano <- rep(c("izquierda", "derecha"), each = 10)
@@ -289,7 +305,7 @@ df <- data.frame(mano, bolita)
 knitr::kable(df)
 ```
 
-—“¿Qué estoy viendo acá?” Esta es una tabla en formato largo. Cada fila es una bolita. La primera columna indica con qué mano se sacó. La segunda indica qué tipo de bolita es. Vamos a decir que los valores `1` representan bolitas verdes y los `0` representan bolitas rojas.
+---"¿Qué estoy viendo acá?" Esta es una tabla en formato largo. Cada fila es una bolita. La primera columna indica con qué mano se sacó. La segunda indica qué tipo de bolita es. Vamos a decir que los valores `1` representan bolitas verdes y los `0` representan bolitas rojas.
 
 Entonces... ¿la mano izquierda te hizo sacar más bolitas verdes que la mano derecha? Sería más fácil mirar los datos usando un gráfico de barras (`@fig-5bolitaA`). Para simplificar, vamos a contar solo las bolitas verdes (las otras necesariamente son rojas). Así que solo necesitamos sumar los unos; los ceros no suman nada.
 
@@ -310,7 +326,7 @@ ggplot(sum_df, aes(x = mano, y = bolita)) +
 
 ### Las diferencias causadas por el azar se pueden simular
 
-Recordá cuando mostramos que el azar puede producir correlaciones. También mostramos que el azar tiene **limitaciones** en su capacidad para producir correlaciones. Por ejemplo, el azar **genera con más frecuencia correlaciones débiles que fuertes**. ¿Te acordás de la “ventana del azar”? Antes descubrimos que las correlaciones que caen fuera de esa ventana son muy poco probables.
+Recordá cuando mostramos que el azar puede producir correlaciones. También mostramos que el azar tiene **limitaciones** en su capacidad para producir correlaciones. Por ejemplo, el azar **genera con más frecuencia correlaciones débiles que fuertes**. ¿Te acordás de la "ventana del azar"? Antes descubrimos que las correlaciones que caen fuera de esa ventana son muy poco probables.
 
 Podemos hacer lo mismo con las diferencias. Vamos a investigar exactamente qué puede hacer el azar en nuestro experimento. Una vez que sepamos de lo que el azar es capaz, vamos a estar en una mejor posición para juzgar si nuestra manipulación causó una diferencia, o si simplemente **podría haber sido el azar**.
 
@@ -412,7 +428,7 @@ hist(diferencias, breaks = seq(-10, 10, 1),
 
 Nuestra simulación por computadora nos permite forzar al azar a actuar miles de veces; cada vez produce una diferencia. Registramos la diferencia, y al final de la simulación graficamos el histograma de esas diferencias. Ese histograma empieza a mostrarnos **de dónde vinieron esas diferencias**. Recordá la idea de que los números provienen de una distribución, y que la distribución nos dice con qué frecuencia aparece cada número. Estamos viendo una de esas distribuciones. Nos está mostrando que el azar **produce algunas diferencias más a menudo que otras**.
 
-Primero, el azar usualmente produce diferencias de 0 —esa es la barra más alta en el centro. También puede producir diferencias más grandes, pero a medida que las diferencias se alejan de 0 (positivas o negativas), ocurren con **menos frecuencia**. La forma de este histograma es tu **ventana del azar**. Te dice lo que el azar puede hacer, lo que el azar usualmente hace, y lo que usualmente **no** hace.
+Primero, el azar usualmente produce diferencias de 0 ---esa es la barra más alta en el centro. También puede producir diferencias más grandes, pero a medida que las diferencias se alejan de 0 (positivas o negativas), ocurren con **menos frecuencia**. La forma de este histograma es tu **ventana del azar**. Te dice lo que el azar puede hacer, lo que el azar usualmente hace, y lo que usualmente **no** hace.
 
 Podés usar esta ventana del azar para ayudarte a hacer inferencias. Si vos mismo hicieras el experimento de las bolitas y encontraras que tu mano izquierda eligió 2 bolitas verdes más que la derecha, ¿concluirías que tu mano izquierda es especial, y que te hizo elegir más bolitas verdes? Esperemos que no. Podés mirar la ventana del azar y ver que **diferencias de +2 ocurren bastante seguido** por puro azar. No deberías sorprenderte si obtuviste una diferencia de +2. Ahora bien, ¿qué pasa si tu mano izquierda eligió 5 bolitas verdes más que la derecha? Bueno, el azar **no suele** hacer eso. Tal vez empieces a pensar que pasa algo con tu mano izquierda. Y si sacaras 9 bolitas verdes más con la izquierda que con la derecha, **realmente** podrías empezar a preguntarte. Eso es algo que puede pasar (es posible), pero **prácticamente nunca pasa por azar**.
 
@@ -445,9 +461,9 @@ Atención: esto es una prueba estadística no oficial, inventada por Matt Crump.
 
 ### Parte 1: Intuición basada en frecuencia sobre ocurrencias
 
-**Pregunta:** ¿Cuántas veces tiene que pasar algo para que consideres que pasa mucho? ¿Y cuántas veces tiene que pasar para que consideres que pasa muy poco, o casi nunca? ¿Tan pocas veces como para que no te preocupe que te pase? ¿Saldrías a la calle todos los días si pensás que te puede caer un rayo 1 de cada 10 veces? Yo no. Probablemente te caería un rayo más de una vez por mes, y morirías bastante rápido. 1 de cada 10 es **mucho** (para mí, tal vez no para vos —acá no hay una única respuesta correcta).
+**Pregunta:** ¿Cuántas veces tiene que pasar algo para que consideres que pasa mucho? ¿Y cuántas veces tiene que pasar para que consideres que pasa muy poco, o casi nunca? ¿Tan pocas veces como para que no te preocupe que te pase? ¿Saldrías a la calle todos los días si pensás que te puede caer un rayo 1 de cada 10 veces? Yo no. Probablemente te caería un rayo más de una vez por mes, y morirías bastante rápido. 1 de cada 10 es **mucho** (para mí, tal vez no para vos ---acá no hay una única respuesta correcta).
 
-¿Saldrías todos los días si pensaras que te puede caer un rayo 1 de cada 100 veces? Uf, esa es difícil. ¿Qué haría yo? Si saliera todos los días, probablemente estaría muerto en un año. Tal vez saldría 2 o 3 veces por año —soy algo arriesgado—, pero probablemente viviría más si me quedara en casa para siempre. Sería un bajón.
+¿Saldrías todos los días si pensaras que te puede caer un rayo 1 de cada 100 veces? Uf, esa es difícil. ¿Qué haría yo? Si saliera todos los días, probablemente estaría muerto en un año. Tal vez saldría 2 o 3 veces por año ---soy algo arriesgado---, pero probablemente viviría más si me quedara en casa para siempre. Sería un bajón.
 
 ¿Saldrías todos los días si pensás que te podría caer un rayo 1 de cada 1000 días? Bueno, probablemente te morirías en 3 a 6 años si hicieras eso. ¿Sos timbero? Tal vez saldrías una vez por mes. Igual, un garrón.
 
@@ -465,13 +481,13 @@ Esto es lo que vamos a hacer. Soy un psicólogo cognitivo que está midiendo cie
 
 Me gustaría aprender algo que me ayude a inferir. Una posibilidad sería ver **cómo se ve la distribución muestral de la media muestral**. Esa distribución me diría qué valores de la media aparecen frecuentemente, y cuáles son raros. Pero en realidad voy a **saltar esa parte**.
 
-Porque lo que realmente me interesa es **cómo se ve la distribución muestral de la diferencia entre medias muestrales**. Después de todo, voy a ejecutar un experimento con 20 personas en una condición y 20 en otra. Voy a calcular la media del grupo A, la media del grupo B, y mirar la diferencia. Probablemente encuentre una diferencia, pero mi pregunta es: ¿esa diferencia fue causada por mi manipulación, o es del tipo que suele ocurrir por azar? Si supiera qué puede hacer el azar y con qué frecuencia produce diferencias de determinado tamaño, entonces podría comparar la diferencia que observé con lo que el azar puede hacer, y entonces **tomar una decisión**. Si mi diferencia **no ocurre muy seguido**, (ya vamos a definir qué es “muy seguido”), entonces tal vez esté dispuesto a creer que **mi manipulación causó la diferencia**. Si mi diferencia ocurre todo el tiempo solo por azar, entonces no voy a pensar que fue causada por mi manipulación, porque podría haber sido simplemente el azar.
+Porque lo que realmente me interesa es **cómo se ve la distribución muestral de la diferencia entre medias muestrales**. Después de todo, voy a ejecutar un experimento con 20 personas en una condición y 20 en otra. Voy a calcular la media del grupo A, la media del grupo B, y mirar la diferencia. Probablemente encuentre una diferencia, pero mi pregunta es: ¿esa diferencia fue causada por mi manipulación, o es del tipo que suele ocurrir por azar? Si supiera qué puede hacer el azar y con qué frecuencia produce diferencias de determinado tamaño, entonces podría comparar la diferencia que observé con lo que el azar puede hacer, y entonces **tomar una decisión**. Si mi diferencia **no ocurre muy seguido**, (ya vamos a definir qué es "muy seguido"), entonces tal vez esté dispuesto a creer que **mi manipulación causó la diferencia**. Si mi diferencia ocurre todo el tiempo solo por azar, entonces no voy a pensar que fue causada por mi manipulación, porque podría haber sido simplemente el azar.
 
 Entonces, esto es lo que vamos a hacer, **incluso antes de ejecutar el experimento**. Vamos a hacer una simulación. Vamos a muestrear números para el grupo A y para el grupo B, luego vamos a calcular las medias de cada grupo, y después vamos a calcular la diferencia entre esas medias.
 
-Pero vamos a hacer **algo muy importante**: vamos a fingir que **no hicimos ninguna manipulación**. Si hacemos esto —no hacemos nada, ninguna intervención que pudiera causar una diferencia—, entonces sabemos que **cualquier diferencia entre las medias de los grupos A y B solo puede deberse al error muestral**. Eliminamos todas las demás causas: solo queda el azar. Haciendo esto, vamos a poder ver exactamente qué puede hacer el azar. Más importante aún, vamos a ver qué tipo de diferencias ocurren frecuentemente, y cuáles no.
+Pero vamos a hacer **algo muy importante**: vamos a fingir que **no hicimos ninguna manipulación**. Si hacemos esto ---no hacemos nada, ninguna intervención que pudiera causar una diferencia---, entonces sabemos que **cualquier diferencia entre las medias de los grupos A y B solo puede deberse al error muestral**. Eliminamos todas las demás causas: solo queda el azar. Haciendo esto, vamos a poder ver exactamente qué puede hacer el azar. Más importante aún, vamos a ver qué tipo de diferencias ocurren frecuentemente, y cuáles no.
 
-Antes de hacer la simulación, necesitamos responder una pregunta: **¿cuánto es “mucho”?** Podríamos elegir cualquier número. Yo voy a elegir 10.000. Eso es mucho. Si algo ocurre solo 1 vez en 10.000, estoy dispuesto a decir que **eso no es mucho**.
+Antes de hacer la simulación, necesitamos responder una pregunta: **¿cuánto es "mucho"?** Podríamos elegir cualquier número. Yo voy a elegir 10.000. Eso es mucho. Si algo ocurre solo 1 vez en 10.000, estoy dispuesto a decir que **eso no es mucho**.
 
 Bien, ya tenemos nuestro número. Vamos a simular las diferencias de medias entre los grupos A y B **que podrían surgir solo por azar**. Lo vamos a hacer 10.000 veces. Eso le da al azar muchas oportunidades para mostrarnos qué puede hacer y qué no.
 
@@ -495,14 +511,14 @@ ggplot(plot_df, aes(x = diferencia)) +
 ```
 
 ::: callout-note
-Por supuesto, podríamos reconocer que el azar **podría** producir una diferencia mayor que 15. Simplemente **no le dimos la oportunidad**. Solo corrimos la simulación 10.000 veces. Si la corriéramos un millón de veces, tal vez una diferencia mayor que 15 o incluso 20 ocurriría un par de veces. Si la corriéramos un trillón de veces, tal vez una diferencia mayor que 30 ocurriría muy de vez en cuando. Si fuéramos hasta el infinito, entonces el azar podría producir todo tipo de diferencias grandes **cada tanto**. Pero ya decidimos que 1 en 10.000 **no es mucho**. Así que cosas que ocurren 0 veces en 10.000 simulaciones —como diferencias mayores a 15— se consideran extremadamente improbables.
+Por supuesto, podríamos reconocer que el azar **podría** producir una diferencia mayor que 15. Simplemente **no le dimos la oportunidad**. Solo corrimos la simulación 10.000 veces. Si la corriéramos un millón de veces, tal vez una diferencia mayor que 15 o incluso 20 ocurriría un par de veces. Si la corriéramos un trillón de veces, tal vez una diferencia mayor que 30 ocurriría muy de vez en cuando. Si fuéramos hasta el infinito, entonces el azar podría producir todo tipo de diferencias grandes **cada tanto**. Pero ya decidimos que 1 en 10.000 **no es mucho**. Así que cosas que ocurren 0 veces en 10.000 simulaciones ---como diferencias mayores a 15--- se consideran extremadamente improbables.
 :::
 
 Ahora podemos ver lo que el azar puede hacer con respecto al tamaño de nuestras diferencias de medias. El eje x muestra el tamaño de la diferencia de medias. Como tomamos ambas muestras de la **misma distribución poblacional**, la diferencia entre ellas **debería tender a ser 0**, y eso es lo que vemos en el histograma.
 
 Pausa un segundo. ¿Por qué las diferencias de medias deberían tender a cero? ¿No era que la media poblacional era 100? ¿No deberían las diferencias rondar 100? No. La media del grupo A tenderá a estar alrededor de 100, y la del grupo B también. Entonces, la diferencia tenderá a ser 100 − 100 = 0.Por eso esperamos una **diferencia de medias igual a cero** cuando las muestras provienen de la misma población.
 
-Entonces, las diferencias cercanas a cero ocurren con más frecuencia —eso es bueno, es lo que esperábamos. Las diferencias más grandes (positivas o negativas) ocurren cada vez menos. Diferencias mayores que 15 o menores que -15 **no ocurrieron nunca**. Para nuestros fines, parece que el azar **solo produce diferencias entre -15 y 15**.
+Entonces, las diferencias cercanas a cero ocurren con más frecuencia ---eso es bueno, es lo que esperábamos. Las diferencias más grandes (positivas o negativas) ocurren cada vez menos. Diferencias mayores que 15 o menores que -15 **no ocurrieron nunca**. Para nuestros fines, parece que el azar **solo produce diferencias entre -15 y 15**.
 
 OK, hagamos un par de preguntas simples.¿Cuál fue el número negativo más grande (es decir, el más negativo) que ocurrió en la simulación? Vamos a usar R para esto. Todos los 10.000 puntajes de diferencia están guardados en una variable que llamé `diferencia`. Si queremos encontrar el valor mínimo, usamos la función `min`. Este es el resultado:
 
@@ -516,9 +532,9 @@ Bien, ¿y cuál fue el número positivo más grande que ocurrió? Usemos la func
 max(diferencia)
 ```
 
-Ambos valores extremos ocurrieron **solo una vez**. Fueron tan poco frecuentes que ni siquiera los pudimos ver en el histograma —la barra era tan baja que no se notaba. Además, el mayor valor negativo y el mayor positivo tienen prácticamente el mismo tamaño (ignorando el signo), lo cual tiene sentido porque la distribución parece bastante simétrica.
+Ambos valores extremos ocurrieron **solo una vez**. Fueron tan poco frecuentes que ni siquiera los pudimos ver en el histograma ---la barra era tan baja que no se notaba. Además, el mayor valor negativo y el mayor positivo tienen prácticamente el mismo tamaño (ignorando el signo), lo cual tiene sentido porque la distribución parece bastante simétrica.
 
-Entonces, ¿qué podemos decir sobre estos dos números —el mínimo y el máximo? Podemos decir que el mínimo ocurrió 1 vez de cada 10.000. Y que el máximo ocurrió 1 vez de cada 10.000. ¿Eso es mucho? Para mí, no. **No es mucho.**
+Entonces, ¿qué podemos decir sobre estos dos números ---el mínimo y el máximo? Podemos decir que el mínimo ocurrió 1 vez de cada 10.000. Y que el máximo ocurrió 1 vez de cada 10.000. ¿Eso es mucho? Para mí, no. **No es mucho.**
 
 ¿Y con qué frecuencia ocurre una diferencia de 30 (mucho más grande que el máximo)? No podemos decirlo exactamente, porque **30 no ocurrió nunca** en la simulación. Con lo que tenemos, podemos decir: 0 veces de cada 10.000. Eso significa: **nunca**.
 
@@ -528,7 +544,7 @@ Estamos por pasar a la parte tres, que consiste en **trazar líneas de decisión
 
 Recordá: ni siquiera hemos hecho un experimento real. Simplemente simulamos lo que podría pasar **si** lo hiciéramos. Hicimos un histograma. Vimos que el azar produce algunas diferencias más que otras, y que nunca produce diferencias realmente grandes. ¿Qué deberíamos hacer con esa información?
 
-Lo que vamos a hacer es hablar sobre **juicio y toma de decisiones**. ¿De qué tipo? Bueno, cuando finalmente hagas un experimento real, vas a obtener dos medias —una para el grupo A y otra para el grupo B—, y entonces vas a tener que hacer algunos juicios, y quizás incluso tomar una decisión, si querés.
+Lo que vamos a hacer es hablar sobre **juicio y toma de decisiones**. ¿De qué tipo? Bueno, cuando finalmente hagas un experimento real, vas a obtener dos medias ---una para el grupo A y otra para el grupo B---, y entonces vas a tener que hacer algunos juicios, y quizás incluso tomar una decisión, si querés.
 
 Vas a tener que juzgar si el azar (es decir, el error muestral) **podría haber producido la diferencia que observaste**. Si juzgás que no fue el azar, quizás decidas contarle al mundo que tu manipulación experimental realmente funciona. Si juzgás que sí podría haber sido el azar, quizás tomes una decisión distinta. Estas decisiones son importantes para los investigadores. Sus carreras pueden depender de ellas. Y además, sus decisiones **importan para el público**. A nadie le gusta escuchar noticias falsas en los medios sobre hallazgos científicos.
 
@@ -565,9 +581,9 @@ ggplot(plot_df, aes(x = diferencia)) +
   xlab("diferencia de medias")
 ```
 
-Acabamos de trazar unas líneas, sombrear algunas regiones y construir un plan que podríamos usar para tomar decisiones. ¿Cómo funcionarían esas decisiones? Supongamos que hiciste el experimento y encontraste una diferencia de medias entre los grupos A y B de 25. ¿Dónde está el 25 en la figura? Está en la parte verde. ¿Qué dice la parte verde? “NO AZAR”. ¿Qué significa esto? Significa que el azar **nunca** produjo una diferencia de 25. Eso ocurrió **0 veces de cada 10.000**. Si encontramos una diferencia de 25, quizás podamos concluir con confianza que el azar **no causó esa diferencia**. Si yo encontrara una diferencia de 25 con este tipo de datos, estaría bastante seguro de que el azar no la causó, y me daría permiso a mí mismo para considerar que **mi manipulación experimental podría estar causando la diferencia**.
+Acabamos de trazar unas líneas, sombrear algunas regiones y construir un plan que podríamos usar para tomar decisiones. ¿Cómo funcionarían esas decisiones? Supongamos que hiciste el experimento y encontraste una diferencia de medias entre los grupos A y B de 25. ¿Dónde está el 25 en la figura? Está en la parte verde. ¿Qué dice la parte verde? "NO AZAR". ¿Qué significa esto? Significa que el azar **nunca** produjo una diferencia de 25. Eso ocurrió **0 veces de cada 10.000**. Si encontramos una diferencia de 25, quizás podamos concluir con confianza que el azar **no causó esa diferencia**. Si yo encontrara una diferencia de 25 con este tipo de datos, estaría bastante seguro de que el azar no la causó, y me daría permiso a mí mismo para considerar que **mi manipulación experimental podría estar causando la diferencia**.
 
-¿Y qué pasa con una diferencia de +10? Eso está en la parte roja, **donde vive el azar**. El azar **podría haber producido** una diferencia de +10, porque podemos ver que **a veces lo hizo**. La parte roja es la ventana de lo que el azar hizo en nuestra simulación. Cualquier cosa dentro de esa ventana podría haber sido una diferencia causada por el azar. Si encontrara una diferencia de +10, diría: “sí, podría haber sido el azar”. Y también estaría **menos seguro** de que la diferencia fue causada solamente por mi manipulación experimental.
+¿Y qué pasa con una diferencia de +10? Eso está en la parte roja, **donde vive el azar**. El azar **podría haber producido** una diferencia de +10, porque podemos ver que **a veces lo hizo**. La parte roja es la ventana de lo que el azar hizo en nuestra simulación. Cualquier cosa dentro de esa ventana podría haber sido una diferencia causada por el azar. Si encontrara una diferencia de +10, diría: "sí, podría haber sido el azar". Y también estaría **menos seguro** de que la diferencia fue causada solamente por mi manipulación experimental.
 
 La inferencia estadística **podría ser tan simple como esto**: El número que obtenés de tu experimento podría estar **dentro de la ventana del azar** (entonces no podés descartar al azar como causa), o podría estar **fuera de la ventana del azar** (entonces sí podés descartarlo). Caso cerrado. Vámonos todos a casa.
 
@@ -577,11 +593,11 @@ Entonces, ¿cuál es el problema? Dependiendo de quién seas, y qué tipo de rie
 
 Nos gustaría decir que **el azar causó** o **no causó** la diferencia que observamos. Pero en realidad, siempre estamos en la posición de tener que admitir que **el azar podría haberla causado a veces**, o que **no la habría causado la mayoría de las veces**.
 
-Estas son afirmaciones ambiguas, imprecisas, entre el “sí” y el “no”. Y está bien. El gris también es un color. Vamos a darle un poco de respeto al gris.
+Estas son afirmaciones ambiguas, imprecisas, entre el "sí" y el "no". Y está bien. El gris también es un color. Vamos a darle un poco de respeto al gris.
 
-—“¿De qué zonas grises estás hablando? ¡Solo veo rojo y verde! ¿Tengo daltonismo para el gris?”—
+---"¿De qué zonas grises estás hablando? ¡Solo veo rojo y verde! ¿Tengo daltonismo para el gris?"---
 
-Veamos dónde podrían estar algunas zonas grises. Digo “podrían”, porque la gente no se pone de acuerdo sobre **dónde empieza el gris**. Las personas tienen distintos niveles de tolerancia al gris.
+Veamos dónde podrían estar algunas zonas grises. Digo "podrían", porque la gente no se pone de acuerdo sobre **dónde empieza el gris**. Las personas tienen distintos niveles de tolerancia al gris.
 
 La @fig-5crumpuncertainty muestra **mi** opinión sobre dónde se ubican las zonas grises:
 
@@ -759,7 +775,7 @@ Ya vimos lo que puede hacer el azar. Ahora ejecutamos un experimento. Manipulamo
 
 El asunto es el siguiente: a menudo **no sabemos qué tan fuerte es nuestra manipulación** desde el principio. Entonces, incluso si puede causar un cambio, no necesariamente sabemos **cuánto** puede cambiar las cosas. Por eso estamos ejecutando el experimento.
 
-Muchas manipulaciones en Psicología **no son lo suficientemente fuertes** como para causar grandes cambios. Y eso es un problema cuando queremos detectar esas fuerzas causales más pequeñas. En nuestro ejemplo ficticio, podrías manipular algo que tenga una influencia muy leve, que nunca empuje la diferencia de medias más allá de, digamos, 5 o 10. En nuestra simulación, **necesitábamos algo más cercano a 15, 17 o 21 —o mejor aún, ¡30!— porque el azar nunca hace eso**. Digamos que tu manipulación es escuchar música vs. no escuchar música. Escuchar música podría cambiar algo sobre X, pero si solo cambia X en +5, **nunca vas a poder afirmar con confianza que no fue el azar**. Y no es tan fácil cambiar completamente la condición de música para que sea súper intensa y realmente cause un cambio en X comparado con la condición sin música.
+Muchas manipulaciones en Psicología **no son lo suficientemente fuertes** como para causar grandes cambios. Y eso es un problema cuando queremos detectar esas fuerzas causales más pequeñas. En nuestro ejemplo ficticio, podrías manipular algo que tenga una influencia muy leve, que nunca empuje la diferencia de medias más allá de, digamos, 5 o 10. En nuestra simulación, **necesitábamos algo más cercano a 15, 17 o 21 ---o mejor aún, ¡30!--- porque el azar nunca hace eso**. Digamos que tu manipulación es escuchar música vs. no escuchar música. Escuchar música podría cambiar algo sobre X, pero si solo cambia X en +5, **nunca vas a poder afirmar con confianza que no fue el azar**. Y no es tan fácil cambiar completamente la condición de música para que sea súper intensa y realmente cause un cambio en X comparado con la condición sin música.
 
 > **¡DISEÑO EXPERIMENTAL AL RESCATE!** Último momento: a menudo es posible cambiar cómo ejecutás tu experimento para que sea **más sensible** a efectos pequeños.
 
@@ -807,7 +823,7 @@ the_range <- all_df %>%
 knitr::kable(the_range)
 ```
 
-La tabla muestra que el rango de comportamiento del azar es **mucho más amplio para tamaños muestrales pequeños**, y **más estrecho para tamaños muestrales grandes**. Pensá en lo que implica ese estrechamiento para el diseño de tu experimento. Por ejemplo, un aspecto del diseño es la elección del tamaño muestral, `N` —o, en un experimento de psicología, la cantidad de participantes. Si resulta que tu manipulación va a causar una diferencia de +11, ¿qué deberías hacer? ¿Ejecutar un experimento con `N = 20` personas? Espero que no. Si lo hicieras, podrías obtener una diferencia de medias de +11 **bastante seguido solo por azar**.
+La tabla muestra que el rango de comportamiento del azar es **mucho más amplio para tamaños muestrales pequeños**, y **más estrecho para tamaños muestrales grandes**. Pensá en lo que implica ese estrechamiento para el diseño de tu experimento. Por ejemplo, un aspecto del diseño es la elección del tamaño muestral, `N` ---o, en un experimento de psicología, la cantidad de participantes. Si resulta que tu manipulación va a causar una diferencia de +11, ¿qué deberías hacer? ¿Ejecutar un experimento con `N = 20` personas? Espero que no. Si lo hicieras, podrías obtener una diferencia de medias de +11 **bastante seguido solo por azar**.
 
 Sin embargo, si ejecutarás el experimento con **160 personas**, entonces sí podrías decir con seguridad que **+11 no fue causado por azar**, estaría fuera del rango de lo que el azar puede producir. Incluso podrías considerar correr el experimento con **80 participantes**. Una diferencia de +11 ahí **no ocurriría muy seguido por azar**, y además serías más eficiente en términos de tiempo y recursos.
 
@@ -817,7 +833,7 @@ Es importante aclarar que **esto no es lo único que podés hacer**. También po
 
 ### Parte 5: Yo tengo el poder
 
-> Por el poder de Grayskull... ¡YO TENGO EL PODER! – He-Man
+> Por el poder de Grayskull... ¡YO TENGO EL PODER! -- He-Man
 
 El último tema de esta sección se llama **poder**. Más adelante vamos a definirlo con ideas estadísticas más específicas. Acá solo vamos a hablar de la idea general. Y vamos a mostrar cómo asegurarte de que **tu diseño tenga un poder del 100%**. Porque, ¿por qué ejecutar un diseño que no tenga poder?
 
@@ -899,13 +915,13 @@ Muestreamos números, calculamos medias, restamos las medias entre condiciones e
 
 ## La prueba de aleatorización (o prueba de permutación)
 
-Bienvenidos a la **primera estadística inferencial oficial** de este libro. Hasta ahora estuvimos construyendo algunas intuiciones. A continuación, vamos a ser un poco más formales y mostrar cómo podemos usar el azar para decirnos si nuestro resultado experimental **probablemente fue causado por el azar o no**. Hacemos esto con algo llamado una **prueba de aleatorización**. Las ideas detrás de la prueba de aleatorización son **las mismas ideas** que están detrás del resto de las estadísticas inferenciales que vamos a discutir en los capítulos siguientes. Y —sorpresa— ya hemos hablado de **todas las ideas principales**. Ahora, simplemente las vamos a reunir, y darles el nombre de **prueba de aleatorización**.
+Bienvenidos a la **primera estadística inferencial oficial** de este libro. Hasta ahora estuvimos construyendo algunas intuiciones. A continuación, vamos a ser un poco más formales y mostrar cómo podemos usar el azar para decirnos si nuestro resultado experimental **probablemente fue causado por el azar o no**. Hacemos esto con algo llamado una **prueba de aleatorización**. Las ideas detrás de la prueba de aleatorización son **las mismas ideas** que están detrás del resto de las estadísticas inferenciales que vamos a discutir en los capítulos siguientes. Y ---sorpresa--- ya hemos hablado de **todas las ideas principales**. Ahora, simplemente las vamos a reunir, y darles el nombre de **prueba de aleatorización**.
 
 Acá va la idea principal. Cuando ejecutás un experimento y recolectás algunos datos, podés descubrir **qué pasó esa única vez**. Pero, como ejecutaste el experimento solo una vez, **no podés saber qué podría haber pasado**. La prueba de aleatorización es una forma de averiguar **qué podría haber pasado**. Y, una vez que sabés eso, podés comparar **lo que pasó** en tu experimento con **lo que podría haber pasado**.
 
 ### Ejemplo ficticio: ¿masticar chicle mejora tus calificaciones?
 
-Supongamos que ejecutás un experimento para saber si masticar chicle hace que los estudiantes obtengan mejores notas en un examen de estadística. Asignás al azar a 20 estudiantes a la condición “con chicle”, y a otros 20 estudiantes a la condición “sin chicle”. Después, les tomás un examen de estadística a todos y medís sus notas. Si masticar chicle causa mejores calificaciones, entonces el grupo con chicle debería tener, en promedio, **notas más altas** que el grupo sin chicle.
+Supongamos que ejecutás un experimento para saber si masticar chicle hace que los estudiantes obtengan mejores notas en un examen de estadística. Asignás al azar a 20 estudiantes a la condición "con chicle", y a otros 20 estudiantes a la condición "sin chicle". Después, les tomás un examen de estadística a todos y medís sus notas. Si masticar chicle causa mejores calificaciones, entonces el grupo con chicle debería tener, en promedio, **notas más altas** que el grupo sin chicle.
 
 Digamos que los datos lucen así:
 
@@ -925,11 +941,11 @@ knitr::kable(chicle_df)
 
 Entonces, ¿los estudiantes que masticaron chicle tuvieron mejor desempeño que los que no lo hicieron? Mirá la fila de medias al final de la tabla. La media para los estudiantes que masticaron chicle fue `r mean(chicle)`, y la media para los estudiantes sin chicle fue `r mean(no_chicle)`. A simple vista, parece que masticar chicle **funcionó**.
 
-“¡PAREN LAS ROTATIVAS, esto es ridículo!”. Ya sabemos que es ridículo porque estamos usando datos inventados. Pero, incluso si estos fueran datos reales, podrías pensar: “Eso del chicle no tiene sentido, esta diferencia podría haber sido causada por azar. Quizás los estudiantes más inteligentes cayeron por azar en el grupo con chicle, y por eso sus notas fueron más altas... el chicle en realidad no hizo nada...”. Estamos de acuerdo. Pero echemos un vistazo más de cerca. Ya sabemos cómo salieron los datos. Lo que queremos saber es **cómo podrían haber salido**. ¿Cuáles son todas las posibilidades?
+"¡PAREN LAS ROTATIVAS, esto es ridículo!". Ya sabemos que es ridículo porque estamos usando datos inventados. Pero, incluso si estos fueran datos reales, podrías pensar: "Eso del chicle no tiene sentido, esta diferencia podría haber sido causada por azar. Quizás los estudiantes más inteligentes cayeron por azar en el grupo con chicle, y por eso sus notas fueron más altas... el chicle en realidad no hizo nada...". Estamos de acuerdo. Pero echemos un vistazo más de cerca. Ya sabemos cómo salieron los datos. Lo que queremos saber es **cómo podrían haber salido**. ¿Cuáles son todas las posibilidades?
 
 Por ejemplo, los datos habrían salido un poco distintos si hubiéramos asignado a algunos estudiantes del grupo con chicle al grupo sin chicle, y viceversa. Pensá en todas las formas posibles de asignar a los 40 estudiantes en dos grupos; hay **muchísimas maneras**. Y las medias de cada grupo serían diferentes dependiendo de cómo se asignen los estudiantes.
 
-En la práctica, no es posible ejecutar el experimento de todas esas formas posibles —eso llevaría demasiado tiempo. Pero **sí podemos estimar cómo habrían salido todos esos experimentos** usando simulación. Esta es la idea: Tomamos las 40 mediciones (las notas del examen) que obtuvimos para todos los estudiantes. Luego, seleccionamos aleatoriamente a 20 de ellas y fingimos que fueron del grupo con chicle, y las 20 restantes las asignamos al grupo sin chicle. Entonces, volvemos a calcular las medias para ver qué habría pasado. Y seguimos haciendo esto una y otra vez, cada vez calculando lo que habría pasado en esa versión alternativa del experimento.
+En la práctica, no es posible ejecutar el experimento de todas esas formas posibles ---eso llevaría demasiado tiempo. Pero **sí podemos estimar cómo habrían salido todos esos experimentos** usando simulación. Esta es la idea: Tomamos las 40 mediciones (las notas del examen) que obtuvimos para todos los estudiantes. Luego, seleccionamos aleatoriamente a 20 de ellas y fingimos que fueron del grupo con chicle, y las 20 restantes las asignamos al grupo sin chicle. Entonces, volvemos a calcular las medias para ver qué habría pasado. Y seguimos haciendo esto una y otra vez, cada vez calculando lo que habría pasado en esa versión alternativa del experimento.
 
 #### Haciendo la aleatorización
 
@@ -959,7 +975,7 @@ print(new_no_chicle)
 
 Tomamos los primeros 5 números de los datos originales, y los pusimos todos en una variable llamada `all_scores`. Luego usamos la función `sample` en R para mezclar los puntajes. Finalmente, tomamos los primeros 5 puntajes mezclados y los guardamos en una nueva variable llamada `new_chicle`. Después, colocamos los últimos 5 puntajes en la variable `new_no_chicle`. Luego los imprimimos, así podemos verlos.
 
-Si hacemos esto un par de veces y lo ponemos en una tabla, podemos ver que las medias para “con chicle” y “sin chicle” serían distintas si los sujetos se asignaran al azar de otra forma. Fijate:
+Si hacemos esto un par de veces y lo ponemos en una tabla, podemos ver que las medias para "con chicle" y "sin chicle" serían distintas si los sujetos se asignaran al azar de otra forma. Fijate:
 
 ```{r,echo=F}
 chicle_df_small <- chicle_df[1:5, ]
@@ -989,7 +1005,7 @@ knitr::kable(chicle_df_small)
 
 #### Simulando las diferencias de medias en distintas aleatorizaciones
 
-En nuestro experimento ficticio encontramos que la media para los estudiantes que masticaron chicle fue `r mean(chicle)`, y la media para los que no lo hicieron fue `r mean(no_chicle)`. La diferencia de medias (chicle – sin chicle) fue `r mean(chicle) - mean(no_chicle)`. Esa es una diferencia bastante grande. Eso es **lo que pasó**. Pero, **¿qué podría haber pasado**? Si probáramos todos los experimentos posibles en los que los sujetos se asignan de forma diferente, ¿cómo luciría la distribución de las posibles diferencias de medias?
+En nuestro experimento ficticio encontramos que la media para los estudiantes que masticaron chicle fue `r mean(chicle)`, y la media para los que no lo hicieron fue `r mean(no_chicle)`. La diferencia de medias (chicle -- sin chicle) fue `r mean(chicle) - mean(no_chicle)`. Esa es una diferencia bastante grande. Eso es **lo que pasó**. Pero, **¿qué podría haber pasado**? Si probáramos todos los experimentos posibles en los que los sujetos se asignan de forma diferente, ¿cómo luciría la distribución de las posibles diferencias de medias?
 
 Vamos a averiguarlo. De eso se trata exactamente la prueba de aleatorización. Cuando hacemos nuestra prueba de aleatorización, vamos a medir la diferencia de medias en los puntajes del examen entre el grupo con chicle y el grupo sin chicle. Cada vez que hagamos una aleatorización, guardaremos la diferencia de medias.
 
@@ -1008,7 +1024,7 @@ knitr::include_graphics(path="imgs/gifs/randomizationTest-1_es.gif")
 ```
 :::
 
-Estamos haciendo una inferencia estadística **visual**. Al observar el rango de movimiento de los puntos amarillos, estamos viendo qué tipo de diferencias puede producir el azar. En esta animación, los puntos púrpura —que representan la diferencia original— están generalmente **fuera del rango del azar**. Los puntos amarillos **no se mueven más allá** de los puntos púrpura, así que el azar parece ser una explicación poco probable de la diferencia.
+Estamos haciendo una inferencia estadística **visual**. Al observar el rango de movimiento de los puntos amarillos, estamos viendo qué tipo de diferencias puede producir el azar. En esta animación, los puntos púrpura ---que representan la diferencia original--- están generalmente **fuera del rango del azar**. Los puntos amarillos **no se mueven más allá** de los puntos púrpura, así que el azar parece ser una explicación poco probable de la diferencia.
 
 Si los puntos púrpura estuvieran **dentro del rango de los puntos amarillos**, entonces sabríamos que el azar **es capaz de producir** la diferencia que observamos, y que lo hace **con bastante frecuencia**. En ese caso, **no deberíamos concluir** que la manipulación causó la diferencia, porque **podría haber ocurrido fácilmente por azar**.
 
@@ -1061,7 +1077,7 @@ ggplot(rand_df, aes(x = mean_diferencias)) +
 
 Fijate en la línea azul de la @fig-5randquestion. Si encontraras una diferencia de medias de 10, ¿te convencería de que esa diferencia **no fue causada por azar**? Como podés ver, la línea azul **está dentro de la ventana del azar**. Aunque las diferencias de +10 **no ocurren muy seguido**, podrías inferir que **probablemente no fueron causadas por azar** (pero tal vez te mantendrías algo escéptico, porque **sí podrían haberlo sido**).
 
-¿Y qué pasa con la línea roja? La línea roja representa una diferencia de +5. Si encontraras una diferencia de +5 acá, ¿estarías seguro de que **no fue causada por azar**? Yo no lo estaría. La línea roja está completamente dentro de la ventana del azar —**este tipo de diferencia ocurre con bastante frecuencia**. Necesitaría **más evidencia** para considerar la afirmación de que alguna variable independiente realmente **causó la diferencia**. Me sentiría mucho más cómodo asumiendo que la diferencia fue probablemente **causada por error muestral**.
+¿Y qué pasa con la línea roja? La línea roja representa una diferencia de +5. Si encontraras una diferencia de +5 acá, ¿estarías seguro de que **no fue causada por azar**? Yo no lo estaría. La línea roja está completamente dentro de la ventana del azar ---**este tipo de diferencia ocurre con bastante frecuencia**. Necesitaría **más evidencia** para considerar la afirmación de que alguna variable independiente realmente **causó la diferencia**. Me sentiría mucho más cómodo asumiendo que la diferencia fue probablemente **causada por error muestral**.
 
 ### Lo que nos queda hasta ahora
 
@@ -1073,7 +1089,7 @@ Sabemos que esas diferencias **podrían haber sido producidas solo por azar**. S
 
 Cuando la diferencia observada está claramente dentro de la distribución del azar, entonces podemos inferir que nuestra diferencia **podría haber sido producida por azar**. Cuando la diferencia observada **no está claramente dentro** de la distribución del azar, entonces podemos inferir que nuestra diferencia **probablemente no fue producida por azar**.
 
-En mi opinión, estas imágenes son muy, muy útiles. Si uno de nuestros objetivos es ayudarnos a resumir un montón de números complicados para llegar a una inferencia, entonces **las imágenes hacen un excelente trabajo**. Ni siquiera necesitamos un número resumen: solo necesitamos mirar la imagen y ver si la diferencia observada está **dentro o fuera de la ventana del azar**. **De eso se trata todo esto.** Crear formas **intuitivas y significativas** de hacer inferencias a partir de nuestros datos. A medida que avancemos, lo principal que haremos será **formalizar nuestro proceso** y hablar más sobre las estadísticas inferenciales “estándar”.
+En mi opinión, estas imágenes son muy, muy útiles. Si uno de nuestros objetivos es ayudarnos a resumir un montón de números complicados para llegar a una inferencia, entonces **las imágenes hacen un excelente trabajo**. Ni siquiera necesitamos un número resumen: solo necesitamos mirar la imagen y ver si la diferencia observada está **dentro o fuera de la ventana del azar**. **De eso se trata todo esto.** Crear formas **intuitivas y significativas** de hacer inferencias a partir de nuestros datos. A medida que avancemos, lo principal que haremos será **formalizar nuestro proceso** y hablar más sobre las estadísticas inferenciales "estándar".
 
 Por ejemplo, en lugar de mirar una imagen (aunque eso es algo útil), vamos a construir **algunos números útiles**. Por ejemplo: ¿y si quisieras saber **cuál es la probabilidad de que tu diferencia haya sido producida por azar**? Esa podría ser un número único, como el 95%. Si hubiera una probabilidad del 95% de que el azar pueda producir la diferencia que observaste, tal vez no estés muy confiado de que tu manipulación experimental fue la causa. Si hubiera solo un 1% de probabilidad de que el azar pueda producir esa diferencia, entonces podrías tener más confianza en que el **azar no produjo la diferencia**; y podrías, en cambio, estar cómodo con la posibilidad de que **tu manipulación experimental fue realmente la causa**.
 

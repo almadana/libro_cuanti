@@ -95,7 +95,7 @@ Veamos más de cerca el error muestral. Vamos a tomar una muestra de 20 números
 
 Para tener una mejor idea de la variabilidad muestral, repitamos ese proceso **diez veces**. La @fig-5manysamples muestra 10 histogramas, cada uno representando una muestra distinta de 20 números:
 
-```{r, echo=F}
+```{r, echo=F, warning = F}
 #| label: fig-5manysamples
 #| fig-cap: "Histogramas de 10 muestras distintas de la distribución uniforme. Cada muestra contiene 20 números. Todos los histogramas se ven bastante distintos. Las diferencias entre las muestras se deben al error muestral o al azar."
 #| out-width: "100%"
@@ -109,7 +109,8 @@ ggplot(df, aes(x = x)) +
   geom_bar() +
   facet_wrap(~sample, nrow = 2) +
   theme_classic(base_size = 20)+
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))+
+  labs(y = "conteo")
 ```
 
 Probablemente notes enseguida que ninguno de los histogramas es igual. Aunque estamos tomando aleatoriamente 20 números de la misma distribución uniforme, **cada muestra de 20 números resulta diferente**. Esto es **variabilidad muestral**, o **error de muestreo**.
@@ -785,7 +786,7 @@ Si cambiás el enfoque y pensás en las **diferencias de medias**, como la distr
 
 Por ejemplo, podríamos correr nuestro experimento con 20 sujetos por grupo. O podríamos decidir invertir más tiempo y correrlo con 40 sujetos por grupo, o 80, o 150. Cuando vos sos quien ejecuta el experimento, **vos decidís el diseño**. Y esas decisiones importan muchísimo. Básicamente, **cuantos más sujetos tenés, más sensible es tu experimento**. Con un `N` más grande, vas a poder detectar de manera confiable diferencias de medias más pequeñas, y podés concluir con confianza que esas diferencias **no fueron producidas por azar**.
 
-Fijate en los histogramas de @fig-5sampleDistNormal. Es la misma simulación de antes, pero con cuatro tamaños muestrales distintos: 20, 40, 80, 160. Vamos duplicando el tamaño muestral en cada simulación, solo para ver qué pasa con el **ancho de la ventana del azar**.
+Fijate en los histogramas de @fig-5sampleDistNormal . Es la misma simulación de antes, pero con cuatro tamaños muestrales distintos: 20, 40, 80, 160. Vamos duplicando el tamaño muestral en cada simulación, solo para ver qué pasa con el **ancho de la ventana del azar**.
 
 ```{r, echo=F}
 #| label: fig-5sampleDistNormal

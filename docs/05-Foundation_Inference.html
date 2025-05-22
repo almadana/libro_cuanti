@@ -764,7 +764,7 @@ SHINY APP acá
 </div>
 </div>
 <p>—“¿Qué estoy viendo acá?” Esta es una tabla en formato largo. Cada fila es una bolita. La primera columna indica con qué mano se sacó. La segunda indica qué tipo de bolita es. Vamos a decir que los valores <code>1</code> representan bolitas verdes y los <code>0</code> representan bolitas rojas.</p>
-<p>Entonces… ¿la mano izquierda te hizo sacar más bolitas verdes que la mano derecha? Sería más fácil mirar los datos usando un gráfico de barras (<code>@fig-5bolitaA</code>). Para simplificar, vamos a contar solo las bolitas verdes (las otras necesariamente son rojas). Así que solo necesitamos sumar los unos; los ceros no suman nada.</p>
+<p>Entonces… ¿la mano izquierda te hizo sacar más bolitas verdes que la mano derecha? Sería más fácil mirar los datos usando un gráfico de barras (<a href="#fig-5bolitaA">Figura&nbsp;<span>6.11</span></a>). Para simplificar, vamos a contar solo las bolitas verdes (las otras necesariamente son rojas). Así que solo necesitamos sumar los unos; los ceros no suman nada.</p>
 <div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5bolitaA_af8ea6c4eea6313561ee5c8577d3234b">
 <div class="cell-output-display">
 <div id="fig-5bolitaA" class="quarto-figure quarto-figure-center anchored">
@@ -813,7 +813,7 @@ SHINY APP acá
 </div>
 </div>
 <p>Las barras faltantes significan que se extrajo la misma cantidad de bolitas verdes con ambas manos (puntaje de diferencia igual a 0). Un valor positivo indica que la mano izquierda sacó más bolitas verdes que la derecha. Un valor negativo significa que fue la derecha la que sacó más verdes. Notá que si hubiéramos decidido (y lo podemos hacer) calcular la diferencia al revés (mano derecha menos mano izquierda), los signos de los puntajes se invertirían.</p>
-<p>Empezamos a ver mejor qué tipo de diferencias puede generar el azar. Los puntajes de diferencia están mayormente entre -2 y +2. Podríamos hacernos una idea más clara si corremos este experimento ficticio <strong>100 veces</strong> en lugar de solo 10. Los resultados se muestran en <code>@fig-5manydiffs</code>.</p>
+<p>Empezamos a ver mejor qué tipo de diferencias puede generar el azar. Los puntajes de diferencia están mayormente entre -2 y +2. Podríamos hacernos una idea más clara si corremos este experimento ficticio <strong>100 veces</strong> en lugar de solo 10. Los resultados se muestran en <a href="#fig-5manydiffs">Figura&nbsp;<span>6.14</span></a>.</p>
 <div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5manydiffs_aadc8dc07811c9d93280e8080b604e61">
 <div class="cell-output-display">
 <div id="fig-5manydiffs" class="quarto-figure quarto-figure-center anchored">
@@ -1438,10 +1438,7 @@ Nota
 <p>Como podés ver, las diferencias de medias varían de negativas a positivas. La diferencia más frecuente es 0. Además, la distribución parece simétrica en torno al cero, lo que muestra que teníamos aproximadamente las mismas probabilidades de obtener una diferencia positiva o negativa. También notá que a medida que las diferencias se hacen más grandes (ya sea en dirección positiva o negativa), <strong>se vuelven menos frecuentes</strong>. La línea azul nos muestra <strong>la diferencia observada</strong>, la que encontramos en nuestro experimento inventado. ¿Dónde está? Muy a la derecha. Está <strong>bien fuera del histograma</strong>. En otras palabras, cuando miramos <strong>lo que podría haber pasado</strong>, vemos que <strong>lo que pasó realmente</strong> no ocurre muy seguido.</p>
 <p><strong>IMPORTANTE:</strong> En este caso, cuando hablamos de <strong>lo que podría haber pasado</strong>, nos referimos a lo que <strong>podría haber pasado por azar</strong>. Cuando comparamos lo que pasó con lo que el azar podría haber producido, podemos tener una mejor idea de si nuestro resultado fue o no <strong>causado por azar</strong>.</p>
 <p>OK, ahora vamos a fingir que obtuvimos una diferencia de medias <strong>mucho más pequeña</strong> cuando ejecutamos el experimento. Podemos trazar nuevas líneas (azul y roja) para representar una media más pequeña que podríamos haber encontrado.</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5randquestion_24c64bfca5916090f4299909cc298baa">
-<div class="cell-output cell-output-stderr">
-<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-</div>
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5randquestion_22c3570a3cc5ef41713f201207d4455c">
 <div class="cell-output-display">
 <div id="fig-5randquestion" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">

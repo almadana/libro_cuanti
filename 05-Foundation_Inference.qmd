@@ -307,7 +307,7 @@ knitr::kable(df)
 
 ---"¿Qué estoy viendo acá?" Esta es una tabla en formato largo. Cada fila es una bolita. La primera columna indica con qué mano se sacó. La segunda indica qué tipo de bolita es. Vamos a decir que los valores `1` representan bolitas verdes y los `0` representan bolitas rojas.
 
-Entonces... ¿la mano izquierda te hizo sacar más bolitas verdes que la mano derecha? Sería más fácil mirar los datos usando un gráfico de barras (`@fig-5bolitaA`). Para simplificar, vamos a contar solo las bolitas verdes (las otras necesariamente son rojas). Así que solo necesitamos sumar los unos; los ceros no suman nada.
+Entonces... ¿la mano izquierda te hizo sacar más bolitas verdes que la mano derecha? Sería más fácil mirar los datos usando un gráfico de barras (@fig-5bolitaA). Para simplificar, vamos a contar solo las bolitas verdes (las otras necesariamente son rojas). Así que solo necesitamos sumar los unos; los ceros no suman nada.
 
 ```{r, echo=F}
 #| label: fig-5bolitaA
@@ -376,7 +376,7 @@ ggplot(dif_df, aes(y = diferencias, x = experiment)) +
 
 Las barras faltantes significan que se extrajo la misma cantidad de bolitas verdes con ambas manos (puntaje de diferencia igual a 0). Un valor positivo indica que la mano izquierda sacó más bolitas verdes que la derecha. Un valor negativo significa que fue la derecha la que sacó más verdes. Notá que si hubiéramos decidido (y lo podemos hacer) calcular la diferencia al revés (mano derecha menos mano izquierda), los signos de los puntajes se invertirían.
 
-Empezamos a ver mejor qué tipo de diferencias puede generar el azar. Los puntajes de diferencia están mayormente entre -2 y +2. Podríamos hacernos una idea más clara si corremos este experimento ficticio **100 veces** en lugar de solo 10. Los resultados se muestran en `@fig-5manydiffs`.
+Empezamos a ver mejor qué tipo de diferencias puede generar el azar. Los puntajes de diferencia están mayormente entre -2 y +2. Podríamos hacernos una idea más clara si corremos este experimento ficticio **100 veces** en lugar de solo 10. Los resultados se muestran en @fig-5manydiffs.
 
 ```{r, echo=F}
 #| label: fig-5manydiffs
@@ -1061,7 +1061,7 @@ Como podés ver, las diferencias de medias varían de negativas a positivas. La 
 
 OK, ahora vamos a fingir que obtuvimos una diferencia de medias **mucho más pequeña** cuando ejecutamos el experimento. Podemos trazar nuevas líneas (azul y roja) para representar una media más pequeña que podríamos haber encontrado.
 
-```{r, echo = F, warning=F}
+```{r, echo = F, warning=F,message=F}
 #| label: fig-5randquestion
 #| fig-cap: "¿Esperarías que una diferencia de medias representada por la línea azul ocurra más o menos seguido por azar, en comparación con la diferencia representada por la línea roja?"
 

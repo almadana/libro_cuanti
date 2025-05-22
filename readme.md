@@ -1,10 +1,10 @@
 # Readme
 
-First Draft (version 0.9 = August 7th, 2018) Last Compiled: `r Sys.Date()`
+Borrador de la traducción al Español (version 0.9 = 22 Mayo 2025) Compilado por última vez: `r Sys.Date()`
 
-**Online Textbook**: <https://crumplab.github.io/statistics/>
+**Libro online**: <https://almadana.github.io/libro_cuanti/>
 
-**Citation**: Crump, M. J. C., Navarro, D. J., & Suzuki, J. (2019, June 5). Answering Questions with Data (Textbook): Introductory Statistics for Psychology Students. https://doi.org/10.17605/OSF.IO/JZE52
+**Citation**: Crump, M. J. C., Navarro, D. J., Suzuki, J & Cabana, Á. (2025, Mayo 22). Respondiendo preguntas con datos (Libro): Introducción a la estadística para estudiantes de psicología
 
 ## Important notes
 

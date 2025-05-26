@@ -441,7 +441,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="la-visión-frecuentista"><span class="header-section-number">5.2.1</span> La visión frecuentista</h3>
 <p>El primero de los dos enfoques principales, y el más dominante en estadística, se conoce como la <strong>visión frecuentista</strong>, que define la probabilidad como una <strong>frecuencia a largo plazo</strong>. Supongamos que empezamos a lanzar una moneda justa, una y otra vez. Por definición, es una moneda en la que <span class="math inline">\(P(H) = 0.5\)</span>. ¿Qué podríamos observar? Una posibilidad es que los primeros 20 lanzamientos se vean así:</p>
 <pre><code>T, H, H, H, H, T, T, H, H, H, H, T, H, H, T, T, T, T, T, H</code></pre>
-<p>En este caso, 11 de los 20 lanzamientos (55%) salieron cara. Ahora supongamos que fui llevando la cuenta del número de caras (que voy a llamar $ N_H $) en los primeros $ N $ lanzamientos, y que cada vez calculo la proporción de caras $ N_H / N $. Esto es lo que obtendría (¡sí, de verdad lancé monedas para obtener esto!):</p>
+<p>En este caso, 11 de los 20 lanzamientos (55%) salieron cara. Ahora supongamos que fui llevando la cuenta del número de caras (que voy a llamar <span class="math inline">\(N_H\)</span>) en los primeros <span class="math inline">\(N\)</span> lanzamientos, y que cada vez calculo la proporción de caras <span class="math inline">\(N_H/N\)</span>. Esto es lo que obtendría (¡sí, de verdad lancé monedas para obtener esto!):</p>
 <table class="table">
 <colgroup>
 <col style="width: 32%">
@@ -1269,57 +1269,7 @@ P(B \mid A) &amp;=&amp; P(x_3 \mid A) + P(x_4 \mid A) \\\\
 </div>
 </div>
 <p>Una vez más, ahora con una distribución exponencial (mostrada en rojo), donde es más probable que se muestren valores pequeños que grandes. Aunque muchos más números en cada muestra serán pequeños en comparación con los grandes, según la <a href="#fig-4samplemeanExp">Figura&nbsp;<span>5.18</span></a>, la distribución muestral de la media no se parece a la línea roja. En cambio, la distribución muestral de la media se parece a una curva en forma de campana: una distribución normal. Esto es el teorema central del límite en acción.</p>
-<div class="cell" data-hash="04-SamplesPopulations_cache/html/fig-4samplemeanExp_98bb4e0854cf455520e95b1a8a190e04">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Función para obtener medias muestrales a partir de una distribución exponencial</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>get_sampling_means <span class="ot">&lt;-</span> <span class="cf">function</span>(s_size, r, iter) {</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  save_means <span class="ot">&lt;-</span> <span class="fu">length</span>(iter)</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>iter) {</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    save_means[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">rexp</span>(s_size, r))</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(save_means)</span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>all_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>sims <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Tamaños de muestra: 10 y 50</span></span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (n <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">50</span>)) {</span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>  sample <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="dv">0</span>, <span class="dv">1</span>)  <span class="co"># Nota: como antes, sample no se usa luego</span></span>
-<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>  sample_means <span class="ot">&lt;-</span> <span class="fu">get_sampling_means</span>(n, <span class="dv">2</span>, <span class="dv">1000</span>)</span>
-<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>  t_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">sims =</span> <span class="fu">rep</span>(sims, <span class="dv">1000</span>),</span>
-<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>    sample,</span>
-<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>    sample_means,</span>
-<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">sample_size =</span> <span class="fu">rep</span>(n, <span class="dv">1000</span>),</span>
-<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">sample_mean =</span> <span class="fu">rep</span>(<span class="fu">mean</span>(sample), <span class="dv">1000</span>),</span>
-<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">sampling_mean =</span> <span class="fu">rep</span>(<span class="fu">mean</span>(sample_means), <span class="dv">1000</span>)</span>
-<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>  all_df <span class="ot">&lt;-</span> <span class="fu">rbind</span>(all_df, t_df)</span>
-<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(all_df, <span class="fu">aes</span>(<span class="at">x =</span> sample)) <span class="sc">+</span></span>
-<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(</span>
-<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> sample_means, <span class="at">y =</span> (..density..) <span class="sc">/</span> <span class="fu">max</span>(..density..)),</span>
-<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"blue"</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">alpha =</span> .<span class="dv">5</span>, <span class="at">bins =</span> <span class="dv">75</span></span>
-<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dexp,</span>
-<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a>                <span class="at">args =</span> <span class="fu">list</span>(<span class="at">rate =</span> <span class="dv">2</span>),</span>
-<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a>                <span class="at">lwd =</span> .<span class="dv">75</span>,</span>
-<span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a>                <span class="at">col =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>sample_size) <span class="sc">+</span></span>
-<span id="cb21-38"><a href="#cb21-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb21-39"><a href="#cb21-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
-<span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Distribución muestral de la media</span><span class="sc">\n</span><span class="st"> para muestras tomadas de una distribución exponencial"</span>) <span class="sc">+</span></span>
-<span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Verosimilitudes aproximadas"</span>) <span class="sc">+</span></span>
-<span id="cb21-42"><a href="#cb21-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"valor"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 3 rows containing non-finite outside the scale range
-(`stat_bin()`).</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 4 rows containing missing values or values outside the scale range
-(`geom_bar()`).</code></pre>
-</div>
+<div class="cell" data-hash="04-SamplesPopulations_cache/html/fig-4samplemeanExp_2476e7a4e2ddbdc8a29f544402b25b0c">
 <div class="cell-output-display">
 <div id="fig-4samplemeanExp" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
@@ -1377,10 +1327,10 @@ P(B \mid A) &amp;=&amp; P(x_3 \mid A) + P(x_4 \mid A) \\\\
 <p>Ahora también sabemos, gracias al teorema central del límite, que muchas de nuestras medidas —como las medias muestrales— se distribuyen normalmente. Por eso, muchas veces conviene expresar los puntajes brutos en términos de sus desviaciones estándar.</p>
 <p>Veamos cómo se ve esto en una tabla, sin fórmulas. Vamos a considerar puntajes que provienen de una distribución normal con media = 100 y desviación estándar = 25. Vamos a listar algunos puntajes originales junto con sus correspondientes puntajes z:</p>
 <div class="cell" data-hash="04-SamplesPopulations_cache/html/unnamed-chunk-9_d550e02de73028ecb21d1eb7c24434fd">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>original <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">50</span>, <span class="dv">75</span>, <span class="dv">100</span>, <span class="dv">125</span>, <span class="dv">150</span>, <span class="dv">175</span>)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>z   <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(original, z)</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(df)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>original <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">50</span>, <span class="dv">75</span>, <span class="dv">100</span>, <span class="dv">125</span>, <span class="dv">150</span>, <span class="dv">175</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>z   <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(original, z)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(df)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
 <thead>
@@ -1441,10 +1391,10 @@ P(B \mid A) &amp;=&amp; P(x_3 \mid A) + P(x_4 \mid A) \\\\
 z = \frac{\text{puntaje bruto} - \text{media}}{\text{desvío estándar}}
 \]</span></p>
 <p>Por ejemplo, si tenemos estos 10 puntajes tomados de una distribución normal con media = 100 y desvío estándar = 25:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">25</span>), <span class="at">digits =</span> <span class="dv">2</span>)</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(scores)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">25</span>), <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(scores)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Los puntajes z correspondientes serían:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>(scores <span class="sc">-</span> <span class="dv">100</span>) <span class="sc">/</span> <span class="dv">25</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>(scores <span class="sc">-</span> <span class="dv">100</span>) <span class="sc">/</span> <span class="dv">25</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Una vez que tenés los puntajes z, podés usarlos como una forma alternativa de describir tus datos. Por ejemplo, ahora con solo mirar un puntaje sabés si es más o menos probable que ocurra, porque ya conocés cómo funciona el área bajo la curva normal. Puntajes z entre -1 y 1 ocurren bastante seguido; mayores que ±1 todavía ocurren, pero con menos frecuencia; y los que superan ±2 son bastante poco comunes. Esta es una forma práctica de mirar tus números y tener una idea general de qué tan seguido ocurren.</p>
 <p>En general, no conocés la media ni el desvío estándar de la población de la que provienen tus datos. Por eso, podés usar la <strong>media y el desvío estándar de tu muestra</strong> como estimaciones, y usarlos para calcular los puntajes z.</p>
 <p>Finalmente, los puntajes z también se llaman <strong>puntajes estandarizados</strong>, porque cada puntaje bruto se expresa en términos de cuántas desviaciones estándar se encuentra respecto de la media. Es muy probable que esta sea la última vez que hablemos de puntajes z en este libro. Y podrías preguntarte por qué nos molestamos en explicarlos. Primero, porque vale la pena saber que existen. Segundo, porque se vuelven importantes a medida que tu conocimiento estadístico se vuelve más avanzado. Tercero, porque algunos conceptos estadísticos —como la correlación— pueden expresarse en términos de puntajes z, y eso ilumina aspectos de esos estadísticos. Y por último, porque los puntajes z son muy útiles cuando estás trabajando con una distribución normal cuya media y desviación estándar son conocidas.</p>
@@ -1545,35 +1495,40 @@ z = \frac{\text{puntaje bruto} - \text{media}}{\text{desvío estándar}}
 <p>¿Qué intuiciones tenemos ahora sobre la población? De nuevo, en lo que respecta a la media poblacional, la mejor aproximación que podemos hacer es la media muestral: si nos obligaran a adivinar, probablemente diríamos que la media de cromulencia poblacional es 21. ¿Y la desviación estándar? Acá la cosa se pone un poco más complicada. La desviación estándar muestral está basada solamente en dos observaciones, y si sos como yo, seguramente tenés la intuición de que, con solo dos datos, no le estamos dando a la población “suficiente oportunidad” de mostrarnos su verdadera variabilidad. No es solo que sospechamos que la estimación está <strong>equivocada</strong> —porque con solo dos observaciones ya esperamos que haya algún error—. La preocupación más grande es que el error sea <strong>sistemático</strong>.</p>
 <p>Si el error es sistemático, entonces está <strong>sesgado</strong>. Por ejemplo, imaginate que el promedio muestral siempre fuera menor que el promedio poblacional. Si eso fuera cierto (no lo es), entonces no podríamos usar el promedio muestral como estimador. Estaría sesgado, estaríamos usando el número equivocado.</p>
 <p>Bueno, resulta que el desvío estándar muestral es un <strong>estimador sesgado</strong> del desvío estándar poblacional. Ya veníamos intuyéndolo con lo que estuvimos discutiendo. Cuando el tamaño muestral es 1, el desvío estándar es 0, lo cual claramente es demasiado bajo. Cuando el tamaño muestral es 2, el desvío estándar empieza a ser mayor que 0, pero como solo tenemos dos datos, sospechamos que sigue siendo demasiado bajo. Y resulta que esta intuición es correcta.</p>
-<p>Estaría bueno poder demostrar esto de alguna forma. Hay pruebas matemáticas que confirman esta intuición, pero salvo que tengas una formación matemática bastante sólida, no van a ayudarte mucho. Así que en vez de eso, lo que voy a hacer es usar R para simular los resultados de algunos experimentos. Con esto en mente, volvamos a nuestros estudios sobre CI. Supongamos que la verdadera media poblacional de CI es 100, y la desviación estándar poblacional es 15. Podemos usar la función <strong>rnorm()</strong> para generar los resultados de un experimento en el que medimos <span class="math inline">\(N = 2\)</span> puntuaciones de CI, y luego calculamos el desvío estándar muestral. Si repetimos este procedimiento una y otra vez, y graficamos un histograma de esos desvíos estándar muestrales, obtenemos la <strong>distribución muestral del desvío estándar</strong>. Esa distribución está graficada en la <span class="quarto-unresolved-ref">?fig-sampdistsd</span>.</p>
-<div class="cell" data-hash="04-SamplesPopulations_cache/html/unnamed-chunk-10_79ff8d14370814d4735391996cee3d66">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"imgs/navarro_img/estimation/sampdistsd_es.png"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Estaría bueno poder demostrar esto de alguna forma. Hay pruebas matemáticas que confirman esta intuición, pero salvo que tengas una formación matemática bastante sólida, no van a ayudarte mucho. Así que en vez de eso, lo que voy a hacer es usar R para simular los resultados de algunos experimentos. Con esto en mente, volvamos a nuestros estudios sobre CI. Supongamos que la verdadera media poblacional de CI es 100, y la desviación estándar poblacional es 15. Podemos usar la función <strong>rnorm()</strong> para generar los resultados de un experimento en el que medimos <span class="math inline">\(N = 2\)</span> puntuaciones de CI, y luego calculamos el desvío estándar muestral. Si repetimos este procedimiento una y otra vez, y graficamos un histograma de esos desvíos estándar muestrales, obtenemos la <strong>distribución muestral del desvío estándar</strong>. Esa distribución está graficada en la <a href="#fig-sampdistsd">Figura&nbsp;<span>5.21</span></a>.</p>
+<div class="cell" data-hash="04-SamplesPopulations_cache/html/fig-sampdistsd_4a719ba159c2987ad2dae71fa67feeeb">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"imgs/navarro_img/estimation/sampdistsd_es.png"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="imgs/navarro_img/estimation/sampdistsd_es.png" class="img-fluid" width="2025"></p>
-</div>
-</div>
-<p>Aunque la verdadera desviación estándar poblacional es 15, el promedio de los desvíos estándar <strong>muestrales</strong> es solo 8.5. Notá que esto es muy distinto de lo que pasaba cuando graficábamos distribuciones muestrales de la media: esas siempre estaban centradas en la media poblacional.</p>
-<p>Ahora ampliemos la simulación. En lugar de restringirnos a un tamaño muestral de <span class="math inline">\(N=2\)</span>, repitamos el experimento para tamaños muestrales del 1 al 10. Si graficamos el promedio de la media muestral y el promedio del desvío estándar muestral como función del tamaño de la muestra, obtenemos los siguientes resultados.</p>
-<p>La <a href="#fig-estimatorbiasA">Figura&nbsp;<span>5.21</span></a> muestra cómo cambia la media muestral según el tamaño de la muestra. Notá que la línea es plana: la media muestral no sobrestima ni subestima la media poblacional. Es un estimador insesgado.</p>
-<div class="cell" data-hash="04-SamplesPopulations_cache/html/fig-estimatorbiasA_3ac23e2b2cfcdb1634ba404778e7a94c">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"imgs/navarro_img/estimation/biasMean_es.png"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div id="fig-estimatorbiasA" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-sampdistsd" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="imgs/navarro_img/estimation/biasMean_es.png" class="img-fluid figure-img" width="1800"></p>
-<figcaption class="figure-caption">Figura&nbsp;5.21: Una ilustración del hecho de que la media muestral es un estimador insesgado de la media poblacional.</figcaption>
+<p><img src="imgs/navarro_img/estimation/sampdistsd_es.png" class="img-fluid figure-img" width="2025"></p>
+<figcaption class="figure-caption">Figura&nbsp;5.21: La distribución muestral del desvío estándar de la muestra en un experimento con dos puntuaciones de CI. El verdadero desvío estándar poblacional es 15 (línea punteada), pero como puede verse en el histograma, la gran mayoría de los experimentos produce un desvío estándar muestral mucho menor. En promedio, este experimento arrojaría un desvío estándar muestral de apenas 8.5, muy por debajo del valor real. En otras palabras, el desvío estándar muestral es un estimador sesgado del desvío estándar poblacional.</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>La <a href="#fig-estimatorbiasB">Figura&nbsp;<span>5.22</span></a> muestra cómo cambia el <strong>desvío estándar muestral</strong> con el tamaño de muestra. Notá que <strong>no</strong> es una línea plana: el desvío estándar muestral <strong>subestima sistemáticamente</strong> la desviación estándar poblacional.</p>
+<p>Aunque la verdadera desviación estándar poblacional es 15, el promedio de los desvíos estándar <strong>muestrales</strong> es solo 8.5. Notá que esto es muy distinto de lo que pasaba cuando graficábamos distribuciones muestrales de la media: esas siempre estaban centradas en la media poblacional.</p>
+<p>Ahora ampliemos la simulación. En lugar de restringirnos a un tamaño muestral de <span class="math inline">\(N=2\)</span>, repitamos el experimento para tamaños muestrales del 1 al 10. Si graficamos el promedio de la media muestral y el promedio del desvío estándar muestral como función del tamaño de la muestra, obtenemos los siguientes resultados.</p>
+<p>La <a href="#fig-estimatorbiasA">Figura&nbsp;<span>5.22</span></a> muestra cómo cambia la media muestral según el tamaño de la muestra. Notá que la línea es plana: la media muestral no sobrestima ni subestima la media poblacional. Es un estimador insesgado.</p>
+<div class="cell" data-hash="04-SamplesPopulations_cache/html/fig-estimatorbiasA_3ac23e2b2cfcdb1634ba404778e7a94c">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"imgs/navarro_img/estimation/biasMean_es.png"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-estimatorbiasA" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="imgs/navarro_img/estimation/biasMean_es.png" class="img-fluid figure-img" width="1800"></p>
+<figcaption class="figure-caption">Figura&nbsp;5.22: Una ilustración del hecho de que la media muestral es un estimador insesgado de la media poblacional.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>La <a href="#fig-estimatorbiasB">Figura&nbsp;<span>5.23</span></a> muestra cómo cambia el <strong>desvío estándar muestral</strong> con el tamaño de muestra. Notá que <strong>no</strong> es una línea plana: el desvío estándar muestral <strong>subestima sistemáticamente</strong> la desviación estándar poblacional.</p>
 <div class="cell" data-hash="04-SamplesPopulations_cache/html/fig-estimatorbiasB_e3e593e2743303cf8682c889e0caf0bc">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"imgs/navarro_img/estimation/biasSD_es.png"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"imgs/navarro_img/estimation/biasSD_es.png"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-estimatorbiasB" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="imgs/navarro_img/estimation/biasSD_es.png" class="img-fluid figure-img" width="1800"></p>
-<figcaption class="figure-caption">Figura&nbsp;5.22: Una ilustración del hecho de que el desvío estándar muestral es un estimador sesgado de la desviación estándar poblacional.</figcaption>
+<figcaption class="figure-caption">Figura&nbsp;5.23: Una ilustración del hecho de que el desvío estándar muestral es un estimador sesgado de la desviación estándar poblacional.</figcaption>
 </figure>
 </div>
 </div>
@@ -1649,8 +1604,8 @@ Nota
 </blockquote>
 <p>Hasta este punto del capítulo, describimos los fundamentos de la teoría del muestreo en los que se apoyan los estadísticos para hacer conjeturas sobre los parámetros poblacionales a partir de una muestra de datos. Como muestra esta discusión, una de las razones por las que necesitamos toda esta teoría es que todo conjunto de datos deja un cierto grado de incertidumbre, así que nuestras estimaciones nunca van a ser perfectamente precisas. Lo que falta en esta discusión hasta ahora es un intento de <strong>cuantificar</strong> cuánto es esa incertidumbre. No alcanza con poder decir que el CI promedio de estudiantes de psicología es 115 (sí, me acabo de inventar ese número). También queremos poder decir qué tan seguros estamos de esa estimación. Por ejemplo, estaría bueno poder decir que hay un 95% de probabilidad de que el valor real esté entre 109 y 121. A eso se le llama un <strong>intervalo de confianza</strong> para la media.</p>
 <p>Armados con lo que ya sabemos sobre distribuciones muestrales, construir un intervalo de confianza para la media es bastante fácil. Así es como funciona: Supongamos que la verdadera media poblacional es <span class="math inline">\(\mu\)</span> y la desviación estándar poblacional es <span class="math inline">\(\sigma\)</span>. Acabo de terminar mi estudio con <span class="math inline">\(N\)</span> participantes, y la media muestral de CI fue <span class="math inline">\(\bar{X}\)</span>. Sabemos, gracias al teorema central del límite, que la distribución muestral de la media es aproximadamente normal. También sabemos, por lo que aprendimos sobre la distribución normal, que hay un 95% de probabilidad de que un valor normalmente distribuido caiga dentro de dos desviaciones estándar de la media verdadera. Para ser más precisos, podemos usar la función <code>qnorm()</code> para calcular los percentiles 2.5 y 97.5 de la distribución normal:</p>
-<div class="cell" data-hash="04-SamplesPopulations_cache/html/unnamed-chunk-11_8329ccb849d74cc522b101c30471a571">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>( <span class="at">p =</span> <span class="fu">c</span>(.<span class="dv">025</span>, .<span class="dv">975</span>) )</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="04-SamplesPopulations_cache/html/unnamed-chunk-10_d3f69b6dde72e882c7f586c9ee2ea62e">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>( <span class="at">p =</span> <span class="fu">c</span>(.<span class="dv">025</span>, .<span class="dv">975</span>) )</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -1.959964  1.959964</code></pre>
 </div>
@@ -1671,8 +1626,8 @@ Nota
 \text{CI}_{95} = \bar{X} \pm \left( 1.96 \times \frac{\sigma}{\sqrt{N}} \right)
 \]</span></p>
 <p>Por supuesto, no hay nada especial en el número 1.96: simplemente es el multiplicador que necesitás usar si querés un intervalo de confianza del 95%. Si quisiera un intervalo de confianza del 70%, podría usar la función <strong>qnorm()</strong> para calcular los cuantiles 15 y 85:</p>
-<div class="cell" data-hash="04-SamplesPopulations_cache/html/unnamed-chunk-12_6ee0fca744d42d4ca582c9ecbbd9b8be">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>( <span class="at">p =</span> <span class="fu">c</span>(.<span class="dv">15</span>, .<span class="dv">85</span>) )</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="04-SamplesPopulations_cache/html/unnamed-chunk-11_d018b6160ea7fdb44a732df442ed545d">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>( <span class="at">p =</span> <span class="fu">c</span>(.<span class="dv">15</span>, .<span class="dv">85</span>) )</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -1.036433  1.036433</code></pre>
 </div>

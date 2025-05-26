@@ -84,7 +84,7 @@ El primero de los dos enfoques principales, y el más dominante en estadística,
 T, H, H, H, H, T, T, H, H, H, H, T, H, H, T, T, T, T, T, H
 ```
 
-En este caso, 11 de los 20 lanzamientos (55%) salieron cara. Ahora supongamos que fui llevando la cuenta del número de caras (que voy a llamar $ N_H $) en los primeros $ N $ lanzamientos, y que cada vez calculo la proporción de caras $ N_H / N $. Esto es lo que obtendría (¡sí, de verdad lancé monedas para obtener esto!):
+En este caso, 11 de los 20 lanzamientos (55%) salieron cara. Ahora supongamos que fui llevando la cuenta del número de caras (que voy a llamar $N_H$) en los primeros $N$ lanzamientos, y que cada vez calculo la proporción de caras $N_H/N$. Esto es lo que obtendría (¡sí, de verdad lancé monedas para obtener esto!):
 
 | número de lanzamientos |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  | 10  |
 |------------------------|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -884,7 +884,7 @@ ggplot(all_df, aes(x = sample)) +
 
 Una vez más, ahora con una distribución exponencial (mostrada en rojo), donde es más probable que se muestren valores pequeños que grandes. Aunque muchos más números en cada muestra serán pequeños en comparación con los grandes, según la @fig-4samplemeanExp, la distribución muestral de la media no se parece a la línea roja. En cambio, la distribución muestral de la media se parece a una curva en forma de campana: una distribución normal. Esto es el teorema central del límite en acción.
 
-```{r}
+```{r, echo=F, warning=F}
 #| label: fig-4samplemeanExp
 #| fig-cap: "Ilustración de que la forma de la distribución muestral de la media es normal, incluso cuando las muestras provienen de una distribución exponencial"
 
@@ -929,7 +929,7 @@ ggplot(all_df, aes(x = sample)) +
   theme_classic() +
   ggtitle("Distribución muestral de la media\n para muestras tomadas de una distribución exponencial") +
   ylab("Verosimilitudes aproximadas") +
-  xlab("valor")
+  labs(x="valor",y="densidad")
 ```
 
 A partir de estas figuras, parece que tenemos evidencia para las siguientes afirmaciones sobre la distribución muestral de la media:
@@ -1214,6 +1214,9 @@ Bueno, resulta que el desvío estándar muestral es un **estimador sesgado** del
 Estaría bueno poder demostrar esto de alguna forma. Hay pruebas matemáticas que confirman esta intuición, pero salvo que tengas una formación matemática bastante sólida, no van a ayudarte mucho. Así que en vez de eso, lo que voy a hacer es usar R para simular los resultados de algunos experimentos. Con esto en mente, volvamos a nuestros estudios sobre CI. Supongamos que la verdadera media poblacional de CI es 100, y la desviación estándar poblacional es 15. Podemos usar la función **rnorm()** para generar los resultados de un experimento en el que medimos $N = 2$ puntuaciones de CI, y luego calculamos el desvío estándar muestral. Si repetimos este procedimiento una y otra vez, y graficamos un histograma de esos desvíos estándar muestrales, obtenemos la **distribución muestral del desvío estándar**. Esa distribución está graficada en la @fig-sampdistsd.
 
 ```{r}
+#| label: fig-sampdistsd
+#| fig-cap: "La distribución muestral del desvío estándar de la muestra en un experimento con dos puntuaciones de CI. El verdadero desvío estándar poblacional es 15 (línea punteada), pero como puede verse en el histograma, la gran mayoría de los experimentos produce un desvío estándar muestral mucho menor. En promedio, este experimento arrojaría un desvío estándar muestral de apenas 8.5, muy por debajo del valor real. En otras palabras, el desvío estándar muestral es un estimador sesgado del desvío estándar poblacional."
+
 knitr::include_graphics("imgs/navarro_img/estimation/sampdistsd_es.png")
 ```
 

@@ -42,7 +42,7 @@ Antes de empezar a hablar de teoría de la probabilidad, conviene dedicar un mom
 
 Fijate que todas estas preguntas tienen algo en común. En cada caso la "verdad del mundo" es conocida, y mi pregunta se relaciona con "qué clase de eventos" van a ocurrir. En la primera pregunta, **sabemos** que la moneda es justa, así que hay un 50% de probabilidad de que cualquier lanzamiento individual salga cara. En la segunda, **sabemos** que la chance de sacar un 6 con un dado es 1 en 6. En la tercera, **sabemos** que el mazo está bien mezclado. Y en la cuarta, **sabemos** que la lotería sigue reglas específicas. Ya te hacés una idea. Lo importante es que las preguntas de probabilidad parten de un **modelo** conocido del mundo, y usamos ese modelo para hacer algunos cálculos.
 
-El modelo subyacente puede ser muy simple. Por ejemplo, en el caso de la moneda, podemos escribir el modelo así:$P(\text{cara}) = 0.5$que se lee: "la probabilidad de que salga cara es 0.5".
+El modelo subyacente puede ser muy simple. Por ejemplo, en el caso de la moneda, podemos escribir el modelo así:$P(\text{cara}) = 0.5 $que se lee: "la probabilidad de que salga cara es 0.5".
 
 Como veremos más adelante, así como los porcentajes van de 0% a 100%, las probabilidades son simplemente números que van de 0 a 1. Cuando usamos este modelo para responder la primera pregunta, en realidad no sabemos exactamente qué va a pasar. Tal vez salgan 10 caras, como plantea la pregunta. Pero también podrían salir 3 caras. Eso es lo importante: en la teoría de la probabilidad, el **modelo** es conocido, pero los **datos** no lo son.
 
@@ -60,7 +60,7 @@ Esta vez, lo único que tenemos son los datos. Lo que **sé** es que vi a mi ami
 H H H H H H H H H H
 ```
 
-y lo que estoy intentando hacer es decidir en cuál "modelo del mundo" debería confiar. Si la moneda es justa, entonces el modelo que debería adoptar es uno en el que la probabilidad de que salga cara es 0.5; es decir,$P(\text{cara}) = 0.5$Si la moneda no es justa, entonces debería concluir que la probabilidad de que salga cara **no** es 0.5, lo que escribiríamos como$P(\text{cara}) \neq 0.5$. En otras palabras, el problema de la inferencia estadística consiste en darme cuenta cuál de estos modelos de probabilidad es el correcto. Está claro que la pregunta estadística no es la misma que la pregunta de probabilidad, pero están profundamente relacionadas. Por eso, una buena introducción a la teoría estadística comienza con una discusión sobre qué es la probabilidad y cómo funciona.
+y lo que estoy intentando hacer es decidir en cuál "modelo del mundo" debería confiar. Si la moneda es justa, entonces el modelo que debería adoptar es uno en el que la probabilidad de que salga cara es 0.5; es decir,$P(\text{cara}) = 0.5 $Si la moneda no es justa, entonces debería concluir que la probabilidad de que salga cara **no** es 0.5, lo que escribiríamos como $P(\text{cara}) \neq 0.5$. En otras palabras, el problema de la inferencia estadística consiste en darme cuenta cuál de estos modelos de probabilidad es el correcto. Está claro que la pregunta estadística no es la misma que la pregunta de probabilidad, pero están profundamente relacionadas. Por eso, una buena introducción a la teoría estadística comienza con una discusión sobre qué es la probabilidad y cómo funciona.
 
 ## ¿Qué significa probabilidad?
 
@@ -70,7 +70,7 @@ Así que voy a intentarlo. Supongamos que quiero apostar en un partido de fútbo
 
 -   Son equipos robot, así que puedo hacerlos jugar muchas veces. Si lo hiciera, **Arduino Arsenal** ganaría 8 de cada 10 partidos, en promedio.
 
--   Para cualquier partido en particular, solo estaría de acuerdo en que apostar es "justo" si una apuesta de$1 a favor de **C Milan** paga$5 (es decir, recupero mi$1 más$4 de ganancia), al igual que lo sería una apuesta de$4 a favor de **Arduino Arsenal** (recupero mis$4 más$1 de ganancia).
+-   Para cualquier partido en particular, solo estaría de acuerdo en que apostar es "justo" si una apuesta de $1 a favor de **C Milan** paga $5 (es decir, recupero mi $1 más $4 de ganancia), al igual que lo sería una apuesta de $4 a favor de **Arduino Arsenal** (recupero mis $4 más $1 de ganancia).
 
 -   Mi "creencia" o "confianza" subjetiva en que gana **Arduino Arsenal** es cuatro veces más fuerte que la que tengo en que gane **C Milan**.
 
@@ -78,13 +78,13 @@ Todas estas opciones parecen razonables. Sin embargo, no son idénticas, y no to
 
 ### La visión frecuentista
 
-El primero de los dos enfoques principales, y el más dominante en estadística, se conoce como la **visión frecuentista**, que define la probabilidad como una **frecuencia a largo plazo**. Supongamos que empezamos a lanzar una moneda justa, una y otra vez. Por definición, es una moneda en la que$P(H) = 0.5$. ¿Qué podríamos observar? Una posibilidad es que los primeros 20 lanzamientos se vean así:
+El primero de los dos enfoques principales, y el más dominante en estadística, se conoce como la **visión frecuentista**, que define la probabilidad como una **frecuencia a largo plazo**. Supongamos que empezamos a lanzar una moneda justa, una y otra vez. Por definición, es una moneda en la que $P(H) = 0.5$. ¿Qué podríamos observar? Una posibilidad es que los primeros 20 lanzamientos se vean así:
 
 ```         
 T, H, H, H, H, T, T, H, H, H, H, T, H, H, T, T, T, T, T, H
 ```
 
-En este caso, 11 de los 20 lanzamientos (55%) salieron cara. Ahora supongamos que fui llevando la cuenta del número de caras (que voy a llamar$N_H$) en los primeros$N$lanzamientos, y que cada vez calculo la proporción de caras$N_H/N$. Esto es lo que obtendría (¡sí, de verdad lancé monedas para obtener esto!):
+En este caso, 11 de los 20 lanzamientos (55%) salieron cara. Ahora supongamos que fui llevando la cuenta del número de caras (que voy a llamar $N_H$) en los primeros $N$lanzamientos, y que cada vez calculo la proporción de caras $N_H/N$. Esto es lo que obtendría (¡sí, de verdad lancé monedas para obtener esto!):
 
 | número de lanzamientos |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  | 10  |
 |------------------------|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -96,7 +96,7 @@ En este caso, 11 de los 20 lanzamientos (55%) salieron cara. Ahora supongamos qu
 | número de caras        |  8  |  8  |  9  | 10  | 10  | 10  | 10  | 10  | 10  | 11  |
 | proporción             | .73 | .67 | .69 | .71 | .67 | .63 | .59 | .56 | .53 | .55 |
 
-Fijate que al principio de la secuencia, la **proporción** de caras fluctúa bastante, empezando en .00 y subiendo hasta .80. Más adelante, da la impresión de que se estabiliza, con valores que se acercan cada vez más al valor "correcto" de 0.50. Esta es la definición frecuentista de probabilidad en pocas palabras: lanzá una moneda justa muchas veces, y a medida que$N$crece (se acerca al infinito, denotado$N \rightarrow \infty$), la proporción de caras converge a 50%. Hay algunas sutilezas técnicas que le importan a los matemáticos, pero en términos cualitativos, así es como los frecuentistas definen la probabilidad. Por supuesto, no tengo un número infinito de monedas, ni la paciencia infinita para lanzarlas eternamente. Pero sí tengo una computadora, y las computadoras son excelentes para tareas repetitivas. Así que le pedí a la computadora que simulara lanzar una moneda 1000 veces, y luego grafiqué lo que pasa con la proporción$N_H / N$a medida que$N$aumenta. En realidad, lo hice cuatro veces, solo para asegurarme de que no fuera casualidad. Los resultados se muestran en la @fig-4FreqProb. Como podés ver, la **proporción de caras observadas** eventualmente deja de fluctuar, y se estabiliza. Cuando eso ocurre, el número al que se estabiliza es la verdadera probabilidad de cara.
+Fijate que al principio de la secuencia, la **proporción** de caras fluctúa bastante, empezando en .00 y subiendo hasta .80. Más adelante, da la impresión de que se estabiliza, con valores que se acercan cada vez más al valor "correcto" de 0.50. Esta es la definición frecuentista de probabilidad en pocas palabras: lanzá una moneda justa muchas veces, y a medida que $N$crece (se acerca al infinito, denotado $N \rightarrow \infty$), la proporción de caras converge a 50%. Hay algunas sutilezas técnicas que le importan a los matemáticos, pero en términos cualitativos, así es como los frecuentistas definen la probabilidad. Por supuesto, no tengo un número infinito de monedas, ni la paciencia infinita para lanzarlas eternamente. Pero sí tengo una computadora, y las computadoras son excelentes para tareas repetitivas. Así que le pedí a la computadora que simulara lanzar una moneda 1000 veces, y luego grafiqué lo que pasa con la proporción $N_H / N$ a medida que $N$ aumenta. En realidad, lo hice cuatro veces, solo para asegurarme de que no fuera casualidad. Los resultados se muestran en la @fig-4FreqProb. Como podés ver, la **proporción de caras observadas** eventualmente deja de fluctuar, y se estabiliza. Cuando eso ocurre, el número al que se estabiliza es la verdadera probabilidad de cara.
 
 ```{r echo=F}
 #| label: fig-4FreqProb
@@ -112,7 +112,7 @@ Más seriamente, la definición frecuentista tiene un alcance muy limitado. Hay 
 
 ### La visión bayesiana
 
-La **visión bayesiana** de la probabilidad también se llama la visión subjetivista, y es una posición minoritaria entre los estadísticos, pero que ha ido ganando terreno de forma sostenida en las últimas décadas. Hay muchas variantes del bayesianismo, lo que dificulta definir exactamente cuál es "la" visión bayesiana. La forma más común de pensar en la probabilidad subjetiva es definir la probabilidad de un evento como el **grado de creencia** que una persona (o agente racional e inteligente) asigna a la verdad de ese evento. Desde esta perspectiva, las probabilidades no existen en el mundo, sino que viven en los pensamientos y suposiciones de las personas (o seres inteligentes). Sin embargo, para que este enfoque funcione, necesitamos alguna forma de operacionalizar ese "grado de creencia". Una manera de hacerlo es formalizarlo en términos de "apuestas racionales", aunque existen otras formas. Supongamos que creo que hay un 60% de probabilidad de que mañana llueva. Si alguien me ofrece una apuesta que dice: si llueve, ganás$5; si no llueve, perdés$5, desde mi perspectiva es una buena apuesta. En cambio, si creo que hay solo un 40% de probabilidad de lluvia, entonces esa misma apuesta sería una mala idea. Así, podemos operacionalizar el concepto de "probabilidad subjetiva" en función de qué apuestas estoy dispuesto a aceptar.
+La **visión bayesiana** de la probabilidad también se llama la visión subjetivista, y es una posición minoritaria entre los estadísticos, pero que ha ido ganando terreno de forma sostenida en las últimas décadas. Hay muchas variantes del bayesianismo, lo que dificulta definir exactamente cuál es "la" visión bayesiana. La forma más común de pensar en la probabilidad subjetiva es definir la probabilidad de un evento como el **grado de creencia** que una persona (o agente racional e inteligente) asigna a la verdad de ese evento. Desde esta perspectiva, las probabilidades no existen en el mundo, sino que viven en los pensamientos y suposiciones de las personas (o seres inteligentes). Sin embargo, para que este enfoque funcione, necesitamos alguna forma de operacionalizar ese "grado de creencia". Una manera de hacerlo es formalizarlo en términos de "apuestas racionales", aunque existen otras formas. Supongamos que creo que hay un 60% de probabilidad de que mañana llueva. Si alguien me ofrece una apuesta que dice: si llueve, ganás $5; si no llueve, perdés $5, desde mi perspectiva es una buena apuesta. En cambio, si creo que hay solo un 40% de probabilidad de lluvia, entonces esa misma apuesta sería una mala idea. Así, podemos operacionalizar el concepto de "probabilidad subjetiva" en función de qué apuestas estoy dispuesto a aceptar.
 
 ¿Cuáles son las ventajas y desventajas de este enfoque bayesiano? La principal ventaja es que permite asignar probabilidades a cualquier evento que queramos. No es necesario que el evento sea repetible. La principal desventaja (para muchas personas) es que no podemos ser completamente objetivos: al asignar una probabilidad, es necesario especificar una entidad que posea el grado de creencia pertinente. Esa entidad puede ser una persona, un extraterrestre, un robot, o incluso un estadístico, pero tiene que haber un agente inteligente que tenga creencias. Para muchos esto resulta incómodo: hace que la probabilidad parezca arbitraria. Mientras que el enfoque bayesiano exige que el agente en cuestión sea racional (es decir, que respete las reglas de la probabilidad), permite que cada quien tenga sus propias creencias; yo puedo creer que la moneda está equilibrada y vos no, y aun así ambos ser racionales. La visión frecuentista no permite que dos observadores asignen probabilidades distintas al mismo evento: si eso ocurre, al menos uno de los dos está equivocado. La perspectiva bayesiana no impone esa restricción. Dos personas con conocimientos previos diferentes pueden, de forma legítima, tener creencias distintas sobre un mismo evento. En resumen, mientras que la visión frecuentista a veces se considera demasiado restrictiva (prohíbe asignar probabilidades a muchas cosas que nos interesa evaluar), la visión bayesiana a veces se percibe como demasiado amplia (permite demasiadas diferencias entre observadores).
 
@@ -130,19 +130,19 @@ Más allá de las discusiones ideológicas entre bayesianos y frecuentistas, res
 
 ### Introducción a las distribuciones de probabilidad
 
-Una de las verdades perturbadoras de mi vida es que solo tengo cinco pares de pantalones: tres jeans, la parte de abajo de un traje, y un pantalón deportivo. Más triste aún: les puse nombre. Los llamo$X_1$,$X_2$,$X_3$,$X_4$y$X_5$. De verdad lo hago: por eso me dicen "Señor Imaginativo". Cada día, elijo exactamente un par de pantalones para usar. Ni yo soy tan tonto como para tratar de usar dos al mismo tiempo, y gracias a años de entrenamiento ya no salgo de casa sin pantalones. Si quisiera describir esta situación usando el lenguaje de la teoría de la probabilidad, diría que cada par de pantalones (es decir, cada$X$) es un *evento elemental*. La característica clave de los eventos elementales es que cada vez que hacemos una observación (por ejemplo, cada vez que me pongo un par de pantalones), el resultado será uno y solo uno de esos eventos. Como dije, hoy en día siempre uso exactamente un par, así que mis pantalones cumplen con esa condición. De forma similar, al conjunto de todos los posibles eventos se lo llama *espacio muestral*. Es verdad que algunas personas lo llamarían "guardarropa", pero eso es porque se niegan a pensar en mis pantalones desde una perspectiva probabilística. Triste.
+Una de las verdades perturbadoras de mi vida es que solo tengo cinco pares de pantalones: tres jeans, la parte de abajo de un traje, y un pantalón deportivo. Más triste aún: les puse nombre. Los llamo $X_1$, $X_2$, $X_3$, $X_4$ y $X_5$. De verdad lo hago: por eso me dicen "Señor Imaginativo". Cada día, elijo exactamente un par de pantalones para usar. Ni yo soy tan tonto como para tratar de usar dos al mismo tiempo, y gracias a años de entrenamiento ya no salgo de casa sin pantalones. Si quisiera describir esta situación usando el lenguaje de la teoría de la probabilidad, diría que cada par de pantalones (es decir, cada $X$) es un *evento elemental*. La característica clave de los eventos elementales es que cada vez que hacemos una observación (por ejemplo, cada vez que me pongo un par de pantalones), el resultado será uno y solo uno de esos eventos. Como dije, hoy en día siempre uso exactamente un par, así que mis pantalones cumplen con esa condición. De forma similar, al conjunto de todos los posibles eventos se lo llama *espacio muestral*. Es verdad que algunas personas lo llamarían "guardarropa", pero eso es porque se niegan a pensar en mis pantalones desde una perspectiva probabilística. Triste.
 
-Bien, ahora que tenemos un espacio muestral (un guardarropa), formado por varios eventos elementales (pantalones), lo que queremos hacer es asignar una *probabilidad* a cada uno de esos eventos. Para un evento$X$, la probabilidad de ese evento$P(X)$es un número entre 0 y 1. Cuanto mayor es el valor de$P(X)$, más probable es que ocurra ese evento. Por ejemplo: - Si$P(X) = 0$, significa que el evento$X$es **imposible** (nunca uso ese pantalón). - Si$P(X) = 1$, significa que el evento$X$es **seguro** (siempre uso ese pantalón). - Valores de probabilidad intermedios significan que a veces uso ese pantalón. Por ejemplo, si$P(X) = 0.5$, significa que uso ese pantalón la mitad del tiempo.
+Bien, ahora que tenemos un espacio muestral (un guardarropa), formado por varios eventos elementales (pantalones), lo que queremos hacer es asignar una *probabilidad* a cada uno de esos eventos. Para un evento $X$, la probabilidad de ese evento $P(X)$es un número entre 0 y 1. Cuanto mayor es el valor de $P(X)$, más probable es que ocurra ese evento. Por ejemplo: - Si $P(X) = 0$, significa que el evento $X$ es **imposible** (nunca uso ese pantalón). - Si $P(X) = 1$, significa que el evento $X$ es **seguro** (siempre uso ese pantalón). - Valores de probabilidad intermedios significan que a veces uso ese pantalón. Por ejemplo, si $P(X) = 0.5$, significa que uso ese pantalón la mitad del tiempo.
 
 A esta altura, ya casi terminamos. Lo último que necesitamos reconocer es que "algo siempre ocurre". Cada vez que me pongo pantalones, efectivamente termino con un par puesto (una locura, ¿no?). Esta afirmación algo trillada quiere decir, en términos probabilísticos, que las probabilidades de todos los eventos elementales deben sumar 1. Esto se conoce como la *ley de probabilidad total*, aunque a nadie le importe demasiado. Más importante, si se cumplen estos requisitos, lo que tenemos es una *distribución de probabilidad*. Por ejemplo, esta es una distribución de probabilidad
 
 | ¿Qué pantalón?     | Etiqueta  |    Probabilidad    |
 |:-------------------|:---------:|:------------------:|
-| Jean azul          |$X_1$|$P(X_1) = 0.5$|
-| Jean gris          |$X_2$|$P(X_2) = 0.3$|
-| Jean negro         |$X_3$|$P(X_3) = 0.1$|
-| Pantalón de traje  |$X_4$| $P(X_4) = 0$|
-| Pantalón deportivo |$X_5$|$P(X_5) = 0.1$|
+| Jean azul          |$X_1$ |$P(X_1) = 0.5$|
+| Jean gris          |$X_2$ |$P(X_2) = 0.3$|
+| Jean negro         |$X_3$ |$P(X_3) = 0.1$|
+| Pantalón de traje  |$X_4$ | $P(X_4) = 0$|
+| Pantalón deportivo |$X_5$ |$P(X_5) = 0.1$|
 
 Cada uno de estos eventos tiene una probabilidad que está entre 0 y 1, y si sumamos todas las probabilidades, el total es 1. Genial. Incluso podemos hacer un lindo gráfico de barras para visualizar esta distribución, como se muestra en la @fig-4pantsprob. Y en este punto, todos logramos algo. Vos aprendiste qué es una distribución de probabilidad, y yo por fin encontré la forma de hacer un gráfico que trata exclusivamente sobre mis pantalones. ¡Ganamos todos!
 
@@ -153,7 +153,7 @@ Cada uno de estos eventos tiene una probabilidad que está entre 0 y 1, y si sum
 knitr::include_graphics("imgs/navarro_img/probability/pantsDistribution_es.png")
 ```
 
-La única otra cosa que necesito señalar es que la teoría de la probabilidad también te permite hablar de *eventos no elementales*, además de los elementales. La forma más fácil de ilustrar esto es con un ejemplo. En el caso de los pantalones, es perfectamente válido referirse a la probabilidad de que use jeans. En este escenario, decimos que el evento "Dan usa jeans" ocurre si el evento elemental que ocurrió fue uno de los apropiados; en este caso, "jean azul", "jean negro" o "jean gris". En términos matemáticos, definimos el evento "jeans"$E$como el conjunto de eventos elementales$(X_1, X_2, X_3)$. Si ocurre cualquiera de esos eventos, entonces se dice que ocurrió$E$. Una vez definida así la$E$, es muy fácil calcular la probabilidad$P(E)$: simplemente sumamos todo. En este caso:
+La única otra cosa que necesito señalar es que la teoría de la probabilidad también te permite hablar de *eventos no elementales*, además de los elementales. La forma más fácil de ilustrar esto es con un ejemplo. En el caso de los pantalones, es perfectamente válido referirse a la probabilidad de que use jeans. En este escenario, decimos que el evento "Dan usa jeans" ocurre si el evento elemental que ocurrió fue uno de los apropiados; en este caso, "jean azul", "jean negro" o "jean gris". En términos matemáticos, definimos el evento "jeans" $E$ como el conjunto de eventos elementales $(X_1, X_2, X_3)$. Si ocurre cualquiera de esos eventos, entonces se dice que ocurrió $E$. Una vez definida así la $E$, es muy fácil calcular la probabilidad $P(E)$: simplemente sumamos todo. En este caso:
 
 $$
 P(E) = P(X_1) + P(X_2) + P(X_3)
@@ -165,13 +165,13 @@ A esta altura tal vez estés pensando que todo esto es increíblemente obvio y s
 
 | Evento    | Notación      | =   | Regla                       |
 |-----------|---------------|-----|-----------------------------|
-| no$A$   |$P(\neg A)$  | =   |$1 - P(A)$                 |
-|$A$o$B$|$P(A \cup B)$| =   |$P(A) + P(B) - P(A \cap B)$|
-|$A$y$B$|$P(A \cap B)$| =   |$P(A|B) \cdot P(B)$        |
+| no $A$   |$P(\neg A)$  | =   |$1 - P(A)$                 |
+|$A$ o $B$|$P(A \cup B)$| =   |$P(A) + P(B) - P(A \cap B)$|
+|$A$ y $B$|$P(A \cap B)$| =   |$P(A|B) \cdot P(B)$        |
 
 : Algunas reglas básicas que deben cumplir las probabilidades. No necesitás conocerlas para entender los análisis que vamos a ver más adelante en el libro, pero son importantes si querés entender la teoría de la probabilidad con más profundidad.
 
-Ahora que tenemos la capacidad de "definir" eventos no elementales en términos de eventos elementales, en realidad podemos usar eso para construir (o, si querés sonar matemáticamente refinado, "derivar") algunas de las otras reglas de probabilidad. Estas reglas están listadas arriba, y aunque estoy bastante seguro de que muy pocos lectores realmente están interesados en cómo se construyen, te las voy a mostrar igual: aunque sea aburrido y probablemente nunca les encuentres mucho uso práctico, si lo leés un par de veces y tratás de entender cómo funciona, vas a ver que la probabilidad deja de parecer tan misteriosa, y con suerte te va a intimidar menos. Así que ahí vamos. Primero, para construir las reglas voy a necesitar un espacio muestral$X$compuesto por un conjunto de eventos elementales$x$, y dos eventos no elementales que voy a llamar$A$y$B$. Supongamos que:
+Ahora que tenemos la capacidad de "definir" eventos no elementales en términos de eventos elementales, en realidad podemos usar eso para construir (o, si querés sonar matemáticamente refinado, "derivar") algunas de las otras reglas de probabilidad. Estas reglas están listadas arriba, y aunque estoy bastante seguro de que muy pocos lectores realmente están interesados en cómo se construyen, te las voy a mostrar igual: aunque sea aburrido y probablemente nunca les encuentres mucho uso práctico, si lo leés un par de veces y tratás de entender cómo funciona, vas a ver que la probabilidad deja de parecer tan misteriosa, y con suerte te va a intimidar menos. Así que ahí vamos. Primero, para construir las reglas voy a necesitar un espacio muestral $X$ compuesto por un conjunto de eventos elementales $x$, y dos eventos no elementales que voy a llamar $A$ y $B$. Supongamos que:
 
 $$
 \begin{array}{rcl}
@@ -181,7 +181,7 @@ B &=& (x_3, x_4)
 \end{array}
 $$
 
-Para hacerlo más concreto, supongamos que todavía estamos hablando de la distribución de pantalones. Si es así,$A$correspondería al evento "jeans", y$B$al evento "negro":
+Para hacerlo más concreto, supongamos que todavía estamos hablando de la distribución de pantalones. Si es así, $A$ correspondería al evento "jeans", y $B$ al evento "negro":
 
 $$
 \begin{array}{rcl}
@@ -192,7 +192,7 @@ $$
 
 Ahora podemos empezar a comprobar las reglas que figuran en la tabla.
 
-En la primera línea, la tabla dice que:$P(\neg A) = 1 - P(A)$y lo que **significa** esto es que la probabilidad de "no$A$" es igual a 1 menos la probabilidad de$A$. Con un poco de reflexión (y un ejemplo tedioso) se vuelve evidente por qué esto tiene que ser verdad. Si$A$corresponde al evento de que me pongo jeans (es decir, que ocurre alguno de los eventos$x_1$,$x_2$o$x_3$), entonces la única definición razonable de "no$A$" (que se denota matemáticamente como$\neg A$) es decir que$\neg A$consiste en **todos** los eventos elementales que no pertenecen a$A$. En el caso de los pantalones, eso significa que:$$\neg A = (x_4, x_5)$$o, dicho en español: "no jeans" incluye todos los pantalones que no son jeans (es decir, el pantalón de traje negro y el pantalón deportivo azul). Por lo tanto, cada uno de los eventos elementales pertenece o bien a$A$, o bien a$\neg A$, pero no a ambos. Bien, entonces reorganicemos lo anterior:$$P(\neg A) + P(A) = 1$$que no es más que una forma matemática de decir: o uso jeans, o no uso jeans; la probabilidad de "no jeans" más la probabilidad de "jeans" es igual a 1.
+En la primera línea, la tabla dice que:$P(\neg A) = 1 - P(A)$y lo que **significa** esto es que la probabilidad de "no $A$" es igual a 1 menos la probabilidad de $A$. Con un poco de reflexión (y un ejemplo tedioso) se vuelve evidente por qué esto tiene que ser verdad. Si $A$ corresponde al evento de que me pongo jeans (es decir, que ocurre alguno de los eventos $x_1$, $x_2$ o $x_3$), entonces la única definición razonable de "no $A$" (que se denota matemáticamente como $\neg A$) es decir que$\neg A$consiste en **todos** los eventos elementales que no pertenecen a$A$. En el caso de los pantalones, eso significa que:$$\neg A = (x_4, x_5)$$o, dicho en español: "no jeans" incluye todos los pantalones que no son jeans (es decir, el pantalón de traje negro y el pantalón deportivo azul). Por lo tanto, cada uno de los eventos elementales pertenece o bien a$A$, o bien a$\neg A$, pero no a ambos. Bien, entonces reorganicemos lo anterior:$$P(\neg A) + P(A) = 1$$que no es más que una forma matemática de decir: o uso jeans, o no uso jeans; la probabilidad de "no jeans" más la probabilidad de "jeans" es igual a 1.
 
 Matemáticamente:
 
@@ -213,14 +213,14 @@ P(\neg A) + P(A) &=& P(x_1) + P(x_2) + P(x_3) + P(x_4) + P(x_5) \\
 \end{array}
 $$Excelente. Todo parece funcionar.
 
-"Guau", te escucho decir. "Todo esto para decirme lo increíblemente obvio". Y tenés razón: esto **es** increíblemente obvio. El **propósito** de la teoría de la probabilidad es formalizar y matematizar unas pocas intuiciones de sentido común. Así que sigamos un poco más con esta línea de razonamiento. En la sección anterior definí un evento correspondiente a **no** A, que denoté como$\neg A$. Ahora vamos a definir dos nuevos eventos que corresponden a conceptos cotidianos importantes: **$A$y$B$**, y **$A$o$B$\*\*. Específicamente:
+"Guau", te escucho decir. "Todo esto para decirme lo increíblemente obvio". Y tenés razón: esto **es** increíblemente obvio. El **propósito** de la teoría de la probabilidad es formalizar y matematizar unas pocas intuiciones de sentido común. Así que sigamos un poco más con esta línea de razonamiento. En la sección anterior definí un evento correspondiente a **no** A, que denoté como $\neg A$. Ahora vamos a definir dos nuevos eventos que corresponden a conceptos cotidianos importantes: **$A$y$B$**, y **$A$o$B$\*\*. Específicamente:
 
 | Afirmación en español                    | Notación matemática |
 |:-----------------------------------------|:-------------------:|
 | "$A$y$B$" ocurren ambos        |  $A \cap B$  |
 | ocurre al menos uno: "$A$o$B$" |  $A \cup B$  |
 
-Ya que$A$y$B$están definidos en términos de nuestros eventos elementales (los$x$s), necesitamos describir también$A \cap B$y$A \cup B$en términos de nuestros eventos elementales. ¿Podemos hacerlo? ¡Sí que podemos! La única forma en que ocurran ambos eventos,$A$y$B$, es que el evento elemental observado pertenezca tanto a$A$como a$B$. Así que "$A \cap B$" incluye solamente aquellos eventos elementales que pertenecen a$A$y$B$...
+Ya que $A$y$B$ están definidos en términos de nuestros eventos elementales (los $x$s), necesitamos describir también $A \cap B$y$A \cup B$ en términos de nuestros eventos elementales. ¿Podemos hacerlo? ¡Sí que podemos! La única forma en que ocurran ambos eventos,$A$y$B$, es que el evento elemental observado pertenezca tanto a $A$ como a $B$. Así que "$A \cap B$" incluye solamente aquellos eventos elementales que pertenecen a $A$ y $B$...
 
 $$
 \begin{array}{rcl}
@@ -228,9 +228,10 @@ A &=& (x_1, x_2, x_3) \\
 B &=& (x_3, x_4) \\
 A \cap B &=& (x_3)
 \end{array}
-$$Es decir, la única forma en que pueda estar usando "jeans" ($x_1, x_2, x_3$) y “pantalón negro” ($x_3, x_4$) al mismo tiempo, es que esté usando los “jeans negros” ($x_3$). Otro triunfo para lo absolutamente obvio.
+$$
+Es decir, la única forma en que pueda estar usando "jeans" ($x_1, x_2, x_3$) y “pantalón negro” ($x_3, x_4$) al mismo tiempo, es que esté usando los “jeans negros” ($x_3$). Otro triunfo para lo absolutamente obvio.
 
-A esta altura, no te va a sorprender para nada la definición de$A \cup B$, aunque probablemente te parezca increíblemente aburrida. La única forma en que puedo estar usando "jeans" o "pantalón negro" es si el pantalón elemental que realmente uso pertenece a$A$, o a$B$, o a ambos. Así que:
+A esta altura, no te va a sorprender para nada la definición de $A \cup B$, aunque probablemente te parezca increíblemente aburrida. La única forma en que puedo estar usando "jeans" o "pantalón negro" es si el pantalón elemental que realmente uso pertenece a$A$, o a$B$, o a ambos. Así que:
 
 $$
 \begin{array}{rcl}
@@ -242,54 +243,52 @@ $$
 
 Vaaamooooooooo!!!! Matemáticas, sabelo!
 
-Entonces, ya definimos qué queremos decir con$A \cap B$y$A \cup B$. Ahora asignemos probabilidades a esos eventos. Más específicamente, vamos a verificar la regla que dice que:$$P(A \cup B) = P(A) + P(B) - P(A \cap B)$$
+Entonces, ya definimos qué queremos decir con $A \cap B$y$A \cup B$. Ahora asignemos probabilidades a esos eventos. Más específicamente, vamos a verificar la regla que dice que: $$P(A \cup B) = P(A) + P(B) - P(A \cap B)$$
 
-Usando las definiciones anteriores, sabemos que:$A \cup B = (x_1, x_2, x_3, x_4)$, entonces$$
+Usando las definiciones anteriores, sabemos que: $A \cup B = (x_1, x_2, x_3, x_4)$, entonces 
+$$
 P(A \cup B) = P(x_1) + P(x_2) + P(x_3) + P(x_4)
 $$
 
-y usando el hecho de que sabemos qué eventos elementales pertenecen a$A$,$B$, y$A \cap B$, tenemos:$$
-
-```{=tex}
+y usando el hecho de que sabemos qué eventos elementales pertenecen a$A$,$B$, y$A \cap B$, tenemos:
+$$
 \begin{array}{rcl}
 P(A) &=& P(x_1) + P(x_2) + P(x_3) \\
 P(B) &=& P(x_3) + P(x_4) \\
 P(A \cap B) &=& P(x_3)
 \end{array}
-```
 $$
 y por lo tanto:
 $$
 
-```{=tex}
 \begin{array}{rcl}
 P(A) + P(B) - P(A \cap B)
 &=& P(x_1) + P(x_2) + P(x_3) + P(x_3) + P(x_4) - P(x_3) \\
 &=& P(x_1) + P(x_2) + P(x_3) + P(x_4) \\
 &=& P(A \cup B)
 \end{array}
-```
+
 $$
 
 Listo.
 
-El próximo concepto que necesitamos definir es la notación "$B$dado$A$", que se escribe típicamente como$B \mid A$. Esto es lo que quiero decir: supongamos que me levanto una mañana y me pongo un pantalón. Ocurre un evento elemental$x$. Supongamos que le grito a mi esposa (que está en la otra habitación, y no puede ver qué pantalón me puse): "¡Hoy estoy usando jeans!". Asumiendo que ella me cree, entonces sabe que$A$es verdadero. **Dado** que sabe que ocurrió$A$, ¿cuál es la **probabilidad condicional** de que también sea cierto$B$? Bueno, pensemos qué información tiene. Estas son las cosas que sabe:
+El próximo concepto que necesitamos definir es la notación "$B$ dado $A$", que se escribe típicamente como $B \mid A$. Esto es lo que quiero decir: supongamos que me levanto una mañana y me pongo un pantalón. Ocurre un evento elemental $x$. Supongamos que le grito a mi esposa (que está en la otra habitación, y no puede ver qué pantalón me puse): "¡Hoy estoy usando jeans!". Asumiendo que ella me cree, entonces sabe que $A$ es verdadero. **Dado** que sabe que ocurrió $A$, ¿cuál es la **probabilidad condicional** de que también sea cierto $B$? Bueno, pensemos qué información tiene. Estas son las cosas que sabe:
 
--   **Los eventos que no son jeans son imposibles**. Si$A$es verdadero, entonces sabemos que los únicos eventos elementales que pueden haber ocurrido son$x_1$,$x_2$y$x_3$(o sea, los jeans). Los eventos no jeans,$x_4$y$x_5$, ahora son imposibles y deben tener probabilidad cero. En otras palabras, nuestro **espacio muestral** se ha restringido a los eventos jeans. Pero sigue siendo cierto que la suma de las probabilidades de estos eventos **debe** ser 1: sabemos con certeza que estoy usando jeans.
+-   **Los eventos que no son jeans son imposibles**. Si $A$ es verdadero, entonces sabemos que los únicos eventos elementales que pueden haber ocurrido son$x_1$, $x_2$ y $x_3$(o sea, los jeans). Los eventos no jeans, $x_4$ y $x_5$, ahora son imposibles y deben tener probabilidad cero. En otras palabras, nuestro **espacio muestral** se ha restringido a los eventos jeans. Pero sigue siendo cierto que la suma de las probabilidades de estos eventos **debe** ser 1: sabemos con certeza que estoy usando jeans.
 
--   **Ella no aprendió nada sobre qué jeans estoy usando**. Antes de que yo anunciara que estoy usando jeans, ella ya sabía que era cinco veces más probable que estuviera usando jeans azules ($P(x_1) = 0.5$) que jeans negros ($P(x_3) = 0.1$). Mi anuncio no cambia eso... no dije **nada** sobre el color, así que la proporción$P(x_1) / P(x_3)$se mantiene igual, con un valor de 5.
+-   **Ella no aprendió nada sobre qué jeans estoy usando**. Antes de que yo anunciara que estoy usando jeans, ella ya sabía que era cinco veces más probable que estuviera usando jeans azules ($P(x_1) = 0.5$) que jeans negros ($P(x_3) = 0.1$). Mi anuncio no cambia eso... no dije **nada** sobre el color, así que la proporción $P(x_1) / P(x_3)$ se mantiene igual, con un valor de 5.
 
-Solo hay una forma de satisfacer estas restricciones: asignar probabilidad cero a los eventos imposibles (es decir,$P(x | A) = 0$si$x$no está en$A$), y luego dividir las probabilidades de todos los demás por$P(A)$. En este caso, como$P(A) = 0.9$, dividimos entre 0.9. Esto da:
+Solo hay una forma de satisfacer estas restricciones: asignar probabilidad cero a los eventos imposibles (es decir, $P(x | A) = 0$ si $x$ no está en $A$), y luego dividir las probabilidades de todos los demás por $P(A)$. En este caso, como $P(A) = 0.9$, dividimos entre 0.9. Esto da:
 
-| ¿Qué pantalón?     | Evento elemental | Prob. original ( P(x) ) | Nueva prob. ( P(x \mid A) ) |
+| ¿Qué pantalón?     | Evento elemental | Prob. original $P(x)$  | Nueva prob. $P(x \mid A) $ |
 |:-----------------|:----------------:|:----------------:|:----------------:|
-| Jean azul          |     ( x_1 )      |           0.5           |            0.556            |
-| Jean gris          |     ( x_2 )      |           0.3           |            0.333            |
-| Jean negro         |     ( x_3 )      |           0.1           |            0.111            |
-| Traje negro        |     ( x_4 )      |            0            |              0              |
-| Pantalón deportivo |     ( x_5 )      |           0.1           |              0              |
+| Jean azul          |     $x_1$      |           0.5           |            0.556            |
+| Jean gris          |     $x_2$      |           0.3           |            0.333            |
+| Jean negro         |     $x_3$      |           0.1           |            0.111            |
+| Traje negro        |     $x_4$      |            0            |              0              |
+| Pantalón deportivo |     $x_5$      |           0.1           |              0              |
 
-En términos matemáticos, decimos que:$P(x \mid A) = \frac{P(x)}{P(A)} \quad \text{si } x \in A, \quad \text{y } P(x \mid A) = 0 \text{ si } x \notin A$
+En términos matemáticos, decimos que: $$P(x \mid A) = \frac{P(x)}{P(A)} \quad \text{si } x \in A, \quad \text{y } P(x \mid A) = 0 \text{ si } x \notin A$$
 
 Por lo tanto: 
 
@@ -302,27 +301,27 @@ P(B \mid A) &=& P(x_3 \mid A) + P(x_4 \mid A) \\\\
 $$
 
 
-Y recordando que $A \cap B = (x_3)$, podemos escribir esto como:$P(B \mid A) = \frac{P(A \cap B)}{P(A)}$
+Y recordando que $A \cap B = (x_3)$, podemos escribir esto como: $P(B \mid A) = \frac{P(A \cap B)}{P(A)}$
 
 Y si multiplicamos ambos lados por ( P(A) ), obtenemos:
 
-$P(A \cap B) = P(B \mid A) \cdot P(A)$que es la tercera regla que habíamos listado en la tabla anterior.
+$P(A \cap B) = P(B \mid A) \cdot P(A)$ que es la tercera regla que habíamos listado en la tabla anterior.
 
 ## La distribución binomial
 
-Como te podés imaginar, las distribuciones de probabilidad varían muchísimo, y hay una enorme cantidad de distribuciones ahí afuera. Sin embargo, no todas son igual de importantes. De hecho, la gran mayoría del contenido de este libro se basa en una de cinco distribuciones: la distribución binomial, la distribución normal, la distribución ( t ), la distribución ( \chi^2 ) ("ji-cuadrado") y la distribución ( F ). Dicho esto, lo que voy a hacer en las próximas secciones es darte una breve introducción a esas cinco, prestando especial atención a la binomial y a la normal. Voy a empezar con la distribución binomial, porque es la más sencilla de las cinco.
+Como te podés imaginar, las distribuciones de probabilidad varían muchísimo, y hay una enorme cantidad de distribuciones ahí afuera. Sin embargo, no todas son igual de importantes. De hecho, la gran mayoría del contenido de este libro se basa en una de cinco distribuciones: la distribución binomial, la distribución normal, la distribución$t$, la distribución $\chi^2$ ("chi-cuadrado") y la distribución $F$. Dicho esto, lo que voy a hacer en las próximas secciones es darte una breve introducción a esas cinco, prestando especial atención a la binomial y a la normal. Voy a empezar con la distribución binomial, porque es la más sencilla de las cinco.
 
 ### Introducción a la binomial
 
-La teoría de la probabilidad se originó como un intento de describir cómo funcionan los juegos de azar, así que parece apropiado que nuestra discusión sobre la *distribución binomial* empiece con tirar dados y lanzar monedas. Imaginá un experimento simple: en mi mano tengo 20 dados idénticos de seis caras. En una de las caras de cada dado hay una calavera; las otras cinco están en blanco. Si lanzo los 20 dados, ¿cuál es la probabilidad de que salgan exactamente 4 calaveras? Asumiendo que los dados son justos, sabemos que la chance de que cualquier dado salga calavera es 1 en 6; dicho de otra forma, la probabilidad de calavera para un solo dado es aproximadamente ( 0{,}167 ). Con eso ya tenemos suficiente información para responder la pregunta, así que veamos cómo se hace.
+La teoría de la probabilidad se originó como un intento de describir cómo funcionan los juegos de azar, así que parece apropiado que nuestra discusión sobre la *distribución binomial* empiece con tirar dados y lanzar monedas. Imaginá un experimento simple: en mi mano tengo 20 dados idénticos de seis caras. En una de las caras de cada dado hay una calavera; las otras cinco están en blanco. Si lanzo los 20 dados, ¿cuál es la probabilidad de que salgan exactamente 4 calaveras? Asumiendo que los dados son justos, sabemos que la chance de que cualquier dado salga calavera es 1 en 6; dicho de otra forma, la probabilidad de calavera para un solo dado es aproximadamente $0{,}167$. Con eso ya tenemos suficiente información para responder la pregunta, así que veamos cómo se hace.
 
-Como siempre, vamos a introducir algunos nombres y notación. Vamos a usar ( N ) para referirnos al número de lanzamientos en nuestro experimento; esto es lo que se conoce como el **parámetro de tamaño** de la distribución binomial. También vamos a usar ( \theta ) para referirnos a la **probabilidad de éxito** de un solo lanzamiento, es decir, la probabilidad de que salga calavera. Finalmente, usaremos ( X ) para referirnos al resultado de nuestro experimento, es decir, la cantidad de calaveras que obtengo al lanzar los dados. Como el valor concreto de ( X ) depende del azar, nos referimos a él como una **variable aleatoria**. Con toda esta terminología y notación, podemos expresar el problema de forma un poco más precisa: la cantidad que queremos calcular es la probabilidad de que ( X = 4 ), dado que sabemos que ( \theta = 0{,}167 ) y ( N = 20 ). La forma general de lo que queremos calcular se puede escribir como:
+Como siempre, vamos a introducir algunos nombres y notación. Vamos a usar $N$ para referirnos al número de lanzamientos en nuestro experimento; esto es lo que se conoce como el **parámetro de tamaño** de la distribución binomial. También vamos a usar $\theta$ para referirnos a la **probabilidad de éxito** de un solo lanzamiento, es decir, la probabilidad de que salga calavera. Finalmente, usaremos $X$ para referirnos al resultado de nuestro experimento, es decir, la cantidad de calaveras que obtengo al lanzar los dados. Como el valor concreto de $X$ depende del azar, nos referimos a él como una **variable aleatoria**. Con toda esta terminología y notación, podemos expresar el problema de forma un poco más precisa: la cantidad que queremos calcular es la probabilidad de que $X = 4$, dado que sabemos que $ \theta = 0{,}167 $ y $N = 20$. La forma general de lo que queremos calcular se puede escribir como:
 
 $P(X \mid \theta, N)$
 
-y nos interesa el caso particular en el que ( X = 4 ), ( \theta = 0{,}167 ) y ( N = 20 ). Hay una última notación que quiero mencionar antes de pasar a cómo resolver el problema. Si quiero decir que ( X ) fue generado aleatoriamente a partir de una distribución binomial con parámetros ( \theta ) y ( N ), lo escribo así:
+y nos interesa el caso particular en el que $X = 4$, $\theta = 0{,}167$  y $N = 20$. Hay una última notación que quiero mencionar antes de pasar a cómo resolver el problema. Si quiero decir que $X$ fue generado aleatoriamente a partir de una distribución binomial con parámetros $\theta$ y $N$, lo escribo así:
 
-Sí, sí, ya sé lo que estás pensando: notación, notación, notación. ¿A quién le importa? Muy pocos lectores están acá por la notación, así que mejor sigo y explico **cómo usar** la distribución binomial. Para eso, la @fig-4binomial1 muestra las probabilidades binomiales para todos los valores posibles de ( X ) en nuestro experimento con los dados, desde ( X = 0 ) (ninguna calavera) hasta ( X = 20 ) (todas calaveras). Notá que básicamente es un gráfico de barras, y no es distinto del gráfico de "probabilidad de pantalones" que hicimos en @fig-4pantsprob. En el eje horizontal están todos los eventos posibles, y en el eje vertical podemos ver la probabilidad de cada uno de esos eventos. Entonces, la probabilidad de obtener 4 calaveras al lanzar 20 dados es de aproximadamente 0.20 (la respuesta exacta es 0.2022036, como veremos enseguida). En otras palabras, esperarías que eso ocurra alrededor del 20% de las veces que repitas este experimento.
+Sí, sí, ya sé lo que estás pensando: notación, notación, notación. ¿A quién le importa? Muy pocos lectores están acá por la notación, así que mejor sigo y explico **cómo usar** la distribución binomial. Para eso, la @fig-4binomial1 muestra las probabilidades binomiales para todos los valores posibles de $X$ en nuestro experimento con los dados, desde $X = 0$ (ninguna calavera) hasta $X = 20$ (todas calaveras). Notá que básicamente es un gráfico de barras, y no es distinto del gráfico de "probabilidad de pantalones" que hicimos en @fig-4pantsprob. En el eje horizontal están todos los eventos posibles, y en el eje vertical podemos ver la probabilidad de cada uno de esos eventos. Entonces, la probabilidad de obtener 4 calaveras al lanzar 20 dados es de aproximadamente 0.20 (la respuesta exacta es 0.2022036, como veremos enseguida). En otras palabras, esperarías que eso ocurra alrededor del 20% de las veces que repitas este experimento.
 
 ```{r echo=F}
 #| label: fig-4binomial1
@@ -347,7 +346,7 @@ Entonces, para calcular la probabilidad de obtener 4 calaveras en un experimento
 dbinom(x = 4, size = 20, prob = 1/6)
 ```
 
-Para que veas cómo cambia la distribución binomial cuando alteramos los valores de ( \theta ) y ( N ), supongamos ahora que, en lugar de tirar dados, estoy lanzando monedas. En este caso, el experimento consiste en lanzar una moneda justa repetidamente, y el resultado que me interesa es cuántas veces sale cara. En este escenario, la probabilidad de éxito es ahora ( \theta = 1/2 ). Supongamos que lanzo la moneda ( N = 20 ) veces. En este ejemplo, cambié la probabilidad de éxito, pero mantuve igual el tamaño del experimento. ¿Qué le pasa a la distribución binomial?
+Para que veas cómo cambia la distribución binomial cuando alteramos los valores de $\theta$ y $N$, supongamos ahora que, en lugar de tirar dados, estoy lanzando monedas. En este caso, el experimento consiste en lanzar una moneda justa repetidamente, y el resultado que me interesa es cuántas veces sale cara. En este escenario, la probabilidad de éxito es ahora $\theta = 1/2$. Supongamos que lanzo la moneda $N = 20$ veces. En este ejemplo, cambié la probabilidad de éxito, pero mantuve igual el tamaño del experimento. ¿Qué le pasa a la distribución binomial?
 
 ```{r echo=F}
 #| label: fig-4binomial2
@@ -356,7 +355,7 @@ Para que veas cómo cambia la distribución binomial cuando alteramos los valore
 knitr::include_graphics("imgs/navarro_img/probability/Binomial2_es.png")
 ```
 
-Bueno, como se ve en la @fig-4binomial2 (a), el efecto principal es que la distribución se desplaza, como cabría esperar. Ahora, ¿qué pasa si lanzo la moneda ( N = 100 ) veces? En ese caso, obtenemos la @fig-4binomial2 (b). La distribución se mantiene más o menos centrada, pero hay más variabilidad en los posibles resultados.
+Bueno, como se ve en la @fig-4binomial2 (a), el efecto principal es que la distribución se desplaza, como cabría esperar. Ahora, ¿qué pasa si lanzo la moneda $N = 100$ veces? En ese caso, obtenemos la @fig-4binomial2 (b). La distribución se mantiene más o menos centrada, pero hay más variabilidad en los posibles resultados.
 
 En este punto, probablemente debería explicar el nombre de la función `dbinom()`. Obviamente, la parte "binom" proviene del hecho de que estamos trabajando con la distribución binomial, pero el prefijo "d" probablemente sea un pequeño misterio. En esta sección voy a dar una explicación parcial: específicamente, voy a explicar por qué existe un prefijo. En cuanto a por qué es precisamente una "d", vas a tener que esperar hasta la próxima sección. R incluye **cuatro funciones** para trabajar con la distribución binomial. Estas funciones son `dbinom`, `pbinom`, `rbinom` y `qbinom`, y cada una calcula una cantidad distinta de interés. No solo eso, R hace lo mismo para *todas* las distribuciones de probabilidad que implementa. No importa de qué distribución se trate, siempre vas a encontrar una función `d`, una función `p`, una función `r` y una función `q`.
 
@@ -386,7 +385,7 @@ qbinom(p = 0.75, size = 20, prob = 1/6)
 
 Mmm. Hay algo raro acá. Pensemos bien esto. Lo que parece decir la función `qbinom` es que el percentil 75 de la distribución binomial es 4, aunque vimos recién en la función que 4 es **en realidad** el percentil 76.9. Y la función `pbinom` es la correcta, te lo prometo. Lo raro acá surge del hecho de que nuestra distribución binomial en realidad **no tiene** un percentil 75. ¿Por qué no? Bueno, hay un 56.7% de chance de obtener 3 o menos calaveras (podés escribir `pbinom(3, 20, 1/6)` para comprobarlo), y un 76.9% de chance de obtener 4 o menos calaveras. Entonces, en cierto sentido, el percentil 75 debería estar "entre medio" de 3 y 4 calaveras. ¡Pero eso no tiene sentido! No podés tirar 20 dados y que salgan 3.9 calaveras. Este problema se puede manejar de distintas formas: podrías reportar un valor intermedio (o **interpolado**, como se dice técnicamente), como 3.9 podrías redondear hacia abajo (a 3) o podrías redondear hacia arriba (a 4).
 
-La función `qbinom` redondea hacia arriba: si pedís un percentil que no existe literalmente (como el 75 en este ejemplo), R encuentra el valor más pequeño cuyo percentil acumulado sea **al menos** el que pediste. En este caso, como el "verdadero" percentil 75 (sea lo que sea que eso signifique) está entre 3 y 4 calaveras, R redondea hacia arriba y te da 4. Esta sutileza puede ser molesta, lo admito, pero por suerte solo es un problema en distribuciones discretas como la binomial. Las otras distribuciones de las que voy a hablar (normal, ( t ), ( \chi^2 ) y ( F )) son todas continuas, así que R siempre puede devolver un cuantil exacto cuando se lo pedís.
+La función `qbinom` redondea hacia arriba: si pedís un percentil que no existe literalmente (como el 75 en este ejemplo), R encuentra el valor más pequeño cuyo percentil acumulado sea **al menos** el que pediste. En este caso, como el "verdadero" percentil 75 (sea lo que sea que eso signifique) está entre 3 y 4 calaveras, R redondea hacia arriba y te da 4. Esta sutileza puede ser molesta, lo admito, pero por suerte solo es un problema en distribuciones discretas como la binomial. Las otras distribuciones de las que voy a hablar (normal, $t$, $\chi^2$ y $F$) son todas continuas, así que R siempre puede devolver un cuantil exacto cuando se lo pedís.
 
 Finalmente, tenemos el generador de números aleatorios. Para usar la función `rbinom`, tenés que especificar cuántas veces querés que R "simule" el experimento usando el argumento `n`, y te va a generar resultados aleatorios tomados de la distribución binomial. Por ejemplo, si quisiera repetir el experimento de tirar dados 100 veces, puedo hacer que R simule esos resultados así:
 
@@ -407,7 +406,7 @@ Aunque la distribución binomial es conceptualmente la más fácil de entender, 
 knitr::include_graphics("imgs/navarro_img/probability/standardNormal_es.png")
 ```
 
-Una distribución normal se describe usando dos parámetros: la media de la distribución (( \mu )) y la desviación estándar (( \sigma )). La notación que usamos a veces para indicar que una variable ( X ) tiene distribución normal es:
+Una distribución normal se describe usando dos parámetros: la media de la distribución ($\mu$) y la desviación estándar ($\sigma$). La notación que usamos a veces para indicar que una variable $X$ tiene distribución normal es:
 
 $X \sim \text{Normal}(\mu, \sigma)$
 
@@ -421,7 +420,7 @@ knitr::include_graphics("imgs/navarro_img/probability/Normal_formula.png")
 
 La fórmula es lo suficientemente importante como para que cualquiera que aprenda estadística la mire al menos una vez, pero como este es un texto introductorio, no quiero enfocarme demasiado en eso. En cambio, vamos a ver cómo se puede usar R para trabajar con distribuciones normales. Las funciones en R para la distribución normal son `dnorm()`, `pnorm()`, `qnorm()` y `rnorm()`. Sin embargo, se comportan exactamente igual que sus equivalentes para la distribución binomial, así que no hay mucho que necesites saber. Lo único que vale la pena señalar es que los argumentos para los parámetros se llaman `mean` y `sd`. En casi todo lo demás, no hay más que agregar.
 
-En lugar de enfocarnos en las matemáticas, tratemos de entender qué significa que una variable tenga distribución normal. Para eso, mirá la @fig-4normal, que muestra una distribución normal con media ( \mu = 0 ) y desviación estándar ( \sigma = 1 ). Podés ver de dónde viene el nombre "curva de campana": se parece un poco a una campana. Notá que, a diferencia de los gráficos que dibujé para ilustrar la distribución binomial, la @fig-4normal muestra una curva suave, no un gráfico tipo histograma. Esto no es una elección arbitraria: la distribución normal es continua, mientras que la binomial es discreta. En el ejemplo anterior, era posible obtener 3 calaveras o 4 calaveras, pero era imposible obtener 3.9 calaveras.
+En lugar de enfocarnos en las matemáticas, tratemos de entender qué significa que una variable tenga distribución normal. Para eso, mirá la @fig-4normal, que muestra una distribución normal con media $\mu = 0$ y desviación estándar $\sigma = 1$. Podés ver de dónde viene el nombre "curva de campana": se parece un poco a una campana. Notá que, a diferencia de los gráficos que dibujé para ilustrar la distribución binomial, la @fig-4normal muestra una curva suave, no un gráfico tipo histograma. Esto no es una elección arbitraria: la distribución normal es continua, mientras que la binomial es discreta. En el ejemplo anterior, era posible obtener 3 calaveras o 4 calaveras, pero era imposible obtener 3.9 calaveras.
 
 Teniendo eso en cuenta, veamos si podemos desarrollar una intuición de cómo funciona la distribución normal. Primero, vamos a ver qué pasa cuando jugamos con los parámetros de la distribución. Uno de los parámetros que podemos modificar es la media. Esto desplaza la distribución hacia la derecha o hacia la izquierda. La animación en la @fig-4normalMeanShift muestra una distribución normal con media = 0, que se va moviendo desde media = 0 hasta media = 5. Notá que, cuando cambiás la media, la forma de la distribución no cambia: simplemente se traslada de izquierda a derecha. En la animación, la curva normal sube y baja un poco, pero eso es solo una característica visual de la animación (además queda lindo así).
 
@@ -453,15 +452,15 @@ Fijate que cuando ensanchamos la distribución, la altura del pico disminuye. Es
 
 Hay algo que estuve intentando ocultar durante toda mi discusión sobre la distribución normal. Algo que algunos libros introductorios directamente omiten por completo. Tal vez tengan razón en hacerlo: esta "cosa" que estoy ocultando es rara y contraintuitiva, incluso según los estándares algo retorcidos que rigen en estadística. Afortunadamente, no es algo que necesites entender a fondo para hacer estadística básica: es algo que empieza a volverse importante más adelante, cuando salís de lo introductorio. Así que si no te queda completamente claro, no te preocupes: tratá de captar la idea general.
 
-A lo largo de esta discusión sobre la distribución normal, hay una o dos cosas que no cierran del todo. Quizás notaste que el eje ( y ) en esas figuras está etiquetado como "Densidad de probabilidad" y no como "Probabilidad". Tal vez notaste que usé ( p(X) ) en lugar de ( P(X) ) al mostrar la fórmula de la normal. Quizás te preguntás por qué R usa el prefijo `"d"` para funciones como `dnorm()`. Y tal vez, solo tal vez, estuviste jugando con la función `dnorm()` y accidentamente escribiste un comando como este:
+A lo largo de esta discusión sobre la distribución normal, hay una o dos cosas que no cierran del todo. Quizás notaste que el eje $y$ en esas figuras está etiquetado como "Densidad de probabilidad" y no como "Probabilidad". Tal vez notaste que usé $p(X)$ en lugar de $P(X)$ al mostrar la fórmula de la normal. Quizás te preguntás por qué R usa el prefijo `"d"` para funciones como `dnorm()`. Y tal vez, solo tal vez, estuviste jugando con la función `dnorm()` y accidentamente escribiste un comando como este:
 
 ```{r}
 dnorm(x = 1, mean = 1, sd = 0.1)
 ```
 
-Y si hiciste eso, seguramente quedaste muy confundido. Le pedí a R que calcule la probabilidad de que ( x = 1 ) para una variable con distribución normal, media = 1 y desviación estándar = 0.1; y R me responde que la "probabilidad" es 3.99. Pero, como discutimos antes, las probabilidades **no pueden** ser mayores que 1. Entonces, o me equivoqué, o eso que R me dio no es una probabilidad.
+Y si hiciste eso, seguramente quedaste muy confundido. Le pedí a R que calcule la probabilidad de que $x = 1$ para una variable con distribución normal, media = 1 y desviación estándar = 0.1; y R me responde que la "probabilidad" es 3.99. Pero, como discutimos antes, las probabilidades **no pueden** ser mayores que 1. Entonces, o me equivoqué, o eso que R me dio no es una probabilidad.
 
-Resulta que la segunda opción es la correcta. Lo que calculamos ahí no es una probabilidad: es otra cosa. Para entender qué es esa otra cosa, tenemos que dedicar un momento a pensar qué *significa* realmente decir que ( X ) es una variable continua. Supongamos que estamos hablando de la temperatura exterior. El termómetro me dice que hace 23 grados, pero yo sé que eso no es del todo cierto. No son exactamente 23 grados. Quizás sean 23.1. Pero tampoco es del todo cierto, porque podrían ser 23.09. Pero, claro, también podrían ser 23.091. Bueno... ya entendés la idea. El problema con las cantidades verdaderamente continuas es que nunca sabés exactamente qué son.
+Resulta que la segunda opción es la correcta. Lo que calculamos ahí no es una probabilidad: es otra cosa. Para entender qué es esa otra cosa, tenemos que dedicar un momento a pensar qué *significa* realmente decir que $X$ es una variable continua. Supongamos que estamos hablando de la temperatura exterior. El termómetro me dice que hace 23 grados, pero yo sé que eso no es del todo cierto. No son exactamente 23 grados. Quizás sean 23.1. Pero tampoco es del todo cierto, porque podrían ser 23.09. Pero, claro, también podrían ser 23.091. Bueno... ya entendés la idea. El problema con las cantidades verdaderamente continuas es que nunca sabés exactamente qué son.
 
 Ahora pensá qué implica esto cuando hablamos de probabilidades. Supongamos que la temperatura máxima de mañana se extrae de una distribución normal con media 23 y desviación estándar 1. ¿Cuál es la probabilidad de que la temperatura sea *exactamente* 23 grados? La respuesta es "cero", o si querés, "un número tan cercano a cero que es indistinguible de cero". ¿Por qué?
 
@@ -469,7 +468,7 @@ Es como intentar tirar un dardo a un blanco infinitamente pequeño: no importa q
 
 El punto de toda esta discusión es dejar en claro que, cuando hablamos de distribuciones continuas, no tiene sentido hablar de la probabilidad de un valor específico. Sin embargo, **sí podemos** hablar de la **probabilidad de que el valor esté dentro de un cierto rango**. Y para calcular esa probabilidad, lo que necesitamos hacer es calcular el "área bajo la curva".
 
-Ok, eso explica parte del asunto. Hablamos un poco sobre cómo deberían interpretarse las distribuciones continuas (es decir, el área bajo la curva es la clave), pero todavía no expliqué realmente qué calcula la función *`dnorm()`*. O, en forma equivalente, ¿qué significa la fórmula de ( p(x) ) que presentamos antes? Evidentemente, ( p(x) ) no describe una probabilidad. Entonces, ¿qué es? El nombre técnico de esa cantidad ( p(x) ) es *densidad de probabilidad*, y en los gráficos que venimos dibujando, corresponde a la *altura* de la curva. Las densidades no tienen sentido por sí solas; pero están "diseñadas" de manera que el *área* bajo la curva sea siempre interpretable como probabilidades genuinas. Para ser sincero, eso es más o menos todo lo que necesitás saber por ahora.
+Ok, eso explica parte del asunto. Hablamos un poco sobre cómo deberían interpretarse las distribuciones continuas (es decir, el área bajo la curva es la clave), pero todavía no expliqué realmente qué calcula la función *`dnorm()`*. O, en forma equivalente, ¿qué significa la fórmula de $p(x)$ que presentamos antes? Evidentemente, $p(x)$ no describe una probabilidad. Entonces, ¿qué es? El nombre técnico de esa cantidad $p(x)$ es *densidad de probabilidad*, y en los gráficos que venimos dibujando, corresponde a la *altura* de la curva. Las densidades no tienen sentido por sí solas; pero están "diseñadas" de manera que el *área* bajo la curva sea siempre interpretable como probabilidades genuinas. Para ser sincero, eso es más o menos todo lo que necesitás saber por ahora.
 
 ## Otras distribuciones útiles
 
@@ -598,7 +597,7 @@ La idea es muy simple. Supongamos que hablamos de puntuaciones de CI (coeficient
 knitr::include_graphics("imgs/navarro_img/navIQ_es.png")
 ```
 
-Los tests de CI están diseñados para que el promedio sea 100, la desviación estándar sea 15, y la distribución de puntajes sea normal. Estos valores se conocen como **parámetros poblacionales**, porque son características de toda la población. Es decir, decimos que la media poblacional ( \mu ) es 100, y la desviación estándar poblacional ( \sigma ) es 15.
+Los tests de CI están diseñados para que el promedio sea 100, la desviación estándar sea 15, y la distribución de puntajes sea normal. Estos valores se conocen como **parámetros poblacionales**, porque son características de toda la población. Es decir, decimos que la media poblacional $\mu$ es 100, y la desviación estándar poblacional $\sigma$ es 15.
 
 Ahora supongamos que recolectamos algunos datos. Seleccionamos 100 personas al azar y les administramos un test de CI, lo que nos da una muestra aleatoria simple de la población. La muestra consistiría en una colección de números como esta:
 

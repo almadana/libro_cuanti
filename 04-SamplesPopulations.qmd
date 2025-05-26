@@ -42,7 +42,7 @@ Antes de empezar a hablar de teoría de la probabilidad, conviene dedicar un mom
 
 Fijate que todas estas preguntas tienen algo en común. En cada caso la "verdad del mundo" es conocida, y mi pregunta se relaciona con "qué clase de eventos" van a ocurrir. En la primera pregunta, **sabemos** que la moneda es justa, así que hay un 50% de probabilidad de que cualquier lanzamiento individual salga cara. En la segunda, **sabemos** que la chance de sacar un 6 con un dado es 1 en 6. En la tercera, **sabemos** que el mazo está bien mezclado. Y en la cuarta, **sabemos** que la lotería sigue reglas específicas. Ya te hacés una idea. Lo importante es que las preguntas de probabilidad parten de un **modelo** conocido del mundo, y usamos ese modelo para hacer algunos cálculos.
 
-El modelo subyacente puede ser muy simple. Por ejemplo, en el caso de la moneda, podemos escribir el modelo así: $P(\text{cara}) = 0.5$ que se lee: "la probabilidad de que salga cara es 0.5".
+El modelo subyacente puede ser muy simple. Por ejemplo, en el caso de la moneda, podemos escribir el modelo así:$P(\text{cara}) = 0.5$que se lee: "la probabilidad de que salga cara es 0.5".
 
 Como veremos más adelante, así como los porcentajes van de 0% a 100%, las probabilidades son simplemente números que van de 0 a 1. Cuando usamos este modelo para responder la primera pregunta, en realidad no sabemos exactamente qué va a pasar. Tal vez salgan 10 caras, como plantea la pregunta. Pero también podrían salir 3 caras. Eso es lo importante: en la teoría de la probabilidad, el **modelo** es conocido, pero los **datos** no lo son.
 
@@ -60,7 +60,7 @@ Esta vez, lo único que tenemos son los datos. Lo que **sé** es que vi a mi ami
 H H H H H H H H H H
 ```
 
-y lo que estoy intentando hacer es decidir en cuál "modelo del mundo" debería confiar. Si la moneda es justa, entonces el modelo que debería adoptar es uno en el que la probabilidad de que salga cara es 0.5; es decir, $P(\text{cara}) = 0.5$ Si la moneda no es justa, entonces debería concluir que la probabilidad de que salga cara **no** es 0.5, lo que escribiríamos como $P(\text{cara}) \neq 0.5$. En otras palabras, el problema de la inferencia estadística consiste en darme cuenta cuál de estos modelos de probabilidad es el correcto. Está claro que la pregunta estadística no es la misma que la pregunta de probabilidad, pero están profundamente relacionadas. Por eso, una buena introducción a la teoría estadística comienza con una discusión sobre qué es la probabilidad y cómo funciona.
+y lo que estoy intentando hacer es decidir en cuál "modelo del mundo" debería confiar. Si la moneda es justa, entonces el modelo que debería adoptar es uno en el que la probabilidad de que salga cara es 0.5; es decir,$P(\text{cara}) = 0.5$Si la moneda no es justa, entonces debería concluir que la probabilidad de que salga cara **no** es 0.5, lo que escribiríamos como$P(\text{cara}) \neq 0.5$. En otras palabras, el problema de la inferencia estadística consiste en darme cuenta cuál de estos modelos de probabilidad es el correcto. Está claro que la pregunta estadística no es la misma que la pregunta de probabilidad, pero están profundamente relacionadas. Por eso, una buena introducción a la teoría estadística comienza con una discusión sobre qué es la probabilidad y cómo funciona.
 
 ## ¿Qué significa probabilidad?
 
@@ -70,7 +70,7 @@ Así que voy a intentarlo. Supongamos que quiero apostar en un partido de fútbo
 
 -   Son equipos robot, así que puedo hacerlos jugar muchas veces. Si lo hiciera, **Arduino Arsenal** ganaría 8 de cada 10 partidos, en promedio.
 
--   Para cualquier partido en particular, solo estaría de acuerdo en que apostar es "justo" si una apuesta de $1 a favor de **C Milan** paga $5 (es decir, recupero mi $1 más $4 de ganancia), al igual que lo sería una apuesta de $4 a favor de **Arduino Arsenal** (recupero mis $4 más $1 de ganancia).
+-   Para cualquier partido en particular, solo estaría de acuerdo en que apostar es "justo" si una apuesta de$1 a favor de **C Milan** paga$5 (es decir, recupero mi$1 más$4 de ganancia), al igual que lo sería una apuesta de$4 a favor de **Arduino Arsenal** (recupero mis$4 más$1 de ganancia).
 
 -   Mi "creencia" o "confianza" subjetiva en que gana **Arduino Arsenal** es cuatro veces más fuerte que la que tengo en que gane **C Milan**.
 
@@ -78,13 +78,13 @@ Todas estas opciones parecen razonables. Sin embargo, no son idénticas, y no to
 
 ### La visión frecuentista
 
-El primero de los dos enfoques principales, y el más dominante en estadística, se conoce como la **visión frecuentista**, que define la probabilidad como una **frecuencia a largo plazo**. Supongamos que empezamos a lanzar una moneda justa, una y otra vez. Por definición, es una moneda en la que $P(H) = 0.5$. ¿Qué podríamos observar? Una posibilidad es que los primeros 20 lanzamientos se vean así:
+El primero de los dos enfoques principales, y el más dominante en estadística, se conoce como la **visión frecuentista**, que define la probabilidad como una **frecuencia a largo plazo**. Supongamos que empezamos a lanzar una moneda justa, una y otra vez. Por definición, es una moneda en la que$P(H) = 0.5$. ¿Qué podríamos observar? Una posibilidad es que los primeros 20 lanzamientos se vean así:
 
 ```         
 T, H, H, H, H, T, T, H, H, H, H, T, H, H, T, T, T, T, T, H
 ```
 
-En este caso, 11 de los 20 lanzamientos (55%) salieron cara. Ahora supongamos que fui llevando la cuenta del número de caras (que voy a llamar $N_H$) en los primeros $N$ lanzamientos, y que cada vez calculo la proporción de caras $N_H/N$. Esto es lo que obtendría (¡sí, de verdad lancé monedas para obtener esto!):
+En este caso, 11 de los 20 lanzamientos (55%) salieron cara. Ahora supongamos que fui llevando la cuenta del número de caras (que voy a llamar$N_H$) en los primeros$N$lanzamientos, y que cada vez calculo la proporción de caras$N_H/N$. Esto es lo que obtendría (¡sí, de verdad lancé monedas para obtener esto!):
 
 | número de lanzamientos |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  | 10  |
 |------------------------|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -96,7 +96,7 @@ En este caso, 11 de los 20 lanzamientos (55%) salieron cara. Ahora supongamos qu
 | número de caras        |  8  |  8  |  9  | 10  | 10  | 10  | 10  | 10  | 10  | 11  |
 | proporción             | .73 | .67 | .69 | .71 | .67 | .63 | .59 | .56 | .53 | .55 |
 
-Fijate que al principio de la secuencia, la **proporción** de caras fluctúa bastante, empezando en .00 y subiendo hasta .80. Más adelante, da la impresión de que se estabiliza, con valores que se acercan cada vez más al valor "correcto" de 0.50. Esta es la definición frecuentista de probabilidad en pocas palabras: lanzá una moneda justa muchas veces, y a medida que $ N $ crece (se acerca al infinito, denotado $ N \rightarrow \infty $), la proporción de caras converge a 50%. Hay algunas sutilezas técnicas que le importan a los matemáticos, pero en términos cualitativos, así es como los frecuentistas definen la probabilidad. Por supuesto, no tengo un número infinito de monedas, ni la paciencia infinita para lanzarlas eternamente. Pero sí tengo una computadora, y las computadoras son excelentes para tareas repetitivas. Así que le pedí a la computadora que simulara lanzar una moneda 1000 veces, y luego grafiqué lo que pasa con la proporción $ N_H / N $ a medida que $ N $ aumenta. En realidad, lo hice cuatro veces, solo para asegurarme de que no fuera casualidad. Los resultados se muestran en la @fig-4FreqProb. Como podés ver, la **proporción de caras observadas** eventualmente deja de fluctuar, y se estabiliza. Cuando eso ocurre, el número al que se estabiliza es la verdadera probabilidad de cara.
+Fijate que al principio de la secuencia, la **proporción** de caras fluctúa bastante, empezando en .00 y subiendo hasta .80. Más adelante, da la impresión de que se estabiliza, con valores que se acercan cada vez más al valor "correcto" de 0.50. Esta es la definición frecuentista de probabilidad en pocas palabras: lanzá una moneda justa muchas veces, y a medida que$N$crece (se acerca al infinito, denotado$N \rightarrow \infty$), la proporción de caras converge a 50%. Hay algunas sutilezas técnicas que le importan a los matemáticos, pero en términos cualitativos, así es como los frecuentistas definen la probabilidad. Por supuesto, no tengo un número infinito de monedas, ni la paciencia infinita para lanzarlas eternamente. Pero sí tengo una computadora, y las computadoras son excelentes para tareas repetitivas. Así que le pedí a la computadora que simulara lanzar una moneda 1000 veces, y luego grafiqué lo que pasa con la proporción$N_H / N$a medida que$N$aumenta. En realidad, lo hice cuatro veces, solo para asegurarme de que no fuera casualidad. Los resultados se muestran en la @fig-4FreqProb. Como podés ver, la **proporción de caras observadas** eventualmente deja de fluctuar, y se estabiliza. Cuando eso ocurre, el número al que se estabiliza es la verdadera probabilidad de cara.
 
 ```{r echo=F}
 #| label: fig-4FreqProb
@@ -112,7 +112,7 @@ Más seriamente, la definición frecuentista tiene un alcance muy limitado. Hay 
 
 ### La visión bayesiana
 
-La **visión bayesiana** de la probabilidad también se llama la visión subjetivista, y es una posición minoritaria entre los estadísticos, pero que ha ido ganando terreno de forma sostenida en las últimas décadas. Hay muchas variantes del bayesianismo, lo que dificulta definir exactamente cuál es "la" visión bayesiana. La forma más común de pensar en la probabilidad subjetiva es definir la probabilidad de un evento como el **grado de creencia** que una persona (o agente racional e inteligente) asigna a la verdad de ese evento. Desde esta perspectiva, las probabilidades no existen en el mundo, sino que viven en los pensamientos y suposiciones de las personas (o seres inteligentes). Sin embargo, para que este enfoque funcione, necesitamos alguna forma de operacionalizar ese "grado de creencia". Una manera de hacerlo es formalizarlo en términos de "apuestas racionales", aunque existen otras formas. Supongamos que creo que hay un 60% de probabilidad de que mañana llueva. Si alguien me ofrece una apuesta que dice: si llueve, ganás $5; si no llueve, perdés $5, desde mi perspectiva es una buena apuesta. En cambio, si creo que hay solo un 40% de probabilidad de lluvia, entonces esa misma apuesta sería una mala idea. Así, podemos operacionalizar el concepto de "probabilidad subjetiva" en función de qué apuestas estoy dispuesto a aceptar.
+La **visión bayesiana** de la probabilidad también se llama la visión subjetivista, y es una posición minoritaria entre los estadísticos, pero que ha ido ganando terreno de forma sostenida en las últimas décadas. Hay muchas variantes del bayesianismo, lo que dificulta definir exactamente cuál es "la" visión bayesiana. La forma más común de pensar en la probabilidad subjetiva es definir la probabilidad de un evento como el **grado de creencia** que una persona (o agente racional e inteligente) asigna a la verdad de ese evento. Desde esta perspectiva, las probabilidades no existen en el mundo, sino que viven en los pensamientos y suposiciones de las personas (o seres inteligentes). Sin embargo, para que este enfoque funcione, necesitamos alguna forma de operacionalizar ese "grado de creencia". Una manera de hacerlo es formalizarlo en términos de "apuestas racionales", aunque existen otras formas. Supongamos que creo que hay un 60% de probabilidad de que mañana llueva. Si alguien me ofrece una apuesta que dice: si llueve, ganás$5; si no llueve, perdés$5, desde mi perspectiva es una buena apuesta. En cambio, si creo que hay solo un 40% de probabilidad de lluvia, entonces esa misma apuesta sería una mala idea. Así, podemos operacionalizar el concepto de "probabilidad subjetiva" en función de qué apuestas estoy dispuesto a aceptar.
 
 ¿Cuáles son las ventajas y desventajas de este enfoque bayesiano? La principal ventaja es que permite asignar probabilidades a cualquier evento que queramos. No es necesario que el evento sea repetible. La principal desventaja (para muchas personas) es que no podemos ser completamente objetivos: al asignar una probabilidad, es necesario especificar una entidad que posea el grado de creencia pertinente. Esa entidad puede ser una persona, un extraterrestre, un robot, o incluso un estadístico, pero tiene que haber un agente inteligente que tenga creencias. Para muchos esto resulta incómodo: hace que la probabilidad parezca arbitraria. Mientras que el enfoque bayesiano exige que el agente en cuestión sea racional (es decir, que respete las reglas de la probabilidad), permite que cada quien tenga sus propias creencias; yo puedo creer que la moneda está equilibrada y vos no, y aun así ambos ser racionales. La visión frecuentista no permite que dos observadores asignen probabilidades distintas al mismo evento: si eso ocurre, al menos uno de los dos está equivocado. La perspectiva bayesiana no impone esa restricción. Dos personas con conocimientos previos diferentes pueden, de forma legítima, tener creencias distintas sobre un mismo evento. En resumen, mientras que la visión frecuentista a veces se considera demasiado restrictiva (prohíbe asignar probabilidades a muchas cosas que nos interesa evaluar), la visión bayesiana a veces se percibe como demasiado amplia (permite demasiadas diferencias entre observadores).
 
@@ -130,19 +130,19 @@ Más allá de las discusiones ideológicas entre bayesianos y frecuentistas, res
 
 ### Introducción a las distribuciones de probabilidad
 
-Una de las verdades perturbadoras de mi vida es que solo tengo cinco pares de pantalones: tres jeans, la parte de abajo de un traje, y un pantalón deportivo. Más triste aún: les puse nombre. Los llamo $ X_1 $, $ X_2 $, $ X_3 $, $ X_4 $ y $ X_5 $. De verdad lo hago: por eso me dicen "Señor Imaginativo". Cada día, elijo exactamente un par de pantalones para usar. Ni yo soy tan tonto como para tratar de usar dos al mismo tiempo, y gracias a años de entrenamiento ya no salgo de casa sin pantalones. Si quisiera describir esta situación usando el lenguaje de la teoría de la probabilidad, diría que cada par de pantalones (es decir, cada $ X $) es un *evento elemental*. La característica clave de los eventos elementales es que cada vez que hacemos una observación (por ejemplo, cada vez que me pongo un par de pantalones), el resultado será uno y solo uno de esos eventos. Como dije, hoy en día siempre uso exactamente un par, así que mis pantalones cumplen con esa condición. De forma similar, al conjunto de todos los posibles eventos se lo llama *espacio muestral*. Es verdad que algunas personas lo llamarían "guardarropa", pero eso es porque se niegan a pensar en mis pantalones desde una perspectiva probabilística. Triste.
+Una de las verdades perturbadoras de mi vida es que solo tengo cinco pares de pantalones: tres jeans, la parte de abajo de un traje, y un pantalón deportivo. Más triste aún: les puse nombre. Los llamo$X_1$,$X_2$,$X_3$,$X_4$y$X_5$. De verdad lo hago: por eso me dicen "Señor Imaginativo". Cada día, elijo exactamente un par de pantalones para usar. Ni yo soy tan tonto como para tratar de usar dos al mismo tiempo, y gracias a años de entrenamiento ya no salgo de casa sin pantalones. Si quisiera describir esta situación usando el lenguaje de la teoría de la probabilidad, diría que cada par de pantalones (es decir, cada$X$) es un *evento elemental*. La característica clave de los eventos elementales es que cada vez que hacemos una observación (por ejemplo, cada vez que me pongo un par de pantalones), el resultado será uno y solo uno de esos eventos. Como dije, hoy en día siempre uso exactamente un par, así que mis pantalones cumplen con esa condición. De forma similar, al conjunto de todos los posibles eventos se lo llama *espacio muestral*. Es verdad que algunas personas lo llamarían "guardarropa", pero eso es porque se niegan a pensar en mis pantalones desde una perspectiva probabilística. Triste.
 
-Bien, ahora que tenemos un espacio muestral (un guardarropa), formado por varios eventos elementales (pantalones), lo que queremos hacer es asignar una *probabilidad* a cada uno de esos eventos. Para un evento $ X $, la probabilidad de ese evento $ P(X) $ es un número entre 0 y 1. Cuanto mayor es el valor de $ P(X) $, más probable es que ocurra ese evento. Por ejemplo: - Si $ P(X) = 0 $, significa que el evento $ X $ es **imposible** (nunca uso ese pantalón). - Si $ P(X) = 1 $, significa que el evento $ X $ es **seguro** (siempre uso ese pantalón). - Valores de probabilidad intermedios significan que a veces uso ese pantalón. Por ejemplo, si $ P(X) = 0.5 $, significa que uso ese pantalón la mitad del tiempo.
+Bien, ahora que tenemos un espacio muestral (un guardarropa), formado por varios eventos elementales (pantalones), lo que queremos hacer es asignar una *probabilidad* a cada uno de esos eventos. Para un evento$X$, la probabilidad de ese evento$P(X)$es un número entre 0 y 1. Cuanto mayor es el valor de$P(X)$, más probable es que ocurra ese evento. Por ejemplo: - Si$P(X) = 0$, significa que el evento$X$es **imposible** (nunca uso ese pantalón). - Si$P(X) = 1$, significa que el evento$X$es **seguro** (siempre uso ese pantalón). - Valores de probabilidad intermedios significan que a veces uso ese pantalón. Por ejemplo, si$P(X) = 0.5$, significa que uso ese pantalón la mitad del tiempo.
 
 A esta altura, ya casi terminamos. Lo último que necesitamos reconocer es que "algo siempre ocurre". Cada vez que me pongo pantalones, efectivamente termino con un par puesto (una locura, ¿no?). Esta afirmación algo trillada quiere decir, en términos probabilísticos, que las probabilidades de todos los eventos elementales deben sumar 1. Esto se conoce como la *ley de probabilidad total*, aunque a nadie le importe demasiado. Más importante, si se cumplen estos requisitos, lo que tenemos es una *distribución de probabilidad*. Por ejemplo, esta es una distribución de probabilidad
 
 | ¿Qué pantalón?     | Etiqueta  |    Probabilidad    |
 |:-------------------|:---------:|:------------------:|
-| Jean azul          | $ X_1 $ | $ P(X_1) = 0.5 $ |
-| Jean gris          | $ X_2 $ | $ P(X_2) = 0.3 $ |
-| Jean negro         | $ X_3 $ | $ P(X_3) = 0.1 $ |
-| Pantalón de traje  | $ X_4 $ |  $ P(X_4) = 0 $  |
-| Pantalón deportivo | $ X_5 $ | $ P(X_5) = 0.1 $ |
+| Jean azul          |$X_1$|$P(X_1) = 0.5$|
+| Jean gris          |$X_2$|$P(X_2) = 0.3$|
+| Jean negro         |$X_3$|$P(X_3) = 0.1$|
+| Pantalón de traje  |$X_4$| $P(X_4) = 0$|
+| Pantalón deportivo |$X_5$|$P(X_5) = 0.1$|
 
 Cada uno de estos eventos tiene una probabilidad que está entre 0 y 1, y si sumamos todas las probabilidades, el total es 1. Genial. Incluso podemos hacer un lindo gráfico de barras para visualizar esta distribución, como se muestra en la @fig-4pantsprob. Y en este punto, todos logramos algo. Vos aprendiste qué es una distribución de probabilidad, y yo por fin encontré la forma de hacer un gráfico que trata exclusivamente sobre mis pantalones. ¡Ganamos todos!
 
@@ -153,7 +153,7 @@ Cada uno de estos eventos tiene una probabilidad que está entre 0 y 1, y si sum
 knitr::include_graphics("imgs/navarro_img/probability/pantsDistribution_es.png")
 ```
 
-La única otra cosa que necesito señalar es que la teoría de la probabilidad también te permite hablar de *eventos no elementales*, además de los elementales. La forma más fácil de ilustrar esto es con un ejemplo. En el caso de los pantalones, es perfectamente válido referirse a la probabilidad de que use jeans. En este escenario, decimos que el evento "Dan usa jeans" ocurre si el evento elemental que ocurrió fue uno de los apropiados; en este caso, "jean azul", "jean negro" o "jean gris". En términos matemáticos, definimos el evento "jeans" $ E $ como el conjunto de eventos elementales $ (X_1, X_2, X_3) $. Si ocurre cualquiera de esos eventos, entonces se dice que ocurrió $ E $. Una vez definida así la $ E $, es muy fácil calcular la probabilidad $ P(E) $: simplemente sumamos todo. En este caso:
+La única otra cosa que necesito señalar es que la teoría de la probabilidad también te permite hablar de *eventos no elementales*, además de los elementales. La forma más fácil de ilustrar esto es con un ejemplo. En el caso de los pantalones, es perfectamente válido referirse a la probabilidad de que use jeans. En este escenario, decimos que el evento "Dan usa jeans" ocurre si el evento elemental que ocurrió fue uno de los apropiados; en este caso, "jean azul", "jean negro" o "jean gris". En términos matemáticos, definimos el evento "jeans"$E$como el conjunto de eventos elementales$(X_1, X_2, X_3)$. Si ocurre cualquiera de esos eventos, entonces se dice que ocurrió$E$. Una vez definida así la$E$, es muy fácil calcular la probabilidad$P(E)$: simplemente sumamos todo. En este caso:
 
 $$
 P(E) = P(X_1) + P(X_2) + P(X_3)
@@ -165,13 +165,13 @@ A esta altura tal vez estés pensando que todo esto es increíblemente obvio y s
 
 | Evento    | Notación      | =   | Regla                       |
 |-----------|---------------|-----|-----------------------------|
-| no $A$    | $P(\neg A)$   | =   | $1 - P(A)$                  |
-| $A$ o $B$ | $P(A \cup B)$ | =   | $P(A) + P(B) - P(A \cap B)$ |
-| $A$ y $B$ | $P(A \cap B)$ | =   | $P(A|B) \cdot P(B)$         |
+| no$A$   |$P(\neg A)$  | =   |$1 - P(A)$                 |
+|$A$o$B$|$P(A \cup B)$| =   |$P(A) + P(B) - P(A \cap B)$|
+|$A$y$B$|$P(A \cap B)$| =   |$P(A|B) \cdot P(B)$        |
 
 : Algunas reglas básicas que deben cumplir las probabilidades. No necesitás conocerlas para entender los análisis que vamos a ver más adelante en el libro, pero son importantes si querés entender la teoría de la probabilidad con más profundidad.
 
-Ahora que tenemos la capacidad de "definir" eventos no elementales en términos de eventos elementales, en realidad podemos usar eso para construir (o, si querés sonar matemáticamente refinado, "derivar") algunas de las otras reglas de probabilidad. Estas reglas están listadas arriba, y aunque estoy bastante seguro de que muy pocos lectores realmente están interesados en cómo se construyen, te las voy a mostrar igual: aunque sea aburrido y probablemente nunca les encuentres mucho uso práctico, si lo leés un par de veces y tratás de entender cómo funciona, vas a ver que la probabilidad deja de parecer tan misteriosa, y con suerte te va a intimidar menos. Así que ahí vamos. Primero, para construir las reglas voy a necesitar un espacio muestral $ X $ compuesto por un conjunto de eventos elementales $ x $, y dos eventos no elementales que voy a llamar $ A $ y $ B $. Supongamos que:
+Ahora que tenemos la capacidad de "definir" eventos no elementales en términos de eventos elementales, en realidad podemos usar eso para construir (o, si querés sonar matemáticamente refinado, "derivar") algunas de las otras reglas de probabilidad. Estas reglas están listadas arriba, y aunque estoy bastante seguro de que muy pocos lectores realmente están interesados en cómo se construyen, te las voy a mostrar igual: aunque sea aburrido y probablemente nunca les encuentres mucho uso práctico, si lo leés un par de veces y tratás de entender cómo funciona, vas a ver que la probabilidad deja de parecer tan misteriosa, y con suerte te va a intimidar menos. Así que ahí vamos. Primero, para construir las reglas voy a necesitar un espacio muestral$X$compuesto por un conjunto de eventos elementales$x$, y dos eventos no elementales que voy a llamar$A$y$B$. Supongamos que:
 
 $$
 \begin{array}{rcl}
@@ -181,7 +181,7 @@ B &=& (x_3, x_4)
 \end{array}
 $$
 
-Para hacerlo más concreto, supongamos que todavía estamos hablando de la distribución de pantalones. Si es así, $ A $ correspondería al evento "jeans", y $ B $ al evento "negro":
+Para hacerlo más concreto, supongamos que todavía estamos hablando de la distribución de pantalones. Si es así,$A$correspondería al evento "jeans", y$B$al evento "negro":
 
 $$
 \begin{array}{rcl}
@@ -192,7 +192,7 @@ $$
 
 Ahora podemos empezar a comprobar las reglas que figuran en la tabla.
 
-En la primera línea, la tabla dice que: $ P(\neg A) = 1 - P(A)$ y lo que **significa** esto es que la probabilidad de "no $ A $" es igual a 1 menos la probabilidad de $ A $. Con un poco de reflexión (y un ejemplo tedioso) se vuelve evidente por qué esto tiene que ser verdad. Si $ A $ corresponde al evento de que me pongo jeans (es decir, que ocurre alguno de los eventos $ x_1 $, $ x_2 $ o $ x_3 $), entonces la única definición razonable de "no $ A $" (que se denota matemáticamente como $ \neg A $) es decir que $ \neg A $ consiste en **todos** los eventos elementales que no pertenecen a $ A $. En el caso de los pantalones, eso significa que: $$ \neg A = (x_4, x_5) $$ o, dicho en español: "no jeans" incluye todos los pantalones que no son jeans (es decir, el pantalón de traje negro y el pantalón deportivo azul). Por lo tanto, cada uno de los eventos elementales pertenece o bien a $ A $, o bien a $ \neg A $, pero no a ambos. Bien, entonces reorganicemos lo anterior: $$P(\neg A) + P(A) = 1$$ que no es más que una forma matemática de decir: o uso jeans, o no uso jeans; la probabilidad de "no jeans" más la probabilidad de "jeans" es igual a 1.
+En la primera línea, la tabla dice que:$P(\neg A) = 1 - P(A)$y lo que **significa** esto es que la probabilidad de "no$A$" es igual a 1 menos la probabilidad de$A$. Con un poco de reflexión (y un ejemplo tedioso) se vuelve evidente por qué esto tiene que ser verdad. Si$A$corresponde al evento de que me pongo jeans (es decir, que ocurre alguno de los eventos$x_1$,$x_2$o$x_3$), entonces la única definición razonable de "no$A$" (que se denota matemáticamente como$\neg A$) es decir que$\neg A$consiste en **todos** los eventos elementales que no pertenecen a$A$. En el caso de los pantalones, eso significa que:$$\neg A = (x_4, x_5)$$o, dicho en español: "no jeans" incluye todos los pantalones que no son jeans (es decir, el pantalón de traje negro y el pantalón deportivo azul). Por lo tanto, cada uno de los eventos elementales pertenece o bien a$A$, o bien a$\neg A$, pero no a ambos. Bien, entonces reorganicemos lo anterior:$$P(\neg A) + P(A) = 1$$que no es más que una forma matemática de decir: o uso jeans, o no uso jeans; la probabilidad de "no jeans" más la probabilidad de "jeans" es igual a 1.
 
 Matemáticamente:
 
@@ -211,16 +211,16 @@ P(\neg A) + P(A) &=& P(x_1) + P(x_2) + P(x_3) + P(x_4) + P(x_5) \\
 &=& \sum_{x \in X} P(x) \\
 &=& 1
 \end{array}
-$$ Excelente. Todo parece funcionar.
+$$Excelente. Todo parece funcionar.
 
-"Guau", te escucho decir. "Todo esto para decirme lo increíblemente obvio". Y tenés razón: esto **es** increíblemente obvio. El **propósito** de la teoría de la probabilidad es formalizar y matematizar unas pocas intuiciones de sentido común. Así que sigamos un poco más con esta línea de razonamiento. En la sección anterior definí un evento correspondiente a **no** A, que denoté como $ \neg A $. Ahora vamos a definir dos nuevos eventos que corresponden a conceptos cotidianos importantes: **$ A $ y $ B $**, y **$ A $ o $ B $\*\*. Específicamente:
+"Guau", te escucho decir. "Todo esto para decirme lo increíblemente obvio". Y tenés razón: esto **es** increíblemente obvio. El **propósito** de la teoría de la probabilidad es formalizar y matematizar unas pocas intuiciones de sentido común. Así que sigamos un poco más con esta línea de razonamiento. En la sección anterior definí un evento correspondiente a **no** A, que denoté como$\neg A$. Ahora vamos a definir dos nuevos eventos que corresponden a conceptos cotidianos importantes: **$A$y$B$**, y **$A$o$B$\*\*. Específicamente:
 
 | Afirmación en español                    | Notación matemática |
 |:-----------------------------------------|:-------------------:|
-| "$ A $ y $ B $" ocurren ambos        |   $ A \cap B $    |
-| ocurre al menos uno: "$ A $ o $ B $" |   $ A \cup B $    |
+| "$A$y$B$" ocurren ambos        |  $A \cap B$  |
+| ocurre al menos uno: "$A$o$B$" |  $A \cup B$  |
 
-Ya que $ A $ y $ B $ están definidos en términos de nuestros eventos elementales (los $ x $s), necesitamos describir también $ A \cap B $ y $ A \cup B $ en términos de nuestros eventos elementales. ¿Podemos hacerlo? ¡Sí que podemos! La única forma en que ocurran ambos eventos, $ A $ y $ B $, es que el evento elemental observado pertenezca tanto a $ A $ como a $ B $. Así que "$A \cap B$" incluye solamente aquellos eventos elementales que pertenecen a $A$ y $B$...
+Ya que$A$y$B$están definidos en términos de nuestros eventos elementales (los$x$s), necesitamos describir también$A \cap B$y$A \cup B$en términos de nuestros eventos elementales. ¿Podemos hacerlo? ¡Sí que podemos! La única forma en que ocurran ambos eventos,$A$y$B$, es que el evento elemental observado pertenezca tanto a$A$como a$B$. Así que "$A \cap B$" incluye solamente aquellos eventos elementales que pertenecen a$A$y$B$...
 
 $$
 \begin{array}{rcl}
@@ -228,9 +228,9 @@ A &=& (x_1, x_2, x_3) \\
 B &=& (x_3, x_4) \\
 A \cap B &=& (x_3)
 \end{array}
-$$ Es decir, la única forma en que pueda estar usando "jeans" ($ x_1, x_2, x_3 $) y “pantalón negro” ($ x_3, x_4 $) al mismo tiempo, es que esté usando los “jeans negros” ($ x_3 $). Otro triunfo para lo absolutamente obvio.
+$$Es decir, la única forma en que pueda estar usando "jeans" ($x_1, x_2, x_3$) y “pantalón negro” ($x_3, x_4$) al mismo tiempo, es que esté usando los “jeans negros” ($x_3$). Otro triunfo para lo absolutamente obvio.
 
-A esta altura, no te va a sorprender para nada la definición de $ A \cup B $, aunque probablemente te parezca increíblemente aburrida. La única forma en que puedo estar usando "jeans" o "pantalón negro" es si el pantalón elemental que realmente uso pertenece a $ A $, o a $ B $, o a ambos. Así que:
+A esta altura, no te va a sorprender para nada la definición de$A \cup B$, aunque probablemente te parezca increíblemente aburrida. La única forma en que puedo estar usando "jeans" o "pantalón negro" es si el pantalón elemental que realmente uso pertenece a$A$, o a$B$, o a ambos. Así que:
 
 $$
 \begin{array}{rcl}
@@ -242,13 +242,13 @@ $$
 
 Vaaamooooooooo!!!! Matemáticas, sabelo!
 
-Entonces, ya definimos qué queremos decir con $ A \cap B $ y $ A \cup B $. Ahora asignemos probabilidades a esos eventos. Más específicamente, vamos a verificar la regla que dice que:$$ P(A \cup B) = P(A) + P(B) - P(A \cap B) $$
+Entonces, ya definimos qué queremos decir con$A \cap B$y$A \cup B$. Ahora asignemos probabilidades a esos eventos. Más específicamente, vamos a verificar la regla que dice que:$$P(A \cup B) = P(A) + P(B) - P(A \cap B)$$
 
-Usando las definiciones anteriores, sabemos que: $A \cup B = (x_1, x_2, x_3, x_4)$, entonces $$
+Usando las definiciones anteriores, sabemos que:$A \cup B = (x_1, x_2, x_3, x_4)$, entonces$$
 P(A \cup B) = P(x_1) + P(x_2) + P(x_3) + P(x_4)
 $$
 
-y usando el hecho de que sabemos qué eventos elementales pertenecen a $ A $, $ B $, y $ A \cap B $, tenemos:$$
+y usando el hecho de que sabemos qué eventos elementales pertenecen a$A$,$B$, y$A \cap B$, tenemos:$$
 
 ```{=tex}
 \begin{array}{rcl}
@@ -273,13 +273,13 @@ $$
 
 Listo.
 
-El próximo concepto que necesitamos definir es la notación "$ B $ dado $ A $", que se escribe típicamente como $ B \mid A $. Esto es lo que quiero decir: supongamos que me levanto una mañana y me pongo un pantalón. Ocurre un evento elemental $ x $. Supongamos que le grito a mi esposa (que está en la otra habitación, y no puede ver qué pantalón me puse): "¡Hoy estoy usando jeans!". Asumiendo que ella me cree, entonces sabe que $ A $ es verdadero. **Dado** que sabe que ocurrió $ A $, ¿cuál es la **probabilidad condicional** de que también sea cierto $ B $? Bueno, pensemos qué información tiene. Estas son las cosas que sabe:
+El próximo concepto que necesitamos definir es la notación "$B$dado$A$", que se escribe típicamente como$B \mid A$. Esto es lo que quiero decir: supongamos que me levanto una mañana y me pongo un pantalón. Ocurre un evento elemental$x$. Supongamos que le grito a mi esposa (que está en la otra habitación, y no puede ver qué pantalón me puse): "¡Hoy estoy usando jeans!". Asumiendo que ella me cree, entonces sabe que$A$es verdadero. **Dado** que sabe que ocurrió$A$, ¿cuál es la **probabilidad condicional** de que también sea cierto$B$? Bueno, pensemos qué información tiene. Estas son las cosas que sabe:
 
--   **Los eventos que no son jeans son imposibles**. Si $ A $ es verdadero, entonces sabemos que los únicos eventos elementales que pueden haber ocurrido son $ x_1 $, $ x_2 $ y $ x_3 $ (o sea, los jeans). Los eventos no jeans, $ x_4 $ y $ x_5 $, ahora son imposibles y deben tener probabilidad cero. En otras palabras, nuestro **espacio muestral** se ha restringido a los eventos jeans. Pero sigue siendo cierto que la suma de las probabilidades de estos eventos **debe** ser 1: sabemos con certeza que estoy usando jeans.
+-   **Los eventos que no son jeans son imposibles**. Si$A$es verdadero, entonces sabemos que los únicos eventos elementales que pueden haber ocurrido son$x_1$,$x_2$y$x_3$(o sea, los jeans). Los eventos no jeans,$x_4$y$x_5$, ahora son imposibles y deben tener probabilidad cero. En otras palabras, nuestro **espacio muestral** se ha restringido a los eventos jeans. Pero sigue siendo cierto que la suma de las probabilidades de estos eventos **debe** ser 1: sabemos con certeza que estoy usando jeans.
 
--   **Ella no aprendió nada sobre qué jeans estoy usando**. Antes de que yo anunciara que estoy usando jeans, ella ya sabía que era cinco veces más probable que estuviera usando jeans azules ($ P(x_1) = 0.5 $) que jeans negros ($ P(x_3) = 0.1 $). Mi anuncio no cambia eso... no dije **nada** sobre el color, así que la proporción $ P(x_1) / P(x_3) $ se mantiene igual, con un valor de 5.
+-   **Ella no aprendió nada sobre qué jeans estoy usando**. Antes de que yo anunciara que estoy usando jeans, ella ya sabía que era cinco veces más probable que estuviera usando jeans azules ($P(x_1) = 0.5$) que jeans negros ($P(x_3) = 0.1$). Mi anuncio no cambia eso... no dije **nada** sobre el color, así que la proporción$P(x_1) / P(x_3)$se mantiene igual, con un valor de 5.
 
-Solo hay una forma de satisfacer estas restricciones: asignar probabilidad cero a los eventos imposibles (es decir, $P(x | A) = 0$ si $x$ no está en $A$), y luego dividir las probabilidades de todos los demás por $P(A)$. En este caso, como $P(A) = 0.9$, dividimos entre 0.9. Esto da:
+Solo hay una forma de satisfacer estas restricciones: asignar probabilidad cero a los eventos imposibles (es decir,$P(x | A) = 0$si$x$no está en$A$), y luego dividir las probabilidades de todos los demás por$P(A)$. En este caso, como$P(A) = 0.9$, dividimos entre 0.9. Esto da:
 
 | ¿Qué pantalón?     | Evento elemental | Prob. original ( P(x) ) | Nueva prob. ( P(x \mid A) ) |
 |:-----------------|:----------------:|:----------------:|:----------------:|
@@ -289,7 +289,7 @@ Solo hay una forma de satisfacer estas restricciones: asignar probabilidad cero 
 | Traje negro        |     ( x_4 )      |            0            |              0              |
 | Pantalón deportivo |     ( x_5 )      |           0.1           |              0              |
 
-En términos matemáticos, decimos que: $ P(x \mid A) = \frac{P(x)}{P(A)} \quad \text{si } x \in A, \quad \text{y } P(x \mid A) = 0 \text{ si } x \notin A $
+En términos matemáticos, decimos que:$P(x \mid A) = \frac{P(x)}{P(A)} \quad \text{si } x \in A, \quad \text{y } P(x \mid A) = 0 \text{ si } x \notin A$
 
 Por lo tanto: 
 
@@ -302,11 +302,11 @@ P(B \mid A) &=& P(x_3 \mid A) + P(x_4 \mid A) \\\\
 $$
 
 
-Y recordando que  $A \cap B = (x_3)$ , podemos escribir esto como: $ P(B \mid A) = \frac{P(A \cap B)}{P(A)} $
+Y recordando que $A \cap B = (x_3)$, podemos escribir esto como:$P(B \mid A) = \frac{P(A \cap B)}{P(A)}$
 
 Y si multiplicamos ambos lados por ( P(A) ), obtenemos:
 
-$ P(A \cap B) = P(B \mid A) \cdot P(A) $ que es la tercera regla que habíamos listado en la tabla anterior.
+$P(A \cap B) = P(B \mid A) \cdot P(A)$que es la tercera regla que habíamos listado en la tabla anterior.
 
 ## La distribución binomial
 
@@ -318,7 +318,7 @@ La teoría de la probabilidad se originó como un intento de describir cómo fun
 
 Como siempre, vamos a introducir algunos nombres y notación. Vamos a usar ( N ) para referirnos al número de lanzamientos en nuestro experimento; esto es lo que se conoce como el **parámetro de tamaño** de la distribución binomial. También vamos a usar ( \theta ) para referirnos a la **probabilidad de éxito** de un solo lanzamiento, es decir, la probabilidad de que salga calavera. Finalmente, usaremos ( X ) para referirnos al resultado de nuestro experimento, es decir, la cantidad de calaveras que obtengo al lanzar los dados. Como el valor concreto de ( X ) depende del azar, nos referimos a él como una **variable aleatoria**. Con toda esta terminología y notación, podemos expresar el problema de forma un poco más precisa: la cantidad que queremos calcular es la probabilidad de que ( X = 4 ), dado que sabemos que ( \theta = 0{,}167 ) y ( N = 20 ). La forma general de lo que queremos calcular se puede escribir como:
 
-$ P(X \mid \theta, N) $
+$P(X \mid \theta, N)$
 
 y nos interesa el caso particular en el que ( X = 4 ), ( \theta = 0{,}167 ) y ( N = 20 ). Hay una última notación que quiero mencionar antes de pasar a cómo resolver el problema. Si quiero decir que ( X ) fue generado aleatoriamente a partir de una distribución binomial con parámetros ( \theta ) y ( N ), lo escribo así:
 
@@ -326,7 +326,7 @@ Sí, sí, ya sé lo que estás pensando: notación, notación, notación. ¿A qu
 
 ```{r echo=F}
 #| label: fig-4binomial1
-#| fig-cap: "La distribución binomial con parámetro de tamaño $N = 20$ y una probabilidad de éxito de 1/6. Cada barra vertical representa la probabilidad de un resultado específico (es decir, un valor posible de $X$). Como se trata de una distribución de probabilidad, cada probabilidad debe ser un número entre 0 y 1, y la suma de las alturas de las barras también debe ser 1."
+#| fig-cap: "La distribución binomial con parámetro de tamaño$N = 20$y una probabilidad de éxito de 1/6. Cada barra vertical representa la probabilidad de un resultado específico (es decir, un valor posible de$X$). Como se trata de una distribución de probabilidad, cada probabilidad debe ser un número entre 0 y 1, y la suma de las alturas de las barras también debe ser 1."
 
 knitr::include_graphics("imgs/navarro_img/probability/binomSkulls20_es.png")
 ```
@@ -351,7 +351,7 @@ Para que veas cómo cambia la distribución binomial cuando alteramos los valore
 
 ```{r echo=F}
 #| label: fig-4binomial2
-#| fig-cap: "Dos distribuciones binomiales, en un escenario donde lanzo una moneda justa, con probabilidad de éxito $1/2$. En el panel (a), se supone que lanzo la moneda $N = 20$ veces. En el panel (b), que la lanzo $N = 100$ veces."
+#| fig-cap: "Dos distribuciones binomiales, en un escenario donde lanzo una moneda justa, con probabilidad de éxito$1/2$. En el panel (a), se supone que lanzo la moneda$N = 20$veces. En el panel (b), que la lanzo$N = 100$veces."
 
 knitr::include_graphics("imgs/navarro_img/probability/Binomial2_es.png")
 ```
@@ -409,7 +409,7 @@ knitr::include_graphics("imgs/navarro_img/probability/standardNormal_es.png")
 
 Una distribución normal se describe usando dos parámetros: la media de la distribución (( \mu )) y la desviación estándar (( \sigma )). La notación que usamos a veces para indicar que una variable ( X ) tiene distribución normal es:
 
-$ X \sim \text{Normal}(\mu, \sigma) $
+$X \sim \text{Normal}(\mu, \sigma)$
 
 Claro que eso es solo notación. No nos dice nada especialmente interesante sobre la distribución normal en sí. La fórmula matemática de la distribución normal es:
 
@@ -538,7 +538,7 @@ knitr::include_graphics("imgs/navarro_img/estimation/srs1_es.png")
 
 Este conjunto de fichas es la población de interés, y está representada gráficamente en la parte izquierda de la @fig-srs1.
 
-Como podés ver en la imagen, hay 4 fichas negras y 6 fichas blancas, pero en la vida real no sabríamos eso a menos que miremos dentro de la bolsa. Ahora imaginá que hacés el siguiente "experimento": agitás la bolsa, cerrás los ojos y sacás 4 fichas, sin devolverlas después de sacarlas. Primero sale la ficha $a$ (negra), luego la $c$ (blanca), después la $j$ (blanca), y finalmente la $b$ (negra). Si quisieras, podrías volver a meter todas las fichas en la bolsa y repetir el experimento, como se muestra en el lado derecho de la @fig-srs1. Cada vez vas a obtener resultados distintos, pero el procedimiento es idéntico en todos los casos. El hecho de que el mismo procedimiento pueda producir distintos resultados cada vez es lo que hace que lo llamemos un **proceso aleatorio**. Sin embargo, como agitamos la bolsa antes de sacar cualquier ficha, parece razonable pensar que cada ficha tenía la misma probabilidad de ser elegida. Un procedimiento en el que cada miembro de la población tiene la misma probabilidad de ser seleccionado se llama una **muestra aleatoria simple**. El hecho de que **no** devolvimos las fichas a la bolsa después de sacarlas significa que no podés observar la misma ficha dos veces, y en estos casos se dice que las observaciones fueron tomadas **sin reemplazo**.
+Como podés ver en la imagen, hay 4 fichas negras y 6 fichas blancas, pero en la vida real no sabríamos eso a menos que miremos dentro de la bolsa. Ahora imaginá que hacés el siguiente "experimento": agitás la bolsa, cerrás los ojos y sacás 4 fichas, sin devolverlas después de sacarlas. Primero sale la ficha$a$(negra), luego la$c$(blanca), después la$j$(blanca), y finalmente la$b$(negra). Si quisieras, podrías volver a meter todas las fichas en la bolsa y repetir el experimento, como se muestra en el lado derecho de la @fig-srs1. Cada vez vas a obtener resultados distintos, pero el procedimiento es idéntico en todos los casos. El hecho de que el mismo procedimiento pueda producir distintos resultados cada vez es lo que hace que lo llamemos un **proceso aleatorio**. Sin embargo, como agitamos la bolsa antes de sacar cualquier ficha, parece razonable pensar que cada ficha tenía la misma probabilidad de ser elegida. Un procedimiento en el que cada miembro de la población tiene la misma probabilidad de ser seleccionado se llama una **muestra aleatoria simple**. El hecho de que **no** devolvimos las fichas a la bolsa después de sacarlas significa que no podés observar la misma ficha dos veces, y en estos casos se dice que las observaciones fueron tomadas **sin reemplazo**.
 
 Para ayudarte a entender la importancia del procedimiento de muestreo, considerá una alternativa. Supongamos que mi hijo de 5 años abre la bolsa y decide sacar cuatro fichas negras, sin devolver ninguna. Este esquema de muestreo **sesgado** se muestra en la @fig-brs.
 
@@ -604,13 +604,13 @@ Ahora supongamos que recolectamos algunos datos. Seleccionamos 100 personas al a
 
 `106 101 98 80 74 ... 107 72 100`
 
-Cada uno de estos puntajes de CI fue extraído de una distribución normal con media 100 y desviación estándar 15. Así que, si dibujo un histograma de la muestra, obtengo algo como lo que se muestra en @fig-IQdist $b$. Como podés ver, el histograma tiene una forma **aproximadamente** correcta, pero es una aproximación bastante burda de la verdadera distribución poblacional que aparece en @fig-IQdist $a$. La media de la muestra está bastante cerca de la media poblacional (100), pero no es idéntica. En este caso, resulta que las personas de la muestra tienen un CI promedio de 98.5, y la desviación estándar de sus puntajes es 15.9. Estas **estadísticas muestrales** son propiedades del conjunto de datos, y aunque son bastante parecidas a los verdaderos valores poblacionales, no son iguales. **En general, las estadísticas muestrales son las cosas que podés calcular a partir de tus datos, y los parámetros poblacionales son las cosas sobre las que querés aprender.** Más adelante en este capítulo vamos a hablar sobre cómo podés estimar los parámetros poblacionales a partir de las estadísticas muestrales, y cómo calcular qué tan confiado podés estar en tus estimaciones. Pero antes de llegar a eso, todavía hay algunas ideas de teoría del muestreo que necesitás conocer.
+Cada uno de estos puntajes de CI fue extraído de una distribución normal con media 100 y desviación estándar 15. Así que, si dibujo un histograma de la muestra, obtengo algo como lo que se muestra en @fig-IQdist$b$. Como podés ver, el histograma tiene una forma **aproximadamente** correcta, pero es una aproximación bastante burda de la verdadera distribución poblacional que aparece en @fig-IQdist$a$. La media de la muestra está bastante cerca de la media poblacional (100), pero no es idéntica. En este caso, resulta que las personas de la muestra tienen un CI promedio de 98.5, y la desviación estándar de sus puntajes es 15.9. Estas **estadísticas muestrales** son propiedades del conjunto de datos, y aunque son bastante parecidas a los verdaderos valores poblacionales, no son iguales. **En general, las estadísticas muestrales son las cosas que podés calcular a partir de tus datos, y los parámetros poblacionales son las cosas sobre las que querés aprender.** Más adelante en este capítulo vamos a hablar sobre cómo podés estimar los parámetros poblacionales a partir de las estadísticas muestrales, y cómo calcular qué tan confiado podés estar en tus estimaciones. Pero antes de llegar a eso, todavía hay algunas ideas de teoría del muestreo que necesitás conocer.
 
 ## La ley de los grandes números
 
-En el ejemplo anterior mostramos los resultados de un experimento ficticio sobre CI con un tamaño muestral de $N = 100$. Los resultados fueron bastante alentadores: la verdadera media poblacional es 100, y la media muestral fue 98.5, una aproximación bastante razonable. En muchos estudios científicos, ese nivel de precisión es perfectamente aceptable, pero en otras situaciones quizás necesitemos ser mucho más precisos. Entonces, si queremos que nuestras estadísticas muestrales se acerquen más a los parámetros poblacionales, ¿qué podemos hacer?
+En el ejemplo anterior mostramos los resultados de un experimento ficticio sobre CI con un tamaño muestral de$N = 100$. Los resultados fueron bastante alentadores: la verdadera media poblacional es 100, y la media muestral fue 98.5, una aproximación bastante razonable. En muchos estudios científicos, ese nivel de precisión es perfectamente aceptable, pero en otras situaciones quizás necesitemos ser mucho más precisos. Entonces, si queremos que nuestras estadísticas muestrales se acerquen más a los parámetros poblacionales, ¿qué podemos hacer?
 
-La respuesta obvia es: recolectar más datos. Supongamos que hacemos un experimento mucho más grande, esta vez midiendo el CI de 10.000 personas. Podemos simular los resultados de este experimento usando R y la función `rnorm()`, que genera números aleatorios extraídos de una distribución normal. Para un experimento con tamaño muestral $n = 10000$, y una población con media 100 y desviación estándar 15, R puede generar datos simulados de CI así:
+La respuesta obvia es: recolectar más datos. Supongamos que hacemos un experimento mucho más grande, esta vez midiendo el CI de 10.000 personas. Podemos simular los resultados de este experimento usando R y la función `rnorm()`, que genera números aleatorios extraídos de una distribución normal. Para un experimento con tamaño muestral$n = 10000$, y una población con media 100 y desviación estándar 15, R puede generar datos simulados de CI así:
 
 ```{r}
 IQ <- rnorm(n = 10000, mean = 100, sd = 15)  # generar los CI
@@ -629,7 +629,7 @@ Me siento un poco tonta al decir esto, pero lo que quiero que te lleves de todo 
 
 > **Pues incluso el más estúpido de los hombres, por algún instinto natural, por sí mismo y sin ninguna instrucción (lo cual es notable), está convencido de que cuantas más observaciones se han hecho, menor es el peligro de desviarse del objetivo** (ver Stigler, 1986, p. 65).
 
-Bueno, el pasaje suena un poco condescendiente (por no decir sexista), pero su punto principal es correcto: realmente parece obvio que más datos te van a dar mejores respuestas. La pregunta es: ¿por qué es así? No sorprende que esta intuición que todos compartimos resulta ser correcta, y los estadísticos se refieren a ella como la **ley de los grandes números**. La ley de los grandes números es una ley matemática que se aplica a muchas estadísticas muestrales, pero la forma más simple de entenderla es como una ley sobre promedios. La media muestral es el ejemplo más obvio de una estadística que se basa en promediar (porque eso es justamente lo que es la media... un promedio), así que vamos a mirar eso. **Aplicada a la media muestral, lo que dice la ley de los grandes números es que a medida que la muestra se hace más grande, la media muestral tiende a acercarse a la media verdadera de la población.** O, dicho de manera un poco más precisa, cuando el tamaño de la muestra "tiende" a infinito (se escribe $N \rightarrow \infty$), la media muestral se aproxima a la media poblacional ($\bar{X} \rightarrow \mu$).
+Bueno, el pasaje suena un poco condescendiente (por no decir sexista), pero su punto principal es correcto: realmente parece obvio que más datos te van a dar mejores respuestas. La pregunta es: ¿por qué es así? No sorprende que esta intuición que todos compartimos resulta ser correcta, y los estadísticos se refieren a ella como la **ley de los grandes números**. La ley de los grandes números es una ley matemática que se aplica a muchas estadísticas muestrales, pero la forma más simple de entenderla es como una ley sobre promedios. La media muestral es el ejemplo más obvio de una estadística que se basa en promediar (porque eso es justamente lo que es la media... un promedio), así que vamos a mirar eso. **Aplicada a la media muestral, lo que dice la ley de los grandes números es que a medida que la muestra se hace más grande, la media muestral tiende a acercarse a la media verdadera de la población.** O, dicho de manera un poco más precisa, cuando el tamaño de la muestra "tiende" a infinito (se escribe$N \rightarrow \infty$), la media muestral se aproxima a la media poblacional ($\bar{X} \rightarrow \mu$).
 
 No tengo intención de torturarte con una demostración de que la ley de los grandes números es cierta, pero es una de las herramientas más importantes de la teoría estadística. Es lo que podemos usar para justificar nuestra creencia de que, si seguimos recolectando más y más datos, eventualmente vamos a llegar a la verdad. Para un conjunto de datos en particular, las estadísticas muestrales que calculemos estarán equivocadas, pero la ley de los grandes números nos dice que si seguimos recolectando más datos, esas estadísticas tenderán a acercarse cada vez más a los verdaderos parámetros de la población.
 
@@ -639,7 +639,7 @@ La ley de los grandes números es una herramienta muy poderosa, pero no alcanza 
 
 > [\*\*El] largo plazo es una guía engañosa para los asuntos actuales. A largo plazo, todos estaremos muertos. Los economistas se asignan una tarea demasiado fácil, y por lo tanto inútil, si en tiempos tormentosos sólo pueden decirnos que, cuando la tormenta haya pasado hace tiempo, el océano volverá a estar calmo.\*\* --- @Keynes1923 [p.80]
 
-Lo mismo que en economía vale también para la psicología y la estadística. No basta con saber que **eventualmente** llegaremos a la respuesta correcta al calcular la media muestral. Saber que un conjunto de datos infinitamente grande nos dará el valor correcto no resuelve nuestros problemas prácticos en el presente. Saber que un conjunto de datos infinitamente grande me dará el valor exacto de la media poblacional no es precisamente reconfortante cuando mi conjunto de datos **real** tiene un tamaño de muestra de $N=100$. En la vida real, entonces, necesitamos saber algo sobre el comportamiento de la media muestral cuando se calcula a partir de un conjunto de datos más modesto.
+Lo mismo que en economía vale también para la psicología y la estadística. No basta con saber que **eventualmente** llegaremos a la respuesta correcta al calcular la media muestral. Saber que un conjunto de datos infinitamente grande nos dará el valor correcto no resuelve nuestros problemas prácticos en el presente. Saber que un conjunto de datos infinitamente grande me dará el valor exacto de la media poblacional no es precisamente reconfortante cuando mi conjunto de datos **real** tiene un tamaño de muestra de$N=100$. En la vida real, entonces, necesitamos saber algo sobre el comportamiento de la media muestral cuando se calcula a partir de un conjunto de datos más modesto.
 
 ### Distribución muestral de las medias muestrales
 
@@ -795,9 +795,9 @@ knitr::include_graphics(path = "imgs/gifs/sampleDistNormal-1_es.gif")
 
 ¿Qué deberías notar? Fijate que el rango de las barras azules se reduce a medida que el tamaño de muestra aumenta. La distribución muestral de la media es bastante ancha cuando el tamaño de muestra es 10, se estrecha al aumentar a 50 y 100, y es prácticamente una sola barra en el centro cuando el tamaño llega a 1000. Lo que estamos viendo es que la media de la distribución muestral se aproxima a la media poblacional a medida que crece el tamaño de la muestra.
 
-Entonces, la distribución muestral de la media es otra distribución, y tiene cierta varianza. Varía más cuando el tamaño de muestra es pequeño, y varía menos cuando el tamaño es grande. Podemos cuantificar este efecto calculando el **desvío estándar** de la distribución muestral, que se conoce como el **error estándar**. El error estándar de un estadístico suele abreviarse como *SE*, y como habitualmente nos interesa el error estándar de la **media** muestral, usamos la sigla SEM (standard error of the mean). Como podés ver claramente en la animación, a medida que el tamaño de muestra $N$ aumenta, el SEM disminuye.
+Entonces, la distribución muestral de la media es otra distribución, y tiene cierta varianza. Varía más cuando el tamaño de muestra es pequeño, y varía menos cuando el tamaño es grande. Podemos cuantificar este efecto calculando el **desvío estándar** de la distribución muestral, que se conoce como el **error estándar**. El error estándar de un estadístico suele abreviarse como *SE*, y como habitualmente nos interesa el error estándar de la **media** muestral, usamos la sigla SEM (standard error of the mean). Como podés ver claramente en la animación, a medida que el tamaño de muestra$N$aumenta, el SEM disminuye.
 
-Bueno, eso es una parte de la historia. Sin embargo, hay algo que hemos estado dejando un poco de lado. Ya lo vimos antes, pero vale la pena volver a observarlo. Acá va el punto clave: **no importa qué forma tenga tu distribución poblacional**, a medida que $N$ aumenta, la distribución muestral de la media empieza a parecerse más y más a una distribución normal. Eso es el **teorema central del límite**.
+Bueno, eso es una parte de la historia. Sin embargo, hay algo que hemos estado dejando un poco de lado. Ya lo vimos antes, pero vale la pena volver a observarlo. Acá va el punto clave: **no importa qué forma tenga tu distribución poblacional**, a medida que$N$aumenta, la distribución muestral de la media empieza a parecerse más y más a una distribución normal. Eso es el **teorema central del límite**.
 
 Para ver el teorema central del límite en acción, vamos a mirar algunos histogramas de medias muestrales provenientes de diferentes tipos de distribuciones. Es muy importante recordar que lo que estás viendo son distribuciones de medias muestrales, no distribuciones de valores individuales.
 
@@ -940,13 +940,13 @@ A partir de estas figuras, parece que tenemos evidencia para las siguientes afir
 
 -   La forma de la distribución muestral se vuelve normal a medida que aumenta el tamaño de la muestra
 
-Y resulta que no solo estas afirmaciones son verdaderas: hay un teorema muy famoso en estadística que las demuestra a las tres, conocido como el **teorema central del límite**. Entre otras cosas, este teorema nos dice que si la distribución poblacional tiene media $\mu$ y desvío estándar $\sigma$, entonces la distribución muestral de la media también tiene media $\mu$, y su error estándar es:
+Y resulta que no solo estas afirmaciones son verdaderas: hay un teorema muy famoso en estadística que las demuestra a las tres, conocido como el **teorema central del límite**. Entre otras cosas, este teorema nos dice que si la distribución poblacional tiene media$\mu$y desvío estándar$\sigma$, entonces la distribución muestral de la media también tiene media$\mu$, y su error estándar es:
 
 $$
 \text{SEM} = \frac{\sigma}{\sqrt{N}}
 $$
 
-Como se divide el desvío estándar poblacional $\sigma$ por la raíz cuadrada del tamaño muestral $N$, el SEM disminuye al aumentar el tamaño de la muestra. También nos dice que la forma de la distribución muestral **tiende a ser normal**.
+Como se divide el desvío estándar poblacional$\sigma$por la raíz cuadrada del tamaño muestral$N$, el SEM disminuye al aumentar el tamaño de la muestra. También nos dice que la forma de la distribución muestral **tiende a ser normal**.
 
 Este resultado es útil para todo tipo de cosas. Nos explica por qué los experimentos grandes son más confiables que los pequeños, y como nos da una fórmula explícita para el error estándar, también nos dice **cuánto** más confiables son. También nos explica por qué la distribución normal es, bueno... **normal**. En los experimentos reales, muchas de las cosas que queremos medir son en realidad **promedios** de un montón de cantidades diferentes (por ejemplo, uno podría decir que la inteligencia "general" medida por el CI es un promedio de muchas habilidades y aptitudes "específicas"), y cuando eso pasa, el valor promedio tiende a seguir una distribución normal. Por esta ley matemática, la distribución normal aparece una y otra vez en los datos reales.
 
@@ -1173,37 +1173,37 @@ Hemos hablado bastante sobre estimación, aunque hasta ahora no hemos hecho much
 
 ### Estimación de la media poblacional
 
-Supongamos que vamos a Brooklyn y 100 personas locales tienen la amabilidad de hacer una prueba de CI. El puntaje promedio de CI entre esas personas resulta ser $\bar{X} = 98.5$. Entonces, ¿cuál es la verdadera media del CI en toda la población de Brooklyn? Obviamente, no lo sabemos. Podría ser 97.2, o también podría ser 103.5. Como nuestra muestra no es exhaustiva, no podemos dar una respuesta definitiva. Sin embargo, si nos obligaran a dar nuestra "mejor aproximación", tendría que decir 98.5. Esa es la esencia de la estimación estadística. Estamos usando la media muestral como nuestra mejor aproximación a la media poblacional.
+Supongamos que vamos a Brooklyn y 100 personas locales tienen la amabilidad de hacer una prueba de CI. El puntaje promedio de CI entre esas personas resulta ser$\bar{X} = 98.5$. Entonces, ¿cuál es la verdadera media del CI en toda la población de Brooklyn? Obviamente, no lo sabemos. Podría ser 97.2, o también podría ser 103.5. Como nuestra muestra no es exhaustiva, no podemos dar una respuesta definitiva. Sin embargo, si nos obligaran a dar nuestra "mejor aproximación", tendría que decir 98.5. Esa es la esencia de la estimación estadística. Estamos usando la media muestral como nuestra mejor aproximación a la media poblacional.
 
 En este ejemplo, estimar el parámetro poblacional desconocido es bastante directo. Calculamos la media muestral y la usamos como nuestra **estimación de la media poblacional**. Es bastante simple, y en la próxima sección vamos a ver la justificación estadística de por qué esta respuesta intuitiva tiene sentido. Pero por ahora, asegurémonos de distinguir bien que el estadístico muestral y la estimación del parámetro poblacional son conceptualmente distintos. El estadístico muestral describe tus datos; en cambio, una estimación es una conjetura sobre la población.
 
-Con eso en mente, los profesionales de la estadística suelen usar notaciones distintas para diferenciarlas. Por ejemplo, si la media poblacional verdadera se denota $\mu$, entonces usamos $\hat{\mu}$ para referirnos a nuestra estimación de esa media poblacional. En contraste, la media muestral se denota $\bar{X}$, o a veces $m$. Sin embargo, en muestras aleatorias simples, la estimación de la media poblacional es idéntica a la media muestral: si observo una media muestral de $\bar{X} = 98.5$, entonces mi estimación de la media poblacional es también $\hat{\mu} = 98.5$.
+Con eso en mente, los profesionales de la estadística suelen usar notaciones distintas para diferenciarlas. Por ejemplo, si la media poblacional verdadera se denota$\mu$, entonces usamos$\hat{\mu}$para referirnos a nuestra estimación de esa media poblacional. En contraste, la media muestral se denota$\bar{X}$, o a veces$m$. Sin embargo, en muestras aleatorias simples, la estimación de la media poblacional es idéntica a la media muestral: si observo una media muestral de$\bar{X} = 98.5$, entonces mi estimación de la media poblacional es también$\hat{\mu} = 98.5$.
 
 Para dejar clara la notación, acá va una tabla útil:
 
 | Símbolo     | Qué representa                     | ¿Conocido a partir de la muestra?           |
 |------------------------|------------------------|------------------------|
-| $\bar{X}$   | Media muestral                     | Sí, se calcula a partir de los datos crudos |
-| $\mu$       | Verdadera media poblacional        | Casi nunca se conoce con certeza            |
-| $\hat{\mu}$ | Estimación de la media poblacional | Sí, es idéntica a la media muestral         |
+|$\bar{X}$  | Media muestral                     | Sí, se calcula a partir de los datos crudos |
+|$\mu$      | Verdadera media poblacional        | Casi nunca se conoce con certeza            |
+|$\hat{\mu}$| Estimación de la media poblacional | Sí, es idéntica a la media muestral         |
 
 ### Estimación del desvío estándar poblacional
 
-Hasta ahora, la estimación parece bastante sencilla, y tal vez te estés preguntando por qué te hice leer todo ese material sobre teoría del muestreo. En el caso de la media, nuestra estimación del parámetro poblacional ($\hat{\mu}$) resultó ser idéntica a la estadística muestral correspondiente ($\bar{X}$). Sin embargo, eso no siempre es así. Para verlo, pensemos cómo construir una **estimación del desvío estándar poblacional**, que vamos a denotar como $\hat{\sigma}$. ¿Qué deberíamos usar como estimación en este caso? Tu primera reacción podría ser hacer lo mismo que con la media, y simplemente usar el estadístico muestral como estimación. Eso está casi bien, pero no del todo.
+Hasta ahora, la estimación parece bastante sencilla, y tal vez te estés preguntando por qué te hice leer todo ese material sobre teoría del muestreo. En el caso de la media, nuestra estimación del parámetro poblacional ($\hat{\mu}$) resultó ser idéntica a la estadística muestral correspondiente ($\bar{X}$). Sin embargo, eso no siempre es así. Para verlo, pensemos cómo construir una **estimación del desvío estándar poblacional**, que vamos a denotar como$\hat{\sigma}$. ¿Qué deberíamos usar como estimación en este caso? Tu primera reacción podría ser hacer lo mismo que con la media, y simplemente usar el estadístico muestral como estimación. Eso está casi bien, pero no del todo.
 
 Veamos por qué. Supongamos que tengo una muestra que contiene una sola observación. Para este ejemplo, ayuda pensar en una situación donde no tengas ninguna intuición previa sobre cuál podría ser el valor real en la población. Así que usemos algo completamente ficticio: supongamos que la observación mide la **cromulencia** de mis zapatos. Resulta que mis zapatos tienen una cromulencia de 20. Así que mi muestra es:
 
 `20`
 
-Esta es una muestra perfectamente legítima, aunque tenga un tamaño muestral de $N = 1$. Tiene una media muestral de 20, y como cada observación en esta muestra es igual a la media muestral (¡obviamente!), el desvío estándar muestral es 0. Como descripción de la **muestra**, esto está bien: la muestra contiene una sola observación, así que no hay variabilidad observada en la muestra. Un desvío estándar muestral de $s = 0$ es la respuesta correcta acá. Pero como estimación del desvío estándar **poblacional**, eso suena completamente absurdo, ¿no? Seamos sinceros: vos y yo no tenemos ni idea de qué es la "cromulencia", pero sabemos algo sobre datos. La única razón por la que no vemos ninguna variabilidad en la **muestra** es que la muestra es demasiado chica como para mostrar alguna variación. Entonces, si tenés un tamaño muestral de $N=1$, lo que se **siente** como la respuesta correcta es simplemente decir: "ni idea, la verdad".
+Esta es una muestra perfectamente legítima, aunque tenga un tamaño muestral de$N = 1$. Tiene una media muestral de 20, y como cada observación en esta muestra es igual a la media muestral (¡obviamente!), el desvío estándar muestral es 0. Como descripción de la **muestra**, esto está bien: la muestra contiene una sola observación, así que no hay variabilidad observada en la muestra. Un desvío estándar muestral de$s = 0$es la respuesta correcta acá. Pero como estimación del desvío estándar **poblacional**, eso suena completamente absurdo, ¿no? Seamos sinceros: vos y yo no tenemos ni idea de qué es la "cromulencia", pero sabemos algo sobre datos. La única razón por la que no vemos ninguna variabilidad en la **muestra** es que la muestra es demasiado chica como para mostrar alguna variación. Entonces, si tenés un tamaño muestral de$N=1$, lo que se **siente** como la respuesta correcta es simplemente decir: "ni idea, la verdad".
 
 Fijate que **no** tenemos la misma intuición cuando se trata de la media muestral y la media poblacional. Si alguien nos obliga a hacer una mejor aproximación sobre la media de la población, no suena completamente descabellado decir que la media poblacional es 20. Obvio, probablemente no te sientas muy seguro de esa aproximación, porque solo tenés una observación, pero sigue siendo la mejor aproximación que podés hacer.
 
-Extendamos un poco este ejemplo. Supongamos que ahora hago una segunda observación. Mi conjunto de datos ahora tiene $N=2$ observaciones de la cromulencia de los zapatos, y la muestra completa se ve así:
+Extendamos un poco este ejemplo. Supongamos que ahora hago una segunda observación. Mi conjunto de datos ahora tiene$N=2$observaciones de la cromulencia de los zapatos, y la muestra completa se ve así:
 
 `20, 22`
 
-Esta vez, nuestra muestra es **justo** lo suficientemente grande como para que podamos ver algo de variabilidad: dos observaciones es el número mínimo necesario para que pueda observarse alguna variación. Para este nuevo conjunto de datos, el promedio muestral es $\bar{X}=21$ y la desviación estándar muestral es $s=1$.
+Esta vez, nuestra muestra es **justo** lo suficientemente grande como para que podamos ver algo de variabilidad: dos observaciones es el número mínimo necesario para que pueda observarse alguna variación. Para este nuevo conjunto de datos, el promedio muestral es$\bar{X}=21$y la desviación estándar muestral es$s=1$.
 
 ¿Qué intuiciones tenemos ahora sobre la población? De nuevo, en lo que respecta a la media poblacional, la mejor aproximación que podemos hacer es la media muestral: si nos obligaran a adivinar, probablemente diríamos que la media de cromulencia poblacional es 21. ¿Y la desviación estándar? Acá la cosa se pone un poco más complicada. La desviación estándar muestral está basada solamente en dos observaciones, y si sos como yo, seguramente tenés la intuición de que, con solo dos datos, no le estamos dando a la población "suficiente oportunidad" de mostrarnos su verdadera variabilidad. No es solo que sospechamos que la estimación está **equivocada** ---porque con solo dos observaciones ya esperamos que haya algún error---. La preocupación más grande es que el error sea **sistemático**.
 
@@ -1211,7 +1211,7 @@ Si el error es sistemático, entonces está **sesgado**. Por ejemplo, imaginate 
 
 Bueno, resulta que el desvío estándar muestral es un **estimador sesgado** del desvío estándar poblacional. Ya veníamos intuyéndolo con lo que estuvimos discutiendo. Cuando el tamaño muestral es 1, el desvío estándar es 0, lo cual claramente es demasiado bajo. Cuando el tamaño muestral es 2, el desvío estándar empieza a ser mayor que 0, pero como solo tenemos dos datos, sospechamos que sigue siendo demasiado bajo. Y resulta que esta intuición es correcta.
 
-Estaría bueno poder demostrar esto de alguna forma. Hay pruebas matemáticas que confirman esta intuición, pero salvo que tengas una formación matemática bastante sólida, no van a ayudarte mucho. Así que en vez de eso, lo que voy a hacer es usar R para simular los resultados de algunos experimentos. Con esto en mente, volvamos a nuestros estudios sobre CI. Supongamos que la verdadera media poblacional de CI es 100, y la desviación estándar poblacional es 15. Podemos usar la función **rnorm()** para generar los resultados de un experimento en el que medimos $N = 2$ puntuaciones de CI, y luego calculamos el desvío estándar muestral. Si repetimos este procedimiento una y otra vez, y graficamos un histograma de esos desvíos estándar muestrales, obtenemos la **distribución muestral del desvío estándar**. Esa distribución está graficada en la @fig-sampdistsd.
+Estaría bueno poder demostrar esto de alguna forma. Hay pruebas matemáticas que confirman esta intuición, pero salvo que tengas una formación matemática bastante sólida, no van a ayudarte mucho. Así que en vez de eso, lo que voy a hacer es usar R para simular los resultados de algunos experimentos. Con esto en mente, volvamos a nuestros estudios sobre CI. Supongamos que la verdadera media poblacional de CI es 100, y la desviación estándar poblacional es 15. Podemos usar la función **rnorm()** para generar los resultados de un experimento en el que medimos$N = 2$puntuaciones de CI, y luego calculamos el desvío estándar muestral. Si repetimos este procedimiento una y otra vez, y graficamos un histograma de esos desvíos estándar muestrales, obtenemos la **distribución muestral del desvío estándar**. Esa distribución está graficada en la @fig-sampdistsd.
 
 ```{r}
 #| label: fig-sampdistsd
@@ -1222,7 +1222,7 @@ knitr::include_graphics("imgs/navarro_img/estimation/sampdistsd_es.png")
 
 Aunque la verdadera desviación estándar poblacional es 15, el promedio de los desvíos estándar **muestrales** es solo 8.5. Notá que esto es muy distinto de lo que pasaba cuando graficábamos distribuciones muestrales de la media: esas siempre estaban centradas en la media poblacional.
 
-Ahora ampliemos la simulación. En lugar de restringirnos a un tamaño muestral de $N=2$, repitamos el experimento para tamaños muestrales del 1 al 10. Si graficamos el promedio de la media muestral y el promedio del desvío estándar muestral como función del tamaño de la muestra, obtenemos los siguientes resultados.
+Ahora ampliemos la simulación. En lugar de restringirnos a un tamaño muestral de$N=2$, repitamos el experimento para tamaños muestrales del 1 al 10. Si graficamos el promedio de la media muestral y el promedio del desvío estándar muestral como función del tamaño de la muestra, obtenemos los siguientes resultados.
 
 La @fig-estimatorbiasA muestra cómo cambia la media muestral según el tamaño de la muestra. Notá que la línea es plana: la media muestral no sobrestima ni subestima la media poblacional. Es un estimador insesgado.
 
@@ -1242,7 +1242,7 @@ La @fig-estimatorbiasB muestra cómo cambia el **desvío estándar muestral** co
 knitr::include_graphics("imgs/navarro_img/estimation/biasSD_es.png")
 ```
 
-En otras palabras, si queremos hacer una "mejor aproximación" ($\hat\sigma$, nuestra estimación de la desviación estándar poblacional) sobre el valor real de la desviación estándar de la población $\sigma$, deberíamos asegurarnos de que nuestra aproximación sea un poquito más grande que la desviación estándar muestral $s$.
+En otras palabras, si queremos hacer una "mejor aproximación" ($\hat\sigma$, nuestra estimación de la desviación estándar poblacional) sobre el valor real de la desviación estándar de la población$\sigma$, deberíamos asegurarnos de que nuestra aproximación sea un poquito más grande que la desviación estándar muestral$s$.
 
 La solución a este sesgo sistemático resulta ser bastante simple. Así es como funciona. Antes de meternos con la desviación estándar, vamos a mirar la varianza. Si recordás el segundo capítulo, la varianza muestral se define como el promedio de los cuadrados de las desviaciones respecto de la media muestral. Es decir:
 
@@ -1250,37 +1250,37 @@ $$
 s^2 = \frac{1}{N} \sum_{i=1}^N (X_i - \bar{X})^2
 $$
 
-La varianza muestral $s^2$ es un estimador sesgado de la varianza poblacional $\sigma^2$. Pero resulta que solo necesitamos hacer un pequeño ajuste para transformarla en un estimador insesgado. Todo lo que hay que hacer es dividir por $N-1$ en lugar de por $N$. Si hacemos eso, obtenemos la siguiente fórmula:
+La varianza muestral$s^2$es un estimador sesgado de la varianza poblacional$\sigma^2$. Pero resulta que solo necesitamos hacer un pequeño ajuste para transformarla en un estimador insesgado. Todo lo que hay que hacer es dividir por$N-1$en lugar de por$N$. Si hacemos eso, obtenemos la siguiente fórmula:
 
 $$
 \hat\sigma^2 = \frac{1}{N-1} \sum_{i=1}^N (X_i - \bar{X})^2
 $$
 
-Esto sí es un estimador insesgado de la varianza poblacional $\sigma^2$.
+Esto sí es un estimador insesgado de la varianza poblacional$\sigma^2$.
 
-Una historia similar se aplica al desvío estándar. Si dividimos por $N-1$ en lugar de por $N$, nuestra estimación del desvío estándar poblacional se convierte en:
+Una historia similar se aplica al desvío estándar. Si dividimos por$N-1$en lugar de por$N$, nuestra estimación del desvío estándar poblacional se convierte en:
 
 $$
 \hat\sigma = \sqrt{\frac{1}{N-1} \sum_{i=1}^N (X_i - \bar{X})^2}
 $$
 
-Vale la pena señalar que los programas de software toman decisiones **por vos** sobre qué tipo de varianza y desvío estándar estás calculando. Algunos programas dividen automáticamente por $N-1$, otros no. Necesitás verificar qué están haciendo. No dejes que el software decida por **vos**. El software está para que vos le digas qué hacer.
+Vale la pena señalar que los programas de software toman decisiones **por vos** sobre qué tipo de varianza y desvío estándar estás calculando. Algunos programas dividen automáticamente por$N-1$, otros no. Necesitás verificar qué están haciendo. No dejes que el software decida por **vos**. El software está para que vos le digas qué hacer.
 
-Un último punto: en la práctica, muchas personas se refieren a $\hat{\sigma}$ (la fórmula con $N-1$) como el desvío estándar **muestral**. Técnicamente, esto es incorrecto: el desvío estándar muestral, como propiedad de la muestra, debería ser igual a $s$ (la fórmula con $N$). No son la misma cosa, ni conceptualmente ni numéricamente. Una es una propiedad de la muestra; la otra, una estimación del parámetro poblacional. Sin embargo, en casi todas las aplicaciones reales, lo que realmente nos importa es la estimación del parámetro poblacional. Por eso, la gente casi siempre reporta $\hat{\sigma}$ en lugar de $s$.
+Un último punto: en la práctica, muchas personas se refieren a$\hat{\sigma}$(la fórmula con$N-1$) como el desvío estándar **muestral**. Técnicamente, esto es incorrecto: el desvío estándar muestral, como propiedad de la muestra, debería ser igual a$s$(la fórmula con$N$). No son la misma cosa, ni conceptualmente ni numéricamente. Una es una propiedad de la muestra; la otra, una estimación del parámetro poblacional. Sin embargo, en casi todas las aplicaciones reales, lo que realmente nos importa es la estimación del parámetro poblacional. Por eso, la gente casi siempre reporta$\hat{\sigma}$en lugar de$s$.
 
 ::: callout-note  
 Ojo, si hay que dividir por 𝑁 o por 𝑁−1 también depende de cómo pensás lo que estás haciendo. Por ejemplo, si no creés que lo que estás haciendo es estimar un parámetro poblacional, entonces, ¿por qué dividirías por N−1? Además, cuando 𝑁 es grande, no importa tanto. La diferencia entre un 𝑁 grande y un 𝑁−1 grande es... simplemente 1. 
 :::
 
-Este es el número correcto que hay que reportar, claro. Pero la gente tiende a ser un poco imprecisa con la terminología cuando lo escribe, porque "desvío estándar muestral" es más corto que "estimación del desvío estándar poblacional". No es gran cosa, y en la práctica yo hago lo mismo que todos los demás. Sin embargo, creo que es importante mantener los dos **conceptos** separados: nunca es buena idea confundir "propiedades conocidas de tu muestra" con "conjeturas sobre la población de la que proviene". En el momento en que empezás a pensar que $s$ y $\hat{\sigma}$ son lo mismo, empezás a hacer justamente eso.
+Este es el número correcto que hay que reportar, claro. Pero la gente tiende a ser un poco imprecisa con la terminología cuando lo escribe, porque "desvío estándar muestral" es más corto que "estimación del desvío estándar poblacional". No es gran cosa, y en la práctica yo hago lo mismo que todos los demás. Sin embargo, creo que es importante mantener los dos **conceptos** separados: nunca es buena idea confundir "propiedades conocidas de tu muestra" con "conjeturas sobre la población de la que proviene". En el momento en que empezás a pensar que$s$y$\hat{\sigma}$son lo mismo, empezás a hacer justamente eso.
 
 Para cerrar esta sección, acá tenés un par de tablas más para ayudarte a mantener todo claro:
 
 | Símbolo           | ¿Qué es?                              | ¿Lo conocemos?                                   |
 |------------------------|------------------------|------------------------|
-| $s^2$            | Varianza muestral                     | Sí, se calcula a partir de los datos crudos      |
-| $\sigma^2$       | Varianza poblacional                  | Casi nunca se conoce con certeza                 |
-| $\hat{\sigma}^2$ | Estimación de la varianza poblacional | Sí, pero no es lo mismo que la varianza muestral |
+|$s^2$           | Varianza muestral                     | Sí, se calcula a partir de los datos crudos      |
+|$\sigma^2$      | Varianza poblacional                  | Casi nunca se conoce con certeza                 |
+|$\hat{\sigma}^2$| Estimación de la varianza poblacional | Sí, pero no es lo mismo que la varianza muestral |
 
 ## Estimación de un intervalo de confianza
 
@@ -1288,7 +1288,7 @@ Para cerrar esta sección, acá tenés un par de tablas más para ayudarte a man
 
 Hasta este punto del capítulo, describimos los fundamentos de la teoría del muestreo en los que se apoyan los estadísticos para hacer conjeturas sobre los parámetros poblacionales a partir de una muestra de datos. Como muestra esta discusión, una de las razones por las que necesitamos toda esta teoría es que todo conjunto de datos deja un cierto grado de incertidumbre, así que nuestras estimaciones nunca van a ser perfectamente precisas. Lo que falta en esta discusión hasta ahora es un intento de **cuantificar** cuánto es esa incertidumbre. No alcanza con poder decir que el CI promedio de estudiantes de psicología es 115 (sí, me acabo de inventar ese número). También queremos poder decir qué tan seguros estamos de esa estimación. Por ejemplo, estaría bueno poder decir que hay un 95% de probabilidad de que el valor real esté entre 109 y 121. A eso se le llama un **intervalo de confianza** para la media.
 
-Armados con lo que ya sabemos sobre distribuciones muestrales, construir un intervalo de confianza para la media es bastante fácil. Así es como funciona: Supongamos que la verdadera media poblacional es $\mu$ y la desviación estándar poblacional es $\sigma$. Acabo de terminar mi estudio con $N$ participantes, y la media muestral de CI fue $\bar{X}$. Sabemos, gracias al teorema central del límite, que la distribución muestral de la media es aproximadamente normal. También sabemos, por lo que aprendimos sobre la distribución normal, que hay un 95% de probabilidad de que un valor normalmente distribuido caiga dentro de dos desviaciones estándar de la media verdadera. Para ser más precisos, podemos usar la función `qnorm()` para calcular los percentiles 2.5 y 97.5 de la distribución normal:
+Armados con lo que ya sabemos sobre distribuciones muestrales, construir un intervalo de confianza para la media es bastante fácil. Así es como funciona: Supongamos que la verdadera media poblacional es$\mu$y la desviación estándar poblacional es$\sigma$. Acabo de terminar mi estudio con$N$participantes, y la media muestral de CI fue$\bar{X}$. Sabemos, gracias al teorema central del límite, que la distribución muestral de la media es aproximadamente normal. También sabemos, por lo que aprendimos sobre la distribución normal, que hay un 95% de probabilidad de que un valor normalmente distribuido caiga dentro de dos desviaciones estándar de la media verdadera. Para ser más precisos, podemos usar la función `qnorm()` para calcular los percentiles 2.5 y 97.5 de la distribución normal:
 
 ```{r }
 qnorm( p = c(.025, .975) )
@@ -1296,13 +1296,13 @@ qnorm( p = c(.025, .975) )
 
 Ok, así que te mentí un poco antes: lo más correcto es decir que hay un 95% de probabilidad de que una cantidad normalmente distribuida caiga dentro de 1.96 desviaciones estándar de la media verdadera.
 
-Ahora recordá que la desviación estándar de la distribución muestral se llama error estándar, y que el error estándar de la media se denota como SEM. Cuando juntamos todas estas piezas, aprendemos que hay un 95% de probabilidad de que la media muestral $\bar{X}$ que observamos esté a no más de 1.96 errores estándar de la media poblacional. Uf, eso fue mucha matemática junta. Tranquilo, ahora lo aclaramos.
+Ahora recordá que la desviación estándar de la distribución muestral se llama error estándar, y que el error estándar de la media se denota como SEM. Cuando juntamos todas estas piezas, aprendemos que hay un 95% de probabilidad de que la media muestral$\bar{X}$que observamos esté a no más de 1.96 errores estándar de la media poblacional. Uf, eso fue mucha matemática junta. Tranquilo, ahora lo aclaramos.
 
 En notación matemática, esto se escribe así:
 
 $$
 \mu - \left(1.96 \times \text{SEM} \right) \ \leq\ \bar{X} \ \leq\ \mu + \left(1.96 \times \text{SEM} \right)
-$$ donde el SEM es igual a $\sigma / \sqrt{N}$, y podemos estar un 95% seguros de que esto es cierto.
+$$donde el SEM es igual a$\sigma / \sqrt{N}$, y podemos estar un 95% seguros de que esto es cierto.
 
 Sin embargo, esto no responde la pregunta que realmente nos interesa. La ecuación anterior nos dice qué deberíamos esperar sobre la media muestral, dado que conocemos los parámetros poblacionales. Pero lo que queremos es que funcione al revés: queremos saber qué deberíamos creer sobre los parámetros poblacionales, dado que observamos una muestra particular. Sin embargo, no es muy difícil lograrlo. Con un poco de álgebra de secundaria, podemos reescribir nuestra ecuación así:
 
@@ -1310,9 +1310,9 @@ $$
 \bar{X} - \left( 1.96 \times \text{SEM} \right) \leq \mu \leq \bar{X} + \left( 1.96 \times \text{SEM} \right)
 $$
 
-Esto nos dice que el rango de valores tiene una probabilidad del 95% de contener la media poblacional $\mu$. A este rango lo llamamos **intervalo de confianza del 95%**, denotado como $\text{CI}\_{95}$.
+Esto nos dice que el rango de valores tiene una probabilidad del 95% de contener la media poblacional$\mu$. A este rango lo llamamos **intervalo de confianza del 95%**, denotado como$\text{CI}\_{95}$.
 
-En resumen, siempre que $N$ sea lo suficientemente grande ---lo suficientemente grande como para que la distribución muestral de la media se parezca a una normal--- podemos usar la siguiente fórmula para el intervalo de confianza del 95%:
+En resumen, siempre que$N$sea lo suficientemente grande ---lo suficientemente grande como para que la distribución muestral de la media se parezca a una normal--- podemos usar la siguiente fórmula para el intervalo de confianza del 95%:
 
 $$
 \text{CI}_{95} = \bar{X} \pm \left( 1.96 \times \frac{\sigma}{\sqrt{N}} \right)
@@ -1324,15 +1324,15 @@ Por supuesto, no hay nada especial en el número 1.96: simplemente es el multipl
 qnorm( p = c(.15, .85) )
 ```
 
-Así que la fórmula para el $\text{CI}*{70}$ sería igual a la del $\text{CI}*{95}$, excepto que usaríamos 1.04 como nuestro número mágico, en lugar de 1.96.
+Así que la fórmula para el$\text{CI}*{70}$sería igual a la del$\text{CI}*{95}$, excepto que usaríamos 1.04 como nuestro número mágico, en lugar de 1.96.
 
 ### Un pequeño error en la fórmula
 
-Como de costumbre, te mentí un poco. La fórmula que te di más arriba para el intervalo de confianza del 95% es aproximadamente correcta, pero me salté un detalle importante en la explicación. Fijate que mi fórmula requiere que uses el error estándar de la media (SEM), que a su vez necesita que conozcas la desviación estándar real de la población, $\sigma$.
+Como de costumbre, te mentí un poco. La fórmula que te di más arriba para el intervalo de confianza del 95% es aproximadamente correcta, pero me salté un detalle importante en la explicación. Fijate que mi fórmula requiere que uses el error estándar de la media (SEM), que a su vez necesita que conozcas la desviación estándar real de la población,$\sigma$.
 
-Sin embargo, ya dijimos antes que en general **no conocemos** los parámetros poblacionales verdaderos. Y como no conocemos el valor real de $\sigma$, tenemos que usar una **estimación** del desvío estándar poblacional $\hat{\sigma}$. Eso no es difícil de hacer, pero tiene una consecuencia: tenemos que usar los cuantiles de la distribución $t$ en lugar de la distribución normal para calcular nuestro número mágico; y ese número depende del tamaño muestral. Además, todavía no hablamos de la distribución $t$ en este capítulo.
+Sin embargo, ya dijimos antes que en general **no conocemos** los parámetros poblacionales verdaderos. Y como no conocemos el valor real de$\sigma$, tenemos que usar una **estimación** del desvío estándar poblacional$\hat{\sigma}$. Eso no es difícil de hacer, pero tiene una consecuencia: tenemos que usar los cuantiles de la distribución$t$en lugar de la distribución normal para calcular nuestro número mágico; y ese número depende del tamaño muestral. Además, todavía no hablamos de la distribución$t$en este capítulo.
 
-Cuando usamos la distribución $t$ en lugar de la distribución normal, obtenemos números más grandes, lo que indica que tenemos más incertidumbre. ¿Y por qué tenemos esa incertidumbre extra? Bueno, porque nuestra estimación de la desviación estándar poblacional, $\hat\sigma$, puede estar equivocada. Y si está equivocada, eso significa que estamos menos seguros de cómo es realmente la distribución muestral de la media... y esa incertidumbre termina reflejándose en un intervalo de confianza más amplio.
+Cuando usamos la distribución$t$en lugar de la distribución normal, obtenemos números más grandes, lo que indica que tenemos más incertidumbre. ¿Y por qué tenemos esa incertidumbre extra? Bueno, porque nuestra estimación de la desviación estándar poblacional,$\hat\sigma$, puede estar equivocada. Y si está equivocada, eso significa que estamos menos seguros de cómo es realmente la distribución muestral de la media... y esa incertidumbre termina reflejándose en un intervalo de confianza más amplio.
 
 ## Resumen
 

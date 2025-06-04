@@ -76,7 +76,7 @@ o también:
 
 $$\text{estadístico} = \frac{\text{efecto}}{\text{error}}$$
 
-Y esta es, justamente, la fórmula general dla prueba t. ¡Sorpresa!
+Y esta es, justamente, la fórmula general de la prueba t. ¡Sorpresa!
 
 ## Prueba t de una muestra: una nueva prueba t
 
@@ -110,7 +110,7 @@ Capaz que todo esto te hizo bizquear un poco. Tranquilo, ya lo vimos antes, cuan
 
 ### ¿Qué representa t?
 
-$t$ nos da una medida de confianza, igual que la razón anterior en la que dividíamos la media por la desviación estándar. La única diferencia es que ahora dividimos por el **error estándar de la media** (que, recordá, también es una desviación estándar: la de la distribución muestral de la media).
+$t$ nos da una medida de confianza, igual que la relación (ratio) anterior en la que dividíamos la media por la desviación estándar. La única diferencia es que ahora dividimos por el **error estándar de la media** (que, recordá, también es una desviación estándar: la de la distribución muestral de la media).
 
 ::: callout-note
 ¿La *t* en *prueba t* significa algo? Aparentemente no. Gosset originalmente usó *z*. Y después Fisher lo llamó *t*, tal vez porque viene después de *s*, que suele usarse para la desviación estándar muestral.
@@ -120,11 +120,13 @@ $t$ es una propiedad de los datos que recolectás. Se calcula con la media de la
 
 Empecemos con un ejemplo simple. Imaginá que tu media muestral es 5, y querés saber si viene de una población con media 5. ¿Cuál sería el valor de *t*? Cero: restamos 5 - 5 = 0. Como el numerador es 0, *t* también lo es. Así que *t* = 0 ocurre cuando **no hay diferencia**. Ahora tomás otra muestra. ¿La media será siempre 5? Probablemente no. Supongamos que da 6. ¿Qué valor tendrá *t*? El numerador es positivo: 6 - 5 = +1. Pero *t* no necesariamente será 1, eso depende del error estándar. Si es 1, entonces *t* será 1, porque 1/1 = 1. Si el error estándar es menor que 1, ¿qué pasa con *t*? Aumenta. Por ejemplo, 1 dividido por 0.5 da 2. Si el error estándar fuera 0.5, entonces *t* sería 2. Y con ese valor podríamos tener más confianza en que la diferencia que observamos no es casual.
 
-¿Puede *t* ser menor que 1? Claro. Si el error estándar es grande, digamos 2, entonces *t* será más chico (1/2 = 0.5). La dirección de la diferencia entre la media muestral y la poblacional también puede hacer que *t* sea negativo. Si la media muestral fuera 4, entonces la diferencia es negativa, y *t* también lo será, porque el numerador es negativo. El denominador (el error estándar) siempre será positivo (acordate por qué: se calcula a partir de la desviación estándar de la muestra, que siempre es positiva porque usamos cuadrados al calcularla). Así que estas son algunas intuiciones sobre los valores posibles de *t*. Puede ser positivo o negativo, grande o chico.
+¿Puede *t* ser menor que 1? Claro. Si el error estándar es grande, digamos 2, entonces *t* será más chico que 1 (en nuestro caso, 1/2 = 0.5). La dirección de la diferencia entre la media muestral y la poblacional también puede hacer que *t* sea negativo. Si la media muestral fuera 4, entonces la diferencia es negativa, y *t* también lo será, porque el numerador es negativo. El denominador (el error estándar) siempre será positivo (acordate por qué: se calcula a partir de la desviación estándar de la muestra, que siempre es positiva porque usamos cuadrados al calcularla). 
+
+Así que estas son algunas intuiciones sobre los valores posibles de *t*. Puede ser positivo o negativo, grande o chico.
 
 Hagamos una cosa más para afinar la intuición. ¿Qué tal si generamos varias muestras, calculamos la media muestral **y** el error estándar de la media, y graficamos esas dos cosas entre sí? Así vamos a ver cómo varía típicamente la media con respecto al error estándar.
 
-En la @fig-6muestraMSEM, tomé 1.000 muestras de tamaño \$N = 10\$ de una distribución normal (media = 0, desviación estándar = 1). En cada caso, calculé la media y el error estándar. Eso nos da dos estadísticas descriptivas por muestra, y podemos graficarlas como puntos en un scatterplot.
+En la @fig-6muestraMSEM, tomé 1.000 muestras de tamaño N = 10 de una distribución normal (media = 0, desviación estándar = 1). En cada caso, calculé la media y el error estándar. Eso nos da dos estadísticas descriptivas por muestra, y podemos graficarlas como puntos en un diagrama de dispersión.
 
 ```{r}
 #| label: fig-6muestraMSEM
@@ -153,7 +155,7 @@ Podemos ver estos datos de otra forma. En lugar de graficar directamente las med
 hist(media_muestral/desvío_muestral, breaks=30)
 ```
 
-Interesante, el histograma tiene forma de campana normal. Está centrado en 0, que es el valor más común. A medida que los valores se alejan de 0, son menos frecuentes. Si recordás, nuestra fórmula para *t* era la media dividida por el error estándar. Eso es exactamente lo que hicimos acá. Este histograma te está mostrando una **distribución t**.
+Interesante, el histograma tiene forma de curva normal. Está centrado en 0, que es el valor más común. A medida que los valores se alejan de 0, son menos frecuentes. Si recordás, nuestra fórmula para *t* era la media dividida por el error estándar. Eso es exactamente lo que hicimos acá. Este histograma te está mostrando una **distribución t**.
 
 ### Calcular t a partir de datos
 

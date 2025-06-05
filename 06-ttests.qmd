@@ -707,6 +707,15 @@ Y de hecho, eso fue lo que encontramos: un *t* de 0.72. Sabiendo que un valor as
 
 Siguiendo el procedimiento “estándar” de toma de decisiones, concluiríamos que nuestro valor no es estadísticamente significativo, porque no fue lo suficientemente grande. Si nuestro valor observado fuera mayor que el valor crítico (mayor que 2.13), definido por nuestro criterio alfa, entonces afirmaríamos que nuestro valor es estadísticamente significativo. Esto sería equivalente a decir que creemos que es poco probable que la diferencia observada se deba al azar. En general, para cualquier valor observado, el *p*-valor asociado indica cuán probable es observar un valor de ese tamaño o mayor. El *p*-valor siempre se refiere a un rango de valores, nunca a un solo valor específico. Los investigadores suelen utilizar el criterio alfa de 0.05, por conveniencia y por convención. Existen otras formas de interpretar estos valores que no dependen de una dicotomía estricta (significativo versus no significativo).
 
+### Test bilateral (de dos cola, o two-tailed en inglés)
+
+OK, entonces eso fue sobre tests de una cola... ¿Qué son los tests de dos colas? El valor $p$ que calculamos originalmente a partir del $t$-test para muestras pareadas era para un test de dos colas. A menudo, el valor $p$ por defecto corresponde a un test de dos colas.
+
+El test de dos colas plantea una pregunta más general sobre si una diferencia es probable que haya sido producida por azar. La pregunta es: ¿cuál es la probabilidad de que exista alguna diferencia? También se lo llama un test **no direccional**, porque acá no nos importa la dirección o el signo de la diferencia (positivo o negativo), sino simplemente si hay alguna diferencia.
+
+Se siguen los mismos principios básicos que antes. Definimos un criterio alfa ($\alpha = 0.05$). Y decimos que cualquier valor observado de $t$ que tenga una probabilidad de $p$ \< .05 (el $p$ es menor que .05) va a ser llamado **estadísticamente significativo**, y aquellos que sean más probables ($p$ \> .05, el $p$ es mayor que .05) se van a considerar resultados nulos, o no estadísticamente significativos. La única diferencia está en cómo dibujamos el rango alfa. Antes estaba en el lado derecho de la distribución $t$ (recordá que estábamos haciendo un test de una cola, así que solo nos interesaba un lado).
+
+@fig-6twotailedt muestra cuáles son el 5% más extremo de los valores $t$ cuando ignoramos su signo (ya sean positivos o negativos).
 
 ```{r}
 #| fig-cap: "El valor crítico de t para un test bilateral. El 5% total de los valores t son mayores o menores que los valores críticos."
@@ -798,7 +807,7 @@ $\text{Grados de libertad} = \text{df} = n - 1$
 
 Donde *n* es el número de muestras del test.
 
-En nuestro ejemplo con la prueba t apareado, había 5 bebés. Entonces:
+En nuestro ejemplo con la prueba t pareado, había 5 bebés. Entonces:
 
 $df = 5 - 1 = 4$
 
@@ -841,7 +850,7 @@ ggplot(t_df, aes(x = ts, group = dfs, color = dfs)) +
   theme_classic(base_size = 15)
 ```
 
-En la @fig-6dft, fijate que la distribución roja para \$df = 4\$ es un poco más baja y más ancha que la distribución azul verdosa para \$df = 100\$. A medida que aumentan los grados de libertad, la distribución *t* se vuelve más alta (en el centro) y más angosta en el rango. Se vuelve más picuda. ¿Adivinás por qué?
+En la @fig-6dft, fijate que la distribución roja para $df = 4$ es un poco más baja y más ancha que la distribución azul verdosa para $df = 100$. A medida que aumentan los grados de libertad, la distribución *t* se vuelve más alta (en el centro) y más angosta en el rango. Se vuelve más picuda. ¿Adivinás por qué?
 
 Recordá: estamos estimando una estadística muestral, y los grados de libertad son solo un número que representa cuántos sujetos hay (menos uno). Y ya sabemos que, al aumentar *n*, nuestras estadísticas muestrales se vuelven mejores estimaciones (con menos varianza) de los parámetros poblacionales. Entonces, *t* se vuelve una mejor estimación de su "valor verdadero" a medida que crece el tamaño muestral, lo que produce una distribución de *t* más angosta.
 
@@ -913,7 +922,7 @@ Como resultado, podemos tener **cierta confianza** en concluir que **ver y escuc
 
 Si venís siguiendo las referencias a Star Wars, esta sería la última película de la trilogía original... la **prueba t de muestras independientes**. Es básicamente la misma historia de antes, pero con un giro. Recordá que hay distintos tipos de *t*-tests para distintos diseños experimentales. Cuando tu diseño es de **grupos independientes** (*between-subjects*), usás una **prueba t de muestras independientes**.
 
-Los diseños entre sujetos implican personas diferentes en cada condición experimental. Si hay dos condiciones y 10 personas por condición, entonces hay 20 personas en total. Y no hay puntajes apareados, porque **cada persona se mide una sola vez**. No hay medidas repetidas. Como no hay medidas repetidas, no tiene sentido calcular **diferencias entre condiciones** para cada sujeto. Los puntajes no están emparejados de forma significativa, así que **no tiene sentido restarlos**. Entonces, ¿qué hacemos?
+Los diseños entre sujetos implican personas diferentes en cada condición experimental. Si hay dos condiciones y 10 personas por condición, entonces hay 20 personas en total. Y no hay puntajes pareados, porque **cada persona se mide una sola vez**. No hay medidas repetidas. Como no hay medidas repetidas, no tiene sentido calcular **diferencias entre condiciones** para cada sujeto. Los puntajes no están emparejados de forma significativa, así que **no tiene sentido restarlos**. Entonces, ¿qué hacemos?
 
 La lógica de la prueba t de muestras independientes es la **misma** que en las otras pruebas t. Calculamos la media de cada grupo, luego la diferencia. Esa diferencia va al numerador de la fórmula del *t*. Después estimamos la **variación** para el denominador. Dividimos la diferencia de medias por esa estimación, y obtenemos *t*. Es como antes. La única complicación es: ¿qué va en el denominador? ¿Cómo estimamos la varianza? Estaría bueno si pudiéramos hacer algo directo, como esto (en un experimento con dos grupos, A y B):
 
@@ -925,13 +934,11 @@ En lenguaje simple, esto sería:
 2.  Calculás el **error estándar de la media** (SEM) para cada grupo;
 3.  Promediás esos SEMs para obtener una sola estimación, combinando ambas muestras.
 
-Eso **estaría bueno**, pero lamentablemente **no es la mejor forma de hacerlo**. Tomar el promedio de los errores estándar genera un **estimador sesgado** de la variación en la distribución nula (la de ausencia de diferencias).
-
-Tomar el promedio de los errores estándar generaría un **estimador sesgado** de la variación bajo la hipótesis nula (ausencia de diferencias). No vamos a entrar en los detalles matemáticos acá, pero en vez de esa fórmula, podemos usar otra que nos da una **estimación insesgada del error estándar combinado de la media muestral**. Nuestra nueva y mejorada fórmula del *t* se ve así:
+Esto estaría bueno, pero lamentablemente, resulta que sacar el promedio de dos errores estándar de la media no es la mejor forma de hacerlo. Eso generaría un estimador sesgado de la variación para la distribución hipotética donde no hay diferencias. No vamos a meternos con las matemáticas acá, pero en vez de usar la fórmula de arriba, podemos usar otra que nos da una **estimación no sesgada del error estándar combinado de la media muestral**. Nuestra nueva y mejorada fórmula del $t$ se vería así:
 
 $t = \frac{\bar{X}_A - \bar{X}_B}{s_p \cdot \sqrt{\frac{1}{n_A} + \frac{1}{n_B}}}$
 
-Y \$s_p\$, que es la desviación estándar combinada de las muestras, se define así (notá que las *s* en la fórmula son **varianzas**):
+Y $s_p$, que es la desviación estándar combinada de las muestras, se define así (notá que las *s* en la fórmula son **varianzas**):
 
 $s_p = \sqrt{\frac{(n_A - 1)s_A^2 + (n_B - 1)s_B^2}{n_A + n_B - 2}}$
 
@@ -963,6 +970,14 @@ t # mostrar resultado
 # usando la función de R
 t.test(a, b, paired = FALSE, var.equal = TRUE)
 ```
+
+## Simulando datos para tests $t$
+
+Un tema "avanzado" dentro de los tests $t$ es la idea de usar R para hacer simulaciones de tests $t$.
+
+Si te acordás, el $t$ es una propiedad de una muestra. Calculamos el $t$ a partir de nuestra muestra. La distribución $t$ representa el comportamiento hipotético de nuestras muestras. Es decir, si hubiéramos tomado miles y miles de muestras, y calculado el $t$ para cada una, y luego miráramos la distribución de esos valores de $t$, tendríamos la distribución muestral del $t$.
+
+Puede ser muy útil acostumbrarse a usar R para simular datos bajo ciertas condiciones, para ver cómo se comportan tus datos muestrales y cosas como el $t$. ¿Por qué es útil esto? Principalmente porque te ayuda a desarrollar una intuición sobre cómo el error muestral (el azar) puede influir en tus resultados, dadas ciertas características de tu diseño, como el tamaño de la muestra, el tamaño de la diferencia de medias que esperás encontrar en tus datos, y la cantidad de variación que podría haber. Estos métodos pueden usarse formalmente para hacer análisis de potencia (*power analyses*), o de manera más informal para tener una mejor idea de los datos.
 
 ### Simular una prueba t de una muestra
 
@@ -1061,7 +1076,7 @@ hist(guarda_ps)
 
 Según la simulación, cuando **no hay diferencias** entre las condiciones y las muestras provienen de **la misma distribución**, se obtienen estas dos distribuciones para *t* y *p*. Una vez más, muestran cómo se comporta la **distribución nula de ausencia de diferencias**.
 
-En cualquiera de estas simulaciones, si rechazaras la hipótesis nula (que la diferencia se debe al azar), estarías cometiendo un **error tipo I**. Si fijás tu criterio alfa en \$\alpha = .05\$, podemos preguntar cuántos errores tipo I se cometieron en estas 1000 simulaciones. La respuesta es:
+En cualquiera de estas simulaciones, si rechazaras la hipótesis nula (que la diferencia se debe al azar), estarías cometiendo un **error tipo I**. Si fijás tu criterio alfa en $alpha = .05$, podemos preguntar cuántos errores tipo I se cometieron en estas 1000 simulaciones. La respuesta es:
 
 ```{r, echo=TRUE}
 length(guarda_ps[guarda_ps < .05])

@@ -215,7 +215,7 @@ t.test(puntajes, mu=50)
 
 Si *t* es solo un número que podemos calcular a partir de una muestra (y lo es), ¿qué hacemos con él? ¿Cómo usamos *t* para inferencia estadística?
 
-Volvamos al capítulo sobre muestreo y distribuciones. Ahí hablamos de la distribución muestral de la media. Generamos muchas muestras, calculamos la media de cada una, y armamos un histograma de esas medias. Más adelante dijimos que podíamos hacer eso con **cualquier** estadístico. Para cada muestra podíamos calcular la media, la desviación estándar, el error estándar, e incluso *t*. Podríamos generar 10.000 muestras y hacer cuatro histogramas, uno por cada estadístico. Eso fue exactamente lo que hice, y los resultados están en los cuatro paneles de la @fig-6sampdists. Usé un tamaño de muestra de 20, y tomé observaciones aleatorias de una distribución normal, con media = 0, y la desviación estándar = 1. Veamos las distribuciones muestrales de cada estadístico. *t* se calculó asumiendo que la media poblacional es 0.
+Volvamos al capítulo sobre muestreo y distribuciones. Ahí hablamos de la distribución muestral de la media. Generamos muchas muestras, calculamos la media de cada una, y armamos un histograma de esas medias. Más adelante dijimos que podíamos hacer eso con **cualquier** estadístico. Para cada muestra podíamos calcular la media, la desviación estándar, el error estándar, e incluso *t*. Podríamos generar 10.000 muestras y hacer cuatro histogramas, uno para cada distribución muestral de cada estadístico. Eso fue exactamente lo que hice, y los resultados están en los cuatro paneles de la @fig-6sampdists. Usé un tamaño de muestra de 20, y tomé observaciones aleatorias de una distribución normal, con media = 0, y la desviación estándar = 1. Veamos las distribuciones muestrales de cada estadístico. *t* se calculó asumiendo que la media poblacional es 0.
 
 ```{r}
 #| label: fig-6sampdists
@@ -255,7 +255,7 @@ Vemos cuatro distribuciones muestrales. Así es como se comportan los resúmenes
 
 Podemos ver de entrada que es poco probable obtener una media muestral de 2. Está muy fuera del rango típico. La distribución de las medias va más o menos de -0.5 a +0.5, y está centrada en 0 (¡justo la media poblacional, mirá vos!).
 
-También es poco probable obtener desviaciones estándar entre 0.6 y 1.5; ese es el rango típico específico para la desviación estándar muestral.
+También es poco probable obtener desviaciones estándar fuera de 0.6 y 1.5; ese es el rango típico específico para la desviación estándar muestral.
 
 Lo mismo pasa con el error estándar de la media: el rango es más chico, entre 0.1 y 0.3. Rara vez vas a encontrar una muestra con error estándar mayor a 0.3. Prácticamente nunca uno de 1 (en esta situación).
 

@@ -34,7 +34,7 @@ Bien. Una vez que medimos un poco de felicidad, seguro se te ocurren preguntas m
 
 Imaginá que sos una observadora alienígena. Llegás a la Tierra y escuchás hablar de esta cosa llamada "felicidad" que tienen las personas. Querés saber qué la causa. También descubrís que en el planeta Tierra hay muchas otras cosas. ¿Cuáles de todas esas cosas ---te preguntás--- causan la felicidad? ¿Cómo haría, tu yo-alienígena, para empezar a responder esa pregunta gigante?
 
-Como persona que tiene felicidad, quizás ya tengas algunas corazonadas sobre qué la hace cambiar. Por ejemplo: el clima, las amistades, la música, el dinero, la educación, las drogas, los libros, las películas, las creencias, la personalidad, el color de tus zapatos, el largo de tus cejas, cuántos gatos ves por día, cuántas veces se demora el subte, una provisión de por vida de chocolate, etcétera, etcétera (como diría Willy Wonka), podrían contribuir de alguna forma a la felicidad. Podría haber muchas causas distintas de la felicidad.
+Como persona que tiene felicidad, quizás ya tengas algunas corazonadas sobre qué la hace cambiar. Por ejemplo: el clima, las amistades, la música, el dinero, la educación, las drogas, los libros, las películas, las creencias, la personalidad, el color de tus zapatos, el largo de tus cejas, cuántos gatos ves por día, cuántas veces se demora el bondi, una provisión de por vida de chocolate, etcétera, etcétera (como diría Willy Wonka), podrían contribuir de alguna forma a la felicidad. Podría haber muchas causas distintas de la felicidad.
 
 ## Si algo causara que otra cosa cambie, ¿cómo se vería eso?
 
@@ -166,11 +166,11 @@ knitr::kable(the_df_short)
 "Por favor no... otra vez no uses la palabra *varianza*". Sí, lo vamos a hacer. Vamos a usar la palabra *varianza* una y otra vez, hasta que tenga sentido.\
 Recordá lo que significa la varianza respecto a un conjunto de números: significa que los números tienen cierta variación, que no son todos iguales, que algunos son más grandes y otros más chicos. Podemos ver que hay varianza en el suministro de chocolate entre los 10 sujetos. También hay varianza en los niveles de felicidad. Y también vimos, en el gráfico de dispersión, que la felicidad aumenta cuando aumenta el chocolate ---una relación positiva, una correlación positiva. ¿Qué tiene que ver eso con la varianza? Bueno, quiere decir que hay una relación entre la varianza en el suministro de chocolate y la varianza en los niveles de felicidad. ¿No te parece que ambas medidas varían juntas? Cuando tenemos dos variables que varían juntas, son como una pareja feliz que comparte su varianza. Eso es lo que significa **covarianza**: la idea de que el patrón de variación en una medida se comparte con el patrón de variación en otra.
 
-La **covarianza** es **muy, muy, muy, muy** importante. Sabemos que al principio puede ser una palabra confusa, especialmente si todavía no te sentís del todo cómodo con lo que significa varianza en una sola variable. Sin embargo, tenemos que seguir adelante y usar la idea de covarianza una y otra vez, para que quede bien grabada en tu mente estadística (sí, ya lo dijimos, pero repetir ayuda, es una hecho).
+La **covarianza** es **muy, muy, muy, muy** importante. Sabemos que al principio puede ser una palabra confusa, especialmente si todavía no te sentís del todo cómoda con lo que significa varianza en una sola variable. Sin embargo, tenemos que seguir adelante y usar la idea de covarianza una y otra vez, para que quede bien grabada en tu mente estadística (sí, ya lo dijimos, pero repetir ayuda, es una hecho).
 
-> 🧠 Consejo pro: La carrera de tres piernas es una metáfora de la covarianza. Dos personas se atan una pierna entre sí, y luego intentan caminar. Funciona cuando sus piernas se mueven juntas (relación positiva). También pueden moverse juntas de forma torpe, por ejemplo cuando una intenta avanzar justo cuando la otra intenta retroceder. Eso también es covarianza (pero negativa). Caminan de forma aleatoria cuando no hay covarianza: cada persona hace lo suyo, sin coordinación. Hay mucha varianza, pero la varianza se comparte al azar. Es solo un montón de piernas moviéndose sin lograr nada.
+> Consejo pro: La carrera de tres piernas es una metáfora de la covarianza. Dos personas se atan una pierna entre sí, y luego intentan caminar. Funciona cuando sus piernas se mueven juntas (relación positiva). También pueden moverse juntas de forma torpe, por ejemplo cuando una intenta avanzar justo cuando la otra intenta retroceder. Eso también es covarianza (pero negativa). Caminan de forma aleatoria cuando no hay covarianza: cada persona hace lo suyo, sin coordinación. Hay mucha varianza, pero la varianza se comparte al azar. Es solo un montón de piernas moviéndose sin lograr nada.
 
-> 🧠 Consejo pro #2: Jugar bien a las palmas requiere que dos personas coordinen sus acciones. Eso es una covarianza positiva bien compartida.
+> Consejo pro #2: Jugar bien a las palmas requiere que dos personas coordinen sus acciones. Eso es una covarianza positiva bien compartida.
 
 ## Convertir los números en una medida de covarianza
 
@@ -249,7 +249,7 @@ Si la suma de productos fuera 240, va a ser negativa, porque está cerca de 220,
 
 Lo que acabamos de hacer es inventar una medida de resumen específica para estos datos: una forma de cuantificar la correlación entre los números del 1 al 10 en X, y del 1 al 10 en Y, usando la **suma de productos**. Y como sabemos cuál es el máximo (385) y el mínimo (220), ahora podemos interpretar cualquier suma de productos de este tipo de datos respecto a esa escala.
 
-> 🧠 Consejo pro: Cuando la correlación entre dos variables aumenta en dirección positiva, la suma de sus productos se acerca al valor máximo posible. Esto ocurre porque los números grandes en X tienden a alinearse con los números grandes en Y, creando la mayor suma de productos. Cuando la correlación es negativa, la suma de los productos se acerca al valor mínimo posible, porque los números grandes en X se alinean con los números pequeños en Y. Si no hay correlación, los números grandes de X se alinean aleatoriamente con los grandes y pequeños de Y, haciendo que la suma quede en un valor intermedio.
+> Consejo pro: Cuando la correlación entre dos variables aumenta en dirección positiva, la suma de sus productos se acerca al valor máximo posible. Esto ocurre porque los números grandes en X tienden a alinearse con los números grandes en Y, creando la mayor suma de productos. Cuando la correlación es negativa, la suma de los productos se acerca al valor mínimo posible, porque los números grandes en X se alinean con los números pequeños en Y. Si no hay correlación, los números grandes de X se alinean aleatoriamente con los grandes y pequeños de Y, haciendo que la suma quede en un valor intermedio.
 
 ### La covarianza como medida
 
@@ -678,7 +678,7 @@ Lo que esto significa, en realidad, es que **no hay una relación lineal** que s
 
 Este ejemplo muestra algunas complicaciones al interpretar correlaciones. Ya sabemos que las plantas necesitan agua para crecer, así que esperamos que haya alguna relación entre la cantidad de agua y el crecimiento. Si miramos solo la primera mitad de los datos, vemos una correlación positiva. Si miramos solo la segunda mitad, vemos una correlación negativa. Y si miramos todos los datos juntos, **no vemos ninguna correlación**. Uf. Entonces, **incluso cuando hay una conexión causal entre dos variables**, eso no garantiza que obtengamos evidencia clara al calcular un coeficiente de correlación.
 
-> 🧠 Consejo pro: Esta es una de las razones por las que es tan importante graficar tus datos. Si ves un patrón en forma de U invertida, entonces un análisis de correlación probablemente **no sea el mejor** para esos datos.
+> Consejo pro: Esta es una de las razones por las que es tan importante graficar tus datos. Si ves un patrón en forma de U invertida, entonces un análisis de correlación probablemente **no sea el mejor** para esos datos.
 
 #### Variable confundida, o problema de la tercera variable
 
@@ -889,7 +889,7 @@ Como resultado, si tenés una muestra grande como N = 1000 y encontrás una corr
 
 Por último, notá cómo tu confianza respecto a si el azar está afectando tus resultados depende **del tamaño de tu muestra**. Si solo tenés 10 observaciones por variable y encontrás ( r = 0.5 ), no deberías estar tan seguro de que refleja una relación real. Como ves, valores de ( r = 0.5 ) ocurren bastante seguido **solo por azar** cuando la muestra es pequeña.
 
-> 🧠 Consejo pro: cuando diseñás un experimento, vos decidís cuántas muestras vas a recolectar. Eso significa que podés elegir **estrechar la ventana del azar**. Así, si encontrás una relación en los datos, podés tener más confianza en que es real, y no un simple capricho del azar.
+> Consejo pro: cuando diseñás un experimento, vos decidís cuántas muestras vas a recolectar. Eso significa que podés elegir **estrechar la ventana del azar**. Así, si encontrás una relación en los datos, podés tener más confianza en que es real, y no un simple capricho del azar.
 
 ### Algunas películas más
 

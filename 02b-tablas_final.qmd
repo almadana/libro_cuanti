@@ -18,12 +18,7 @@ En este capítulo vamos a detenernos en ese primer paso, fundamental pero a vece
 * qué tipo de proporción estamos leyendo (y cuál *creemos* que estamos leyendo),
 * y qué conclusiones podemos (o no podemos) sacar a partir de ella.
 
-Y lo vamos a hacer paso a paso, desde lo más básico: contar.
-
-Porque antes de correr modelos, hacer tests, o calcular valores *p*, hay algo más simple y más poderoso: **mirar con atención qué dicen los datos, y cómo lo dicen**.
-
-
-Perfecto. Entonces seguimos con ese estilo narrativo y reflexivo, integrando ejemplos reales y bloques de código en R cuando sea útil. Ahora empiezo con la sección sobre **frecuencias absolutas**:
+Porque antes de correr modelos, hacer tests, o calcular valores *p*, hay algo más simple y más poderoso: **mirar con atención qué dicen los datos, y cómo lo dicen**. Y lo vamos a hacer paso a paso, desde lo más básico: contar.
 
 ## Contar: la primera estadística
 
@@ -75,9 +70,6 @@ Por ahora, la gran idea es esta:
 > **Contar categorías es el primer paso para entender los datos.**
 
 Todo lo que viene después —proporciones, porcentajes, pruebas estadísticas— se construye sobre ese primer conteo.
-
-Perfecto. Seguimos avanzando en el capítulo, manteniendo el estilo narrativo y el uso de código en R. Pasamos ahora a **frecuencias relativas y porcentuales**.
-
 
 ## ¿Qué tan grande es “mucho”?
 
@@ -139,10 +131,7 @@ barplot(100 * tabla_relativa,
         ylab = "Porcentaje")
 ```
 
-La tabla y el gráfico muestran lo mismo, pero de otra forma. A veces te conviene contar. A veces, comparar proporciones. Y lo importante es saber **cuál estás usando**.
-
-Porque, como veremos más adelante, **muchos errores de interpretación** vienen de confundir una tabla con números crudos con otra que muestra proporciones.
-
+La tabla y el gráfico muestran lo mismo, pero de otra forma. A veces te conviene contar. A veces, comparar proporciones. Y lo importante es saber **cuál estás usando**. Porque, como veremos más adelante, **muchos errores de interpretación** vienen de confundir una tabla con números crudos con otra que muestra proporciones.
 
 ## Sumar hacia arriba: la frecuencia acumulada
 
@@ -204,7 +193,7 @@ acumulada_porcentual
 
 ### ¿Qué aprendemos con esto?
 
-Por ejemplo, podemos ver que el **63% de las personas** tiene una puntuación de ansiedad **3 o menos**. Esa información no la da ninguna frecuencia aislada, y es clave si querés responder preguntas como:
+Por ejemplo, podemos ver que el **73% de las personas** tiene una puntuación de ansiedad **3 o menos**. Esa información no la da ninguna frecuencia aislada, y es clave si querés responder preguntas como:
 
 > ¿Qué proporción de la población está en el rango “bajo” o “moderado”?
 
@@ -231,13 +220,11 @@ La línea gris horizontal marca el 50%. Donde la curva lo cruza, está la **medi
 
 **Contar** es solo el principio. Pero cuando hay orden, **sumar** nos cuenta una historia diferente. Una historia de acumulación, de corte, de “hasta aquí” y “a partir de acá”. Y eso, en psicología, es a veces la diferencia entre un caso leve y uno severo.
 
-Perfecto. Voy a continuar con la sección sobre **tablas de contingencia**, cuidando que el tono se mantenga narrativo, reflexivo y accesible, con ejemplos claros y progresivos. Acá vamos.
-
 ---
 
 ## Dos variables, una tabla: cuando las categorías se cruzan
 
-Hasta ahora veníamos mirando **una sola variable a la vez**. Contábamos cuántas personas eligieron esta opción o aquella. Calculábamos qué porcentaje respondió de cierta manera. Veíamos cómo se acumulaban los niveles de una escala.
+Hasta ahora veníamos mirando **una sola variable a la vez**. Contábamos cuántas personas eligieron esta opción o aquella. Calculábamos qué porcentaje respondió de cierta manera, y veíamos cómo se acumulaban los niveles de una escala.
 
 Pero la mayoría de las preguntas interesantes en psicología —y en ciencias sociales en general— no se responden mirando una sola variable. Nos interesa saber **cómo se relacionan entre sí**.
 
@@ -306,8 +293,6 @@ ggplot(datos, aes(x = genero, fill = opinion)) +
 
 Este gráfico nos permite ver **en paralelo** las frecuencias de cada categoría, lo que a veces es más fácil que comparar números en una cuadrícula. Pero —y esto es clave— este gráfico está mostrando los **valores absolutos**, no proporciones. Y ahí es donde pueden empezar los malentendidos.
 
- Perfecto. Esta sección es clave porque muchos errores de interpretación se originan aquí. Vamos a desarrollar con cuidado y ejemplos cómo los **totales** estructuran la lectura, y cómo se pueden **malinterpretar relaciones** si no se considera esto. Aquí va.
-
 ---
 
 ## Los totales mandan: leer bien una tabla (y no cometer errores)
@@ -324,7 +309,7 @@ Una tabla de contingencia puede organizarse (y leerse) de distintas maneras seg�
 
 Veamos los tres casos principales:
 
-### 🧱 1. Totales por fila
+### 1. Totales por fila
 
 Esto pasa cuando preguntamos:
 
@@ -349,7 +334,7 @@ Estas proporciones **son condicionales a la fila**. Y se usan todo el tiempo en 
 
 ---
 
-### 🧱 2. Totales por columna
+### 2. Totales por columna
 
 Ahora cambiamos la pregunta:
 
@@ -373,7 +358,7 @@ Esto responde preguntas como:
 Estas proporciones **pueden ser útiles**, pero se prestan a confusión si uno cree que está viendo lo mismo que en la tabla anterior. **No lo está.**
 
 
-### 🌐 3. Total general
+### 3. Total general
 
 A veces lo que queremos es mirar las proporciones respecto al total de la muestra, sin condicionar por fila ni por columna.
 
@@ -393,7 +378,7 @@ Esto responde:
 Es útil para estimar prevalencias conjuntas. Pero no sirve para comparar respuestas dentro de grupos.
 
 
-## ⚠️ ¿Por qué importa esto?
+## ¿Por qué importa esto?
 
 Porque si no sabemos **qué total estamos usando**, podemos decir cosas como:
 
@@ -410,10 +395,7 @@ Cuando al calcular los porcentajes **dentro de cada grupo**, tal vez descubrimos
 Estos errores son **muy comunes** en artículos, medios, e incluso investigaciones. Y se derivan de no distinguir claramente **la estructura del total**.
 
 
-> 🧠 Regla de oro **Nunca interpretes una tabla de contingencia sin saber primero de qué total estás hablando.**
-
-
-Perfecto. Ahora seguimos con una sección dedicada a las **tablas de prevalencia**, un tipo muy común y muy útil de tabla en psicología y epidemiología, pero que también puede inducir a errores si no se interpreta bien. La idea es seguir desarrollando la intuición del lector y mostrarle cómo identificar este tipo especial de tabla.
+> **Regla de oro: Nunca interpretes una tabla de contingencia sin saber primero de qué total estás hablando.**
 
 ---
 
@@ -465,7 +447,7 @@ tabla_ansiedad
 
 ### ¿Cómo se calcula la prevalencia?
 
-Queremos saber qué proporción de personas de cada nivel educativo reportó ansiedad. Para eso, **normalizamos por fila**: calculamos proporciones **dentro de cada grupo**.
+Queremos saber qué proporción de personas de cada nivel educativo reportó ansiedad. Para eso, **normalizamos por fila**, es decir calculamos proporciones **dentro de cada grupo**.
 
 ```{r}
 #| label: prevalencia-por-grupo
@@ -528,9 +510,6 @@ Porque si alguien te dice:
 
 Pero eso **no significa** que ese grupo tenga **mayor prevalencia**. Por eso, **es clave identificar el tipo de tabla** que estás mirando. Y saber **desde qué total están calculadas las proporciones**.
 
-Excelente. Esta sección va a mostrar con claridad cómo **dos tablas con los mismos números absolutos** pueden generar interpretaciones muy distintas, dependiendo de cómo se estructuren las proporciones. Es un momento ideal para profundizar en la lectura crítica y el concepto de condicionalidad.
-
-
 ## Dos historias, una tabla: cómo el mismo dato puede decir cosas distintas
 
 Supongamos que tenés la siguiente tabla. Es simple, clara, y 100% realista. En algún momento de tu formación (o carrera), vas a encontrarte con algo parecido:
@@ -553,12 +532,10 @@ tabla <- as.table(tabla)
 tabla
 ```
 
-Esta tabla muestra cuántas personas de cada nivel educativo reportaron ansiedad clínica (“Sí”) o no (“No”). A simple vista, podrías pensar que el grupo de educación básica tiene más casos de ansiedad que el de nivel medio o superior. Pero, ¿eso significa que la ansiedad es más prevalente en ese grupo?
-
-Depende. De **cómo leas la tabla**.
+Esta tabla muestra cuántas personas de cada nivel educativo reportaron ansiedad clínica (“Sí”) o no (“No”). A simple vista, podrías pensar que el grupo de educación básica tiene más casos de ansiedad que el de nivel medio o superior. Pero, ¿eso significa que la ansiedad es más prevalente en ese grupo? Depende de **cómo leas la tabla**.
 
 
-### 🧭 Historia 1: la tabla de prevalencia
+### Historia 1: la tabla de prevalencia
 
 Vamos a calcular **proporciones por fila**, es decir, respecto al total de personas **dentro de cada grupo educativo**:
 
@@ -581,7 +558,7 @@ Y ahí vemos:
 > Esta es una tabla de **prevalencia**.
 
 
-### 🧭 Historia 2: proporciones por columna
+### Historia 2: proporciones por columna
 
 Ahora miremos la misma tabla, pero calculando **proporciones por columna**, es decir, respecto al total de personas que **respondieron “Sí” o “No”**:
 
@@ -603,7 +580,7 @@ Y ahora vemos otra historia:
 
 > Esta es una tabla de **distribución condicional inversa**: qué tipo de personas hay entre los que dijeron “sí”.
 
-### 🧠 ¿Cuál está “bien”?
+### ¿Cuál está “bien”?
 
 Las dos son válidas. Y las dos cuentan cosas distintas.
 
@@ -757,8 +734,6 @@ ggplot(df_c, aes(x = Ansiedad, y = Freq, fill = Nivel_educativo)) +
 ### Entender condicionales ≠ solo leer bien
 
 Entender bien las proporciones condicionales no solo evita errores. También te entrena para algo más grande: **pensar en términos de relaciones causales, probabilísticas y contextuales**. Algo que vas a necesitar en casi todo lo que viene después.
-
-Perfecto, vamos con la sección sobre **incidencia**, diferenciándola cuidadosamente de la **prevalencia**, usando un tono narrativo y orientado a ejemplos en psicología, como siempre.
 
 ## Incidencia: cuando contar también implica tiempo
 

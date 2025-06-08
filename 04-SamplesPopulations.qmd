@@ -26,7 +26,7 @@ Este tipo de afirmación es totalmente común en los diarios y en la vida cotidi
 
 La respuesta es bastante obvia: si llamo a 1000 personas al azar y 230 dicen que votarían a ese partido, parece muy poco probable que **sean las únicas** 230 personas en toda la población que lo harían. En otras palabras, asumimos que los datos recolectados por la encuestadora representan bastante bien a toda la población. Pero, ¿cuán representativos son? ¿Nos sorprendería descubrir que el verdadero apoyo al partido es en realidad del 24%? ¿Del 29%? ¿Del 37%? Acá es donde la intuición cotidiana empieza a fallar. A nadie le sorprendería un 24%, y a todo el mundo le sorprendería un 37%, pero no es tan fácil decidir si un 29% sería plausible. Necesitamos herramientas más potentes que simplemente mirar los números y adivinar.
 
-La **estadística inferencial** proporciona las herramientas necesarias para responder ese tipo de preguntas. Y como ese tipo de preguntas están en el corazón del trabajo científico, ocupan la mayor parte de cualquier curso introductorio de estadística o métodos de investigación. Y como ese tipo de preguntas están en el corazón del trabajo científico, ocupan la mayor parte de cualquier curso introductorio de estadística o métodos de investigación. Sin embargo, nuestras herramientas para hacer inferencias estadísticas están: 1. construidas sobre la base de la **teoría de la probabilidad**, y 2. requieren entender cómo se comportan las muestras cuando se extraen de distribuciones (definidas por la teoría de la probabilidad...). Así que este capítulo tiene dos partes principales: una breve introducción a la teoría de la probabilidad, y una introducción al muestreo a partir de distribuciones.
+La **estadística inferencial** proporciona las herramientas necesarias para responder ese tipo de preguntas. Y como ese tipo de preguntas están en el corazón del trabajo científico, ocupan la mayor parte de cualquier curso introductorio de estadística o métodos de investigación. Sin embargo, nuestras herramientas para hacer inferencias estadísticas están: 1. construidas sobre la base de la **teoría de la probabilidad**, y 2. requieren entender cómo se comportan las muestras cuando se extraen de distribuciones (definidas por la teoría de la probabilidad...). Así que este capítulo tiene dos partes principales: una breve introducción a la teoría de la probabilidad, y una introducción al muestreo a partir de distribuciones.
 
 ## ¿En qué se diferencian la probabilidad y la estadística?
 
@@ -42,7 +42,7 @@ Antes de empezar a hablar de teoría de la probabilidad, conviene dedicar un mom
 
 Fijate que todas estas preguntas tienen algo en común. En cada caso la "verdad del mundo" es conocida, y mi pregunta se relaciona con "qué clase de eventos" van a ocurrir. En la primera pregunta, **sabemos** que la moneda es justa, así que hay un 50% de probabilidad de que cualquier lanzamiento individual salga cara. En la segunda, **sabemos** que la chance de sacar un 6 con un dado es 1 en 6. En la tercera, **sabemos** que el mazo está bien mezclado. Y en la cuarta, **sabemos** que la lotería sigue reglas específicas. Ya te hacés una idea. Lo importante es que las preguntas de probabilidad parten de un **modelo** conocido del mundo, y usamos ese modelo para hacer algunos cálculos.
 
-El modelo subyacente puede ser muy simple. Por ejemplo, en el caso de la moneda, podemos escribir el modelo así:$P(\text{cara}) = 0.5 $que se lee: "la probabilidad de que salga cara es 0.5".
+El modelo subyacente puede ser muy simple. Por ejemplo, en el caso de la moneda, podemos escribir el modelo así: $P(\mbox{heads}) = 0.5$ que se lee: "la probabilidad de que salga cara es 0.5".
 
 Como veremos más adelante, así como los porcentajes van de 0% a 100%, las probabilidades son simplemente números que van de 0 a 1. Cuando usamos este modelo para responder la primera pregunta, en realidad no sabemos exactamente qué va a pasar. Tal vez salgan 10 caras, como plantea la pregunta. Pero también podrían salir 3 caras. Eso es lo importante: en la teoría de la probabilidad, el **modelo** es conocido, pero los **datos** no lo son.
 
@@ -57,10 +57,10 @@ Eso es la probabilidad. ¿Y la estadística? Las preguntas estadísticas **funci
 Esta vez, lo único que tenemos son los datos. Lo que **sé** es que vi a mi amiga lanzar la moneda 10 veces y salió cara todas las veces. Y lo que quiero *inferir* es si debería concluir que lo que acabo de ver fue realmente una moneda justa siendo lanzada 10 veces seguidas, o si debería sospechar que mi amiga me está haciendo una trampa. Los datos que tengo se ven así:
 
 ```         
-H H H H H H H H H H
+C C C C C C C C C C
 ```
 
-y lo que estoy intentando hacer es decidir en cuál "modelo del mundo" debería confiar. Si la moneda es justa, entonces el modelo que debería adoptar es uno en el que la probabilidad de que salga cara es 0.5; es decir,$P(\text{cara}) = 0.5 $Si la moneda no es justa, entonces debería concluir que la probabilidad de que salga cara **no** es 0.5, lo que escribiríamos como $P(\text{cara}) \neq 0.5$. En otras palabras, el problema de la inferencia estadística consiste en darme cuenta cuál de estos modelos de probabilidad es el correcto. Está claro que la pregunta estadística no es la misma que la pregunta de probabilidad, pero están profundamente relacionadas. Por eso, una buena introducción a la teoría estadística comienza con una discusión sobre qué es la probabilidad y cómo funciona.
+y lo que estoy intentando hacer es decidir en cuál "modelo del mundo" debería confiar. Si la moneda es justa, entonces el modelo que debería adoptar es uno en el que la probabilidad de que salga cara es 0.5; es decir,$P(\mbox{heads}) = 0.5$ Si la moneda no es justa, entonces debería concluir que la probabilidad de que salga cara **no** es 0.5, lo que escribiríamos como $P(\mbox{heads}) \neq 0.5$. En otras palabras, el problema de la inferencia estadística consiste en darme cuenta cuál de estos modelos de probabilidad es el correcto. Está claro que la pregunta estadística no es la misma que la pregunta de probabilidad, pero están profundamente relacionadas. Por eso, una buena introducción a la teoría estadística comienza con una discusión sobre qué es la probabilidad y cómo funciona.
 
 ## ¿Qué significa probabilidad?
 
@@ -78,13 +78,13 @@ Todas estas opciones parecen razonables. Sin embargo, no son idénticas, y no to
 
 ### La visión frecuentista
 
-El primero de los dos enfoques principales, y el más dominante en estadística, se conoce como la **visión frecuentista**, que define la probabilidad como una **frecuencia a largo plazo**. Supongamos que empezamos a lanzar una moneda justa, una y otra vez. Por definición, es una moneda en la que $P(H) = 0.5$. ¿Qué podríamos observar? Una posibilidad es que los primeros 20 lanzamientos se vean así:
+El primero de los dos enfoques principales, y el más dominante en estadística, se conoce como la **visión frecuentista**, que define la probabilidad como una **frecuencia a largo plazo**. Supongamos que empezamos a lanzar una moneda justa, una y otra vez. Por definición, es una moneda en la que $P(C) = 0.5$. ¿Qué podríamos observar? Una posibilidad es que los primeros 20 lanzamientos se vean así:
 
 ```         
-T, H, H, H, H, T, T, H, H, H, H, T, H, H, T, T, T, T, T, H
+C, N, N, C, C, N, N, C, C, C, C, N, C, C, N, N, N, N, N, C
 ```
 
-En este caso, 11 de los 20 lanzamientos (55%) salieron cara. Ahora supongamos que fui llevando la cuenta del número de caras (que voy a llamar $N_H$) en los primeros $N$lanzamientos, y que cada vez calculo la proporción de caras $N_H/N$. Esto es lo que obtendría (¡sí, de verdad lancé monedas para obtener esto!):
+En este caso, 11 de los 20 lanzamientos (55%) salieron cara. Ahora supongamos que fui llevando la cuenta del número de caras (que voy a llamar $N_C$) en los primeros $N$lanzamientos, y que cada vez calculo la proporción de caras $N_C/N$. Esto es lo que obtendría (¡sí, de verdad lancé monedas para obtener esto!):
 
 | número de lanzamientos |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  | 10  |
 |------------------------|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -96,7 +96,7 @@ En este caso, 11 de los 20 lanzamientos (55%) salieron cara. Ahora supongamos qu
 | número de caras        |  8  |  8  |  9  | 10  | 10  | 10  | 10  | 10  | 10  | 11  |
 | proporción             | .73 | .67 | .69 | .71 | .67 | .63 | .59 | .56 | .53 | .55 |
 
-Fijate que al principio de la secuencia, la **proporción** de caras fluctúa bastante, empezando en .00 y subiendo hasta .80. Más adelante, da la impresión de que se estabiliza, con valores que se acercan cada vez más al valor "correcto" de 0.50. Esta es la definición frecuentista de probabilidad en pocas palabras: lanzá una moneda justa muchas veces, y a medida que $N$crece (se acerca al infinito, denotado $N \rightarrow \infty$), la proporción de caras converge a 50%. Hay algunas sutilezas técnicas que le importan a los matemáticos, pero en términos cualitativos, así es como los frecuentistas definen la probabilidad. Por supuesto, no tengo un número infinito de monedas, ni la paciencia infinita para lanzarlas eternamente. Pero sí tengo una computadora, y las computadoras son excelentes para tareas repetitivas. Así que le pedí a la computadora que simulara lanzar una moneda 1000 veces, y luego grafiqué lo que pasa con la proporción $N_H / N$ a medida que $N$ aumenta. En realidad, lo hice cuatro veces, solo para asegurarme de que no fuera casualidad. Los resultados se muestran en la @fig-4FreqProb. Como podés ver, la **proporción de caras observadas** eventualmente deja de fluctuar, y se estabiliza. Cuando eso ocurre, el número al que se estabiliza es la verdadera probabilidad de cara.
+Fijate que al principio de la secuencia, la **proporción** de caras fluctúa bastante, empezando en .00 y subiendo hasta .80. Más adelante, da la impresión de que se estabiliza, con valores que se acercan cada vez más al valor "correcto" de 0.50. Esta es la definición frecuentista de probabilidad en pocas palabras: lanzá una moneda justa muchas veces, y a medida que $N$crece (se acerca al infinito, denotado $N \rightarrow \infty$), la proporción de caras converge a 50%. Hay algunas sutilezas técnicas que le importan a los matemáticos, pero en términos cualitativos, así es como los frecuentistas definen la probabilidad. Por supuesto, no tengo un número infinito de monedas, ni la paciencia infinita para lanzarlas eternamente. Pero sí tengo una computadora, y las computadoras son excelentes para tareas repetitivas. Así que le pedí a la computadora que simulara lanzar una moneda 1000 veces, y luego grafiqué lo que pasa con la proporción $N_C / N$ a medida que $N$ aumenta. En realidad, lo hice cuatro veces, solo para asegurarme de que no fuera casualidad. Los resultados se muestran en la @fig-4FreqProb. Como podés ver, la **proporción de caras observadas** eventualmente deja de fluctuar, y se estabiliza. Cuando eso ocurre, el número al que se estabiliza es la verdadera probabilidad de cara.
 
 ```{r echo=F}
 #| label: fig-4FreqProb
@@ -132,7 +132,7 @@ Más allá de las discusiones ideológicas entre bayesianos y frecuentistas, res
 
 Una de las verdades perturbadoras de mi vida es que solo tengo cinco pares de pantalones: tres jeans, la parte de abajo de un traje, y un pantalón deportivo. Más triste aún: les puse nombre. Los llamo $X_1$, $X_2$, $X_3$, $X_4$ y $X_5$. De verdad lo hago: por eso me dicen "Señor Imaginativo". Cada día, elijo exactamente un par de pantalones para usar. Ni yo soy tan tonto como para tratar de usar dos al mismo tiempo, y gracias a años de entrenamiento ya no salgo de casa sin pantalones. Si quisiera describir esta situación usando el lenguaje de la teoría de la probabilidad, diría que cada par de pantalones (es decir, cada $X$) es un *evento elemental*. La característica clave de los eventos elementales es que cada vez que hacemos una observación (por ejemplo, cada vez que me pongo un par de pantalones), el resultado será uno y solo uno de esos eventos. Como dije, hoy en día siempre uso exactamente un par, así que mis pantalones cumplen con esa condición. De forma similar, al conjunto de todos los posibles eventos se lo llama *espacio muestral*. Es verdad que algunas personas lo llamarían "guardarropa", pero eso es porque se niegan a pensar en mis pantalones desde una perspectiva probabilística. Triste.
 
-Bien, ahora que tenemos un espacio muestral (un guardarropa), formado por varios eventos elementales (pantalones), lo que queremos hacer es asignar una *probabilidad* a cada uno de esos eventos. Para un evento $X$, la probabilidad de ese evento $P(X)$es un número entre 0 y 1. Cuanto mayor es el valor de $P(X)$, más probable es que ocurra ese evento. Por ejemplo: - Si $P(X) = 0$, significa que el evento $X$ es **imposible** (nunca uso ese pantalón). - Si $P(X) = 1$, significa que el evento $X$ es **seguro** (siempre uso ese pantalón). - Valores de probabilidad intermedios significan que a veces uso ese pantalón. Por ejemplo, si $P(X) = 0.5$, significa que uso ese pantalón la mitad del tiempo.
+Bien, ahora que tenemos un espacio muestral (un guardarropa), formado por varios eventos elementales (pantalones), lo que queremos hacer es asignar una *probabilidad* a cada uno de esos eventos. Para un evento $X$, la probabilidad de ese evento $P(X)$es un número entre 0 y 1. Cuanto mayor es el valor de $P(X)$, más probable es que ocurra ese evento. Por ejemplo: Si $P(X) = 0$, significa que el evento $X$ es **imposible** (nunca uso ese pantalón). Si $P(X) = 1$, significa que el evento $X$ es **seguro** (siempre uso ese pantalón). Valores de probabilidad intermedios significan que a veces uso ese pantalón. Por ejemplo, si $P(X) = 0.5$, significa que uso ese pantalón la mitad del tiempo.
 
 A esta altura, ya casi terminamos. Lo último que necesitamos reconocer es que "algo siempre ocurre". Cada vez que me pongo pantalones, efectivamente termino con un par puesto (una locura, ¿no?). Esta afirmación algo trillada quiere decir, en términos probabilísticos, que las probabilidades de todos los eventos elementales deben sumar 1. Esto se conoce como la *ley de probabilidad total*, aunque a nadie le importe demasiado. Más importante, si se cumplen estos requisitos, lo que tenemos es una *distribución de probabilidad*. Por ejemplo, esta es una distribución de probabilidad
 
@@ -192,7 +192,7 @@ $$
 
 Ahora podemos empezar a comprobar las reglas que figuran en la tabla.
 
-En la primera línea, la tabla dice que:$P(\neg A) = 1 - P(A)$y lo que **significa** esto es que la probabilidad de "no $A$" es igual a 1 menos la probabilidad de $A$. Con un poco de reflexión (y un ejemplo tedioso) se vuelve evidente por qué esto tiene que ser verdad. Si $A$ corresponde al evento de que me pongo jeans (es decir, que ocurre alguno de los eventos $x_1$, $x_2$ o $x_3$), entonces la única definición razonable de "no $A$" (que se denota matemáticamente como $\neg A$) es decir que$\neg A$consiste en **todos** los eventos elementales que no pertenecen a$A$. En el caso de los pantalones, eso significa que:$$\neg A = (x_4, x_5)$$o, dicho en español: "no jeans" incluye todos los pantalones que no son jeans (es decir, el pantalón de traje negro y el pantalón deportivo azul). Por lo tanto, cada uno de los eventos elementales pertenece o bien a$A$, o bien a$\neg A$, pero no a ambos. Bien, entonces reorganicemos lo anterior:$$P(\neg A) + P(A) = 1$$que no es más que una forma matemática de decir: o uso jeans, o no uso jeans; la probabilidad de "no jeans" más la probabilidad de "jeans" es igual a 1.
+En la primera línea, la tabla dice que: $P(\neg A) = 1 - P(A)$ y lo que **significa** esto es que la probabilidad de "no $A$" es igual a 1 menos la probabilidad de $A$. Con un poco de reflexión (y un ejemplo tedioso) se vuelve evidente por qué esto tiene que ser verdad. Si $A$ corresponde al evento de que me pongo jeans (es decir, que ocurre alguno de los eventos $x_1$, $x_2$ o $x_3$), entonces la única definición razonable de "no $A$" (que se denota matemáticamente como $\neg A$) es decir que $\neg A$ consiste en **todos** los eventos elementales que no pertenecen a$A$. En el caso de los pantalones, eso significa que: $$\neg A = (x_4, x_5)$$ o, dicho en español: "no jeans" incluye todos los pantalones que no son jeans (es decir, el pantalón de traje negro y el pantalón deportivo azul). Por lo tanto, cada uno de los eventos elementales pertenece o bien a $A$, o bien a $\neg A$, pero no a ambos. Bien, entonces reorganicemos lo anterior: $$P(\neg A) + P(A) = 1$$ que no es más que una forma matemática de decir: o uso jeans, o no uso jeans; la probabilidad de "no jeans" más la probabilidad de "jeans" es igual a 1.
 
 Matemáticamente:
 
@@ -213,14 +213,14 @@ P(\neg A) + P(A) &=& P(x_1) + P(x_2) + P(x_3) + P(x_4) + P(x_5) \\
 \end{array}
 $$Excelente. Todo parece funcionar.
 
-"Guau", te escucho decir. "Todo esto para decirme lo increíblemente obvio". Y tenés razón: esto **es** increíblemente obvio. El **propósito** de la teoría de la probabilidad es formalizar y matematizar unas pocas intuiciones de sentido común. Así que sigamos un poco más con esta línea de razonamiento. En la sección anterior definí un evento correspondiente a **no** A, que denoté como $\neg A$. Ahora vamos a definir dos nuevos eventos que corresponden a conceptos cotidianos importantes: **$A$y$B$**, y **$A$o$B$\*\*. Específicamente:
+"Guau", te escucho decir. "Todo esto para decirme lo increíblemente obvio". Y tenés razón: esto **es** increíblemente obvio. El **propósito** de la teoría de la probabilidad es formalizar y matematizar unas pocas intuiciones de sentido común. Así que sigamos un poco más con esta línea de razonamiento. En la sección anterior definí un evento correspondiente a **no** A, que denoté como $\neg A$. Ahora vamos a definir dos nuevos eventos que corresponden a conceptos cotidianos importantes: **$A$y$B$**, y **$A$o$B$**. Específicamente:
 
 | Afirmación en español                    | Notación matemática |
 |:-----------------------------------------|:-------------------:|
 | "$A$y$B$" ocurren ambos        |  $A \cap B$  |
 | ocurre al menos uno: "$A$o$B$" |  $A \cup B$  |
 
-Ya que $A$y$B$ están definidos en términos de nuestros eventos elementales (los $x$s), necesitamos describir también $A \cap B$y$A \cup B$ en términos de nuestros eventos elementales. ¿Podemos hacerlo? ¡Sí que podemos! La única forma en que ocurran ambos eventos,$A$y$B$, es que el evento elemental observado pertenezca tanto a $A$ como a $B$. Así que "$A \cap B$" incluye solamente aquellos eventos elementales que pertenecen a $A$ y $B$...
+Ya que $A$y$B$ están definidos en términos de nuestros eventos elementales (los $x$s), necesitamos describir también $A \cap B$ y $A \cup B$ en términos de nuestros eventos elementales. ¿Podemos hacerlo? ¡Sí que podemos! La única forma en que ocurran ambos eventos, $A$y$B$, es que el evento elemental observado pertenezca tanto a $A$ como a $B$. Así que "$A \cap B$" incluye solamente aquellos eventos elementales que pertenecen a $A$ y $B$...
 
 $$
 \begin{array}{rcl}
@@ -231,7 +231,7 @@ A \cap B &=& (x_3)
 $$
 Es decir, la única forma en que pueda estar usando "jeans" ($x_1, x_2, x_3$) y “pantalón negro” ($x_3, x_4$) al mismo tiempo, es que esté usando los “jeans negros” ($x_3$). Otro triunfo para lo absolutamente obvio.
 
-A esta altura, no te va a sorprender para nada la definición de $A \cup B$, aunque probablemente te parezca increíblemente aburrida. La única forma en que puedo estar usando "jeans" o "pantalón negro" es si el pantalón elemental que realmente uso pertenece a$A$, o a$B$, o a ambos. Así que:
+A esta altura, no te va a sorprender para nada la definición de $A \cup B$, aunque probablemente te parezca increíblemente aburrida. La única forma en que puedo estar usando "jeans" o "pantalón negro" es si el pantalón elemental que realmente uso pertenece a $A$, o a $B$, o a ambos. Así que:
 
 $$
 \begin{array}{rcl}

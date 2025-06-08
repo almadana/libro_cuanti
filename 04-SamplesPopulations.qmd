@@ -243,14 +243,14 @@ $$
 
 Vaaamooooooooo!!!! Matemáticas, sabelo!
 
-Entonces, ya definimos qué queremos decir con $A \cap B$y$A \cup B$. Ahora asignemos probabilidades a esos eventos. Más específicamente, vamos a verificar la regla que dice que: $$P(A \cup B) = P(A) + P(B) - P(A \cap B)$$
+Entonces, ya definimos qué queremos decir con $A \cap B$ y $A \cup B$. Ahora asignemos probabilidades a esos eventos. Más específicamente, vamos a verificar la regla que dice que: $$P(A \cup B) = P(A) + P(B) - P(A \cap B)$$
 
 Usando las definiciones anteriores, sabemos que: $A \cup B = (x_1, x_2, x_3, x_4)$, entonces 
 $$
 P(A \cup B) = P(x_1) + P(x_2) + P(x_3) + P(x_4)
 $$
 
-y usando el hecho de que sabemos qué eventos elementales pertenecen a$A$,$B$, y$A \cap B$, tenemos:
+y usando el hecho de que sabemos qué eventos elementales pertenecen a $A$,$B$, y $A \cap B$, tenemos:
 $$
 \begin{array}{rcl}
 P(A) &=& P(x_1) + P(x_2) + P(x_3) \\
@@ -259,28 +259,27 @@ P(A \cap B) &=& P(x_3)
 \end{array}
 $$
 y por lo tanto:
-$$
 
+$$
 \begin{array}{rcl}
 P(A) + P(B) - P(A \cap B)
 &=& P(x_1) + P(x_2) + P(x_3) + P(x_3) + P(x_4) - P(x_3) \\
 &=& P(x_1) + P(x_2) + P(x_3) + P(x_4) \\
 &=& P(A \cup B)
 \end{array}
-
 $$
 
 Listo.
 
 El próximo concepto que necesitamos definir es la notación "$B$ dado $A$", que se escribe típicamente como $B \mid A$. Esto es lo que quiero decir: supongamos que me levanto una mañana y me pongo un pantalón. Ocurre un evento elemental $x$. Supongamos que le grito a mi esposa (que está en la otra habitación, y no puede ver qué pantalón me puse): "¡Hoy estoy usando jeans!". Asumiendo que ella me cree, entonces sabe que $A$ es verdadero. **Dado** que sabe que ocurrió $A$, ¿cuál es la **probabilidad condicional** de que también sea cierto $B$? Bueno, pensemos qué información tiene. Estas son las cosas que sabe:
 
--   **Los eventos que no son jeans son imposibles**. Si $A$ es verdadero, entonces sabemos que los únicos eventos elementales que pueden haber ocurrido son$x_1$, $x_2$ y $x_3$(o sea, los jeans). Los eventos no jeans, $x_4$ y $x_5$, ahora son imposibles y deben tener probabilidad cero. En otras palabras, nuestro **espacio muestral** se ha restringido a los eventos jeans. Pero sigue siendo cierto que la suma de las probabilidades de estos eventos **debe** ser 1: sabemos con certeza que estoy usando jeans.
+-   **Los eventos que no son jeans son imposibles**. Si $A$ es verdadero, entonces sabemos que los únicos eventos elementales que pueden haber ocurrido son $x_1$, $x_2$ y $x_3$ (o sea, los jeans). Los eventos no jeans, $x_4$ y $x_5$, ahora son imposibles y deben tener probabilidad cero. En otras palabras, nuestro **espacio muestral** se ha restringido a los eventos jeans. Pero sigue siendo cierto que la suma de las probabilidades de estos eventos **debe** ser 1: sabemos con certeza que estoy usando jeans.
 
 -   **Ella no aprendió nada sobre qué jeans estoy usando**. Antes de que yo anunciara que estoy usando jeans, ella ya sabía que era cinco veces más probable que estuviera usando jeans azules ($P(x_1) = 0.5$) que jeans negros ($P(x_3) = 0.1$). Mi anuncio no cambia eso... no dije **nada** sobre el color, así que la proporción $P(x_1) / P(x_3)$ se mantiene igual, con un valor de 5.
 
 Solo hay una forma de satisfacer estas restricciones: asignar probabilidad cero a los eventos imposibles (es decir, $P(x | A) = 0$ si $x$ no está en $A$), y luego dividir las probabilidades de todos los demás por $P(A)$. En este caso, como $P(A) = 0.9$, dividimos entre 0.9. Esto da:
 
-| ¿Qué pantalón?     | Evento elemental | Prob. original $P(x)$  | Nueva prob. $P(x \mid A) $ |
+| ¿Qué pantalón?     | Evento elemental | Prob. original $P(x)$  | Nueva prob. $P(x | A)$     |
 |:-----------------|:----------------:|:----------------:|:----------------:|
 | Jean azul          |     $x_1$      |           0.5           |            0.556            |
 | Jean gris          |     $x_2$      |           0.3           |            0.333            |
@@ -309,7 +308,7 @@ $P(A \cap B) = P(B \mid A) \cdot P(A)$ que es la tercera regla que habíamos lis
 
 ## La distribución binomial
 
-Como te podés imaginar, las distribuciones de probabilidad varían muchísimo, y hay una enorme cantidad de distribuciones ahí afuera. Sin embargo, no todas son igual de importantes. De hecho, la gran mayoría del contenido de este libro se basa en una de cinco distribuciones: la distribución binomial, la distribución normal, la distribución$t$, la distribución $\chi^2$ ("chi-cuadrado") y la distribución $F$. Dicho esto, lo que voy a hacer en las próximas secciones es darte una breve introducción a esas cinco, prestando especial atención a la binomial y a la normal. Voy a empezar con la distribución binomial, porque es la más sencilla de las cinco.
+Como te podés imaginar, las distribuciones de probabilidad varían muchísimo, y hay una enorme cantidad de distribuciones ahí afuera. Sin embargo, no todas son igual de importantes. De hecho, la gran mayoría del contenido de este libro se basa en una de cinco distribuciones: la distribución binomial, la distribución normal, la distribución $t$, la distribución $\chi^2$ ("chi-cuadrado") y la distribución $F$. Dicho esto, lo que voy a hacer en las próximas secciones es darte una breve introducción a esas cinco, prestando especial atención a la binomial y a la normal. Voy a empezar con la distribución binomial, porque es la más sencilla de las cinco.
 
 ### Introducción a la binomial
 
@@ -319,13 +318,13 @@ Como siempre, vamos a introducir algunos nombres y notación. Vamos a usar $N$ p
 
 $P(X \mid \theta, N)$
 
-y nos interesa el caso particular en el que $X = 4$, $\theta = 0{,}167$  y $N = 20$. Hay una última notación que quiero mencionar antes de pasar a cómo resolver el problema. Si quiero decir que $X$ fue generado aleatoriamente a partir de una distribución binomial con parámetros $\theta$ y $N$, lo escribo así:
+y nos interesa el caso particular en el que $X = 4$, $\theta = 0{,}167$  y $N = 20$. Hay una última notación que quiero mencionar antes de pasar a cómo resolver el problema. Si quiero decir que $X$ fue generado aleatoriamente a partir de una distribución binomial con parámetros $\theta$ y $N$, lo escribo así: $$X \sim \mbox{Binomial}(\theta, N)$$
 
 Sí, sí, ya sé lo que estás pensando: notación, notación, notación. ¿A quién le importa? Muy pocos lectores están acá por la notación, así que mejor sigo y explico **cómo usar** la distribución binomial. Para eso, la @fig-4binomial1 muestra las probabilidades binomiales para todos los valores posibles de $X$ en nuestro experimento con los dados, desde $X = 0$ (ninguna calavera) hasta $X = 20$ (todas calaveras). Notá que básicamente es un gráfico de barras, y no es distinto del gráfico de "probabilidad de pantalones" que hicimos en @fig-4pantsprob. En el eje horizontal están todos los eventos posibles, y en el eje vertical podemos ver la probabilidad de cada uno de esos eventos. Entonces, la probabilidad de obtener 4 calaveras al lanzar 20 dados es de aproximadamente 0.20 (la respuesta exacta es 0.2022036, como veremos enseguida). En otras palabras, esperarías que eso ocurra alrededor del 20% de las veces que repitas este experimento.
 
 ```{r echo=F}
 #| label: fig-4binomial1
-#| fig-cap: "La distribución binomial con parámetro de tamaño$N = 20$y una probabilidad de éxito de 1/6. Cada barra vertical representa la probabilidad de un resultado específico (es decir, un valor posible de$X$). Como se trata de una distribución de probabilidad, cada probabilidad debe ser un número entre 0 y 1, y la suma de las alturas de las barras también debe ser 1."
+#| fig-cap: "La distribución binomial con parámetro de tamaño $N = 20$y una probabilidad de éxito de 1/6. Cada barra vertical representa la probabilidad de un resultado específico (es decir, un valor posible de$X$). Como se trata de una distribución de probabilidad, cada probabilidad debe ser un número entre 0 y 1, y la suma de las alturas de las barras también debe ser 1."
 
 knitr::include_graphics("imgs/navarro_img/probability/binomSkulls20_es.png")
 ```
@@ -350,7 +349,7 @@ Para que veas cómo cambia la distribución binomial cuando alteramos los valore
 
 ```{r echo=F}
 #| label: fig-4binomial2
-#| fig-cap: "Dos distribuciones binomiales, en un escenario donde lanzo una moneda justa, con probabilidad de éxito$1/2$. En el panel (a), se supone que lanzo la moneda$N = 20$veces. En el panel (b), que la lanzo$N = 100$veces."
+#| fig-cap: "Dos distribuciones binomiales, en un escenario donde lanzo una moneda justa, con probabilidad de éxito $1/2$. En el panel (a), se supone que lanzo la moneda $N = 20$ veces. En el panel (b), que la lanzo $N = 100$ veces."
 
 knitr::include_graphics("imgs/navarro_img/probability/Binomial2_es.png")
 ```

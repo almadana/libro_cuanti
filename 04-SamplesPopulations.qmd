@@ -1133,14 +1133,19 @@ OK, ¿y por qué importa? Buena pregunta. Hay razones concretas para que te impo
 Primero, algunas razones concretas. Existen poblaciones reales ahí afuera, y a veces queremos conocer sus parámetros. Por ejemplo, si sos una empresa que fabrica calzado, te interesaría conocer los parámetros poblacionales del **tamaño de los pies**. Como primera aproximación, querrías saber la media y la desviación estándar de la población. Si tu empresa conoce esto, y otras no, probablemente te vaya mejor (asumiendo que todas fabrican zapatos de calidad similar). ¿Por qué te iría mejor y cómo podrías usar esos parámetros? Acá va una buena razón: como empresa, querés que la oferta coincida con la demanda. Si fabricás demasiados zapatos de talles muy chicos o muy grandes, y no hay suficientes personas que los compren, estás haciendo un montón de calzado que no se va a vender. Y si no fabricás suficientes zapatos de los talles más comunes, vas a estar dejando plata sobre la mesa. ¿Verdad? Sí. Entonces, ¿qué sería lo óptimo? Tal vez fabricarías diferentes cantidades de zapatos en cada talle, de acuerdo a la demanda de cada uno. Y sabrías algo sobre la demanda si conocieras la frecuencia de cada talle en la población. Para eso, necesitarías conocer los parámetros poblacionales.
 
 Por suerte, no es tan difícil obtener los parámetros poblacionales sin medir a toda la población. ¿Quién tiene tiempo para medirle los pies a todo el mundo? Nadie. Lo que hacés, en cambio, es seleccionar al azar un grupo de personas, medirles los pies, y después calcular los parámetros de esa muestra. Si la muestra es suficientemente grande, ya aprendimos que la media muestral es una muy buena estimación de la media poblacional. Y pronto vamos a ver que también hay versiones del desvío estándar muestral que estiman bastante bien la desviación estándar poblacional. Quizás la distribución de talles de calzado no tenga una forma exactamente normal. Aun así, si recolectás una muestra lo bastante grande, la forma de la distribución muestral será una buena aproximación a la forma de la distribución poblacional. Todas estas son buenas razones para interesarse por la estimación de parámetros poblacionales. Pero... ¿acaso dirigís una empresa de calzado? Probablemente no.
-
 ### Parámetros poblacionales abstractos
 
 Incluso cuando pensamos que estamos hablando de algo concreto en psicología, a menudo enseguida se vuelve abstracto. En lugar de medir la población de talles de calzado, ¿qué tal si intentamos medir la población de la **felicidad humana**? Todos creemos saber lo que es la felicidad. Todos tienen más o menos cantidad de ella. Hay mucha gente, así que... debe haber una "población de felicidad", ¿no? Tal vez. Pero no es algo muy concreto. El primer problema es cómo medir la felicidad. Supongamos que usamos un cuestionario. Considerá estas preguntas:
 
 > ¿Qué tan feliz te sentís ahora mismo en una escala del 1 al 7? ¿Qué tan feliz sos en general en una escala del 1 al 7? ¿Qué tan feliz te sentís a la mañana en una escala del 1 al 7? ¿Qué tan feliz te sentís a la tarde en una escala del 1 al 7?
 
-1 = muy infeliz 2 = infeliz 3 = algo infeliz 4 = en el medio 5 = algo feliz 6 = feliz 7 = muy feliz
+1. = muy infeliz 
+2. = infeliz 
+3. = algo infeliz 
+4. = en el medio 
+5. = algo feliz 
+6. = feliz 
+7. = muy feliz
 
 Olvidémonos de preguntarle esto a todo el mundo. Supongamos que se lo preguntamos a mucha gente (nuestra muestra). ¿Qué creés que va a pasar? Bueno, obviamente, la gente va a dar todo tipo de respuestas, ¿no? Podemos contar cuántas veces se eligió cada opción y graficarlas en un histograma. Eso nos mostraría la distribución de puntajes de felicidad en nuestra muestra. "¡Genial, fantástico!", decís. Sí, está todo muy bien.
 
@@ -1152,11 +1157,11 @@ Pero... ¿qué podemos decir sobre la población más grande? ¿Podemos usar los
 
 Antes de listar un montón de complicaciones, dejame decirte qué creo que sí podemos hacer con nuestra muestra. Siempre que sea lo suficientemente grande, los parámetros de nuestra muestra serán una bastante buena estimación de cómo se vería otra muestra tomada de la misma población. Y por los motivos que vamos a discutir, muchas veces eso es todo lo que podemos decir. Pero está bien: como vas a ver a lo largo de este libro, podemos trabajar con eso.
 
-**Problema 1: múltiples poblaciones** Si observás una muestra grande de respuestas a un cuestionario, vas a encontrar evidencia de múltiples distribuciones dentro de tu muestra. Las personas responden de maneras distintas. Algunas personas son muy cautas y evitan los extremos. Sus respuestas tienden a concentrarse en el centro de la escala, con muchos 3, 4 y 5. Otras personas responden de manera muy bimodal: se sienten muy felices o muy infelices dependiendo del momento del día. Sus respuestas se agrupan mayormente en los extremos: 1, 2, 6 y 7. Esos números parecen provenir de una distribución completamente distinta. También hay personas que son completamente felices o completamente infelices. Una vez más, estos dos "grupos" de personas generan respuestas que parecen venir de dos distribuciones diferentes: una con casi todos 6 y 7, y otra con casi todos 1 y 2. Otras personas responden de forma bastante aleatoria, y sus respuestas se distribuyen de manera casi uniforme en toda la escala. Entonces, ¿existe una única población con parámetros que podamos estimar a partir de nuestra muestra? \*\*Probablemente no. Podría tratarse de una mezcla de muchas poblaciones, cada una con su propia distribución.
+**Problema 1: múltiples poblaciones** Si observás una muestra grande de respuestas a un cuestionario, vas a encontrar evidencia de múltiples distribuciones dentro de tu muestra. Las personas responden de maneras distintas. Algunas personas son muy cautas y evitan los extremos. Sus respuestas tienden a concentrarse en el centro de la escala, con muchos 3, 4 y 5. Otras personas responden de manera muy bimodal: se sienten muy felices o muy infelices dependiendo del momento del día. Sus respuestas se agrupan mayormente en los extremos: 1, 2, 6 y 7. Esos números parecen provenir de una distribución completamente distinta. También hay personas que son completamente felices o completamente infelices. Una vez más, estos dos "grupos" de personas generan respuestas que parecen venir de dos distribuciones diferentes: una con casi todos 6 y 7, y otra con casi todos 1 y 2. Otras personas responden de forma bastante aleatoria, y sus respuestas se distribuyen de manera casi uniforme en toda la escala. Entonces, ¿existe una única población con parámetros que podamos estimar a partir de nuestra muestra? Probablemente no. Podría tratarse de una mezcla de muchas poblaciones, cada una con su propia distribución.
 
 **Problema 2: ¿Qué miden realmente estas preguntas?** Si todo el propósito de hacer el cuestionario es estimar la felicidad de la población, entonces realmente tenemos que preguntarnos si nuestras mediciones nos dicen algo sobre la felicidad en primer lugar. Algunas preguntas que surgen: ¿Las personas son precisas al decir cuán felices son? ¿La medición de felicidad depende de la escala usada? Por ejemplo, ¿los resultados serían distintos si usáramos una escala de 0 a 100, o de -100 a +100, o si no usáramos números en absoluto? ¿La medición de felicidad depende de cómo está redactada la pregunta? ¿Una medida como esta nos dice **todo** lo que queremos saber sobre la felicidad? (probablemente no). ¿Qué cosas está dejando afuera? (¿quién sabe? probablemente muchas).
 
-En resumen, nadie sabe con certeza si este tipo de preguntas miden lo que queremos que midan, solo esperamos que lo hagan. Lo que sí sabemos bastante bien es qué tipo de cosas miden realmente este tipo de preguntas. Es algo bastante evidente, que está justo frente a nosotros: las mediciones de cuestionarios miden cómo la gente responde cuestionarios. Dicho de otro modo: miden cómo se comportan las personas cuando se les da un cuestionario para responder. Esto puede también reflejar algo sobre la felicidad, si la pregunta trata sobre felicidad. Pero, resulta que las personas son notablemente consistentes en cómo responden, incluso cuando las preguntas son totalmente absurdas, o cuando ni siquiera hay preguntas (¡solo números para elegir!) [@maul\_rethinking_2017].
+En resumen, nadie sabe con certeza si este tipo de preguntas miden lo que queremos que midan, solo esperamos que lo hagan. Lo que sí sabemos bastante bien es qué tipo de cosas miden realmente este tipo de preguntas. Es algo bastante evidente, que está justo frente a nosotros: las mediciones de cuestionarios miden cómo la gente responde cuestionarios. Dicho de otro modo: miden cómo se comportan las personas cuando se les da un cuestionario para responder. Esto puede también reflejar algo sobre la felicidad, si la pregunta trata sobre felicidad. Pero, resulta que las personas son notablemente consistentes en cómo responden, incluso cuando las preguntas son totalmente absurdas, o cuando ni siquiera hay preguntas (¡solo números para elegir!) @maul_rethinking_2017.
 
 La enseñanza que nos dejan estas complicaciones es que, en psicología, podemos recolectar muestras... pero muchas veces no tenemos una idea clara de qué población está asociada a esas muestras. Puede haber muchas poblaciones distintas. O la población puede variar dependiendo de a quién le preguntes. Y finalmente, la "población" quizás no sea la que vos querés que sea.
 
@@ -1190,7 +1195,7 @@ Supongamos que vamos a Brooklyn y 100 personas locales tienen la amabilidad de h
 
 En este ejemplo, estimar el parámetro poblacional desconocido es bastante directo. Calculamos la media muestral y la usamos como nuestra **estimación de la media poblacional**. Es bastante simple, y en la próxima sección vamos a ver la justificación estadística de por qué esta respuesta intuitiva tiene sentido. Pero por ahora, asegurémonos de distinguir bien que el estadístico muestral y la estimación del parámetro poblacional son conceptualmente distintos. El estadístico muestral describe tus datos; en cambio, una estimación es una conjetura sobre la población.
 
-Con eso en mente, los profesionales de la estadística suelen usar notaciones distintas para diferenciarlas. Por ejemplo, si la media poblacional verdadera se denota$\mu$, entonces usamos$\hat{\mu}$para referirnos a nuestra estimación de esa media poblacional. En contraste, la media muestral se denota$\bar{X}$, o a veces$m$. Sin embargo, en muestras aleatorias simples, la estimación de la media poblacional es idéntica a la media muestral: si observo una media muestral de$\bar{X} = 98.5$, entonces mi estimación de la media poblacional es también$\hat{\mu} = 98.5$.
+Con eso en mente, los profesionales de la estadística suelen usar notaciones distintas para diferenciarlas. Por ejemplo, si la media poblacional verdadera se denota $\mu$, entonces usamos $\hat{\mu}$para referirnos a nuestra estimación de esa media poblacional. En contraste, la media muestral se denota $\bar{X}$, o a veces $m$. Sin embargo, en muestras aleatorias simples, la estimación de la media poblacional es idéntica a la media muestral: si observo una media muestral de $\bar{X} = 98.5$, entonces mi estimación de la media poblacional es también $\hat{\mu} = 98.5$.
 
 Para dejar clara la notación, acá va una tabla útil:
 
@@ -1202,21 +1207,21 @@ Para dejar clara la notación, acá va una tabla útil:
 
 ### Estimación del desvío estándar poblacional
 
-Hasta ahora, la estimación parece bastante sencilla, y tal vez te estés preguntando por qué te hice leer todo ese material sobre teoría del muestreo. En el caso de la media, nuestra estimación del parámetro poblacional ($\hat{\mu}$) resultó ser idéntica a la estadística muestral correspondiente ($\bar{X}$). Sin embargo, eso no siempre es así. Para verlo, pensemos cómo construir una **estimación del desvío estándar poblacional**, que vamos a denotar como$\hat{\sigma}$. ¿Qué deberíamos usar como estimación en este caso? Tu primera reacción podría ser hacer lo mismo que con la media, y simplemente usar el estadístico muestral como estimación. Eso está casi bien, pero no del todo.
+Hasta ahora, la estimación parece bastante sencilla, y tal vez te estés preguntando por qué te hice leer todo ese material sobre teoría del muestreo. En el caso de la media, nuestra estimación del parámetro poblacional ($\hat{\mu}$) resultó ser idéntica a la estadística muestral correspondiente ($\bar{X}$). Sin embargo, eso no siempre es así. Para verlo, pensemos cómo construir una **estimación del desvío estándar poblacional**, que vamos a denotar como $\hat{\sigma}$. ¿Qué deberíamos usar como estimación en este caso? Tu primera reacción podría ser hacer lo mismo que con la media, y simplemente usar el estadístico muestral como estimación. Eso está casi bien, pero no del todo.
 
 Veamos por qué. Supongamos que tengo una muestra que contiene una sola observación. Para este ejemplo, ayuda pensar en una situación donde no tengas ninguna intuición previa sobre cuál podría ser el valor real en la población. Así que usemos algo completamente ficticio: supongamos que la observación mide la **cromulencia** de mis zapatos. Resulta que mis zapatos tienen una cromulencia de 20. Así que mi muestra es:
 
 `20`
 
-Esta es una muestra perfectamente legítima, aunque tenga un tamaño muestral de$N = 1$. Tiene una media muestral de 20, y como cada observación en esta muestra es igual a la media muestral (¡obviamente!), el desvío estándar muestral es 0. Como descripción de la **muestra**, esto está bien: la muestra contiene una sola observación, así que no hay variabilidad observada en la muestra. Un desvío estándar muestral de$s = 0$es la respuesta correcta acá. Pero como estimación del desvío estándar **poblacional**, eso suena completamente absurdo, ¿no? Seamos sinceros: vos y yo no tenemos ni idea de qué es la "cromulencia", pero sabemos algo sobre datos. La única razón por la que no vemos ninguna variabilidad en la **muestra** es que la muestra es demasiado chica como para mostrar alguna variación. Entonces, si tenés un tamaño muestral de$N=1$, lo que se **siente** como la respuesta correcta es simplemente decir: "ni idea, la verdad".
+Esta es una muestra perfectamente legítima, aunque tenga un tamaño muestral de $N = 1$. Tiene una media muestral de 20, y como cada observación en esta muestra es igual a la media muestral (¡obviamente!), el desvío estándar muestral es 0. Como descripción de la **muestra**, esto está bien: la muestra contiene una sola observación, así que no hay variabilidad observada en la muestra. Un desvío estándar muestral de $s = 0$ es la respuesta correcta acá. Pero como estimación del desvío estándar **poblacional**, eso suena completamente absurdo, ¿no? Seamos sinceros: vos y yo no tenemos ni idea de qué es la "cromulencia", pero sabemos algo sobre datos. La única razón por la que no vemos ninguna variabilidad en la **muestra** es que la muestra es demasiado chica como para mostrar alguna variación. Entonces, si tenés un tamaño muestral de $N=1$, lo que se **siente** como la respuesta correcta es simplemente decir: "ni idea, la verdad".
 
 Fijate que **no** tenemos la misma intuición cuando se trata de la media muestral y la media poblacional. Si alguien nos obliga a hacer una mejor aproximación sobre la media de la población, no suena completamente descabellado decir que la media poblacional es 20. Obvio, probablemente no te sientas muy seguro de esa aproximación, porque solo tenés una observación, pero sigue siendo la mejor aproximación que podés hacer.
 
-Extendamos un poco este ejemplo. Supongamos que ahora hago una segunda observación. Mi conjunto de datos ahora tiene$N=2$observaciones de la cromulencia de los zapatos, y la muestra completa se ve así:
+Extendamos un poco este ejemplo. Supongamos que ahora hago una segunda observación. Mi conjunto de datos ahora tiene $N=2$ observaciones de la cromulencia de los zapatos, y la muestra completa se ve así:
 
 `20, 22`
 
-Esta vez, nuestra muestra es **justo** lo suficientemente grande como para que podamos ver algo de variabilidad: dos observaciones es el número mínimo necesario para que pueda observarse alguna variación. Para este nuevo conjunto de datos, el promedio muestral es$\bar{X}=21$y la desviación estándar muestral es$s=1$.
+Esta vez, nuestra muestra es **justo** lo suficientemente grande como para que podamos ver algo de variabilidad: dos observaciones es el número mínimo necesario para que pueda observarse alguna variación. Para este nuevo conjunto de datos, el promedio muestral es $\bar{X}=21$ y la desviación estándar muestral es $s=1$.
 
 ¿Qué intuiciones tenemos ahora sobre la población? De nuevo, en lo que respecta a la media poblacional, la mejor aproximación que podemos hacer es la media muestral: si nos obligaran a adivinar, probablemente diríamos que la media de cromulencia poblacional es 21. ¿Y la desviación estándar? Acá la cosa se pone un poco más complicada. La desviación estándar muestral está basada solamente en dos observaciones, y si sos como yo, seguramente tenés la intuición de que, con solo dos datos, no le estamos dando a la población "suficiente oportunidad" de mostrarnos su verdadera variabilidad. No es solo que sospechamos que la estimación está **equivocada** ---porque con solo dos observaciones ya esperamos que haya algún error---. La preocupación más grande es que el error sea **sistemático**.
 
@@ -1224,7 +1229,7 @@ Si el error es sistemático, entonces está **sesgado**. Por ejemplo, imaginate 
 
 Bueno, resulta que el desvío estándar muestral es un **estimador sesgado** del desvío estándar poblacional. Ya veníamos intuyéndolo con lo que estuvimos discutiendo. Cuando el tamaño muestral es 1, el desvío estándar es 0, lo cual claramente es demasiado bajo. Cuando el tamaño muestral es 2, el desvío estándar empieza a ser mayor que 0, pero como solo tenemos dos datos, sospechamos que sigue siendo demasiado bajo. Y resulta que esta intuición es correcta.
 
-Estaría bueno poder demostrar esto de alguna forma. Hay pruebas matemáticas que confirman esta intuición, pero salvo que tengas una formación matemática bastante sólida, no van a ayudarte mucho. Así que en vez de eso, lo que voy a hacer es usar R para simular los resultados de algunos experimentos. Con esto en mente, volvamos a nuestros estudios sobre CI. Supongamos que la verdadera media poblacional de CI es 100, y la desviación estándar poblacional es 15. Podemos usar la función **rnorm()** para generar los resultados de un experimento en el que medimos$N = 2$puntuaciones de CI, y luego calculamos el desvío estándar muestral. Si repetimos este procedimiento una y otra vez, y graficamos un histograma de esos desvíos estándar muestrales, obtenemos la **distribución muestral del desvío estándar**. Esa distribución está graficada en la @fig-sampdistsd.
+Estaría bueno poder demostrar esto de alguna forma. Hay pruebas matemáticas que confirman esta intuición, pero salvo que tengas una formación matemática bastante sólida, no van a ayudarte mucho. Así que en vez de eso, lo que voy a hacer es usar R para simular los resultados de algunos experimentos. Con esto en mente, volvamos a nuestros estudios sobre CI. Supongamos que la verdadera media poblacional de CI es 100, y la desviación estándar poblacional es 15. Podemos usar la función **rnorm()** para generar los resultados de un experimento en el que medimos $N = 2$ puntuaciones de CI, y luego calculamos el desvío estándar muestral. Si repetimos este procedimiento una y otra vez, y graficamos un histograma de esos desvíos estándar muestrales, obtenemos la **distribución muestral del desvío estándar**. Esa distribución está graficada en la @fig-sampdistsd.
 
 ```{r}
 #| label: fig-sampdistsd
@@ -1235,7 +1240,7 @@ knitr::include_graphics("imgs/navarro_img/estimation/sampdistsd_es.png")
 
 Aunque la verdadera desviación estándar poblacional es 15, el promedio de los desvíos estándar **muestrales** es solo 8.5. Notá que esto es muy distinto de lo que pasaba cuando graficábamos distribuciones muestrales de la media: esas siempre estaban centradas en la media poblacional.
 
-Ahora ampliemos la simulación. En lugar de restringirnos a un tamaño muestral de$N=2$, repitamos el experimento para tamaños muestrales del 1 al 10. Si graficamos el promedio de la media muestral y el promedio del desvío estándar muestral como función del tamaño de la muestra, obtenemos los siguientes resultados.
+Ahora ampliemos la simulación. En lugar de restringirnos a un tamaño muestral de $N=2$, repitamos el experimento para tamaños muestrales del 1 al 10. Si graficamos el promedio de la media muestral y el promedio del desvío estándar muestral como función del tamaño de la muestra, obtenemos los siguientes resultados.
 
 La @fig-estimatorbiasA muestra cómo cambia la media muestral según el tamaño de la muestra. Notá que la línea es plana: la media muestral no sobrestima ni subestima la media poblacional. Es un estimador insesgado.
 
@@ -1255,7 +1260,7 @@ La @fig-estimatorbiasB muestra cómo cambia el **desvío estándar muestral** co
 knitr::include_graphics("imgs/navarro_img/estimation/biasSD_es.png")
 ```
 
-En otras palabras, si queremos hacer una "mejor aproximación" ($\hat\sigma$, nuestra estimación de la desviación estándar poblacional) sobre el valor real de la desviación estándar de la población$\sigma$, deberíamos asegurarnos de que nuestra aproximación sea un poquito más grande que la desviación estándar muestral$s$.
+En otras palabras, si queremos hacer una "mejor aproximación" ($\hat\sigma$, nuestra estimación de la desviación estándar poblacional) sobre el valor real de la desviación estándar de la población $\sigma$, deberíamos asegurarnos de que nuestra aproximación sea un poquito más grande que la desviación estándar muestral $s$.
 
 La solución a este sesgo sistemático resulta ser bastante simple. Así es como funciona. Antes de meternos con la desviación estándar, vamos a mirar la varianza. Si recordás el segundo capítulo, la varianza muestral se define como el promedio de los cuadrados de las desviaciones respecto de la media muestral. Es decir:
 
@@ -1263,29 +1268,29 @@ $$
 s^2 = \frac{1}{N} \sum_{i=1}^N (X_i - \bar{X})^2
 $$
 
-La varianza muestral$s^2$es un estimador sesgado de la varianza poblacional$\sigma^2$. Pero resulta que solo necesitamos hacer un pequeño ajuste para transformarla en un estimador insesgado. Todo lo que hay que hacer es dividir por$N-1$en lugar de por$N$. Si hacemos eso, obtenemos la siguiente fórmula:
+La varianza muestral $s^2$es un estimador sesgado de la varianza poblacional $\sigma^2$. Pero resulta que solo necesitamos hacer un pequeño ajuste para transformarla en un estimador insesgado. Todo lo que hay que hacer es dividir por $N-1$en lugar de por $N$. Si hacemos eso, obtenemos la siguiente fórmula:
 
 $$
 \hat\sigma^2 = \frac{1}{N-1} \sum_{i=1}^N (X_i - \bar{X})^2
 $$
 
-Esto sí es un estimador insesgado de la varianza poblacional$\sigma^2$.
+Esto sí es un estimador insesgado de la varianza poblacional $\sigma^2$.
 
-Una historia similar se aplica al desvío estándar. Si dividimos por$N-1$en lugar de por$N$, nuestra estimación del desvío estándar poblacional se convierte en:
+Una historia similar se aplica al desvío estándar. Si dividimos por $N-1$en lugar de por $N$, nuestra estimación del desvío estándar poblacional se convierte en:
 
 $$
 \hat\sigma = \sqrt{\frac{1}{N-1} \sum_{i=1}^N (X_i - \bar{X})^2}
 $$
 
-Vale la pena señalar que los programas de software toman decisiones **por vos** sobre qué tipo de varianza y desvío estándar estás calculando. Algunos programas dividen automáticamente por$N-1$, otros no. Necesitás verificar qué están haciendo. No dejes que el software decida por **vos**. El software está para que vos le digas qué hacer.
+Vale la pena señalar que los programas de software toman decisiones **por vos** sobre qué tipo de varianza y desvío estándar estás calculando. Algunos programas dividen automáticamente por $N-1$, otros no. Necesitás verificar qué están haciendo. No dejes que el software decida por **vos**. El software está para que vos le digas qué hacer.
 
-Un último punto: en la práctica, muchas personas se refieren a$\hat{\sigma}$(la fórmula con$N-1$) como el desvío estándar **muestral**. Técnicamente, esto es incorrecto: el desvío estándar muestral, como propiedad de la muestra, debería ser igual a$s$(la fórmula con$N$). No son la misma cosa, ni conceptualmente ni numéricamente. Una es una propiedad de la muestra; la otra, una estimación del parámetro poblacional. Sin embargo, en casi todas las aplicaciones reales, lo que realmente nos importa es la estimación del parámetro poblacional. Por eso, la gente casi siempre reporta$\hat{\sigma}$en lugar de$s$.
+Un último punto: en la práctica, muchas personas se refieren a $\hat{\sigma}$(la fórmula con$N-1$) como el desvío estándar **muestral**. Técnicamente, esto es incorrecto: el desvío estándar muestral, como propiedad de la muestra, debería ser igual a $s$ (la fórmula con $N$). No son la misma cosa, ni conceptualmente ni numéricamente. Una es una propiedad de la muestra; la otra, una estimación del parámetro poblacional. Sin embargo, en casi todas las aplicaciones reales, lo que realmente nos importa es la estimación del parámetro poblacional. Por eso, la gente casi siempre reporta $\hat{\sigma}$ en lugar de $s$.
 
 ::: callout-note  
 Ojo, si hay que dividir por 𝑁 o por 𝑁−1 también depende de cómo pensás lo que estás haciendo. Por ejemplo, si no creés que lo que estás haciendo es estimar un parámetro poblacional, entonces, ¿por qué dividirías por N−1? Además, cuando 𝑁 es grande, no importa tanto. La diferencia entre un 𝑁 grande y un 𝑁−1 grande es... simplemente 1. 
 :::
 
-Este es el número correcto que hay que reportar, claro. Pero la gente tiende a ser un poco imprecisa con la terminología cuando lo escribe, porque "desvío estándar muestral" es más corto que "estimación del desvío estándar poblacional". No es gran cosa, y en la práctica yo hago lo mismo que todos los demás. Sin embargo, creo que es importante mantener los dos **conceptos** separados: nunca es buena idea confundir "propiedades conocidas de tu muestra" con "conjeturas sobre la población de la que proviene". En el momento en que empezás a pensar que$s$y$\hat{\sigma}$son lo mismo, empezás a hacer justamente eso.
+Este es el número correcto que hay que reportar, claro. Pero la gente tiende a ser un poco imprecisa con la terminología cuando lo escribe, porque "desvío estándar muestral" es más corto que "estimación del desvío estándar poblacional". No es gran cosa, y en la práctica yo hago lo mismo que todos los demás. Sin embargo, creo que es importante mantener los dos **conceptos** separados: nunca es buena idea confundir "propiedades conocidas de tu muestra" con "conjeturas sobre la población de la que proviene". En el momento en que empezás a pensar que $s$ y $\hat{\sigma}$ son lo mismo, empezás a hacer justamente eso.
 
 Para cerrar esta sección, acá tenés un par de tablas más para ayudarte a mantener todo claro:
 
@@ -1301,7 +1306,7 @@ Para cerrar esta sección, acá tenés un par de tablas más para ayudarte a man
 
 Hasta este punto del capítulo, describimos los fundamentos de la teoría del muestreo en los que se apoyan los estadísticos para hacer conjeturas sobre los parámetros poblacionales a partir de una muestra de datos. Como muestra esta discusión, una de las razones por las que necesitamos toda esta teoría es que todo conjunto de datos deja un cierto grado de incertidumbre, así que nuestras estimaciones nunca van a ser perfectamente precisas. Lo que falta en esta discusión hasta ahora es un intento de **cuantificar** cuánto es esa incertidumbre. No alcanza con poder decir que el CI promedio de estudiantes de psicología es 115 (sí, me acabo de inventar ese número). También queremos poder decir qué tan seguros estamos de esa estimación. Por ejemplo, estaría bueno poder decir que hay un 95% de probabilidad de que el valor real esté entre 109 y 121. A eso se le llama un **intervalo de confianza** para la media.
 
-Armados con lo que ya sabemos sobre distribuciones muestrales, construir un intervalo de confianza para la media es bastante fácil. Así es como funciona: Supongamos que la verdadera media poblacional es$\mu$y la desviación estándar poblacional es$\sigma$. Acabo de terminar mi estudio con$N$participantes, y la media muestral de CI fue$\bar{X}$. Sabemos, gracias al teorema central del límite, que la distribución muestral de la media es aproximadamente normal. También sabemos, por lo que aprendimos sobre la distribución normal, que hay un 95% de probabilidad de que un valor normalmente distribuido caiga dentro de dos desviaciones estándar de la media verdadera. Para ser más precisos, podemos usar la función `qnorm()` para calcular los percentiles 2.5 y 97.5 de la distribución normal:
+Armados con lo que ya sabemos sobre distribuciones muestrales, construir un intervalo de confianza para la media es bastante fácil. Así es como funciona: Supongamos que la verdadera media poblacional es $\mu$ y la desviación estándar poblacional es $\sigma$. Acabo de terminar mi estudio con $N$ participantes, y la media muestral de CI fue $\bar{X}$. Sabemos, gracias al teorema central del límite, que la distribución muestral de la media es aproximadamente normal. También sabemos, por lo que aprendimos sobre la distribución normal, que hay un 95% de probabilidad de que un valor normalmente distribuido caiga dentro de dos desviaciones estándar de la media verdadera. Para ser más precisos, podemos usar la función `qnorm()` para calcular los percentiles 2.5 y 97.5 de la distribución normal:
 
 ```{r }
 qnorm( p = c(.025, .975) )
@@ -1309,13 +1314,13 @@ qnorm( p = c(.025, .975) )
 
 Ok, así que te mentí un poco antes: lo más correcto es decir que hay un 95% de probabilidad de que una cantidad normalmente distribuida caiga dentro de 1.96 desviaciones estándar de la media verdadera.
 
-Ahora recordá que la desviación estándar de la distribución muestral se llama error estándar, y que el error estándar de la media se denota como SEM. Cuando juntamos todas estas piezas, aprendemos que hay un 95% de probabilidad de que la media muestral$\bar{X}$que observamos esté a no más de 1.96 errores estándar de la media poblacional. Uf, eso fue mucha matemática junta. Tranquilo, ahora lo aclaramos.
+Ahora recordá que la desviación estándar de la distribución muestral se llama error estándar, y que el error estándar de la media se denota como SEM. Cuando juntamos todas estas piezas, aprendemos que hay un 95% de probabilidad de que la media muestral $\bar{X}$ que observamos esté a no más de 1.96 errores estándar de la media poblacional. Uf, eso fue mucha matemática junta. Tranquilo, ahora lo aclaramos.
 
 En notación matemática, esto se escribe así:
 
 $$
 \mu - \left(1.96 \times \text{SEM} \right) \ \leq\ \bar{X} \ \leq\ \mu + \left(1.96 \times \text{SEM} \right)
-$$donde el SEM es igual a$\sigma / \sqrt{N}$, y podemos estar un 95% seguros de que esto es cierto.
+$$donde el SEM es igual a $\sigma / \sqrt{N}$, y podemos estar un 95% seguros de que esto es cierto.
 
 Sin embargo, esto no responde la pregunta que realmente nos interesa. La ecuación anterior nos dice qué deberíamos esperar sobre la media muestral, dado que conocemos los parámetros poblacionales. Pero lo que queremos es que funcione al revés: queremos saber qué deberíamos creer sobre los parámetros poblacionales, dado que observamos una muestra particular. Sin embargo, no es muy difícil lograrlo. Con un poco de álgebra de secundaria, podemos reescribir nuestra ecuación así:
 
@@ -1323,9 +1328,9 @@ $$
 \bar{X} - \left( 1.96 \times \text{SEM} \right) \leq \mu \leq \bar{X} + \left( 1.96 \times \text{SEM} \right)
 $$
 
-Esto nos dice que el rango de valores tiene una probabilidad del 95% de contener la media poblacional$\mu$. A este rango lo llamamos **intervalo de confianza del 95%**, denotado como$\text{CI}\_{95}$.
+Esto nos dice que el rango de valores tiene una probabilidad del 95% de contener la media poblacional $\mu$. A este rango lo llamamos **intervalo de confianza del 95%**, denotado como $\text{CI}\_{95}$.
 
-En resumen, siempre que$N$sea lo suficientemente grande ---lo suficientemente grande como para que la distribución muestral de la media se parezca a una normal--- podemos usar la siguiente fórmula para el intervalo de confianza del 95%:
+En resumen, siempre que $N$ sea lo suficientemente grande ---lo suficientemente grande como para que la distribución muestral de la media se parezca a una normal--- podemos usar la siguiente fórmula para el intervalo de confianza del 95%:
 
 $$
 \text{CI}_{95} = \bar{X} \pm \left( 1.96 \times \frac{\sigma}{\sqrt{N}} \right)
@@ -1337,15 +1342,15 @@ Por supuesto, no hay nada especial en el número 1.96: simplemente es el multipl
 qnorm( p = c(.15, .85) )
 ```
 
-Así que la fórmula para el$\text{CI}*{70}$sería igual a la del$\text{CI}*{95}$, excepto que usaríamos 1.04 como nuestro número mágico, en lugar de 1.96.
+Así que la fórmula para el $\text{CI}*{70}$ sería igual a la del $\text{CI}*{95}$, excepto que usaríamos 1.04 como nuestro número mágico, en lugar de 1.96.
 
 ### Un pequeño error en la fórmula
 
-Como de costumbre, te mentí un poco. La fórmula que te di más arriba para el intervalo de confianza del 95% es aproximadamente correcta, pero me salté un detalle importante en la explicación. Fijate que mi fórmula requiere que uses el error estándar de la media (SEM), que a su vez necesita que conozcas la desviación estándar real de la población,$\sigma$.
+Como de costumbre, te mentí un poco. La fórmula que te di más arriba para el intervalo de confianza del 95% es aproximadamente correcta, pero me salté un detalle importante en la explicación. Fijate que mi fórmula requiere que uses el error estándar de la media (SEM), que a su vez necesita que conozcas la desviación estándar real de la población, $\sigma$.
 
-Sin embargo, ya dijimos antes que en general **no conocemos** los parámetros poblacionales verdaderos. Y como no conocemos el valor real de$\sigma$, tenemos que usar una **estimación** del desvío estándar poblacional$\hat{\sigma}$. Eso no es difícil de hacer, pero tiene una consecuencia: tenemos que usar los cuantiles de la distribución$t$en lugar de la distribución normal para calcular nuestro número mágico; y ese número depende del tamaño muestral. Además, todavía no hablamos de la distribución$t$en este capítulo.
+Sin embargo, ya dijimos antes que en general **no conocemos** los parámetros poblacionales verdaderos. Y como no conocemos el valor real de $\sigma$, tenemos que usar una **estimación** del desvío estándar poblacional $\hat{\sigma}$. Eso no es difícil de hacer, pero tiene una consecuencia: tenemos que usar los cuantiles de la distribución $t$ en lugar de la distribución normal para calcular nuestro número mágico; y ese número depende del tamaño muestral. Además, todavía no hablamos de la distribución $t$ en este capítulo.
 
-Cuando usamos la distribución$t$en lugar de la distribución normal, obtenemos números más grandes, lo que indica que tenemos más incertidumbre. ¿Y por qué tenemos esa incertidumbre extra? Bueno, porque nuestra estimación de la desviación estándar poblacional,$\hat\sigma$, puede estar equivocada. Y si está equivocada, eso significa que estamos menos seguros de cómo es realmente la distribución muestral de la media... y esa incertidumbre termina reflejándose en un intervalo de confianza más amplio.
+Cuando usamos la distribución $t$ en lugar de la distribución normal, obtenemos números más grandes, lo que indica que tenemos más incertidumbre. ¿Y por qué tenemos esa incertidumbre extra? Bueno, porque nuestra estimación de la desviación estándar poblacional, $\hat\sigma$, puede estar equivocada. Y si está equivocada, eso significa que estamos menos seguros de cómo es realmente la distribución muestral de la media... y esa incertidumbre termina reflejándose en un intervalo de confianza más amplio.
 
 ## Resumen
 

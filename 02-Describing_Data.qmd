@@ -63,7 +63,7 @@ Bien, si estos puntos representan cuán felices están 500 personas, ¿qué pode
 
 ### Histogramas
 
-Hacer un histograma será nuestro primer acto de resumir oficialmente algo sobre los datos. Ya no vamos a mirar cada punto individualmente, sino que vamos a ver cómo se agrupan los números. Mirá @fig-happyHist, un histograma de los datos de felicidad, y después lo explicamos.
+Hacer un histograma será nuestro primer acto de resumir oficialmente algo sobre los datos. Ya no vamos a mirar cada punto individualmente, sino que vamos a ver cómo se agrupan los números. Mirá la @fig-happyHist, un histograma de los datos de felicidad, y después lo explicamos.
 
 ```{r, echo=F, warning=FALSE}
 #| label: fig-happyHist
@@ -72,7 +72,7 @@ hist(felicidad,ylab = "frecuencia",main="Histograma de la variable felicidad")
 
 ```
 
-Los puntos desaparecieron, y ahora vemos unas barras. Cada barra resume varios puntos: representa cuántos puntos (frecuencia) caen dentro de un determinado rango de felicidad, también llamado **bin** o intervalo. Por ejemplo, ¿cuántas personas dieron una puntuación de felicidad entre 0 y 500? La quinta barra ---la que va de 0 a 500 en el eje x--- te lo dice. Mirá qué alta es esa barra. ¿Cuánto mide? La altura se muestra en el eje y, que indica la frecuencia (el número de puntos o valores). Parece que unas 150 personas dijeron que su felicidad estaba entre 0 y 500.
+Los puntos desaparecieron, y ahora vemos unas barras. Cada barra resume varios puntos: representa cuántos puntos (frecuencia) caen dentro de un determinado rango de felicidad, también llamado **bin** o intervalo. Por ejemplo, ¿cuántas personas dieron una puntuación de felicidad entre 0 y 500? La cuarta barra ---la que va de 0 a 500 en el eje x--- te lo dice. Mirá qué alta es esa barra. ¿Cuánto mide? La altura se muestra en el eje y, que indica la frecuencia (el número de puntos o valores). Parece que unas 150 personas dijeron que su felicidad estaba entre 0 y 500.
 
 En general, vemos que hay muchos bins en el eje x. Dividimos los datos en intervalos de 500. El bin #1 va de -2000 a -1500, el bin #2 de -1500 a -1000, y así sucesivamente hasta el último intervalo. Para hacer el histograma, simplemente contamos cuántos valores caen en cada intervalo, y graficamos esas frecuencias como función de los bins. Voilà, un histograma.
 
@@ -235,7 +235,7 @@ Ya sabés que el resultado es 4. Pero, ¿qué está pasando en realidad? Estamos
 
 ### Recapitulando
 
-Para repasar la moda, la mediana y la media, mirá el siguiente histograma en @fig-meanmodemed. Indicamos la ubicación de la media (rojo), la mediana (verde) y la moda (azul). Para este conjunto de datos, las tres medidas de tendencia central dan valores diferentes. La media es la más alta porque se ve influida por valores grandes, incluso si aparecen pocas veces. La moda y la mediana no se ven afectadas por esos valores extremos, por eso tienen valores más bajos.
+Para repasar la moda, la mediana y la media, mirá el siguiente histograma en la @fig-meanmodemed. Indicamos la ubicación de la media (rojo), la mediana (verde) y la moda (azul). Para este conjunto de datos, las tres medidas de tendencia central dan valores diferentes. La media es la más alta porque se ve influida por valores grandes, incluso si aparecen pocas veces. La moda y la mediana no se ven afectadas por esos valores extremos, por eso tienen valores más bajos.
 
 ```{r, echo=F, warning=FALSE}
 #| label: fig-meanmodemed
@@ -333,7 +333,7 @@ La palabra **varianza** también se refiere a una estadística específica: la s
 
 $\text{varianza} = \frac{\text{suma de las diferencias al cuadrado}}{\text{cantidad de valores}}$
 
-#### Desviaciones respecto de la media
+#### Desviaciones respecto de la media. Puntajes de diferencia con respecto a la media
 
 Antes nos complicamos un poco calculando todas las diferencias entre los valores del conjunto. Ahora hagámoslo de una manera más simple. Esta vez, calculamos la diferencia entre cada valor y la media. La idea es:
 

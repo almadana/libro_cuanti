@@ -26,7 +26,7 @@ Este tipo de afirmación es totalmente común en los diarios y en la vida cotidi
 
 La respuesta es bastante obvia: si llamo a 1000 personas al azar y 230 dicen que votarían a ese partido, parece muy poco probable que **sean las únicas** 230 personas en toda la población que lo harían. En otras palabras, asumimos que los datos recolectados por la encuestadora representan bastante bien a toda la población. Pero, ¿cuán representativos son? ¿Nos sorprendería descubrir que el verdadero apoyo al partido es en realidad del 24%? ¿Del 29%? ¿Del 37%? Acá es donde la intuición cotidiana empieza a fallar. A nadie le sorprendería un 24%, y a todo el mundo le sorprendería un 37%, pero no es tan fácil decidir si un 29% sería plausible. Necesitamos herramientas más potentes que simplemente mirar los números y adivinar.
 
-La **estadística inferencial** proporciona las herramientas necesarias para responder ese tipo de preguntas. Y como ese tipo de preguntas están en el corazón del trabajo científico, ocupan la mayor parte de cualquier curso introductorio de estadística o métodos de investigación. Y como ese tipo de preguntas están en el corazón del trabajo científico, ocupan la mayor parte de cualquier curso introductorio de estadística o métodos de investigación. Sin embargo, nuestras herramientas para hacer inferencias estadísticas están: 1. construidas sobre la base de la **teoría de la probabilidad**, y 2. requieren entender cómo se comportan las muestras cuando se extraen de distribuciones (definidas por la teoría de la probabilidad...). Así que este capítulo tiene dos partes principales: una breve introducción a la teoría de la probabilidad, y una introducción al muestreo a partir de distribuciones.
+La **estadística inferencial** proporciona las herramientas necesarias para responder ese tipo de preguntas. Y como ese tipo de preguntas están en el corazón del trabajo científico, ocupan la mayor parte de cualquier curso introductorio de estadística o métodos de investigación. Sin embargo, nuestras herramientas para hacer inferencias estadísticas están: 1. construidas sobre la base de la **teoría de la probabilidad**, y 2. requieren entender cómo se comportan las muestras cuando se extraen de distribuciones (definidas por la teoría de la probabilidad...). Así que este capítulo tiene dos partes principales: una breve introducción a la teoría de la probabilidad, y una introducción al muestreo a partir de distribuciones.
 
 ## ¿En qué se diferencian la probabilidad y la estadística?
 
@@ -42,7 +42,7 @@ Antes de empezar a hablar de teoría de la probabilidad, conviene dedicar un mom
 
 Fijate que todas estas preguntas tienen algo en común. En cada caso la "verdad del mundo" es conocida, y mi pregunta se relaciona con "qué clase de eventos" van a ocurrir. En la primera pregunta, **sabemos** que la moneda es justa, así que hay un 50% de probabilidad de que cualquier lanzamiento individual salga cara. En la segunda, **sabemos** que la chance de sacar un 6 con un dado es 1 en 6. En la tercera, **sabemos** que el mazo está bien mezclado. Y en la cuarta, **sabemos** que la lotería sigue reglas específicas. Ya te hacés una idea. Lo importante es que las preguntas de probabilidad parten de un **modelo** conocido del mundo, y usamos ese modelo para hacer algunos cálculos.
 
-El modelo subyacente puede ser muy simple. Por ejemplo, en el caso de la moneda, podemos escribir el modelo así:$P(\text{cara}) = 0.5 $que se lee: "la probabilidad de que salga cara es 0.5".
+El modelo subyacente puede ser muy simple. Por ejemplo, en el caso de la moneda, podemos escribir el modelo así: $P(\mbox{heads}) = 0.5$ que se lee: "la probabilidad de que salga cara es 0.5".
 
 Como veremos más adelante, así como los porcentajes van de 0% a 100%, las probabilidades son simplemente números que van de 0 a 1. Cuando usamos este modelo para responder la primera pregunta, en realidad no sabemos exactamente qué va a pasar. Tal vez salgan 10 caras, como plantea la pregunta. Pero también podrían salir 3 caras. Eso es lo importante: en la teoría de la probabilidad, el **modelo** es conocido, pero los **datos** no lo son.
 
@@ -57,10 +57,10 @@ Eso es la probabilidad. ¿Y la estadística? Las preguntas estadísticas **funci
 Esta vez, lo único que tenemos son los datos. Lo que **sé** es que vi a mi amiga lanzar la moneda 10 veces y salió cara todas las veces. Y lo que quiero *inferir* es si debería concluir que lo que acabo de ver fue realmente una moneda justa siendo lanzada 10 veces seguidas, o si debería sospechar que mi amiga me está haciendo una trampa. Los datos que tengo se ven así:
 
 ```         
-H H H H H H H H H H
+C C C C C C C C C C
 ```
 
-y lo que estoy intentando hacer es decidir en cuál "modelo del mundo" debería confiar. Si la moneda es justa, entonces el modelo que debería adoptar es uno en el que la probabilidad de que salga cara es 0.5; es decir,$P(\text{cara}) = 0.5 $Si la moneda no es justa, entonces debería concluir que la probabilidad de que salga cara **no** es 0.5, lo que escribiríamos como $P(\text{cara}) \neq 0.5$. En otras palabras, el problema de la inferencia estadística consiste en darme cuenta cuál de estos modelos de probabilidad es el correcto. Está claro que la pregunta estadística no es la misma que la pregunta de probabilidad, pero están profundamente relacionadas. Por eso, una buena introducción a la teoría estadística comienza con una discusión sobre qué es la probabilidad y cómo funciona.
+y lo que estoy intentando hacer es decidir en cuál "modelo del mundo" debería confiar. Si la moneda es justa, entonces el modelo que debería adoptar es uno en el que la probabilidad de que salga cara es 0.5; es decir,$P(\mbox{heads}) = 0.5$ Si la moneda no es justa, entonces debería concluir que la probabilidad de que salga cara **no** es 0.5, lo que escribiríamos como $P(\mbox{heads}) \neq 0.5$. En otras palabras, el problema de la inferencia estadística consiste en darme cuenta cuál de estos modelos de probabilidad es el correcto. Está claro que la pregunta estadística no es la misma que la pregunta de probabilidad, pero están profundamente relacionadas. Por eso, una buena introducción a la teoría estadística comienza con una discusión sobre qué es la probabilidad y cómo funciona.
 
 ## ¿Qué significa probabilidad?
 
@@ -78,13 +78,13 @@ Todas estas opciones parecen razonables. Sin embargo, no son idénticas, y no to
 
 ### La visión frecuentista
 
-El primero de los dos enfoques principales, y el más dominante en estadística, se conoce como la **visión frecuentista**, que define la probabilidad como una **frecuencia a largo plazo**. Supongamos que empezamos a lanzar una moneda justa, una y otra vez. Por definición, es una moneda en la que $P(H) = 0.5$. ¿Qué podríamos observar? Una posibilidad es que los primeros 20 lanzamientos se vean así:
+El primero de los dos enfoques principales, y el más dominante en estadística, se conoce como la **visión frecuentista**, que define la probabilidad como una **frecuencia a largo plazo**. Supongamos que empezamos a lanzar una moneda justa, una y otra vez. Por definición, es una moneda en la que $P(C) = 0.5$. ¿Qué podríamos observar? Una posibilidad es que los primeros 20 lanzamientos se vean así:
 
 ```         
-T, H, H, H, H, T, T, H, H, H, H, T, H, H, T, T, T, T, T, H
+C, N, N, C, C, N, N, C, C, C, C, N, C, C, N, N, N, N, N, C
 ```
 
-En este caso, 11 de los 20 lanzamientos (55%) salieron cara. Ahora supongamos que fui llevando la cuenta del número de caras (que voy a llamar $N_H$) en los primeros $N$lanzamientos, y que cada vez calculo la proporción de caras $N_H/N$. Esto es lo que obtendría (¡sí, de verdad lancé monedas para obtener esto!):
+En este caso, 11 de los 20 lanzamientos (55%) salieron cara. Ahora supongamos que fui llevando la cuenta del número de caras (que voy a llamar $N_C$) en los primeros $N$lanzamientos, y que cada vez calculo la proporción de caras $N_C/N$. Esto es lo que obtendría (¡sí, de verdad lancé monedas para obtener esto!):
 
 | número de lanzamientos |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  | 10  |
 |------------------------|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -96,7 +96,7 @@ En este caso, 11 de los 20 lanzamientos (55%) salieron cara. Ahora supongamos qu
 | número de caras        |  8  |  8  |  9  | 10  | 10  | 10  | 10  | 10  | 10  | 11  |
 | proporción             | .73 | .67 | .69 | .71 | .67 | .63 | .59 | .56 | .53 | .55 |
 
-Fijate que al principio de la secuencia, la **proporción** de caras fluctúa bastante, empezando en .00 y subiendo hasta .80. Más adelante, da la impresión de que se estabiliza, con valores que se acercan cada vez más al valor "correcto" de 0.50. Esta es la definición frecuentista de probabilidad en pocas palabras: lanzá una moneda justa muchas veces, y a medida que $N$crece (se acerca al infinito, denotado $N \rightarrow \infty$), la proporción de caras converge a 50%. Hay algunas sutilezas técnicas que le importan a los matemáticos, pero en términos cualitativos, así es como los frecuentistas definen la probabilidad. Por supuesto, no tengo un número infinito de monedas, ni la paciencia infinita para lanzarlas eternamente. Pero sí tengo una computadora, y las computadoras son excelentes para tareas repetitivas. Así que le pedí a la computadora que simulara lanzar una moneda 1000 veces, y luego grafiqué lo que pasa con la proporción $N_H / N$ a medida que $N$ aumenta. En realidad, lo hice cuatro veces, solo para asegurarme de que no fuera casualidad. Los resultados se muestran en la @fig-4FreqProb. Como podés ver, la **proporción de caras observadas** eventualmente deja de fluctuar, y se estabiliza. Cuando eso ocurre, el número al que se estabiliza es la verdadera probabilidad de cara.
+Fijate que al principio de la secuencia, la **proporción** de caras fluctúa bastante, empezando en .00 y subiendo hasta .80. Más adelante, da la impresión de que se estabiliza, con valores que se acercan cada vez más al valor "correcto" de 0.50. Esta es la definición frecuentista de probabilidad en pocas palabras: lanzá una moneda justa muchas veces, y a medida que $N$crece (se acerca al infinito, denotado $N \rightarrow \infty$), la proporción de caras converge a 50%. Hay algunas sutilezas técnicas que le importan a los matemáticos, pero en términos cualitativos, así es como los frecuentistas definen la probabilidad. Por supuesto, no tengo un número infinito de monedas, ni la paciencia infinita para lanzarlas eternamente. Pero sí tengo una computadora, y las computadoras son excelentes para tareas repetitivas. Así que le pedí a la computadora que simulara lanzar una moneda 1000 veces, y luego grafiqué lo que pasa con la proporción $N_C / N$ a medida que $N$ aumenta. En realidad, lo hice cuatro veces, solo para asegurarme de que no fuera casualidad. Los resultados se muestran en la @fig-4FreqProb. Como podés ver, la **proporción de caras observadas** eventualmente deja de fluctuar, y se estabiliza. Cuando eso ocurre, el número al que se estabiliza es la verdadera probabilidad de cara.
 
 ```{r echo=F}
 #| label: fig-4FreqProb
@@ -132,7 +132,7 @@ Más allá de las discusiones ideológicas entre bayesianos y frecuentistas, res
 
 Una de las verdades perturbadoras de mi vida es que solo tengo cinco pares de pantalones: tres jeans, la parte de abajo de un traje, y un pantalón deportivo. Más triste aún: les puse nombre. Los llamo $X_1$, $X_2$, $X_3$, $X_4$ y $X_5$. De verdad lo hago: por eso me dicen "Señor Imaginativo". Cada día, elijo exactamente un par de pantalones para usar. Ni yo soy tan tonto como para tratar de usar dos al mismo tiempo, y gracias a años de entrenamiento ya no salgo de casa sin pantalones. Si quisiera describir esta situación usando el lenguaje de la teoría de la probabilidad, diría que cada par de pantalones (es decir, cada $X$) es un *evento elemental*. La característica clave de los eventos elementales es que cada vez que hacemos una observación (por ejemplo, cada vez que me pongo un par de pantalones), el resultado será uno y solo uno de esos eventos. Como dije, hoy en día siempre uso exactamente un par, así que mis pantalones cumplen con esa condición. De forma similar, al conjunto de todos los posibles eventos se lo llama *espacio muestral*. Es verdad que algunas personas lo llamarían "guardarropa", pero eso es porque se niegan a pensar en mis pantalones desde una perspectiva probabilística. Triste.
 
-Bien, ahora que tenemos un espacio muestral (un guardarropa), formado por varios eventos elementales (pantalones), lo que queremos hacer es asignar una *probabilidad* a cada uno de esos eventos. Para un evento $X$, la probabilidad de ese evento $P(X)$es un número entre 0 y 1. Cuanto mayor es el valor de $P(X)$, más probable es que ocurra ese evento. Por ejemplo: - Si $P(X) = 0$, significa que el evento $X$ es **imposible** (nunca uso ese pantalón). - Si $P(X) = 1$, significa que el evento $X$ es **seguro** (siempre uso ese pantalón). - Valores de probabilidad intermedios significan que a veces uso ese pantalón. Por ejemplo, si $P(X) = 0.5$, significa que uso ese pantalón la mitad del tiempo.
+Bien, ahora que tenemos un espacio muestral (un guardarropa), formado por varios eventos elementales (pantalones), lo que queremos hacer es asignar una *probabilidad* a cada uno de esos eventos. Para un evento $X$, la probabilidad de ese evento $P(X)$es un número entre 0 y 1. Cuanto mayor es el valor de $P(X)$, más probable es que ocurra ese evento. Por ejemplo: Si $P(X) = 0$, significa que el evento $X$ es **imposible** (nunca uso ese pantalón). Si $P(X) = 1$, significa que el evento $X$ es **seguro** (siempre uso ese pantalón). Valores de probabilidad intermedios significan que a veces uso ese pantalón. Por ejemplo, si $P(X) = 0.5$, significa que uso ese pantalón la mitad del tiempo.
 
 A esta altura, ya casi terminamos. Lo último que necesitamos reconocer es que "algo siempre ocurre". Cada vez que me pongo pantalones, efectivamente termino con un par puesto (una locura, ¿no?). Esta afirmación algo trillada quiere decir, en términos probabilísticos, que las probabilidades de todos los eventos elementales deben sumar 1. Esto se conoce como la *ley de probabilidad total*, aunque a nadie le importe demasiado. Más importante, si se cumplen estos requisitos, lo que tenemos es una *distribución de probabilidad*. Por ejemplo, esta es una distribución de probabilidad
 
@@ -192,7 +192,7 @@ $$
 
 Ahora podemos empezar a comprobar las reglas que figuran en la tabla.
 
-En la primera línea, la tabla dice que:$P(\neg A) = 1 - P(A)$y lo que **significa** esto es que la probabilidad de "no $A$" es igual a 1 menos la probabilidad de $A$. Con un poco de reflexión (y un ejemplo tedioso) se vuelve evidente por qué esto tiene que ser verdad. Si $A$ corresponde al evento de que me pongo jeans (es decir, que ocurre alguno de los eventos $x_1$, $x_2$ o $x_3$), entonces la única definición razonable de "no $A$" (que se denota matemáticamente como $\neg A$) es decir que$\neg A$consiste en **todos** los eventos elementales que no pertenecen a$A$. En el caso de los pantalones, eso significa que:$$\neg A = (x_4, x_5)$$o, dicho en español: "no jeans" incluye todos los pantalones que no son jeans (es decir, el pantalón de traje negro y el pantalón deportivo azul). Por lo tanto, cada uno de los eventos elementales pertenece o bien a$A$, o bien a$\neg A$, pero no a ambos. Bien, entonces reorganicemos lo anterior:$$P(\neg A) + P(A) = 1$$que no es más que una forma matemática de decir: o uso jeans, o no uso jeans; la probabilidad de "no jeans" más la probabilidad de "jeans" es igual a 1.
+En la primera línea, la tabla dice que: $P(\neg A) = 1 - P(A)$ y lo que **significa** esto es que la probabilidad de "no $A$" es igual a 1 menos la probabilidad de $A$. Con un poco de reflexión (y un ejemplo tedioso) se vuelve evidente por qué esto tiene que ser verdad. Si $A$ corresponde al evento de que me pongo jeans (es decir, que ocurre alguno de los eventos $x_1$, $x_2$ o $x_3$), entonces la única definición razonable de "no $A$" (que se denota matemáticamente como $\neg A$) es decir que $\neg A$ consiste en **todos** los eventos elementales que no pertenecen a$A$. En el caso de los pantalones, eso significa que: $$\neg A = (x_4, x_5)$$ o, dicho en español: "no jeans" incluye todos los pantalones que no son jeans (es decir, el pantalón de traje negro y el pantalón deportivo azul). Por lo tanto, cada uno de los eventos elementales pertenece o bien a $A$, o bien a $\neg A$, pero no a ambos. Bien, entonces reorganicemos lo anterior: $$P(\neg A) + P(A) = 1$$ que no es más que una forma matemática de decir: o uso jeans, o no uso jeans; la probabilidad de "no jeans" más la probabilidad de "jeans" es igual a 1.
 
 Matemáticamente:
 
@@ -213,14 +213,14 @@ P(\neg A) + P(A) &=& P(x_1) + P(x_2) + P(x_3) + P(x_4) + P(x_5) \\
 \end{array}
 $$Excelente. Todo parece funcionar.
 
-"Guau", te escucho decir. "Todo esto para decirme lo increíblemente obvio". Y tenés razón: esto **es** increíblemente obvio. El **propósito** de la teoría de la probabilidad es formalizar y matematizar unas pocas intuiciones de sentido común. Así que sigamos un poco más con esta línea de razonamiento. En la sección anterior definí un evento correspondiente a **no** A, que denoté como $\neg A$. Ahora vamos a definir dos nuevos eventos que corresponden a conceptos cotidianos importantes: **$A$y$B$**, y **$A$o$B$\*\*. Específicamente:
+"Guau", te escucho decir. "Todo esto para decirme lo increíblemente obvio". Y tenés razón: esto **es** increíblemente obvio. El **propósito** de la teoría de la probabilidad es formalizar y matematizar unas pocas intuiciones de sentido común. Así que sigamos un poco más con esta línea de razonamiento. En la sección anterior definí un evento correspondiente a **no** A, que denoté como $\neg A$. Ahora vamos a definir dos nuevos eventos que corresponden a conceptos cotidianos importantes: **$A$y$B$**, y **$A$o$B$**. Específicamente:
 
 | Afirmación en español                    | Notación matemática |
 |:-----------------------------------------|:-------------------:|
 | "$A$y$B$" ocurren ambos        |  $A \cap B$  |
 | ocurre al menos uno: "$A$o$B$" |  $A \cup B$  |
 
-Ya que $A$y$B$ están definidos en términos de nuestros eventos elementales (los $x$s), necesitamos describir también $A \cap B$y$A \cup B$ en términos de nuestros eventos elementales. ¿Podemos hacerlo? ¡Sí que podemos! La única forma en que ocurran ambos eventos,$A$y$B$, es que el evento elemental observado pertenezca tanto a $A$ como a $B$. Así que "$A \cap B$" incluye solamente aquellos eventos elementales que pertenecen a $A$ y $B$...
+Ya que $A$y$B$ están definidos en términos de nuestros eventos elementales (los $x$s), necesitamos describir también $A \cap B$ y $A \cup B$ en términos de nuestros eventos elementales. ¿Podemos hacerlo? ¡Sí que podemos! La única forma en que ocurran ambos eventos, $A$y$B$, es que el evento elemental observado pertenezca tanto a $A$ como a $B$. Así que "$A \cap B$" incluye solamente aquellos eventos elementales que pertenecen a $A$ y $B$...
 
 $$
 \begin{array}{rcl}
@@ -231,7 +231,7 @@ A \cap B &=& (x_3)
 $$
 Es decir, la única forma en que pueda estar usando "jeans" ($x_1, x_2, x_3$) y “pantalón negro” ($x_3, x_4$) al mismo tiempo, es que esté usando los “jeans negros” ($x_3$). Otro triunfo para lo absolutamente obvio.
 
-A esta altura, no te va a sorprender para nada la definición de $A \cup B$, aunque probablemente te parezca increíblemente aburrida. La única forma en que puedo estar usando "jeans" o "pantalón negro" es si el pantalón elemental que realmente uso pertenece a$A$, o a$B$, o a ambos. Así que:
+A esta altura, no te va a sorprender para nada la definición de $A \cup B$, aunque probablemente te parezca increíblemente aburrida. La única forma en que puedo estar usando "jeans" o "pantalón negro" es si el pantalón elemental que realmente uso pertenece a $A$, o a $B$, o a ambos. Así que:
 
 $$
 \begin{array}{rcl}
@@ -243,14 +243,14 @@ $$
 
 Vaaamooooooooo!!!! Matemáticas, sabelo!
 
-Entonces, ya definimos qué queremos decir con $A \cap B$y$A \cup B$. Ahora asignemos probabilidades a esos eventos. Más específicamente, vamos a verificar la regla que dice que: $$P(A \cup B) = P(A) + P(B) - P(A \cap B)$$
+Entonces, ya definimos qué queremos decir con $A \cap B$ y $A \cup B$. Ahora asignemos probabilidades a esos eventos. Más específicamente, vamos a verificar la regla que dice que: $$P(A \cup B) = P(A) + P(B) - P(A \cap B)$$
 
 Usando las definiciones anteriores, sabemos que: $A \cup B = (x_1, x_2, x_3, x_4)$, entonces 
 $$
 P(A \cup B) = P(x_1) + P(x_2) + P(x_3) + P(x_4)
 $$
 
-y usando el hecho de que sabemos qué eventos elementales pertenecen a$A$,$B$, y$A \cap B$, tenemos:
+y usando el hecho de que sabemos qué eventos elementales pertenecen a $A$,$B$, y $A \cap B$, tenemos:
 $$
 \begin{array}{rcl}
 P(A) &=& P(x_1) + P(x_2) + P(x_3) \\
@@ -259,28 +259,27 @@ P(A \cap B) &=& P(x_3)
 \end{array}
 $$
 y por lo tanto:
-$$
 
+$$
 \begin{array}{rcl}
 P(A) + P(B) - P(A \cap B)
 &=& P(x_1) + P(x_2) + P(x_3) + P(x_3) + P(x_4) - P(x_3) \\
 &=& P(x_1) + P(x_2) + P(x_3) + P(x_4) \\
 &=& P(A \cup B)
 \end{array}
-
 $$
 
 Listo.
 
 El próximo concepto que necesitamos definir es la notación "$B$ dado $A$", que se escribe típicamente como $B \mid A$. Esto es lo que quiero decir: supongamos que me levanto una mañana y me pongo un pantalón. Ocurre un evento elemental $x$. Supongamos que le grito a mi esposa (que está en la otra habitación, y no puede ver qué pantalón me puse): "¡Hoy estoy usando jeans!". Asumiendo que ella me cree, entonces sabe que $A$ es verdadero. **Dado** que sabe que ocurrió $A$, ¿cuál es la **probabilidad condicional** de que también sea cierto $B$? Bueno, pensemos qué información tiene. Estas son las cosas que sabe:
 
--   **Los eventos que no son jeans son imposibles**. Si $A$ es verdadero, entonces sabemos que los únicos eventos elementales que pueden haber ocurrido son$x_1$, $x_2$ y $x_3$(o sea, los jeans). Los eventos no jeans, $x_4$ y $x_5$, ahora son imposibles y deben tener probabilidad cero. En otras palabras, nuestro **espacio muestral** se ha restringido a los eventos jeans. Pero sigue siendo cierto que la suma de las probabilidades de estos eventos **debe** ser 1: sabemos con certeza que estoy usando jeans.
+-   **Los eventos que no son jeans son imposibles**. Si $A$ es verdadero, entonces sabemos que los únicos eventos elementales que pueden haber ocurrido son $x_1$, $x_2$ y $x_3$ (o sea, los jeans). Los eventos no jeans, $x_4$ y $x_5$, ahora son imposibles y deben tener probabilidad cero. En otras palabras, nuestro **espacio muestral** se ha restringido a los eventos jeans. Pero sigue siendo cierto que la suma de las probabilidades de estos eventos **debe** ser 1: sabemos con certeza que estoy usando jeans.
 
 -   **Ella no aprendió nada sobre qué jeans estoy usando**. Antes de que yo anunciara que estoy usando jeans, ella ya sabía que era cinco veces más probable que estuviera usando jeans azules ($P(x_1) = 0.5$) que jeans negros ($P(x_3) = 0.1$). Mi anuncio no cambia eso... no dije **nada** sobre el color, así que la proporción $P(x_1) / P(x_3)$ se mantiene igual, con un valor de 5.
 
 Solo hay una forma de satisfacer estas restricciones: asignar probabilidad cero a los eventos imposibles (es decir, $P(x | A) = 0$ si $x$ no está en $A$), y luego dividir las probabilidades de todos los demás por $P(A)$. En este caso, como $P(A) = 0.9$, dividimos entre 0.9. Esto da:
 
-| ¿Qué pantalón?     | Evento elemental | Prob. original $P(x)$  | Nueva prob. $P(x \mid A) $ |
+| ¿Qué pantalón?     | Evento elemental | Prob. original $P(x)$  | Nueva prob. $P(x | A)$     |
 |:-----------------|:----------------:|:----------------:|:----------------:|
 | Jean azul          |     $x_1$      |           0.5           |            0.556            |
 | Jean gris          |     $x_2$      |           0.3           |            0.333            |
@@ -309,7 +308,7 @@ $P(A \cap B) = P(B \mid A) \cdot P(A)$ que es la tercera regla que habíamos lis
 
 ## La distribución binomial
 
-Como te podés imaginar, las distribuciones de probabilidad varían muchísimo, y hay una enorme cantidad de distribuciones ahí afuera. Sin embargo, no todas son igual de importantes. De hecho, la gran mayoría del contenido de este libro se basa en una de cinco distribuciones: la distribución binomial, la distribución normal, la distribución$t$, la distribución $\chi^2$ ("chi-cuadrado") y la distribución $F$. Dicho esto, lo que voy a hacer en las próximas secciones es darte una breve introducción a esas cinco, prestando especial atención a la binomial y a la normal. Voy a empezar con la distribución binomial, porque es la más sencilla de las cinco.
+Como te podés imaginar, las distribuciones de probabilidad varían muchísimo, y hay una enorme cantidad de distribuciones ahí afuera. Sin embargo, no todas son igual de importantes. De hecho, la gran mayoría del contenido de este libro se basa en una de cinco distribuciones: la distribución binomial, la distribución normal, la distribución $t$, la distribución $\chi^2$ ("chi-cuadrado") y la distribución $F$. Dicho esto, lo que voy a hacer en las próximas secciones es darte una breve introducción a esas cinco, prestando especial atención a la binomial y a la normal. Voy a empezar con la distribución binomial, porque es la más sencilla de las cinco.
 
 ### Introducción a la binomial
 
@@ -319,13 +318,13 @@ Como siempre, vamos a introducir algunos nombres y notación. Vamos a usar $N$ p
 
 $P(X \mid \theta, N)$
 
-y nos interesa el caso particular en el que $X = 4$, $\theta = 0{,}167$  y $N = 20$. Hay una última notación que quiero mencionar antes de pasar a cómo resolver el problema. Si quiero decir que $X$ fue generado aleatoriamente a partir de una distribución binomial con parámetros $\theta$ y $N$, lo escribo así:
+y nos interesa el caso particular en el que $X = 4$, $\theta = 0{,}167$  y $N = 20$. Hay una última notación que quiero mencionar antes de pasar a cómo resolver el problema. Si quiero decir que $X$ fue generado aleatoriamente a partir de una distribución binomial con parámetros $\theta$ y $N$, lo escribo así: $$X \sim \mbox{Binomial}(\theta, N)$$
 
 Sí, sí, ya sé lo que estás pensando: notación, notación, notación. ¿A quién le importa? Muy pocos lectores están acá por la notación, así que mejor sigo y explico **cómo usar** la distribución binomial. Para eso, la @fig-4binomial1 muestra las probabilidades binomiales para todos los valores posibles de $X$ en nuestro experimento con los dados, desde $X = 0$ (ninguna calavera) hasta $X = 20$ (todas calaveras). Notá que básicamente es un gráfico de barras, y no es distinto del gráfico de "probabilidad de pantalones" que hicimos en @fig-4pantsprob. En el eje horizontal están todos los eventos posibles, y en el eje vertical podemos ver la probabilidad de cada uno de esos eventos. Entonces, la probabilidad de obtener 4 calaveras al lanzar 20 dados es de aproximadamente 0.20 (la respuesta exacta es 0.2022036, como veremos enseguida). En otras palabras, esperarías que eso ocurra alrededor del 20% de las veces que repitas este experimento.
 
 ```{r echo=F}
 #| label: fig-4binomial1
-#| fig-cap: "La distribución binomial con parámetro de tamaño$N = 20$y una probabilidad de éxito de 1/6. Cada barra vertical representa la probabilidad de un resultado específico (es decir, un valor posible de$X$). Como se trata de una distribución de probabilidad, cada probabilidad debe ser un número entre 0 y 1, y la suma de las alturas de las barras también debe ser 1."
+#| fig-cap: "La distribución binomial con parámetro de tamaño $N = 20$y una probabilidad de éxito de 1/6. Cada barra vertical representa la probabilidad de un resultado específico (es decir, un valor posible de$X$). Como se trata de una distribución de probabilidad, cada probabilidad debe ser un número entre 0 y 1, y la suma de las alturas de las barras también debe ser 1."
 
 knitr::include_graphics("imgs/navarro_img/probability/binomSkulls20_es.png")
 ```
@@ -350,7 +349,7 @@ Para que veas cómo cambia la distribución binomial cuando alteramos los valore
 
 ```{r echo=F}
 #| label: fig-4binomial2
-#| fig-cap: "Dos distribuciones binomiales, en un escenario donde lanzo una moneda justa, con probabilidad de éxito$1/2$. En el panel (a), se supone que lanzo la moneda$N = 20$veces. En el panel (b), que la lanzo$N = 100$veces."
+#| fig-cap: "Dos distribuciones binomiales, en un escenario donde lanzo una moneda justa, con probabilidad de éxito $1/2$. En el panel (a), se supone que lanzo la moneda $N = 20$ veces. En el panel (b), que la lanzo $N = 100$ veces."
 
 knitr::include_graphics("imgs/navarro_img/probability/Binomial2_es.png")
 ```
@@ -504,7 +503,7 @@ Una muestra es algo concreto. Podés abrir un archivo de datos y ver los valores
 
 A veces es fácil definir la población de interés. Por ejemplo, en el caso de la "encuestadora", la población está compuesta por todas las personas habilitadas para votar en el momento de la encuesta ---millones de personas. La muestra era un conjunto de 1000 personas y todas pertenecen a esa población. En la mayoría de los casos, la situación es mucho menos clara. En un experimento psicológico típico, determinar cuál es la población de interés puede ser algo más complicado. Supongamos que hago un experimento con 100 estudiantes universitarios como participantes. Mi objetivo, como científica cognitiva, es aprender algo sobre cómo funciona la mente. Entonces, ¿cuál de las siguientes opciones debería contar como "la población"?
 
--   ¿Todxs los estudiantes de psicología de grado de la Universidad de Adelaide?
+-   ¿Todos los estudiantes de psicología de grado de la Universidad de Adelaide?
 
 -   ¿Estudiantes de psicología de grado en general, en cualquier parte del mundo?
 
@@ -537,7 +536,7 @@ knitr::include_graphics("imgs/navarro_img/estimation/srs1_es.png")
 
 Este conjunto de fichas es la población de interés, y está representada gráficamente en la parte izquierda de la @fig-srs1.
 
-Como podés ver en la imagen, hay 4 fichas negras y 6 fichas blancas, pero en la vida real no sabríamos eso a menos que miremos dentro de la bolsa. Ahora imaginá que hacés el siguiente "experimento": agitás la bolsa, cerrás los ojos y sacás 4 fichas, sin devolverlas después de sacarlas. Primero sale la ficha$a$(negra), luego la$c$(blanca), después la$j$(blanca), y finalmente la$b$(negra). Si quisieras, podrías volver a meter todas las fichas en la bolsa y repetir el experimento, como se muestra en el lado derecho de la @fig-srs1. Cada vez vas a obtener resultados distintos, pero el procedimiento es idéntico en todos los casos. El hecho de que el mismo procedimiento pueda producir distintos resultados cada vez es lo que hace que lo llamemos un **proceso aleatorio**. Sin embargo, como agitamos la bolsa antes de sacar cualquier ficha, parece razonable pensar que cada ficha tenía la misma probabilidad de ser elegida. Un procedimiento en el que cada miembro de la población tiene la misma probabilidad de ser seleccionado se llama una **muestra aleatoria simple**. El hecho de que **no** devolvimos las fichas a la bolsa después de sacarlas significa que no podés observar la misma ficha dos veces, y en estos casos se dice que las observaciones fueron tomadas **sin reemplazo**.
+Como podés ver en la imagen, hay 4 fichas negras y 6 fichas blancas, pero en la vida real no sabríamos eso a menos que miremos dentro de la bolsa. Ahora imaginá que hacés el siguiente "experimento": agitás la bolsa, cerrás los ojos y sacás 4 fichas, sin devolverlas después de sacarlas. Primero sale la ficha $a$(negra), luego la $c$(blanca), después la $j$(blanca), y finalmente la $b$(negra). Si quisieras, podrías volver a meter todas las fichas en la bolsa y repetir el experimento, como se muestra en el lado derecho de la @fig-srs1. Cada vez vas a obtener resultados distintos, pero el procedimiento es idéntico en todos los casos. El hecho de que el mismo procedimiento pueda producir distintos resultados cada vez es lo que hace que lo llamemos un **proceso aleatorio**. Sin embargo, como agitamos la bolsa antes de sacar cualquier ficha, parece razonable pensar que cada ficha tenía la misma probabilidad de ser elegida. Un procedimiento en el que cada miembro de la población tiene la misma probabilidad de ser seleccionado se llama una **muestra aleatoria simple**. El hecho de que **no** devolvimos las fichas a la bolsa después de sacarlas significa que no podés observar la misma ficha dos veces, y en estos casos se dice que las observaciones fueron tomadas **sin reemplazo**.
 
 Para ayudarte a entender la importancia del procedimiento de muestreo, considerá una alternativa. Supongamos que mi hijo de 5 años abre la bolsa y decide sacar cuatro fichas negras, sin devolver ninguna. Este esquema de muestreo **sesgado** se muestra en la @fig-brs.
 
@@ -603,13 +602,13 @@ Ahora supongamos que recolectamos algunos datos. Seleccionamos 100 personas al a
 
 `106 101 98 80 74 ... 107 72 100`
 
-Cada uno de estos puntajes de CI fue extraído de una distribución normal con media 100 y desviación estándar 15. Así que, si dibujo un histograma de la muestra, obtengo algo como lo que se muestra en @fig-IQdist$b$. Como podés ver, el histograma tiene una forma **aproximadamente** correcta, pero es una aproximación bastante burda de la verdadera distribución poblacional que aparece en @fig-IQdist$a$. La media de la muestra está bastante cerca de la media poblacional (100), pero no es idéntica. En este caso, resulta que las personas de la muestra tienen un CI promedio de 98.5, y la desviación estándar de sus puntajes es 15.9. Estas **estadísticas muestrales** son propiedades del conjunto de datos, y aunque son bastante parecidas a los verdaderos valores poblacionales, no son iguales. **En general, las estadísticas muestrales son las cosas que podés calcular a partir de tus datos, y los parámetros poblacionales son las cosas sobre las que querés aprender.** Más adelante en este capítulo vamos a hablar sobre cómo podés estimar los parámetros poblacionales a partir de las estadísticas muestrales, y cómo calcular qué tan confiado podés estar en tus estimaciones. Pero antes de llegar a eso, todavía hay algunas ideas de teoría del muestreo que necesitás conocer.
+Cada uno de estos puntajes de CI fue extraído de una distribución normal con media 100 y desviación estándar 15. Así que, si dibujo un histograma de la muestra, obtengo algo como lo que se muestra en  @fig-IQdist (panel b). Como podés ver, el histograma tiene una forma **aproximadamente** correcta, pero es una aproximación bastante burda de la verdadera distribución poblacional que aparece en @fig-IQdist$a$. La media de la muestra está bastante cerca de la media poblacional (100), pero no es idéntica. En este caso, resulta que las personas de la muestra tienen un CI promedio de 98.5, y la desviación estándar de sus puntajes es 15.9. Estas **estadísticas muestrales** son propiedades del conjunto de datos, y aunque son bastante parecidas a los verdaderos valores poblacionales, no son iguales. **En general, las estadísticas muestrales son las cosas que podés calcular a partir de tus datos, y los parámetros poblacionales son las cosas sobre las que querés aprender.** Más adelante en este capítulo vamos a hablar sobre cómo podés estimar los parámetros poblacionales a partir de las estadísticas muestrales, y cómo calcular qué tan confiado podés estar en tus estimaciones. Pero antes de llegar a eso, todavía hay algunas ideas de teoría del muestreo que necesitás conocer.
 
 ## La ley de los grandes números
 
-En el ejemplo anterior mostramos los resultados de un experimento ficticio sobre CI con un tamaño muestral de$N = 100$. Los resultados fueron bastante alentadores: la verdadera media poblacional es 100, y la media muestral fue 98.5, una aproximación bastante razonable. En muchos estudios científicos, ese nivel de precisión es perfectamente aceptable, pero en otras situaciones quizás necesitemos ser mucho más precisos. Entonces, si queremos que nuestras estadísticas muestrales se acerquen más a los parámetros poblacionales, ¿qué podemos hacer?
+En el ejemplo anterior mostramos los resultados de un experimento ficticio sobre CI con un tamaño muestral de $N = 100$. Los resultados fueron bastante alentadores: la verdadera media poblacional es 100, y la media muestral fue 98.5, una aproximación bastante razonable. En muchos estudios científicos, ese nivel de precisión es perfectamente aceptable, pero en otras situaciones quizás necesitemos ser mucho más precisos. Entonces, si queremos que nuestras estadísticas muestrales se acerquen más a los parámetros poblacionales, ¿qué podemos hacer?
 
-La respuesta obvia es: recolectar más datos. Supongamos que hacemos un experimento mucho más grande, esta vez midiendo el CI de 10.000 personas. Podemos simular los resultados de este experimento usando R y la función `rnorm()`, que genera números aleatorios extraídos de una distribución normal. Para un experimento con tamaño muestral$n = 10000$, y una población con media 100 y desviación estándar 15, R puede generar datos simulados de CI así:
+La respuesta obvia es: recolectar más datos. Supongamos que hacemos un experimento mucho más grande, esta vez midiendo el CI de 10.000 personas. Podemos simular los resultados de este experimento usando R y la función `rnorm()`, que genera números aleatorios extraídos de una distribución normal. Para un experimento con tamaño muestral $n = 10000$, y una población con media 100 y desviación estándar 15, R puede generar datos simulados de CI así:
 
 ```{r}
 IQ <- rnorm(n = 10000, mean = 100, sd = 15)  # generar los CI
@@ -638,7 +637,7 @@ La ley de los grandes números es una herramienta muy poderosa, pero no alcanza 
 
 > [\*\*El] largo plazo es una guía engañosa para los asuntos actuales. A largo plazo, todos estaremos muertos. Los economistas se asignan una tarea demasiado fácil, y por lo tanto inútil, si en tiempos tormentosos sólo pueden decirnos que, cuando la tormenta haya pasado hace tiempo, el océano volverá a estar calmo.\*\* --- @Keynes1923 [p.80]
 
-Lo mismo que en economía vale también para la psicología y la estadística. No basta con saber que **eventualmente** llegaremos a la respuesta correcta al calcular la media muestral. Saber que un conjunto de datos infinitamente grande nos dará el valor correcto no resuelve nuestros problemas prácticos en el presente. Saber que un conjunto de datos infinitamente grande me dará el valor exacto de la media poblacional no es precisamente reconfortante cuando mi conjunto de datos **real** tiene un tamaño de muestra de$N=100$. En la vida real, entonces, necesitamos saber algo sobre el comportamiento de la media muestral cuando se calcula a partir de un conjunto de datos más modesto.
+Lo mismo que en economía vale también para la psicología y la estadística. No basta con saber que **eventualmente** llegaremos a la respuesta correcta al calcular la media muestral. Saber que un conjunto de datos infinitamente grande nos dará el valor correcto no resuelve nuestros problemas prácticos en el presente. Saber que un conjunto de datos infinitamente grande me dará el valor exacto de la media poblacional no es precisamente reconfortante cuando mi conjunto de datos **real** tiene un tamaño de muestra de $N=100$. En la vida real, entonces, necesitamos saber algo sobre el comportamiento de la media muestral cuando se calcula a partir de un conjunto de datos más modesto.
 
 ### Distribución muestral de las medias muestrales
 
@@ -682,7 +681,7 @@ ggplot(uniform_df, aes(x = x, y = y)) +
   labs(x = "Valor", y = "Probabilidad")
 ```
 
-La @fig-4sample20unif anima el proceso de tomar un montón de muestras de la distribución uniforme. Vamos a fijar el tamaño de muestra en 20. Es más fácil ver cómo se comporta la media muestral en una animación. Cada histograma muestra una nueva muestra. La línea roja indica dónde está la media de esa muestra. Las muestras son todas bastante distintas entre sí, pero la línea roja no se mueve mucho: siempre queda más o menos cerca del centro. Sin embargo, sí se mueve un poco, y esa variabilidad es lo que llamamos la **distribución muestral de la media muestral**.
+La @fig-4sample20unif anima el proceso de tomar un montón de muestras de la distribución uniforme. Vamos a fijar el tamaño de muestra en 20. Es más fácil ver cómo se comporta la media muestral en una animación. Cada histograma muestra una nueva muestra. La línea roja indica dónde está la media de esa muestra. Las muestras son todas bastante distintas entre sí, pero la línea roja no se mueve mucho: siempre queda más o menos cerca del centro. Sin embargo, sí se mueve un poquito, y esa variabilidad es lo que llamamos la **distribución muestral de la media muestral**.
 
 ::: {.content-visible when-format="html"}
 ```{r echo=FALSE}
@@ -779,7 +778,7 @@ Bien, ya viste muchas distribuciones muestrales y sabés qué es la distribució
 
 Intuitivamente, ya conocés parte de la respuesta: si tenés pocas observaciones, es probable que la media muestral sea bastante imprecisa (ya viste que puede variar bastante); si repetís un experimento chico y volvés a calcular la media, vas a obtener un resultado bastante distinto. En otras palabras, la distribución muestral es bastante amplia. En cambio, si repetís un experimento grande y calculás de nuevo la media muestral, probablemente obtengas un valor muy parecido al anterior, así que la distribución muestral va a ser mucho más estrecha.
 
-Veamos ahora una linda animación para ver todo esto en acción. Vamos a tomar muestras de una distribución normal. La figura @fig-4samplingmean tiene cuatro paneles, cada uno representando un tamaño de muestra distinto (n): 10, 50, 100 y 1000. La línea roja muestra la forma de la distribución normal. Las barras grises muestran un histograma de cada una de las muestras que tomamos. La línea roja muestra la media de una muestra individual (es decir, el centro del histograma en gris). Como podés ver, la línea roja se mueve bastante, especialmente cuando el tamaño de la muestra es pequeño (10).
+Veamos ahora una linda animación para ver todo esto en acción. Vamos a tomar muestras de una distribución normal. La figura @fig-4samplingmean tiene cuatro paneles, cada uno representando un tamaño de muestra distinto (n): 10, 50, 100 y 1000. La curva roja muestra la forma de la distribución normal. Las barras grises muestran un histograma de cada una de las muestras que tomamos. La línea roja muestra la media de una muestra individual (es decir, el centro del histograma en gris). Como podés ver, la línea roja se mueve bastante, especialmente cuando el tamaño de la muestra es pequeño (10).
 
 Lo nuevo acá son las barras azules y las líneas azules. Las barras azules representan la **distribución muestral de la media muestral**. Por ejemplo, en el panel con tamaño de muestra 10, vemos un montón de barras azules: es un histograma de 10 medias muestrales, cada una calculada a partir de una muestra de tamaño 10. En el panel de n = 50, vemos un histograma de 50 medias muestrales, tomadas de 50 muestras de tamaño 50, y así sucesivamente. La línea azul en cada panel es la media de esas medias muestrales ("¡aaaaagh, es una media de medias!"; sí, lo es).
 
@@ -794,7 +793,7 @@ knitr::include_graphics(path = "imgs/gifs/sampleDistNormal-1_es.gif")
 
 ¿Qué deberías notar? Fijate que el rango de las barras azules se reduce a medida que el tamaño de muestra aumenta. La distribución muestral de la media es bastante ancha cuando el tamaño de muestra es 10, se estrecha al aumentar a 50 y 100, y es prácticamente una sola barra en el centro cuando el tamaño llega a 1000. Lo que estamos viendo es que la media de la distribución muestral se aproxima a la media poblacional a medida que crece el tamaño de la muestra.
 
-Entonces, la distribución muestral de la media es otra distribución, y tiene cierta varianza. Varía más cuando el tamaño de muestra es pequeño, y varía menos cuando el tamaño es grande. Podemos cuantificar este efecto calculando el **desvío estándar** de la distribución muestral, que se conoce como el **error estándar**. El error estándar de un estadístico suele abreviarse como *SE*, y como habitualmente nos interesa el error estándar de la **media** muestral, usamos la sigla SEM (standard error of the mean). Como podés ver claramente en la animación, a medida que el tamaño de muestra$N$aumenta, el SEM disminuye.
+Entonces, la distribución muestral de la media es otra distribución, y tiene cierta varianza. Varía más cuando el tamaño de muestra es pequeño, y varía menos cuando el tamaño es grande. Podemos cuantificar este efecto calculando el **desvío estándar** de la distribución muestral, que se conoce como el **error estándar**. El error estándar de un estadístico suele abreviarse como *SE*, y como habitualmente nos interesa el error estándar de la **media** muestral, usamos la sigla SEM (standard error of the mean). Como podés ver claramente en la animación, a medida que el tamaño de muestra $N$ aumenta, el SEM disminuye.
 
 Bueno, eso es una parte de la historia. Sin embargo, hay algo que hemos estado dejando un poco de lado. Ya lo vimos antes, pero vale la pena volver a observarlo. Acá va el punto clave: **no importa qué forma tenga tu distribución poblacional**, a medida que$N$aumenta, la distribución muestral de la media empieza a parecerse más y más a una distribución normal. Eso es el **teorema central del límite**.
 
@@ -954,19 +953,19 @@ A partir de estas figuras, parece que tenemos evidencia para las siguientes afir
 
 -   La forma de la distribución muestral se vuelve normal a medida que aumenta el tamaño de la muestra
 
-Y resulta que no solo estas afirmaciones son verdaderas: hay un teorema muy famoso en estadística que las demuestra a las tres, conocido como el **teorema central del límite**. Entre otras cosas, este teorema nos dice que si la distribución poblacional tiene media$\mu$y desvío estándar$\sigma$, entonces la distribución muestral de la media también tiene media$\mu$, y su error estándar es:
+Y resulta que no solo estas afirmaciones son verdaderas: hay un teorema muy famoso en estadística que las demuestra a las tres, conocido como el **teorema central del límite**. Entre otras cosas, este teorema nos dice que si la distribución poblacional tiene media $\mu$ y desvío estándar $\sigma$, entonces la distribución muestral de la media también tiene media $\mu$, y su error estándar es:
 
 $$
 \text{SEM} = \frac{\sigma}{\sqrt{N}}
 $$
 
-Como se divide el desvío estándar poblacional$\sigma$por la raíz cuadrada del tamaño muestral$N$, el SEM disminuye al aumentar el tamaño de la muestra. También nos dice que la forma de la distribución muestral **tiende a ser normal**.
+Como se divide el desvío estándar poblacional $\sigma$ por la raíz cuadrada del tamaño muestral $N$, el SEM disminuye al aumentar el tamaño de la muestra. También nos dice que la forma de la distribución muestral **tiende a ser normal**.
 
 Este resultado es útil para todo tipo de cosas. Nos explica por qué los experimentos grandes son más confiables que los pequeños, y como nos da una fórmula explícita para el error estándar, también nos dice **cuánto** más confiables son. También nos explica por qué la distribución normal es, bueno... **normal**. En los experimentos reales, muchas de las cosas que queremos medir son en realidad **promedios** de un montón de cantidades diferentes (por ejemplo, uno podría decir que la inteligencia "general" medida por el CI es un promedio de muchas habilidades y aptitudes "específicas"), y cuando eso pasa, el valor promedio tiende a seguir una distribución normal. Por esta ley matemática, la distribución normal aparece una y otra vez en los datos reales.
 
 ## Puntajes z
 
-Ahora estamos en condiciones de combinar algunas de las cosas que vimos en este capítulo, e introducirte a una nueva herramienta: los **puntajes z**. Realmente que no vamos a usar mucho los **puntajes z** en este libro. Sin embargo, no podés hacer un curso de estadística sin aprender sobre los **puntajes z**.
+Ahora estamos en condiciones de combinar algunas de las cosas que vimos en este capítulo, e introducirte a una nueva herramienta: los **puntajes z**. Resulta que no vamos a usar mucho los **puntajes z** en este libro. Sin embargo, no podés hacer un curso de estadística sin aprender sobre los **puntajes z**.
 
 Vamos a observar una distribución normal en la @fig-4normalSDspercents, y vamos a trazar líneas en la distribución en 0, ±1, ±2 y ±3 desviaciones estándar desde la media:
 

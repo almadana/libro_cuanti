@@ -76,7 +76,7 @@ o también:
 
 $$\text{estadístico} = \frac{\text{efecto}}{\text{error}}$$
 
-Y esta es, justamente, la fórmula general dla prueba t. ¡Sorpresa!
+Y esta es, justamente, la fórmula general de la prueba t. ¡Sorpresa!
 
 ## Prueba t de una muestra: una nueva prueba t
 
@@ -110,7 +110,7 @@ Capaz que todo esto te hizo bizquear un poco. Tranquilo, ya lo vimos antes, cuan
 
 ### ¿Qué representa t?
 
-$t$ nos da una medida de confianza, igual que la razón anterior en la que dividíamos la media por la desviación estándar. La única diferencia es que ahora dividimos por el **error estándar de la media** (que, recordá, también es una desviación estándar: la de la distribución muestral de la media).
+$t$ nos da una medida de confianza, igual que la relación (ratio) anterior en la que dividíamos la media por la desviación estándar. La única diferencia es que ahora dividimos por el **error estándar de la media** (que, recordá, también es una desviación estándar: la de la distribución muestral de la media).
 
 ::: callout-note
 ¿La *t* en *prueba t* significa algo? Aparentemente no. Gosset originalmente usó *z*. Y después Fisher lo llamó *t*, tal vez porque viene después de *s*, que suele usarse para la desviación estándar muestral.
@@ -120,11 +120,13 @@ $t$ es una propiedad de los datos que recolectás. Se calcula con la media de la
 
 Empecemos con un ejemplo simple. Imaginá que tu media muestral es 5, y querés saber si viene de una población con media 5. ¿Cuál sería el valor de *t*? Cero: restamos 5 - 5 = 0. Como el numerador es 0, *t* también lo es. Así que *t* = 0 ocurre cuando **no hay diferencia**. Ahora tomás otra muestra. ¿La media será siempre 5? Probablemente no. Supongamos que da 6. ¿Qué valor tendrá *t*? El numerador es positivo: 6 - 5 = +1. Pero *t* no necesariamente será 1, eso depende del error estándar. Si es 1, entonces *t* será 1, porque 1/1 = 1. Si el error estándar es menor que 1, ¿qué pasa con *t*? Aumenta. Por ejemplo, 1 dividido por 0.5 da 2. Si el error estándar fuera 0.5, entonces *t* sería 2. Y con ese valor podríamos tener más confianza en que la diferencia que observamos no es casual.
 
-¿Puede *t* ser menor que 1? Claro. Si el error estándar es grande, digamos 2, entonces *t* será más chico (1/2 = 0.5). La dirección de la diferencia entre la media muestral y la poblacional también puede hacer que *t* sea negativo. Si la media muestral fuera 4, entonces la diferencia es negativa, y *t* también lo será, porque el numerador es negativo. El denominador (el error estándar) siempre será positivo (acordate por qué: se calcula a partir de la desviación estándar de la muestra, que siempre es positiva porque usamos cuadrados al calcularla). Así que estas son algunas intuiciones sobre los valores posibles de *t*. Puede ser positivo o negativo, grande o chico.
+¿Puede *t* ser menor que 1? Claro. Si el error estándar es grande, digamos 2, entonces *t* será más chico que 1 (en nuestro caso, 1/2 = 0.5). La dirección de la diferencia entre la media muestral y la poblacional también puede hacer que *t* sea negativo. Si la media muestral fuera 4, entonces la diferencia es negativa, y *t* también lo será, porque el numerador es negativo. El denominador (el error estándar) siempre será positivo (acordate por qué: se calcula a partir de la desviación estándar de la muestra, que siempre es positiva porque usamos cuadrados al calcularla). 
+
+Así que estas son algunas intuiciones sobre los valores posibles de *t*. Puede ser positivo o negativo, grande o chico.
 
 Hagamos una cosa más para afinar la intuición. ¿Qué tal si generamos varias muestras, calculamos la media muestral **y** el error estándar de la media, y graficamos esas dos cosas entre sí? Así vamos a ver cómo varía típicamente la media con respecto al error estándar.
 
-En la @fig-6muestraMSEM, tomé 1.000 muestras de tamaño \$N = 10\$ de una distribución normal (media = 0, desviación estándar = 1). En cada caso, calculé la media y el error estándar. Eso nos da dos estadísticas descriptivas por muestra, y podemos graficarlas como puntos en un scatterplot.
+En la @fig-6muestraMSEM, tomé 1.000 muestras de tamaño N = 10 de una distribución normal (media = 0, desviación estándar = 1). En cada caso, calculé la media y el error estándar. Eso nos da dos estadísticas descriptivas por muestra, y podemos graficarlas como puntos en un diagrama de dispersión.
 
 ```{r}
 #| label: fig-6muestraMSEM
@@ -153,7 +155,7 @@ Podemos ver estos datos de otra forma. En lugar de graficar directamente las med
 hist(media_muestral/error_muestral, breaks=30,ylab="Frecuencia", main="Histograma de media_muestral/error_muestral")
 ```
 
-Interesante, el histograma tiene forma de campana normal. Está centrado en 0, que es el valor más común. A medida que los valores se alejan de 0, son menos frecuentes. Si recordás, nuestra fórmula para *t* era la media dividida por el error estándar. Eso es exactamente lo que hicimos acá. Este histograma te está mostrando una **distribución t**.
+Interesante, el histograma tiene forma de curva normal. Está centrado en 0, que es el valor más común. A medida que los valores se alejan de 0, son menos frecuentes. Si recordás, nuestra fórmula para *t* era la media dividida por el error estándar. Eso es exactamente lo que hicimos acá. Este histograma te está mostrando una **distribución t**.
 
 ### Calcular t a partir de datos
 
@@ -213,7 +215,7 @@ t.test(puntajes, mu=50)
 
 Si *t* es solo un número que podemos calcular a partir de una muestra (y lo es), ¿qué hacemos con él? ¿Cómo usamos *t* para inferencia estadística?
 
-Volvamos al capítulo sobre muestreo y distribuciones. Ahí hablamos de la distribución muestral de la media. Generamos muchas muestras, calculamos la media de cada una, y armamos un histograma de esas medias. Más adelante dijimos que podíamos hacer eso con **cualquier** estadístico. Para cada muestra podíamos calcular la media, la desviación estándar, el error estándar, e incluso *t*. Podríamos generar 10.000 muestras y hacer cuatro histogramas, uno por cada estadístico. Eso fue exactamente lo que hice, y los resultados están en los cuatro paneles de la @fig-6sampdists. Usé un tamaño de muestra de 20, y tomé observaciones aleatorias de una distribución normal, con media = 0, y la desviación estándar = 1. Veamos las distribuciones muestrales de cada estadístico. *t* se calculó asumiendo que la media poblacional es 0.
+Volvamos al capítulo sobre muestreo y distribuciones. Ahí hablamos de la distribución muestral de la media. Generamos muchas muestras, calculamos la media de cada una, y armamos un histograma de esas medias. Más adelante dijimos que podíamos hacer eso con **cualquier** estadístico. Para cada muestra podíamos calcular la media, la desviación estándar, el error estándar, e incluso *t*. Podríamos generar 10.000 muestras y hacer cuatro histogramas, uno para cada distribución muestral de cada estadístico. Eso fue exactamente lo que hice, y los resultados están en los cuatro paneles de la @fig-6sampdists. Usé un tamaño de muestra de 20, y tomé observaciones aleatorias de una distribución normal, con media = 0, y la desviación estándar = 1. Veamos las distribuciones muestrales de cada estadístico. *t* se calculó asumiendo que la media poblacional es 0.
 
 ```{r}
 #| label: fig-6sampdists
@@ -253,7 +255,7 @@ Vemos cuatro distribuciones muestrales. Así es como se comportan los resúmenes
 
 Podemos ver de entrada que es poco probable obtener una media muestral de 2. Está muy fuera del rango típico. La distribución de las medias va más o menos de -0.5 a +0.5, y está centrada en 0 (¡justo la media poblacional, mirá vos!).
 
-También es poco probable obtener desviaciones estándar entre 0.6 y 1.5; ese es el rango típico específico para la desviación estándar muestral.
+También es poco probable obtener desviaciones estándar fuera de 0.6 y 1.5; ese es el rango típico específico para la desviación estándar muestral.
 
 Lo mismo pasa con el error estándar de la media: el rango es más chico, entre 0.1 y 0.3. Rara vez vas a encontrar una muestra con error estándar mayor a 0.3. Prácticamente nunca uno de 1 (en esta situación).
 
@@ -355,9 +357,9 @@ Soy psicólogo cognitivo. Hago investigación sobre cómo la gente recuerda, pre
 
 ### Mehr, Song y Spelke (2016)
 
-Vamos a introducir la prueba t de muestras pareadas con un ejemplo real, de un estudio real. @mehr20165 investigaron si cantarles canciones a los bebés los ayuda a ser más sensibles a las señales sociales. Por ejemplo, los bebés tienen que aprender a dirigir su atención hacia las personas como parte de aprender a interactuar socialmente. Tal vez cantarle a un bebé ayuda con ese proceso. Cuando un bebé escucha una canción familiar, puede empezar a prestar más atención a la persona que la canta, incluso después de que termina. Esa persona puede volverse más importante para el bebé en términos sociales. Vas a aprender más sobre este estudio en el laboratorio de esta semana. Este ejemplo te prepara para las actividades de ese laboratorio. Acá va un resumen breve de lo que hicieron.
+Vamos a introducir la prueba t de muestras pareadas con un ejemplo real, de un estudio real. @mehr20165 investigaron si cantarles canciones a los bebés los ayuda a ser más sensibles a las señales sociales. Por ejemplo, los bebés tienen que aprender a dirigir su atención hacia las personas como parte de aprender a interactuar socialmente. Tal vez cantarle a un bebé ayuda con ese proceso atencional. Cuando un bebé escucha una canción familiar, puede empezar a prestar más atención a la persona que la canta, incluso después de que termina. Esa persona puede volverse más importante para el bebé en términos sociales. Vas a aprender más sobre este estudio en el laboratorio de esta semana. Este ejemplo te prepara para las actividades de ese laboratorio. Acá va un resumen breve de lo que hicieron.
 
-Primero, los padres fueron entrenados para cantarle una canción a sus bebés. Luego de varios días de cantarles esa canción, los padres fueron al laboratorio con sus bebés. En la primera sesión, se sentaron con sus hijos en las rodillas, de forma que los bebés pudieran mirar dos videos. En cada video aparecían dos personas nuevas que el bebé nunca había visto. Cada una de esas personas (los cantantes) les cantaba una canción al bebé. Uno de los cantantes cantaba la canción **familiar**, que el bebé ya conocía por sus padres. El otro cantaba una canción **no familiar**, que el bebé nunca había oído.
+Primero, los padres fueron entrenados para cantarle una canción a sus bebés. Luego de varios días de cantarles esa canción, los padres fueron al laboratorio con sus bebés. En la primera sesión, se sentaron con sus hijos en las rodillas, de forma que los bebés pudieran mirar dos videos. En cada video aparecían dos personas nuevas que el bebé nunca había visto. Cada una de esas personas (los cantantes) cantaba una canción al bebé. Uno de los cantantes cantaba la canción **familiar**, que el bebé ya conocía por sus padres. El otro cantaba una canción **no familiar**, que el bebé nunca había oído.
 
 Hubo dos fases de medición importantes: la fase de línea base (*baseline*) y la fase de prueba (*test*).
 
@@ -377,7 +379,7 @@ La pregunta clave era si los bebés cambiarían su tiempo de mirada, mirando **m
 
 ### Los datos
 
-Veamos los datos de los primeros 5 bebés del estudio. Esto nos va a ayudar a entender mejor algunas propiedades de los datos antes de analizarlos. Vamos a ver que los datos están estructurados de forma que podemos aprovechar con una prueba t de muestras pareadas. (Ojo: miramos solo los primeros 5 bebés para mostrar cómo funcionan los cálculos. El resultado final dla prueba t cambia si usamos todos los datos del estudio).
+Veamos los datos de los primeros 5 bebés del estudio. Esto nos va a ayudar a entender mejor algunas propiedades de los datos antes de analizarlos. Vamos a ver que los datos están estructurados de forma que podemos aprovechar con una prueba t de muestras pareadas. (Ojo: miramos solo los primeros 5 bebés para mostrar cómo funcionan los cálculos. El resultado final de la prueba t cambia si usamos todos los datos del estudio).
 
 Acá está la tabla con los datos:
 
@@ -438,7 +440,7 @@ Vamos a evaluar más formalmente si esta diferencia pudo haber sido causada por 
 
 ### Calcular *t*
 
-Bueno, ¿cómo se calcula *t* para una prueba t de muestras pareadas? ¡Sorpresa! Usamos la **misma fórmula dla prueba t de una muestra** que ya aprendiste. Específicamente, usamos la fórmula dla prueba t de una muestra **aplicada a los puntajes de diferencia**. Tenemos una sola muestra de puntajes de diferencia (están en una sola columna), así que podemos usar la prueba t de una muestra. Lo que nos interesa es saber si la **media** de esos puntajes de diferencia podría provenir de una distribución con media 0. Esa distribución especial se llama la **distribución nula** (*null distribution*): es la distribución de la ausencia de diferencias. Claro que esta distribución puede generar diferencias pequeñas por error muestral, pero esas diferencias **no** están causadas por ninguna manipulación experimental, sino por el simple azar del muestreo.
+Bueno, ¿cómo se calcula *t* para una prueba t de muestras pareadas? ¡Sorpresa! Usamos la **misma fórmula de la prueba t de una muestra** que ya aprendiste. Específicamente, usamos la fórmula de la prueba t de una muestra **aplicada a los puntajes de diferencia**. Tenemos una sola muestra de puntajes de diferencia (están en una sola columna), así que podemos usar la prueba t de una muestra. Lo que nos interesa es saber si la **media** de esos puntajes de diferencia podría provenir de una distribución con media 0. Esa distribución especial se llama la **distribución nula** (*null distribution*): es la distribución de la ausencia de diferencias. Claro que esta distribución puede generar diferencias pequeñas por error muestral, pero esas diferencias **no** están causadas por ninguna manipulación experimental, sino por el simple azar del muestreo.
 
 Vamos a calcular *t* en un momento. Pero antes, pensemos de nuevo: ¿por qué queremos calcular *t*? ¿Por qué no quedarnos solo con la diferencia media?
 
@@ -480,11 +482,11 @@ Si hiciéramos este test usando R, obtendríamos casi los mismos números (hay u
 t.test(diferencias, mu = 0)
 ```
 
-Acá va una forma rápida de reportar los resultados dla prueba t: t(4) = .72, p = .509.
+Acá va una forma rápida de reportar los resultados de la prueba t: t(4) = .72, p = .509.
 
 ¿Qué nos dice todo esto? Hay algunos detalles que todavía no abordamos mucho. Por ejemplo, ese 4 representa los **grados de libertad**, de eso hablaremos más adelante. Lo importante por ahora es que el valor de *t* empiece a tener un poco más de sentido. Obtuvimos un valor *t* bastante chico: 0.72. ¿Qué podemos decir a partir de eso? Primero, es **positivo**, así que sabemos que la diferencia media también lo fue. El signo del valor *t* siempre es el mismo que el de la diferencia media (en nuestro caso fue +0.054).
 
-También vemos que el valor *p* fue .509. Ya vimos valores *p* antes. Esto nos dice que obtener un valor de *t* igual o mayor al observado ocurre en aproximadamente un 50.9% de los casos... Bueno, en realidad significa **algo más que eso**. Y para entenderlo, tenemos que hablar de los conceptos de test **bilateral** (*two-tailed*) y **unilateral** (*one-tailed*).
+También vemos que el valor *p* fue .509. Ya vimos valores *p* antes. Esto nos dice que obtener un valor de *t* igual o mayor al observado ocurre en aproximadamente un 50.9% de los casos... Bueno, en realidad significa **algo más que eso**. Y para entenderlo, tenemos que hablar de los conceptos de test **bilateral** (*de dos colas*) y **unilateral** (*de una cola*).
 
 ### Interpretar valores *t*
 
@@ -578,11 +580,11 @@ En resumen: podés encontrar los valores *t* y sus *p* asociados usando software
 
 Ojo: vamos a explicar los grados de libertad **al final**. Primero, vamos con el test **unilateral**.
 
-### Test unilateral (one-tailed)
+### Test unilateral (de una cola, o one-tailed en inglés)
 
 Un **test unilateral** (*one-tailed test*) también se llama a veces **test direccional**. Se le dice así porque el investigador puede tener una hipótesis en mente que sugiere que la diferencia entre medias va a tener una **dirección específica**: o bien una diferencia positiva, o bien una negativa.
 
-Típicamente, el investigador establece un **criterio alfa** (*alpha criterion*). Este criterio es como una línea en la arena para tomar decisiones. A menudo se fija en \$p = .05\$. ¿Qué significa eso? La figura @fig-6critT muestra la distribución *t* con ese criterio alfa:
+Típicamente, el investigador establece un **criterio alfa** (*alpha criterion*). Este criterio es como una línea en la arena para tomar decisiones. A menudo se fija en $p = .05$. ¿Qué significa eso? La figura @fig-6critT muestra la distribución *t* con ese criterio alfa:
 
 ```{r}
 #| label: fig-6critT
@@ -703,6 +705,18 @@ Vamos paso a paso. Marcamos en el gráfico el valor *t* observado (0.72). Sombre
 
 Y de hecho, eso fue lo que encontramos: un *t* de 0.72. Sabiendo que un valor así o mayor ocurre el 25.6% del tiempo por azar, ¿estarías confiado en que la diferencia media **no** se debe al azar? Probablemente no, ya que el azar puede producir ese valor bastante seguido.
 
+Siguiendo el procedimiento “estándar” de toma de decisiones, concluiríamos que nuestro valor no es estadísticamente significativo, porque no fue lo suficientemente grande. Si nuestro valor observado fuera mayor que el valor crítico (mayor que 2.13), definido por nuestro criterio alfa, entonces afirmaríamos que nuestro valor es estadísticamente significativo. Esto sería equivalente a decir que creemos que es poco probable que la diferencia observada se deba al azar. En general, para cualquier valor observado, el *p*-valor asociado indica cuán probable es observar un valor de ese tamaño o mayor. El *p*-valor siempre se refiere a un rango de valores, nunca a un solo valor específico. Los investigadores suelen utilizar el criterio alfa de 0.05, por conveniencia y por convención. Existen otras formas de interpretar estos valores que no dependen de una dicotomía estricta (significativo versus no significativo).
+
+### Test bilateral (de dos cola, o two-tailed en inglés)
+
+OK, entonces eso fue sobre tests de una cola... ¿Qué son los tests de dos colas? El valor $p$ que calculamos originalmente a partir del $t$-test para muestras pareadas era para un test de dos colas. A menudo, el valor $p$ por defecto corresponde a un test de dos colas.
+
+El test de dos colas plantea una pregunta más general sobre si una diferencia es probable que haya sido producida por azar. La pregunta es: ¿cuál es la probabilidad de que exista alguna diferencia? También se lo llama un test **no direccional**, porque acá no nos importa la dirección o el signo de la diferencia (positivo o negativo), sino simplemente si hay alguna diferencia.
+
+Se siguen los mismos principios básicos que antes. Definimos un criterio alfa ($\alpha = 0.05$). Y decimos que cualquier valor observado de $t$ que tenga una probabilidad de $p$ \< .05 (el $p$ es menor que .05) va a ser llamado **estadísticamente significativo**, y aquellos que sean más probables ($p$ \> .05, el $p$ es mayor que .05) se van a considerar resultados nulos, o no estadísticamente significativos. La única diferencia está en cómo dibujamos el rango alfa. Antes estaba en el lado derecho de la distribución $t$ (recordá que estábamos haciendo un test de una cola, así que solo nos interesaba un lado).
+
+@fig-6twotailedt muestra cuáles son el 5% más extremo de los valores $t$ cuando ignoramos su signo (ya sean positivos o negativos).
+
 ```{r}
 #| fig-cap: "El valor crítico de t para un test bilateral. El 5% total de los valores t son mayores o menores que los valores críticos."
 
@@ -793,7 +807,7 @@ $\text{Grados de libertad} = \text{df} = n - 1$
 
 Donde *n* es el número de muestras del test.
 
-En nuestro ejemplo con la prueba t apareado, había 5 bebés. Entonces:
+En nuestro ejemplo con la prueba t pareado, había 5 bebés. Entonces:
 
 $df = 5 - 1 = 4$
 
@@ -813,7 +827,7 @@ En estadística, los grados de libertad se usan mucho, especialmente cuando una 
 
 #### Simulación del efecto de los grados de libertad sobre la distribución *t*
 
-Hay al menos dos formas de pensar los grados de libertad para una prueba t. Por un lado, si querés **usar fórmulas** matemáticas para calcular aspectos de la distribución *t*, necesitás los grados de libertad como **parámetro** de entrada. (Si querés ver las fórmulas, bajá en la [página de Wikipedia dla prueba t](https://es.wikipedia.org/wiki/Distribuci%C3%B3n_t_de_Student) hasta la parte de funciones de densidad de probabilidad o de distribución acumulada. A nosotros eso nos parece bastante intimidante, y quizás por eso los grados de libertad no se entienden bien.)
+Hay al menos dos formas de pensar los grados de libertad para una prueba t. Por un lado, si querés **usar fórmulas** matemáticas para calcular aspectos de la distribución *t*, necesitás los grados de libertad como **parámetro** de entrada. (Si querés ver las fórmulas, bajá en la [página de Wikipedia de la prueba t](https://es.wikipedia.org/wiki/Distribuci%C3%B3n_t_de_Student) hasta la parte de funciones de densidad de probabilidad o de distribución acumulada. A nosotros eso nos parece bastante intimidante, y quizás por eso los grados de libertad no se entienden bien.)
 
 Pero si queremos simular la distribución *t*, ahí se ve más fácil cómo influyen los grados de libertad en su forma. Recordá: *t* es una estadística muestral, se **calcula a partir de la muestra**. Así que podríamos simular el proceso de calcular *t* en muchas muestras distintas, y luego graficar el histograma de esos valores para ver cómo se ve la distribución *t*.
 
@@ -836,7 +850,7 @@ ggplot(t_df, aes(x = ts, group = dfs, color = dfs)) +
   theme_classic(base_size = 15)
 ```
 
-En la @fig-6dft, fijate que la distribución roja para \$df = 4\$ es un poco más baja y más ancha que la distribución azul verdosa para \$df = 100\$. A medida que aumentan los grados de libertad, la distribución *t* se vuelve más alta (en el centro) y más angosta en el rango. Se vuelve más picuda. ¿Adivinás por qué?
+En la @fig-6dft, fijate que la distribución roja para $df = 4$ es un poco más baja y más ancha que la distribución azul verdosa para $df = 100$. A medida que aumentan los grados de libertad, la distribución *t* se vuelve más alta (en el centro) y más angosta en el rango. Se vuelve más picuda. ¿Adivinás por qué?
 
 Recordá: estamos estimando una estadística muestral, y los grados de libertad son solo un número que representa cuántos sujetos hay (menos uno). Y ya sabemos que, al aumentar *n*, nuestras estadísticas muestrales se vuelven mejores estimaciones (con menos varianza) de los parámetros poblacionales. Entonces, *t* se vuelve una mejor estimación de su "valor verdadero" a medida que crece el tamaño muestral, lo que produce una distribución de *t* más angosta.
 
@@ -854,7 +868,7 @@ Capaz te estás preguntando si **alguna vez vamos a terminar** de hablar sobre l
 
 2.  Hacer una prueba t de muestras pareadas usando **todos** los datos del estudio y discutir los resultados.
 
-Recordá que nos preguntábamos si los bebés mirarían más tiempo al cantante de la canción familiar durante la fase de prueba, comparado con la línea base. Ya te mostramos los datos de 5 bebés, y caminamos paso a paso por los cálculos dla prueba t. A modo de repaso, se veía así:
+Recordá que nos preguntábamos si los bebés mirarían más tiempo al cantante de la canción familiar durante la fase de prueba, comparado con la línea base. Ya te mostramos los datos de 5 bebés, y caminamos paso a paso por los cálculos de la prueba t. A modo de repaso, se veía así:
 
 ```{r, echo=FALSE}
 
@@ -887,7 +901,7 @@ Volvamos a escribir el resultado una vez más: la diferencia media fue 0.054, *t
 
 Podemos decir que un valor *t* con valor absoluto de .72 o más ocurre el 50.9% del tiempo. Más precisamente: la distribución de **ausencia de diferencias** (la nula) produce un valor *t* de ese tamaño o mayor el 50.9% de las veces. En otras palabras: **el azar por sí solo podría haber producido perfectamente el valor *t* de nuestra muestra**, y la diferencia media de 0.054 que observamos podría deberse simplemente al azar.
 
-Ahora metamos **todos los datos** dla prueba t y corramos el análisis con los **32 bebés** del estudio:
+Ahora metamos **todos los datos** de la prueba t y corramos el análisis con los **32 bebés** del estudio:
 
 ```{r}
 paired_sample_df <-  data.frame(infant = 1:32, 
@@ -904,13 +918,13 @@ Ahora vemos un valor *p* mucho más bajo. Este también fue un **test bilateral*
 
 Como resultado, podemos tener **cierta confianza** en concluir que **ver y escuchar a una persona desconocida cantar una canción familiar** lleva al bebé a prestar más atención a esa persona, y eso **podría beneficiar su aprendizaje social**.
 
-## Prueba t de muestras independientes: ¿el regreso dla prueba t?
+## Prueba t de muestras independientes: ¿el regreso d la prueba t?
 
 Si venís siguiendo las referencias a Star Wars, esta sería la última película de la trilogía original... la **prueba t de muestras independientes**. Es básicamente la misma historia de antes, pero con un giro. Recordá que hay distintos tipos de *t*-tests para distintos diseños experimentales. Cuando tu diseño es de **grupos independientes** (*between-subjects*), usás una **prueba t de muestras independientes**.
 
-Los diseños entre sujetos implican personas diferentes en cada condición experimental. Si hay dos condiciones y 10 personas por condición, entonces hay 20 personas en total. Y no hay puntajes apareados, porque **cada persona se mide una sola vez**. No hay medidas repetidas. Como no hay medidas repetidas, no tiene sentido calcular **diferencias entre condiciones** para cada sujeto. Los puntajes no están emparejados de forma significativa, así que **no tiene sentido restarlos**. Entonces, ¿qué hacemos?
+Los diseños entre sujetos implican personas diferentes en cada condición experimental. Si hay dos condiciones y 10 personas por condición, entonces hay 20 personas en total. Y no hay puntajes pareados, porque **cada persona se mide una sola vez**. No hay medidas repetidas. Como no hay medidas repetidas, no tiene sentido calcular **diferencias entre condiciones** para cada sujeto. Los puntajes no están emparejados de forma significativa, así que **no tiene sentido restarlos**. Entonces, ¿qué hacemos?
 
-La lógica dla prueba t de muestras independientes es la **misma** que en las otras pruebas t. Calculamos la media de cada grupo, luego la diferencia. Esa diferencia va al numerador de la fórmula del *t*. Después estimamos la **variación** para el denominador. Dividimos la diferencia de medias por esa estimación, y obtenemos *t*. Es como antes. La única complicación es: ¿qué va en el denominador? ¿Cómo estimamos la varianza? Estaría bueno si pudiéramos hacer algo directo, como esto (en un experimento con dos grupos, A y B):
+La lógica de la prueba t de muestras independientes es la **misma** que en las otras pruebas t. Calculamos la media de cada grupo, luego la diferencia. Esa diferencia va al numerador de la fórmula del *t*. Después estimamos la **variación** para el denominador. Dividimos la diferencia de medias por esa estimación, y obtenemos *t*. Es como antes. La única complicación es: ¿qué va en el denominador? ¿Cómo estimamos la varianza? Estaría bueno si pudiéramos hacer algo directo, como esto (en un experimento con dos grupos, A y B):
 
 $t = \frac{\bar{A} - \bar{B}}{\left(\frac{SEM_A + SEM_B}{2}\right)}$
 
@@ -920,19 +934,17 @@ En lenguaje simple, esto sería:
 2.  Calculás el **error estándar de la media** (SEM) para cada grupo;
 3.  Promediás esos SEMs para obtener una sola estimación, combinando ambas muestras.
 
-Eso **estaría bueno**, pero lamentablemente **no es la mejor forma de hacerlo**. Tomar el promedio de los errores estándar genera un **estimador sesgado** de la variación en la distribución nula (la de ausencia de diferencias).
-
-Tomar el promedio de los errores estándar generaría un **estimador sesgado** de la variación bajo la hipótesis nula (ausencia de diferencias). No vamos a entrar en los detalles matemáticos acá, pero en vez de esa fórmula, podemos usar otra que nos da una **estimación insesgada del error estándar combinado de la media muestral**. Nuestra nueva y mejorada fórmula del *t* se ve así:
+Esto estaría bueno, pero lamentablemente, resulta que sacar el promedio de dos errores estándar de la media no es la mejor forma de hacerlo. Eso generaría un estimador sesgado de la variación para la distribución hipotética donde no hay diferencias. No vamos a meternos con las matemáticas acá, pero en vez de usar la fórmula de arriba, podemos usar otra que nos da una **estimación no sesgada del error estándar combinado de la media muestral**. Nuestra nueva y mejorada fórmula del $t$ se vería así:
 
 $t = \frac{\bar{X}_A - \bar{X}_B}{s_p \cdot \sqrt{\frac{1}{n_A} + \frac{1}{n_B}}}$
 
-Y \$s_p\$, que es la desviación estándar combinada de las muestras, se define así (notá que las *s* en la fórmula son **varianzas**):
+Y $s_p$, que es la desviación estándar combinada de las muestras, se define así (notá que las *s* en la fórmula son **varianzas**):
 
 $s_p = \sqrt{\frac{(n_A - 1)s_A^2 + (n_B - 1)s_B^2}{n_A + n_B - 2}}$
 
 Créeme: es mucha más fórmula de la que quería tipear. ¿Hacemos un ejemplo de prueba t de muestras independientes **a mano**, para ver cómo se hacen los cálculos? Dale... pero lo vamos a hacer de una forma **ligeramente distinta** a la que esperás. Voy a mostrarte los pasos usando R.
 
-Inventé unos puntajes ficticios para los grupos A y B. Luego seguí todos los pasos de la fórmula, pero hice que R haga cada uno de los cálculos. Esto te muestra los pasos necesarios siguiendo el código. Al final imprimo los valores dla prueba t que calculé "a mano", y luego el valor dla prueba t que da la función `t.test()` de R. Deberías obtener el mismo valor de *t* si te animás a calcularlo a mano.
+Inventé unos puntajes ficticios para los grupos A y B. Luego seguí todos los pasos de la fórmula, pero hice que R haga cada uno de los cálculos. Esto te muestra los pasos necesarios siguiendo el código. Al final imprimo los valores de la prueba t que calculé "a mano", y luego el valor de la prueba t que da la función `t.test()` de R. Deberías obtener el mismo valor de *t* si te animás a calcularlo a mano.
 
 ```{r, echo=TRUE }
 
@@ -958,6 +970,14 @@ t # mostrar resultado
 # usando la función de R
 t.test(a, b, paired = FALSE, var.equal = TRUE)
 ```
+
+## Simulando datos para tests $t$
+
+Un tema "avanzado" dentro de los tests $t$ es la idea de usar R para hacer simulaciones de tests $t$.
+
+Si te acordás, el $t$ es una propiedad de una muestra. Calculamos el $t$ a partir de nuestra muestra. La distribución $t$ representa el comportamiento hipotético de nuestras muestras. Es decir, si hubiéramos tomado miles y miles de muestras, y calculado el $t$ para cada una, y luego miráramos la distribución de esos valores de $t$, tendríamos la distribución muestral del $t$.
+
+Puede ser muy útil acostumbrarse a usar R para simular datos bajo ciertas condiciones, para ver cómo se comportan tus datos muestrales y cosas como el $t$. ¿Por qué es útil esto? Principalmente porque te ayuda a desarrollar una intuición sobre cómo el error muestral (el azar) puede influir en tus resultados, dadas ciertas características de tu diseño, como el tamaño de la muestra, el tamaño de la diferencia de medias que esperás encontrar en tus datos, y la cantidad de variación que podría haber. Estos métodos pueden usarse formalmente para hacer análisis de potencia (*power analyses*), o de manera más informal para tener una mejor idea de los datos.
 
 ### Simular una prueba t de una muestra
 
@@ -1056,7 +1076,7 @@ hist(guarda_ps)
 
 Según la simulación, cuando **no hay diferencias** entre las condiciones y las muestras provienen de **la misma distribución**, se obtienen estas dos distribuciones para *t* y *p*. Una vez más, muestran cómo se comporta la **distribución nula de ausencia de diferencias**.
 
-En cualquiera de estas simulaciones, si rechazaras la hipótesis nula (que la diferencia se debe al azar), estarías cometiendo un **error tipo I**. Si fijás tu criterio alfa en \$\alpha = .05\$, podemos preguntar cuántos errores tipo I se cometieron en estas 1000 simulaciones. La respuesta es:
+En cualquiera de estas simulaciones, si rechazaras la hipótesis nula (que la diferencia se debe al azar), estarías cometiendo un **error tipo I**. Si fijás tu criterio alfa en $alpha = .05$, podemos preguntar cuántos errores tipo I se cometieron en estas 1000 simulaciones. La respuesta es:
 
 ```{r, echo=TRUE}
 length(guarda_ps[guarda_ps < .05])

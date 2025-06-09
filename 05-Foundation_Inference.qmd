@@ -124,7 +124,6 @@ La @fig-5expectedUnif muestra una versión animada del proceso de elegir repetid
 knitr::include_graphics(path = "imgs/gifs/sampleUnifExpected-1_es.gif")
 ```
 
-:::
 
 Observar los histogramas anteriores nos muestra que puede ser difícil averiguar de dónde vinieron nuestros números. En el mundo real, nuestras mediciones son muestras. Por lo general, solo tenemos el lujo de obtener **una única muestra** de mediciones, en lugar de repetirlas 10 veces o más. Si mirás los histogramas, verás que algunos de ellos parecen haber salido de una distribución uniforme: la mayoría de las barras están cerca de 2, y todas más o menos alineadas. Pero si te tocara otra muestra distinta, podrías ver un histograma muy irregular, con algunos números ocurriendo mucho más que otros. Eso podría hacerte pensar que esos números **no** provienen de una distribución uniforme (parecen demasiado irregulares). Pero recordá: **todas** estas muestras vinieron de una distribución uniforme. Así es como se ven las muestras tomadas de esa distribución. Esto es lo que el **azar** le hace a las muestras: introduce **ruido** en los datos individuales.
 
@@ -155,7 +154,7 @@ Así que aumentemos el número de observaciones en cada muestra, de 20 a 100. Va
 
 ```{r, echo = F}
 #| label: fig-5unifsamp100
-#| fig-cap: "Histogramas de diferentes muestras de una distribución uniforme. N = 100 para cada muestra."
+#| fig-cap: "Histogramas de diferentes muestras de una distribución uniforme. N = 1000 para cada muestra."
 #| out-width: "100%"
 
 a <- sample(1:10, 100 * 10, replace = TRUE)
@@ -168,8 +167,10 @@ ggplot(df, aes(x = a)) +
   ylim(0,20)+
   labs(y = "conteo")
 ```
+De nuevo, la mayoría de estos histogramas no se ven muy planos, y todas las barras parecen ir hacia arriba o hacia abajo; además, no están exactamente en 10 cada una. Así que todavía estamos lidiando con el error muestral. Es un fastidio. Siempre está presente.
 
-La @fig-5unifsamp1000 muestra que los histogramas empiezan a aplanarse. Las barras todavía no están perfectamente en 100, porque sigue habiendo error muestral (siempre lo habrá). Pero si vieras un histograma que se ve plano y supieras que la muestra contiene muchas observaciones, podrías tener más confianza en que esos números provienen de una distribución uniforme.
+Aumentemos el $N$ por muestra de 100 a 1000. Deberíamos esperar que cada número aparezca unas 100 veces. ¿Qué sucede?
+
 
 ```{r, echo = F}
 #| label: fig-5unifsamp1000
@@ -186,6 +187,7 @@ ggplot(df, aes(x = a)) +
   ylim(0,200)+
   labs(y = "conteo")
 ```
+La @fig-5unifsamp1000 muestra que los histogramas empiezan a aplanarse. Las barras todavía no están perfectamente en 100, porque sigue habiendo error muestral (siempre lo habrá). Pero si vieras un histograma que se ve plano y supieras que la muestra contiene muchas observaciones, podrías tener más confianza en que esos números provienen de una distribución uniforme.
 
 Solo por diversión, hagamos muestras realmente grandes. Digamos, 100.000 observaciones por muestra. En ese caso, deberíamos esperar que cada número ocurra unas 10.000 veces. ¿Qué pasa?
 

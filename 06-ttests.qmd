@@ -16,7 +16,7 @@ Guinness quería que todas sus cervezas fueran las mejores. Nada de errores, nad
 
 Tenían catadores expertos. Cada vez que probaban una Guinness que no era 5 de 5, lo notaban al instante.
 
-Pero había un gran problema. Hacían un barril de cerveza, y querían saber si **cada pinta** que saliera de ahí iba a ser perfecta. Así que los catadores se tomaban pinta tras pinta del barril... hasta que se acababa. Algunos barriles salían bien, otros no. Guinness tenía que arreglar eso. Pero el mayor problema era que, después del testeo, **no quedaba cerveza para vender** —se la habían tomado toda (recordá que esta parte me la estoy inventando para ilustrar el punto; seguro algo les quedaba para vender).
+Pero había un gran problema. Hacían un barril de cerveza, y querían saber si **cada pinta** que saliera de ahí iba a ser perfecta. Así que los catadores se tomaban pinta tras pinta del barril... hasta que se acababa. Algunos barriles salían bien, otros no. Guinness tenía que arreglar eso. Pero el mayor problema era que, después del testeo, **no quedaba cerveza para vender** ---se la habían tomado toda (recordá que esta parte me la estoy inventando para ilustrar el punto; seguro algo les quedaba para vender).
 
 Guinness tenía un problema de población y muestreo. Querían saber si toda la población de cervezas producidas era de 5 estrellas. Pero si probaban toda la población, no les quedaba nada para vender.
 
@@ -86,7 +86,7 @@ Este test se usa para estimar la probabilidad de que tu muestra venga de una pob
 
 Acá empieza lo confuso (y todavía no te dije la fórmula). En teoría, la prueba t usa parámetros conocidos de la población, como su media y su desviación. Pero en la práctica, casi nunca conocés esos valores. Así que tenés que estimarlos a partir de la muestra.
 
-Recordá lo que vimos sobre estadística descriptiva y muestreo: la media muestral es un estimador insesgado de la media poblacional. Y la desviación muestral (la que divide por n–1) también lo es. Gosset se dio cuenta de que podía usar estas estimaciones para construir la prueba t.
+Recordá lo que vimos sobre estadística descriptiva y muestreo: la media muestral es un estimador insesgado de la media poblacional. Y la desviación muestral (la que divide por n--1) también lo es. Gosset se dio cuenta de que podía usar estas estimaciones para construir la prueba t.
 
 Acá va la fórmula, primero en palabras:
 
@@ -131,15 +131,15 @@ En la @fig-6muestraMSEM, tomé 1.000 muestras de tamaño \$N = 10\$ de una distr
 #| fig-cap: "Diagrama de dispersión con la media muestral en el eje x y el error estándar en el eje y"
 
 media_muestral <- length(1000)
-desvío_muestral <- length(1000)
+error_muestral <- length(1000)
 
 for (i in 1:1000) {
   s <- rnorm(10, 0, 1)
   media_muestral[i] <- mean(s)
-  desvío_muestral[i] <- sd(s) / sqrt(length(s))
+  error_muestral[i] <- sd(s) / sqrt(length(s))
 }
 
-plot(media_muestral, desvío_muestral)
+plot(media_muestral, error_muestral)
 ```
 
 Lo que obtenemos es una nube de puntos. Podés notar que tiene una forma más o menos circular. Hay más puntos en el centro, y menos a medida que se alejan. La nube muestra el rango típico de las medias muestrales: la mayoría está entre -1 y 1. El error estándar también varía entre aproximadamente 0.2 y 0.5. Recordá que cada punto representa una muestra.
@@ -150,7 +150,7 @@ Podemos ver estos datos de otra forma. En lugar de graficar directamente las med
 #| label: fig-6thisexample
 #| fig-cap: "Histograma de las medias muestrales divididas por sus errores estándar: una distribución t."
 
-hist(media_muestral/desvío_muestral, breaks=30)
+hist(media_muestral/error_muestral, breaks=30,ylab="Frecuencia", main="Histograma de media_muestral/error_muestral")
 ```
 
 Interesante, el histograma tiene forma de campana normal. Está centrado en 0, que es el valor más común. A medida que los valores se alejan de 0, son menos frecuentes. Si recordás, nuestra fórmula para *t* era la media dividida por el error estándar. Eso es exactamente lo que hicimos acá. Este histograma te está mostrando una **distribución t**.
@@ -159,7 +159,7 @@ Interesante, el histograma tiene forma de campana normal. Está centrado en 0, q
 
 Probemos calcular un valor de *t* con una muestra chica. Supongamos que 10 estudiantes hicieron un test de verdadero/falso con 5 preguntas. Hay un 50% de chance de acertar cada una al azar.
 
-Todos completan el test, corregimos, y calculamos el desempeño (porcentaje de respuestas correctas). Queremos saber si estuvieron adivinando. Si fue así, el promedio debería rondar el 50%, que sería igual a azar. Veamos la tabla `@tbl-tsmall`.
+Todos completan el test, corregimos, y calculamos el desempeño (porcentaje de respuestas correctas). Queremos saber si estuvieron adivinando. Si fue así, el promedio debería rondar el 50%, que sería igual a azar. Veamos la @tbl-tsmall.
 
 ```{r echo=F}
 #| label: tbl-tsmall
@@ -249,7 +249,7 @@ ggarrange(a, b, c, d,
           ncol = 2, nrow = 2)
 ```
 
-Vemos cuatro distribuciones muestrales. Así es como se comportan los resúmenes estadísticos de muestras. Antes hablamos de *ventanas de azar* —estas son cuatro ventanas de azar, que miden distintos aspectos de una muestra. En este caso, todas las muestras provienen de la misma distribución normal. Pero por el error muestral, cada muestra es diferente. Las medias no son idénticas, las desviaciones tampoco, los errores estándar tampoco, y los valores de *t* tampoco. Todas varían, como muestran los histogramas. Así se comportan las muestras de tamaño 20.
+Vemos cuatro distribuciones muestrales. Así es como se comportan los resúmenes estadísticos de muestras. Antes hablamos de *ventanas de azar* ---estas son cuatro ventanas de azar, que miden distintos aspectos de una muestra. En este caso, todas las muestras provienen de la misma distribución normal. Pero por el error muestral, cada muestra es diferente. Las medias no son idénticas, las desviaciones tampoco, los errores estándar tampoco, y los valores de *t* tampoco. Todas varían, como muestran los histogramas. Así se comportan las muestras de tamaño 20.
 
 Podemos ver de entrada que es poco probable obtener una media muestral de 2. Está muy fuera del rango típico. La distribución de las medias va más o menos de -0.5 a +0.5, y está centrada en 0 (¡justo la media poblacional, mirá vos!).
 
@@ -626,7 +626,7 @@ ggplot(plot_df, aes(x = range, y = null_distribution)) +
   aes(x = x, y = y, label = label))
 ```
 
-La figura muestra que los valores *t* de **+2.13 o más** ocurren el 5% de las veces. Como la distribución *t* es simétrica, también sabemos que valores de **–2.13 o menos** ocurren el 5% de las veces. Ambas afirmaciones son ciertas bajo la distribución nula (sin diferencias). Esto significa que, cuando realmente no hay diferencias, un investigador puede esperar encontrar un valor *t* de 2.13 o mayor en el 5% de los casos.
+La figura muestra que los valores *t* de **+2.13 o más** ocurren el 5% de las veces. Como la distribución *t* es simétrica, también sabemos que valores de **--2.13 o menos** ocurren el 5% de las veces. Ambas afirmaciones son ciertas bajo la distribución nula (sin diferencias). Esto significa que, cuando realmente no hay diferencias, un investigador puede esperar encontrar un valor *t* de 2.13 o mayor en el 5% de los casos.
 
 Recapitulemos y conectemos algunos conceptos:
 
@@ -769,7 +769,7 @@ Por eso, el valor crítico de *t* para un test bilateral es ±2.78. Como podés 
 
 ### ¿Test unilateral o bilateral?
 
-Ahora que sabés que existen los dos tipos —test unilateral y test bilateral—, ¿cuál deberías usar? Hay cierta sabiduría convencional sobre esto... pero también hay debate. Al final, lo importante es que **puedas justificar** tu elección y por qué es adecuada para tus datos. Esa es la respuesta real.
+Ahora que sabés que existen los dos tipos ---test unilateral y test bilateral---, ¿cuál deberías usar? Hay cierta sabiduría convencional sobre esto... pero también hay debate. Al final, lo importante es que **puedas justificar** tu elección y por qué es adecuada para tus datos. Esa es la respuesta real.
 
 La respuesta convencional es que usás un **test unilateral** cuando tenés una teoría o hipótesis que hace una **predicción direccional** (la teoría predice que la diferencia será positiva o negativa). Del mismo modo, usás un **test bilateral** cuando estás buscando **cualquier diferencia**, sin una predicción direccional (la teoría solo predice que habrá una diferencia, sin decir si será positiva o negativa).
 
@@ -805,11 +805,11 @@ Los grados de libertad son tanto un **concepto** como una **corrección**. El co
 
 Por ejemplo, considerá los números: 1, 2, 3. La media de estos números es 2. Ahora imaginá que te digo que **la media de tres números es 2**. Entonces, ¿cuántos de esos tres números tienen libertad? Suena como una pregunta rara, ¿no? Lo que queremos decir es: ¿cuántos de esos tres números pueden ser cualquier número libremente? Los **primeros dos números** pueden ser **cualquier cosa**. Pero una vez que fijás esos dos, el tercer número **ya no tiene libertad**: **tiene que ser un número específico** para que el promedio dé 2. Es decir, los dos primeros tienen libertad, el tercero no.
 
-Para ilustrarlo: elijamos dos números cualquiera —por ejemplo, 51 y -3. Usé mi libertad para elegir esos dos. Ahora, si nuestros tres números son 51, -3 y *x*, y queremos que la media sea 2, solo hay una solución: *x* tiene que ser -42. De otro modo, el promedio no sería 2.
+Para ilustrarlo: elijamos dos números cualquiera ---por ejemplo, 51 y -3. Usé mi libertad para elegir esos dos. Ahora, si nuestros tres números son 51, -3 y *x*, y queremos que la media sea 2, solo hay una solución: *x* tiene que ser -42. De otro modo, el promedio no sería 2.
 
-Esta es una forma de entender los **grados de libertad**. En este ejemplo, hay 3 números y **n–1 = 2** grados de libertad, porque **2** pueden ser libres, pero el tercero queda **determinado**.
+Esta es una forma de entender los **grados de libertad**. En este ejemplo, hay 3 números y **n--1 = 2** grados de libertad, porque **2** pueden ser libres, pero el tercero queda **determinado**.
 
-En estadística, los grados de libertad se usan mucho, especialmente cuando una estimación depende de otra estimación. Por ejemplo: cuando calculamos la **desviación estándar muestral**, primero calculamos la **media muestral**, ¿no? Al estimar la media, estamos **fijando** un aspecto de la muestra. Entonces, cuando calculamos la desviación estándar, usamos **n–1** en lugar de *n*. Ahí aparece otra vez ese famoso **n–1**.
+En estadística, los grados de libertad se usan mucho, especialmente cuando una estimación depende de otra estimación. Por ejemplo: cuando calculamos la **desviación estándar muestral**, primero calculamos la **media muestral**, ¿no? Al estimar la media, estamos **fijando** un aspecto de la muestra. Entonces, cuando calculamos la desviación estándar, usamos **n--1** en lugar de *n*. Ahí aparece otra vez ese famoso **n--1**.
 
 #### Simulación del efecto de los grados de libertad sobre la distribución *t*
 
@@ -842,7 +842,7 @@ Recordá: estamos estimando una estadística muestral, y los grados de libertad 
 
 Existe una distribución *t* ligeramente distinta para cada grado de libertad, y las regiones críticas asociadas al 5% de los valores extremos cambian cada vez. Por eso **reportamos los grados de libertad** en cada prueba t: definen la distribución de valores *t* para el tamaño muestral que usamos.
 
-¿Por qué usamos *n–1* y no *n*? Bueno, calculamos *t* usando la desviación estándar muestral para estimar el error estándar de la media, y esa estimación usa *n–1* en el denominador. Por eso, la distribución *t* se construye asumiendo *n–1*.
+¿Por qué usamos *n--1* y no *n*? Bueno, calculamos *t* usando la desviación estándar muestral para estimar el error estándar de la media, y esa estimación usa *n--1* en el denominador. Por eso, la distribución *t* se construye asumiendo *n--1*.
 
 Con eso, ya tenés suficiente sobre grados de libertad...
 
@@ -969,7 +969,7 @@ Acá están los pasos que podrías seguir para simular datos para una prueba t d
 
 Hagámoslo un par de veces. Primero, vamos a simular muestras con N = 30, tomadas de una distribución normal (media = 50, sd = 25). Vamos a hacer una simulación con 1000 repeticiones. En cada repetición, comparamos la media muestral con una media poblacional de 50. En promedio, no debería haber diferencia. La @fig-6nullt es la distribución nula que estamos simulando.
 
-```{r}
+```{r, echo=F}
 # pasos para crear datos ficticios desde una distribución
 # y hacer pruebas t sobre los datos simulados
 
@@ -984,19 +984,19 @@ for (i in 1:1000) {
 }
 ```
 
-```{r}
+```{r, echo=F}
 #| label: fig-6nullt
 #| fig-cap: "Distribución de valores t bajo la nula. Estos son los t que surgen solo por azar."
 
 # histogramas de t y p para las 1000 simulaciones
-hist(guarda_ts)
+hist(guarda_ts,main="Histograma de guarda_ts",xlab="valores de guarda_ts",ylab="Frecuencia")
 ```
 
-```{r}
+```{r, echo=F}
 #| label: fig-6flatp
 #| fig-cap: "La distribución de valores p observados es plana bajo la nula."
 
-hist(guarda_ps)
+hist(guarda_ps,main="Histograma de guarda_ps",xlab="valores de guarda_ps",ylab="Frecuencia")
 ```
 
 Buenísimo. Vemos una distribución *t*, que se parece a una *t* como debe ser. Y también vemos la distribución de valores *p*. Esto nos muestra qué tan seguido obtenemos valores *t* de distintos tamaños.
@@ -1104,7 +1104,7 @@ length(guarda_ps[guarda_ps < .05]) / 1000
 
 Obtuvimos `r length(guarda_ps[guarda_ps < .05])` simulaciones donde *p* fue menor a .05, lo cual representa `r length(guarda_ps[guarda_ps < .05]) / 1000` experimentos. Si fueras el investigador, ¿te gustaría correr un experimento que solo tiene éxito `r length(guarda_ps[guarda_ps < .05]) / 1000` del tiempo? Yo no. Yo correría un experimento mejor.
 
-¿Cómo harías una mejor simulación? Bueno, podés aumentar *n*, el número de sujetos. Aumentemos *n* de 10 a 100 y veamos qué pasa con la cantidad de experimentos “significativos”.
+¿Cómo harías una mejor simulación? Bueno, podés aumentar *n*, el número de sujetos. Aumentemos *n* de 10 a 100 y veamos qué pasa con la cantidad de experimentos "significativos".
 
 ```{r, echo=TRUE}
 

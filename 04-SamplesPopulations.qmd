@@ -800,9 +800,9 @@ Bueno, eso es una parte de la historia. Sin embargo, hay algo que hemos estado d
 
 Para ver el teorema central del límite en acción, vamos a mirar algunos histogramas de medias muestrales provenientes de diferentes tipos de distribuciones. Es muy importante recordar que lo que estás viendo son distribuciones de medias muestrales, no distribuciones de valores individuales.
 
-Empecemos. La figura @fig-4sampledistmeannorm muestra un muestreo a partir de una distribución normal. La línea roja es la distribución normal de la que se extraen las muestras. Para cada muestra se calcula la media, y la distribución de esas medias se muestra con las barras azules. Notá que la forma de la línea roja y de las barras azules es similar: ambas se ven como una distribución normal.
+Empecemos. La @fig-4sampledistmeannorm muestra un muestreo a partir de una distribución normal. La línea roja es la distribución normal de la que se extraen las muestras. Para cada muestra se calcula la media, y la distribución de esas medias se muestra con las barras azules. Notá que la forma de la línea roja y de las barras azules es similar: ambas se ven como una distribución normal.
 
-```{r echo=F}
+```{r echo=F, warning=F}
 #| label: fig-4sampledistmeannorm
 #| fig-cap: "Comparación entre dos distribuciones normales y los histogramas de la distribución muestral de la media para distintos tamaños de muestra. El rango de la distribución muestral de la media se achica a medida que el tamaño de la muestra aumenta."
 
@@ -832,6 +832,21 @@ for (n in c(10, 50)) {
   )
   all_df <- rbind(all_df, t_df)
 }
+
+
+ggplot(all_df, aes(x=sample))+
+  geom_histogram(aes(x=sample_means,y=(..density..)/max(..density..)),fill="blue",color="white",alpha=.5,bins=75)+
+  stat_function(fun = dnorm, 
+                args = list(mean = 0, sd = 1), 
+                lwd = .75, 
+                col = 'red')+
+  #geom_vline(aes(xintercept=sampling_mean,frame=sims),color="blue")+
+  facet_wrap(~sample_size)+xlim(-3,3)+
+  theme_classic()+ggtitle("Distribución muestral de la media para la Distribución normal")+ylab("Verosimilitudes aproximadas")+
+  xlab("value")
+
+
+
 ```
 
 Hagámoslo de nuevo. Esta vez vamos a tomar muestras de una distribución uniforme plana, representada por la línea roja. Sin embargo, la @fig-4samplemeanunif muestra que la distribución de las medias muestrales, representada por las barras azules, no es plana: se parece a una distribución normal.

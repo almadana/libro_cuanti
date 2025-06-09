@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Álvaro Cabana y una inteligencia artificial generativa">
 
-<title>3&nbsp; Tablas – Respondiendo preguntas con datos</title>
+<title>Respondiendo preguntas con datos - 3&nbsp; Tablas</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -82,13 +82,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "Sin resultados",
     "search-matching-documents-text": "documentos encontrados",
@@ -97,7 +91,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "resultado adicional en este documento",
     "search-more-matches-text": "resultados adicionales en este documento",
     "search-clear-button-title": "Borrar",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancelar",
     "search-submit-button-title": "Enviar",
     "search-label": "Buscar"
@@ -114,10 +107,13 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 </script>
 
 
-<meta property="og:title" content="3&nbsp; Tablas – Respondiendo preguntas con datos">
+<meta property="og:title" content="Respondiendo preguntas con datos - 3&nbsp; Tablas">
 <meta property="og:description" content="">
-<meta property="og:site_name" content="Respondiendo preguntas con datos">
-<meta name="twitter:title" content="3&nbsp; Tablas – Respondiendo preguntas con datos">
+<meta property="og:image" content="https://almadana.github.io/libro_cuanti/02b-tablas_final_files/figure-html/grafico-animales-1.png">
+<meta property="og:site-name" content="Respondiendo preguntas con datos">
+<meta property="og:image:height" content="960">
+<meta property="og:image:width" content="1344">
+<meta name="twitter:title" content="Respondiendo preguntas con datos - 3&nbsp; Tablas">
 <meta name="twitter:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
 <meta name="twitter:image" content="https://almadana.github.io/libro_cuanti/imgs/TextbookCover.png">
 <meta name="twitter:site" content="@MattCrumpLab">
@@ -132,13 +128,13 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02b-tablas_final.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tablas</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02b-tablas_final.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tablas</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -147,12 +143,12 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Respondiendo preguntas con datos</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/almadana/libro_cuanti/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/almadana/libro_cuanti/" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
@@ -268,7 +264,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -344,7 +340,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
   <li><a href="#lo-que-cuentan-las-tablas-y-lo-que-no" id="toc-lo-que-cuentan-las-tablas-y-lo-que-no" class="nav-link" data-scroll-target="#lo-que-cuentan-las-tablas-y-lo-que-no"><span class="header-section-number">3.13</span> Lo que cuentan las tablas… y lo que no</a></li>
   <li><a href="#y-si-lo-que-vemos-es-solo-azar" id="toc-y-si-lo-que-vemos-es-solo-azar" class="nav-link" data-scroll-target="#y-si-lo-que-vemos-es-solo-azar"><span class="header-section-number">3.14</span> ¿Y si lo que vemos es solo azar?</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/almadana/libro_cuanti/edit/master/02b-tablas_final.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li></ul></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/almadana/libro_cuanti/edit/master/02b-tablas_final.qmd" class="toc-action">Editar esta página</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -370,9 +366,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
   </div>
   
 
-
 </header>
-
 
 <p>Una de las primeras cosas que aprendemos cuando nos acercamos a la investigación —ya sea como estudiantes o como lectores críticos— es que muchas preguntas importantes no se responden con una única cifra, sino con <strong>una tabla</strong>. Y sin embargo, nadie nos enseña con suficiente detalle a leerlas bien.</p>
 <p>Las tablas están por todos lados. En artículos, en informes, en presentaciones de resultados. Se usan para mostrar diagnósticos, comparar tratamientos, resumir encuestas, registrar elecciones, agrupar síntomas, clasificar pacientes. A veces parecen triviales: solo una cuadrícula con números. Pero un malentendido en cómo leerlas puede llevar a <strong>conclusiones completamente erradas</strong>. De hecho, muchas de las ideas más equivocadas sobre datos sociales surgen de leer mal una tabla.</p>
@@ -404,7 +398,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>tabla_absoluta <span class="ot">&lt;-</span> <span class="fu">table</span>(respuestas)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(tabla_absoluta,<span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"respuestas"</span>,<span class="st">"frecuencia"</span>),<span class="at">align=</span><span class="st">"c"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: center;">respuestas</th>
@@ -443,7 +437,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="02b-tablas_final_files/figure-html/grafico-animales-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Frecuencias absolutas de animales favoritos</figcaption>
+<figcaption class="figure-caption">Frecuencias absolutas de animales favoritos</figcaption>
 </figure>
 </div>
 </div>
@@ -471,8 +465,8 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tabla_relativa <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tabla_absoluta)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">round</span>(tabla_relativa, <span class="dv">3</span>),<span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"respuestas"</span>,<span class="st">"frecuencia"</span>),<span class="at">align=</span><span class="st">"c"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<caption>Frecuencias relativas (proporciones) de animales favoritos</caption>
+<table class="table table-sm table-striped small">
+<caption>Frecuencias relativas (proporciones) de animales favoritos </caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;">respuestas</th>
@@ -530,7 +524,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="02b-tablas_final_files/figure-html/grafico-porcentual-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Frecuencias porcentuales de animales favoritos</figcaption>
+<figcaption class="figure-caption">Frecuencias porcentuales de animales favoritos</figcaption>
 </figure>
 </div>
 </div>
@@ -614,7 +608,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="02b-tablas_final_files/figure-html/grafico-acumulada-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Frecuencia acumulada de ansiedad (escala 1–5)</figcaption>
+<figcaption class="figure-caption">Frecuencia acumulada de ansiedad (escala 1–5)</figcaption>
 </figure>
 </div>
 </div>
@@ -686,7 +680,7 @@ genero   Negativa Positiva
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="02b-tablas_final_files/figure-html/grafico-contingencia-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Distribución conjunta de opinión sobre terapia según género</figcaption>
+<figcaption class="figure-caption">Distribución conjunta de opinión sobre terapia según género</figcaption>
 </figure>
 </div>
 </div>
@@ -896,7 +890,7 @@ educacion    No   Sí
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="02b-tablas_final_files/figure-html/grafico-prevalencia-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Prevalencia de ansiedad por nivel educativo</figcaption>
+<figcaption class="figure-caption">Prevalencia de ansiedad por nivel educativo</figcaption>
 </figure>
 </div>
 </div>
@@ -1024,7 +1018,7 @@ Nivel_educativo   Sí   No
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="02b-tablas_final_files/figure-html/grafico-prevalencia-comp-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Prevalencia de ansiedad por nivel educativo (proporciones por fila)</figcaption>
+<figcaption class="figure-caption">Prevalencia de ansiedad por nivel educativo (proporciones por fila)</figcaption>
 </figure>
 </div>
 </div>
@@ -1045,7 +1039,7 @@ Nivel_educativo   Sí   No
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="02b-tablas_final_files/figure-html/grafico-columna-comp-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Distribución del nivel educativo entre quienes reportaron ansiedad (proporciones por columna)</figcaption>
+<figcaption class="figure-caption">Distribución del nivel educativo entre quienes reportaron ansiedad (proporciones por columna)</figcaption>
 </figure>
 </div>
 </div>
@@ -1143,7 +1137,7 @@ Nivel_educativo        Sí        No
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="02b-tablas_final_files/figure-html/grafico-fila-cond-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Proporciones condicionales por grupo educativo (fila)</figcaption>
+<figcaption class="figure-caption">Proporciones condicionales por grupo educativo (fila)</figcaption>
 </figure>
 </div>
 </div>
@@ -1164,7 +1158,7 @@ Nivel_educativo        Sí        No
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="02b-tablas_final_files/figure-html/grafico-col-cond-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Proporciones condicionales dentro del grupo que reportó ansiedad (columna)</figcaption>
+<figcaption class="figure-caption">Proporciones condicionales dentro del grupo que reportó ansiedad (columna)</figcaption>
 </figure>
 </div>
 </div>
@@ -1329,7 +1323,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1361,50 +1366,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/almadana\.github\.io\/libro_cuanti\/");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1414,17 +1380,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1436,130 +1393,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
+      return note.innerHTML;
     });
   }
       let selectedAnnoteEl;
@@ -1603,7 +1437,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1629,32 +1462,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1716,12 +1523,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./02-Describing_Data.html" class="pagination-link" aria-label="Describir los datos">
+      <a href="./02-Describing_Data.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describir los datos</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./03-Correlation.html" class="pagination-link" aria-label="Correlación">
+      <a href="./03-Correlation.html" class="pagination-link">
         <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Correlación</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1730,5 +1537,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/almadana/libro_cuanti/edit/master/02b-tablas_final.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li></ul></div></div></div></footer></body></html>
+</body></html>

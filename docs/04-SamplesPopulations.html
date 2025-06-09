@@ -1246,8 +1246,18 @@ P(B \mid A) &amp;=&amp; P(x_3 \mid A) + P(x_4 \mid A) \\\\
 <p>Entonces, la distribución muestral de la media es otra distribución, y tiene cierta varianza. Varía más cuando el tamaño de muestra es pequeño, y varía menos cuando el tamaño es grande. Podemos cuantificar este efecto calculando el <strong>desvío estándar</strong> de la distribución muestral, que se conoce como el <strong>error estándar</strong>. El error estándar de un estadístico suele abreviarse como <em>SE</em>, y como habitualmente nos interesa el error estándar de la <strong>media</strong> muestral, usamos la sigla SEM (standard error of the mean). Como podés ver claramente en la animación, a medida que el tamaño de muestra<span class="math inline">\(N\)</span>aumenta, el SEM disminuye.</p>
 <p>Bueno, eso es una parte de la historia. Sin embargo, hay algo que hemos estado dejando un poco de lado. Ya lo vimos antes, pero vale la pena volver a observarlo. Acá va el punto clave: <strong>no importa qué forma tenga tu distribución poblacional</strong>, a medida que<span class="math inline">\(N\)</span>aumenta, la distribución muestral de la media empieza a parecerse más y más a una distribución normal. Eso es el <strong>teorema central del límite</strong>.</p>
 <p>Para ver el teorema central del límite en acción, vamos a mirar algunos histogramas de medias muestrales provenientes de diferentes tipos de distribuciones. Es muy importante recordar que lo que estás viendo son distribuciones de medias muestrales, no distribuciones de valores individuales.</p>
-<p>Empecemos. La figura <span class="quarto-unresolved-ref">?fig-4sampledistmeannorm</span> muestra un muestreo a partir de una distribución normal. La línea roja es la distribución normal de la que se extraen las muestras. Para cada muestra se calcula la media, y la distribución de esas medias se muestra con las barras azules. Notá que la forma de la línea roja y de las barras azules es similar: ambas se ven como una distribución normal.</p>
-<p>Hagámoslo de nuevo. Esta vez vamos a tomar muestras de una distribución uniforme plana, representada por la línea roja. Sin embargo, la <a href="#fig-4samplemeanunif">Figura&nbsp;<span>5.17</span></a> muestra que la distribución de las medias muestrales, representada por las barras azules, no es plana: se parece a una distribución normal.</p>
+<p>Empecemos. La <a href="#fig-4sampledistmeannorm">Figura&nbsp;<span>5.17</span></a> muestra un muestreo a partir de una distribución normal. La línea roja es la distribución normal de la que se extraen las muestras. Para cada muestra se calcula la media, y la distribución de esas medias se muestra con las barras azules. Notá que la forma de la línea roja y de las barras azules es similar: ambas se ven como una distribución normal.</p>
+<div class="cell" data-hash="04-SamplesPopulations_cache/html/fig-4sampledistmeannorm_1d03acb038c24fc3f68046c381c32829">
+<div class="cell-output-display">
+<div id="fig-4sampledistmeannorm" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="04-SamplesPopulations_files/figure-html/fig-4sampledistmeannorm-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figura&nbsp;5.17: Comparación entre dos distribuciones normales y los histogramas de la distribución muestral de la media para distintos tamaños de muestra. El rango de la distribución muestral de la media se achica a medida que el tamaño de la muestra aumenta.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Hagámoslo de nuevo. Esta vez vamos a tomar muestras de una distribución uniforme plana, representada por la línea roja. Sin embargo, la <a href="#fig-4samplemeanunif">Figura&nbsp;<span>5.18</span></a> muestra que la distribución de las medias muestrales, representada por las barras azules, no es plana: se parece a una distribución normal.</p>
 <div class="cell" data-hash="04-SamplesPopulations_cache/html/fig-4samplemeanunif_45a70f769dbb39ccb9ccb868003b0e90">
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: The dot-dot notation (`..density..`) was deprecated in ggplot2 3.4.0.
@@ -1261,18 +1271,18 @@ P(B \mid A) &amp;=&amp; P(x_3 \mid A) + P(x_4 \mid A) \\\\
 <div id="fig-4samplemeanunif" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="04-SamplesPopulations_files/figure-html/fig-4samplemeanunif-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption class="figure-caption">Figura&nbsp;5.17: Ilustración de que la forma de la distribución muestral de la media es normal, incluso cuando las muestras provienen de una distribución no normal (en este caso, uniforme)</figcaption>
+<figcaption class="figure-caption">Figura&nbsp;5.18: Ilustración de que la forma de la distribución muestral de la media es normal, incluso cuando las muestras provienen de una distribución no normal (en este caso, uniforme)</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Una vez más, ahora con una distribución exponencial (mostrada en rojo), donde es más probable que se muestren valores pequeños que grandes. Aunque muchos más números en cada muestra serán pequeños en comparación con los grandes, según la <a href="#fig-4samplemeanExp">Figura&nbsp;<span>5.18</span></a>, la distribución muestral de la media no se parece a la línea roja. En cambio, la distribución muestral de la media se parece a una curva en forma de campana: una distribución normal. Esto es el teorema central del límite en acción.</p>
+<p>Una vez más, ahora con una distribución exponencial (mostrada en rojo), donde es más probable que se muestren valores pequeños que grandes. Aunque muchos más números en cada muestra serán pequeños en comparación con los grandes, según la <a href="#fig-4samplemeanExp">Figura&nbsp;<span>5.19</span></a>, la distribución muestral de la media no se parece a la línea roja. En cambio, la distribución muestral de la media se parece a una curva en forma de campana: una distribución normal. Esto es el teorema central del límite en acción.</p>
 <div class="cell" data-hash="04-SamplesPopulations_cache/html/fig-4samplemeanExp_2476e7a4e2ddbdc8a29f544402b25b0c">
 <div class="cell-output-display">
 <div id="fig-4samplemeanExp" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="04-SamplesPopulations_files/figure-html/fig-4samplemeanExp-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figura&nbsp;5.18: Ilustración de que la forma de la distribución muestral de la media es normal, incluso cuando las muestras provienen de una distribución exponencial</figcaption>
+<figcaption class="figure-caption">Figura&nbsp;5.19: Ilustración de que la forma de la distribución muestral de la media es normal, incluso cuando las muestras provienen de una distribución exponencial</figcaption>
 </figure>
 </div>
 </div>
@@ -1294,25 +1304,25 @@ P(B \mid A) &amp;=&amp; P(x_3 \mid A) + P(x_4 \mid A) \\\\
 <section id="puntajes-z" class="level2" data-number="5.11">
 <h2 data-number="5.11" class="anchored" data-anchor-id="puntajes-z"><span class="header-section-number">5.11</span> Puntajes z</h2>
 <p>Ahora estamos en condiciones de combinar algunas de las cosas que vimos en este capítulo, e introducirte a una nueva herramienta: los <strong>puntajes z</strong>. Realmente que no vamos a usar mucho los <strong>puntajes z</strong> en este libro. Sin embargo, no podés hacer un curso de estadística sin aprender sobre los <strong>puntajes z</strong>.</p>
-<p>Vamos a observar una distribución normal en la <a href="#fig-4normalSDspercents">Figura&nbsp;<span>5.19</span></a>, y vamos a trazar líneas en la distribución en 0, ±1, ±2 y ±3 desviaciones estándar desde la media:</p>
+<p>Vamos a observar una distribución normal en la <a href="#fig-4normalSDspercents">Figura&nbsp;<span>5.20</span></a>, y vamos a trazar líneas en la distribución en 0, ±1, ±2 y ±3 desviaciones estándar desde la media:</p>
 <div class="cell" data-hash="04-SamplesPopulations_cache/html/fig-4normalSDspercents_87098c52e8f89ef4a89268a329bbc7ce">
 <div class="cell-output-display">
 <div id="fig-4normalSDspercents" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="04-SamplesPopulations_files/figure-html/fig-4normalSDspercents-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figura&nbsp;5.19: Una distribución normal. Cada línea representa una desviación estándar desde la media. Las etiquetas muestran la proporción de puntajes que caen entre cada barra.</figcaption>
+<figcaption class="figure-caption">Figura&nbsp;5.20: Una distribución normal. Cada línea representa una desviación estándar desde la media. Las etiquetas muestran la proporción de puntajes que caen entre cada barra.</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>La figura muestra una distribución normal con media = 0 y desvío estándar = 1. Trazamos líneas en cada desviación estándar: -3, -2, -1, 0, 1, 2 y 3. También mostramos algunos números en las etiquetas entre cada línea. Esos números son proporciones. Por ejemplo, vemos que la proporción entre 0 y 1 es 0.341: es decir, los puntajes entre 0 y 1 ocurren el 34.1% del tiempo. Los puntajes entre -1 y 1 ocurren el 68.2% del tiempo, lo cual es más de la mitad. Los puntajes entre 1 y 2 ocurren aproximadamente el 13.6% del tiempo, y los que están entre 2 y 3 ocurren aún menos: solo el 2.1%.</p>
-<p>Las distribuciones normales <strong>siempre</strong> tienen estas propiedades, incluso cuando tienen distintas medias y desviaciones estándar. Por ejemplo, mirá la distribución normal en la <a href="#fig-4normalSDspercentsB">Figura&nbsp;<span>5.20</span></a>, que tiene media = 100 y desvío estándar = 25.</p>
+<p>Las distribuciones normales <strong>siempre</strong> tienen estas propiedades, incluso cuando tienen distintas medias y desviaciones estándar. Por ejemplo, mirá la distribución normal en la <a href="#fig-4normalSDspercentsB">Figura&nbsp;<span>5.21</span></a>, que tiene media = 100 y desvío estándar = 25.</p>
 <div class="cell" data-hash="04-SamplesPopulations_cache/html/fig-4normalSDspercentsB_dad8a8ee31f21fab8a61d89a96cf4142">
 <div class="cell-output-display">
 <div id="fig-4normalSDspercentsB" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="04-SamplesPopulations_files/figure-html/fig-4normalSDspercentsB-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figura&nbsp;5.20: Una distribución normal. Cada línea representa una desviación estándar desde la media. Las etiquetas muestran la proporción de puntajes que caen entre cada barra.</figcaption>
+<figcaption class="figure-caption">Figura&nbsp;5.21: Una distribución normal. Cada línea representa una desviación estándar desde la media. Las etiquetas muestran la proporción de puntajes que caen entre cada barra.</figcaption>
 </figure>
 </div>
 </div>
@@ -1493,40 +1503,40 @@ z = \frac{\text{puntaje bruto} - \text{media}}{\text{desvío estándar}}
 <p>¿Qué intuiciones tenemos ahora sobre la población? De nuevo, en lo que respecta a la media poblacional, la mejor aproximación que podemos hacer es la media muestral: si nos obligaran a adivinar, probablemente diríamos que la media de cromulencia poblacional es 21. ¿Y la desviación estándar? Acá la cosa se pone un poco más complicada. La desviación estándar muestral está basada solamente en dos observaciones, y si sos como yo, seguramente tenés la intuición de que, con solo dos datos, no le estamos dando a la población “suficiente oportunidad” de mostrarnos su verdadera variabilidad. No es solo que sospechamos que la estimación está <strong>equivocada</strong> —porque con solo dos observaciones ya esperamos que haya algún error—. La preocupación más grande es que el error sea <strong>sistemático</strong>.</p>
 <p>Si el error es sistemático, entonces está <strong>sesgado</strong>. Por ejemplo, imaginate que el promedio muestral siempre fuera menor que el promedio poblacional. Si eso fuera cierto (no lo es), entonces no podríamos usar el promedio muestral como estimador. Estaría sesgado, estaríamos usando el número equivocado.</p>
 <p>Bueno, resulta que el desvío estándar muestral es un <strong>estimador sesgado</strong> del desvío estándar poblacional. Ya veníamos intuyéndolo con lo que estuvimos discutiendo. Cuando el tamaño muestral es 1, el desvío estándar es 0, lo cual claramente es demasiado bajo. Cuando el tamaño muestral es 2, el desvío estándar empieza a ser mayor que 0, pero como solo tenemos dos datos, sospechamos que sigue siendo demasiado bajo. Y resulta que esta intuición es correcta.</p>
-<p>Estaría bueno poder demostrar esto de alguna forma. Hay pruebas matemáticas que confirman esta intuición, pero salvo que tengas una formación matemática bastante sólida, no van a ayudarte mucho. Así que en vez de eso, lo que voy a hacer es usar R para simular los resultados de algunos experimentos. Con esto en mente, volvamos a nuestros estudios sobre CI. Supongamos que la verdadera media poblacional de CI es 100, y la desviación estándar poblacional es 15. Podemos usar la función <strong>rnorm()</strong> para generar los resultados de un experimento en el que medimos<span class="math inline">\(N = 2\)</span>puntuaciones de CI, y luego calculamos el desvío estándar muestral. Si repetimos este procedimiento una y otra vez, y graficamos un histograma de esos desvíos estándar muestrales, obtenemos la <strong>distribución muestral del desvío estándar</strong>. Esa distribución está graficada en la <a href="#fig-sampdistsd">Figura&nbsp;<span>5.21</span></a>.</p>
+<p>Estaría bueno poder demostrar esto de alguna forma. Hay pruebas matemáticas que confirman esta intuición, pero salvo que tengas una formación matemática bastante sólida, no van a ayudarte mucho. Así que en vez de eso, lo que voy a hacer es usar R para simular los resultados de algunos experimentos. Con esto en mente, volvamos a nuestros estudios sobre CI. Supongamos que la verdadera media poblacional de CI es 100, y la desviación estándar poblacional es 15. Podemos usar la función <strong>rnorm()</strong> para generar los resultados de un experimento en el que medimos<span class="math inline">\(N = 2\)</span>puntuaciones de CI, y luego calculamos el desvío estándar muestral. Si repetimos este procedimiento una y otra vez, y graficamos un histograma de esos desvíos estándar muestrales, obtenemos la <strong>distribución muestral del desvío estándar</strong>. Esa distribución está graficada en la <a href="#fig-sampdistsd">Figura&nbsp;<span>5.22</span></a>.</p>
 <div class="cell" data-hash="04-SamplesPopulations_cache/html/fig-sampdistsd_4a719ba159c2987ad2dae71fa67feeeb">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"imgs/navarro_img/estimation/sampdistsd_es.png"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-sampdistsd" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="imgs/navarro_img/estimation/sampdistsd_es.png" class="img-fluid figure-img" width="2025"></p>
-<figcaption class="figure-caption">Figura&nbsp;5.21: La distribución muestral del desvío estándar de la muestra en un experimento con dos puntuaciones de CI. El verdadero desvío estándar poblacional es 15 (línea punteada), pero como puede verse en el histograma, la gran mayoría de los experimentos produce un desvío estándar muestral mucho menor. En promedio, este experimento arrojaría un desvío estándar muestral de apenas 8.5, muy por debajo del valor real. En otras palabras, el desvío estándar muestral es un estimador sesgado del desvío estándar poblacional.</figcaption>
+<figcaption class="figure-caption">Figura&nbsp;5.22: La distribución muestral del desvío estándar de la muestra en un experimento con dos puntuaciones de CI. El verdadero desvío estándar poblacional es 15 (línea punteada), pero como puede verse en el histograma, la gran mayoría de los experimentos produce un desvío estándar muestral mucho menor. En promedio, este experimento arrojaría un desvío estándar muestral de apenas 8.5, muy por debajo del valor real. En otras palabras, el desvío estándar muestral es un estimador sesgado del desvío estándar poblacional.</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Aunque la verdadera desviación estándar poblacional es 15, el promedio de los desvíos estándar <strong>muestrales</strong> es solo 8.5. Notá que esto es muy distinto de lo que pasaba cuando graficábamos distribuciones muestrales de la media: esas siempre estaban centradas en la media poblacional.</p>
 <p>Ahora ampliemos la simulación. En lugar de restringirnos a un tamaño muestral de<span class="math inline">\(N=2\)</span>, repitamos el experimento para tamaños muestrales del 1 al 10. Si graficamos el promedio de la media muestral y el promedio del desvío estándar muestral como función del tamaño de la muestra, obtenemos los siguientes resultados.</p>
-<p>La <a href="#fig-estimatorbiasA">Figura&nbsp;<span>5.22</span></a> muestra cómo cambia la media muestral según el tamaño de la muestra. Notá que la línea es plana: la media muestral no sobrestima ni subestima la media poblacional. Es un estimador insesgado.</p>
+<p>La <a href="#fig-estimatorbiasA">Figura&nbsp;<span>5.23</span></a> muestra cómo cambia la media muestral según el tamaño de la muestra. Notá que la línea es plana: la media muestral no sobrestima ni subestima la media poblacional. Es un estimador insesgado.</p>
 <div class="cell" data-hash="04-SamplesPopulations_cache/html/fig-estimatorbiasA_3ac23e2b2cfcdb1634ba404778e7a94c">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"imgs/navarro_img/estimation/biasMean_es.png"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-estimatorbiasA" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="imgs/navarro_img/estimation/biasMean_es.png" class="img-fluid figure-img" width="1800"></p>
-<figcaption class="figure-caption">Figura&nbsp;5.22: Una ilustración del hecho de que la media muestral es un estimador insesgado de la media poblacional.</figcaption>
+<figcaption class="figure-caption">Figura&nbsp;5.23: Una ilustración del hecho de que la media muestral es un estimador insesgado de la media poblacional.</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>La <a href="#fig-estimatorbiasB">Figura&nbsp;<span>5.23</span></a> muestra cómo cambia el <strong>desvío estándar muestral</strong> con el tamaño de muestra. Notá que <strong>no</strong> es una línea plana: el desvío estándar muestral <strong>subestima sistemáticamente</strong> la desviación estándar poblacional.</p>
+<p>La <a href="#fig-estimatorbiasB">Figura&nbsp;<span>5.24</span></a> muestra cómo cambia el <strong>desvío estándar muestral</strong> con el tamaño de muestra. Notá que <strong>no</strong> es una línea plana: el desvío estándar muestral <strong>subestima sistemáticamente</strong> la desviación estándar poblacional.</p>
 <div class="cell" data-hash="04-SamplesPopulations_cache/html/fig-estimatorbiasB_e3e593e2743303cf8682c889e0caf0bc">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"imgs/navarro_img/estimation/biasSD_es.png"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-estimatorbiasB" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="imgs/navarro_img/estimation/biasSD_es.png" class="img-fluid figure-img" width="1800"></p>
-<figcaption class="figure-caption">Figura&nbsp;5.23: Una ilustración del hecho de que el desvío estándar muestral es un estimador sesgado de la desviación estándar poblacional.</figcaption>
+<figcaption class="figure-caption">Figura&nbsp;5.24: Una ilustración del hecho de que el desvío estándar muestral es un estimador sesgado de la desviación estándar poblacional.</figcaption>
 </figure>
 </div>
 </div>

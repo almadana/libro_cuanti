@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Matthew J. C. Crump">
 
-<title>4&nbsp; Correlación – Respondiendo preguntas con datos</title>
+<title>Respondiendo preguntas con datos - 4&nbsp; Correlación</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -59,7 +59,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -92,23 +91,17 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-1c4f673b5ad71a23e38d87f497bd0754.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "Sin resultados",
     "search-matching-documents-text": "documentos encontrados",
@@ -117,7 +110,6 @@ div.csl-indent {
     "search-more-match-text": "resultado adicional en este documento",
     "search-more-matches-text": "resultados adicionales en este documento",
     "search-clear-button-title": "Borrar",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancelar",
     "search-submit-button-title": "Enviar",
     "search-label": "Buscar"
@@ -133,43 +125,16 @@ gtag('js', new Date());
 gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 </script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<meta property="og:title" content="4&nbsp; Correlación – Respondiendo preguntas con datos">
+<meta property="og:title" content="Respondiendo preguntas con datos - 4&nbsp; Correlación">
 <meta property="og:description" content="Traducido al español rioplatense por ChatGPT4-o bajo la supervisión de Álvaro Cabana.">
 <meta property="og:image" content="https://almadana.github.io/libro_cuanti/03-Correlation_files/figure-html/fig-3scatter1-1.png">
-<meta property="og:site_name" content="Respondiendo preguntas con datos">
+<meta property="og:site-name" content="Respondiendo preguntas con datos">
 <meta property="og:image:height" content="960">
 <meta property="og:image:width" content="1344">
-<meta name="twitter:title" content="4&nbsp; Correlación – Respondiendo preguntas con datos">
+<meta name="twitter:title" content="Respondiendo preguntas con datos - 4&nbsp; Correlación">
 <meta name="twitter:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
 <meta name="twitter:image" content="https://almadana.github.io/libro_cuanti/imgs/TextbookCover.png">
 <meta name="twitter:site" content="@MattCrumpLab">
@@ -184,13 +149,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03-Correlation.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Correlación</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03-Correlation.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Correlación</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -199,12 +164,12 @@ window.Quarto = {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Respondiendo preguntas con datos</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/almadana/libro_cuanti/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/almadana/libro_cuanti/" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
@@ -320,7 +285,7 @@ window.Quarto = {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -358,7 +323,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#resumen" id="toc-resumen" class="nav-link" data-scroll-target="#resumen"><span class="header-section-number">4.7</span> Resumen</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/almadana/libro_cuanti/edit/master/03-Correlation.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li></ul></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/almadana/libro_cuanti/edit/master/03-Correlation.qmd" class="toc-action">Editar esta página</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -385,14 +350,12 @@ window.Quarto = {
   
 <div>
   <div class="abstract">
-    <div class="block-title">Notas</div>
+    <div class="abstract-title">Notas</div>
     Traducido al español rioplatense por ChatGPT4-o bajo la supervisión de Álvaro Cabana.
   </div>
 </div>
 
-
 </header>
-
 
 <blockquote class="blockquote">
 <p>La correlación no implica causalidad<br>
@@ -425,7 +388,7 @@ Advertencia anticipada: sabemos que es fácil olvidarse de esto cuando nos metem
 <p>Acá tenés una muestra de datos de los primeros 10 sujetos imaginarios.</p>
 <div class="cell">
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">sujeto</th>
@@ -492,17 +455,13 @@ Advertencia anticipada: sabemos que es fácil olvidarse de esto cuando nos metem
 </section>
 <section id="diagramas-de-dispersión" class="level3" data-number="4.1.2">
 <h3 data-number="4.1.2" class="anchored" data-anchor-id="diagramas-de-dispersión"><span class="header-section-number">4.1.2</span> Diagramas de dispersión</h3>
-<p>Cuando tenés dos variables medidas, siempre podés convertirlas en puntos y mostrarlas en un diagrama de dispersión (<em>scatter plot</em>). Un gráfico de dispersión tiene un eje horizontal (x) y un eje vertical (y). Vos elegís qué variable va en qué eje. Vamos a poner el suministro de chocolate en el eje x, y el nivel de felicidad en el eje y. La <a href="#fig-3scatter1" class="quarto-xref">Figura&nbsp;<span>4.1</span></a> muestra 100 puntos, uno por cada persona.</p>
+<p>Cuando tenés dos variables medidas, siempre podés convertirlas en puntos y mostrarlas en un diagrama de dispersión (<em>scatter plot</em>). Un gráfico de dispersión tiene un eje horizontal (x) y un eje vertical (y). Vos elegís qué variable va en qué eje. Vamos a poner el suministro de chocolate en el eje x, y el nivel de felicidad en el eje y. La <a href="#fig-3scatter1">Figura&nbsp;<span>4.1</span></a> muestra 100 puntos, uno por cada persona.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-3scatter1" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-3scatter1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="03-Correlation_files/figure-html/fig-3scatter1-1.png" class="img-fluid figure-img" style="width:75.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3scatter1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4.1: Datos imaginarios que muestran una correlación positiva entre la cantidad de chocolate y el nivel de felicidad
-</figcaption>
+<div id="fig-3scatter1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="03-Correlation_files/figure-html/fig-3scatter1-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figura&nbsp;4.1: Datos imaginarios que muestran una correlación positiva entre la cantidad de chocolate y el nivel de felicidad</figcaption>
 </figure>
 </div>
 </div>
@@ -516,17 +475,13 @@ Más importante todavía: los puntos muestran una relación entre el suministro 
 <section id="correlación-positiva-negativa-y-nula" class="level3" data-number="4.1.3">
 <h3 data-number="4.1.3" class="anchored" data-anchor-id="correlación-positiva-negativa-y-nula"><span class="header-section-number">4.1.3</span> Correlación positiva, negativa y nula</h3>
 <p>Ya que estamos en el negocio de imaginar datos, sigamos imaginando un poco más. Ya imaginamos cómo se verían los datos si tener más chocolate aumentara la felicidad. Vamos a mostrar eso de nuevo en un momento. Pero, ¿cómo te imaginás que se vería un gráfico de dispersión si la relación fuera al revés, y tener más chocolate <em>disminuyera</em> la felicidad? ¿O cómo se vería si <em>no hubiera ninguna relación</em> entre la cantidad de chocolate y la felicidad?<br>
-Te invitamos a imaginarlo mirando la <a href="#fig-3posnegrand" class="quarto-xref">Figura&nbsp;<span>4.2</span></a>:</p>
+Te invitamos a imaginarlo mirando la <a href="#fig-3posnegrand">Figura&nbsp;<span>4.2</span></a>:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-3posnegrand" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-3posnegrand-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="03-Correlation_files/figure-html/fig-3posnegrand-1.png" class="img-fluid figure-img" style="width:75.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3posnegrand-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4.2: Tres diagramas de dispersión mostrando una correlación negativa, positiva, y ausencia de correlación
-</figcaption>
+<div id="fig-3posnegrand" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="03-Correlation_files/figure-html/fig-3posnegrand-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figura&nbsp;4.2: Tres diagramas de dispersión mostrando una correlación negativa, positiva, y ausencia de correlación</figcaption>
 </figure>
 </div>
 </div>
@@ -568,7 +523,7 @@ Nota
 <p>¿Cómo funciona el <em>r</em> de Pearson? Volvamos a mirar los datos de los primeros 10 sujetos de nuestro experimento ficticio:</p>
 <div class="cell">
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">sujeto</th>
@@ -660,7 +615,7 @@ Recordá lo que significa la varianza respecto a un conjunto de números: signif
 <p>“OK, si me decís que <em>covarianza</em> es otra forma de decir ‘correlación’ o ‘relación’ entre dos variables, me sirve. Supongo que deberíamos tener alguna forma de medir eso.” Correcto. Volvamos a nuestra tabla… ¿notás algo nuevo?</p>
 <div class="cell">
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">sujeto</th>
@@ -755,7 +710,7 @@ Recordá lo que significa la varianza respecto a un conjunto de números: signif
 <p>El siguiente paso es pensar qué pasa cuando sumamos los productos de dos variables, dependiendo de cómo se alinean. Veamos otra tabla:</p>
 <div class="cell">
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">puntajes</th>
@@ -886,19 +841,15 @@ Los valores de <span class="math inline">\(A\)</span> y <span class="math inline
 <p>Ahora observá las sumas de las columnas <span class="math inline">\(XY\)</span> y <span class="math inline">\(AB\)</span>. No son iguales. La suma de los productos <span class="math inline">\(XY\)</span> es 385, y la suma de los productos <span class="math inline">\(AB\)</span> es 220. En este conjunto de datos en particular los números 385 y 220 son muy importantes. Representan la mayor suma posible de productos (385) y la menor suma posible de productos (220). No hay forma de reordenar los números del 1 al 10, digamos para <span class="math inline">\(X\)</span> y para <span class="math inline">\(Y\)</span>, que produzca una suma mayor o menor. ¿No me creés? Mirá esto:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-3simsum" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-3simsum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="03-Correlation_files/figure-html/fig-3simsum-1.png" class="img-fluid figure-img" style="width:75.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3simsum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4.3: Sumas de productos simuladas que muestran los tipos de valores que pueden producirse al ordenar aleatoriamente los números en X e Y.
-</figcaption>
+<div id="fig-3simsum" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="03-Correlation_files/figure-html/fig-3simsum-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figura&nbsp;4.3: Sumas de productos simuladas que muestran los tipos de valores que pueden producirse al ordenar aleatoriamente los números en X e Y.</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>La <a href="#fig-3simsum" class="quarto-xref">Figura&nbsp;<span>4.3</span></a> muestra 1000 simulaciones por computadora. Convencí a mi computadora de que ordenara al azar los números del 1 al 10 para X, y también del 1 al 10 para Y. Luego, multiplicó X por Y, y sumó los productos. Hizo esto 1000 veces. Cada punto en el gráfico muestra la suma de los productos para una de esas simulaciones. Las dos líneas negras marcan la suma máxima posible (385) y la mínima posible (220) para este conjunto de números. Notá cómo todos los puntos están entre esos dos valores. Te lo dije.</p>
+<p>La <a href="#fig-3simsum">Figura&nbsp;<span>4.3</span></a> muestra 1000 simulaciones por computadora. Convencí a mi computadora de que ordenara al azar los números del 1 al 10 para X, y también del 1 al 10 para Y. Luego, multiplicó X por Y, y sumó los productos. Hizo esto 1000 veces. Cada punto en el gráfico muestra la suma de los productos para una de esas simulaciones. Las dos líneas negras marcan la suma máxima posible (385) y la mínima posible (220) para este conjunto de números. Notá cómo todos los puntos están entre esos dos valores. Te lo dije.</p>
 <p>“OK, está bien, me lo advertiste… ¿y qué? ¿a quién le importa?”.<br>
 Estábamos buscando una forma de resumir la covarianza entre dos variables, ¿no? Bueno, para estos números, encontramos una: <strong>la suma de los productos</strong>. Sabemos que cuando esa suma da 385, hay una correlación perfecta y positiva. Sabemos que si da 220, hay una correlación perfecta y negativa. ¿Y qué pasa con los números que están en el medio? ¿Qué podemos concluir sobre la correlación si la suma de productos da, por ejemplo, 350?<br>
 Bueno, va a ser positiva, porque está cerca de 385, que es correlación perfectamente positiva.<br>
@@ -924,7 +875,7 @@ Si la suma de productos fuera 240, va a ser negativa, porque está cerca de 220,
 <p>Veamos cómo se ve esto en una tabla:</p>
 <div class="cell">
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">sujeto</th>
@@ -1075,17 +1026,13 @@ Nota
 </div>
 <p>Por ahora, podés pensar que es magia matemática. Funciona. Ya después veremos por qué.</p>
 <p>Vale decir que existen muchas fórmulas diferentes para calcular el <em>r</em> de Pearson. Podés buscarlas en Google y vas a ver varias versiones. Algunas aparecerán más adelante en este libro también. Pero todas dan el mismo resultado. Algunas son más elegantes que otras. Y algunas pueden parecer un poco intimidantes. En otros libros de estadística vas a encontrar fórmulas pensadas para facilitar los cálculos a mano, por ejemplo si solo tenés papel y lápiz. Para ser honestos, no estamos muy interesados en enseñarte cómo meter números en fórmulas. Damos una sola lección sobre eso aquí: pon los números donde están las letras y luego calcula el resultado. Perdón por ser sarcásticos. Hoy en día tenés una computadora que deberías usar para estas cosas. Así que nuestro interés está más en enseñarte <strong>qué significan</strong> los cálculos, más que en cómo hacerlos. Claro que igual, cada semana en el laboratorio te mostramos cómo hacer los cálculos en la compu, porque eso también es importante.</p>
-<p>¿El <em>r</em> de Pearson <strong>siempre</strong> queda entre –1 y 1, sin importar qué datos uses? Sí. Mirá la siguiente simulación. Reordenamos al azar los números del 1 al 10 para una variable X, y lo mismo para Y. Calculamos el <em>r</em> de Pearson y repetimos eso 1000 veces. Como podés ver en la <a href="#fig-3onethousandr" class="quarto-xref">Figura&nbsp;<span>4.4</span></a>, <strong>todos</strong> los puntos caen entre –1 y 1. Tremendo, ¿no?</p>
+<p>¿El <em>r</em> de Pearson <strong>siempre</strong> queda entre –1 y 1, sin importar qué datos uses? Sí. Mirá la siguiente simulación. Reordenamos al azar los números del 1 al 10 para una variable X, y lo mismo para Y. Calculamos el <em>r</em> de Pearson y repetimos eso 1000 veces. Como podés ver en la <a href="#fig-3onethousandr">Figura&nbsp;<span>4.4</span></a>, <strong>todos</strong> los puntos caen entre –1 y 1. Tremendo, ¿no?</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-3onethousandr" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-3onethousandr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="03-Correlation_files/figure-html/fig-3onethousandr-1.png" class="img-fluid figure-img" style="width:75.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3onethousandr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4.4: Una simulación de correlaciones. Cada punto representa el valor de r correspondiente a la correlación entre una variable X y una variable Y, donde ambas contienen los números del 1 al 10 en órdenes aleatorios. La figura ilustra que este proceso aleatorio puede producir muchos valores distintos de r.
-</figcaption>
+<div id="fig-3onethousandr" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="03-Correlation_files/figure-html/fig-3onethousandr-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figura&nbsp;4.4: Una simulación de correlaciones. Cada punto representa el valor de r correspondiente a la correlación entre una variable X y una variable Y, donde ambas contienen los números del 1 al 10 en órdenes aleatorios. La figura ilustra que este proceso aleatorio puede producir muchos valores distintos de r.</figcaption>
 </figure>
 </div>
 </div>
@@ -1095,17 +1042,13 @@ Figura&nbsp;4.4: Una simulación de correlaciones. Cada punto representa el valo
 <section id="ejemplos-con-datos" class="level2" data-number="4.4">
 <h2 data-number="4.4" class="anchored" data-anchor-id="ejemplos-con-datos"><span class="header-section-number">4.4</span> Ejemplos con datos</h2>
 <p>En el laboratorio sobre correlación, vas a aprender a calcular correlaciones con datos reales usando software. Para darte una vista previa, miremos algunos datos del <a href="http://worldhappiness.report">Informe Mundial de la Felicidad</a> (2018).</p>
-<p>Este informe mide diversas actitudes en personas de distintos países. Por ejemplo, una de las preguntas era sobre cuánta libertad sentían que tenían para tomar decisiones en la vida. Otra preguntaba cuánta confianza tenían en su gobierno nacional. La <a href="#fig-3hsrdata" class="quarto-xref">Figura&nbsp;<span>4.5</span></a> muestra un gráfico de dispersión con la relación entre estas dos variables. Cada punto representa promedios para un país diferente.</p>
+<p>Este informe mide diversas actitudes en personas de distintos países. Por ejemplo, una de las preguntas era sobre cuánta libertad sentían que tenían para tomar decisiones en la vida. Otra preguntaba cuánta confianza tenían en su gobierno nacional. La <a href="#fig-3hsrdata">Figura&nbsp;<span>4.5</span></a> muestra un gráfico de dispersión con la relación entre estas dos variables. Cada punto representa promedios para un país diferente.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-3hsrdata" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-3hsrdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="03-Correlation_files/figure-html/fig-3hsrdata-1.png" class="img-fluid figure-img" style="width:75.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3hsrdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4.5: Relación entre la libertad para tomar decisiones en la vida y la confianza en el gobierno nacional. Datos del Informe Mundial de la Felicidad de 2018
-</figcaption>
+<div id="fig-3hsrdata" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="03-Correlation_files/figure-html/fig-3hsrdata-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figura&nbsp;4.5: Relación entre la libertad para tomar decisiones en la vida y la confianza en el gobierno nacional. Datos del Informe Mundial de la Felicidad de 2018</figcaption>
 </figure>
 </div>
 </div>
@@ -1122,17 +1065,13 @@ Todas son buenas preguntas. Pero estos datos <strong>no</strong> nos dan la resp
 <h2 data-number="4.5" class="anchored" data-anchor-id="regresión-una-mini-introducción"><span class="header-section-number">4.5</span> Regresión: una mini introducción</h2>
 <p>Ahora vamos a agregar una cosita más a lo que venimos aprendiendo sobre correlación. Se llama <strong>regresión lineal</strong>. Suena intimidante, y… en parte lo es. Mucho más adelante, vas a descubrir que todo lo que estamos por aprender es en realidad un caso especial de la regresión.<br>
 Pero no queremos que salgas corriendo todavía, así que ahora solo te presentamos los conceptos básicos.</p>
-<p>Primero, miremos una regresión lineal. Así vas a ver de qué estamos hablando. La <a href="#fig-3regression" class="quarto-xref">Figura&nbsp;<span>4.6</span></a> muestra los mismos diagramas de dispersión que antes, pero con algo nuevo: ¡líneas!</p>
+<p>Primero, miremos una regresión lineal. Así vas a ver de qué estamos hablando. La <a href="#fig-3regression">Figura&nbsp;<span>4.6</span></a> muestra los mismos diagramas de dispersión que antes, pero con algo nuevo: ¡líneas!</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-3regression" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-3regression-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="03-Correlation_files/figure-html/fig-3regression-1.png" class="img-fluid figure-img" style="width:75.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3regression-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4.6: Tres diagramas de dispersión que muestran una correlación negativa, una positiva y una aleatoria (donde se espera que el valor de r sea 0), junto con la línea de regresión de mejor ajuste
-</figcaption>
+<div id="fig-3regression" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="03-Correlation_files/figure-html/fig-3regression-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figura&nbsp;4.6: Tres diagramas de dispersión que muestran una correlación negativa, una positiva y una aleatoria (donde se espera que el valor de r sea 0), junto con la línea de regresión de mejor ajuste</figcaption>
 </figure>
 </div>
 </div>
@@ -1158,48 +1097,36 @@ Nota
 <p>Mirá este próximo gráfico. Muestra una línea que atraviesa algunos puntos. Pero también muestra unas líneas pequeñas que bajan desde cada punto hasta la línea. Cada una de esas líneas chiquitas se llama <strong>residuo</strong>. Los residuos te muestran cuán lejos está cada punto de la línea. Es una medida de error, y nos dice <strong>qué tan equivocada está</strong> la línea. Después de todo, no todos los puntos están sobre la línea. Eso significa que <strong>la línea no representa perfectamente a los datos</strong>. Pero la línea de mejor ajuste es <strong>la menos equivocada</strong> de todas las posibles.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-3regressionResiduals" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-3regressionResiduals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="03-Correlation_files/figure-html/fig-3regressionResiduals-1.png" class="img-fluid figure-img" style="width:75.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3regressionResiduals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4.7: Los puntos negros representan los datos reales. La línea azul es la de mejor ajuste. Los puntos blancos indican los valores predichos por la línea azul. Las líneas rojas muestran el error entre cada punto real y su predicción. La línea azul es la mejor porque minimiza ese error.
-</figcaption>
+<div id="fig-3regressionResiduals" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="03-Correlation_files/figure-html/fig-3regressionResiduals-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figura&nbsp;4.7: Los puntos negros representan los datos reales. La línea azul es la de mejor ajuste. Los puntos blancos indican los valores predichos por la línea azul. Las líneas rojas muestran el error entre cada punto real y su predicción. La línea azul es la mejor porque minimiza ese error.</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Pasan muchas cosas en la <a href="#fig-3regressionResiduals" class="quarto-xref">Figura&nbsp;<span>4.7</span></a>. Primero, estamos mirando un diagrama de dispersión de dos variables, una variable X y una variable Y. Cada punto negro representa los valores reales de esas variables. Podés ver que hay una correlación negativa: a medida que X aumenta, Y tiende a disminuir. Trazamos una línea de regresión sobre los datos —esa es la línea azul. También aparecen unos puntitos blancos. Esos muestran <strong>dónde la línea “cree” que deberían estar los puntos negros</strong>. Y están también las líneas rojas, que son los residuos de los que veníamos hablando. Cada punto negro tiene una línea roja que baja (o sube) en línea recta desde su ubicación hasta tocar la línea. Ya podemos ver que muchos de los puntos <strong>no están sobre la línea</strong>, así que sabemos que la línea se equivoca un poco en cada punto. La línea roja simplemente hace que sea más fácil ver <strong>exactamente cuánto se equivoca</strong>.</p>
+<p>Pasan muchas cosas en la <a href="#fig-3regressionResiduals">Figura&nbsp;<span>4.7</span></a>. Primero, estamos mirando un diagrama de dispersión de dos variables, una variable X y una variable Y. Cada punto negro representa los valores reales de esas variables. Podés ver que hay una correlación negativa: a medida que X aumenta, Y tiende a disminuir. Trazamos una línea de regresión sobre los datos —esa es la línea azul. También aparecen unos puntitos blancos. Esos muestran <strong>dónde la línea “cree” que deberían estar los puntos negros</strong>. Y están también las líneas rojas, que son los residuos de los que veníamos hablando. Cada punto negro tiene una línea roja que baja (o sube) en línea recta desde su ubicación hasta tocar la línea. Ya podemos ver que muchos de los puntos <strong>no están sobre la línea</strong>, así que sabemos que la línea se equivoca un poco en cada punto. La línea roja simplemente hace que sea más fácil ver <strong>exactamente cuánto se equivoca</strong>.</p>
 <p>Lo importante que está ocurriendo acá es que la línea azul fue trazada de manera tal que <strong>minimiza la suma total de las líneas rojas</strong>. Por ejemplo, si quisiéramos saber <strong>cuán equivocada</strong> está esta línea, podríamos juntar todas las líneas rojas, medir cuánto miden, y sumar todas esas equivocaciones. Eso nos daría el <strong>error total</strong>. De hecho, ya hablamos de esta idea cuando discutimos la desviación estándar. Lo que realmente vamos a hacer con estas líneas rojas es <strong>elevar al cuadrado su longitud</strong> (para que los valores negativos no se cancelen), y luego <strong>sumarlas</strong>. Esa suma representa el <strong>total de error</strong>. Y esta línea azul <strong>minimiza esa suma</strong>. Cualquier otra línea tendría un error total mayor.</p>
-<p>La <a href="#fig-3regressionGIF" class="quarto-xref">Figura&nbsp;<span>4.8</span></a> es una animación que muestra esto en acción. La animación compara la línea azul (la de mejor ajuste) con otras líneas posibles (en negro). La línea negra se mueve hacia arriba y abajo. Las líneas rojas muestran el error entre la línea negra y los puntos de datos. A medida que la línea negra se acerca a la línea azul, el error total —representado visualmente como un área gris— <strong>se achica hasta su valor mínimo</strong>. Ese error total se agranda a medida que la línea negra se aleja de la línea azul.</p>
+<p>La <a href="#fig-3regressionGIF">Figura&nbsp;<span>4.8</span></a> es una animación que muestra esto en acción. La animación compara la línea azul (la de mejor ajuste) con otras líneas posibles (en negro). La línea negra se mueve hacia arriba y abajo. Las líneas rojas muestran el error entre la línea negra y los puntos de datos. A medida que la línea negra se acerca a la línea azul, el error total —representado visualmente como un área gris— <strong>se achica hasta su valor mínimo</strong>. Ese error total se agranda a medida que la línea negra se aleja de la línea azul.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-3regressionGIF" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-3regressionGIF-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="imgs/gifs/regression-1.gif" class="img-fluid figure-img" style="width:75.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3regressionGIF-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4.8: La línea azul es la línea de regresión que mejor explica la covariación entre los puntos negros. La línea negra se mueve hacia arriba y abajo, mostrando líneas alternativas que podrían trazarse. Las líneas rojas indican el error entre cada punto de datos y la línea negra. La cantidad total de error está representada por el área gris sombreada. Esta área se agranda a medida que la línea negra se aleja de la línea azul, y se achica al mínimo cuando la línea negra se acerca a la línea de mejor ajuste.”
-</figcaption>
+<div id="fig-3regressionGIF" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="imgs/gifs/regression-1.gif" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figura&nbsp;4.8: La línea azul es la línea de regresión que mejor explica la covariación entre los puntos negros. La línea negra se mueve hacia arriba y abajo, mostrando líneas alternativas que podrían trazarse. Las líneas rojas indican el error entre cada punto de datos y la línea negra. La cantidad total de error está representada por el área gris sombreada. Esta área se agranda a medida que la línea negra se aleja de la línea azul, y se achica al mínimo cuando la línea negra se acerca a la línea de mejor ajuste.”</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Siempre que la línea negra no coincida con la línea azul, es peor que la línea de mejor ajuste. La línea de regresión azul es como Ricitos de Oro: está justo en el medio, y es la adecuada.</p>
-<p>La <a href="#fig-3minimizeSS" class="quarto-xref">Figura&nbsp;<span>4.9</span></a> muestra cómo se comporta la suma de las desviaciones al cuadrado (la suma de las longitudes al cuadrado de las líneas rojas) a medida que movemos la línea hacia arriba y hacia abajo. Lo que está ocurriendo aquí es que estamos calculando una medida del error total a medida que la línea negra pasa por la línea de mejor ajuste. Esto representa la suma de las desviaciones al cuadrado. Es decir, elevamos al cuadrado la longitud de cada línea roja de la animación anterior, luego sumamos todas esas líneas rojas al cuadrado y obtenemos el error total (la suma total de las desviaciones al cuadrado).</p>
+<p>La <a href="#fig-3minimizeSS">Figura&nbsp;<span>4.9</span></a> muestra cómo se comporta la suma de las desviaciones al cuadrado (la suma de las longitudes al cuadrado de las líneas rojas) a medida que movemos la línea hacia arriba y hacia abajo. Lo que está ocurriendo aquí es que estamos calculando una medida del error total a medida que la línea negra pasa por la línea de mejor ajuste. Esto representa la suma de las desviaciones al cuadrado. Es decir, elevamos al cuadrado la longitud de cada línea roja de la animación anterior, luego sumamos todas esas líneas rojas al cuadrado y obtenemos el error total (la suma total de las desviaciones al cuadrado).</p>
 <p>El gráfico de abajo muestra cómo se ve el error total a medida que la línea negra se acerca y luego se aleja de la línea de mejor ajuste. Fijate que los puntos en este gráfico comienzan altos en el lado izquierdo, luego descienden hasta alcanzar un mínimo en la parte inferior central del gráfico. Cuando alcanzan ese punto mínimo, hemos encontrado una línea que minimiza el error total. Esa es la línea de regresión de mejor ajuste.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-3minimizeSS" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-3minimizeSS-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="03-Correlation_files/figure-html/fig-3minimizeSS-1.png" class="img-fluid figure-img" style="width:75.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3minimizeSS-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4.9: Suma de los errores cuadrados para diferentes líneas con distintas intersecciones. La suma mínima ocurre con la línea de mejor ajuste.
-</figcaption>
+<div id="fig-3minimizeSS" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="03-Correlation_files/figure-html/fig-3minimizeSS-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figura&nbsp;4.9: Suma de los errores cuadrados para diferentes líneas con distintas intersecciones. La suma mínima ocurre con la línea de mejor ajuste.</figcaption>
 </figure>
 </div>
 </div>
@@ -1213,17 +1140,13 @@ Figura&nbsp;4.9: Suma de los errores cuadrados para diferentes líneas con disti
 <p><span class="math inline">\(y = ax + b\)</span>, o también <span class="math inline">\(y = mx + b\)</span> (A veces se usa <span class="math inline">\(a\)</span> o <span class="math inline">\(m\)</span> para representar la pendiente)</p>
 <p>Esta es la fórmula de una línea recta. Otra forma de escribirla sería:</p>
 <p><span class="math inline">\(y = \text{pendiente} * x + \text{intercepto}\)</span></p>
-<p>La <strong>pendiente</strong> indica la inclinación de la línea, y el <strong>intercepto</strong> o la <strong>intersección con el eje y</strong> es el punto donde la línea cruza el eje vertical. Miremos las líneas de la <a href="#fig-3twolines" class="quarto-xref">Figura&nbsp;<span>4.10</span></a>.</p>
+<p>La <strong>pendiente</strong> indica la inclinación de la línea, y el <strong>intercepto</strong> o la <strong>intersección con el eje y</strong> es el punto donde la línea cruza el eje vertical. Miremos las líneas de la <a href="#fig-3twolines">Figura&nbsp;<span>4.10</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-3twolines" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-3twolines-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="03-Correlation_files/figure-html/fig-3twolines-1.png" class="img-fluid figure-img" style="width:50.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3twolines-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4.10: Dos líneas diferentes con distintas intersecciones en el eje y (donde la línea cruza el eje vertical) y distintas pendientes. Una pendiente positiva hace que la línea suba de izquierda a derecha. Una pendiente negativa hace que la línea baje de izquierda a derecha.
-</figcaption>
+<div id="fig-3twolines" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="03-Correlation_files/figure-html/fig-3twolines-1.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption class="figure-caption">Figura&nbsp;4.10: Dos líneas diferentes con distintas intersecciones en el eje y (donde la línea cruza el eje vertical) y distintas pendientes. Una pendiente positiva hace que la línea suba de izquierda a derecha. Una pendiente negativa hace que la línea baje de izquierda a derecha.</figcaption>
 </figure>
 </div>
 </div>
@@ -1257,7 +1180,7 @@ Nota
 <p>En estas fórmulas, <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> se refieren a los puntajes individuales. Acá tenés una tabla que muestra cómo encajan todas las partes.</p>
 <div class="cell">
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">scores</th>
@@ -1341,17 +1264,13 @@ Nota
 <p>Así se ven las fórmulas con los números incluidos:</p>
 <p><span class="math inline">\(\text{intercepto} = b = \frac{\sum{y}\sum{x^2}-\sum{x}\sum{xy}}{n\sum{x^2}-(\sum{x})^2} = \frac{39 * 200 - 34*231}{7*200-34^2} = -.221\)</span></p>
 <p><span class="math inline">\(\text{pendiente} = m = \frac{n\sum{xy}-\sum{x}\sum{y}}{n\sum{x^2}-(\sum{x})^2} = \frac{7*231-34*39}{7*275-34^2} = 1.19\)</span></p>
-<p>Genial. Ahora podemos verificar si lo hicimos bien. Vamos a graficar los datos en un diagrama de dispersión y trazar una línea con pendiente = 1.19 y una intersección en el eje y de –0.221. Como se muestra en la <a href="#fig-3corwithLine" class="quarto-xref">Figura&nbsp;<span>4.11</span></a>, la línea debería atravesar el centro de los puntos.</p>
+<p>Genial. Ahora podemos verificar si lo hicimos bien. Vamos a graficar los datos en un diagrama de dispersión y trazar una línea con pendiente = 1.19 y una intersección en el eje y de –0.221. Como se muestra en la <a href="#fig-3corwithLine">Figura&nbsp;<span>4.11</span></a>, la línea debería atravesar el centro de los puntos.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-3corwithLine" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-3corwithLine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="03-Correlation_files/figure-html/fig-3corwithLine-1.png" class="img-fluid figure-img" style="width:75.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3corwithLine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4.11: Ejemplo de una línea de regresión con bandas de confianza que atraviesa algunos puntos en un diagrama de dispersión
-</figcaption>
+<div id="fig-3corwithLine" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="03-Correlation_files/figure-html/fig-3corwithLine-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figura&nbsp;4.11: Ejemplo de una línea de regresión con bandas de confianza que atraviesa algunos puntos en un diagrama de dispersión</figcaption>
 </figure>
 </div>
 </div>
@@ -1367,17 +1286,13 @@ Figura&nbsp;4.11: Ejemplo de una línea de regresión con bandas de confianza qu
 <section id="incluso-cuando-hay-causalidad-puede-que-no-haya-correlación-clara" class="level4" data-number="4.6.1.1">
 <h4 data-number="4.6.1.1" class="anchored" data-anchor-id="incluso-cuando-hay-causalidad-puede-que-no-haya-correlación-clara"><span class="header-section-number">4.6.1.1</span> Incluso cuando hay causalidad, puede que no haya correlación clara</h4>
 <p>La primera planta, que no recibe nada de agua, seguramente lo va a pasar mal y eventualmente morir. Debería mostrar el menor crecimiento semanal. ¿Y las plantas que reciben solo unas pocas cucharaditas al día? Quizás reciban justo lo necesario para mantenerse vivas, pero no para crecer mucho. Si estás imaginando un gráfico de dispersión, cada punto sería una planta. Algunos puntos deberían estar en la esquina inferior izquierda (nada de agua = nada de crecimiento). A medida que aumenta el agua, los puntos deberían ir subiendo hacia la derecha: más agua, más crecimiento. ¿Pero qué pasa cuando le das <strong>demasiada</strong> agua a una planta serpiente? Por experiencia personal: se muere. Así que en algún momento, los puntos del gráfico deberían empezar a <strong>bajar</strong> otra vez. Las plantas que reciben <strong>demasiada</strong> agua no crecen bien.</p>
-<p>Ese gráfico imaginario tendría una forma de U invertida. De izquierda a derecha, los puntos suben, llegan a un máximo, y después vuelven a bajar. ¿Y qué pasa si calculás el <em>r</em> de Pearson con esos datos? Te puede dar un valor cercano a 0. El gráfico de dispersión se vería más o menos como en la <a href="#fig-3snakeplant" class="quarto-xref">Figura&nbsp;<span>4.12</span></a>.</p>
+<p>Ese gráfico imaginario tendría una forma de U invertida. De izquierda a derecha, los puntos suben, llegan a un máximo, y después vuelven a bajar. ¿Y qué pasa si calculás el <em>r</em> de Pearson con esos datos? Te puede dar un valor cercano a 0. El gráfico de dispersión se vería más o menos como en la <a href="#fig-3snakeplant">Figura&nbsp;<span>4.12</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-3snakeplant" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-3snakeplant-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="03-Correlation_files/figure-html/fig-3snakeplant-1.png" class="img-fluid figure-img" style="width:75.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3snakeplant-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4.12: Ilustración de una posible relación entre la cantidad de agua y el crecimiento de la planta serpiente. El crecimiento aumenta con el agua, pero eventualmente vuelve a disminuir, porque demasiada agua hace que las plantas mueran.
-</figcaption>
+<div id="fig-3snakeplant" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="03-Correlation_files/figure-html/fig-3snakeplant-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figura&nbsp;4.12: Ilustración de una posible relación entre la cantidad de agua y el crecimiento de la planta serpiente. El crecimiento aumenta con el agua, pero eventualmente vuelve a disminuir, porque demasiada agua hace que las plantas mueran.</figcaption>
 </figure>
 </div>
 </div>
@@ -1422,7 +1337,7 @@ Y aunque eso fuera cierto, las personas pueden ser más o menos felices en un mo
 <p>Esto es lo que podrían mostrar los números elegidos por cada participante:</p>
 <div class="cell">
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">Bolilla</th>
@@ -1509,79 +1424,59 @@ Y aunque eso fuera cierto, las personas pueden ser más o menos felices en un mo
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Simulación de 1000 valores de r"</span>)<span class="sc">+</span></span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Correlación simulada"</span>,<span class="at">y=</span><span class="st">"Frecuencia"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-3anotherthousand" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-3anotherthousand-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="03-Correlation_files/figure-html/fig-3anotherthousand-1.png" class="img-fluid figure-img" style="width:75.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3anotherthousand-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4.13: Otra figura que muestra el rango de valores de r que pueden obtenerse por azar.
-</figcaption>
+<div id="fig-3anotherthousand" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="03-Correlation_files/figure-html/fig-3anotherthousand-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figura&nbsp;4.13: Otra figura que muestra el rango de valores de r que pueden obtenerse por azar.</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>La <a href="#fig-3anotherthousand" class="quarto-xref">Figura&nbsp;<span>4.13</span></a> muestra esos 1000 valores de <span class="math inline">\(r\)</span> obtenidos en la simulación. ¿Te resulta familiar el gráfico? Ya hicimos una simulación parecida antes. Cada punto en el gráfico representa el valor de ( r ) de una de las 1000 simulaciones. Como ves, los puntos están por todos lados, entre –1 y 1. La lección importante acá es que <strong>el azar produjo todas estas correlaciones</strong>. Eso quiere decir que podemos encontrar “correlaciones” en los datos que son completamente <strong>sin sentido</strong>, y que no reflejan ninguna relación causal entre una medida y otra.</p>
+<p>La <a href="#fig-3anotherthousand">Figura&nbsp;<span>4.13</span></a> muestra esos 1000 valores de <span class="math inline">\(r\)</span> obtenidos en la simulación. ¿Te resulta familiar el gráfico? Ya hicimos una simulación parecida antes. Cada punto en el gráfico representa el valor de ( r ) de una de las 1000 simulaciones. Como ves, los puntos están por todos lados, entre –1 y 1. La lección importante acá es que <strong>el azar produjo todas estas correlaciones</strong>. Eso quiere decir que podemos encontrar “correlaciones” en los datos que son completamente <strong>sin sentido</strong>, y que no reflejan ninguna relación causal entre una medida y otra.</p>
 <p>Vamos a ilustrar esta idea de encontrar correlaciones “al azar” una vez más, con una pequeña animación. Esta vez, te vamos a mostrar un gráfico de dispersión con los valores aleatorios de las bolillas elegidas desde el Polo Norte y el Polo Sur. Si no hay relación, deberíamos ver puntos por todos lados. Si llega a aparecer una relación positiva (por pura casualidad), los puntos irán de abajo a la izquierda hacia arriba a la derecha. Si aparece una relación negativa (también por azar), los puntos irán de arriba a la izquierda hacia abajo a la derecha.</p>
-<p>Una cosa más para prepararte para la animación: abajo, en la <a href="#fig-3reminder" class="quarto-xref">Figura&nbsp;<span>4.14</span></a>, hay tres diagramas de dispersión que muestran correlaciones negativa, positiva y nula entre dos variables. Ya viste ese gráfico antes. Solo te estamos recordando que las líneas azules ayudan a ver la dirección de la correlación. Las correlaciones negativas ocurren cuando la línea baja de izquierda a derecha. Las positivas, cuando la línea sube de izquierda a derecha. Y las correlaciones nulas, cuando la línea es plana (ni sube ni baja).</p>
+<p>Una cosa más para prepararte para la animación: abajo, en la <a href="#fig-3reminder">Figura&nbsp;<span>4.14</span></a>, hay tres diagramas de dispersión que muestran correlaciones negativa, positiva y nula entre dos variables. Ya viste ese gráfico antes. Solo te estamos recordando que las líneas azules ayudan a ver la dirección de la correlación. Las correlaciones negativas ocurren cuando la línea baja de izquierda a derecha. Las positivas, cuando la línea sube de izquierda a derecha. Y las correlaciones nulas, cuando la línea es plana (ni sube ni baja).</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-3reminder" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-3reminder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="03-Correlation_files/figure-html/fig-3reminder-1.png" class="img-fluid figure-img" style="width:75.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3reminder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4.14: Un recordatorio de cómo se ven las correlaciones positiva, negativa y nula.
-</figcaption>
+<div id="fig-3reminder" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="03-Correlation_files/figure-html/fig-3reminder-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figura&nbsp;4.14: Un recordatorio de cómo se ven las correlaciones positiva, negativa y nula.</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Ok, ahora estamos listos para la animación. La <a href="#fig-3randcor10gif" class="quarto-xref">Figura&nbsp;<span>4.15</span></a> muestra el proceso de muestreo aleatorio de dos conjuntos de números: uno para la variable X y otro para la variable Y. Cada vez tomamos 10 números para cada variable, los graficamos, y trazamos una línea a través de los puntos. Recordá: estos números son completamente aleatorios, así que deberíamos esperar, en promedio, <strong>que no haya correlación entre ellos</strong>. Sin embargo, eso <strong>no es lo que pasa</strong>. Podés ver cómo la línea cambia todo el tiempo. A veces encontramos una correlación negativa (la línea baja), otras veces una correlación positiva (la línea sube), y otras veces parece que no hay ninguna correlación (la línea es más plana).</p>
+<p>Ok, ahora estamos listos para la animación. La <a href="#fig-3randcor10gif">Figura&nbsp;<span>4.15</span></a> muestra el proceso de muestreo aleatorio de dos conjuntos de números: uno para la variable X y otro para la variable Y. Cada vez tomamos 10 números para cada variable, los graficamos, y trazamos una línea a través de los puntos. Recordá: estos números son completamente aleatorios, así que deberíamos esperar, en promedio, <strong>que no haya correlación entre ellos</strong>. Sin embargo, eso <strong>no es lo que pasa</strong>. Podés ver cómo la línea cambia todo el tiempo. A veces encontramos una correlación negativa (la línea baja), otras veces una correlación positiva (la línea sube), y otras veces parece que no hay ninguna correlación (la línea es más plana).</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-3randcor10gif" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-3randcor10gif-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="imgs/gifs/corUnifn10-1_es.gif" class="img-fluid figure-img" style="width:75.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3randcor10gif-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4.15: Puntos de datos completamente aleatorios tomados de una distribución uniforme, con un tamaño muestral pequeño de 10. La línea azul gira a veces mostrando correlaciones grandes que se producen por azar
-</figcaption>
+<div id="fig-3randcor10gif" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="imgs/gifs/corUnifn10-1_es.gif" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figura&nbsp;4.15: Puntos de datos completamente aleatorios tomados de una distribución uniforme, con un tamaño muestral pequeño de 10. La línea azul gira a veces mostrando correlaciones grandes que se producen por azar</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Capaz estás pensando que esto es un poco inquietante. Si sabemos que no debería haber ninguna correlación entre dos variables aleatorias, ¿cómo puede ser que estemos encontrando correlaciones? ¿No es un gran problema? O sea, si alguien me muestra una correlación entre dos cosas y me dice que están relacionadas, ¿cómo puedo saber si eso es verdad? Después de todo, ¡podría ser pura suerte! El azar también puede producir eso.</p>
-<p>Por suerte, no todo está perdido. Podemos mirar nuestros datos simulados de otra manera, usando un histograma. ¿Te acordás que antes de la animación hicimos 1000 simulaciones con números aleatorios y calculamos el valor de (r) para cada una? Si ponemos todos esos valores de (r) en un histograma, vamos a tener una mejor idea de cómo se comporta el azar. Vamos a ver qué tipo de correlaciones es más o menos probable que el azar produzca. La <a href="#fig-3histrandcor" class="quarto-xref">Figura&nbsp;<span>4.16</span></a> muestra ese histograma de los valores simulados de <span class="math inline">\(r\)</span>.</p>
+<p>Por suerte, no todo está perdido. Podemos mirar nuestros datos simulados de otra manera, usando un histograma. ¿Te acordás que antes de la animación hicimos 1000 simulaciones con números aleatorios y calculamos el valor de (r) para cada una? Si ponemos todos esos valores de (r) en un histograma, vamos a tener una mejor idea de cómo se comporta el azar. Vamos a ver qué tipo de correlaciones es más o menos probable que el azar produzca. La <a href="#fig-3histrandcor">Figura&nbsp;<span>4.16</span></a> muestra ese histograma de los valores simulados de <span class="math inline">\(r\)</span>.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-3histrandcor" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-3histrandcor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="03-Correlation_files/figure-html/fig-3histrandcor-1.png" class="img-fluid figure-img" style="width:75.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3histrandcor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4.16: Histograma que muestra la distribución de frecuencia de los valores de r obtenidos entre dos variables X e Y completamente aleatorias (tamaño muestral = 10). Todo el rango de valores de r puede surgir solo por azar. Los valores grandes de r son menos comunes que los pequeños.
-</figcaption>
+<div id="fig-3histrandcor" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="03-Correlation_files/figure-html/fig-3histrandcor-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figura&nbsp;4.16: Histograma que muestra la distribución de frecuencia de los valores de r obtenidos entre dos variables X e Y completamente aleatorias (tamaño muestral = 10). Todo el rango de valores de r puede surgir solo por azar. Los valores grandes de r son menos comunes que los pequeños.</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Notá que este histograma <strong>no es plano</strong>. La mayoría de los valores de (r) simulados están <strong>cerca de cero</strong>. Y también podés ver que las barras se achican a medida que te alejás de cero, ya sea en dirección positiva o negativa. El mensaje principal acá es que el azar puede producir un rango amplio de correlaciones. Sin embargo, <strong>no todas ocurren con la misma frecuencia</strong>. Por ejemplo, las barras cercanas a –1 y 1 son muy bajas. El azar <strong>casi nunca</strong> produce correlaciones perfectas. Las barras alrededor de –0.5 y 0.5 también son más chicas que las del centro: eso significa que correlaciones medianas <strong>no son tan comunes</strong> cuando los datos son puramente aleatorios.</p>
 <p>Podés pensar este histograma como una “ventana del azar”. Muestra lo que el azar suele hacer, y lo que no suele hacer. Si encontraste una correlación en estas mismas condiciones (por ejemplo, mediste la correlación entre dos conjuntos de 10 números al azar), entonces podrías consultar esta ventana. ¿Qué le preguntarías a la ventana? Algo como: ¿mi correlación observada (la que encontraste en tus datos) podría haber salido de esta ventana? Ponele que encontraste una correlación de r=0.1. ¿Podría haber salido un r=0.1 de este histograma? Bueno, mirá el histograma alrededor del punto 0.1 en el eje x. ¿Hay una barra grande ahí? Si la hay, eso significa que el azar genera ese valor bastante seguido. Podrías sentirte cómodx sacando la siguiente conclusión: sí, este 0.1 podría haber sido producto del azar, porque está bien dentro de la ventana del azar. ¿Y qué pasa con un r=0.5? La barra es mucho más chica ahí. Podrías pensar: “bueno, veo que el azar genera 0.5 algunas veces, así que podría haber sido producto del azar. ¿Lo fue? Tal vez sí, tal vez no, no estoy segurx”. En este punto, tu confianza para sacar una conclusión fuerte sobre el rol del azar quizás empieza a tambalear un poco. ¿Y un r=0.95? Capaz ves que la barra para 0.95 es muy muy chiquita, quizás tan chiquita que ni se ve. ¿Qué te dice eso? Que el azar no produce 0.95 muy seguido, casi nunca. Entonces, si encontraste un 0.95 en tus datos, ¿qué podrías inferir? Quizás te sentirías cómodx diciendo que el azar no generó ese 0.95, porque el 0.95 está casi completamente fuera de la ventana del azar.</p>
-<p>La <a href="#fig-3corrandN" class="quarto-xref">Figura&nbsp;<span>4.17</span></a> muestra cuatro histogramas diferentes con los valores de correlación de Pearson ( r ) para cada uno de los escenarios. Cada escenario involucra un tamaño muestral distinto: 10, 50, 100 y 1000.</p>
+<p>La <a href="#fig-3corrandN">Figura&nbsp;<span>4.17</span></a> muestra cuatro histogramas diferentes con los valores de correlación de Pearson ( r ) para cada uno de los escenarios. Cada escenario involucra un tamaño muestral distinto: 10, 50, 100 y 1000.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-3corrandN" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-3corrandN-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="03-Correlation_files/figure-html/fig-3corrandN-1.png" class="img-fluid figure-img" style="width:75.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3corrandN-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4.17: Histograma de 1000 valores simulados de r, generados al azar, con diferentes tamaños muestrales. Cada panel muestra el histograma para N = 10, 50, 100 y 1000. Cuanto más grande el tamaño muestral, más cerca de 0 tienden los valores de r generados por azar.
-</figcaption>
+<div id="fig-3corrandN" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="03-Correlation_files/figure-html/fig-3corrandN-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figura&nbsp;4.17: Histograma de 1000 valores simulados de r, generados al azar, con diferentes tamaños muestrales. Cada panel muestra el histograma para N = 10, 50, 100 y 1000. Cuanto más grande el tamaño muestral, más cerca de 0 tienden los valores de r generados por azar.</figcaption>
 </figure>
 </div>
 </div>
@@ -1602,34 +1497,26 @@ Como resultado, si tenés una muestra grande como N = 1000 y encontrás una corr
 <section id="ver-cómo-se-comporta-la-correlación-cuando-no-hay-correlación" class="level4" data-number="4.6.3.1">
 <h4 data-number="4.6.3.1" class="anchored" data-anchor-id="ver-cómo-se-comporta-la-correlación-cuando-no-hay-correlación"><span class="header-section-number">4.6.3.1</span> Ver cómo se comporta la correlación cuando no hay correlación</h4>
 <p>Abajo se muestran números generados aleatoriamente para dos variables, los graficamos, y mostramos la correlación usando una línea. Hay cuatro paneles, y cada uno muestra un tamaño muestral distinto: 10, 50, 100 y 1000 observaciones en cada muestra.</p>
-<p>Recordá: como estamos muestreando números aleatoriamente, no debería haber ninguna relación entre las variables X e Y. Pero, como venimos discutiendo, a veces podemos observar una correlación —producto del azar. Lo importante es mirar <strong>cómo se comporta la línea</strong> en los cuatro paneles de la <a href="#fig-3corRandfour" class="quarto-xref">Figura&nbsp;<span>4.18</span></a>.<br>
+<p>Recordá: como estamos muestreando números aleatoriamente, no debería haber ninguna relación entre las variables X e Y. Pero, como venimos discutiendo, a veces podemos observar una correlación —producto del azar. Lo importante es mirar <strong>cómo se comporta la línea</strong> en los cuatro paneles de la <a href="#fig-3corRandfour">Figura&nbsp;<span>4.18</span></a>.<br>
 Con tamaño muestral de 10, la línea gira para cualquier lado. También se mueve bastante con tamaños de 50 o 100. Incluso con 1000 se mueve un poco, pero mucho menos. En todos los casos esperamos que la línea sea plana, pero cada vez que tomamos nuevas muestras, a veces la línea nos muestra <strong>patrones falsos</strong>.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-3corRandfour" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-3corRandfour-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="imgs/gifs/corUnifFourNs-1_es.gif" class="img-fluid figure-img" style="width:75.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3corRandfour-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4.18: Animación de cómo se comporta la correlación entre variables X e Y completamente aleatorias en función del tamaño de la muestra. La línea de mejor ajuste no es muy estable con tamaños de muestra pequeños, pero se vuelve más consistentemente plana a medida que aumenta el tamaño de la muestra.
-</figcaption>
+<div id="fig-3corRandfour" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="imgs/gifs/corUnifFourNs-1_es.gif" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figura&nbsp;4.18: Animación de cómo se comporta la correlación entre variables X e Y completamente aleatorias en función del tamaño de la muestra. La línea de mejor ajuste no es muy estable con tamaños de muestra pequeños, pero se vuelve más consistentemente plana a medida que aumenta el tamaño de la muestra.</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>¿En cuál de estas líneas deberías creer? Bueno, esperamos que veas que la línea correspondiente a N = 1000 es <strong>la más estable</strong>. Tiende a ser muy plana cada vez, y <strong>no depende tanto de la muestra en particular</strong>. En cambio, la línea con solo 10 observaciones <strong>va para cualquier lado</strong>. La conclusión acá es que si alguien te dice que encontró una correlación, deberías preguntar cuántas observaciones tenía en su muestra. Si solo tenía 10 observaciones, ¿cómo podrías confiar en esa afirmación? ¡No podés! Ahora que sabés que muestras tan chicas pueden producir cualquier cosa <strong>solo por azar</strong>, deberías desconfiar. En cambio, si descubrís que la muestra era grande, podés confiar un poco más en el hallazgo.</p>
-<p>En el ejemplo anterior, muestreamos números de una distribución <strong>uniforme</strong>. Muchos datos reales provienen de una distribución normal (o aproximadamente normal). Podemos repetir lo anterior, pero muestreando de una misma distribución normal. Igual habrá <strong>cero correlación real</strong> entre X e Y, porque todo fue generado al azar. La <a href="#fig-3normCorfour" class="quarto-xref">Figura&nbsp;<span>4.19</span></a> muestra el mismo comportamiento. Con tamaños muestrales pequeños, la correlación calculada fluctúa mucho. Con muestras grandes, no.</p>
+<p>En el ejemplo anterior, muestreamos números de una distribución <strong>uniforme</strong>. Muchos datos reales provienen de una distribución normal (o aproximadamente normal). Podemos repetir lo anterior, pero muestreando de una misma distribución normal. Igual habrá <strong>cero correlación real</strong> entre X e Y, porque todo fue generado al azar. La <a href="#fig-3normCorfour">Figura&nbsp;<span>4.19</span></a> muestra el mismo comportamiento. Con tamaños muestrales pequeños, la correlación calculada fluctúa mucho. Con muestras grandes, no.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-3normCorfour" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-3normCorfour-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="imgs/gifs/corNormFourNs-1_es.gif" class="img-fluid figure-img" style="width:75.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3normCorfour-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4.19: Animación de la correlación para valores aleatorios muestreados de una distribución normal, en lugar de una distribución uniforme.
-</figcaption>
+<div id="fig-3normCorfour" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="imgs/gifs/corNormFourNs-1_es.gif" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figura&nbsp;4.19: Animación de la correlación para valores aleatorios muestreados de una distribución normal, en lugar de una distribución uniforme.</figcaption>
 </figure>
 </div>
 </div>
@@ -1639,18 +1526,14 @@ Figura&nbsp;4.19: Animación de la correlación para valores aleatorios muestrea
 </section>
 <section id="ver-cómo-se-comporta-la-correlación-cuando-realmente-hay-una-correlación" class="level3" data-number="4.6.4">
 <h3 data-number="4.6.4" class="anchored" data-anchor-id="ver-cómo-se-comporta-la-correlación-cuando-realmente-hay-una-correlación"><span class="header-section-number">4.6.4</span> Ver cómo se comporta la correlación cuando realmente <strong>hay</strong> una correlación</h3>
-<p>A veces sí existen correlaciones entre dos variables que <strong>no</strong> son producto del azar. La <a href="#fig-3realcorFour" class="quarto-xref">Figura&nbsp;<span>4.20</span></a> muestra una animación con cuatro gráficos de dispersión. Cada uno muestra la correlación entre dos variables. Nuevamente, variamos el tamaño muestral: 10, 50, 100 y 1000 observaciones. Los datos fueron generados de forma que <strong>contengan una correlación positiva real</strong>. Así que deberíamos esperar que la línea suba desde la esquina inferior izquierda hacia la esquina superior derecha. Sin embargo, los datos todavía tienen variabilidad. Así que esta vez, el error muestral debido al azar va a “difuminar” un poco la correlación. Sabemos que está ahí, pero a veces el azar puede hacer que desaparezca.</p>
+<p>A veces sí existen correlaciones entre dos variables que <strong>no</strong> son producto del azar. La <a href="#fig-3realcorFour">Figura&nbsp;<span>4.20</span></a> muestra una animación con cuatro gráficos de dispersión. Cada uno muestra la correlación entre dos variables. Nuevamente, variamos el tamaño muestral: 10, 50, 100 y 1000 observaciones. Los datos fueron generados de forma que <strong>contengan una correlación positiva real</strong>. Así que deberíamos esperar que la línea suba desde la esquina inferior izquierda hacia la esquina superior derecha. Sin embargo, los datos todavía tienen variabilidad. Así que esta vez, el error muestral debido al azar va a “difuminar” un poco la correlación. Sabemos que está ahí, pero a veces el azar puede hacer que desaparezca.</p>
 <p>Notá que en el panel superior izquierdo (tamaño muestral = 10), la línea se mueve mucho más que en los otros paneles. Cada nuevo conjunto de muestras produce correlaciones distintas. A veces, la línea incluso se aplana o baja. Pero a medida que aumentamos el tamaño muestral, vemos que la línea <strong>no cambia tanto</strong>: siempre va hacia arriba, mostrando una correlación positiva.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-3realcorFour" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-3realcorFour-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="imgs/gifs/corRealgif-1_es.gif" class="img-fluid figure-img" style="width:75.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3realcorFour-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4.20: Cómo se comporta la correlación en función del tamaño muestral cuando existe una correlación real entre las variables X e Y.
-</figcaption>
+<div id="fig-3realcorFour" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="imgs/gifs/corRealgif-1_es.gif" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figura&nbsp;4.20: Cómo se comporta la correlación en función del tamaño muestral cuando existe una correlación real entre las variables X e Y.</figcaption>
 </figure>
 </div>
 </div>
@@ -1675,7 +1558,7 @@ Lamentablemente, en el mundo real casi siempre tenemos solo una muestra, la que 
 </ol>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-salsburg2001lady" class="csl-entry" role="listitem">
 Salsburg, David. 2001. <em>The Lady Tasting Tea: <span>How</span> Statistics Revolutionized Science in the Twentieth Century</em>. <span>Macmillan</span>.
 </div>
@@ -1718,7 +1601,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1750,48 +1644,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/almadana\.github\.io\/libro_cuanti\/");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1801,17 +1658,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1823,129 +1671,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
+      return note.innerHTML;
     });
   }
       let selectedAnnoteEl;
@@ -1989,7 +1715,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -2015,32 +1740,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2102,12 +1801,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./02b-tablas_final.html" class="pagination-link" aria-label="Tablas">
+      <a href="./02b-tablas_final.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tablas</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./04-SamplesPopulations.html" class="pagination-link" aria-label="Probabilidad, muestreo y estimación">
+      <a href="./04-SamplesPopulations.html" class="pagination-link">
         <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probabilidad, muestreo y estimación</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -2116,5 +1815,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/almadana/libro_cuanti/edit/master/03-Correlation.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li></ul></div></div></div></footer></body></html>
+</body></html>

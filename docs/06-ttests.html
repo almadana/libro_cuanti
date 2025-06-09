@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Matthew J. C. Crump">
 
-<title>7&nbsp; Pruebas t – Respondiendo preguntas con datos</title>
+<title>Respondiendo preguntas con datos - 7&nbsp; Pruebas t</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -59,7 +59,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -92,23 +91,17 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-1c4f673b5ad71a23e38d87f497bd0754.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -117,7 +110,6 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -133,43 +125,16 @@ gtag('js', new Date());
 gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 </script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<meta property="og:title" content="7&nbsp; Pruebas t – Respondiendo preguntas con datos">
+<meta property="og:title" content="Respondiendo preguntas con datos - 7&nbsp; Pruebas t">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://almadana.github.io/libro_cuanti/06-ttests_files/figure-html/fig-6muestraMSEM-1.png">
-<meta property="og:site_name" content="Respondiendo preguntas con datos">
+<meta property="og:site-name" content="Respondiendo preguntas con datos">
 <meta property="og:image:height" content="960">
 <meta property="og:image:width" content="1344">
-<meta name="twitter:title" content="7&nbsp; Pruebas t – Respondiendo preguntas con datos">
+<meta name="twitter:title" content="Respondiendo preguntas con datos - 7&nbsp; Pruebas t">
 <meta name="twitter:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
 <meta name="twitter:image" content="https://almadana.github.io/libro_cuanti/imgs/TextbookCover.png">
 <meta name="twitter:site" content="@MattCrumpLab">
@@ -184,13 +149,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-ttests.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Pruebas t</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-ttests.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Pruebas t</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -199,12 +164,12 @@ window.Quarto = {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Respondiendo preguntas con datos</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/almadana/libro_cuanti/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/almadana/libro_cuanti/" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
@@ -320,7 +285,7 @@ window.Quarto = {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -361,7 +326,7 @@ window.Quarto = {
   <li><a href="#test-de-una-o-dos-colas" id="toc-test-de-una-o-dos-colas" class="nav-link" data-scroll-target="#test-de-una-o-dos-colas"><span class="header-section-number">7.6.1</span> Test de una o dos colas</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/almadana/libro_cuanti/edit/master/06-ttests.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/almadana/libro_cuanti/edit/master/06-ttests.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -387,9 +352,7 @@ window.Quarto = {
   </div>
   
 
-
 </header>
-
 
 <p>Volvamos atrás en el tiempo. William Sealy Gosset consiguió trabajo en la cervecería Guinness. Sí, la que hace la famosa stout irlandesa. Lo que pasó después fue más o menos así (lo estoy inventando, pero la idea general es cierta).</p>
 <p>Guinness quería que todas sus cervezas fueran las mejores. Nada de errores, nada de birra mala. Querían mejorar el control de calidad para que, sin importar en qué parte del mundo sirvieras una Guinness, siempre saliera perfecta: 5 estrellas sobre 5, siempre.</p>
@@ -467,43 +430,25 @@ Note
 <p>Empecemos con un ejemplo simple. Imaginá que tu media muestral es 5, y querés saber si viene de una población con media 5. ¿Cuál sería el valor de <em>t</em>? Cero: restamos 5 - 5 = 0. Como el numerador es 0, <em>t</em> también lo es. Así que <em>t</em> = 0 ocurre cuando <strong>no hay diferencia</strong>. Ahora tomás otra muestra. ¿La media será siempre 5? Probablemente no. Supongamos que da 6. ¿Qué valor tendrá <em>t</em>? El numerador es positivo: 6 - 5 = +1. Pero <em>t</em> no necesariamente será 1, eso depende del error estándar. Si es 1, entonces <em>t</em> será 1, porque 1/1 = 1. Si el error estándar es menor que 1, ¿qué pasa con <em>t</em>? Aumenta. Por ejemplo, 1 dividido por 0.5 da 2. Si el error estándar fuera 0.5, entonces <em>t</em> sería 2. Y con ese valor podríamos tener más confianza en que la diferencia que observamos no es casual.</p>
 <p>¿Puede <em>t</em> ser menor que 1? Claro. Si el error estándar es grande, digamos 2, entonces <em>t</em> será más chico (1/2 = 0.5). La dirección de la diferencia entre la media muestral y la poblacional también puede hacer que <em>t</em> sea negativo. Si la media muestral fuera 4, entonces la diferencia es negativa, y <em>t</em> también lo será, porque el numerador es negativo. El denominador (el error estándar) siempre será positivo (acordate por qué: se calcula a partir de la desviación estándar de la muestra, que siempre es positiva porque usamos cuadrados al calcularla). Así que estas son algunas intuiciones sobre los valores posibles de <em>t</em>. Puede ser positivo o negativo, grande o chico.</p>
 <p>Hagamos una cosa más para afinar la intuición. ¿Qué tal si generamos varias muestras, calculamos la media muestral <strong>y</strong> el error estándar de la media, y graficamos esas dos cosas entre sí? Así vamos a ver cómo varía típicamente la media con respecto al error estándar.</p>
-<p>En la <a href="#fig-6muestraMSEM" class="quarto-xref">Figure&nbsp;<span>7.1</span></a>, tomé 1.000 muestras de tamaño $N = 10$ de una distribución normal (media = 0, desviación estándar = 1). En cada caso, calculé la media y el error estándar. Eso nos da dos estadísticas descriptivas por muestra, y podemos graficarlas como puntos en un scatterplot.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>media_muestral <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>desvío_muestral <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>) {</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  s <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  media_muestral[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(s)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  desvío_muestral[i] <span class="ot">&lt;-</span> <span class="fu">sd</span>(s) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">length</span>(s))</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(media_muestral, desvío_muestral)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>En la <a href="#fig-6muestraMSEM">Figure&nbsp;<span>7.1</span></a>, tomé 1.000 muestras de tamaño $N = 10$ de una distribución normal (media = 0, desviación estándar = 1). En cada caso, calculé la media y el error estándar. Eso nos da dos estadísticas descriptivas por muestra, y podemos graficarlas como puntos en un scatterplot.</p>
+<div class="cell" data-hash="06-ttests_cache/html/fig-6muestraMSEM_a799944a33f03d1b367e062ba26ead41">
 <div class="cell-output-display">
-<div id="fig-6muestraMSEM" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-6muestraMSEM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="06-ttests_files/figure-html/fig-6muestraMSEM-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6muestraMSEM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.1: Diagrama de dispersión con la media muestral en el eje x y el error estándar en el eje y
-</figcaption>
+<div id="fig-6muestraMSEM" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="06-ttests_files/figure-html/fig-6muestraMSEM-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;7.1: Diagrama de dispersión con la media muestral en el eje x y el error estándar en el eje y</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Lo que obtenemos es una nube de puntos. Podés notar que tiene una forma más o menos circular. Hay más puntos en el centro, y menos a medida que se alejan. La nube muestra el rango típico de las medias muestrales: la mayoría está entre -1 y 1. El error estándar también varía entre aproximadamente 0.2 y 0.5. Recordá que cada punto representa una muestra.</p>
-<p>Podemos ver estos datos de otra forma. En lugar de graficar directamente las medias y errores, podemos dividir la media de cada muestra por su error estándar. La <a href="#fig-6thisexample" class="quarto-xref">Figure&nbsp;<span>7.2</span></a> muestra un histograma de esos valores.</p>
-<div class="cell">
+<p>Podemos ver estos datos de otra forma. En lugar de graficar directamente las medias y errores, podemos dividir la media de cada muestra por su error estándar. La <a href="#fig-6thisexample">Figure&nbsp;<span>7.2</span></a> muestra un histograma de esos valores.</p>
+<div class="cell" data-hash="06-ttests_cache/html/fig-6thisexample_c64d0570bf511a31dbd47764ddcdf3f7">
 <div class="cell-output-display">
-<div id="fig-6thisexample" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-6thisexample-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="06-ttests_files/figure-html/fig-6thisexample-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6thisexample-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.2: Histograma de las medias muestrales divididas por sus errores estándar: una distribución t.
-</figcaption>
+<div id="fig-6thisexample" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="06-ttests_files/figure-html/fig-6thisexample-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;7.2: Histograma de las medias muestrales divididas por sus errores estándar: una distribución t.</figcaption>
 </figure>
 </div>
 </div>
@@ -513,16 +458,12 @@ Figure&nbsp;7.2: Histograma de las medias muestrales divididas por sus errores e
 <section id="calcular-t-a-partir-de-datos" class="level3" data-number="7.2.3">
 <h3 data-number="7.2.3" class="anchored" data-anchor-id="calcular-t-a-partir-de-datos"><span class="header-section-number">7.2.3</span> Calcular t a partir de datos</h3>
 <p>Probemos calcular un valor de <em>t</em> con una muestra chica. Supongamos que 10 estudiantes hicieron un test de verdadero/falso con 5 preguntas. Hay un 50% de chance de acertar cada una al azar.</p>
-<p>Todos completan el test, corregimos, y calculamos el desempeño (porcentaje de respuestas correctas). Queremos saber si estuvieron adivinando. Si fue así, el promedio debería rondar el 50%, que sería igual a azar. Veamos la tabla <code>@tbl-tsmall</code>.</p>
-<div class="cell">
-<div id="tbl-tsmall" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tsmall-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;7.1: Cálculo del valor t para un test de una muestra.
-</figcaption>
-<div aria-describedby="tbl-tsmall-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p>Todos completan el test, corregimos, y calculamos el desempeño (porcentaje de respuestas correctas). Queremos saber si estuvieron adivinando. Si fue así, el promedio debería rondar el 50%, que sería igual a azar. Veamos la <a href="#tbl-tsmall">Table&nbsp;<span>7.1</span></a>.</p>
+<div class="cell" data-hash="06-ttests_cache/html/tbl-tsmall_d449f7ab152b0f8a521582663377f148">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<div id="tbl-tsmall" class="anchored">
+<table class="table table-sm table-striped small">
+<caption>Table&nbsp;7.1: Cálculo del valor t para un test de una muestra.</caption>
 <colgroup>
 <col style="width: 16%">
 <col style="width: 12%">
@@ -649,8 +590,6 @@ Table&nbsp;7.1: Cálculo del valor t para un test de una muestra.
 </table>
 </div>
 </div>
-</figure>
-</div>
 </div>
 <p>Podés ver que la columna <code>puntajes</code> tiene los puntajes de cada uno de los 10 estudiantes. Hicimos todo lo necesario para calcular la desviación estándar. Recordá que la desviación estándar muestral es la raíz cuadrada de la varianza muestral, o sea:</p>
 <p><span class="math inline">\(\text{desviación estándar} = \sqrt{\frac{\sum_{i}^{n}({x_{i}-\bar{x})^2}}{N-1}}\)</span></p>
@@ -660,70 +599,31 @@ Table&nbsp;7.1: Cálculo del valor t para un test de una muestra.
 <p><em>t</em> es la diferencia entre nuestra media muestral (61) y la media poblacional (50, si asumimos azar), dividida por el error estándar:</p>
 <p><span class="math inline">\(t = \frac{\bar{X}-\mu}{S_{\bar{X}}} = \frac{61-50}{5.67} = 1.94\)</span></p>
 <p>Y así se calcula <em>t</em> a mano. Es un embole. A mí ya me molestó hacerlo así. En el laboratorio vas a aprender a calcular <em>t</em> con software, que te lo da de una. Por ejemplo, en R solo tenés que escribir:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(puntajes, <span class="at">mu=</span><span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    One Sample t-test
-
-data:  puntajes
-t = 1.9412, df = 9, p-value = 0.08415
-alternative hypothesis: true mean is not equal to 50
-95 percent confidence interval:
- 48.18111 73.81889
-sample estimates:
-mean of x 
-       61 </code></pre>
-</div>
+<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-2_6b05b7ad1fde55f473181cf169b457a3">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(puntajes, <span class="at">mu=</span><span class="dv">50</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  One Sample t-test</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; data:  puntajes</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; t = 1.9412, df = 9, p-value = 0.08415</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; alternative hypothesis: true mean is not equal to 50</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 95 percent confidence interval:</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  48.18111 73.81889</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; sample estimates:</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; mean of x </span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        61</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="cómo-se-comporta-t" class="level3" data-number="7.2.4">
 <h3 data-number="7.2.4" class="anchored" data-anchor-id="cómo-se-comporta-t"><span class="header-section-number">7.2.4</span> ¿Cómo se comporta t?</h3>
 <p>Si <em>t</em> es solo un número que podemos calcular a partir de una muestra (y lo es), ¿qué hacemos con él? ¿Cómo usamos <em>t</em> para inferencia estadística?</p>
-<p>Volvamos al capítulo sobre muestreo y distribuciones. Ahí hablamos de la distribución muestral de la media. Generamos muchas muestras, calculamos la media de cada una, y armamos un histograma de esas medias. Más adelante dijimos que podíamos hacer eso con <strong>cualquier</strong> estadístico. Para cada muestra podíamos calcular la media, la desviación estándar, el error estándar, e incluso <em>t</em>. Podríamos generar 10.000 muestras y hacer cuatro histogramas, uno por cada estadístico. Eso fue exactamente lo que hice, y los resultados están en los cuatro paneles de la <a href="#fig-6sampdists" class="quarto-xref">Figure&nbsp;<span>7.3</span></a>. Usé un tamaño de muestra de 20, y tomé observaciones aleatorias de una distribución normal, con media = 0, y la desviación estándar = 1. Veamos las distribuciones muestrales de cada estadístico. <em>t</em> se calculó asumiendo que la media poblacional es 0.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>all_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>) {</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  muestra <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  media_muestral<span class="ot">&lt;-</span> <span class="fu">mean</span>(muestra)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  desvío_muestral <span class="ot">&lt;-</span> <span class="fu">sd</span>(muestra)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  muestra_ee <span class="ot">&lt;-</span> <span class="fu">sd</span>(muestra) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">length</span>(muestra))</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  muestra_t <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">t.test</span>(muestra, <span class="at">mu =</span> <span class="dv">0</span>)<span class="sc">$</span>statistic)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  t_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(i, media_muestral, desvío_muestral, muestra_ee, muestra_t)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  all_df <span class="ot">&lt;-</span> <span class="fu">rbind</span>(all_df, t_df)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(all_df, <span class="fu">aes</span>(<span class="at">x =</span> media_muestral)) <span class="sc">+</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size=</span><span class="dv">20</span>)</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(all_df, <span class="fu">aes</span>(<span class="at">x =</span> desvío_muestral)) <span class="sc">+</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size=</span><span class="dv">20</span>)</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(all_df, <span class="fu">aes</span>(<span class="at">x =</span> muestra_ee)) <span class="sc">+</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size=</span><span class="dv">20</span>)</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(all_df, <span class="fu">aes</span>(<span class="at">x =</span> muestra_t)) <span class="sc">+</span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size=</span><span class="dv">20</span>)</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(a, b, c, d,</span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>          <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">nrow =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-</div>
+<p>Volvamos al capítulo sobre muestreo y distribuciones. Ahí hablamos de la distribución muestral de la media. Generamos muchas muestras, calculamos la media de cada una, y armamos un histograma de esas medias. Más adelante dijimos que podíamos hacer eso con <strong>cualquier</strong> estadístico. Para cada muestra podíamos calcular la media, la desviación estándar, el error estándar, e incluso <em>t</em>. Podríamos generar 10.000 muestras y hacer cuatro histogramas, uno por cada estadístico. Eso fue exactamente lo que hice, y los resultados están en los cuatro paneles de la <a href="#fig-6sampdists">Figure&nbsp;<span>7.3</span></a>. Usé un tamaño de muestra de 20, y tomé observaciones aleatorias de una distribución normal, con media = 0, y la desviación estándar = 1. Veamos las distribuciones muestrales de cada estadístico. <em>t</em> se calculó asumiendo que la media poblacional es 0.</p>
+<div class="cell" data-hash="06-ttests_cache/html/fig-6sampdists_4b3ab080ff3c0199041cd65e5705c1db">
 <div class="cell-output-display">
-<div id="fig-6sampdists" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-6sampdists-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="06-ttests_files/figure-html/fig-6sampdists-1.png" class="img-fluid figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6sampdists-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.3: Distribuciones muestrales de la media, la desviación estándar, el error estándar de la media, y <span class="math inline">\(t\)</span>.
-</figcaption>
+<div id="fig-6sampdists" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="06-ttests_files/figure-html/fig-6sampdists-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;7.3: Distribuciones muestrales de la media, la desviación estándar, el error estándar de la media, y <span class="math inline">\(t\)</span>.</figcaption>
 </figure>
 </div>
 </div>
@@ -742,83 +642,13 @@ Figure&nbsp;7.3: Distribuciones muestrales de la media, la desviación estándar
 <li>Evaluar si tus estadísticas muestrales parecen probables o improbables</li>
 </ol>
 <p>Enseguida vamos a formalizar todo esto. Por ahora, quiero que veas que esto que vas a hacer es algo que <strong>ya hiciste antes</strong>. Por ejemplo, en el test de Crump y el test de aleatorización, nos enfocamos en la distribución de diferencias de medias. Podríamos hacer lo mismo acá, pero esta vez nos vamos a centrar en la distribución de valores <em>t</em>. Después aplicamos las mismas reglas de decisión que usamos con las otras distribuciones.</p>
-<p>Abajo vas a ver un gráfico que ya viste antes, pero ahora muestra una distribución de <em>t</em>, no de diferencias de medias. Recordá: si obtenemos un único valor <em>t</em> a partir de una muestra que recolectamos, podemos consultar la <em>ventana de azar</em> en <a href="#fig-6tdecision" class="quarto-xref">Figure&nbsp;<span>7.4</span></a> para ver si ese valor era esperable por azar o no.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>muestra_t <span class="ot">&lt;-</span> all_df<span class="sc">$</span>muestra_t</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(all_df, <span class="fu">aes</span>(<span class="at">x =</span> muestra_t)) <span class="sc">+</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"rect"</span>,</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmin =</span> <span class="fu">min</span>(muestra_t),</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmax =</span> <span class="fu">max</span>(muestra_t),</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">ymin =</span> <span class="dv">0</span>,</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">ymax =</span> <span class="cn">Inf</span>,</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.5</span>,</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"red"</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"rect"</span>,</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmin =</span> <span class="fu">min</span>(muestra_t),</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmax =</span> <span class="sc">-</span><span class="fl">1.94</span>,</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">ymin =</span> <span class="dv">0</span>,</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">ymax =</span> <span class="cn">Inf</span>,</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.7</span>,</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"light grey"</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">"rect"</span>,</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmin =</span> <span class="fl">1.94</span>,</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmax =</span> <span class="fu">max</span>(muestra_t),</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">ymin =</span> <span class="dv">0</span>,</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">ymax =</span> <span class="cn">Inf</span>,</span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.7</span>,</span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"light grey"</span></span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rect</span>(<span class="fu">aes</span>(</span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmin =</span> <span class="sc">-</span><span class="cn">Inf</span>,</span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmax =</span> <span class="fu">min</span>(muestra_t),</span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">ymin =</span> <span class="dv">0</span>,</span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">ymax =</span> <span class="cn">Inf</span></span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>  <span class="at">alpha =</span> .<span class="dv">5</span>,</span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="st">"lightgreen"</span>) <span class="sc">+</span></span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rect</span>(<span class="fu">aes</span>(</span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmin =</span> <span class="fu">max</span>(muestra_t),</span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmax =</span> <span class="cn">Inf</span>,</span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">ymin =</span> <span class="dv">0</span>,</span>
-<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">ymax =</span> <span class="cn">Inf</span></span>
-<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>  <span class="at">alpha =</span> .<span class="dv">5</span>,</span>
-<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="st">"lightgreen"</span>) <span class="sc">+</span></span>
-<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">50</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
-<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">min</span>(muestra_t)) <span class="sc">+</span></span>
-<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">max</span>(muestra_t)) <span class="sc">+</span></span>
-<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="sc">-</span><span class="fl">1.94</span>) <span class="sc">+</span></span>
-<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">1.94</span>) <span class="sc">+</span></span>
-<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">8</span>, <span class="dv">8</span>) <span class="sc">+</span></span>
-<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="dv">250</span>, <span class="at">label =</span> <span class="st">"AZAR"</span>), <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> label)) <span class="sc">+</span></span>
-<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="sc">-</span><span class="dv">7</span>, <span class="at">y =</span> <span class="dv">250</span>, <span class="at">label =</span> <span class="st">"NO</span><span class="sc">\n</span><span class="st">AZAR"</span>),</span>
-<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> label)) <span class="sc">+</span></span>
-<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">7</span>, <span class="at">y =</span> <span class="dv">250</span>, <span class="at">label =</span> <span class="st">"NO</span><span class="sc">\n</span><span class="st">AZAR"</span>),</span>
-<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> label)) <span class="sc">+</span></span>
-<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="sc">-</span><span class="dv">4</span>, <span class="at">y =</span> <span class="dv">250</span>,</span>
-<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a>                               <span class="at">label =</span> <span class="st">"?"</span>),</span>
-<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> label)) <span class="sc">+</span></span>
-<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"media de muestra_t"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
-(`geom_bar()`).</code></pre>
-</div>
+<p>Abajo vas a ver un gráfico que ya viste antes, pero ahora muestra una distribución de <em>t</em>, no de diferencias de medias. Recordá: si obtenemos un único valor <em>t</em> a partir de una muestra que recolectamos, podemos consultar la <em>ventana de azar</em> en <a href="#fig-6tdecision">Figure&nbsp;<span>7.4</span></a> para ver si ese valor era esperable por azar o no.</p>
+<div class="cell" data-hash="06-ttests_cache/html/fig-6tdecision_c457c10d887a174675cee1568dc1516a">
 <div class="cell-output-display">
-<div id="fig-6tdecision" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-6tdecision-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="06-ttests_files/figure-html/fig-6tdecision-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6tdecision-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.4: Aplicación de criterios de decisión a la distribución t. Histograma de valores t de muestras (n = 20) tomadas de una misma distribución normal (μ = 0, sd = 1)
-</figcaption>
+<div id="fig-6tdecision" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="06-ttests_files/figure-html/fig-6tdecision-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;7.4: Aplicación de criterios de decisión a la distribución t. Histograma de valores t de muestras (n = 20) tomadas de una misma distribución normal (μ = 0, sd = 1)</figcaption>
 </figure>
 </div>
 </div>
@@ -854,9 +684,9 @@ Figure&nbsp;7.4: Aplicación de criterios de decisión a la distribución t. His
 <h3 data-number="7.3.2" class="anchored" data-anchor-id="los-datos"><span class="header-section-number">7.3.2</span> Los datos</h3>
 <p>Veamos los datos de los primeros 5 bebés del estudio. Esto nos va a ayudar a entender mejor algunas propiedades de los datos antes de analizarlos. Vamos a ver que los datos están estructurados de forma que podemos aprovechar con una prueba t de muestras pareadas. (Ojo: miramos solo los primeros 5 bebés para mostrar cómo funcionan los cálculos. El resultado final dla prueba t cambia si usamos todos los datos del estudio).</p>
 <p>Acá está la tabla con los datos:</p>
-<div class="cell">
+<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-3_af36d1552c052ebdcbd9ae47c3ebc8b6">
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">infant</th>
@@ -906,13 +736,9 @@ Figure&nbsp;7.4: Aplicación de criterios de decisión a la distribución t. His
 <li>Puntaje en fase de línea base − Puntaje en fase de prueba</li>
 </ol>
 <p>Vamos a usar la <strong>primera fórmula</strong>. ¿Por qué? Porque da <strong>diferencias positivas</strong> cuando el puntaje de la prueba es mayor que el de línea base. Eso hace que los puntajes positivos tengan sentido en este estudio: indican que el bebé miró más al cantante de la canción familiar <strong>después</strong> de escucharlo que <strong>antes</strong>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>paired_sample_df <span class="ot">&lt;-</span> <span class="fu">cbind</span>(paired_sample_df, </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">diferencias =</span> (paired_sample_df<span class="sc">$</span>Test <span class="sc">-</span> </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                                           paired_sample_df<span class="sc">$</span>Línea_de_base))</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(paired_sample_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-4_3aa88488296f50bf623a39ec4e0943ac">
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">infant</th>
@@ -962,14 +788,9 @@ Figure&nbsp;7.4: Aplicación de criterios de decisión a la distribución t. His
 <section id="la-diferencia-media" class="level3" data-number="7.3.4">
 <h3 data-number="7.3.4" class="anchored" data-anchor-id="la-diferencia-media"><span class="header-section-number">7.3.4</span> La diferencia media</h3>
 <p>Como venimos diciendo, el efecto de interés en este estudio es la <strong>diferencia media</strong> entre la proporción de tiempo de mirada en línea base y en prueba. Podemos calcularla como la <strong>media de los puntajes de diferencia</strong>. Vamos a hacerlo. De paso, para divertirnos, también vamos a calcular la media de los puntajes en línea base, los de prueba y los de diferencia.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>paired_sample_df <span class="ot">&lt;-</span> paired_sample_df <span class="sc">%&gt;%</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="st">"Sums"</span>,<span class="fu">colSums</span>(paired_sample_df[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>]))) <span class="sc">%&gt;%</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="st">"Means"</span>,<span class="fu">colMeans</span>(paired_sample_df[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>])))</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(paired_sample_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-5_5d54a149ac9b24a8eee5b9bb681481f4">
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">infant</th>
@@ -1034,9 +855,9 @@ Figure&nbsp;7.4: Aplicación de criterios de decisión a la distribución t. His
 <p>Vamos a calcular <em>t</em> en un momento. Pero antes, pensemos de nuevo: ¿por qué queremos calcular <em>t</em>? ¿Por qué no quedarnos solo con la diferencia media?</p>
 <p>Recordá: toda la idea detrás de <em>t</em> es que nos da una indicación de cuánta <strong>confianza</strong> deberíamos tener en nuestra media. El valor de <em>t</em> se obtiene al dividir una medida de la media (el numerador) por una medida de variación (el error estándar, en el denominador). <em>t</em> será chico cuando la diferencia media es chica, o cuando la variación es grande. O sea, valores bajos de <em>t</em> nos dicen que no deberíamos estar muy seguros sobre esa estimación de diferencia. En cambio, cuando la diferencia media es grande y/o la variación es pequeña, obtenemos un valor alto de <em>t</em>. Eso nos da <strong>más confianza</strong> en la estimación.</p>
 <p>Vamos a calcular <em>t</em> para los puntajes de diferencia. Usamos las mismas fórmulas de antes:</p>
-<div class="cell">
+<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-6_b242ccaad168f9500992065ab8ff8d42">
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="table table-sm table-striped small">
 <colgroup>
 <col style="width: 8%">
 <col style="width: 16%">
@@ -1141,21 +962,18 @@ Figure&nbsp;7.4: Aplicación de criterios de decisión a la distribución t. His
 </div>
 </div>
 <p>Si hiciéramos este test usando R, obtendríamos casi los mismos números (hay un poco de redondeo en la tabla).</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(diferencias, <span class="at">mu =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    One Sample t-test
-
-data:  diferencias
-t = 0.72381, df = 4, p-value = 0.5092
-alternative hypothesis: true mean is not equal to 0
-95 percent confidence interval:
- -0.1531384  0.2611384
-sample estimates:
-mean of x 
-    0.054 </code></pre>
-</div>
+<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-7_81e3663cfa142f359c8c5efab5dbae36">
+<pre><code>#&gt; 
+#&gt;  One Sample t-test
+#&gt; 
+#&gt; data:  diferencias
+#&gt; t = 0.72381, df = 4, p-value = 0.5092
+#&gt; alternative hypothesis: true mean is not equal to 0
+#&gt; 95 percent confidence interval:
+#&gt;  -0.1531384  0.2611384
+#&gt; sample estimates:
+#&gt; mean of x 
+#&gt;     0.054</code></pre>
 </div>
 <p>Acá va una forma rápida de reportar los resultados dla prueba t: t(4) = .72, p = .509.</p>
 <p>¿Qué nos dice todo esto? Hay algunos detalles que todavía no abordamos mucho. Por ejemplo, ese 4 representa los <strong>grados de libertad</strong>, de eso hablaremos más adelante. Lo importante por ahora es que el valor de <em>t</em> empiece a tener un poco más de sentido. Obtuvimos un valor <em>t</em> bastante chico: 0.72. ¿Qué podemos decir a partir de eso? Primero, es <strong>positivo</strong>, así que sabemos que la diferencia media también lo fue. El signo del valor <em>t</em> siempre es el mismo que el de la diferencia media (en nuestro caso fue +0.054).</p>
@@ -1164,32 +982,13 @@ mean of x
 <section id="interpretar-valores-t" class="level3" data-number="7.3.6">
 <h3 data-number="7.3.6" class="anchored" data-anchor-id="interpretar-valores-t"><span class="header-section-number">7.3.6</span> Interpretar valores <em>t</em></h3>
 <p>Recordá lo que estamos haciendo: estamos evaluando si nuestros datos muestrales podrían haber salido de una distribución específica. La distribución <strong>nula</strong>, de ausencia de diferencias. Esta es la distribución de valores <em>t</em> que ocurren con muestras de tamaño 5, con diferencia media igual a 0, y error estándar de la media de .075 (ese es el SEM que calculamos a partir de nuestra muestra).</p>
-<p>Podemos ver cómo luce esta distribución nula en <a href="#fig-6tnull" class="quarto-xref">Figure&nbsp;<span>7.5</span></a>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>range <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, .<span class="dv">1</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>null_distribution <span class="ot">&lt;-</span> <span class="fu">dt</span>(range, <span class="dv">4</span>, <span class="at">log =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>plot_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(range, null_distribution)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_df, <span class="fu">aes</span>(<span class="at">x =</span> range, <span class="at">y =</span> null_distribution)) <span class="sc">+</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"valores t"</span>) <span class="sc">+</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Probabilidad"</span>) <span class="sc">+</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(), <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, .<span class="dv">5</span>)) <span class="sc">+</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="sc">-</span>.<span class="dv">7</span>, <span class="at">y =</span> .<span class="dv">1</span>, <span class="at">label =</span> <span class="st">"50% </span><span class="sc">\n</span><span class="st"> (-)"</span>),</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> label)) <span class="sc">+</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> .<span class="dv">7</span>, <span class="at">y =</span> .<span class="dv">1</span>, <span class="at">label =</span> <span class="st">'50% </span><span class="sc">\n</span><span class="st"> (+)'</span>), <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> label)) <span class="sc">+</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Podemos ver cómo luce esta distribución nula en <a href="#fig-6tnull">Figure&nbsp;<span>7.5</span></a>:</p>
+<div class="cell" data-hash="06-ttests_cache/html/fig-6tnull_390522dad71513bb057e3f18000ee41a">
 <div class="cell-output-display">
-<div id="fig-6tnull" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-6tnull-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="06-ttests_files/figure-html/fig-6tnull-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6tnull-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.5: Una distribución de valores t que pueden ocurrir solo por azar, cuando no hay diferencia entre la muestra y la población
-</figcaption>
+<div id="fig-6tnull" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="06-ttests_files/figure-html/fig-6tnull-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;7.5: Una distribución de valores t que pueden ocurrir solo por azar, cuando no hay diferencia entre la muestra y la población</figcaption>
 </figure>
 </div>
 </div>
@@ -1203,34 +1002,13 @@ Figure&nbsp;7.5: Una distribución de valores t que pueden ocurrir solo por azar
 <li><p>¿Y de que <em>t</em> sea menor o igual a 0? También <em>p = .5</em>. La mitad de los valores están en esa región.</p></li>
 </ol>
 <p>Podemos responder estas preguntas solo mirando la distribución <em>t</em> y dividiéndola en dos regiones iguales: la mitad izquierda (50% de los valores <em>t</em>) y la mitad derecha (los otros 50%).</p>
-<p>¿Y si queremos un enfoque más fino? Por ejemplo, dividir en regiones del 10%. ¿Qué valores de <em>t</em> ocurren solo el 10% del tiempo? Podemos marcar líneas que dividan la distribución en regiones así. Notá que los valores extremos (más grandes o más chicos) son menos probables, entonces los intervalos más alejados del centro tienen que ser más anchos para contener el mismo 10%. Así se ve la figura <a href="#fig-6percentregions" class="quarto-xref">Figure&nbsp;<span>7.6</span></a>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>range <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, .<span class="dv">1</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>null_distribution <span class="ot">&lt;-</span> <span class="fu">dt</span>(range, <span class="dv">4</span>, <span class="at">log =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>plot_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(range, null_distribution)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>t_ps <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fu">seq</span>(.<span class="dv">1</span>, .<span class="dv">9</span>, .<span class="dv">1</span>), <span class="dv">4</span>)</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_df, <span class="fu">aes</span>(<span class="at">x =</span> range, <span class="at">y =</span> null_distribution)) <span class="sc">+</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"valores t"</span>) <span class="sc">+</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Probabilidad"</span>) <span class="sc">+</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> t_ps) <span class="sc">+</span></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">15</span>) <span class="sc">+</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(), <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">round</span>(t_ps, <span class="at">digits =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="sc">-</span><span class="fl">2.5</span>, <span class="at">y =</span> .<span class="dv">2</span>, <span class="at">label =</span> <span class="st">"10%"</span>), <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> label)) <span class="sc">+</span></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="sc">-</span><span class="fl">1.3</span>, <span class="at">y =</span> .<span class="dv">2</span>, <span class="at">label =</span> <span class="st">"10%"</span>), <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> label)) <span class="sc">+</span></span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fl">2.5</span>, <span class="at">y =</span> .<span class="dv">2</span>, <span class="at">label =</span> <span class="st">"10%"</span>), <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> label)) <span class="sc">+</span></span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fl">1.3</span>, <span class="at">y =</span> .<span class="dv">2</span>, <span class="at">label =</span> <span class="st">"10%"</span>), <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> label))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>¿Y si queremos un enfoque más fino? Por ejemplo, dividir en regiones del 10%. ¿Qué valores de <em>t</em> ocurren solo el 10% del tiempo? Podemos marcar líneas que dividan la distribución en regiones así. Notá que los valores extremos (más grandes o más chicos) son menos probables, entonces los intervalos más alejados del centro tienen que ser más anchos para contener el mismo 10%. Así se ve la figura <a href="#fig-6percentregions">Figure&nbsp;<span>7.6</span></a>:</p>
+<div class="cell" data-hash="06-ttests_cache/html/fig-6percentregions_386a543b37783f7e1e9b1f6945f1aad9">
 <div class="cell-output-display">
-<div id="fig-6percentregions" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-6percentregions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="06-ttests_files/figure-html/fig-6percentregions-1.png" class="img-fluid figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6percentregions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.6: Dividiendo la distribución t en regiones que contienen cada una el 10% de los valores t. Los intervalos son más angostos cerca del centro, donde hay más valores t.
-</figcaption>
+<div id="fig-6percentregions" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="06-ttests_files/figure-html/fig-6percentregions-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;7.6: Dividiendo la distribución t en regiones que contienen cada una el 10% de los valores t. Los intervalos son más angostos cerca del centro, donde hay más valores t.</figcaption>
 </figure>
 </div>
 </div>
@@ -1261,53 +1039,13 @@ Figure&nbsp;7.6: Dividiendo la distribución t en regiones que contienen cada un
 <section id="test-unilateral-one-tailed" class="level3" data-number="7.3.8">
 <h3 data-number="7.3.8" class="anchored" data-anchor-id="test-unilateral-one-tailed"><span class="header-section-number">7.3.8</span> Test unilateral (one-tailed)</h3>
 <p>Un <strong>test unilateral</strong> (<em>one-tailed test</em>) también se llama a veces <strong>test direccional</strong>. Se le dice así porque el investigador puede tener una hipótesis en mente que sugiere que la diferencia entre medias va a tener una <strong>dirección específica</strong>: o bien una diferencia positiva, o bien una negativa.</p>
-<p>Típicamente, el investigador establece un <strong>criterio alfa</strong> (<em>alpha criterion</em>). Este criterio es como una línea en la arena para tomar decisiones. A menudo se fija en $p = .05$. ¿Qué significa eso? La figura <a href="#fig-6critT" class="quarto-xref">Figure&nbsp;<span>7.7</span></a> muestra la distribución <em>t</em> con ese criterio alfa:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>range <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, .<span class="dv">1</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>null_distribution <span class="ot">&lt;-</span> <span class="fu">dt</span>(range, <span class="dv">4</span>, <span class="at">log =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>plot_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(range, null_distribution)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>t_ps <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fu">seq</span>(.<span class="dv">1</span>, .<span class="dv">9</span>, .<span class="dv">1</span>), <span class="dv">4</span>)</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_df, <span class="fu">aes</span>(<span class="at">x =</span> range, <span class="at">y =</span> null_distribution)) <span class="sc">+</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"valores t"</span>) <span class="sc">+</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Probabilidad"</span>) <span class="sc">+</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">qt</span>(.<span class="dv">95</span>, <span class="dv">4</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>)) <span class="sc">+</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"t crítico para test unilateral"</span>) <span class="sc">+</span></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(), <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(</span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"rect"</span>,</span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmin =</span> <span class="fu">qt</span>(.<span class="dv">95</span>, <span class="dv">4</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmax =</span> <span class="dv">3</span>,</span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">ymin =</span> <span class="dv">0</span>,</span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">ymax =</span> <span class="cn">Inf</span>,</span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.5</span>,</span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"green"</span></span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fl">2.5</span>, <span class="at">y =</span> .<span class="dv">2</span>, <span class="at">label =</span> <span class="st">"5%"</span>), <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> label)) <span class="sc">+</span></span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(</span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">qt</span>(.<span class="dv">95</span>, <span class="dv">4</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> .<span class="dv">3</span>,</span>
-<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">"t crítico"</span></span>
-<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> label)) <span class="sc">+</span></span>
-<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(</span>
-<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">qt</span>(.<span class="dv">95</span>, <span class="dv">4</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> .<span class="dv">25</span>,</span>
-<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">round</span>(<span class="fu">qt</span>(.<span class="dv">95</span>, <span class="dv">4</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>), <span class="at">digits =</span> <span class="dv">2</span>)</span>
-<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> label))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Típicamente, el investigador establece un <strong>criterio alfa</strong> (<em>alpha criterion</em>). Este criterio es como una línea en la arena para tomar decisiones. A menudo se fija en $p = .05$. ¿Qué significa eso? La figura <a href="#fig-6critT">Figure&nbsp;<span>7.7</span></a> muestra la distribución <em>t</em> con ese criterio alfa:</p>
+<div class="cell" data-hash="06-ttests_cache/html/fig-6critT_0610a4e299d97d377c5b45a6c494fc1a">
 <div class="cell-output-display">
-<div id="fig-6critT" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-6critT-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="06-ttests_files/figure-html/fig-6critT-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6critT-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.7: El valor crítico de t para un criterio alfa de 0.05. El 5% de todos los valores t son iguales o mayores a este valor.
-</figcaption>
+<div id="fig-6critT" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="06-ttests_files/figure-html/fig-6critT-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;7.7: El valor crítico de t para un criterio alfa de 0.05. El 5% de todos los valores t son iguales o mayores a este valor.</figcaption>
 </figure>
 </div>
 </div>
@@ -1320,137 +1058,25 @@ Figure&nbsp;7.7: El valor crítico de t para un criterio alfa de 0.05. El 5% de 
 <li><p><strong>t observado</strong>: el valor <em>t</em> que calculaste a partir de tu muestra. En el ejemplo de los bebés, fue <em>t</em>(4) = 0.72.</p></li>
 <li><p><strong>Valor <em>p</em></strong>: el valor <em>p</em> es la probabilidad de obtener el valor <em>t</em> observado o uno mayor. En nuestro ejemplo anterior, el valor <em>p</em> para <em>t</em>(4) = 0.72 fue <em>p = .509</em>. SIN EMBARGO, ese valor <em>p</em> <strong>no fue calculado</strong> para un test direccional (unilateral)… (hablamos más sobre qué significa ese .509 en la siguiente sección).</p></li>
 </ol>
-<p>La <a href="#fig-6tonedirection" class="quarto-xref">Figure&nbsp;<span>7.8</span></a> muestra cómo se vería el valor <em>p</em> para <em>t</em>(4) = 0.72 en un test unilateral:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>range <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, .<span class="dv">1</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>null_distribution <span class="ot">&lt;-</span> <span class="fu">dt</span>(range, <span class="dv">4</span>, <span class="at">log =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>plot_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(range, null_distribution)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>t_ps <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fu">seq</span>(.<span class="dv">1</span>, .<span class="dv">9</span>, .<span class="dv">1</span>), <span class="dv">4</span>)</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_df, <span class="fu">aes</span>(<span class="at">x =</span> range, <span class="at">y =</span> null_distribution)) <span class="sc">+</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"valores t"</span>) <span class="sc">+</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Probabilidad"</span>) <span class="sc">+</span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> .<span class="dv">72</span>) <span class="sc">+</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">qt</span>(.<span class="dv">95</span>, <span class="dv">4</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>)) <span class="sc">+</span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Valor t y región p para test unilateral"</span>) <span class="sc">+</span></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(), <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(</span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"rect"</span>,</span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmin =</span> .<span class="dv">72</span>,</span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmax =</span> <span class="dv">3</span>,</span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">ymin =</span> <span class="dv">0</span>,</span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">ymax =</span> <span class="cn">Inf</span>,</span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.5</span>,</span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"grey"</span></span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(</span>
-<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">"rect"</span>,</span>
-<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmin =</span> <span class="fu">qt</span>(.<span class="dv">95</span>, <span class="dv">4</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmax =</span> <span class="dv">3</span>,</span>
-<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">ymin =</span> <span class="dv">0</span>,</span>
-<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">ymax =</span> .<span class="dv">25</span>,</span>
-<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.5</span>,</span>
-<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"green"</span></span>
-<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fl">2.5</span>, <span class="at">y =</span> .<span class="dv">2</span>, <span class="at">label =</span> <span class="st">"5%"</span>), <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> label)) <span class="sc">+</span></span>
-<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(</span>
-<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">qt</span>(.<span class="dv">95</span>, <span class="dv">4</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> .<span class="dv">3</span>,</span>
-<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">"t crítico"</span></span>
-<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a>  ), <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> label)) <span class="sc">+</span></span>
-<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(</span>
-<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">qt</span>(.<span class="dv">95</span>, <span class="dv">4</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> .<span class="dv">25</span>,</span>
-<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">round</span>(<span class="fu">qt</span>(.<span class="dv">95</span>, <span class="dv">4</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>), <span class="at">digits =</span> <span class="dv">2</span>)</span>
-<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a>  ), <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> label)) <span class="sc">+</span></span>
-<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> .<span class="dv">72</span>, <span class="at">y =</span> .<span class="dv">1</span>, <span class="at">label =</span> <span class="st">"t observado"</span>),</span>
-<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> label)) <span class="sc">+</span></span>
-<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> .<span class="dv">72</span>, <span class="at">y =</span> .<span class="dv">05</span>, <span class="at">label =</span> <span class="st">".72, p="</span>),</span>
-<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> label)) <span class="sc">+</span></span>
-<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(</span>
-<span id="cb15-50"><a href="#cb15-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fl">1.5</span>,</span>
-<span id="cb15-51"><a href="#cb15-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> .<span class="dv">05</span>,</span>
-<span id="cb15-52"><a href="#cb15-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">round</span>(<span class="fu">pt</span>(.<span class="dv">72</span>, <span class="dv">4</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>), <span class="at">digits =</span> <span class="dv">3</span>)</span>
-<span id="cb15-53"><a href="#cb15-53" aria-hidden="true" tabindex="-1"></a>  ), <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> label))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>La <a href="#fig-6tonedirection">Figure&nbsp;<span>7.8</span></a> muestra cómo se vería el valor <em>p</em> para <em>t</em>(4) = 0.72 en un test unilateral:</p>
+<div class="cell" data-hash="06-ttests_cache/html/fig-6tonedirection_c9c2434b5cd9625d10851b065f0ba02e">
 <div class="cell-output-display">
-<div id="fig-6tonedirection" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-6tonedirection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="06-ttests_files/figure-html/fig-6tonedirection-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6tonedirection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.8: Un caso en el que el valor t observado es mucho menor que el valor crítico para un test t unilateral.
-</figcaption>
+<div id="fig-6tonedirection" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="06-ttests_files/figure-html/fig-6tonedirection-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;7.8: Un caso en el que el valor t observado es mucho menor que el valor crítico para un test t unilateral.</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Vamos paso a paso. Marcamos en el gráfico el valor <em>t</em> observado (0.72). Sombreamos de gris toda la región a su derecha. Esa región gris representa un 25.6% de todos los valores <em>t</em>. En otras palabras, <strong>el 25.6%</strong> de los valores <em>t</em> son mayores o iguales a 0.72. Es decir, <strong>por azar</strong>, se puede obtener un valor de <em>t</em> igual o mayor a 0.72 en más de una de cada cuatro veces.</p>
 <p>Y de hecho, eso fue lo que encontramos: un <em>t</em> de 0.72. Sabiendo que un valor así o mayor ocurre el 25.6% del tiempo por azar, ¿estarías confiado en que la diferencia media <strong>no</strong> se debe al azar? Probablemente no, ya que el azar puede producir ese valor bastante seguido.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>range <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">4</span>, .<span class="dv">1</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>null_distribution <span class="ot">&lt;-</span> <span class="fu">dt</span>(range, <span class="dv">4</span>, <span class="at">log =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>plot_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(range, null_distribution)</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>t_ps <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fu">seq</span>(.<span class="dv">1</span>, .<span class="dv">9</span>, .<span class="dv">1</span>), <span class="dv">4</span>)</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_df, <span class="fu">aes</span>(<span class="at">x =</span> range, <span class="at">y =</span> null_distribution)) <span class="sc">+</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"valores t"</span>) <span class="sc">+</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Probabilidad"</span>) <span class="sc">+</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">qt</span>(.<span class="dv">975</span>, <span class="dv">4</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>)) <span class="sc">+</span></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">qt</span>(.<span class="dv">025</span>, <span class="dv">4</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>)) <span class="sc">+</span></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Valores t críticos para test bilateral"</span>) <span class="sc">+</span></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(), <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(</span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"rect"</span>,</span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmin =</span> <span class="fu">qt</span>(.<span class="dv">975</span>, <span class="dv">4</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmax =</span> <span class="dv">4</span>,</span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">ymin =</span> <span class="dv">0</span>,</span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">ymax =</span> <span class="cn">Inf</span>,</span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.5</span>,</span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"green"</span></span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fl">3.5</span>, <span class="at">y =</span> .<span class="dv">2</span>, <span class="at">label =</span> <span class="st">"2.5%"</span>), <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> label)) <span class="sc">+</span></span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(</span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">qt</span>(.<span class="dv">975</span>, <span class="dv">4</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> .<span class="dv">3</span>,</span>
-<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">"t crítico"</span></span>
-<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>  ), <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> label)) <span class="sc">+</span></span>
-<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(</span>
-<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">qt</span>(.<span class="dv">975</span>, <span class="dv">4</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> .<span class="dv">25</span>,</span>
-<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">round</span>(<span class="fu">qt</span>(.<span class="dv">975</span>, <span class="dv">4</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>), <span class="at">digits =</span> <span class="dv">2</span>)</span>
-<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>  ), <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> label)) <span class="sc">+</span></span>
-<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(</span>
-<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>    <span class="st">"rect"</span>,</span>
-<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmin =</span> <span class="sc">-</span><span class="dv">4</span>,</span>
-<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmax =</span> <span class="fu">qt</span>(.<span class="dv">025</span>, <span class="dv">4</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">ymin =</span> <span class="dv">0</span>,</span>
-<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">ymax =</span> <span class="cn">Inf</span>,</span>
-<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.5</span>,</span>
-<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"green"</span></span>
-<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="sc">-</span><span class="fl">3.5</span>, <span class="at">y =</span> .<span class="dv">2</span>, <span class="at">label =</span> <span class="st">"2.5%"</span>), <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> label)) <span class="sc">+</span></span>
-<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(</span>
-<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">qt</span>(.<span class="dv">025</span>, <span class="dv">4</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> .<span class="dv">3</span>,</span>
-<span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">"t crítico"</span></span>
-<span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a>  ), <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> label)) <span class="sc">+</span></span>
-<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(</span>
-<span id="cb16-52"><a href="#cb16-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">qt</span>(.<span class="dv">025</span>, <span class="dv">4</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb16-53"><a href="#cb16-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> .<span class="dv">25</span>,</span>
-<span id="cb16-54"><a href="#cb16-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">round</span>(<span class="fu">qt</span>(.<span class="dv">025</span>, <span class="dv">4</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>), <span class="at">digits =</span> <span class="dv">2</span>)</span>
-<span id="cb16-55"><a href="#cb16-55" aria-hidden="true" tabindex="-1"></a>  ), <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> label))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-8_b1325a9712478f2b1db1f770db4be3ff">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="06-ttests_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>El valor crítico de t para un test bilateral. El 5% total de los valores t son mayores o menores que los valores críticos.</figcaption>
+<p><img src="06-ttests_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">El valor crítico de t para un test bilateral. El 5% total de los valores t son mayores o menores que los valores críticos.</figcaption>
 </figure>
 </div>
 </div>
@@ -1489,35 +1115,17 @@ Figure&nbsp;7.8: Un caso en el que el valor t observado es mucho menor que el va
 <h4 data-number="7.3.10.1" class="anchored" data-anchor-id="simulación-del-efecto-de-los-grados-de-libertad-sobre-la-distribución-t"><span class="header-section-number">7.3.10.1</span> Simulación del efecto de los grados de libertad sobre la distribución <em>t</em></h4>
 <p>Hay al menos dos formas de pensar los grados de libertad para una prueba t. Por un lado, si querés <strong>usar fórmulas</strong> matemáticas para calcular aspectos de la distribución <em>t</em>, necesitás los grados de libertad como <strong>parámetro</strong> de entrada. (Si querés ver las fórmulas, bajá en la <a href="https://es.wikipedia.org/wiki/Distribuci%C3%B3n_t_de_Student">página de Wikipedia dla prueba t</a> hasta la parte de funciones de densidad de probabilidad o de distribución acumulada. A nosotros eso nos parece bastante intimidante, y quizás por eso los grados de libertad no se entienden bien.)</p>
 <p>Pero si queremos simular la distribución <em>t</em>, ahí se ve más fácil cómo influyen los grados de libertad en su forma. Recordá: <em>t</em> es una estadística muestral, se <strong>calcula a partir de la muestra</strong>. Así que podríamos simular el proceso de calcular <em>t</em> en muchas muestras distintas, y luego graficar el histograma de esos valores para ver cómo se ve la distribución <em>t</em>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ts <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rt</span>(<span class="dv">10000</span>, <span class="dv">4</span>), <span class="fu">rt</span>(<span class="dv">10000</span>, <span class="dv">100</span>))</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>dfs <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">100</span>), <span class="at">each =</span> <span class="dv">10000</span>))</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>t_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(dfs, ts)</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>t_df <span class="ot">&lt;-</span> t_df[<span class="fu">abs</span>(t_df<span class="sc">$</span>ts) <span class="sc">&lt;</span> <span class="dv">5</span>, ]</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(t_df, <span class="fu">aes</span>(<span class="at">x =</span> ts, <span class="at">group =</span> dfs, <span class="at">color =</span> dfs)) <span class="sc">+</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> dfs) <span class="sc">+</span></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-</div>
+<div class="cell" data-fig.asp="0.5" data-hash="06-ttests_cache/html/fig-6dft_ec80dbe23b754419fdb53c7918a19194">
 <div class="cell-output-display">
-<div id="fig-6dft" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-6dft-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="06-ttests_files/figure-html/fig-6dft-1.png" class="img-fluid figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6dft-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.9: La distribución t se vuelve más angosta a medida que aumentan el tamaño muestral y los grados de libertad (de 4 a 100).
-</figcaption>
+<div id="fig-6dft" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="06-ttests_files/figure-html/fig-6dft-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;7.9: La distribución t se vuelve más angosta a medida que aumentan el tamaño muestral y los grados de libertad (de 4 a 100).</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>En la <a href="#fig-6dft" class="quarto-xref">Figure&nbsp;<span>7.9</span></a>, fijate que la distribución roja para $df = 4$ es un poco más baja y más ancha que la distribución azul verdosa para $df = 100$. A medida que aumentan los grados de libertad, la distribución <em>t</em> se vuelve más alta (en el centro) y más angosta en el rango. Se vuelve más picuda. ¿Adivinás por qué?</p>
+<p>En la <a href="#fig-6dft">Figure&nbsp;<span>7.9</span></a>, fijate que la distribución roja para $df = 4$ es un poco más baja y más ancha que la distribución azul verdosa para $df = 100$. A medida que aumentan los grados de libertad, la distribución <em>t</em> se vuelve más alta (en el centro) y más angosta en el rango. Se vuelve más picuda. ¿Adivinás por qué?</p>
 <p>Recordá: estamos estimando una estadística muestral, y los grados de libertad son solo un número que representa cuántos sujetos hay (menos uno). Y ya sabemos que, al aumentar <em>n</em>, nuestras estadísticas muestrales se vuelven mejores estimaciones (con menos varianza) de los parámetros poblacionales. Entonces, <em>t</em> se vuelve una mejor estimación de su “valor verdadero” a medida que crece el tamaño muestral, lo que produce una distribución de <em>t</em> más angosta.</p>
 <p>Existe una distribución <em>t</em> ligeramente distinta para cada grado de libertad, y las regiones críticas asociadas al 5% de los valores extremos cambian cada vez. Por eso <strong>reportamos los grados de libertad</strong> en cada prueba t: definen la distribución de valores <em>t</em> para el tamaño muestral que usamos.</p>
 <p>¿Por qué usamos <em>n–1</em> y no <em>n</em>? Bueno, calculamos <em>t</em> usando la desviación estándar muestral para estimar el error estándar de la media, y esa estimación usa <em>n–1</em> en el denominador. Por eso, la distribución <em>t</em> se construye asumiendo <em>n–1</em>.</p>
@@ -1533,9 +1141,9 @@ Figure&nbsp;7.9: La distribución t se vuelve más angosta a medida que aumentan
 <li><p>Hacer una prueba t de muestras pareadas usando <strong>todos</strong> los datos del estudio y discutir los resultados.</p></li>
 </ol>
 <p>Recordá que nos preguntábamos si los bebés mirarían más tiempo al cantante de la canción familiar durante la fase de prueba, comparado con la línea base. Ya te mostramos los datos de 5 bebés, y caminamos paso a paso por los cálculos dla prueba t. A modo de repaso, se veía así:</p>
-<div class="cell">
+<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-9_51d79fbd797ec95a73711e363e5f4ee8">
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="table table-sm table-striped small">
 <colgroup>
 <col style="width: 8%">
 <col style="width: 11%">
@@ -1638,43 +1246,33 @@ Figure&nbsp;7.9: La distribución t se vuelve más angosta a medida que aumentan
 </tbody>
 </table>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    One Sample t-test
-
-data:  round(diferencias, digits = 2)
-t = 0.72381, df = 4, p-value = 0.5092
-alternative hypothesis: true mean is not equal to 0
-95 percent confidence interval:
- -0.1531384  0.2611384
-sample estimates:
-mean of x 
-    0.054 </code></pre>
-</div>
+<pre><code>#&gt; 
+#&gt;  One Sample t-test
+#&gt; 
+#&gt; data:  round(diferencias, digits = 2)
+#&gt; t = 0.72381, df = 4, p-value = 0.5092
+#&gt; alternative hypothesis: true mean is not equal to 0
+#&gt; 95 percent confidence interval:
+#&gt;  -0.1531384  0.2611384
+#&gt; sample estimates:
+#&gt; mean of x 
+#&gt;     0.054</code></pre>
 </div>
 <p>Volvamos a escribir el resultado una vez más: la diferencia media fue 0.054, <em>t</em>(4) = .72, <em>p</em> = .509. Ahora también podemos confirmar que el valor <em>p</em> se obtuvo de un <strong>test bilateral</strong>. Entonces, ¿qué significa todo esto?</p>
 <p>Podemos decir que un valor <em>t</em> con valor absoluto de .72 o más ocurre el 50.9% del tiempo. Más precisamente: la distribución de <strong>ausencia de diferencias</strong> (la nula) produce un valor <em>t</em> de ese tamaño o mayor el 50.9% de las veces. En otras palabras: <strong>el azar por sí solo podría haber producido perfectamente el valor <em>t</em> de nuestra muestra</strong>, y la diferencia media de 0.054 que observamos podría deberse simplemente al azar.</p>
 <p>Ahora metamos <strong>todos los datos</strong> dla prueba t y corramos el análisis con los <strong>32 bebés</strong> del estudio:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>paired_sample_df <span class="ot">&lt;-</span>  <span class="fu">data.frame</span>(<span class="at">infant =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>, </span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>                                <span class="at">Baseline =</span> <span class="fu">round</span>(experiment_one<span class="sc">$</span>Baseline_Proportion_Gaze_to_Singer[<span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>], <span class="at">digits =</span> <span class="dv">2</span>), </span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>                                <span class="at">Test =</span> <span class="fu">round</span>(experiment_one<span class="sc">$</span>Test_Proportion_Gaze_to_Singer[<span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>], <span class="at">digits =</span> <span class="dv">2</span>))</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>diferencias <span class="ot">&lt;-</span> paired_sample_df<span class="sc">$</span>Test <span class="sc">-</span> paired_sample_df<span class="sc">$</span>Baseline</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(diferencias, <span class="at">mu =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    One Sample t-test
-
-data:  diferencias
-t = 2.4388, df = 31, p-value = 0.02066
-alternative hypothesis: true mean is not equal to 0
-95 percent confidence interval:
- 0.01192088 0.13370412
-sample estimates:
-mean of x 
-0.0728125 </code></pre>
-</div>
+<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-10_9fd93299547cf12011f79e5ab7abdbc8">
+<pre><code>#&gt; 
+#&gt;  One Sample t-test
+#&gt; 
+#&gt; data:  diferencias
+#&gt; t = 2.4388, df = 31, p-value = 0.02066
+#&gt; alternative hypothesis: true mean is not equal to 0
+#&gt; 95 percent confidence interval:
+#&gt;  0.01192088 0.13370412
+#&gt; sample estimates:
+#&gt; mean of x 
+#&gt; 0.0728125</code></pre>
 </div>
 <p>Ahora obtenemos una respuesta muy distinta. Podríamos resumir los resultados diciendo que la diferencia media fue 0.073, <em>t</em>(31) = 2.44, <em>p</em> = 0.020. ¿Cuántos bebés hubo en total? Bueno, los grados de libertad fueron 31, así que debió haber <strong>32 bebés</strong> en el estudio.</p>
 <p>Ahora vemos un valor <em>p</em> mucho más bajo. Este también fue un <strong>test bilateral</strong>, así que observar un valor <em>t</em> de 2.4 o más (en valor absoluto) ocurre solo el 2% del tiempo. En otras palabras, la <strong>distribución de ausencia de diferencias</strong> rara vez produce un valor <em>t</em> como el que observamos. Por lo tanto, es <strong>poco probable</strong> que la diferencia media observada de 0.073 se deba al azar (podría deberse al azar, sí, pero es muy poco probable).</p>
@@ -1699,43 +1297,41 @@ mean of x
 <p><span class="math inline">\(s_p = \sqrt{\frac{(n_A - 1)s_A^2 + (n_B - 1)s_B^2}{n_A + n_B - 2}}\)</span></p>
 <p>Créeme: es mucha más fórmula de la que quería tipear. ¿Hacemos un ejemplo de prueba t de muestras independientes <strong>a mano</strong>, para ver cómo se hacen los cálculos? Dale… pero lo vamos a hacer de una forma <strong>ligeramente distinta</strong> a la que esperás. Voy a mostrarte los pasos usando R.</p>
 <p>Inventé unos puntajes ficticios para los grupos A y B. Luego seguí todos los pasos de la fórmula, pero hice que R haga cada uno de los cálculos. Esto te muestra los pasos necesarios siguiendo el código. Al final imprimo los valores dla prueba t que calculé “a mano”, y luego el valor dla prueba t que da la función <code>t.test()</code> de R. Deberías obtener el mismo valor de <em>t</em> si te animás a calcularlo a mano.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="do">## A mano, usando código en R</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">9</span>)</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>mean_difference <span class="ot">&lt;-</span> <span class="fu">mean</span>(a) <span class="sc">-</span> <span class="fu">mean</span>(b) <span class="co"># diferencia de medias</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>variance_a <span class="ot">&lt;-</span> <span class="fu">var</span>(a) <span class="co"># varianza para A</span></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>variance_b <span class="ot">&lt;-</span> <span class="fu">var</span>(b) <span class="co"># varianza para B</span></span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Parte superior e inferior de la fórmula de sp</span></span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>sp_numerator <span class="ot">&lt;-</span> (<span class="dv">4</span> <span class="sc">*</span> variance_a <span class="sc">+</span> <span class="dv">4</span> <span class="sc">*</span> variance_b) </span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>sp_denominator <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="sc">+</span> <span class="dv">5</span> <span class="sc">-</span> <span class="dv">2</span></span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>sp <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(sp_numerator <span class="sc">/</span> sp_denominator) <span class="co"># calcular sp</span></span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="co"># calcular t según la fórmula</span></span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> mean_difference <span class="sc">/</span> (sp <span class="sc">*</span> <span class="fu">sqrt</span>((<span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>)))</span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>t <span class="co"># mostrar resultado</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -2.017991</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># usando la función de R</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(a, b, <span class="at">paired =</span> <span class="cn">FALSE</span>, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Two Sample t-test
-
-data:  a and b
-t = -2.018, df = 8, p-value = 0.0783
-alternative hypothesis: true difference in means is not equal to 0
-95 percent confidence interval:
- -5.5710785  0.3710785
-sample estimates:
-mean of x mean of y 
-      3.0       5.6 </code></pre>
-</div>
+<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-11_5cf46ae9363002fa355db44598987f03">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="do">## A mano, usando código en R</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">9</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>mean_difference <span class="ot">&lt;-</span> <span class="fu">mean</span>(a) <span class="sc">-</span> <span class="fu">mean</span>(b) <span class="co"># diferencia de medias</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>variance_a <span class="ot">&lt;-</span> <span class="fu">var</span>(a) <span class="co"># varianza para A</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>variance_b <span class="ot">&lt;-</span> <span class="fu">var</span>(b) <span class="co"># varianza para B</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Parte superior e inferior de la fórmula de sp</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>sp_numerator <span class="ot">&lt;-</span> (<span class="dv">4</span> <span class="sc">*</span> variance_a <span class="sc">+</span> <span class="dv">4</span> <span class="sc">*</span> variance_b) </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>sp_denominator <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="sc">+</span> <span class="dv">5</span> <span class="sc">-</span> <span class="dv">2</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>sp <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(sp_numerator <span class="sc">/</span> sp_denominator) <span class="co"># calcular sp</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># calcular t según la fórmula</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> mean_difference <span class="sc">/</span> (sp <span class="sc">*</span> <span class="fu">sqrt</span>((<span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>)))</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>t <span class="co"># mostrar resultado</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -2.017991</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co"># usando la función de R</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(a, b, <span class="at">paired =</span> <span class="cn">FALSE</span>, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Two Sample t-test</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; data:  a and b</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; t = -2.018, df = 8, p-value = 0.0783</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; alternative hypothesis: true difference in means is not equal to 0</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 95 percent confidence interval:</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  -5.5710785  0.3710785</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; sample estimates:</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; mean of x mean of y </span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       3.0       5.6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="simular-una-prueba-t-de-una-muestra" class="level3" data-number="7.5.1">
 <h3 data-number="7.5.1" class="anchored" data-anchor-id="simular-una-prueba-t-de-una-muestra"><span class="header-section-number">7.5.1</span> Simular una prueba t de una muestra</h3>
@@ -1744,48 +1340,23 @@ mean of x mean of y
 <li><p>Hacés algunas suposiciones sobre cómo podría ser tu muestra (que estás planeando recolectar). Por ejemplo, podrías planear recolectar datos de 30 personas. Los puntajes podrían venir de una distribución normal (media = 50, sd = 10).</p></li>
 <li><p>Simulás números desde esa distribución y luego hacés una prueba t sobre esos datos simulados. Guardás las estadísticas que te interesan (como los <em>t</em> y <em>p</em>) y después observás cómo se comportan.</p></li>
 </ol>
-<p>Hagámoslo un par de veces. Primero, vamos a simular muestras con N = 30, tomadas de una distribución normal (media = 50, sd = 25). Vamos a hacer una simulación con 1000 repeticiones. En cada repetición, comparamos la media muestral con una media poblacional de 50. En promedio, no debería haber diferencia. La <a href="#fig-6nullt" class="quarto-xref">Figure&nbsp;<span>7.10</span></a> es la distribución nula que estamos simulando.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pasos para crear datos ficticios desde una distribución</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># y hacer pruebas t sobre los datos simulados</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>guarda_ps <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>guarda_ts <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>) {</span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  mi_muestra <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">30</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">25</span>)</span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  t_test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(mi_muestra, <span class="at">mu =</span> <span class="dv">50</span>)</span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>  guarda_ps[i] <span class="ot">&lt;-</span> t_test<span class="sc">$</span>p.value</span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>  guarda_ts[i] <span class="ot">&lt;-</span> t_test<span class="sc">$</span>statistic</span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># histogramas de t y p para las 1000 simulaciones</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(guarda_ts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Hagámoslo un par de veces. Primero, vamos a simular muestras con N = 30, tomadas de una distribución normal (media = 50, sd = 25). Vamos a hacer una simulación con 1000 repeticiones. En cada repetición, comparamos la media muestral con una media poblacional de 50. En promedio, no debería haber diferencia. La <a href="#fig-6nullt">Figure&nbsp;<span>7.10</span></a> es la distribución nula que estamos simulando.</p>
+<div class="cell" data-hash="06-ttests_cache/html/fig-6nullt_1851e13746636db86e1b5a658b19c894">
 <div class="cell-output-display">
-<div id="fig-6nullt" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-6nullt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="06-ttests_files/figure-html/fig-6nullt-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6nullt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.10: Distribución de valores t bajo la nula. Estos son los t que surgen solo por azar.
-</figcaption>
+<div id="fig-6nullt" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="06-ttests_files/figure-html/fig-6nullt-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;7.10: Distribución de valores t bajo la nula. Estos son los t que surgen solo por azar.</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(guarda_ps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="06-ttests_cache/html/fig-6flatp_4b3c6c5bd80ef1e7d2036b94aaf87223">
 <div class="cell-output-display">
-<div id="fig-6flatp" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-6flatp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="06-ttests_files/figure-html/fig-6flatp-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6flatp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.11: La distribución de valores p observados es plana bajo la nula.
-</figcaption>
+<div id="fig-6flatp" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="06-ttests_files/figure-html/fig-6flatp-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;7.11: La distribución de valores p observados es plana bajo la nula.</figcaption>
 </figure>
 </div>
 </div>
@@ -1793,36 +1364,22 @@ Figure&nbsp;7.11: La distribución de valores p observados es plana bajo la nula
 <p>Buenísimo. Vemos una distribución <em>t</em>, que se parece a una <em>t</em> como debe ser. Y también vemos la distribución de valores <em>p</em>. Esto nos muestra qué tan seguido obtenemos valores <em>t</em> de distintos tamaños.</p>
 <p>Capaz te llame la atención que la distribución de <em>p</em> es <strong>plana</strong> bajo la nula (que es lo que estamos simulando). Esto significa que tenés <strong>la misma probabilidad</strong> de obtener un valor <em>p</em> entre 0 y 0.05 que de obtener uno entre 0.90 y 0.95. Esos rangos tienen un 5% de ancho, así que contienen la <strong>misma cantidad de valores t por definición</strong>.</p>
 <p>Acá va otra forma de hacer la misma simulación en R, usando la función <code>replicate</code> en vez de un <code>for</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>t_simulados <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>,</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">t.test</span>(<span class="fu">rnorm</span>(<span class="dv">30</span>, <span class="dv">50</span>, <span class="dv">25</span>), <span class="at">mu =</span> <span class="dv">50</span>)<span class="sc">$</span>statistic)</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(t_simulados)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="06-ttests_cache/html/fig-6simtsRep_84529326e157f88c325a20a085bd984d">
 <div class="cell-output-display">
-<div id="fig-6simtsRep" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-6simtsRep-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="06-ttests_files/figure-html/fig-6simtsRep-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6simtsRep-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.12: Simulando valores t en R.
-</figcaption>
+<div id="fig-6simtsRep" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="06-ttests_files/figure-html/fig-6simtsRep-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;7.12: Simulando valores t en R.</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>p_simulados <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>,</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">t.test</span>(<span class="fu">rnorm</span>(<span class="dv">30</span>, <span class="dv">50</span>, <span class="dv">25</span>), <span class="at">mu =</span> <span class="dv">50</span>)<span class="sc">$</span>p.value)</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(p_simulados)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="06-ttests_cache/html/fig-6simpsRep_c53fbf3f07f8d1b1e79e902a938c2e93">
 <div class="cell-output-display">
-<div id="fig-6simpsRep" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-6simpsRep-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="06-ttests_files/figure-html/fig-6simpsRep-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6simpsRep-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.13: Simulando valores p en R.
-</figcaption>
+<div id="fig-6simpsRep" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="06-ttests_files/figure-html/fig-6simpsRep-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;7.13: Simulando valores p en R.</figcaption>
 </figure>
 </div>
 </div>
@@ -1831,167 +1388,124 @@ Figure&nbsp;7.13: Simulando valores p en R.
 <section id="simular-una-prueba-t-de-muestras-pareadas" class="level3" data-number="7.5.2">
 <h3 data-number="7.5.2" class="anchored" data-anchor-id="simular-una-prueba-t-de-muestras-pareadas"><span class="header-section-number">7.5.2</span> Simular una prueba t de muestras pareadas</h3>
 <p>El código de abajo está preparado para tomar 10 puntajes de la condición A y 10 de la condición B, ambos desde la misma distribución normal. La simulación se corre 1000 veces, y se guardan los <em>t</em> y <em>p</em> para graficarlos luego.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>guarda_ps <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>guarda_ts <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>) {</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  condicion_A <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">5</span>)</span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  condicion_B <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">5</span>)</span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  diferencias <span class="ot">&lt;-</span> condicion_A <span class="sc">-</span> condicion_B</span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  t_test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(diferencias, <span class="at">mu =</span> <span class="dv">0</span>)</span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>  guarda_ps[i] <span class="ot">&lt;-</span> t_test<span class="sc">$</span>p.value</span>
-<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>  guarda_ts[i] <span class="ot">&lt;-</span> t_test<span class="sc">$</span>statistic</span>
-<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-13_ea58540076f88effe09c4d2ed5a33b14">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>guarda_ps <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>guarda_ts <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>) {</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  condicion_A <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">5</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  condicion_B <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">5</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  diferencias <span class="ot">&lt;-</span> condicion_A <span class="sc">-</span> condicion_B</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  t_test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(diferencias, <span class="at">mu =</span> <span class="dv">0</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  guarda_ps[i] <span class="ot">&lt;-</span> t_test<span class="sc">$</span>p.value</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  guarda_ts[i] <span class="ot">&lt;-</span> t_test<span class="sc">$</span>statistic</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(guarda_ts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="06-ttests_cache/html/fig-6simps1000_fcc16848792476a158a6100adf70c89e">
 <div class="cell-output-display">
-<div id="fig-6simps1000" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-6simps1000-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="06-ttests_files/figure-html/fig-6simps1000-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6simps1000-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.14: 1000 valores t simulados de la distribución nula
-</figcaption>
+<div id="fig-6simps1000" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="06-ttests_files/figure-html/fig-6simps1000-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;7.14: 1000 valores t simulados de la distribución nula</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(guarda_ps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="06-ttests_cache/html/fig-6simts1000_031852ff9072d51b5e853a4fae938ad8">
 <div class="cell-output-display">
-<div id="fig-6simts1000" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-6simts1000-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="06-ttests_files/figure-html/fig-6simts1000-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6simts1000-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.15: 1000 valores p simulados de la distribución nula
-</figcaption>
+<div id="fig-6simts1000" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="06-ttests_files/figure-html/fig-6simts1000-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;7.15: 1000 valores p simulados de la distribución nula</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Según la simulación, cuando <strong>no hay diferencias</strong> entre las condiciones y las muestras provienen de <strong>la misma distribución</strong>, se obtienen estas dos distribuciones para <em>t</em> y <em>p</em>. Una vez más, muestran cómo se comporta la <strong>distribución nula de ausencia de diferencias</strong>.</p>
 <p>En cualquiera de estas simulaciones, si rechazaras la hipótesis nula (que la diferencia se debe al azar), estarías cometiendo un <strong>error tipo I</strong>. Si fijás tu criterio alfa en $= .05$, podemos preguntar cuántos errores tipo I se cometieron en estas 1000 simulaciones. La respuesta es:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(guarda_ps[guarda_ps <span class="sc">&lt;</span> .<span class="dv">05</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 39</code></pre>
+<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-14_379786308fdd042d3c2a7f4fd394e496">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(guarda_ps[guarda_ps <span class="sc">&lt;</span> .<span class="dv">05</span>])</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 52</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(guarda_ps[guarda_ps <span class="sc">&lt;</span> .<span class="dv">05</span>]) <span class="sc">/</span> <span class="dv">1000</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.052</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(guarda_ps[guarda_ps <span class="sc">&lt;</span> .<span class="dv">05</span>]) <span class="sc">/</span> <span class="dv">1000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.039</code></pre>
-</div>
-</div>
-<p>Resulta que cometimos 39. La expectativa a largo plazo es una tasa de error tipo I del 5% (si tu alfa es .05).</p>
+<p>Resulta que cometimos 52. La expectativa a largo plazo es una tasa de error tipo I del 5% (si tu alfa es .05).</p>
 <p>¿Qué pasa si en realidad <strong>sí hay una diferencia</strong> en los datos simulados? Probemos con una condición que tenga una media mayor que la otra:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>guarda_ps <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>guarda_ts <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>) {</span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  condicion_A <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">5</span>)</span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>  condicion_B <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">13</span>, <span class="dv">5</span>)</span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>  diferencias <span class="ot">&lt;-</span> condicion_A <span class="sc">-</span> condicion_B</span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>  t_test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(diferencias, <span class="at">mu =</span> <span class="dv">0</span>)</span>
-<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>  guarda_ps[i] <span class="ot">&lt;-</span> t_test<span class="sc">$</span>p.value</span>
-<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>  guarda_ts[i] <span class="ot">&lt;-</span> t_test<span class="sc">$</span>statistic</span>
-<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-15_28ebbc1d91421e084b93f78ec0c6a4e9">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>guarda_ps <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>guarda_ts <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>) {</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  condicion_A <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">5</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  condicion_B <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">13</span>, <span class="dv">5</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  diferencias <span class="ot">&lt;-</span> condicion_A <span class="sc">-</span> condicion_B</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  t_test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(diferencias, <span class="at">mu =</span> <span class="dv">0</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  guarda_ps[i] <span class="ot">&lt;-</span> t_test<span class="sc">$</span>p.value</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  guarda_ts[i] <span class="ot">&lt;-</span> t_test<span class="sc">$</span>statistic</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(guarda_ts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="06-ttests_cache/html/fig-6simtruets_12d05a3cb2c359d73d03ff0a5f0907f6">
 <div class="cell-output-display">
-<div id="fig-6simtruets" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-6simtruets-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="06-ttests_files/figure-html/fig-6simtruets-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6simtruets-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.16: 1000 valores t cuando hay una diferencia real
-</figcaption>
+<div id="fig-6simtruets" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="06-ttests_files/figure-html/fig-6simtruets-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;7.16: 1000 valores t cuando hay una diferencia real</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(guarda_ps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="06-ttests_cache/html/fig-6simtrueps_99d26b0c5fe0662ea1fc0e93b1cb17fa">
 <div class="cell-output-display">
-<div id="fig-6simtrueps" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-6simtrueps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="06-ttests_files/figure-html/fig-6simtrueps-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6simtrueps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.17: 1000 valores p cuando hay una diferencia real
-</figcaption>
+<div id="fig-6simtrueps" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="06-ttests_files/figure-html/fig-6simtrueps-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;7.17: 1000 valores p cuando hay una diferencia real</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Ahora podés ver que la distribución de valores <em>p</em> está <strong>sesgada hacia la izquierda</strong>. Esto pasa porque cuando hay un efecto real, obtenés valores <em>p</em> menores a .05 <strong>más seguido</strong>. O sea, obtenés valores <em>t</em> mayores de lo que obtendrías si no hubiera diferencias.</p>
 <p>En este caso, <strong>no estarías cometiendo un error tipo I</strong> si rechazás la nula cuando <em>p</em> es menor a .05. ¿Cuántas veces lo harías de las 1000 simulaciones?</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(guarda_ps[guarda_ps <span class="sc">&lt;</span> .<span class="dv">05</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 204</code></pre>
+<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-16_cd2b25e828e20101ab0db0d46aada967">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(guarda_ps[guarda_ps <span class="sc">&lt;</span> .<span class="dv">05</span>])</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 226</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(guarda_ps[guarda_ps <span class="sc">&lt;</span> .<span class="dv">05</span>]) <span class="sc">/</span> <span class="dv">1000</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.226</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(guarda_ps[guarda_ps <span class="sc">&lt;</span> .<span class="dv">05</span>]) <span class="sc">/</span> <span class="dv">1000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.204</code></pre>
-</div>
-</div>
-<p>Obtuvimos 204 simulaciones donde <em>p</em> fue menor a .05, lo cual representa 0.204 experimentos. Si fueras el investigador, ¿te gustaría correr un experimento que solo tiene éxito 0.204 del tiempo? Yo no. Yo correría un experimento mejor.</p>
+<p>Obtuvimos 226 simulaciones donde <em>p</em> fue menor a .05, lo cual representa 0.226 experimentos. Si fueras el investigador, ¿te gustaría correr un experimento que solo tiene éxito 0.226 del tiempo? Yo no. Yo correría un experimento mejor.</p>
 <p>¿Cómo harías una mejor simulación? Bueno, podés aumentar <em>n</em>, el número de sujetos. Aumentemos <em>n</em> de 10 a 100 y veamos qué pasa con la cantidad de experimentos “significativos”.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>guarda_ps <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>guarda_ts <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>) {</span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  condicion_A <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">10</span>, <span class="dv">5</span>)</span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  condicion_B <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">13</span>, <span class="dv">5</span>)</span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>  diferencias <span class="ot">&lt;-</span> condicion_A <span class="sc">-</span> condicion_B</span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>  t_test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(diferencias, <span class="at">mu =</span> <span class="dv">0</span>)</span>
-<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>  guarda_ps[i] <span class="ot">&lt;-</span> t_test<span class="sc">$</span>p.value</span>
-<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>  guarda_ts[i] <span class="ot">&lt;-</span> t_test<span class="sc">$</span>statistic</span>
-<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-17_19cd46c2bf05e3d5446144dbcce13bf9">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>guarda_ps <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>guarda_ts <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>) {</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  condicion_A <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">10</span>, <span class="dv">5</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  condicion_B <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">13</span>, <span class="dv">5</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  diferencias <span class="ot">&lt;-</span> condicion_A <span class="sc">-</span> condicion_B</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  t_test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(diferencias, <span class="at">mu =</span> <span class="dv">0</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  guarda_ps[i] <span class="ot">&lt;-</span> t_test<span class="sc">$</span>p.value</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  guarda_ts[i] <span class="ot">&lt;-</span> t_test<span class="sc">$</span>statistic</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(guarda_ts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="06-ttests_cache/html/fig-6simtsB_2b511b2d1e14cd6865ca7d644cae70ef">
 <div class="cell-output-display">
-<div id="fig-6simtsB" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-6simtsB-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="06-ttests_files/figure-html/fig-6simtsB-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6simtsB-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.18: 1000 valores t para n = 100, cuando hay un efecto real
-</figcaption>
+<div id="fig-6simtsB" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="06-ttests_files/figure-html/fig-6simtsB-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;7.18: 1000 valores t para n = 100, cuando hay un efecto real</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(guarda_ps)</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(guarda_ps[guarda_ps <span class="sc">&lt;</span> .<span class="dv">05</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 987</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(guarda_ps[guarda_ps <span class="sc">&lt;</span> .<span class="dv">05</span>]) <span class="sc">/</span> <span class="dv">1000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.987</code></pre>
-</div>
+<div class="cell" data-hash="06-ttests_cache/html/fig-6simpsB_ccedfa02df4b3f79c8c28fbed3f101bc">
+<pre><code>#&gt; [1] 988
+#&gt; [1] 0.988</code></pre>
 <div class="cell-output-display">
-<div id="fig-6simpsB" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-6simpsB-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="06-ttests_files/figure-html/fig-6simpsB-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6simpsB-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.19: 1000 valores p para n = 100, cuando hay un efecto real
-</figcaption>
+<div id="fig-6simpsB" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="06-ttests_files/figure-html/fig-6simpsB-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;7.19: 1000 valores p para n = 100, cuando hay un efecto real</figcaption>
 </figure>
 </div>
 </div>
@@ -2001,52 +1515,36 @@ Figure&nbsp;7.19: 1000 valores p para n = 100, cuando hay un efecto real
 <section id="simular-una-prueba-t-de-muestras-independientes" class="level3" data-number="7.5.3">
 <h3 data-number="7.5.3" class="anchored" data-anchor-id="simular-una-prueba-t-de-muestras-independientes"><span class="header-section-number">7.5.3</span> Simular una prueba t de muestras independientes</h3>
 <p>Solo cambiá la función <code>t.test</code> de esta forma… esto es para simular bajo la nula, asumiendo que <strong>no hay diferencia entre los grupos</strong>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>guarda_ps <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>guarda_ts <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>) {</span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>  group_A <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">5</span>)</span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>  group_B <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">5</span>)</span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>  t_test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(group_A, group_B, <span class="at">paired =</span> <span class="cn">FALSE</span>, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>  guarda_ps[i] <span class="ot">&lt;-</span> t_test<span class="sc">$</span>p.value</span>
-<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>  guarda_ts[i] <span class="ot">&lt;-</span> t_test<span class="sc">$</span>statistic</span>
-<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-18_ffa82901f655f7ead481fb459ec54d74">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>guarda_ps <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>guarda_ts <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>) {</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  group_A <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">5</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  group_B <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">5</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  t_test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(group_A, group_B, <span class="at">paired =</span> <span class="cn">FALSE</span>, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  guarda_ps[i] <span class="ot">&lt;-</span> t_test<span class="sc">$</span>p.value</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  guarda_ts[i] <span class="ot">&lt;-</span> t_test<span class="sc">$</span>statistic</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(guarda_ts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="06-ttests_cache/html/fig-6simtsC_0e8d073e8ca15d5773e93b38ce125118">
 <div class="cell-output-display">
-<div id="fig-6simtsC" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-6simtsC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="06-ttests_files/figure-html/fig-6simtsC-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6simtsC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.20: 1000 valores t para n = 100, cuando hay un efecto real
-</figcaption>
+<div id="fig-6simtsC" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="06-ttests_files/figure-html/fig-6simtsC-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;7.20: 1000 valores t para n = 100, cuando hay un efecto real</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(guarda_ps)</span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(guarda_ps[guarda_ps <span class="sc">&lt;</span> .<span class="dv">05</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 59</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(guarda_ps[guarda_ps <span class="sc">&lt;</span> .<span class="dv">05</span>]) <span class="sc">/</span> <span class="dv">1000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.059</code></pre>
-</div>
+<div class="cell" data-hash="06-ttests_cache/html/fig-6simpsC_ffb15a847379c8a698e07c2b55120357">
+<pre><code>#&gt; [1] 52
+#&gt; [1] 0.052</code></pre>
 <div class="cell-output-display">
-<div id="fig-6simpsC" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-6simpsC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="06-ttests_files/figure-html/fig-6simpsC-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6simpsC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.21: 1000 valores p para n = 100, cuando hay un efecto real
-</figcaption>
+<div id="fig-6simpsC" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="06-ttests_files/figure-html/fig-6simpsC-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;7.21: 1000 valores p para n = 100, cuando hay un efecto real</figcaption>
 </figure>
 </div>
 </div>
@@ -2062,7 +1560,7 @@ Figure&nbsp;7.21: 1000 valores p para n = 100, cuando hay un efecto real
 </iframe>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-mehr20165" class="csl-entry" role="listitem">
 Mehr, Samuel A, Lee Ann Song, and Elizabeth S Spelke. 2016. <span>“For 5-Month-Old Infants, Melodies Are Social.”</span> <em>Psychological Science</em> 27 (4): 486–501. <a href="https://doi.org/10.1177/0956797615626691">https://doi.org/10.1177/0956797615626691</a>.
 </div>
@@ -2109,7 +1607,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -2141,48 +1650,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/almadana\.github\.io\/libro_cuanti\/");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -2192,17 +1664,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -2214,129 +1677,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
+      return note.innerHTML;
     });
   }
       let selectedAnnoteEl;
@@ -2380,7 +1721,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -2406,32 +1746,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2493,12 +1807,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./05-Foundation_Inference.html" class="pagination-link" aria-label="Fundamentos de la inferencia">
+      <a href="./05-Foundation_Inference.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Fundamentos de la inferencia</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./06b-chi_cuadrado.html" class="pagination-link" aria-label="Pruebas chi cuadrado">
+      <a href="./06b-chi_cuadrado.html" class="pagination-link">
         <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Pruebas chi cuadrado</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -2507,5 +1821,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/almadana/libro_cuanti/edit/master/06-ttests.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+</body></html>

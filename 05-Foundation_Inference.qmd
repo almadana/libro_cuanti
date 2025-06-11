@@ -762,7 +762,7 @@ Esta forma de pensar se desarrolla de manera mucho más interesante en el mundo 
 
 #### Tomar decisiones y equivocarse
 
-No importa cómo planees tomar decisiones sobre tus datos, **siempre vas a estar propenso a cometer errores**. Podrías declarar que un resultado es real, cuando en realidad fue causado por azar. Eso se llama un **error tipo I**, o un **falso positivo**. Podrías ignorar un resultado, decir que fue azar, cuando en realidad **no lo fue** (aunque estaba dentro de la ventana). Eso se llama un **error tipo II**, o un **falso negativo**. La forma en que tomás decisiones puede influir en **con qué frecuencia cometés estos errores** a lo largo del tiempo.
+No importa cómo planees tomar decisiones sobre tus datos, **siempre vas a estar propenso a cometer errores**. Podrías declarar que un resultado es real, cuando en realidad fue causado por azar. Eso se llama un **error tipo I**, o un **falso positivo**. Podrías ignorar un resultado, decir que fue azar, cuando en realidad **no lo fue** (aunque estaba dentro de la ventana). Eso se llama un **error tipo II**, o un **falso negativo**. 
 
 La forma en que tomás decisiones puede influir en **con qué frecuencia cometés errores a lo largo del tiempo**. Si sos investigador, vas a correr muchos experimentos, y vas a cometer cierta cantidad de errores con el tiempo.
 
@@ -842,7 +842,7 @@ El último tema de esta sección se llama **poder**. Más adelante vamos a defin
 
 La gran idea detrás del poder es el concepto de **sensibilidad**. El concepto de sensibilidad parte de la suposición de que **hay algo a lo que ser sensible**.
 
-Es decir, **existe una diferencia real** puede ser medida. Entonces, la pregunta es: **¿cuán sensible es tu experimento?** Ya vimos que **el número de sujetos (tamaño muestral)** cambia la sensibilidad del diseño. Más sujetos = más sensibilidad para detectar efectos más pequeños.
+Es decir, **existe una diferencia real** que puede ser medida. Entonces, la pregunta es: **¿cuán sensible es tu experimento?** Ya vimos que **el número de sujetos (tamaño muestral)** cambia la sensibilidad del diseño. Más sujetos = más sensibilidad para detectar efectos más pequeños.
 
 Veamos un gráfico más. Lo que vamos a hacer es simular una medida de sensibilidad para **un conjunto de tamaños muestrales**, desde 10 hasta 300. Lo haremos en incrementos de 10. Para cada simulación, vamos a calcular las diferencias de medias como lo hicimos antes. Pero, en lugar de mostrar el histograma, simplemente vamos a calcular **el valor mínimo y el máximo**. Esto es una buena medida del alcance extremo del azar. Luego vamos a graficar esos valores en función del tamaño muestral y ver qué obtenemos.
 

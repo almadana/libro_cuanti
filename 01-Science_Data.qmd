@@ -290,7 +290,7 @@ Fijate que estas cuatro afirmaciones tienen un orden natural, en cuanto al "grad
 Ahora supongamos que les hago esta pregunta a 100 personas y obtengo las siguientes respuestas:
 
 |   | Personas |
-|----|:--:|
+|------------------------------------|:----------------------------------:|
 | \(1\) Las temperaturas están subiendo debido a la actividad humana | 51 |
 | \(2\) Las temperaturas están subiendo, pero no sabemos por qué | 20 |
 | \(3\) Las temperaturas están subiendo, pero no por causa humana | 10 |

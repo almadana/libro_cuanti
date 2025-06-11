@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Matthew J. C. Crump">
 
-<title>Respondiendo preguntas con datos - 7&nbsp; Pruebas t</title>
+<title>7&nbsp; Pruebas t – Respondiendo preguntas con datos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -59,6 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -101,7 +102,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -110,6 +117,7 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -125,16 +133,40 @@ gtag('js', new Date());
 gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 </script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Respondiendo preguntas con datos - 7&nbsp; Pruebas t">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="7&nbsp; Pruebas t – Respondiendo preguntas con datos">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://almadana.github.io/libro_cuanti/06-ttests_files/figure-html/fig-6muestraMSEM-1.png">
-<meta property="og:site-name" content="Respondiendo preguntas con datos">
-<meta property="og:image:height" content="960">
-<meta property="og:image:width" content="1344">
-<meta name="twitter:title" content="Respondiendo preguntas con datos - 7&nbsp; Pruebas t">
+<meta property="og:site_name" content="Respondiendo preguntas con datos">
+<meta name="twitter:title" content="7&nbsp; Pruebas t – Respondiendo preguntas con datos">
 <meta name="twitter:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
 <meta name="twitter:image" content="https://almadana.github.io/libro_cuanti/imgs/TextbookCover.png">
 <meta name="twitter:site" content="@MattCrumpLab">
@@ -149,13 +181,13 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-ttests.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Pruebas t</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-ttests.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Pruebas t</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -164,12 +196,12 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Respondiendo preguntas con datos</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/almadana/libro_cuanti/" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/almadana/libro_cuanti/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
@@ -285,7 +317,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -310,23 +342,25 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
   <li><a href="#calcular-t" id="toc-calcular-t" class="nav-link" data-scroll-target="#calcular-t"><span class="header-section-number">7.3.5</span> Calcular <em>t</em></a></li>
   <li><a href="#interpretar-valores-t" id="toc-interpretar-valores-t" class="nav-link" data-scroll-target="#interpretar-valores-t"><span class="header-section-number">7.3.6</span> Interpretar valores <em>t</em></a></li>
   <li><a href="#obtener-valores-p-para-valores-t" id="toc-obtener-valores-p-para-valores-t" class="nav-link" data-scroll-target="#obtener-valores-p-para-valores-t"><span class="header-section-number">7.3.7</span> Obtener valores <em>p</em> para valores <em>t</em></a></li>
-  <li><a href="#test-unilateral-one-tailed" id="toc-test-unilateral-one-tailed" class="nav-link" data-scroll-target="#test-unilateral-one-tailed"><span class="header-section-number">7.3.8</span> Test unilateral (one-tailed)</a></li>
-  <li><a href="#test-unilateral-o-bilateral" id="toc-test-unilateral-o-bilateral" class="nav-link" data-scroll-target="#test-unilateral-o-bilateral"><span class="header-section-number">7.3.9</span> ¿Test unilateral o bilateral?</a></li>
-  <li><a href="#grados-de-libertad" id="toc-grados-de-libertad" class="nav-link" data-scroll-target="#grados-de-libertad"><span class="header-section-number">7.3.10</span> Grados de libertad</a></li>
+  <li><a href="#test-unilateral-de-una-cola-o-one-tailed-en-inglés" id="toc-test-unilateral-de-una-cola-o-one-tailed-en-inglés" class="nav-link" data-scroll-target="#test-unilateral-de-una-cola-o-one-tailed-en-inglés"><span class="header-section-number">7.3.8</span> Test unilateral (de una cola, o one-tailed en inglés)</a></li>
+  <li><a href="#test-bilateral-de-dos-cola-o-two-tailed-en-inglés" id="toc-test-bilateral-de-dos-cola-o-two-tailed-en-inglés" class="nav-link" data-scroll-target="#test-bilateral-de-dos-cola-o-two-tailed-en-inglés"><span class="header-section-number">7.3.9</span> Test bilateral (de dos cola, o two-tailed en inglés)</a></li>
+  <li><a href="#test-unilateral-o-bilateral" id="toc-test-unilateral-o-bilateral" class="nav-link" data-scroll-target="#test-unilateral-o-bilateral"><span class="header-section-number">7.3.10</span> ¿Test unilateral o bilateral?</a></li>
+  <li><a href="#grados-de-libertad" id="toc-grados-de-libertad" class="nav-link" data-scroll-target="#grados-de-libertad"><span class="header-section-number">7.3.11</span> Grados de libertad</a></li>
   </ul></li>
   <li><a href="#la-prueba-t-de-muestras-pareadas-contraataca" id="toc-la-prueba-t-de-muestras-pareadas-contraataca" class="nav-link" data-scroll-target="#la-prueba-t-de-muestras-pareadas-contraataca"><span class="header-section-number">7.4</span> La prueba t de muestras pareadas contraataca</a></li>
-  <li><a href="#prueba-t-de-muestras-independientes-el-regreso-dla-prueba-t" id="toc-prueba-t-de-muestras-independientes-el-regreso-dla-prueba-t" class="nav-link" data-scroll-target="#prueba-t-de-muestras-independientes-el-regreso-dla-prueba-t"><span class="header-section-number">7.5</span> Prueba t de muestras independientes: ¿el regreso dla prueba t?</a>
+  <li><a href="#prueba-t-de-muestras-independientes-el-regreso-d-la-prueba-t" id="toc-prueba-t-de-muestras-independientes-el-regreso-d-la-prueba-t" class="nav-link" data-scroll-target="#prueba-t-de-muestras-independientes-el-regreso-d-la-prueba-t"><span class="header-section-number">7.5</span> Prueba t de muestras independientes: ¿el regreso d la prueba t?</a></li>
+  <li><a href="#simulando-datos-para-tests-t" id="toc-simulando-datos-para-tests-t" class="nav-link" data-scroll-target="#simulando-datos-para-tests-t"><span class="header-section-number">7.6</span> Simulando datos para tests <span class="math inline">\(t\)</span></a>
   <ul class="collapse">
-  <li><a href="#simular-una-prueba-t-de-una-muestra" id="toc-simular-una-prueba-t-de-una-muestra" class="nav-link" data-scroll-target="#simular-una-prueba-t-de-una-muestra"><span class="header-section-number">7.5.1</span> Simular una prueba t de una muestra</a></li>
-  <li><a href="#simular-una-prueba-t-de-muestras-pareadas" id="toc-simular-una-prueba-t-de-muestras-pareadas" class="nav-link" data-scroll-target="#simular-una-prueba-t-de-muestras-pareadas"><span class="header-section-number">7.5.2</span> Simular una prueba t de muestras pareadas</a></li>
-  <li><a href="#simular-una-prueba-t-de-muestras-independientes" id="toc-simular-una-prueba-t-de-muestras-independientes" class="nav-link" data-scroll-target="#simular-una-prueba-t-de-muestras-independientes"><span class="header-section-number">7.5.3</span> Simular una prueba t de muestras independientes</a></li>
+  <li><a href="#simular-una-prueba-t-de-una-muestra" id="toc-simular-una-prueba-t-de-una-muestra" class="nav-link" data-scroll-target="#simular-una-prueba-t-de-una-muestra"><span class="header-section-number">7.6.1</span> Simular una prueba t de una muestra</a></li>
+  <li><a href="#simular-una-prueba-t-de-muestras-pareadas" id="toc-simular-una-prueba-t-de-muestras-pareadas" class="nav-link" data-scroll-target="#simular-una-prueba-t-de-muestras-pareadas"><span class="header-section-number">7.6.2</span> Simular una prueba t de muestras pareadas</a></li>
+  <li><a href="#simular-una-prueba-t-de-muestras-independientes" id="toc-simular-una-prueba-t-de-muestras-independientes" class="nav-link" data-scroll-target="#simular-una-prueba-t-de-muestras-independientes"><span class="header-section-number">7.6.3</span> Simular una prueba t de muestras independientes</a></li>
   </ul></li>
-  <li><a href="#videos" id="toc-videos" class="nav-link" data-scroll-target="#videos"><span class="header-section-number">7.6</span> Videos</a>
+  <li><a href="#videos" id="toc-videos" class="nav-link" data-scroll-target="#videos"><span class="header-section-number">7.7</span> Videos</a>
   <ul class="collapse">
-  <li><a href="#test-de-una-o-dos-colas" id="toc-test-de-una-o-dos-colas" class="nav-link" data-scroll-target="#test-de-una-o-dos-colas"><span class="header-section-number">7.6.1</span> Test de una o dos colas</a></li>
+  <li><a href="#test-de-una-o-dos-colas" id="toc-test-de-una-o-dos-colas" class="nav-link" data-scroll-target="#test-de-una-o-dos-colas"><span class="header-section-number">7.7.1</span> Test de una o dos colas</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/almadana/libro_cuanti/edit/master/06-ttests.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/almadana/libro_cuanti/edit/master/06-ttests.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -352,7 +386,9 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
   </div>
   
 
+
 </header>
+
 
 <p>Volvamos atrás en el tiempo. William Sealy Gosset consiguió trabajo en la cervecería Guinness. Sí, la que hace la famosa stout irlandesa. Lo que pasó después fue más o menos así (lo estoy inventando, pero la idea general es cierta).</p>
 <p>Guinness quería que todas sus cervezas fueran las mejores. Nada de errores, nada de birra mala. Querían mejorar el control de calidad para que, sin importar en qué parte del mundo sirvieras una Guinness, siempre saliera perfecta: 5 estrellas sobre 5, siempre.</p>
@@ -390,7 +426,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <p><span class="math display">\[\text{estadístico} = \frac{\text{medida de lo que sabemos}}{\text{medida de lo que no sabemos}}\]</span></p>
 <p>o también:</p>
 <p><span class="math display">\[\text{estadístico} = \frac{\text{efecto}}{\text{error}}\]</span></p>
-<p>Y esta es, justamente, la fórmula general dla prueba t. ¡Sorpresa!</p>
+<p>Y esta es, justamente, la fórmula general de la prueba t. ¡Sorpresa!</p>
 </section>
 <section id="prueba-t-de-una-muestra-una-nueva-prueba-t" class="level2" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="prueba-t-de-una-muestra-una-nueva-prueba-t"><span class="header-section-number">7.2</span> Prueba t de una muestra: una nueva prueba t</h2>
@@ -412,7 +448,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 </section>
 <section id="qué-representa-t" class="level3" data-number="7.2.2">
 <h3 data-number="7.2.2" class="anchored" data-anchor-id="qué-representa-t"><span class="header-section-number">7.2.2</span> ¿Qué representa t?</h3>
-<p><span class="math inline">\(t\)</span> nos da una medida de confianza, igual que la razón anterior en la que dividíamos la media por la desviación estándar. La única diferencia es que ahora dividimos por el <strong>error estándar de la media</strong> (que, recordá, también es una desviación estándar: la de la distribución muestral de la media).</p>
+<p><span class="math inline">\(t\)</span> nos da una medida de confianza, igual que la relación (ratio) anterior en la que dividíamos la media por la desviación estándar. La única diferencia es que ahora dividimos por el <strong>error estándar de la media</strong> (que, recordá, también es una desviación estándar: la de la distribución muestral de la media).</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -428,42 +464,55 @@ Note
 </div>
 <p><span class="math inline">\(t\)</span> es una propiedad de los datos que recolectás. Se calcula con la media de la muestra y su error estándar (y también con la media poblacional, a la que llegamos enseguida). Por eso se dice que <em>t</em> es una estadística muestral: se calcula a partir de la muestra. ¿Qué valores deberíamos esperar obtener para esos <em>t</em>? ¿Cómo podríamos saberlo?</p>
 <p>Empecemos con un ejemplo simple. Imaginá que tu media muestral es 5, y querés saber si viene de una población con media 5. ¿Cuál sería el valor de <em>t</em>? Cero: restamos 5 - 5 = 0. Como el numerador es 0, <em>t</em> también lo es. Así que <em>t</em> = 0 ocurre cuando <strong>no hay diferencia</strong>. Ahora tomás otra muestra. ¿La media será siempre 5? Probablemente no. Supongamos que da 6. ¿Qué valor tendrá <em>t</em>? El numerador es positivo: 6 - 5 = +1. Pero <em>t</em> no necesariamente será 1, eso depende del error estándar. Si es 1, entonces <em>t</em> será 1, porque 1/1 = 1. Si el error estándar es menor que 1, ¿qué pasa con <em>t</em>? Aumenta. Por ejemplo, 1 dividido por 0.5 da 2. Si el error estándar fuera 0.5, entonces <em>t</em> sería 2. Y con ese valor podríamos tener más confianza en que la diferencia que observamos no es casual.</p>
-<p>¿Puede <em>t</em> ser menor que 1? Claro. Si el error estándar es grande, digamos 2, entonces <em>t</em> será más chico (1/2 = 0.5). La dirección de la diferencia entre la media muestral y la poblacional también puede hacer que <em>t</em> sea negativo. Si la media muestral fuera 4, entonces la diferencia es negativa, y <em>t</em> también lo será, porque el numerador es negativo. El denominador (el error estándar) siempre será positivo (acordate por qué: se calcula a partir de la desviación estándar de la muestra, que siempre es positiva porque usamos cuadrados al calcularla). Así que estas son algunas intuiciones sobre los valores posibles de <em>t</em>. Puede ser positivo o negativo, grande o chico.</p>
+<p>¿Puede <em>t</em> ser menor que 1? Claro. Si el error estándar es grande, digamos 2, entonces <em>t</em> será más chico que 1 (en nuestro caso, 1/2 = 0.5). La dirección de la diferencia entre la media muestral y la poblacional también puede hacer que <em>t</em> sea negativo. Si la media muestral fuera 4, entonces la diferencia es negativa, y <em>t</em> también lo será, porque el numerador es negativo. El denominador (el error estándar) siempre será positivo (acordate por qué: se calcula a partir de la desviación estándar de la muestra, que siempre es positiva porque usamos cuadrados al calcularla).</p>
+<p>Así que estas son algunas intuiciones sobre los valores posibles de <em>t</em>. Puede ser positivo o negativo, grande o chico.</p>
 <p>Hagamos una cosa más para afinar la intuición. ¿Qué tal si generamos varias muestras, calculamos la media muestral <strong>y</strong> el error estándar de la media, y graficamos esas dos cosas entre sí? Así vamos a ver cómo varía típicamente la media con respecto al error estándar.</p>
-<p>En la <a href="#fig-6muestraMSEM">Figure&nbsp;<span>7.1</span></a>, tomé 1.000 muestras de tamaño $N = 10$ de una distribución normal (media = 0, desviación estándar = 1). En cada caso, calculé la media y el error estándar. Eso nos da dos estadísticas descriptivas por muestra, y podemos graficarlas como puntos en un scatterplot.</p>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6muestraMSEM_a799944a33f03d1b367e062ba26ead41">
+<p>En la <a href="#fig-6muestraMSEM" class="quarto-xref">Figure&nbsp;<span>7.1</span></a>, tomé 1.000 muestras de tamaño N = 10 de una distribución normal (media = 0, desviación estándar = 1). En cada caso, calculé la media y el error estándar. Eso nos da dos estadísticas descriptivas por muestra, y podemos graficarlas como puntos en un diagrama de dispersión.</p>
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6muestraMSEM" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6muestraMSEM-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;7.1: Diagrama de dispersión con la media muestral en el eje x y el error estándar en el eje y</figcaption>
+<div id="fig-6muestraMSEM" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6muestraMSEM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6muestraMSEM-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6muestraMSEM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.1: Diagrama de dispersión con la media muestral en el eje x y el error estándar en el eje y
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Lo que obtenemos es una nube de puntos. Podés notar que tiene una forma más o menos circular. Hay más puntos en el centro, y menos a medida que se alejan. La nube muestra el rango típico de las medias muestrales: la mayoría está entre -1 y 1. El error estándar también varía entre aproximadamente 0.2 y 0.5. Recordá que cada punto representa una muestra.</p>
-<p>Podemos ver estos datos de otra forma. En lugar de graficar directamente las medias y errores, podemos dividir la media de cada muestra por su error estándar. La <a href="#fig-6thisexample">Figure&nbsp;<span>7.2</span></a> muestra un histograma de esos valores.</p>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6thisexample_c64d0570bf511a31dbd47764ddcdf3f7">
+<p>Podemos ver estos datos de otra forma. En lugar de graficar directamente las medias y errores, podemos dividir la media de cada muestra por su error estándar. La <a href="#fig-6thisexample" class="quarto-xref">Figure&nbsp;<span>7.2</span></a> muestra un histograma de esos valores.</p>
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6thisexample" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6thisexample-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;7.2: Histograma de las medias muestrales divididas por sus errores estándar: una distribución t.</figcaption>
+<div id="fig-6thisexample" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6thisexample-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6thisexample-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6thisexample-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.2: Histograma de las medias muestrales divididas por sus errores estándar: una distribución t.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Interesante, el histograma tiene forma de campana normal. Está centrado en 0, que es el valor más común. A medida que los valores se alejan de 0, son menos frecuentes. Si recordás, nuestra fórmula para <em>t</em> era la media dividida por el error estándar. Eso es exactamente lo que hicimos acá. Este histograma te está mostrando una <strong>distribución t</strong>.</p>
+<p>Interesante, el histograma tiene forma de curva normal. Está centrado en 0, que es el valor más común. A medida que los valores se alejan de 0, son menos frecuentes. Si recordás, nuestra fórmula para <em>t</em> era la media dividida por el error estándar. Eso es exactamente lo que hicimos acá. Este histograma te está mostrando una <strong>distribución t</strong>.</p>
 </section>
 <section id="calcular-t-a-partir-de-datos" class="level3" data-number="7.2.3">
 <h3 data-number="7.2.3" class="anchored" data-anchor-id="calcular-t-a-partir-de-datos"><span class="header-section-number">7.2.3</span> Calcular t a partir de datos</h3>
 <p>Probemos calcular un valor de <em>t</em> con una muestra chica. Supongamos que 10 estudiantes hicieron un test de verdadero/falso con 5 preguntas. Hay un 50% de chance de acertar cada una al azar.</p>
-<p>Todos completan el test, corregimos, y calculamos el desempeño (porcentaje de respuestas correctas). Queremos saber si estuvieron adivinando. Si fue así, el promedio debería rondar el 50%, que sería igual a azar. Veamos la <a href="#tbl-tsmall">Table&nbsp;<span>7.1</span></a>.</p>
-<div class="cell" data-hash="06-ttests_cache/html/tbl-tsmall_d449f7ab152b0f8a521582663377f148">
+<p>Todos completan el test, corregimos, y calculamos el desempeño (porcentaje de respuestas correctas). Queremos saber si estuvieron adivinando. Si fue así, el promedio debería rondar el 50%, que sería igual a azar. Veamos la <a href="#tbl-tsmall" class="quarto-xref">Table&nbsp;<span>7.1</span></a>.</p>
+<div class="cell">
+<div id="tbl-tsmall" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tsmall-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;7.1: Cálculo del valor t para un test de una muestra.
+</figcaption>
+<div aria-describedby="tbl-tsmall-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-tsmall" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;7.1: Cálculo del valor t para un test de una muestra.</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 16%">
 <col style="width: 12%">
@@ -590,6 +639,8 @@ Note
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p>Podés ver que la columna <code>puntajes</code> tiene los puntajes de cada uno de los 10 estudiantes. Hicimos todo lo necesario para calcular la desviación estándar. Recordá que la desviación estándar muestral es la raíz cuadrada de la varianza muestral, o sea:</p>
 <p><span class="math inline">\(\text{desviación estándar} = \sqrt{\frac{\sum_{i}^{n}({x_{i}-\bar{x})^2}}{N-1}}\)</span></p>
@@ -599,7 +650,7 @@ Note
 <p><em>t</em> es la diferencia entre nuestra media muestral (61) y la media poblacional (50, si asumimos azar), dividida por el error estándar:</p>
 <p><span class="math inline">\(t = \frac{\bar{X}-\mu}{S_{\bar{X}}} = \frac{61-50}{5.67} = 1.94\)</span></p>
 <p>Y así se calcula <em>t</em> a mano. Es un embole. A mí ya me molestó hacerlo así. En el laboratorio vas a aprender a calcular <em>t</em> con software, que te lo da de una. Por ejemplo, en R solo tenés que escribir:</p>
-<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-2_6b05b7ad1fde55f473181cf169b457a3">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(puntajes, <span class="at">mu=</span><span class="dv">50</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  One Sample t-test</span></span>
@@ -617,20 +668,24 @@ Note
 <section id="cómo-se-comporta-t" class="level3" data-number="7.2.4">
 <h3 data-number="7.2.4" class="anchored" data-anchor-id="cómo-se-comporta-t"><span class="header-section-number">7.2.4</span> ¿Cómo se comporta t?</h3>
 <p>Si <em>t</em> es solo un número que podemos calcular a partir de una muestra (y lo es), ¿qué hacemos con él? ¿Cómo usamos <em>t</em> para inferencia estadística?</p>
-<p>Volvamos al capítulo sobre muestreo y distribuciones. Ahí hablamos de la distribución muestral de la media. Generamos muchas muestras, calculamos la media de cada una, y armamos un histograma de esas medias. Más adelante dijimos que podíamos hacer eso con <strong>cualquier</strong> estadístico. Para cada muestra podíamos calcular la media, la desviación estándar, el error estándar, e incluso <em>t</em>. Podríamos generar 10.000 muestras y hacer cuatro histogramas, uno por cada estadístico. Eso fue exactamente lo que hice, y los resultados están en los cuatro paneles de la <a href="#fig-6sampdists">Figure&nbsp;<span>7.3</span></a>. Usé un tamaño de muestra de 20, y tomé observaciones aleatorias de una distribución normal, con media = 0, y la desviación estándar = 1. Veamos las distribuciones muestrales de cada estadístico. <em>t</em> se calculó asumiendo que la media poblacional es 0.</p>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6sampdists_4b3ab080ff3c0199041cd65e5705c1db">
+<p>Volvamos al capítulo sobre muestreo y distribuciones. Ahí hablamos de la distribución muestral de la media. Generamos muchas muestras, calculamos la media de cada una, y armamos un histograma de esas medias. Más adelante dijimos que podíamos hacer eso con <strong>cualquier</strong> estadístico. Para cada muestra podíamos calcular la media, la desviación estándar, el error estándar, e incluso <em>t</em>. Podríamos generar 10.000 muestras y hacer cuatro histogramas, uno para cada distribución muestral de cada estadístico. Eso fue exactamente lo que hice, y los resultados están en los cuatro paneles de la <a href="#fig-6sampdists" class="quarto-xref">Figure&nbsp;<span>7.3</span></a>. Usé un tamaño de muestra de 20, y tomé observaciones aleatorias de una distribución normal, con media = 0, y la desviación estándar = 1. Veamos las distribuciones muestrales de cada estadístico. <em>t</em> se calculó asumiendo que la media poblacional es 0.</p>
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6sampdists" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6sampdists-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;7.3: Distribuciones muestrales de la media, la desviación estándar, el error estándar de la media, y <span class="math inline">\(t\)</span>.</figcaption>
+<div id="fig-6sampdists" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6sampdists-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6sampdists-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6sampdists-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.3: Distribuciones muestrales de la media, la desviación estándar, el error estándar de la media, y <span class="math inline">\(t\)</span>.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Vemos cuatro distribuciones muestrales. Así es como se comportan los resúmenes estadísticos de muestras. Antes hablamos de <em>ventanas de azar</em> —estas son cuatro ventanas de azar, que miden distintos aspectos de una muestra. En este caso, todas las muestras provienen de la misma distribución normal. Pero por el error muestral, cada muestra es diferente. Las medias no son idénticas, las desviaciones tampoco, los errores estándar tampoco, y los valores de <em>t</em> tampoco. Todas varían, como muestran los histogramas. Así se comportan las muestras de tamaño 20.</p>
 <p>Podemos ver de entrada que es poco probable obtener una media muestral de 2. Está muy fuera del rango típico. La distribución de las medias va más o menos de -0.5 a +0.5, y está centrada en 0 (¡justo la media poblacional, mirá vos!).</p>
-<p>También es poco probable obtener desviaciones estándar entre 0.6 y 1.5; ese es el rango típico específico para la desviación estándar muestral.</p>
+<p>También es poco probable obtener desviaciones estándar fuera de 0.6 y 1.5; ese es el rango típico específico para la desviación estándar muestral.</p>
 <p>Lo mismo pasa con el error estándar de la media: el rango es más chico, entre 0.1 y 0.3. Rara vez vas a encontrar una muestra con error estándar mayor a 0.3. Prácticamente nunca uno de 1 (en esta situación).</p>
 <p>Y ahora mirá los valores de <em>t</em>. El rango va más o menos de -3 a +3. Los valores 3 apenas aparecen. Casi nunca vas a ver un 5 o un -5 acá.</p>
 <p>Todas estas <em>ventanas de azar</em> se pueden usar como usamos las distribuciones muestrales antes (por ejemplo, en el test de Crump o el test de aleatorización), para hacer inferencias estadísticas. El proceso es el mismo para todas:</p>
@@ -642,13 +697,17 @@ Note
 <li>Evaluar si tus estadísticas muestrales parecen probables o improbables</li>
 </ol>
 <p>Enseguida vamos a formalizar todo esto. Por ahora, quiero que veas que esto que vas a hacer es algo que <strong>ya hiciste antes</strong>. Por ejemplo, en el test de Crump y el test de aleatorización, nos enfocamos en la distribución de diferencias de medias. Podríamos hacer lo mismo acá, pero esta vez nos vamos a centrar en la distribución de valores <em>t</em>. Después aplicamos las mismas reglas de decisión que usamos con las otras distribuciones.</p>
-<p>Abajo vas a ver un gráfico que ya viste antes, pero ahora muestra una distribución de <em>t</em>, no de diferencias de medias. Recordá: si obtenemos un único valor <em>t</em> a partir de una muestra que recolectamos, podemos consultar la <em>ventana de azar</em> en <a href="#fig-6tdecision">Figure&nbsp;<span>7.4</span></a> para ver si ese valor era esperable por azar o no.</p>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6tdecision_c457c10d887a174675cee1568dc1516a">
+<p>Abajo vas a ver un gráfico que ya viste antes, pero ahora muestra una distribución de <em>t</em>, no de diferencias de medias. Recordá: si obtenemos un único valor <em>t</em> a partir de una muestra que recolectamos, podemos consultar la <em>ventana de azar</em> en <a href="#fig-6tdecision" class="quarto-xref">Figure&nbsp;<span>7.4</span></a> para ver si ese valor era esperable por azar o no.</p>
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6tdecision" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6tdecision-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;7.4: Aplicación de criterios de decisión a la distribución t. Histograma de valores t de muestras (n = 20) tomadas de una misma distribución normal (μ = 0, sd = 1)</figcaption>
+<div id="fig-6tdecision" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6tdecision-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6tdecision-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6tdecision-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.4: Aplicación de criterios de decisión a la distribución t. Histograma de valores t de muestras (n = 20) tomadas de una misma distribución normal (μ = 0, sd = 1)
+</figcaption>
 </figure>
 </div>
 </div>
@@ -667,8 +726,8 @@ Note
 <p>Soy psicólogo cognitivo. Hago investigación sobre cómo la gente recuerda, presta atención y aprende habilidades. Hay muchos psicólogos como yo que hacen cosas parecidas. Hacemos experimentos muy similares. Son lo que se llama diseños de <strong>medidas repetidas</strong>. Se llaman así porque medimos cómo una persona hace algo más de una vez. Repetimos la medición. Por ejemplo, puedo medir cómo alguien realiza una tarea en la condición A, y luego ver cómo esa misma persona la hace en la condición B. Y veo que hace cosas distintas. Estoy <strong>midiendo repetidamente</strong> a la misma persona en ambas condiciones. Lo que me interesa es si la manipulación experimental cambia algo en cómo la persona realiza la tarea.</p>
 <section id="mehr-song-y-spelke-2016" class="level3" data-number="7.3.1">
 <h3 data-number="7.3.1" class="anchored" data-anchor-id="mehr-song-y-spelke-2016"><span class="header-section-number">7.3.1</span> Mehr, Song y Spelke (2016)</h3>
-<p>Vamos a introducir la prueba t de muestras pareadas con un ejemplo real, de un estudio real. <span class="citation" data-cites="mehr20165">Mehr, Song, and Spelke (<a href="references.html#ref-mehr20165" role="doc-biblioref">2016</a>)</span> investigaron si cantarles canciones a los bebés los ayuda a ser más sensibles a las señales sociales. Por ejemplo, los bebés tienen que aprender a dirigir su atención hacia las personas como parte de aprender a interactuar socialmente. Tal vez cantarle a un bebé ayuda con ese proceso. Cuando un bebé escucha una canción familiar, puede empezar a prestar más atención a la persona que la canta, incluso después de que termina. Esa persona puede volverse más importante para el bebé en términos sociales. Vas a aprender más sobre este estudio en el laboratorio de esta semana. Este ejemplo te prepara para las actividades de ese laboratorio. Acá va un resumen breve de lo que hicieron.</p>
-<p>Primero, los padres fueron entrenados para cantarle una canción a sus bebés. Luego de varios días de cantarles esa canción, los padres fueron al laboratorio con sus bebés. En la primera sesión, se sentaron con sus hijos en las rodillas, de forma que los bebés pudieran mirar dos videos. En cada video aparecían dos personas nuevas que el bebé nunca había visto. Cada una de esas personas (los cantantes) les cantaba una canción al bebé. Uno de los cantantes cantaba la canción <strong>familiar</strong>, que el bebé ya conocía por sus padres. El otro cantaba una canción <strong>no familiar</strong>, que el bebé nunca había oído.</p>
+<p>Vamos a introducir la prueba t de muestras pareadas con un ejemplo real, de un estudio real. <span class="citation" data-cites="mehr20165">Mehr, Song, and Spelke (<a href="references.html#ref-mehr20165" role="doc-biblioref">2016</a>)</span> investigaron si cantarles canciones a los bebés los ayuda a ser más sensibles a las señales sociales. Por ejemplo, los bebés tienen que aprender a dirigir su atención hacia las personas como parte de aprender a interactuar socialmente. Tal vez cantarle a un bebé ayuda con ese proceso atencional. Cuando un bebé escucha una canción familiar, puede empezar a prestar más atención a la persona que la canta, incluso después de que termina. Esa persona puede volverse más importante para el bebé en términos sociales. Vas a aprender más sobre este estudio en el laboratorio de esta semana. Este ejemplo te prepara para las actividades de ese laboratorio. Acá va un resumen breve de lo que hicieron.</p>
+<p>Primero, los padres fueron entrenados para cantarle una canción a sus bebés. Luego de varios días de cantarles esa canción, los padres fueron al laboratorio con sus bebés. En la primera sesión, se sentaron con sus hijos en las rodillas, de forma que los bebés pudieran mirar dos videos. En cada video aparecían dos personas nuevas que el bebé nunca había visto. Cada una de esas personas (los cantantes) cantaba una canción al bebé. Uno de los cantantes cantaba la canción <strong>familiar</strong>, que el bebé ya conocía por sus padres. El otro cantaba una canción <strong>no familiar</strong>, que el bebé nunca había oído.</p>
 <p>Hubo dos fases de medición importantes: la fase de línea base (<em>baseline</em>) y la fase de prueba (<em>test</em>).</p>
 <p>La fase de línea base ocurrió <strong>antes</strong> de que los bebés vieran y oyeran a los cantantes. Durante esta fase, los bebés miraban un video con ambos cantantes en simultáneo. Los investigadores registraban qué proporción del tiempo el bebé miraba a cada uno. Esta fase servía para ver si los bebés ya tenían una preferencia por alguno de los dos (antes de escucharlos cantar).</p>
 <p>La fase de prueba fue <strong>después</strong> de que los bebés vieron y oyeron a cada cantante. En esta fase, los bebés veían videos mudos de los mismos cantantes. Se medía la proporción de tiempo que pasaban mirando a cada uno. La pregunta era: ¿los bebés mirarían más tiempo al cantante que había cantado la canción familiar, en comparación con el otro?</p>
@@ -682,11 +741,11 @@ Note
 </section>
 <section id="los-datos" class="level3" data-number="7.3.2">
 <h3 data-number="7.3.2" class="anchored" data-anchor-id="los-datos"><span class="header-section-number">7.3.2</span> Los datos</h3>
-<p>Veamos los datos de los primeros 5 bebés del estudio. Esto nos va a ayudar a entender mejor algunas propiedades de los datos antes de analizarlos. Vamos a ver que los datos están estructurados de forma que podemos aprovechar con una prueba t de muestras pareadas. (Ojo: miramos solo los primeros 5 bebés para mostrar cómo funcionan los cálculos. El resultado final dla prueba t cambia si usamos todos los datos del estudio).</p>
+<p>Veamos los datos de los primeros 5 bebés del estudio. Esto nos va a ayudar a entender mejor algunas propiedades de los datos antes de analizarlos. Vamos a ver que los datos están estructurados de forma que podemos aprovechar con una prueba t de muestras pareadas. (Ojo: miramos solo los primeros 5 bebés para mostrar cómo funcionan los cálculos. El resultado final de la prueba t cambia si usamos todos los datos del estudio).</p>
 <p>Acá está la tabla con los datos:</p>
-<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-3_af36d1552c052ebdcbd9ae47c3ebc8b6">
+<div class="cell">
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">infant</th>
@@ -736,9 +795,9 @@ Note
 <li>Puntaje en fase de línea base − Puntaje en fase de prueba</li>
 </ol>
 <p>Vamos a usar la <strong>primera fórmula</strong>. ¿Por qué? Porque da <strong>diferencias positivas</strong> cuando el puntaje de la prueba es mayor que el de línea base. Eso hace que los puntajes positivos tengan sentido en este estudio: indican que el bebé miró más al cantante de la canción familiar <strong>después</strong> de escucharlo que <strong>antes</strong>.</p>
-<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-4_3aa88488296f50bf623a39ec4e0943ac">
+<div class="cell">
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">infant</th>
@@ -788,9 +847,9 @@ Note
 <section id="la-diferencia-media" class="level3" data-number="7.3.4">
 <h3 data-number="7.3.4" class="anchored" data-anchor-id="la-diferencia-media"><span class="header-section-number">7.3.4</span> La diferencia media</h3>
 <p>Como venimos diciendo, el efecto de interés en este estudio es la <strong>diferencia media</strong> entre la proporción de tiempo de mirada en línea base y en prueba. Podemos calcularla como la <strong>media de los puntajes de diferencia</strong>. Vamos a hacerlo. De paso, para divertirnos, también vamos a calcular la media de los puntajes en línea base, los de prueba y los de diferencia.</p>
-<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-5_5d54a149ac9b24a8eee5b9bb681481f4">
+<div class="cell">
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">infant</th>
@@ -851,13 +910,13 @@ Note
 </section>
 <section id="calcular-t" class="level3" data-number="7.3.5">
 <h3 data-number="7.3.5" class="anchored" data-anchor-id="calcular-t"><span class="header-section-number">7.3.5</span> Calcular <em>t</em></h3>
-<p>Bueno, ¿cómo se calcula <em>t</em> para una prueba t de muestras pareadas? ¡Sorpresa! Usamos la <strong>misma fórmula dla prueba t de una muestra</strong> que ya aprendiste. Específicamente, usamos la fórmula dla prueba t de una muestra <strong>aplicada a los puntajes de diferencia</strong>. Tenemos una sola muestra de puntajes de diferencia (están en una sola columna), así que podemos usar la prueba t de una muestra. Lo que nos interesa es saber si la <strong>media</strong> de esos puntajes de diferencia podría provenir de una distribución con media 0. Esa distribución especial se llama la <strong>distribución nula</strong> (<em>null distribution</em>): es la distribución de la ausencia de diferencias. Claro que esta distribución puede generar diferencias pequeñas por error muestral, pero esas diferencias <strong>no</strong> están causadas por ninguna manipulación experimental, sino por el simple azar del muestreo.</p>
+<p>Bueno, ¿cómo se calcula <em>t</em> para una prueba t de muestras pareadas? ¡Sorpresa! Usamos la <strong>misma fórmula de la prueba t de una muestra</strong> que ya aprendiste. Específicamente, usamos la fórmula de la prueba t de una muestra <strong>aplicada a los puntajes de diferencia</strong>. Tenemos una sola muestra de puntajes de diferencia (están en una sola columna), así que podemos usar la prueba t de una muestra. Lo que nos interesa es saber si la <strong>media</strong> de esos puntajes de diferencia podría provenir de una distribución con media 0. Esa distribución especial se llama la <strong>distribución nula</strong> (<em>null distribution</em>): es la distribución de la ausencia de diferencias. Claro que esta distribución puede generar diferencias pequeñas por error muestral, pero esas diferencias <strong>no</strong> están causadas por ninguna manipulación experimental, sino por el simple azar del muestreo.</p>
 <p>Vamos a calcular <em>t</em> en un momento. Pero antes, pensemos de nuevo: ¿por qué queremos calcular <em>t</em>? ¿Por qué no quedarnos solo con la diferencia media?</p>
 <p>Recordá: toda la idea detrás de <em>t</em> es que nos da una indicación de cuánta <strong>confianza</strong> deberíamos tener en nuestra media. El valor de <em>t</em> se obtiene al dividir una medida de la media (el numerador) por una medida de variación (el error estándar, en el denominador). <em>t</em> será chico cuando la diferencia media es chica, o cuando la variación es grande. O sea, valores bajos de <em>t</em> nos dicen que no deberíamos estar muy seguros sobre esa estimación de diferencia. En cambio, cuando la diferencia media es grande y/o la variación es pequeña, obtenemos un valor alto de <em>t</em>. Eso nos da <strong>más confianza</strong> en la estimación.</p>
 <p>Vamos a calcular <em>t</em> para los puntajes de diferencia. Usamos las mismas fórmulas de antes:</p>
-<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-6_b242ccaad168f9500992065ab8ff8d42">
+<div class="cell">
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 8%">
 <col style="width: 16%">
@@ -962,7 +1021,7 @@ Note
 </div>
 </div>
 <p>Si hiciéramos este test usando R, obtendríamos casi los mismos números (hay un poco de redondeo en la tabla).</p>
-<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-7_81e3663cfa142f359c8c5efab5dbae36">
+<div class="cell">
 <pre><code>#&gt; 
 #&gt;  One Sample t-test
 #&gt; 
@@ -975,20 +1034,24 @@ Note
 #&gt; mean of x 
 #&gt;     0.054</code></pre>
 </div>
-<p>Acá va una forma rápida de reportar los resultados dla prueba t: t(4) = .72, p = .509.</p>
+<p>Acá va una forma rápida de reportar los resultados de la prueba t: t(4) = .72, p = .509.</p>
 <p>¿Qué nos dice todo esto? Hay algunos detalles que todavía no abordamos mucho. Por ejemplo, ese 4 representa los <strong>grados de libertad</strong>, de eso hablaremos más adelante. Lo importante por ahora es que el valor de <em>t</em> empiece a tener un poco más de sentido. Obtuvimos un valor <em>t</em> bastante chico: 0.72. ¿Qué podemos decir a partir de eso? Primero, es <strong>positivo</strong>, así que sabemos que la diferencia media también lo fue. El signo del valor <em>t</em> siempre es el mismo que el de la diferencia media (en nuestro caso fue +0.054).</p>
-<p>También vemos que el valor <em>p</em> fue .509. Ya vimos valores <em>p</em> antes. Esto nos dice que obtener un valor de <em>t</em> igual o mayor al observado ocurre en aproximadamente un 50.9% de los casos… Bueno, en realidad significa <strong>algo más que eso</strong>. Y para entenderlo, tenemos que hablar de los conceptos de test <strong>bilateral</strong> (<em>two-tailed</em>) y <strong>unilateral</strong> (<em>one-tailed</em>).</p>
+<p>También vemos que el valor <em>p</em> fue .509. Ya vimos valores <em>p</em> antes. Esto nos dice que obtener un valor de <em>t</em> igual o mayor al observado ocurre en aproximadamente un 50.9% de los casos… Bueno, en realidad significa <strong>algo más que eso</strong>. Y para entenderlo, tenemos que hablar de los conceptos de test <strong>bilateral</strong> (<em>de dos colas</em>) y <strong>unilateral</strong> (<em>de una cola</em>).</p>
 </section>
 <section id="interpretar-valores-t" class="level3" data-number="7.3.6">
 <h3 data-number="7.3.6" class="anchored" data-anchor-id="interpretar-valores-t"><span class="header-section-number">7.3.6</span> Interpretar valores <em>t</em></h3>
 <p>Recordá lo que estamos haciendo: estamos evaluando si nuestros datos muestrales podrían haber salido de una distribución específica. La distribución <strong>nula</strong>, de ausencia de diferencias. Esta es la distribución de valores <em>t</em> que ocurren con muestras de tamaño 5, con diferencia media igual a 0, y error estándar de la media de .075 (ese es el SEM que calculamos a partir de nuestra muestra).</p>
-<p>Podemos ver cómo luce esta distribución nula en <a href="#fig-6tnull">Figure&nbsp;<span>7.5</span></a>:</p>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6tnull_390522dad71513bb057e3f18000ee41a">
+<p>Podemos ver cómo luce esta distribución nula en <a href="#fig-6tnull" class="quarto-xref">Figure&nbsp;<span>7.5</span></a>:</p>
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6tnull" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6tnull-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;7.5: Una distribución de valores t que pueden ocurrir solo por azar, cuando no hay diferencia entre la muestra y la población</figcaption>
+<div id="fig-6tnull" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6tnull-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6tnull-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6tnull-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.5: Una distribución de valores t que pueden ocurrir solo por azar, cuando no hay diferencia entre la muestra y la población
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1002,13 +1065,17 @@ Note
 <li><p>¿Y de que <em>t</em> sea menor o igual a 0? También <em>p = .5</em>. La mitad de los valores están en esa región.</p></li>
 </ol>
 <p>Podemos responder estas preguntas solo mirando la distribución <em>t</em> y dividiéndola en dos regiones iguales: la mitad izquierda (50% de los valores <em>t</em>) y la mitad derecha (los otros 50%).</p>
-<p>¿Y si queremos un enfoque más fino? Por ejemplo, dividir en regiones del 10%. ¿Qué valores de <em>t</em> ocurren solo el 10% del tiempo? Podemos marcar líneas que dividan la distribución en regiones así. Notá que los valores extremos (más grandes o más chicos) son menos probables, entonces los intervalos más alejados del centro tienen que ser más anchos para contener el mismo 10%. Así se ve la figura <a href="#fig-6percentregions">Figure&nbsp;<span>7.6</span></a>:</p>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6percentregions_386a543b37783f7e1e9b1f6945f1aad9">
+<p>¿Y si queremos un enfoque más fino? Por ejemplo, dividir en regiones del 10%. ¿Qué valores de <em>t</em> ocurren solo el 10% del tiempo? Podemos marcar líneas que dividan la distribución en regiones así. Notá que los valores extremos (más grandes o más chicos) son menos probables, entonces los intervalos más alejados del centro tienen que ser más anchos para contener el mismo 10%. Así se ve la figura <a href="#fig-6percentregions" class="quarto-xref">Figure&nbsp;<span>7.6</span></a>:</p>
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6percentregions" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6percentregions-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;7.6: Dividiendo la distribución t en regiones que contienen cada una el 10% de los valores t. Los intervalos son más angostos cerca del centro, donde hay más valores t.</figcaption>
+<div id="fig-6percentregions" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6percentregions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6percentregions-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6percentregions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.6: Dividiendo la distribución t en regiones que contienen cada una el 10% de los valores t. Los intervalos son más angostos cerca del centro, donde hay más valores t.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1036,16 +1103,20 @@ Note
 <p>En resumen: podés encontrar los valores <em>t</em> y sus <em>p</em> asociados usando software. Pero el software <strong>no te explica qué significan</strong> esos valores. Eso es lo que estamos haciendo acá. Además, vas a ver que el software te pide algunos datos más: los <strong>grados de libertad</strong> del test, y si el test es <strong>unilateral o bilateral</strong>. Todavía no explicamos eso. Vamos a hacerlo ahora.</p>
 <p>Ojo: vamos a explicar los grados de libertad <strong>al final</strong>. Primero, vamos con el test <strong>unilateral</strong>.</p>
 </section>
-<section id="test-unilateral-one-tailed" class="level3" data-number="7.3.8">
-<h3 data-number="7.3.8" class="anchored" data-anchor-id="test-unilateral-one-tailed"><span class="header-section-number">7.3.8</span> Test unilateral (one-tailed)</h3>
+<section id="test-unilateral-de-una-cola-o-one-tailed-en-inglés" class="level3" data-number="7.3.8">
+<h3 data-number="7.3.8" class="anchored" data-anchor-id="test-unilateral-de-una-cola-o-one-tailed-en-inglés"><span class="header-section-number">7.3.8</span> Test unilateral (de una cola, o one-tailed en inglés)</h3>
 <p>Un <strong>test unilateral</strong> (<em>one-tailed test</em>) también se llama a veces <strong>test direccional</strong>. Se le dice así porque el investigador puede tener una hipótesis en mente que sugiere que la diferencia entre medias va a tener una <strong>dirección específica</strong>: o bien una diferencia positiva, o bien una negativa.</p>
-<p>Típicamente, el investigador establece un <strong>criterio alfa</strong> (<em>alpha criterion</em>). Este criterio es como una línea en la arena para tomar decisiones. A menudo se fija en $p = .05$. ¿Qué significa eso? La figura <a href="#fig-6critT">Figure&nbsp;<span>7.7</span></a> muestra la distribución <em>t</em> con ese criterio alfa:</p>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6critT_0610a4e299d97d377c5b45a6c494fc1a">
+<p>Típicamente, el investigador establece un <strong>criterio alfa</strong> (<em>alpha criterion</em>). Este criterio es como una línea en la arena para tomar decisiones. A menudo se fija en <span class="math inline">\(p = .05\)</span>. ¿Qué significa eso? La figura <a href="#fig-6critT" class="quarto-xref">Figure&nbsp;<span>7.7</span></a> muestra la distribución <em>t</em> con ese criterio alfa:</p>
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6critT" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6critT-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;7.7: El valor crítico de t para un criterio alfa de 0.05. El 5% de todos los valores t son iguales o mayores a este valor.</figcaption>
+<div id="fig-6critT" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6critT-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6critT-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6critT-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.7: El valor crítico de t para un criterio alfa de 0.05. El 5% de todos los valores t son iguales o mayores a este valor.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1058,25 +1129,37 @@ Note
 <li><p><strong>t observado</strong>: el valor <em>t</em> que calculaste a partir de tu muestra. En el ejemplo de los bebés, fue <em>t</em>(4) = 0.72.</p></li>
 <li><p><strong>Valor <em>p</em></strong>: el valor <em>p</em> es la probabilidad de obtener el valor <em>t</em> observado o uno mayor. En nuestro ejemplo anterior, el valor <em>p</em> para <em>t</em>(4) = 0.72 fue <em>p = .509</em>. SIN EMBARGO, ese valor <em>p</em> <strong>no fue calculado</strong> para un test direccional (unilateral)… (hablamos más sobre qué significa ese .509 en la siguiente sección).</p></li>
 </ol>
-<p>La <a href="#fig-6tonedirection">Figure&nbsp;<span>7.8</span></a> muestra cómo se vería el valor <em>p</em> para <em>t</em>(4) = 0.72 en un test unilateral:</p>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6tonedirection_c9c2434b5cd9625d10851b065f0ba02e">
+<p>La <a href="#fig-6tonedirection" class="quarto-xref">Figure&nbsp;<span>7.8</span></a> muestra cómo se vería el valor <em>p</em> para <em>t</em>(4) = 0.72 en un test unilateral:</p>
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6tonedirection" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6tonedirection-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;7.8: Un caso en el que el valor t observado es mucho menor que el valor crítico para un test t unilateral.</figcaption>
+<div id="fig-6tonedirection" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6tonedirection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6tonedirection-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6tonedirection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.8: Un caso en el que el valor t observado es mucho menor que el valor crítico para un test t unilateral.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Vamos paso a paso. Marcamos en el gráfico el valor <em>t</em> observado (0.72). Sombreamos de gris toda la región a su derecha. Esa región gris representa un 25.6% de todos los valores <em>t</em>. En otras palabras, <strong>el 25.6%</strong> de los valores <em>t</em> son mayores o iguales a 0.72. Es decir, <strong>por azar</strong>, se puede obtener un valor de <em>t</em> igual o mayor a 0.72 en más de una de cada cuatro veces.</p>
 <p>Y de hecho, eso fue lo que encontramos: un <em>t</em> de 0.72. Sabiendo que un valor así o mayor ocurre el 25.6% del tiempo por azar, ¿estarías confiado en que la diferencia media <strong>no</strong> se debe al azar? Probablemente no, ya que el azar puede producir ese valor bastante seguido.</p>
-<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-8_b1325a9712478f2b1db1f770db4be3ff">
+<p>Siguiendo el procedimiento “estándar” de toma de decisiones, concluiríamos que nuestro valor no es estadísticamente significativo, porque no fue lo suficientemente grande. Si nuestro valor observado fuera mayor que el valor crítico (mayor que 2.13), definido por nuestro criterio alfa, entonces afirmaríamos que nuestro valor es estadísticamente significativo. Esto sería equivalente a decir que creemos que es poco probable que la diferencia observada se deba al azar. En general, para cualquier valor observado, el <em>p</em>-valor asociado indica cuán probable es observar un valor de ese tamaño o mayor. El <em>p</em>-valor siempre se refiere a un rango de valores, nunca a un solo valor específico. Los investigadores suelen utilizar el criterio alfa de 0.05, por conveniencia y por convención. Existen otras formas de interpretar estos valores que no dependen de una dicotomía estricta (significativo versus no significativo).</p>
+</section>
+<section id="test-bilateral-de-dos-cola-o-two-tailed-en-inglés" class="level3" data-number="7.3.9">
+<h3 data-number="7.3.9" class="anchored" data-anchor-id="test-bilateral-de-dos-cola-o-two-tailed-en-inglés"><span class="header-section-number">7.3.9</span> Test bilateral (de dos cola, o two-tailed en inglés)</h3>
+<p>OK, entonces eso fue sobre tests de una cola… ¿Qué son los tests de dos colas? El valor <span class="math inline">\(p\)</span> que calculamos originalmente a partir del <span class="math inline">\(t\)</span>-test para muestras pareadas era para un test de dos colas. A menudo, el valor <span class="math inline">\(p\)</span> por defecto corresponde a un test de dos colas.</p>
+<p>El test de dos colas plantea una pregunta más general sobre si una diferencia es probable que haya sido producida por azar. La pregunta es: ¿cuál es la probabilidad de que exista alguna diferencia? También se lo llama un test <strong>no direccional</strong>, porque acá no nos importa la dirección o el signo de la diferencia (positivo o negativo), sino simplemente si hay alguna diferencia.</p>
+<p>Se siguen los mismos principios básicos que antes. Definimos un criterio alfa (<span class="math inline">\(\alpha = 0.05\)</span>). Y decimos que cualquier valor observado de <span class="math inline">\(t\)</span> que tenga una probabilidad de <span class="math inline">\(p\)</span> &lt; .05 (el <span class="math inline">\(p\)</span> es menor que .05) va a ser llamado <strong>estadísticamente significativo</strong>, y aquellos que sean más probables (<span class="math inline">\(p\)</span> &gt; .05, el <span class="math inline">\(p\)</span> es mayor que .05) se van a considerar resultados nulos, o no estadísticamente significativos. La única diferencia está en cómo dibujamos el rango alfa. Antes estaba en el lado derecho de la distribución <span class="math inline">\(t\)</span> (recordá que estábamos haciendo un test de una cola, así que solo nos interesaba un lado).</p>
+<p><span class="quarto-unresolved-ref">?fig-6twotailedt</span> muestra cuáles son el 5% más extremo de los valores <span class="math inline">\(t\)</span> cuando ignoramos su signo (ya sean positivos o negativos).</p>
+<div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="06-ttests_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">El valor crítico de t para un test bilateral. El 5% total de los valores t son mayores o menores que los valores críticos.</figcaption>
+<p><img src="06-ttests_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>El valor crítico de t para un test bilateral. El 5% total de los valores t son mayores o menores que los valores críticos.</figcaption>
 </figure>
 </div>
 </div>
@@ -1084,8 +1167,8 @@ Note
 <p>¿Qué estamos viendo acá? Una distribución de ausencia de diferencias (la nula, que es la que estamos considerando) puede producir valores de <em>t</em> mayores o iguales a 2.78 el 2.5% del tiempo, y menores o iguales a -2.78 también el 2.5% del tiempo. En total, eso da un 5%. Podemos decir que <em>t</em>s mayores que ±2.78 ocurren el 5% de las veces.</p>
 <p>Por eso, el valor crítico de <em>t</em> para un test bilateral es ±2.78. Como podés ver, el test bilateral <strong>no toma en cuenta la dirección del efecto</strong>. Justamente por eso el valor crítico de <em>t</em> es más alto en un test bilateral que en uno unilateral. Esperamos que ahora veas por qué se llama test de <strong>dos colas</strong>: hay <strong>dos colas</strong> de la distribución, a la izquierda y a la derecha, ambas sombreadas en verde.</p>
 </section>
-<section id="test-unilateral-o-bilateral" class="level3" data-number="7.3.9">
-<h3 data-number="7.3.9" class="anchored" data-anchor-id="test-unilateral-o-bilateral"><span class="header-section-number">7.3.9</span> ¿Test unilateral o bilateral?</h3>
+<section id="test-unilateral-o-bilateral" class="level3" data-number="7.3.10">
+<h3 data-number="7.3.10" class="anchored" data-anchor-id="test-unilateral-o-bilateral"><span class="header-section-number">7.3.10</span> ¿Test unilateral o bilateral?</h3>
 <p>Ahora que sabés que existen los dos tipos —test unilateral y test bilateral—, ¿cuál deberías usar? Hay cierta sabiduría convencional sobre esto… pero también hay debate. Al final, lo importante es que <strong>puedas justificar</strong> tu elección y por qué es adecuada para tus datos. Esa es la respuesta real.</p>
 <p>La respuesta convencional es que usás un <strong>test unilateral</strong> cuando tenés una teoría o hipótesis que hace una <strong>predicción direccional</strong> (la teoría predice que la diferencia será positiva o negativa). Del mismo modo, usás un <strong>test bilateral</strong> cuando estás buscando <strong>cualquier diferencia</strong>, sin una predicción direccional (la teoría solo predice que habrá una diferencia, sin decir si será positiva o negativa).</p>
 <p>También parece que las personas eligen entre test unilaterales o bilaterales según cuán <strong>arriesgados</strong> son como investigadores. Si siempre usaras tests unilaterales, los valores <em>t</em> críticos para tu criterio alfa serían <strong>más bajos</strong> que los de un test bilateral. A largo plazo, cometerías <strong>más errores tipo I</strong>, porque el umbral para detectar un efecto es más bajo en un test unilateral que en uno bilateral.</p>
@@ -1095,14 +1178,14 @@ Note
 <p>De forma similar, si siempre usás tests bilaterales, incluso cuando tenés una predicción direccional, vas a cometer <strong>menos errores tipo I</strong> a largo plazo, porque el <em>t</em> crítico es más alto. Es bastante común que los investigadores usen un <strong>test bilateral más conservador</strong>, incluso cuando hacen predicciones direccionales basadas en teoría.</p>
 <p>En la práctica, los investigadores tienden a adoptar un estándar de reporte común en su disciplina. Si esa práctica está justificada o no, puede ser una cuestión abierta. Lo importante para cualquier investigador (o estudiante que aprende estadística) es <strong>poder justificar</strong> su elección del tipo de test.</p>
 </section>
-<section id="grados-de-libertad" class="level3" data-number="7.3.10">
-<h3 data-number="7.3.10" class="anchored" data-anchor-id="grados-de-libertad"><span class="header-section-number">7.3.10</span> Grados de libertad</h3>
+<section id="grados-de-libertad" class="level3" data-number="7.3.11">
+<h3 data-number="7.3.11" class="anchored" data-anchor-id="grados-de-libertad"><span class="header-section-number">7.3.11</span> Grados de libertad</h3>
 <p>Antes de cerrar con las pruebas t de muestras pareadas, tenemos que hablar de los <strong>grados de libertad</strong>.</p>
 <p>Tenemos la impresión de que los estudiantes <strong>no entienden muy bien</strong> qué son los grados de libertad. Si estás leyendo este libro, capaz todavía te estás preguntando qué significa eso, ya que no lo explicamos hasta ahora.</p>
 <p>Para la prueba t, hay una fórmula para los grados de libertad. Para las pruebas t de una muestra y de muestras pareadas, la fórmula es:</p>
 <p><span class="math inline">\(\text{Grados de libertad} = \text{df} = n - 1\)</span></p>
 <p>Donde <em>n</em> es el número de muestras del test.</p>
-<p>En nuestro ejemplo con la prueba t apareado, había 5 bebés. Entonces:</p>
+<p>En nuestro ejemplo con la prueba t pareado, había 5 bebés. Entonces:</p>
 <p><span class="math inline">\(df = 5 - 1 = 4\)</span></p>
 <p>Bueno, eso es una fórmula. Pero, ¿a quién le importan los grados de libertad? ¿Qué significa ese número? ¿Y por qué lo reportamos cuando presentamos una prueba t?</p>
 <p>Seguro notaste el número entre paréntesis, por ejemplo: <em>t</em>(4) = .72. Ese 4 es el <em>df</em>, o grados de libertad.</p>
@@ -1111,21 +1194,25 @@ Note
 <p>Para ilustrarlo: elijamos dos números cualquiera —por ejemplo, 51 y -3. Usé mi libertad para elegir esos dos. Ahora, si nuestros tres números son 51, -3 y <em>x</em>, y queremos que la media sea 2, solo hay una solución: <em>x</em> tiene que ser -42. De otro modo, el promedio no sería 2.</p>
 <p>Esta es una forma de entender los <strong>grados de libertad</strong>. En este ejemplo, hay 3 números y <strong>n–1 = 2</strong> grados de libertad, porque <strong>2</strong> pueden ser libres, pero el tercero queda <strong>determinado</strong>.</p>
 <p>En estadística, los grados de libertad se usan mucho, especialmente cuando una estimación depende de otra estimación. Por ejemplo: cuando calculamos la <strong>desviación estándar muestral</strong>, primero calculamos la <strong>media muestral</strong>, ¿no? Al estimar la media, estamos <strong>fijando</strong> un aspecto de la muestra. Entonces, cuando calculamos la desviación estándar, usamos <strong>n–1</strong> en lugar de <em>n</em>. Ahí aparece otra vez ese famoso <strong>n–1</strong>.</p>
-<section id="simulación-del-efecto-de-los-grados-de-libertad-sobre-la-distribución-t" class="level4" data-number="7.3.10.1">
-<h4 data-number="7.3.10.1" class="anchored" data-anchor-id="simulación-del-efecto-de-los-grados-de-libertad-sobre-la-distribución-t"><span class="header-section-number">7.3.10.1</span> Simulación del efecto de los grados de libertad sobre la distribución <em>t</em></h4>
-<p>Hay al menos dos formas de pensar los grados de libertad para una prueba t. Por un lado, si querés <strong>usar fórmulas</strong> matemáticas para calcular aspectos de la distribución <em>t</em>, necesitás los grados de libertad como <strong>parámetro</strong> de entrada. (Si querés ver las fórmulas, bajá en la <a href="https://es.wikipedia.org/wiki/Distribuci%C3%B3n_t_de_Student">página de Wikipedia dla prueba t</a> hasta la parte de funciones de densidad de probabilidad o de distribución acumulada. A nosotros eso nos parece bastante intimidante, y quizás por eso los grados de libertad no se entienden bien.)</p>
+<section id="simulación-del-efecto-de-los-grados-de-libertad-sobre-la-distribución-t" class="level4" data-number="7.3.11.1">
+<h4 data-number="7.3.11.1" class="anchored" data-anchor-id="simulación-del-efecto-de-los-grados-de-libertad-sobre-la-distribución-t"><span class="header-section-number">7.3.11.1</span> Simulación del efecto de los grados de libertad sobre la distribución <em>t</em></h4>
+<p>Hay al menos dos formas de pensar los grados de libertad para una prueba t. Por un lado, si querés <strong>usar fórmulas</strong> matemáticas para calcular aspectos de la distribución <em>t</em>, necesitás los grados de libertad como <strong>parámetro</strong> de entrada. (Si querés ver las fórmulas, bajá en la <a href="https://es.wikipedia.org/wiki/Distribuci%C3%B3n_t_de_Student">página de Wikipedia de la prueba t</a> hasta la parte de funciones de densidad de probabilidad o de distribución acumulada. A nosotros eso nos parece bastante intimidante, y quizás por eso los grados de libertad no se entienden bien.)</p>
 <p>Pero si queremos simular la distribución <em>t</em>, ahí se ve más fácil cómo influyen los grados de libertad en su forma. Recordá: <em>t</em> es una estadística muestral, se <strong>calcula a partir de la muestra</strong>. Así que podríamos simular el proceso de calcular <em>t</em> en muchas muestras distintas, y luego graficar el histograma de esos valores para ver cómo se ve la distribución <em>t</em>.</p>
-<div class="cell" data-fig.asp="0.5" data-hash="06-ttests_cache/html/fig-6dft_ec80dbe23b754419fdb53c7918a19194">
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6dft" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6dft-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;7.9: La distribución t se vuelve más angosta a medida que aumentan el tamaño muestral y los grados de libertad (de 4 a 100).</figcaption>
+<div id="fig-6dft" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6dft-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6dft-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6dft-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.9: La distribución t se vuelve más angosta a medida que aumentan el tamaño muestral y los grados de libertad (de 4 a 100).
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>En la <a href="#fig-6dft">Figure&nbsp;<span>7.9</span></a>, fijate que la distribución roja para $df = 4$ es un poco más baja y más ancha que la distribución azul verdosa para $df = 100$. A medida que aumentan los grados de libertad, la distribución <em>t</em> se vuelve más alta (en el centro) y más angosta en el rango. Se vuelve más picuda. ¿Adivinás por qué?</p>
+<p>En la <a href="#fig-6dft" class="quarto-xref">Figure&nbsp;<span>7.9</span></a>, fijate que la distribución roja para <span class="math inline">\(df = 4\)</span> es un poco más baja y más ancha que la distribución azul verdosa para <span class="math inline">\(df = 100\)</span>. A medida que aumentan los grados de libertad, la distribución <em>t</em> se vuelve más alta (en el centro) y más angosta en el rango. Se vuelve más picuda. ¿Adivinás por qué?</p>
 <p>Recordá: estamos estimando una estadística muestral, y los grados de libertad son solo un número que representa cuántos sujetos hay (menos uno). Y ya sabemos que, al aumentar <em>n</em>, nuestras estadísticas muestrales se vuelven mejores estimaciones (con menos varianza) de los parámetros poblacionales. Entonces, <em>t</em> se vuelve una mejor estimación de su “valor verdadero” a medida que crece el tamaño muestral, lo que produce una distribución de <em>t</em> más angosta.</p>
 <p>Existe una distribución <em>t</em> ligeramente distinta para cada grado de libertad, y las regiones críticas asociadas al 5% de los valores extremos cambian cada vez. Por eso <strong>reportamos los grados de libertad</strong> en cada prueba t: definen la distribución de valores <em>t</em> para el tamaño muestral que usamos.</p>
 <p>¿Por qué usamos <em>n–1</em> y no <em>n</em>? Bueno, calculamos <em>t</em> usando la desviación estándar muestral para estimar el error estándar de la media, y esa estimación usa <em>n–1</em> en el denominador. Por eso, la distribución <em>t</em> se construye asumiendo <em>n–1</em>.</p>
@@ -1140,10 +1227,10 @@ Note
 <li><p>Recordarte qué estábamos haciendo con el estudio con bebés.</p></li>
 <li><p>Hacer una prueba t de muestras pareadas usando <strong>todos</strong> los datos del estudio y discutir los resultados.</p></li>
 </ol>
-<p>Recordá que nos preguntábamos si los bebés mirarían más tiempo al cantante de la canción familiar durante la fase de prueba, comparado con la línea base. Ya te mostramos los datos de 5 bebés, y caminamos paso a paso por los cálculos dla prueba t. A modo de repaso, se veía así:</p>
-<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-9_51d79fbd797ec95a73711e363e5f4ee8">
+<p>Recordá que nos preguntábamos si los bebés mirarían más tiempo al cantante de la canción familiar durante la fase de prueba, comparado con la línea base. Ya te mostramos los datos de 5 bebés, y caminamos paso a paso por los cálculos de la prueba t. A modo de repaso, se veía así:</p>
+<div class="cell">
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 8%">
 <col style="width: 11%">
@@ -1260,8 +1347,8 @@ Note
 </div>
 <p>Volvamos a escribir el resultado una vez más: la diferencia media fue 0.054, <em>t</em>(4) = .72, <em>p</em> = .509. Ahora también podemos confirmar que el valor <em>p</em> se obtuvo de un <strong>test bilateral</strong>. Entonces, ¿qué significa todo esto?</p>
 <p>Podemos decir que un valor <em>t</em> con valor absoluto de .72 o más ocurre el 50.9% del tiempo. Más precisamente: la distribución de <strong>ausencia de diferencias</strong> (la nula) produce un valor <em>t</em> de ese tamaño o mayor el 50.9% de las veces. En otras palabras: <strong>el azar por sí solo podría haber producido perfectamente el valor <em>t</em> de nuestra muestra</strong>, y la diferencia media de 0.054 que observamos podría deberse simplemente al azar.</p>
-<p>Ahora metamos <strong>todos los datos</strong> dla prueba t y corramos el análisis con los <strong>32 bebés</strong> del estudio:</p>
-<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-10_9fd93299547cf12011f79e5ab7abdbc8">
+<p>Ahora metamos <strong>todos los datos</strong> de la prueba t y corramos el análisis con los <strong>32 bebés</strong> del estudio:</p>
+<div class="cell">
 <pre><code>#&gt; 
 #&gt;  One Sample t-test
 #&gt; 
@@ -1278,11 +1365,11 @@ Note
 <p>Ahora vemos un valor <em>p</em> mucho más bajo. Este también fue un <strong>test bilateral</strong>, así que observar un valor <em>t</em> de 2.4 o más (en valor absoluto) ocurre solo el 2% del tiempo. En otras palabras, la <strong>distribución de ausencia de diferencias</strong> rara vez produce un valor <em>t</em> como el que observamos. Por lo tanto, es <strong>poco probable</strong> que la diferencia media observada de 0.073 se deba al azar (podría deberse al azar, sí, pero es muy poco probable).</p>
 <p>Como resultado, podemos tener <strong>cierta confianza</strong> en concluir que <strong>ver y escuchar a una persona desconocida cantar una canción familiar</strong> lleva al bebé a prestar más atención a esa persona, y eso <strong>podría beneficiar su aprendizaje social</strong>.</p>
 </section>
-<section id="prueba-t-de-muestras-independientes-el-regreso-dla-prueba-t" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="prueba-t-de-muestras-independientes-el-regreso-dla-prueba-t"><span class="header-section-number">7.5</span> Prueba t de muestras independientes: ¿el regreso dla prueba t?</h2>
+<section id="prueba-t-de-muestras-independientes-el-regreso-d-la-prueba-t" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="prueba-t-de-muestras-independientes-el-regreso-d-la-prueba-t"><span class="header-section-number">7.5</span> Prueba t de muestras independientes: ¿el regreso d la prueba t?</h2>
 <p>Si venís siguiendo las referencias a Star Wars, esta sería la última película de la trilogía original… la <strong>prueba t de muestras independientes</strong>. Es básicamente la misma historia de antes, pero con un giro. Recordá que hay distintos tipos de <em>t</em>-tests para distintos diseños experimentales. Cuando tu diseño es de <strong>grupos independientes</strong> (<em>between-subjects</em>), usás una <strong>prueba t de muestras independientes</strong>.</p>
-<p>Los diseños entre sujetos implican personas diferentes en cada condición experimental. Si hay dos condiciones y 10 personas por condición, entonces hay 20 personas en total. Y no hay puntajes apareados, porque <strong>cada persona se mide una sola vez</strong>. No hay medidas repetidas. Como no hay medidas repetidas, no tiene sentido calcular <strong>diferencias entre condiciones</strong> para cada sujeto. Los puntajes no están emparejados de forma significativa, así que <strong>no tiene sentido restarlos</strong>. Entonces, ¿qué hacemos?</p>
-<p>La lógica dla prueba t de muestras independientes es la <strong>misma</strong> que en las otras pruebas t. Calculamos la media de cada grupo, luego la diferencia. Esa diferencia va al numerador de la fórmula del <em>t</em>. Después estimamos la <strong>variación</strong> para el denominador. Dividimos la diferencia de medias por esa estimación, y obtenemos <em>t</em>. Es como antes. La única complicación es: ¿qué va en el denominador? ¿Cómo estimamos la varianza? Estaría bueno si pudiéramos hacer algo directo, como esto (en un experimento con dos grupos, A y B):</p>
+<p>Los diseños entre sujetos implican personas diferentes en cada condición experimental. Si hay dos condiciones y 10 personas por condición, entonces hay 20 personas en total. Y no hay puntajes pareados, porque <strong>cada persona se mide una sola vez</strong>. No hay medidas repetidas. Como no hay medidas repetidas, no tiene sentido calcular <strong>diferencias entre condiciones</strong> para cada sujeto. Los puntajes no están emparejados de forma significativa, así que <strong>no tiene sentido restarlos</strong>. Entonces, ¿qué hacemos?</p>
+<p>La lógica de la prueba t de muestras independientes es la <strong>misma</strong> que en las otras pruebas t. Calculamos la media de cada grupo, luego la diferencia. Esa diferencia va al numerador de la fórmula del <em>t</em>. Después estimamos la <strong>variación</strong> para el denominador. Dividimos la diferencia de medias por esa estimación, y obtenemos <em>t</em>. Es como antes. La única complicación es: ¿qué va en el denominador? ¿Cómo estimamos la varianza? Estaría bueno si pudiéramos hacer algo directo, como esto (en un experimento con dos grupos, A y B):</p>
 <p><span class="math inline">\(t = \frac{\bar{A} - \bar{B}}{\left(\frac{SEM_A + SEM_B}{2}\right)}\)</span></p>
 <p>En lenguaje simple, esto sería:</p>
 <ol type="1">
@@ -1290,14 +1377,13 @@ Note
 <li>Calculás el <strong>error estándar de la media</strong> (SEM) para cada grupo;</li>
 <li>Promediás esos SEMs para obtener una sola estimación, combinando ambas muestras.</li>
 </ol>
-<p>Eso <strong>estaría bueno</strong>, pero lamentablemente <strong>no es la mejor forma de hacerlo</strong>. Tomar el promedio de los errores estándar genera un <strong>estimador sesgado</strong> de la variación en la distribución nula (la de ausencia de diferencias).</p>
-<p>Tomar el promedio de los errores estándar generaría un <strong>estimador sesgado</strong> de la variación bajo la hipótesis nula (ausencia de diferencias). No vamos a entrar en los detalles matemáticos acá, pero en vez de esa fórmula, podemos usar otra que nos da una <strong>estimación insesgada del error estándar combinado de la media muestral</strong>. Nuestra nueva y mejorada fórmula del <em>t</em> se ve así:</p>
+<p>Esto estaría bueno, pero lamentablemente, resulta que sacar el promedio de dos errores estándar de la media no es la mejor forma de hacerlo. Eso generaría un estimador sesgado de la variación para la distribución hipotética donde no hay diferencias. No vamos a meternos con las matemáticas acá, pero en vez de usar la fórmula de arriba, podemos usar otra que nos da una <strong>estimación no sesgada del error estándar combinado de la media muestral</strong>. Nuestra nueva y mejorada fórmula del <span class="math inline">\(t\)</span> se vería así:</p>
 <p><span class="math inline">\(t = \frac{\bar{X}_A - \bar{X}_B}{s_p \cdot \sqrt{\frac{1}{n_A} + \frac{1}{n_B}}}\)</span></p>
-<p>Y $s_p$, que es la desviación estándar combinada de las muestras, se define así (notá que las <em>s</em> en la fórmula son <strong>varianzas</strong>):</p>
+<p>Y <span class="math inline">\(s_p\)</span>, que es la desviación estándar combinada de las muestras, se define así (notá que las <em>s</em> en la fórmula son <strong>varianzas</strong>):</p>
 <p><span class="math inline">\(s_p = \sqrt{\frac{(n_A - 1)s_A^2 + (n_B - 1)s_B^2}{n_A + n_B - 2}}\)</span></p>
 <p>Créeme: es mucha más fórmula de la que quería tipear. ¿Hacemos un ejemplo de prueba t de muestras independientes <strong>a mano</strong>, para ver cómo se hacen los cálculos? Dale… pero lo vamos a hacer de una forma <strong>ligeramente distinta</strong> a la que esperás. Voy a mostrarte los pasos usando R.</p>
-<p>Inventé unos puntajes ficticios para los grupos A y B. Luego seguí todos los pasos de la fórmula, pero hice que R haga cada uno de los cálculos. Esto te muestra los pasos necesarios siguiendo el código. Al final imprimo los valores dla prueba t que calculé “a mano”, y luego el valor dla prueba t que da la función <code>t.test()</code> de R. Deberías obtener el mismo valor de <em>t</em> si te animás a calcularlo a mano.</p>
-<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-11_5cf46ae9363002fa355db44598987f03">
+<p>Inventé unos puntajes ficticios para los grupos A y B. Luego seguí todos los pasos de la fórmula, pero hice que R haga cada uno de los cálculos. Esto te muestra los pasos necesarios siguiendo el código. Al final imprimo los valores de la prueba t que calculé “a mano”, y luego el valor de la prueba t que da la función <code>t.test()</code> de R. Deberías obtener el mismo valor de <em>t</em> si te animás a calcularlo a mano.</p>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="do">## A mano, usando código en R</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
@@ -1333,30 +1419,44 @@ Note
 <span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; mean of x mean of y </span></span>
 <span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       3.0       5.6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="simular-una-prueba-t-de-una-muestra" class="level3" data-number="7.5.1">
-<h3 data-number="7.5.1" class="anchored" data-anchor-id="simular-una-prueba-t-de-una-muestra"><span class="header-section-number">7.5.1</span> Simular una prueba t de una muestra</h3>
+</section>
+<section id="simulando-datos-para-tests-t" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="simulando-datos-para-tests-t"><span class="header-section-number">7.6</span> Simulando datos para tests <span class="math inline">\(t\)</span></h2>
+<p>Un tema “avanzado” dentro de los tests <span class="math inline">\(t\)</span> es la idea de usar R para hacer simulaciones de tests <span class="math inline">\(t\)</span>.</p>
+<p>Si te acordás, el <span class="math inline">\(t\)</span> es una propiedad de una muestra. Calculamos el <span class="math inline">\(t\)</span> a partir de nuestra muestra. La distribución <span class="math inline">\(t\)</span> representa el comportamiento hipotético de nuestras muestras. Es decir, si hubiéramos tomado miles y miles de muestras, y calculado el <span class="math inline">\(t\)</span> para cada una, y luego miráramos la distribución de esos valores de <span class="math inline">\(t\)</span>, tendríamos la distribución muestral del <span class="math inline">\(t\)</span>.</p>
+<p>Puede ser muy útil acostumbrarse a usar R para simular datos bajo ciertas condiciones, para ver cómo se comportan tus datos muestrales y cosas como el <span class="math inline">\(t\)</span>. ¿Por qué es útil esto? Principalmente porque te ayuda a desarrollar una intuición sobre cómo el error muestral (el azar) puede influir en tus resultados, dadas ciertas características de tu diseño, como el tamaño de la muestra, el tamaño de la diferencia de medias que esperás encontrar en tus datos, y la cantidad de variación que podría haber. Estos métodos pueden usarse formalmente para hacer análisis de potencia (<em>power analyses</em>), o de manera más informal para tener una mejor idea de los datos.</p>
+<section id="simular-una-prueba-t-de-una-muestra" class="level3" data-number="7.6.1">
+<h3 data-number="7.6.1" class="anchored" data-anchor-id="simular-una-prueba-t-de-una-muestra"><span class="header-section-number">7.6.1</span> Simular una prueba t de una muestra</h3>
 <p>Acá están los pasos que podrías seguir para simular datos para una prueba t de una muestra:</p>
 <ol type="1">
 <li><p>Hacés algunas suposiciones sobre cómo podría ser tu muestra (que estás planeando recolectar). Por ejemplo, podrías planear recolectar datos de 30 personas. Los puntajes podrían venir de una distribución normal (media = 50, sd = 10).</p></li>
 <li><p>Simulás números desde esa distribución y luego hacés una prueba t sobre esos datos simulados. Guardás las estadísticas que te interesan (como los <em>t</em> y <em>p</em>) y después observás cómo se comportan.</p></li>
 </ol>
-<p>Hagámoslo un par de veces. Primero, vamos a simular muestras con N = 30, tomadas de una distribución normal (media = 50, sd = 25). Vamos a hacer una simulación con 1000 repeticiones. En cada repetición, comparamos la media muestral con una media poblacional de 50. En promedio, no debería haber diferencia. La <a href="#fig-6nullt">Figure&nbsp;<span>7.10</span></a> es la distribución nula que estamos simulando.</p>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6nullt_1851e13746636db86e1b5a658b19c894">
+<p>Hagámoslo un par de veces. Primero, vamos a simular muestras con N = 30, tomadas de una distribución normal (media = 50, sd = 25). Vamos a hacer una simulación con 1000 repeticiones. En cada repetición, comparamos la media muestral con una media poblacional de 50. En promedio, no debería haber diferencia. La <a href="#fig-6nullt" class="quarto-xref">Figure&nbsp;<span>7.10</span></a> es la distribución nula que estamos simulando.</p>
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6nullt" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6nullt-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;7.10: Distribución de valores t bajo la nula. Estos son los t que surgen solo por azar.</figcaption>
+<div id="fig-6nullt" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6nullt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6nullt-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6nullt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.10: Distribución de valores t bajo la nula. Estos son los t que surgen solo por azar.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6flatp_4b3c6c5bd80ef1e7d2036b94aaf87223">
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6flatp" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6flatp-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;7.11: La distribución de valores p observados es plana bajo la nula.</figcaption>
+<div id="fig-6flatp" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6flatp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6flatp-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6flatp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.11: La distribución de valores p observados es plana bajo la nula.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1364,31 +1464,39 @@ Note
 <p>Buenísimo. Vemos una distribución <em>t</em>, que se parece a una <em>t</em> como debe ser. Y también vemos la distribución de valores <em>p</em>. Esto nos muestra qué tan seguido obtenemos valores <em>t</em> de distintos tamaños.</p>
 <p>Capaz te llame la atención que la distribución de <em>p</em> es <strong>plana</strong> bajo la nula (que es lo que estamos simulando). Esto significa que tenés <strong>la misma probabilidad</strong> de obtener un valor <em>p</em> entre 0 y 0.05 que de obtener uno entre 0.90 y 0.95. Esos rangos tienen un 5% de ancho, así que contienen la <strong>misma cantidad de valores t por definición</strong>.</p>
 <p>Acá va otra forma de hacer la misma simulación en R, usando la función <code>replicate</code> en vez de un <code>for</code>:</p>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6simtsRep_84529326e157f88c325a20a085bd984d">
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6simtsRep" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6simtsRep-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;7.12: Simulando valores t en R.</figcaption>
+<div id="fig-6simtsRep" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6simtsRep-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6simtsRep-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6simtsRep-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.12: Simulando valores t en R.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6simpsRep_c53fbf3f07f8d1b1e79e902a938c2e93">
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6simpsRep" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6simpsRep-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;7.13: Simulando valores p en R.</figcaption>
+<div id="fig-6simpsRep" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6simpsRep-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6simpsRep-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6simpsRep-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.13: Simulando valores p en R.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="simular-una-prueba-t-de-muestras-pareadas" class="level3" data-number="7.5.2">
-<h3 data-number="7.5.2" class="anchored" data-anchor-id="simular-una-prueba-t-de-muestras-pareadas"><span class="header-section-number">7.5.2</span> Simular una prueba t de muestras pareadas</h3>
+<section id="simular-una-prueba-t-de-muestras-pareadas" class="level3" data-number="7.6.2">
+<h3 data-number="7.6.2" class="anchored" data-anchor-id="simular-una-prueba-t-de-muestras-pareadas"><span class="header-section-number">7.6.2</span> Simular una prueba t de muestras pareadas</h3>
 <p>El código de abajo está preparado para tomar 10 puntajes de la condición A y 10 de la condición B, ambos desde la misma distribución normal. La simulación se corre 1000 veces, y se guardan los <em>t</em> y <em>p</em> para graficarlos luego.</p>
-<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-13_ea58540076f88effe09c4d2ed5a33b14">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>guarda_ps <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>guarda_ts <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
@@ -1402,37 +1510,45 @@ Note
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  guarda_ts[i] <span class="ot">&lt;-</span> t_test<span class="sc">$</span>statistic</span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6simps1000_fcc16848792476a158a6100adf70c89e">
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6simps1000" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6simps1000-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;7.14: 1000 valores t simulados de la distribución nula</figcaption>
+<div id="fig-6simps1000" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6simps1000-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6simps1000-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6simps1000-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.14: 1000 valores t simulados de la distribución nula
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6simts1000_031852ff9072d51b5e853a4fae938ad8">
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6simts1000" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6simts1000-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;7.15: 1000 valores p simulados de la distribución nula</figcaption>
+<div id="fig-6simts1000" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6simts1000-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6simts1000-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6simts1000-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.15: 1000 valores p simulados de la distribución nula
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Según la simulación, cuando <strong>no hay diferencias</strong> entre las condiciones y las muestras provienen de <strong>la misma distribución</strong>, se obtienen estas dos distribuciones para <em>t</em> y <em>p</em>. Una vez más, muestran cómo se comporta la <strong>distribución nula de ausencia de diferencias</strong>.</p>
-<p>En cualquiera de estas simulaciones, si rechazaras la hipótesis nula (que la diferencia se debe al azar), estarías cometiendo un <strong>error tipo I</strong>. Si fijás tu criterio alfa en $= .05$, podemos preguntar cuántos errores tipo I se cometieron en estas 1000 simulaciones. La respuesta es:</p>
-<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-14_379786308fdd042d3c2a7f4fd394e496">
+<p>En cualquiera de estas simulaciones, si rechazaras la hipótesis nula (que la diferencia se debe al azar), estarías cometiendo un <strong>error tipo I</strong>. Si fijás tu criterio alfa en <span class="math inline">\(alpha = .05\)</span>, podemos preguntar cuántos errores tipo I se cometieron en estas 1000 simulaciones. La respuesta es:</p>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(guarda_ps[guarda_ps <span class="sc">&lt;</span> .<span class="dv">05</span>])</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 52</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 59</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(guarda_ps[guarda_ps <span class="sc">&lt;</span> .<span class="dv">05</span>]) <span class="sc">/</span> <span class="dv">1000</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.052</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.059</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Resulta que cometimos 52. La expectativa a largo plazo es una tasa de error tipo I del 5% (si tu alfa es .05).</p>
+<p>Resulta que cometimos 59. La expectativa a largo plazo es una tasa de error tipo I del 5% (si tu alfa es .05).</p>
 <p>¿Qué pasa si en realidad <strong>sí hay una diferencia</strong> en los datos simulados? Probemos con una condición que tenga una media mayor que la otra:</p>
-<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-15_28ebbc1d91421e084b93f78ec0c6a4e9">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>guarda_ps <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>guarda_ts <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1445,37 +1561,45 @@ Note
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  guarda_ts[i] <span class="ot">&lt;-</span> t_test<span class="sc">$</span>statistic</span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6simtruets_12d05a3cb2c359d73d03ff0a5f0907f6">
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6simtruets" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6simtruets-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;7.16: 1000 valores t cuando hay una diferencia real</figcaption>
+<div id="fig-6simtruets" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6simtruets-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6simtruets-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6simtruets-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.16: 1000 valores t cuando hay una diferencia real
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6simtrueps_99d26b0c5fe0662ea1fc0e93b1cb17fa">
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6simtrueps" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6simtrueps-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;7.17: 1000 valores p cuando hay una diferencia real</figcaption>
+<div id="fig-6simtrueps" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6simtrueps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6simtrueps-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6simtrueps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.17: 1000 valores p cuando hay una diferencia real
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Ahora podés ver que la distribución de valores <em>p</em> está <strong>sesgada hacia la izquierda</strong>. Esto pasa porque cuando hay un efecto real, obtenés valores <em>p</em> menores a .05 <strong>más seguido</strong>. O sea, obtenés valores <em>t</em> mayores de lo que obtendrías si no hubiera diferencias.</p>
 <p>En este caso, <strong>no estarías cometiendo un error tipo I</strong> si rechazás la nula cuando <em>p</em> es menor a .05. ¿Cuántas veces lo harías de las 1000 simulaciones?</p>
-<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-16_cd2b25e828e20101ab0db0d46aada967">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(guarda_ps[guarda_ps <span class="sc">&lt;</span> .<span class="dv">05</span>])</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 226</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 231</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(guarda_ps[guarda_ps <span class="sc">&lt;</span> .<span class="dv">05</span>]) <span class="sc">/</span> <span class="dv">1000</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.226</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.231</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Obtuvimos 226 simulaciones donde <em>p</em> fue menor a .05, lo cual representa 0.226 experimentos. Si fueras el investigador, ¿te gustaría correr un experimento que solo tiene éxito 0.226 del tiempo? Yo no. Yo correría un experimento mejor.</p>
+<p>Obtuvimos 231 simulaciones donde <em>p</em> fue menor a .05, lo cual representa 0.231 experimentos. Si fueras el investigador, ¿te gustaría correr un experimento que solo tiene éxito 0.231 del tiempo? Yo no. Yo correría un experimento mejor.</p>
 <p>¿Cómo harías una mejor simulación? Bueno, podés aumentar <em>n</em>, el número de sujetos. Aumentemos <em>n</em> de 10 a 100 y veamos qué pasa con la cantidad de experimentos “significativos”.</p>
-<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-17_19cd46c2bf05e3d5446144dbcce13bf9">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>guarda_ps <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>guarda_ts <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
@@ -1488,34 +1612,42 @@ Note
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  guarda_ts[i] <span class="ot">&lt;-</span> t_test<span class="sc">$</span>statistic</span>
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6simtsB_2b511b2d1e14cd6865ca7d644cae70ef">
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6simtsB" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6simtsB-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;7.18: 1000 valores t para n = 100, cuando hay un efecto real</figcaption>
+<div id="fig-6simtsB" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6simtsB-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6simtsB-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6simtsB-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.18: 1000 valores t para n = 100, cuando hay un efecto real
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6simpsB_ccedfa02df4b3f79c8c28fbed3f101bc">
-<pre><code>#&gt; [1] 988
-#&gt; [1] 0.988</code></pre>
+<div class="cell">
+<pre><code>#&gt; [1] 990
+#&gt; [1] 0.99</code></pre>
 <div class="cell-output-display">
-<div id="fig-6simpsB" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6simpsB-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;7.19: 1000 valores p para n = 100, cuando hay un efecto real</figcaption>
+<div id="fig-6simpsB" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6simpsB-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6simpsB-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6simpsB-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.19: 1000 valores p para n = 100, cuando hay un efecto real
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Genial, ahora casi todos los experimentos muestran un valor <em>p</em> menor a .05 (usando un test bilateral, que es la opción por defecto en R). ¿Ves? Podés usar este proceso de simulación para determinar <strong>cuántos sujetos necesitás</strong> para detectar confiablemente tu efecto.</p>
 </section>
-<section id="simular-una-prueba-t-de-muestras-independientes" class="level3" data-number="7.5.3">
-<h3 data-number="7.5.3" class="anchored" data-anchor-id="simular-una-prueba-t-de-muestras-independientes"><span class="header-section-number">7.5.3</span> Simular una prueba t de muestras independientes</h3>
+<section id="simular-una-prueba-t-de-muestras-independientes" class="level3" data-number="7.6.3">
+<h3 data-number="7.6.3" class="anchored" data-anchor-id="simular-una-prueba-t-de-muestras-independientes"><span class="header-section-number">7.6.3</span> Simular una prueba t de muestras independientes</h3>
 <p>Solo cambiá la función <code>t.test</code> de esta forma… esto es para simular bajo la nula, asumiendo que <strong>no hay diferencia entre los grupos</strong>.</p>
-<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-18_ffa82901f655f7ead481fb459ec54d74">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>guarda_ps <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>guarda_ts <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
@@ -1527,24 +1659,32 @@ Note
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  guarda_ts[i] <span class="ot">&lt;-</span> t_test<span class="sc">$</span>statistic</span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6simtsC_0e8d073e8ca15d5773e93b38ce125118">
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6simtsC" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6simtsC-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;7.20: 1000 valores t para n = 100, cuando hay un efecto real</figcaption>
+<div id="fig-6simtsC" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6simtsC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6simtsC-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6simtsC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.20: 1000 valores t para n = 100, cuando hay un efecto real
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6simpsC_ffb15a847379c8a698e07c2b55120357">
-<pre><code>#&gt; [1] 52
-#&gt; [1] 0.052</code></pre>
+<div class="cell">
+<pre><code>#&gt; [1] 60
+#&gt; [1] 0.06</code></pre>
 <div class="cell-output-display">
-<div id="fig-6simpsC" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6simpsC-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;7.21: 1000 valores p para n = 100, cuando hay un efecto real</figcaption>
+<div id="fig-6simpsC" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6simpsC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6simpsC-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6simpsC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.21: 1000 valores p para n = 100, cuando hay un efecto real
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1552,15 +1692,15 @@ Note
 <hr>
 </section>
 </section>
-<section id="videos" class="level2" data-number="7.6">
-<h2 data-number="7.6" class="anchored" data-anchor-id="videos"><span class="header-section-number">7.6</span> Videos</h2>
-<section id="test-de-una-o-dos-colas" class="level3" data-number="7.6.1">
-<h3 data-number="7.6.1" class="anchored" data-anchor-id="test-de-una-o-dos-colas"><span class="header-section-number">7.6.1</span> Test de una o dos colas</h3>
+<section id="videos" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="videos"><span class="header-section-number">7.7</span> Videos</h2>
+<section id="test-de-una-o-dos-colas" class="level3" data-number="7.7.1">
+<h3 data-number="7.7.1" class="anchored" data-anchor-id="test-de-una-o-dos-colas"><span class="header-section-number">7.7.1</span> Test de una o dos colas</h3>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/PuoGsguuY30" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
 </iframe>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-mehr20165" class="csl-entry" role="listitem">
 Mehr, Samuel A, Lee Ann Song, and Elizabeth S Spelke. 2016. <span>“For 5-Month-Old Infants, Melodies Are Social.”</span> <em>Psychological Science</em> 27 (4): 486–501. <a href="https://doi.org/10.1177/0956797615626691">https://doi.org/10.1177/0956797615626691</a>.
 </div>
@@ -1607,18 +1747,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1650,11 +1779,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/almadana\.github\.io\/libro_cuanti\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1664,8 +1832,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1677,7 +1854,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1721,6 +2021,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1746,6 +2047,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1807,12 +2134,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./05-Foundation_Inference.html" class="pagination-link">
+      <a href="./05-Foundation_Inference.html" class="pagination-link" aria-label="Fundamentos de la inferencia">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Fundamentos de la inferencia</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./06b-chi_cuadrado.html" class="pagination-link">
+      <a href="./06b-chi_cuadrado.html" class="pagination-link" aria-label="Pruebas chi cuadrado">
         <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Pruebas chi cuadrado</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1821,4 +2148,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/almadana/libro_cuanti/edit/master/06-ttests.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>

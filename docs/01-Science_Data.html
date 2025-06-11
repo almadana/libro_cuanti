@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Danielle J. Navarro">
 
-<title>Respondiendo preguntas con datos - 1&nbsp; ¿Por qué estadística?</title>
+<title>1&nbsp; ¿Por qué estadística? – Respondiendo preguntas con datos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -59,6 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -101,7 +102,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "Sin resultados",
     "search-matching-documents-text": "documentos encontrados",
@@ -110,6 +117,7 @@ div.csl-indent {
     "search-more-match-text": "resultado adicional en este documento",
     "search-more-matches-text": "resultados adicionales en este documento",
     "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancelar",
     "search-submit-button-title": "Enviar",
     "search-label": "Buscar"
@@ -125,16 +133,40 @@ gtag('js', new Date());
 gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 </script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Respondiendo preguntas con datos - 1&nbsp; ¿Por qué estadística?">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="1&nbsp; ¿Por qué estadística? – Respondiendo preguntas con datos">
 <meta property="og:description" content="Adaptado casi al pie de la letra de los capítulos 1 y 2 de Navarro, D. J. “Learning Statistics with R.” https://compcogscisydney.org/learning-statistics-with-r/. Traducido al español rioplatense por ChatGPT4-o bajo la supervisión de Álvaro Cabana.">
-<meta property="og:image" content="https://almadana.github.io/libro_cuanti/imgs/figures/1Simpson.png">
-<meta property="og:site-name" content="Respondiendo preguntas con datos">
-<meta property="og:image:height" content="924">
-<meta property="og:image:width" content="962">
-<meta name="twitter:title" content="Respondiendo preguntas con datos - 1&nbsp; ¿Por qué estadística?">
+<meta property="og:site_name" content="Respondiendo preguntas con datos">
+<meta name="twitter:title" content="1&nbsp; ¿Por qué estadística? – Respondiendo preguntas con datos">
 <meta name="twitter:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
 <meta name="twitter:image" content="https://almadana.github.io/libro_cuanti/imgs/TextbookCover.png">
 <meta name="twitter:site" content="@MattCrumpLab">
@@ -149,13 +181,13 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-Science_Data.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">¿Por qué estadística?</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-Science_Data.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">¿Por qué estadística?</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -164,12 +196,12 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Respondiendo preguntas con datos</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/almadana/libro_cuanti/" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/almadana/libro_cuanti/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
@@ -285,7 +317,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -349,7 +381,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
   <li><a href="#términos-en-estadística-video-en-inglés" id="toc-términos-en-estadística-video-en-inglés" class="nav-link" data-scroll-target="#términos-en-estadística-video-en-inglés"><span class="header-section-number">1.14.1</span> Términos en Estadística (video en inglés)</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/almadana/libro_cuanti/edit/master/01-Science_Data.qmd" class="toc-action">Editar esta página</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/almadana/libro_cuanti/edit/master/01-Science_Data.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -376,12 +408,14 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
   
 <div>
   <div class="abstract">
-    <div class="abstract-title">Notas</div>
+    <div class="block-title">Notas</div>
     Adaptado casi al pie de la letra de los capítulos 1 y 2 de Navarro, D. J. “Learning Statistics with R.” <a href="https://compcogscisydney.org/learning-statistics-with-r/" class="uri">https://compcogscisydney.org/learning-statistics-with-r/</a>. Traducido al español rioplatense por ChatGPT4-o bajo la supervisión de Álvaro Cabana.
   </div>
 </div>
 
+
 </header>
+
 
 <blockquote class="blockquote">
 <p>Consultar al estadístico después de que un experimento ha terminado es, a menudo, simplemente pedirle que realice una autopsia. Tal vez pueda decir de qué murió el experimento. — Sir Ronald Fisher</p>
@@ -393,7 +427,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <blockquote class="blockquote">
 <p><em>¿Por qué hacen estadística? ¿Por qué no usar solo el sentido común?</em></p>
 </blockquote>
-<p>Es una pregunta ingenua en cierto sentido, pero muchas de las buenas preguntas lo son. Hay muchas buenas respuestas, pero para mí, la mejor es muy simple: no confiamos lo suficiente en nosotros mismos. Nos preocupa ser humanos, y estar sujetes a todos los sesgos, tentaciones y debilidades que eso implica. Gran parte de la estadística funciona como una especie de red de seguridad. Usar el “sentido común” para evaluar evidencia implica confiar en las corazonadas, en los argumentos verbales y en el puro poder del razonamiento humano para llegar a la respuesta correcta. La mayoría de los científicos no cree que ese enfoque funcione muy bien.</p>
+<p>Es una pregunta ingenua en cierto sentido, pero muchas de las buenas preguntas lo son. Hay muchas buenas respuestas, pero para mí, la mejor es muy simple: no confiamos lo suficiente en nosotros mismos. Nos preocupa ser humanos, y estar sujetos a todos los sesgos, tentaciones y debilidades que eso implica. Gran parte de la estadística funciona como una especie de red de seguridad. Usar el “sentido común” para evaluar evidencia implica confiar en las corazonadas, en los argumentos verbales y en el puro poder del razonamiento humano para llegar a la respuesta correcta. La mayoría de los científicos no cree que ese enfoque funcione muy bien.</p>
 <p>De hecho, pensándolo bien, esto suena bastante a una pregunta psicológica. Y como trabajo en un departamento de psicología, parece buena idea profundizar un poco más. ¿Es realmente razonable pensar que el “sentido común” es confiable? Los argumentos verbales tienen que construirse con lenguaje, y todo lenguaje tiene sesgos: algunas cosas son más difíciles de decir que otras, y no necesariamente porque sean falsas (por ejemplo, la electrodinámica cuántica es una buena teoría, pero difícil de explicar con palabras). Las corazonadas no están diseñadas para resolver problemas científicos, sino para manejar inferencias cotidianas —y considerando que la evolución biológica es más lenta que el cambio cultural, deberíamos decir que están diseñadas para resolver problemas de otro mundo, distinto al que vivimos ahora. Más fundamentalmente, razonar con sentido común requiere hacer “inducción”, es decir, conjeturas razonables y generalizaciones más allá de la evidencia inmediata. Si creés que podés hacer eso sin verte influenciado por distracciones o sesgos, bueno… te puedo vender el obelisco. De hecho, como veremos en la siguiente sección, ni siquiera podemos resolver problemas deductivos (que no requieren conjeturas) sin que nuestros sesgos previos se metan en el medio.</p>
 <section id="la-maldición-del-sesgo-de-creencia" class="level3" data-number="1.1.1">
 <h3 data-number="1.1.1" class="anchored" data-anchor-id="la-maldición-del-sesgo-de-creencia"><span class="header-section-number">1.1.1</span> La maldición del sesgo de creencia</h3>
@@ -422,7 +456,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <li>Por lo tanto, algunos cigarrillos no son adictivos (Conclusión)</li>
 </ul>
 <p>Ahora bien, supongamos que las personas realmente pueden dejar de lado sus sesgos previos sobre qué es verdadero y qué no, y evaluar un argumento únicamente por su lógica. Esperaríamos que el 100% diga que los argumentos válidos son válidos, y que el 0% diga que los inválidos lo son. Si hiciéramos un experimento sobre esto, esperaríamos ver datos así:</p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -445,7 +479,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 </table>
 <p>Si los datos psicológicos se vieran así (o incluso se acercaran bastante), podríamos sentirnos seguros confiando en nuestras corazonadas. O sea, estaría perfecto dejar que los científicos evaluaran los datos según su sentido común, sin molestarse con todo este asunto turbio de la estadística. Pero ustedes ya han cursado psicología, y a esta altura seguro sospechan hacia dónde va esto.</p>
 <p>En un estudio clásico, <span class="citation" data-cites="Evans1983">Evans, Barston, y Pollard (<a href="references.html#ref-Evans1983" role="doc-biblioref">1983</a>)</span> hicieron un experimento sobre esto mismo. Y lo que encontraron fue que, cuando las creencias previas (o sea, los sesgos) coincidían con la estructura lógica del argumento, todo iba bastante bien:</p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -467,7 +501,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 </tbody>
 </table>
 <p>No es perfecto, pero está bastante bien. Ahora mirá lo que pasa cuando la intuición sobre la verdad de la conclusión entra en conflicto con la lógica del argumento:</p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -495,7 +529,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <section id="la-advertencia-de-la-paradoja-de-simpson" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="la-advertencia-de-la-paradoja-de-simpson"><span class="header-section-number">1.2</span> La advertencia de la paradoja de Simpson</h2>
 <p>La siguiente es una historia real (creo…). En 1973, la Universidad de California en Berkeley estaba preocupada por los ingresos a sus programas de posgrado. En particular, el problema era la distribución por género de los ingresos, que se veía así:</p>
-<table class="table">
+<table class="caption-top table">
 <tbody>
 <tr class="odd">
 <td></td>
@@ -529,7 +563,7 @@ Extra
 </div>
 </div>
 <p>Cuando la gente empezó a mirar los datos con más detalle <span class="citation" data-cites="Bickel1975">(<a href="references.html#ref-Bickel1975" role="doc-biblioref">Bickel, Hammel, y O’Connell 1975</a>)</span>, la historia resultó ser bastante diferente. En particular, cuando se analizaron los ingresos por departamento, se encontró que la mayoría de los departamentos en realidad tenían una tasa de admisión más alta para mujeres que para hombres. La siguiente tabla muestra los datos de los seis departamentos más grandes (los nombres fueron removidos por privacidad):</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 18%">
 <col style="width: 22%">
@@ -591,14 +625,18 @@ Extra
 </table>
 <p>Increíblemente, la mayoría de los departamentos admitían <em>más</em> mujeres (en proporción) que hombres. Sin embargo, la tasa de admisión general en toda la universidad era <em>más baja</em> para las mujeres. ¿Cómo puede ser? ¿Cómo pueden ser verdaderas las dos cosas al mismo tiempo?</p>
 <p>Esto es lo que pasa. Primero, notá que los departamentos <em>no son</em> todos iguales en cuanto a su porcentaje de admisión: algunos (como ingeniería o química) tienden a admitir a una gran parte de quienes se postulan; otros (como literatura inglesa) tienden a rechazar a la mayoría, incluso si tienen buen perfil. Así que, entre los seis departamentos de arriba, el departamento A es el más generoso, seguido por B, C, D, E y F, en ese orden. A continuación, fijate que los hombres y las mujeres tendían a postularse a departamentos diferentes. Si ordenamos los departamentos según el número total de postulaciones masculinas, obtenemos <strong>A</strong>&gt;<strong>B</strong>&gt;D&gt;C&gt;F&gt;E (los “departamentos fáciles” están en negrita). En general, los hombres tendieron a postularse a los departamentos con tasas de admisión altas. Ahora compara esto con la distribución de las postulaciones femeninas. Clasificar los departamentos según el número total de postulaciones femeninas produce un orden bastante diferente: C&gt;E&gt;D&gt;F&gt;<strong>A</strong>&gt;<strong>B</strong>. En otras palabras, estos datos parecen sugerir que las mujeres tendieron a postularse a departamentos “más difíciles”.</p>
-<p>Y si miramos <a href="#fig-simpson">Figura&nbsp;<span>1.1</span></a>, vemos que esta tendencia es sistemática, y bastante notable. Este fenómeno se conoce como la <strong>paradoja de Simpson</strong>. No es común, pero ocurre en la vida real, y suele sorprender muchísimo cuando uno se la encuentra por primera vez. Mucha gente incluso se niega a creer que sea real. Pero lo es. Y aunque hay muchas lecciones estadísticas sutiles escondidas acá, quiero usar este ejemplo para señalar un punto más importante: hacer investigación es difícil, y está <strong>lleno</strong> de trampas sutiles y contraintuitivas esperando a quien no esté atento. Esa es la razón #2 por la que los científiquos aman la estadística, y por la que enseñamos métodos de investigación. Porque la ciencia es difícil, y la verdad a veces está escondida en los rincones más enredados de los datos.</p>
+<p>Y si miramos <a href="#fig-simpson" class="quarto-xref">Figura&nbsp;<span>1.1</span></a>, vemos que esta tendencia es sistemática, y bastante notable. Este fenómeno se conoce como la <strong>paradoja de Simpson</strong>. No es común, pero ocurre en la vida real, y suele sorprender muchísimo cuando uno se la encuentra por primera vez. Mucha gente incluso se niega a creer que sea real. Pero lo es. Y aunque hay muchas lecciones estadísticas sutiles escondidas acá, quiero usar este ejemplo para señalar un punto más importante: hacer investigación es difícil, y está <strong>lleno</strong> de trampas sutiles y contraintuitivas esperando a quien no esté atento. Esa es la razón #2 por la que los científiquos aman la estadística, y por la que enseñamos métodos de investigación. Porque la ciencia es difícil, y la verdad a veces está escondida en los rincones más enredados de los datos.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"imgs/figures/1Simpson.png"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-simpson" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="imgs/figures/1Simpson.png" class="img-fluid figure-img" width="481"></p>
-<figcaption class="figure-caption">Figura&nbsp;1.1: Datos de admisión a la universidad de Berkeley en 1973. Esta figura muestra la tasa de admisión de los 85 departamentos que recibieron al menos una postulante mujer, en función del porcentaje de postulantes que eran mujeres. El gráfico es una recreación de la Figura 1 de Bickel et al.&nbsp;(1975). Los círculos representan departamentos con más de 40 postulantes; el área del círculo es proporcional al número total de postulantes. Las cruces representan departamentos con menos de 40 postulantes.</figcaption>
+<div id="fig-simpson" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-simpson-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="imgs/figures/1Simpson.png" class="img-fluid figure-img" width="481">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-simpson-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1.1: Datos de admisión a la universidad de Berkeley en 1973. Esta figura muestra la tasa de admisión de los 85 departamentos que recibieron al menos una postulante mujer, en función del porcentaje de postulantes que eran mujeres. El gráfico es una recreación de la Figura 1 de Bickel et al.&nbsp;(1975). Los círculos representan departamentos con más de 40 postulantes; el área del círculo es proporcional al número total de postulantes. Las cruces representan departamentos con menos de 40 postulantes.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -706,7 +744,7 @@ pero nos morimos de hambre por conocimiento”</em><br>
 <h3 data-number="1.7.4" class="anchored" data-anchor-id="escala-nominal"><span class="header-section-number">1.7.4</span> Escala nominal</h3>
 <p>Una variable de <strong>escala nominal</strong> (también llamada <strong>categórica</strong>) es aquella en la que no hay una relación particular entre las distintas opciones: para este tipo de variables no tiene sentido decir que una es “mayor” o “mejor” que otra, y mucho menos calcular un promedio. El ejemplo clásico es el “color de ojos”. Pueden ser azules, verdes o marrones, entre otras opciones, pero ninguna es mejor que otra. Por eso sería raro hablar de un “color de ojos promedio”. Lo mismo pasa con el género: ser hombre no es mejor ni peor que ser mujer, y no tiene sentido hablar de un “género promedio”. En resumen, las variables nominales son aquellas en las que lo único que podés decir es que las categorías son diferentes. Y nada más.</p>
 <p>Veamos esto más de cerca. Supongamos que estoy investigando cómo viaja la gente al trabajo. Una variable que tendría que medir es el medio de transporte. Esta variable “medio de transporte” podría incluir varios valores, incluyendo: “tren”, “ómnibus”, “auto”, “bicicleta”, etc. Supongamos por ahora que esas cuatro son las únicas opciones, y que al preguntar a 100 personas cómo llegaron hoy al trabajo, obtengo esto:</p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Medio de transporte</th>
@@ -733,7 +771,7 @@ pero nos morimos de hambre por conocimiento”</em><br>
 </tbody>
 </table>
 <p>Entonces, ¿cuál es el medio de transporte promedio? Obviamente, no lo hay. Es una pregunta sin sentido. Podés decir que el auto es el medio más popular y que el tren es el menos popular, pero nada más. Fijate además que el orden en que puse las opciones no importa mucho. Podría haber presentado los datos así, y nada cambia realmente:</p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Medio de transporte</th>
@@ -783,7 +821,7 @@ pero nos morimos de hambre por conocimiento”</em><br>
 </blockquote>
 <p>…porque parece violar la “estructura” natural de la pregunta.</p>
 <p>Ahora supongamos que les hago esta pregunta a 100 personas y obtengo las siguientes respuestas:</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
@@ -838,7 +876,7 @@ pero nos morimos de hambre por conocimiento”</em><br>
 <p>Estas definiciones pueden parecer un poco abstractas, pero son bastante simples una vez que ves algunos ejemplos. Por ejemplo, el tiempo de respuesta es una variable continua. Si Alan tarda 3,1 segundos y Ben tarda 2,3 segundos en responder una pregunta, entonces es posible que Cameron haya tardado 3,0 segundos, es decir, un valor intermedio. Y claro, también sería posible que David tardara 3,031 segundos, lo que lo pondría entre Cameron y Alan. Aunque en la práctica tal vez no podamos medir el tiempo de respuesta con tanta precisión, <em>en principio</em> sí se puede. Como siempre es posible encontrar un nuevo valor entre cualquier par de valores, decimos que el tiempo de respuesta es una variable continua.</p>
 <p>Las variables discretas aparecen cuando esta regla se rompe. Por ejemplo, las variables de escala nominal son siempre discretas: no hay un medio de transporte que esté “entre” el tren y la bicicleta, al menos no de la manera estrictamente matemática en la que 2,3 está entre 2 y 3. Así que el tipo de transporte es una variable discreta. Del mismo modo, las variables ordinales también son siempre discretas: aunque el “2.º lugar” esté entre el “1.º” y el “3.º”, no hay nada que pueda caer <em>entre</em> el 1.º y el 2.º lugar. Las variables de escala de intervalo y de razón pueden ser continuas o discretas. Como vimos antes, el tiempo de respuesta (una variable de razón) es continua. La temperatura en grados Celsius (una variable de intervalo) también es continua. Pero el año en que alguien ingresó a la universidad (una variable de intervalo) es discreta: no hay ningún año entre 2002 y 2003. El número de respuestas correctas en un test de verdadero/falso (una variable de razón) también es discreto: como una pregunta de verdadero/falso no permite estar “parcialmente correcto”, no hay nada entre 5/10 y 6/10.</p>
 <p>La siguiente tabla resume la relación entre las escalas de medición y la distinción continuo/discreto. Las celdas con una “x” marcan combinaciones posibles. Estoy tratando de dejar bien en claro este punto porque: (a) algunos manuales no lo explican bien, y (b) muy seguido la gente dice cosas como “variable discreta” cuando en realidad quiere decir “variable de escala nominal”. Es una confusión bastante desafortunada.</p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -878,27 +916,6 @@ pero nos morimos de hambre por conocimiento”</em><br>
 <blockquote class="blockquote">
 <p>¿Cuál de las siguientes opciones describe mejor tu opinión sobre la afirmación: “todos los piratas son increíblemente geniales”?</p>
 </blockquote>
-<ul>
-<li><ol type="1">
-<li>Totalmente en desacuerdo<br>
-</li>
-</ol></li>
-<li><ol start="2" type="1">
-<li>En desacuerdo<br>
-</li>
-</ol></li>
-<li><ol start="3" type="1">
-<li>Ni de acuerdo ni en desacuerdo<br>
-</li>
-</ol></li>
-<li><ol start="4" type="1">
-<li>De acuerdo<br>
-</li>
-</ol></li>
-<li><ol start="5" type="1">
-<li>Totalmente de acuerdo</li>
-</ol></li>
-</ul>
 <p>Y luego se le presentan al participante las siguientes opciones:</p>
 <blockquote class="blockquote">
 <ol type="1">
@@ -947,7 +964,7 @@ pero nos morimos de hambre por conocimiento”</em><br>
 <p>Primero, conviene ir acostumbrándonos a la idea de usar símbolos matemáticos para describir variables, porque lo vamos a hacer muchas veces. Vamos a denotar la variable “que queremos explicar” como <span class="math inline">\(Y\)</span>, y las variables “que la explican” como <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, etc.</p>
 <p>Ahora bien, cuando hacemos un análisis, usamos nombres diferentes para <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>, ya que cumplen distintos roles. Los nombres clásicos para estos roles son <strong>variable independiente</strong> (VI) y <strong>variable dependiente</strong> (VD). La VI es la que usamos para explicar (es decir, <span class="math inline">\(X\)</span>), y la VD es la que queremos explicar (es decir, <span class="math inline">\(Y\)</span>). La lógica detrás de estos nombres es algo así: si hay una relación entre <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>, entonces podemos decir que <span class="math inline">\(Y\)</span> depende de <span class="math inline">\(X\)</span>, y si el estudio está bien diseñado, entonces <span class="math inline">\(X\)</span> no depende de nada más. Sin embargo, personalmente encuentro estos nombres horribles: son difíciles de recordar y muy engañosos, porque (a) la VI nunca es realmente “independiente de todo lo demás”, y (b) si no hay relación, entonces la VD no depende de la VI. Y de hecho, como no soy la única que piensa que “VI” y “VD” son nombres espantosos, hay varias alternativas que me parecen más acertadas.</p>
 <p>Por ejemplo, en un experimento, la VI se refiere a la <strong>manipulación</strong>, y la VD a la <strong>medición</strong>. Así que podríamos usar <strong>variable manipulada</strong> (para la independiente) y <strong>variable medida</strong> (para la dependiente).</p>
-<table class="table">
+<table class="caption-top table">
 <caption>Terminología utilizada para distinguir los distintos roles que puede cumplir una variable en el análisis de datos.</caption>
 <thead>
 <tr class="header">
@@ -970,7 +987,7 @@ pero nos morimos de hambre por conocimiento”</em><br>
 </tbody>
 </table>
 <p>También podríamos usar <strong>predictoras</strong> y <strong>resultados</strong>. La idea es que tratamos de usar <span class="math inline">\(X\)</span> (las predictoras) para hacer conjeturas sobre <span class="math inline">\(Y\)</span> (los resultados). Esto se resume en la siguiente tabla:</p>
-<table class="table">
+<table class="caption-top table">
 <caption>Terminología utilizada para distinguir los distintos roles que puede cumplir una variable en el análisis de datos.</caption>
 <thead>
 <tr class="header">
@@ -1034,7 +1051,7 @@ pero nos morimos de hambre por conocimiento”</em><br>
 <p>El ejemplo clásico de este problema es el hecho de que una gran proporción de los estudios en psicología usan estudiantes universitarios de psicología como participantes. Pero claramente, a los investigadores no les interesa <em>solo</em> ese grupo: les interesa la gente en general. Dado eso, un estudio que solo incluye estudiantes de psicología como participantes siempre corre el riesgo de carecer de validez externa. Es decir, si hay algo “especial” en los estudiantes de psicología que los hace diferentes de la población general en algún aspecto <em>relevante</em>, entonces podríamos preocuparnos por la validez externa.</p>
 <p>Dicho esto, es absolutamente crucial darse cuenta de que un estudio que incluye únicamente estudiantes de psicología no necesariamente tiene un problema de validez externa. Lo voy a mencionar más adelante, pero como es un error muy común, lo digo ya: la validez externa se ve amenazada por la elección de población si (a) la población de la que tomaste tu muestra es muy limitada (por ejemplo, estudiantes de psicología) y (b) esa población limitada es sistemáticamente diferente de la población general <em>en algún aspecto relevante para el fenómeno psicológico que querés estudiar</em>. Esa parte en cursiva es la que muchos olvidan: es cierto que los estudiantes de psicología difieren de la población general en muchas cosas, así que un estudio que solo incluye estudiantes <em>puede</em> tener problemas de validez externa. Pero si esas diferencias no son relevantes para el fenómeno que estás estudiando, entonces no hay de qué preocuparse. Para hacerlo más concreto, acá van dos ejemplos extremos:</p>
 <ul>
-<li><p>Querés medir “las actitudes del público general hacia la psicoterapia”, pero todes tus participantes son estudiantes de psicología. Este estudio casi con certeza tendría problemas de validez externa.</p></li>
+<li><p>Querés medir “las actitudes del público general hacia la psicoterapia”, pero todos tus participantes son estudiantes de psicología. Este estudio casi con certeza tendría problemas de validez externa.</p></li>
 <li><p>Querés medir la efectividad de una ilusión visual, y todos tus participantes son estudiantes de psicología. Este estudio muy probablemente <em>no</em> tendría problemas de validez externa.</p></li>
 </ul>
 <p>Después de haberme centrado varios párrafos en la elección de participantes (porque es el tema que más preocupa a todos), vale la pena recordar que la validez externa es un concepto más amplio. Los siguientes también son ejemplos de cosas que pueden amenazar la validez externa, según qué tipo de estudio estés haciendo:</p>
@@ -1058,7 +1075,7 @@ pero nos morimos de hambre por conocimiento”</em><br>
 </section>
 <section id="validez-ecológica" class="level3" data-number="1.11.5">
 <h3 data-number="1.11.5" class="anchored" data-anchor-id="validez-ecológica"><span class="header-section-number">1.11.5</span> Validez ecológica</h3>
-<p>La <strong>validez ecológica</strong> es una noción diferente de validez, parecida a la validez externa, pero menos importante. La idea es que, para que un estudio sea ecológicamente válido, toda su configuración debería parecerse mucho al escenario real que se está investigando. En cierto sentido, la validez ecológica es un tipo de validez aparente —efiere principalmente a si el estudio “luce” correcto, pero con un poco más de rigor. Para que tenga validez ecológica, el estudio tiene que parecer correcto de una manera bastante específica. La idea que la sustenta es la intuición de que un estudio con validez ecológica tiene más probabilidades de tener validez externa. No es una garantía, claro. Pero lo bueno de la validez ecológica es que es mucho más fácil de evaluar que la validez externa. Un ejemplo simple serían los estudios de identificación de testigos. Muchos de estos estudios suelen hacerse en entornos universitarios, a menudo con una disposición bastante simple de rostros para observar, en lugar de una rueda de reconocimiento real. El tiempo entre ver al “criminal” y que se le pida a la persona que lo identifique en la “rueda” suele ser más corto. El “crimen” no es real, así que no hay posibilidad de que el testigo esté asustado, y no hay policías presentes, así que hay menos probabilidad de que sientan presión. Todo eso significa que el estudio <em>definitivamente</em> carece de validez ecológica. Tal vez (o tal vez no) también carezca de validez externa.</p>
+<p>La <strong>validez ecológica</strong> es una noción diferente de validez, parecida a la validez externa, pero menos importante. La idea es que, para que un estudio sea ecológicamente válido, toda su configuración debería parecerse mucho al escenario real que se está investigando. En cierto sentido, la validez ecológica es un tipo de validez aparente –refiere principalmente a si el estudio “luce” correcto, pero con un poco más de rigor. Para que tenga validez ecológica, el estudio tiene que parecer correcto de una manera bastante específica. La idea que la sustenta es la intuición de que un estudio con validez ecológica tiene más probabilidades de tener validez externa. No es una garantía, claro. Pero lo bueno de la validez ecológica es que es mucho más fácil de evaluar que la validez externa. Un ejemplo simple serían los estudios de identificación de testigos. Muchos de estos estudios suelen hacerse en entornos universitarios, a menudo con una disposición bastante simple de rostros para observar, en lugar de una rueda de reconocimiento real. El tiempo entre ver al “criminal” y que se le pida a la persona que lo identifique en la “rueda” suele ser más corto. El “crimen” no es real, así que no hay posibilidad de que el testigo esté asustado, y no hay policías presentes, así que hay menos probabilidad de que sientan presión. Todo eso significa que el estudio <em>definitivamente</em> carece de validez ecológica. Tal vez (o tal vez no) también carezca de validez externa.</p>
 </section>
 </section>
 <section id="confusores-artefactos-y-otras-amenazas-a-la-validez" class="level2" data-number="1.12">
@@ -1127,7 +1144,7 @@ pero nos morimos de hambre por conocimiento”</em><br>
 </section>
 <section id="efectos-de-demanda-y-reactividad" class="level3" data-number="1.12.9">
 <h3 data-number="1.12.9" class="anchored" data-anchor-id="efectos-de-demanda-y-reactividad"><span class="header-section-number">1.12.9</span> Efectos de demanda y reactividad</h3>
-<p>Cuando hablamos del sesgo del experimentador, la preocupación es que el conocimiento o los deseos de la persona experimentadora respecto al experimento se comuniquen a los participantes, y que eso afecte su comportamiento <span class="citation" data-cites="Rosenthal1966">(<a href="references.html#ref-Rosenthal1966" role="doc-biblioref">Rosenthal 1966</a>)</span>. Sin embargo, incluso si lográs evitar que eso ocurra, es casi imposible evitar que los participantes sepan que están participando en un estudio psicológico. Y el mero hecho de saber que alguien te está observando o estudiando puede tener un efecto bastante fuerte sobre el comportamiento. A esto se lo denomina en general como <strong>reactividad</strong> o <strong>efectos de demanda</strong>. La idea básica se captura en el efecto Hawthorne: las personas modifican su rendimiento debido a la atención que el estudio pone sobre elles. El efecto toma su nombre de la fábrica “Hawthorne Works” en las afueras de Chicago <span class="citation" data-cites="Adair1984">(<a href="references.html#ref-Adair1984" role="doc-biblioref">Adair 1984</a>)</span>. Un estudio hecho en la década de 1920 que examinaba los efectos de la iluminación sobre la productividad de los trabajadores en la fábrica resultó mostrar un efecto del hecho de que los trabajadores sabían que estaban siendo estudiades, más que de la iluminación.</p>
+<p>Cuando hablamos del sesgo del experimentador, la preocupación es que el conocimiento o los deseos de la persona experimentadora respecto al experimento se comuniquen a los participantes, y que eso afecte su comportamiento <span class="citation" data-cites="Rosenthal1966">(<a href="references.html#ref-Rosenthal1966" role="doc-biblioref">Rosenthal 1966</a>)</span>. Sin embargo, incluso si lográs evitar que eso ocurra, es casi imposible evitar que los participantes sepan que están participando en un estudio psicológico. Y el mero hecho de saber que alguien te está observando o estudiando puede tener un efecto bastante fuerte sobre el comportamiento. A esto se lo denomina en general como <strong>reactividad</strong> o <strong>efectos de demanda</strong>. La idea básica se captura en el efecto Hawthorne: las personas modifican su rendimiento debido a la atención que el estudio pone sobre elles. El efecto toma su nombre de la fábrica “Hawthorne Works” en las afueras de Chicago <span class="citation" data-cites="Adair1984">(<a href="references.html#ref-Adair1984" role="doc-biblioref">Adair 1984</a>)</span>. Un estudio hecho en la década de 1920 que examinaba los efectos de la iluminación sobre la productividad de los trabajadores en la fábrica resultó mostrar un efecto del hecho de que los trabajadores sabían que estaban siendo estudiados, más que de la iluminación.</p>
 <p>Para ser un poco más específicos sobre algunas de las formas en que el solo hecho de estar en un estudio puede cambiar cómo actúan las personas, ayuda pensar como un psicólogo social y observar algunos de los <em>roles</em> que las personas podrían adoptar durante un experimento, pero que tal vez no adoptarían si los mismos eventos ocurrieran en el mundo real:</p>
 <ul>
 <li><p>La <em>persona participante colaboradora</em> intenta ser demasiado útil para la persona investigadora: busca entender la hipótesis y confirmarla.</p></li>
@@ -1154,7 +1171,7 @@ pero nos morimos de hambre por conocimiento”</em><br>
 <ul>
 <li><p><strong>Fabricación de datos</strong>. A veces, las personas simplemente inventan los datos. Ocasionalmente esto se hace con “buenas” intenciones. Por ejemplo, la persona investigadora cree que los datos fabricados reflejan la verdad, y pueden ser versiones “ligeramente corregidas” de datos reales. En otras ocasiones, el fraude es deliberado y malicioso. Algunos ejemplos de alto perfil en los que se ha alegado o demostrado fabricación de datos incluyen a Cyril Burt (un psicólogo que se cree que falsificó parte de sus datos), Andrew Wakefield (acusado de falsificar sus datos que relacionaban la vacuna triple viral con el autismo) y Hwang Woo-suk (quien falsificó muchos de sus datos sobre investigación con células madre).</p></li>
 <li><p><strong>Engaños (hoaxes)</strong>. Los engaños comparten muchas similitudes con la fabricación de datos, pero se diferencian en el propósito. Un engaño suele ser una broma, y muchos están diseñados para que (eventualmente) se descubran. A menudo, el objetivo de un engaño es desacreditar a alguien o a un campo entero. Ha habido bastantes engaños científicos conocidos a lo largo de los años (por ejemplo, el hombre de Piltdown), algunos de los cuales fueron intentos deliberados de desacreditar ciertos campos de investigación (por ejemplo, el caso Sokal).</p></li>
-<li><p><strong>Falsificación o tergiversación de los datos</strong>. Aunque el fraude es lo que se lleva los titulares, en mi experiencia es mucho más común ver datos tergiversados. Cuando digo esto, no me refiero a los medios de comunicación interpretando mal los resultados (lo cual hacen casi siempre). Me refiero a que muchas veces los datos no dicen realmente lo que les investigadores creen que dicen. Mi impresión es que, casi siempre, esto no se debe a una deshonestidad deliberada, sino a una falta de sofisticación en los análisis de datos. Por ejemplo, pensá en el caso de la paradoja de Simpson que mencioné al comienzo de estas notas. Es muy común ver a personas presentar datos “agregados” de algún tipo; y a veces, cuando profundizás y conseguís los datos crudos por tu cuenta, encontrás que los datos agregados cuentan una historia diferente que los desagregados. Alternativamente, podrías descubrir que algún aspecto de los datos está siendo ocultado porque cuenta una historia incómoda (por ejemplo, la persona investigadora podría optar por no mencionar una determinada variable). Hay muchas variantes de esto; muchas de las cuales son muy difíciles de detectar.</p></li>
+<li><p><strong>Falsificación o tergiversación de los datos</strong>. Aunque el fraude es lo que se lleva los titulares, en mi experiencia es mucho más común ver datos tergiversados. Cuando digo esto, no me refiero a los medios de comunicación interpretando mal los resultados (lo cual hacen casi siempre). Me refiero a que muchas veces los datos no dicen realmente lo que los investigadores creen que dicen. Mi impresión es que, casi siempre, esto no se debe a una deshonestidad deliberada, sino a una falta de sofisticación en los análisis de datos. Por ejemplo, pensá en el caso de la paradoja de Simpson que mencioné al comienzo de estas notas. Es muy común ver a personas presentar datos “agregados” de algún tipo; y a veces, cuando profundizás y conseguís los datos crudos por tu cuenta, encontrás que los datos agregados cuentan una historia diferente que los desagregados. Alternativamente, podrías descubrir que algún aspecto de los datos está siendo ocultado porque cuenta una historia incómoda (por ejemplo, la persona investigadora podría optar por no mencionar una determinada variable). Hay muchas variantes de esto; muchas de las cuales son muy difíciles de detectar.</p></li>
 <li><p><strong>Diseño “defectuoso” del estudio</strong>. Bien, esto es más sutil. Básicamente, el problema acá es que un investigador diseña un estudio que tiene fallas estructurales, y esas fallas nunca se informan en el artículo. Los datos que se reportan son completamente reales, y están analizados correctamente, pero provienen de un estudio que en realidad está muy mal planteado. La persona investigadora realmente quiere encontrar un efecto en particular, así que el estudio se arma de manera tal que resulte “fácil” (aunque artefactual) observar ese efecto. Una manera muy astuta de hacer esto —por si tenés ganas de incursionar en un poco de fraude— es diseñar un experimento en el que sea obvio para los participantes qué es lo que “se supone” que deben hacer, y luego dejar que la reactividad haga su magia. Si querés, podés agregarle todos los adornos de un experimento doble ciego, etc. No va a hacer ninguna diferencia, ya que los propios materiales del estudio les están diciendo sutilmente a los participantes lo que se espera que hagan. Cuando redactás los resultados, el fraude no va a ser obvio para la persona lectora: lo que es evidente para la persona participante en el contexto experimental no siempre es evidente para quien lee el artículo. Claro, la manera en que describí esto suena como si <em>siempre</em> fuera fraude: probablemente haya casos donde esto se haga de forma deliberada, pero en mi experiencia la preocupación más grande ha sido con los errores no intencionales de diseño. La persona investigadora <em>cree</em>… y así, el estudio termina teniendo una falla estructural, y esa falla mágicamente desaparece cuando se escribe el artículo para su publicación.</p></li>
 <li><p><strong>Minería de datos e hipótesis post hoc</strong>. Otra forma en la que los autores de un estudio pueden, más o menos, mentir sobre lo que encontraron es mediante lo que se llama “minería de datos”. Como vamos a discutir más adelante en la clase, si analizás los datos de muchas formas diferentes, eventualmente vas a encontrar algo que “parece” un efecto real, pero que no lo es. Eso es lo que se llama “minería de datos”. Antes era bastante raro, porque analizar datos solía llevar semanas, pero ahora que todos tienen software estadístico muy potente en sus computadoras, se ha vuelto bastante común. La minería de datos en sí no es “incorrecta”, pero cuanto más la hacés, más grande es el riesgo que estás corriendo. Lo que <em>sí</em> está mal (y, sospecho, es común) es hacer minería de datos <strong>sin reconocerlo</strong>. Es decir, la persona investigadora prueba todos los análisis posibles conocidos por la humanidad, encuentra uno que “funciona”, y luego finge que ese era el único análisis que pensaba hacer desde el principio. Peor aún, muchas veces “inventa” una hipótesis después de mirar los datos, para cubrir la minería de datos. Para ser claros: no está mal cambiar tus creencias después de mirar los datos, y reanalizar los datos con tus nuevas hipótesis <em>post hoc</em>. Lo que sí está mal (y, sospecho, es común) es no reconocer que hiciste eso. Si lo reconocés, otros investigadores pueden tenerlo en cuenta. Si no lo hacés, no pueden. Y eso vuelve tu comportamiento engañoso. ¡Mal!</p></li>
 <li><p><strong>Sesgo de publicación y autocensura</strong>. Finalmente, un sesgo muy extendido es el de la no publicación de resultados negativos. Y esto es casi imposible de evitar. Las revistas científicas no publican todo lo que se les envía: tienden a preferir los artículos que muestran que “algo pasó”. Entonces, si 20 personas hacen un experimento para ver si leer <em>Finnegans Wake</em> causa locura en humanos, y 19 encuentran que no, ¿cuál pensás que se va a publicar? Obviamente, el único estudio que sí encontró que <em>Finnegans Wake</em> causa locura. Eso es un ejemplo de <em>sesgo de publicación</em>: como nadie publica los 19 estudios que no encontraron efecto, una persona ingenua jamás sabría que existieron. Peor aún, muchos investigadores internalizan este sesgo y terminan <em>autocensurando</em> sus propios trabajos. Como saben que los resultados negativos no van a ser aceptados para su publicación, ni siquiera intentan reportarlos. Como dice una amiga mía: “por cada experimento que lográs publicar, tenés diez fracasos detrás”. Y tiene razón. El problema es que, si bien algunos (quizás la mayoría) de esos estudios fallaron por razones aburridas (por ejemplo, porque cometiste algún error), otros podrían ser verdaderos resultados nulos que deberías reconocer cuando escribís el experimento que sí salió “bien”. Y distinguir entre una cosa y la otra muchas veces es difícil. Un buen punto de partida es un artículo de <span class="citation" data-cites="Ioannidis2005">Ioannidis (<a href="references.html#ref-Ioannidis2005" role="doc-biblioref">2005</a>)</span> con el deprimente título “Por qué la mayoría de los hallazgos publicados son falsos”. También te recomiendo el trabajo de <span class="citation" data-cites="Kuhberger2014">Kühberger, Fritz, y Scherndl (<a href="references.html#ref-Kuhberger2014" role="doc-biblioref">2014</a>)</span>, que presenta evidencia estadística de que esto realmente pasa en psicología.</p></li>
@@ -1184,7 +1201,7 @@ pero nos morimos de hambre por conocimiento”</em><br>
 <p>:::</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-Adair1984" class="csl-entry" role="listitem">
 Adair, G. 1984. <span>«The <span>Hawthorne</span> Effect: <span>A</span> Reconsideration of the Methodological Artifact»</span>. <em>Journal of Applied Psychology</em> 69: 334-45. <a href="https://doi.org/10.1037/0021-9010.69.2.334">https://doi.org/10.1037/0021-9010.69.2.334</a>.
 </div>
@@ -1258,18 +1275,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1301,11 +1307,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/almadana\.github\.io\/libro_cuanti\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1315,8 +1360,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1328,7 +1382,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1372,6 +1549,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1397,6 +1575,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1458,12 +1662,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link">
+      <a href="./index.html" class="pagination-link" aria-label="Prefacio">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Prefacio</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./02-Describing_Data.html" class="pagination-link">
+      <a href="./02-Describing_Data.html" class="pagination-link" aria-label="Describir los datos">
         <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describir los datos</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1472,4 +1676,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/almadana/libro_cuanti/edit/master/01-Science_Data.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li></ul></div></div></div></footer></body></html>

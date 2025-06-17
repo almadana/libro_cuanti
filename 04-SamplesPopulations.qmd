@@ -4,7 +4,6 @@ author:
   - Matthew J. C. Crump
 abstract-title: Chapter notes
 lang: es
-abstract: Sections 4.1 & 4.9 - Adapted text by Danielle Navarro Section 4.10 - 4.11 & 4.13 - Mix of Matthew Crump & Danielle Navarro Section 4.12 - 4.13 - Adapted text by Danielle Navarro
 aliases: [probability-sampling-and-estimation.html]
 ---
 
@@ -602,7 +601,7 @@ Ahora supongamos que recolectamos algunos datos. Seleccionamos 100 personas al a
 
 `106 101 98 80 74 ... 107 72 100`
 
-Cada uno de estos puntajes de CI fue extraído de una distribución normal con media 100 y desviación estándar 15. Así que, si dibujo un histograma de la muestra, obtengo algo como lo que se muestra en  @fig-IQdist (panel b). Como podés ver, el histograma tiene una forma **aproximadamente** correcta, pero es una aproximación bastante burda de la verdadera distribución poblacional que aparece en @fig-IQdist$a$. La media de la muestra está bastante cerca de la media poblacional (100), pero no es idéntica. En este caso, resulta que las personas de la muestra tienen un CI promedio de 98.5, y la desviación estándar de sus puntajes es 15.9. Estas **estadísticas muestrales** son propiedades del conjunto de datos, y aunque son bastante parecidas a los verdaderos valores poblacionales, no son iguales. **En general, las estadísticas muestrales son las cosas que podés calcular a partir de tus datos, y los parámetros poblacionales son las cosas sobre las que querés aprender.** Más adelante en este capítulo vamos a hablar sobre cómo podés estimar los parámetros poblacionales a partir de las estadísticas muestrales, y cómo calcular qué tan confiado podés estar en tus estimaciones. Pero antes de llegar a eso, todavía hay algunas ideas de teoría del muestreo que necesitás conocer.
+Cada uno de estos puntajes de CI fue extraído de una distribución normal con media 100 y desviación estándar 15. Así que, si dibujo un histograma de la muestra, obtengo algo como lo que se muestra en  @fig-IQdist (panel b). Como podés ver, el histograma tiene una forma **aproximadamente** correcta, pero es una aproximación bastante burda de la verdadera distribución poblacional que aparece en @fig-IQdist (panel a). La media de la muestra está bastante cerca de la media poblacional (100), pero no es idéntica. En este caso, resulta que las personas de la muestra tienen un CI promedio de 98.5, y la desviación estándar de sus puntajes es 15.9. Estas **estadísticas muestrales** son propiedades del conjunto de datos, y aunque son bastante parecidas a los verdaderos valores poblacionales, no son iguales. **En general, las estadísticas muestrales son las cosas que podés calcular a partir de tus datos, y los parámetros poblacionales son las cosas sobre las que querés aprender.** Más adelante en este capítulo vamos a hablar sobre cómo podés estimar los parámetros poblacionales a partir de las estadísticas muestrales, y cómo calcular qué tan confiado podés estar en tus estimaciones. Pero antes de llegar a eso, todavía hay algunas ideas de teoría del muestreo que necesitás conocer.
 
 ## La ley de los grandes números
 

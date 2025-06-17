@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -306,11 +272,11 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
   <li><a href="#aplicar-la-prueba-chi-cuadrado" id="toc-aplicar-la-prueba-chi-cuadrado" class="nav-link" data-scroll-target="#aplicar-la-prueba-chi-cuadrado"><span class="header-section-number">8.19</span> Aplicar la prueba chi cuadrado</a></li>
   <li><a href="#errores-comunes-y-buenas-prácticas" id="toc-errores-comunes-y-buenas-prácticas" class="nav-link" data-scroll-target="#errores-comunes-y-buenas-prácticas"><span class="header-section-number">8.20</span> Errores comunes y buenas prácticas</a>
   <ul class="collapse">
-  <li><a href="#error-1-usar-chi-cuadrado-con-frecuencias-esperadas-muy-bajas" id="toc-error-1-usar-chi-cuadrado-con-frecuencias-esperadas-muy-bajas" class="nav-link" data-scroll-target="#error-1-usar-chi-cuadrado-con-frecuencias-esperadas-muy-bajas"><span class="header-section-number">8.20.1</span> ❌ Error 1: Usar chi cuadrado con frecuencias esperadas muy bajas</a></li>
-  <li><a href="#error-2-interpretar-el-valor-p-como-tamaño-del-efecto" id="toc-error-2-interpretar-el-valor-p-como-tamaño-del-efecto" class="nav-link" data-scroll-target="#error-2-interpretar-el-valor-p-como-tamaño-del-efecto"><span class="header-section-number">8.20.2</span> ❌ Error 2: Interpretar el valor <em>p</em> como tamaño del efecto</a></li>
-  <li><a href="#error-3-leer-mal-las-proporciones-condicionales" id="toc-error-3-leer-mal-las-proporciones-condicionales" class="nav-link" data-scroll-target="#error-3-leer-mal-las-proporciones-condicionales"><span class="header-section-number">8.20.3</span> ❌ Error 3: Leer mal las proporciones condicionales</a></li>
-  <li><a href="#error-4-pensar-que-una-relación-estadística-implica-causalidad" id="toc-error-4-pensar-que-una-relación-estadística-implica-causalidad" class="nav-link" data-scroll-target="#error-4-pensar-que-una-relación-estadística-implica-causalidad"><span class="header-section-number">8.20.4</span> ❌ Error 4: Pensar que una relación estadística implica causalidad</a></li>
-  <li><a href="#error-5-usar-chi-cuadrado-para-variables-que-no-son-categóricas" id="toc-error-5-usar-chi-cuadrado-para-variables-que-no-son-categóricas" class="nav-link" data-scroll-target="#error-5-usar-chi-cuadrado-para-variables-que-no-son-categóricas"><span class="header-section-number">8.20.5</span> ❌ Error 5: Usar chi cuadrado para variables que no son categóricas</a></li>
+  <li><a href="#error-1-usar-chi-cuadrado-con-frecuencias-esperadas-muy-bajas" id="toc-error-1-usar-chi-cuadrado-con-frecuencias-esperadas-muy-bajas" class="nav-link" data-scroll-target="#error-1-usar-chi-cuadrado-con-frecuencias-esperadas-muy-bajas"><span class="header-section-number">8.20.1</span> Error 1: Usar chi cuadrado con frecuencias esperadas muy bajas</a></li>
+  <li><a href="#error-2-interpretar-el-valor-p-como-tamaño-del-efecto" id="toc-error-2-interpretar-el-valor-p-como-tamaño-del-efecto" class="nav-link" data-scroll-target="#error-2-interpretar-el-valor-p-como-tamaño-del-efecto"><span class="header-section-number">8.20.2</span> Error 2: Interpretar el valor <em>p</em> como tamaño del efecto</a></li>
+  <li><a href="#error-3-leer-mal-las-proporciones-condicionales" id="toc-error-3-leer-mal-las-proporciones-condicionales" class="nav-link" data-scroll-target="#error-3-leer-mal-las-proporciones-condicionales"><span class="header-section-number">8.20.3</span> Error 3: Leer mal las proporciones condicionales</a></li>
+  <li><a href="#error-4-pensar-que-una-relación-estadística-implica-causalidad" id="toc-error-4-pensar-que-una-relación-estadística-implica-causalidad" class="nav-link" data-scroll-target="#error-4-pensar-que-una-relación-estadística-implica-causalidad"><span class="header-section-number">8.20.4</span> Error 4: Pensar que una relación estadística implica causalidad</a></li>
+  <li><a href="#error-5-usar-chi-cuadrado-para-variables-que-no-son-categóricas" id="toc-error-5-usar-chi-cuadrado-para-variables-que-no-son-categóricas" class="nav-link" data-scroll-target="#error-5-usar-chi-cuadrado-para-variables-que-no-son-categóricas"><span class="header-section-number">8.20.5</span> Error 5: Usar chi cuadrado para variables que no son categóricas</a></li>
   </ul></li>
   <li><a href="#lo-que-aprendimos" id="toc-lo-que-aprendimos" class="nav-link" data-scroll-target="#lo-que-aprendimos"><span class="header-section-number">8.21</span> Lo que aprendimos</a></li>
   </ul>
@@ -418,8 +384,8 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 </section>
 <section id="un-ejemplo-simple" class="level2" data-number="8.6">
 <h2 data-number="8.6" class="anchored" data-anchor-id="un-ejemplo-simple"><span class="header-section-number">8.6</span> Un ejemplo simple</h2>
-<p>Supongamos que queremos saber si hay una preferencia de colores en los caramelos que vende una empresa. Según la etiqueta, cada paquete debería tener la misma cantidad de cinco colores: rojo, azul, verde, amarillo y violeta.</p>
-<p>Compramos un paquete, lo abrimos, y contamos los caramelos. Obtenemos:</p>
+<p>Imaginá que una empresa de caramelos asegura en su envoltorio, con total descaro y en letras bien grandes: “¡Colores distribuidos equitativamente!” Según ellos, cada paquete contiene la misma cantidad de caramelos rojos, azules, verdes, amarillos y violetas. Todo muy democrático… en teoría.</p>
+<p>Pero vos, que no naciste ayer, sospechás que algo huele raro (y no es el aroma a frambuesa artificial). Así que decidís hacer ciencia: comprás un paquete, lo abrís, y contás uno por uno los caramelos. Compramos un paquete, lo abrimos, y contamos los caramelos. Obtenemos:</p>
 <div class="cell" data-tbl-cap="Frecuencias observadas de colores de caramelos" data-hash="06b-chi_cuadrado_cache/html/caramelos-observados_f418c30319308b5ef2685ebd4d1d7c01">
 <pre><code>#&gt;     Rojo     Azul    Verde Amarillo  Violeta 
 #&gt;        6        2        5        3        4</code></pre>
@@ -447,7 +413,6 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <p>Ahora sí podemos ver la diferencia. El color <strong>rojo</strong> tiene 6 caramelos, cuando deberían ser 4. El <strong>azul</strong>, apenas 2. El resto está más cerca de lo esperado, pero también hay pequeñas desviaciones.</p>
 <p>A simple vista, podríamos decir: <em>parece haber un pequeño desequilibrio</em>. Pero, otra vez, lo que importa no es solo que haya diferencia, sino <strong>cuánto importa esa diferencia</strong>.</p>
 <p>Por eso, vamos a dar un paso más: vamos a mirar <strong>celda por celda</strong>, y tratar de identificar <strong>dónde están las discrepancias más grandes</strong>, y si pueden ser explicadas por el azar.</p>
-<p>Perfecto, seguimos con la sección que pone el foco en las <strong>discrepancias observadas–esperadas</strong>, no solo para ver “cuánto se desviaron” los datos, sino para visualizar <strong>qué tan fuerte es esa discrepancia</strong> en cada categoría. Esta sección culmina con un <strong>mapa de calor interpretativo</strong>, que ilustra el nivel de evidencia <em>a favor</em> o <em>en contra</em> de la hipótesis nula.</p>
 </section>
 <section id="dónde-están-las-diferencias-más-fuertes" class="level2" data-number="8.8">
 <h2 data-number="8.8" class="anchored" data-anchor-id="dónde-están-las-diferencias-más-fuertes"><span class="header-section-number">8.8</span> ¿Dónde están las diferencias más fuertes?</h2>
@@ -495,8 +460,6 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <li>Otros colores están cerca de lo esperado → residual bajo → evidencia <em>a favor</em> de la nula.</li>
 </ul>
 <p>Y ahora que sabemos <strong>qué tanto se desvían los datos celda por celda</strong>, podemos avanzar al siguiente paso: resumir todas esas discrepancias en un único número. Ese número es el <strong>estadístico chi cuadrado</strong>.</p>
-<p>Perfecto, vamos a seguir con la sección donde presentamos de forma intuitiva el <strong>estadístico chi cuadrado</strong> y lo conectamos con su <strong>distribución de referencia</strong>, ilustrando cómo cambia con los grados de libertad y cómo se interpreta el valor <em>p</em>. Incluiré visualizaciones y dejaré preparado el terreno para una animación opcional de simulación más adelante.</p>
-<hr>
 </section>
 <section id="un-número-para-resumir-toda-la-discrepancia" class="level2" data-number="8.10">
 <h2 data-number="8.10" class="anchored" data-anchor-id="un-número-para-resumir-toda-la-discrepancia"><span class="header-section-number">8.10</span> Un número para resumir toda la discrepancia</h2>
@@ -506,7 +469,6 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <p>Cuanto más lejos estén los valores observados de los esperados, más grande será el valor de <span class="math inline">\(\chi^2\)</span>.</p>
 </blockquote>
 <p>Y si el valor de <span class="math inline">\(\chi^2\)</span> es muy grande, tenemos motivos para pensar que <strong>las diferencias no se deben solo al azar</strong>.</p>
-<hr>
 <section id="cómo-se-calcula" class="level3" data-number="8.10.1">
 <h3 data-number="8.10.1" class="anchored" data-anchor-id="cómo-se-calcula"><span class="header-section-number">8.10.1</span> Cómo se calcula</h3>
 <p>El estadístico chi cuadrado se define así:</p>
@@ -518,7 +480,6 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <li><span class="math inline">\(E\)</span> = frecuencia esperada</li>
 </ul>
 <p>Esto se hace <strong>celda por celda</strong>, y después se suman todos los valores. El resultado es un único número, que representa <strong>el total de discrepancia relativa</strong> en la tabla.</p>
-<hr>
 </section>
 <section id="calculemos-el-chi2-de-los-caramelos" class="level3" data-number="8.10.2">
 <h3 data-number="8.10.2" class="anchored" data-anchor-id="calculemos-el-chi2-de-los-caramelos"><span class="header-section-number">8.10.2</span> Calculemos el <span class="math inline">\(\chi^2\)</span> de los caramelos</h3>
@@ -578,12 +539,16 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <section id="una-animación-para-verlo-mejor" class="level3" data-number="8.12.1">
 <h3 data-number="8.12.1" class="anchored" data-anchor-id="una-animación-para-verlo-mejor"><span class="header-section-number">8.12.1</span> Una animación para verlo mejor</h3>
 <p>En lugar de mostrar una curva estática para cada valor de df, vamos a ver cómo evoluciona la forma de la distribución chi cuadrado cuando los grados de libertad aumentan.</p>
-<div class="cell" data-hash="06b-chi_cuadrado_cache/html/animacion-chi2_54f4db647b538bb43e3efddedf7e0bbf">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>knitr::include_graphics(<span class="st">"imgs/gifs/distribucion_chi2_animada.gif"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="06b-chi_cuadrado_cache/html/animacion-chi2_bfe4fc777d0d7e63c25ee0e9b9eb01a2">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="imgs/gifs/distribucion_chi2_animada.gif" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Cómo cambia la distribución chi cuadrado a medida que aumentan los grados de libertad</figcaption>
+</figure>
 </div>
-<blockquote class="blockquote">
-<p><strong>Nota:</strong> Este bloque debe ejecutarse en un entorno Python con matplotlib y pillow instalados. El resultado será una animación <code>.gif</code> que puede incrustarse en el documento.</p>
-</blockquote>
+</div>
+</div>
 </section>
 <section id="qué-muestra-la-animación" class="level3" data-number="8.12.2">
 <h3 data-number="8.12.2" class="anchored" data-anchor-id="qué-muestra-la-animación"><span class="header-section-number">8.12.2</span> ¿Qué muestra la animación?</h3>
@@ -592,13 +557,13 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <li>A medida que df aumenta, la curva <strong>se desplaza hacia la derecha</strong> y se vuelve más suave.</li>
 <li>Siempre es una distribución <strong>de cola positiva</strong> (nunca hay valores negativos).</li>
 </ul>
-<p>Esto es fundamental para interpretar el valor <em>p</em>. Lo que consideramos “inusual” depende del <strong>df</strong>. Un valor de <span class="math inline">\(\chi^2 = 10\)</span> puede ser muy raro si df = 2, pero bastante común si df = 10. Perfecto. A continuación integro la <strong>sección completa</strong> al estilo del capítulo, donde mostramos mediante simulación cómo varía el valor de <span class="math inline">\(\chi^2\)</span> cuando los datos <strong>no contienen un efecto real</strong>, es decir, cuando la hipótesis nula es verdadera. Esto complementa la intuición sobre el valor <em>p</em>, mostrando cómo se genera su distribución bajo la nula.</p>
+<p>Esto es fundamental para interpretar el valor <em>p</em>. Lo que consideramos “inusual” depende del <strong>df</strong>. Un valor de <span class="math inline">\(\chi^2 = 10\)</span> puede ser muy raro si df = 2, pero bastante común si df = 10.</p>
 </section>
 </section>
 <section id="qué-tan-grande-es-grande-simular-para-entender" class="level2" data-number="8.13">
 <h2 data-number="8.13" class="anchored" data-anchor-id="qué-tan-grande-es-grande-simular-para-entender"><span class="header-section-number">8.13</span> ¿Qué tan grande es grande? Simular para entender</h2>
 <p>Ya sabemos que el estadístico chi cuadrado mide <strong>cuán distintas son las frecuencias observadas de las esperadas</strong>, y que su valor aumenta cuando las diferencias son grandes. Y también sabemos que para interpretar ese valor, lo comparamos con una distribución teórica: la <strong>distribución chi cuadrado</strong>.</p>
-<p>Pero ahora vamos a hacer algo distinto. No vamos a mirar la fórmula. Vamos a <strong>simular el azar</strong>. Vamos a generar miles de situaciones donde la <strong>hipótesis nula sea cierta</strong>, y vamos a ver <strong>qué valores de <span class="math inline">\(\chi^2\)</span></strong> produce el azar por sí solo.</p>
+<p>Pero ahora vamos a hacer algo distinto. No vamos a mirar la fórmula. Vamos a <strong>simular el azar</strong>. Vamos a generar miles de situaciones donde la <strong>hipótesis nula sea cierta</strong>, y vamos a ver <strong>qué valores de</strong> <span class="math inline">\(\chi^2\)</span> produce el azar por sí solo.</p>
 <p>La idea es simple:</p>
 <blockquote class="blockquote">
 <p>Si el azar genera a veces valores como el que observamos, entonces lo que vimos podría no ser tan raro. Pero si el azar casi nunca produce valores así… entonces lo que vimos <strong>probablemente no sea azar</strong>.</p>
@@ -621,13 +586,12 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <section id="el-valor-p-una-vez-más" class="level3" data-number="8.13.2">
 <h3 data-number="8.13.2" class="anchored" data-anchor-id="el-valor-p-una-vez-más"><span class="header-section-number">8.13.2</span> El valor <em>p</em>, una vez más</h3>
 <p>Podemos calcular el valor <em>p</em> directamente desde esta simulación:</p>
-<div class="cell" data-hash="06b-chi_cuadrado_cache/html/unnamed-chunk-2_ce055c7f62b21c887afb610102ccbd8a">
+<div class="cell" data-hash="06b-chi_cuadrado_cache/html/unnamed-chunk-2_ce581fe6bcf026460dcadb536aad4780">
 <pre><code>#&gt; [1] 0.673</code></pre>
 </div>
 <p>Este número es la <strong>proporción de simulaciones</strong> que dieron un valor de <span class="math inline">\(\chi^2\)</span> igual o mayor al observado. Es decir: una versión empírica del valor <em>p</em>. Y debería coincidir bastante bien con el valor <em>p</em> que calculamos antes con <code>chisq.test()</code>.</p>
 <p>¿Por qué esto importa? Porque a veces, mirar un número no alcanza. Pero ver cuán frecuente —o infrecuente— es ese número en un mundo donde <strong>no hay efecto real</strong>, puede ayudar a construir una mejor intuición. Y eso es lo que hace el valor <em>p</em>: te dice <strong>qué tan probable es tu resultado si todo fuera azar</strong>.</p>
 <p>Perfecto, vamos ahora con la <strong>segunda gran aplicación</strong> de la prueba chi cuadrado: la <strong>prueba de independencia entre dos variables categóricas</strong>. Retomamos el estilo narrativo y visual, incorporando código en R y guiando al lector paso a paso para entender qué significa “independencia”, cómo se construyen las esperadas, cómo se ve la discrepancia y cómo se interpreta el test.</p>
-<hr>
 </section>
 </section>
 <section id="dos-variables-una-pregunta-están-relacionadas" class="level2" data-number="8.14">
@@ -643,7 +607,6 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <li>¿Hay diferencias de género en la elección de carrera?</li>
 </ul>
 <p>Lo que queremos saber no es si los porcentajes son iguales. Lo que queremos saber es si <strong>las diferencias que vemos en la tabla podrían haberse generado por azar</strong>.</p>
-<hr>
 </section>
 <section id="un-ejemplo-realista-eutanasia-y-nivel-educativo" class="level2" data-number="8.15">
 <h2 data-number="8.15" class="anchored" data-anchor-id="un-ejemplo-realista-eutanasia-y-nivel-educativo"><span class="header-section-number">8.15</span> Un ejemplo realista: eutanasia y nivel educativo</h2>
@@ -653,24 +616,23 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <li>¿Cuál es su nivel educativo (bajo, medio, alto)?</li>
 </ol>
 <p>Las respuestas nos dan esta tabla:</p>
-<div class="cell" data-tbl-cap="Opinión sobre eutanasia según nivel educativo" data-hash="06b-chi_cuadrado_cache/html/tabla-eutanasia_c6ce9e1d19703393348764f1ce039eb7">
+<div class="cell" data-tbl-cap="Opinión sobre eutanasia según nivel educativo" data-hash="06b-chi_cuadrado_cache/html/tabla-eutanasia_8cc627dadf5a9111c88021b0b1eac717">
 <pre><code>#&gt;        
 #&gt;         A favor En contra
 #&gt;   Alto       35         5
-#&gt;   Bajo       25        15
-#&gt;   Medio      30        10</code></pre>
+#&gt;   Medio      30        10
+#&gt;   Bajo       20        20</code></pre>
 </div>
-<hr>
 </section>
 <section id="visualizar-la-tabla-proporciones-por-fila" class="level2" data-number="8.16">
 <h2 data-number="8.16" class="anchored" data-anchor-id="visualizar-la-tabla-proporciones-por-fila"><span class="header-section-number">8.16</span> Visualizar la tabla: proporciones por fila</h2>
 <p>Para ver mejor la tendencia, graficamos la proporción de personas a favor y en contra dentro de cada nivel educativo.</p>
-<div class="cell" data-hash="06b-chi_cuadrado_cache/html/grafico-eutanasia_988da5d7707f1c0c2380e08f4540b4f3">
+<div class="cell" data-hash="06b-chi_cuadrado_cache/html/grafico-eutanasia_02594af64c2ea07874dcbf2c90d305a0">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="06b-chi_cuadrado_files/figure-html/grafico-eutanasia-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">Distribución de opiniones por nivel educativo</figcaption>
+<figcaption class="figure-caption">Distribución de opiniones sobre eutanasia por nivel educativo</figcaption>
 </figure>
 </div>
 </div>
@@ -681,18 +643,18 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <h2 data-number="8.17" class="anchored" data-anchor-id="qué-esperaríamos-ver-si-no-hubiera-relación"><span class="header-section-number">8.17</span> ¿Qué esperaríamos ver si no hubiera relación?</h2>
 <p>Si <strong>nivel educativo y opinión fueran independientes</strong>, esperaríamos ver una distribución en la que <strong>la proporción de personas a favor o en contra fuera la misma en todos los niveles</strong>.</p>
 <p>Eso significa que las frecuencias esperadas <strong>se calculan como producto de los totales marginales</strong>. R lo hace por nosotros:</p>
-<div class="cell" data-tbl-cap="Frecuencias esperadas bajo independencia" data-hash="06b-chi_cuadrado_cache/html/esperadas-eutanasia_c4b0352a7ca60e391f70901782c3c409">
+<div class="cell" data-tbl-cap="Frecuencias esperadas bajo independencia" data-hash="06b-chi_cuadrado_cache/html/esperadas-eutanasia_aed2f1f9908ce57d171979111d3a69d8">
 <pre><code>#&gt;        
 #&gt;         A favor En contra
-#&gt;   Alto       30        10
-#&gt;   Bajo       30        10
-#&gt;   Medio      30        10</code></pre>
+#&gt;   Alto     28.3      11.7
+#&gt;   Medio    28.3      11.7
+#&gt;   Bajo     28.3      11.7</code></pre>
 </div>
 </section>
 <section id="dónde-están-las-mayores-discrepancias" class="level2" data-number="8.18">
 <h2 data-number="8.18" class="anchored" data-anchor-id="dónde-están-las-mayores-discrepancias"><span class="header-section-number">8.18</span> ¿Dónde están las mayores discrepancias?</h2>
 <p>Podemos usar el mismo enfoque visual que antes: calcular <strong>residuales estandarizados</strong> y clasificarlos según el nivel de evidencia frente a la hipótesis nula.</p>
-<div class="cell" data-hash="06b-chi_cuadrado_cache/html/mapa-evidencia-eutanasia_5577ae63b15d6842fc1dd49760921ef7">
+<div class="cell" data-hash="06b-chi_cuadrado_cache/html/mapa-evidencia-eutanasia_6c8939b2772e63cd32c484ff10a11d3f">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -705,47 +667,46 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 </section>
 <section id="aplicar-la-prueba-chi-cuadrado" class="level2" data-number="8.19">
 <h2 data-number="8.19" class="anchored" data-anchor-id="aplicar-la-prueba-chi-cuadrado"><span class="header-section-number">8.19</span> Aplicar la prueba chi cuadrado</h2>
-<div class="cell" data-tbl-cap="Resultado de la prueba chi cuadrado de independencia" data-hash="06b-chi_cuadrado_cache/html/chisq-eutanasia_495a46eeb65222d898cefa4e634463ef">
+<div class="cell" data-tbl-cap="Resultado de la prueba chi cuadrado de independencia" data-hash="06b-chi_cuadrado_cache/html/chisq-eutanasia_17f49eca8fbadf1acc4f981ed6759ac0">
 <pre><code>#&gt; 
 #&gt;  Pearson's Chi-squared test
 #&gt; 
 #&gt; data:  tabla
-#&gt; X-squared = 6.6667, df = 2, p-value = 0.03567</code></pre>
+#&gt; X-squared = 14.118, df = 2, p-value = 0.0008598</code></pre>
 </div>
 <p>La prueba nos da el valor de <span class="math inline">\(\chi^2\)</span>, los grados de libertad, y el valor <em>p</em>.</p>
 <ul>
 <li>Si <em>p</em> &lt; 0.05 → rechazamos la hipótesis de independencia → hay evidencia de asociación.</li>
 <li>Si <em>p</em> &gt; 0.05 → no tenemos evidencia suficiente para decir que las variables están relacionadas.</li>
 </ul>
-<p>Excelente, tiene todo el sentido cerrar con ambos: primero una sección que advierta sobre <strong>errores comunes</strong>, para prevenir malos usos, y luego un <strong>resumen conceptual</strong> que refuerce los aprendizajes clave del capítulo.</p>
 </section>
 <section id="errores-comunes-y-buenas-prácticas" class="level2" data-number="8.20">
 <h2 data-number="8.20" class="anchored" data-anchor-id="errores-comunes-y-buenas-prácticas"><span class="header-section-number">8.20</span> Errores comunes y buenas prácticas</h2>
 <p>Aunque la prueba chi cuadrado es simple y poderosa, también es fácil de malinterpretar. Acá te dejamos una lista de errores típicos, con sus respectivas recomendaciones.</p>
 <section id="error-1-usar-chi-cuadrado-con-frecuencias-esperadas-muy-bajas" class="level3" data-number="8.20.1">
-<h3 data-number="8.20.1" class="anchored" data-anchor-id="error-1-usar-chi-cuadrado-con-frecuencias-esperadas-muy-bajas"><span class="header-section-number">8.20.1</span> ❌ Error 1: Usar chi cuadrado con frecuencias esperadas muy bajas</h3>
+<h3 data-number="8.20.1" class="anchored" data-anchor-id="error-1-usar-chi-cuadrado-con-frecuencias-esperadas-muy-bajas"><span class="header-section-number">8.20.1</span> Error 1: Usar chi cuadrado con frecuencias esperadas muy bajas</h3>
 <p>La prueba chi cuadrado <strong>asume que las frecuencias esperadas no son demasiado pequeñas</strong>. Si hay celdas con valores esperados menores a 5, especialmente en tablas pequeñas, el test puede volverse poco fiable.</p>
-<p>✅ <em>Buena práctica:</em> Si tenés celdas con esperadas &lt; 5, intentá agrupar categorías o considerá una prueba exacta (como la de Fisher).</p>
+<p><em>Buena práctica:</em> Si tenés celdas con esperadas &lt; 5, intentá agrupar categorías o considerá una prueba exacta (como la de Fisher).</p>
 </section>
 <section id="error-2-interpretar-el-valor-p-como-tamaño-del-efecto" class="level3" data-number="8.20.2">
-<h3 data-number="8.20.2" class="anchored" data-anchor-id="error-2-interpretar-el-valor-p-como-tamaño-del-efecto"><span class="header-section-number">8.20.2</span> ❌ Error 2: Interpretar el valor <em>p</em> como tamaño del efecto</h3>
+<h3 data-number="8.20.2" class="anchored" data-anchor-id="error-2-interpretar-el-valor-p-como-tamaño-del-efecto"><span class="header-section-number">8.20.2</span> Error 2: Interpretar el valor <em>p</em> como tamaño del efecto</h3>
 <p>Un valor <em>p</em> bajo te dice que la diferencia <strong>es improbable bajo la nula</strong>, pero <strong>no te dice cuán grande o importante es la diferencia</strong>.</p>
-<p>✅ <em>Buena práctica:</em> Complementá la prueba con una visualización de las discrepancias y, si es posible, medidas de efecto (como el V de Cramer para tablas grandes).</p>
+<p><em>Buena práctica:</em> Complementá la prueba con una visualización de las discrepancias y, si es posible, medidas de efecto (como el V de Cramer para tablas grandes).</p>
 </section>
 <section id="error-3-leer-mal-las-proporciones-condicionales" class="level3" data-number="8.20.3">
-<h3 data-number="8.20.3" class="anchored" data-anchor-id="error-3-leer-mal-las-proporciones-condicionales"><span class="header-section-number">8.20.3</span> ❌ Error 3: Leer mal las proporciones condicionales</h3>
-<p>A veces se malinterpreta una tabla normalizada por filas como si fuera por columnas, o viceversa. Eso puede llevar a conclusiones completamente erróneas.</p>
-<p>✅ <em>Buena práctica:</em> Siempre chequeá qué representa cada celda: ¿proporción dentro de qué grupo? Acompañar las tablas con gráficos ayuda muchísimo.</p>
+<h3 data-number="8.20.3" class="anchored" data-anchor-id="error-3-leer-mal-las-proporciones-condicionales"><span class="header-section-number">8.20.3</span> Error 3: Leer mal las proporciones condicionales</h3>
+<p>A veces se malinterpreta una tabla normalizada por filas como si fuera por columnas, o viceversa (ver capítulo 3. Tablas). Eso puede llevar a conclusiones completamente erróneas.</p>
+<p><em>Buena práctica:</em> Siempre chequeá qué representa cada celda: ¿proporción dentro de qué grupo? Acompañar las tablas con gráficos ayuda muchísimo.</p>
 </section>
 <section id="error-4-pensar-que-una-relación-estadística-implica-causalidad" class="level3" data-number="8.20.4">
-<h3 data-number="8.20.4" class="anchored" data-anchor-id="error-4-pensar-que-una-relación-estadística-implica-causalidad"><span class="header-section-number">8.20.4</span> ❌ Error 4: Pensar que una relación estadística implica causalidad</h3>
+<h3 data-number="8.20.4" class="anchored" data-anchor-id="error-4-pensar-que-una-relación-estadística-implica-causalidad"><span class="header-section-number">8.20.4</span> Error 4: Pensar que una relación estadística implica causalidad</h3>
 <p>La prueba chi cuadrado detecta asociación, no dirección ni causalidad. Dos variables pueden estar relacionadas por muchos motivos.</p>
-<p>✅ <em>Buena práctica:</em> Interpretá los resultados con cautela. Preguntate siempre qué otra variable podría estar influyendo.</p>
+<p><em>Buena práctica:</em> Interpretá los resultados con cautela. Preguntate siempre qué otra variable podría estar influyendo.</p>
 </section>
 <section id="error-5-usar-chi-cuadrado-para-variables-que-no-son-categóricas" class="level3" data-number="8.20.5">
-<h3 data-number="8.20.5" class="anchored" data-anchor-id="error-5-usar-chi-cuadrado-para-variables-que-no-son-categóricas"><span class="header-section-number">8.20.5</span> ❌ Error 5: Usar chi cuadrado para variables que no son categóricas</h3>
+<h3 data-number="8.20.5" class="anchored" data-anchor-id="error-5-usar-chi-cuadrado-para-variables-que-no-son-categóricas"><span class="header-section-number">8.20.5</span> Error 5: Usar chi cuadrado para variables que no son categóricas</h3>
 <p>No tiene sentido aplicar esta prueba a datos continuos discretizados sin justificación, o a variables numéricas que deberían analizarse con una prueba de medias.</p>
-<p>✅ <em>Buena práctica:</em> Reservá chi cuadrado para variables nominales u ordinales con pocos niveles. Para otras situaciones, hay mejores herramientas.</p>
+<p><em>Buena práctica:</em> Reservá chi cuadrado para variables nominales u ordinales con pocos niveles. Para otras situaciones, hay mejores herramientas.</p>
 </section>
 </section>
 <section id="lo-que-aprendimos" class="level2" data-number="8.21">
@@ -762,7 +723,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <li>Comparamos esas esperadas con las observadas.</li>
 <li>Sumamos las diferencias, ponderadas por el tamaño esperado.</li>
 <li>Obtenemos un valor <span class="math inline">\(\chi^2\)</span>.</li>
-<li>Y con ese valor, consultamos la <strong>distribución chi cuadrado</strong> para saber si ese resultado <strong>es raro</strong> o no bajo la nula.</li>
+<li>Y con ese valor, consultamos la <strong>distribución chi cuadrado</strong> para saber si ese resultado <strong>es raro</strong> o no bajo la hipótesis nula.</li>
 </ul>
 <p>Vimos que el valor <em>p</em> representa <strong>la probabilidad de ver un resultado así (o más extremo)</strong> si no hubiera relación. Y aprendimos a visualizar las diferencias celda por celda, para entender <strong>dónde</strong> están las mayores discrepancias.</p>
 <p>Una tabla puede contener una historia. La prueba chi cuadrado te ayuda a saber si esa historia es <strong>una coincidencia pasajera</strong>… o <strong>algo más profundo que vale la pena investigar</strong>.</p>

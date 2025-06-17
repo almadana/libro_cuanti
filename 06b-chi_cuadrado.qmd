@@ -2,12 +2,14 @@
 author: ChatGPT4o y Álvaro Cabana
 lang: es
 aliases: [chi_cuadrado.html]
+execute:
+  echo: false
+  warning: false
 ---
 
 ```{r, include = FALSE}
 source("global_stuff.R")
 ```
-
 
 # Pruebas chi cuadrado
 
@@ -15,7 +17,7 @@ source("global_stuff.R")
 
 Hasta ahora, cuando queríamos saber si había una diferencia entre grupos, lo hacíamos comparando promedios. Por ejemplo: ¿tienen más ansiedad las personas que hacen ejercicio que las que no? ¿Tienen mayor rendimiento los estudiantes que duermen más horas? Para responder eso, usábamos la prueba *t*.
 
-Pero no todas las preguntas se contestan con medias. Muchas veces, especialmente en psicología y ciencias sociales, lo que tenemos no son números continuos, sino **categorías**. Personas que dijeron “sí” o “no”. Participantes que eligieron una opción. Pacientes con o sin diagnóstico. Grupos definidos por género, edad, nivel educativo. Respuestas a ítems cerrados. Datos que no se miden en una escala, sino que **se cuentan**.
+Pero no todas las preguntas se contestan con medias. Muchas veces, especialmente en psicología y ciencias sociales, lo que tenemos no son números continuos, sino **categorías**. Personas que dijeron "sí" o "no". Participantes que eligieron una opción. Pacientes con o sin diagnóstico. Grupos definidos por género, edad, nivel educativo. Respuestas a ítems cerrados. Datos que no se miden en una escala, sino que **se cuentan**.
 
 Y entonces, lo que cambia no es solo el tipo de dato. Cambia también **la pregunta estadística**. Ya no preguntamos si el promedio de un grupo es mayor que el del otro. Preguntamos algo más básico, pero igual de importante: *¿Lo que estamos viendo en estas categorías podría haber ocurrido solo por azar?*
 
@@ -23,44 +25,47 @@ Y entonces, lo que cambia no es solo el tipo de dato. Cambia también **la pregu
 
 Imaginemos que queremos saber si hay una relación entre el nivel educativo y la postura frente a la eutanasia. Entrevistamos a un grupo de personas y les preguntamos dos cosas:
 
-1. ¿Cuál es su nivel educativo?
-2. ¿Está usted a favor o en contra de la legalización de la eutanasia?
+1.  ¿Cuál es su nivel educativo?
+2.  ¿Está usted a favor o en contra de la legalización de la eutanasia?
 
 Los datos nos dan esta tabla:
 
 | Nivel educativo | A favor | En contra |
-| --------------- | ------: | --------: |
+|-----------------|--------:|----------:|
 | Bajo            |      25 |        15 |
 | Medio           |      30 |        10 |
 | Alto            |      35 |         5 |
 
-A simple vista, parece haber una tendencia. Cuanto mayor el nivel educativo, mayor el apoyo a la eutanasia.
-Pero... ¿esa diferencia es real? ¿O podría deberse simplemente al azar?
+A simple vista, parece haber una tendencia. Cuanto mayor el nivel educativo, mayor el apoyo a la eutanasia. Pero... ¿esa diferencia es real? ¿O podría deberse simplemente al azar?
 
 ## La lógica inferencial, otra vez
 
-Esta pregunta —que parece nueva— en realidad **es la misma que nos hacíamos con las medias**. Lo único que cambió es el tipo de dato.
+Esta pregunta ---que parece nueva--- en realidad **es la misma que nos hacíamos con las medias**. Lo único que cambió es el tipo de dato.
 
 Con la prueba *t*, comparamos dos promedios. Con chi cuadrado, comparamos **lo que observamos** en una tabla de frecuencias con **lo que esperaríamos ver si no hubiera ninguna diferencia**.
 
 La lógica es la misma:
 
-* Tenemos una hipótesis nula: no hay relación entre las variables.
-* Tenemos una observación: en la muestra, las frecuencias no son iguales.
-* Y queremos saber: *¿esas diferencias son demasiado grandes como para explicarlas por azar?*
+-   Tenemos una hipótesis nula: no hay relación entre las variables.
+-   Tenemos una observación: en la muestra, las frecuencias no son iguales.
+-   Y queremos saber: *¿esas diferencias son demasiado grandes como para explicarlas por azar?*
 
 ## El plan para este capítulo
 
 A lo largo de este capítulo vamos a aprender a responder esa pregunta. Pero, como siempre, lo haremos paso a paso:
 
-1. Primero vamos a aprender a mirar una tabla y preguntarnos **qué esperaríamos ver** si no hubiera relación.
-2. Después vamos a aprender a **medir cuán distintas** son las frecuencias observadas de las esperadas.
-3. Vamos a ver **dos tipos de prueba chi cuadrado**:
+1.  Primero vamos a aprender a mirar una tabla y preguntarnos **qué esperaríamos ver** si no hubiera relación.
 
-   * una para ver si una variable sigue cierta distribución (bondad de ajuste),
-   * otra para ver si dos variables están relacionadas (independencia).
-4. Vamos a usar **gráficos y simulaciones** para entender mejor qué está en juego.
-5. Y vamos a terminar con un repaso de lo que **podemos y no podemos concluir** con esta herramienta.
+2.  Después vamos a aprender a **medir cuán distintas** son las frecuencias observadas de las esperadas.
+
+3.  Vamos a ver **dos tipos de prueba chi cuadrado**:
+
+    -   una para ver si una variable sigue cierta distribución (bondad de ajuste),
+    -   otra para ver si dos variables están relacionadas (independencia).
+
+4.  Vamos a usar **gráficos y simulaciones** para entender mejor qué está en juego.
+
+5.  Y vamos a terminar con un repaso de lo que **podemos y no podemos concluir** con esta herramienta.
 
 Pero antes de hacer cuentas, fórmulas o tests, hay algo que siempre conviene hacer primero: **mirar bien los datos**, y preguntarse si lo que estamos viendo **coincide con lo que esperaríamos ver si no pasara nada especial**.
 
@@ -72,10 +77,9 @@ Esa es la clave. Porque las diferencias entre grupos, por sí solas, no dicen na
 
 ## Un ejemplo simple
 
-Imaginá que una empresa de caramelos asegura en su envoltorio, con total descaro y en letras bien grandes: “¡Colores distribuidos equitativamente!” Según ellos, cada paquete contiene la misma cantidad de caramelos rojos, azules, verdes, amarillos y violetas. Todo muy democrático… en teoría.
+Imaginá que una empresa de caramelos asegura en su envoltorio, con total descaro y en letras bien grandes: "¡Colores distribuidos equitativamente!" Según ellos, cada paquete contiene la misma cantidad de caramelos rojos, azules, verdes, amarillos y violetas. Todo muy democrático... en teoría.
 
-Pero vos, que no naciste ayer, sospechás que algo huele raro (y no es el aroma a frambuesa artificial). Así que decidís hacer ciencia: comprás un paquete, lo abrís, y contás uno por uno los caramelos.
-Compramos un paquete, lo abrimos, y contamos los caramelos. Obtenemos:
+Pero vos, que no naciste ayer, sospechás que algo huele raro (y no es el aroma a frambuesa artificial). Así que decidís hacer ciencia: comprás un paquete, lo abrís, y contás uno por uno los caramelos. Compramos un paquete, lo abrimos, y contamos los caramelos. Obtenemos:
 
 ```{r}
 #| label: caramelos-observados
@@ -122,7 +126,6 @@ ggplot(datos_caramelos, aes(x = Color, y = Frecuencia, fill = Tipo)) +
   theme_minimal(base_size = 14)
 ```
 
-
 Ahora sí podemos ver la diferencia. El color **rojo** tiene 6 caramelos, cuando deberían ser 4. El **azul**, apenas 2. El resto está más cerca de lo esperado, pero también hay pequeñas desviaciones.
 
 A simple vista, podríamos decir: *parece haber un pequeño desequilibrio*. Pero, otra vez, lo que importa no es solo que haya diferencia, sino **cuánto importa esa diferencia**.
@@ -131,8 +134,7 @@ Por eso, vamos a dar un paso más: vamos a mirar **celda por celda**, y tratar d
 
 ## ¿Dónde están las diferencias más fuertes?
 
-Ya vimos los datos observados. Ya sabemos lo que esperaríamos ver si los caramelos estuvieran perfectamente distribuidos.
-Pero una pregunta sigue abierta:
+Ya vimos los datos observados. Ya sabemos lo que esperaríamos ver si los caramelos estuvieran perfectamente distribuidos. Pero una pregunta sigue abierta:
 
 > *¿Qué tanto se desvió cada color de lo que debería haber sido?*
 
@@ -140,8 +142,7 @@ Y más aún:
 
 > *¿Cuáles de esas diferencias son suficientemente grandes como para dudar de la hipótesis nula?*
 
-Porque en la práctica, incluso si la empresa es honesta y mezcla bien los colores, es normal que en un paquete aparezcan 3 verdes o 5 amarillos.
-Lo que necesitamos es una forma de **medir cada discrepancia en su contexto**. Que nos diga: *esto está dentro de lo esperable*, o *esto sí parece demasiado*.
+Porque en la práctica, incluso si la empresa es honesta y mezcla bien los colores, es normal que en un paquete aparezcan 3 verdes o 5 amarillos. Lo que necesitamos es una forma de **medir cada discrepancia en su contexto**. Que nos diga: *esto está dentro de lo esperable*, o *esto sí parece demasiado*.
 
 ## Residuales estandarizados: cuánto se desvía cada celda
 
@@ -151,9 +152,9 @@ $$
 \text{Residual estandarizado} = \frac{O - E}{\sqrt{E}}
 $$
 
-* Si el valor está cerca de 0, lo observado es parecido a lo esperado → no hay evidencia de problema.
-* Si el valor es mayor a +2 o menor a -2, la discrepancia es **grande** en relación a lo esperado → evidencia en contra de la hipótesis nula.
-* Si es menor a ±1, podemos decir que **la diferencia es irrelevante** → evidencia a favor de la nula.
+-   Si el valor está cerca de 0, lo observado es parecido a lo esperado → no hay evidencia de problema.
+-   Si el valor es mayor a +2 o menor a -2, la discrepancia es **grande** en relación a lo esperado → evidencia en contra de la hipótesis nula.
+-   Si es menor a ±1, podemos decir que **la diferencia es irrelevante** → evidencia a favor de la nula.
 
 ```{r}
 #| label: mapa-evidencia-caramelos
@@ -192,23 +193,20 @@ ggplot(tabla_residuales, aes(x = Color, y = 1, fill = Evidencia)) +
   theme(legend.position = "bottom")
 ```
 
-
-
 Esta visualización no reemplaza el test estadístico. Pero **lo complementa de forma poderosa**. Nos dice, sin fórmulas, sin cálculo manual:
 
-* **Dónde** están las discrepancias más marcadas.
-* En **qué dirección** van (más o menos de lo esperado).
-* Y si esas discrepancias son lo bastante grandes como para generar sospechas.
+-   **Dónde** están las discrepancias más marcadas.
+-   En **qué dirección** van (más o menos de lo esperado).
+-   Y si esas discrepancias son lo bastante grandes como para generar sospechas.
 
 En este ejemplo:
 
-* El color **rojo** aparece bastante más de lo esperado → residual positivo grande → evidencia *en contra* de la hipótesis nula.
-* El **azul** aparece bastante menos → residual negativo → también evidencia *en contra*.
-* Otros colores están cerca de lo esperado → residual bajo → evidencia *a favor* de la nula.
+-   El color **rojo** aparece bastante más de lo esperado → residual positivo grande → evidencia *en contra* de la hipótesis nula.
+-   El **azul** aparece bastante menos → residual negativo → también evidencia *en contra*.
+-   Otros colores están cerca de lo esperado → residual bajo → evidencia *a favor* de la nula.
 
 Y ahora que sabemos **qué tanto se desvían los datos celda por celda**, podemos avanzar al siguiente paso: resumir todas esas discrepancias en un único número. Ese número es el **estadístico chi cuadrado**.
 
----
 
 ## Un número para resumir toda la discrepancia
 
@@ -220,7 +218,7 @@ Ese número es el **estadístico chi cuadrado**, y su lógica es simple:
 
 Y si el valor de $\chi^2$ es muy grande, tenemos motivos para pensar que **las diferencias no se deben solo al azar**.
 
----
+
 
 ### Cómo se calcula
 
@@ -230,12 +228,12 @@ $$
 \chi^2 = \sum \frac{(O - E)^2}{E}
 $$
 
-* $O$ = frecuencia observada
-* $E$ = frecuencia esperada
+-   $O$ = frecuencia observada
+-   $E$ = frecuencia esperada
 
 Esto se hace **celda por celda**, y después se suman todos los valores. El resultado es un único número, que representa **el total de discrepancia relativa** en la tabla.
 
----
+
 
 ### Calculemos el $\chi^2$ de los caramelos
 
@@ -248,9 +246,9 @@ chisq.test(x = observado, p = rep(1/5, 5))
 
 Este resultado nos da:
 
-* El valor de $\chi^2$
-* Los **grados de libertad**, que en este caso son: número de categorías − 1 = 4
-* El valor *p*
+-   El valor de $\chi^2$
+-   Los **grados de libertad**, que en este caso son: número de categorías − 1 = 4
+-   El valor *p*
 
 Pero... ¿qué significa ese número de $\chi^2$? ¿Es grande? ¿Es chico? ¿Cómo lo interpretamos?
 
@@ -258,14 +256,13 @@ Para eso, necesitamos ver la **distribución chi cuadrado**.
 
 ## La distribución chi cuadrado
 
-Igual que la *t*, el estadístico $\chi^2$ tiene una distribución de referencia.
-Esa distribución nos dice **qué tan comunes o raros** son distintos valores de $\chi^2$ **si la hipótesis nula fuera cierta**.
+Igual que la *t*, el estadístico $\chi^2$ tiene una distribución de referencia. Esa distribución nos dice **qué tan comunes o raros** son distintos valores de $\chi^2$ **si la hipótesis nula fuera cierta**.
 
 La distribución chi cuadrado:
 
-* Solo tiene valores **positivos** (porque las discrepancias al cuadrado nunca dan negativo).
-* Tiene una **forma asimétrica**: es más alta cerca de 0, y cae rápidamente.
-* **Cambia de forma según los grados de libertad (df)**.
+-   Solo tiene valores **positivos** (porque las discrepancias al cuadrado nunca dan negativo).
+-   Tiene una **forma asimétrica**: es más alta cerca de 0, y cae rápidamente.
+-   **Cambia de forma según los grados de libertad (df)**.
 
 Veamos cómo se ve:
 
@@ -289,14 +286,11 @@ ggplot(data_dist, aes(x = x, y = densidad, color = factor(df))) +
   theme_minimal(base_size = 14)
 ```
 
+-   Con **df = 1**, la curva es muy sesgada: muchas observaciones cerca de 0, y pocas muy grandes.
+-   A medida que aumentan los **grados de libertad**, la curva se "desplaza" hacia la derecha y se va haciendo más simétrica.
+-   Siempre se mantiene positiva: no hay valores negativos de $\chi^2$.
 
-* Con **df = 1**, la curva es muy sesgada: muchas observaciones cerca de 0, y pocas muy grandes.
-* A medida que aumentan los **grados de libertad**, la curva se “desplaza” hacia la derecha y se va haciendo más simétrica.
-* Siempre se mantiene positiva: no hay valores negativos de $\chi^2$.
-
-El valor *p* es el área **bajo la curva, a la derecha del valor observado**.
-Eso representa: *¿qué tan probable es obtener un valor así (o mayor) si la hipótesis nula fuera cierta?*
-
+El valor *p* es el área **bajo la curva, a la derecha del valor observado**. Eso representa: *¿qué tan probable es obtener un valor así (o mayor) si la hipótesis nula fuera cierta?*
 
 ## Cómo cambia la distribución chi cuadrado
 
@@ -304,8 +298,8 @@ Ya vimos que la distribución chi cuadrado es la que usamos para decidir si un v
 
 Esto es importante por dos motivos:
 
-1. El **número de grados de libertad** (df) depende de la cantidad de categorías que estamos comparando.
-2. La **forma de la distribución** determina qué valores de $\chi^2$ son considerados grandes o raros.
+1.  El **número de grados de libertad** (df) depende de la cantidad de categorías que estamos comparando.
+2.  La **forma de la distribución** determina qué valores de $\chi^2$ son considerados grandes o raros.
 
 A menor df, la curva es muy sesgada hacia la izquierda, y valores grandes son extremadamente improbables. A mayor df, la curva se desplaza y se vuelve más simétrica.
 
@@ -315,41 +309,28 @@ En lugar de mostrar una curva estática para cada valor de df, vamos a ver cómo
 
 ```{r}
 #| label: animacion-chi2
-#| eval: false
-#| echo: true
+#| warning: false
 #| fig-cap: "Cómo cambia la distribución chi cuadrado a medida que aumentan los grados de libertad"
-#| engine: python
 knitr::include_graphics("imgs/gifs/distribucion_chi2_animada.gif")
 ```
 
-> **Nota:** Este bloque debe ejecutarse en un entorno Python con matplotlib y pillow instalados. El resultado será una animación `.gif` que puede incrustarse en el documento.
-
-
-
 ### ¿Qué muestra la animación?
 
-* Con **df = 1**, la curva es muy concentrada cerca de 0 y cae abruptamente.
-* A medida que df aumenta, la curva **se desplaza hacia la derecha** y se vuelve más suave.
-* Siempre es una distribución **de cola positiva** (nunca hay valores negativos).
+-   Con **df = 1**, la curva es muy concentrada cerca de 0 y cae abruptamente.
+-   A medida que df aumenta, la curva **se desplaza hacia la derecha** y se vuelve más suave.
+-   Siempre es una distribución **de cola positiva** (nunca hay valores negativos).
 
-Esto es fundamental para interpretar el valor *p*.
-Lo que consideramos “inusual” depende del **df**.
-Un valor de $\chi^2 = 10$ puede ser muy raro si df = 2, pero bastante común si df = 10.
+Esto es fundamental para interpretar el valor *p*. Lo que consideramos "inusual" depende del **df**. Un valor de $\chi^2 = 10$ puede ser muy raro si df = 2, pero bastante común si df = 10.
 
 ## ¿Qué tan grande es grande? Simular para entender
 
-Ya sabemos que el estadístico chi cuadrado mide **cuán distintas son las frecuencias observadas de las esperadas**, y que su valor aumenta cuando las diferencias son grandes.
-Y también sabemos que para interpretar ese valor, lo comparamos con una distribución teórica: la **distribución chi cuadrado**.
+Ya sabemos que el estadístico chi cuadrado mide **cuán distintas son las frecuencias observadas de las esperadas**, y que su valor aumenta cuando las diferencias son grandes. Y también sabemos que para interpretar ese valor, lo comparamos con una distribución teórica: la **distribución chi cuadrado**.
 
-Pero ahora vamos a hacer algo distinto.
-No vamos a mirar la fórmula. Vamos a **simular el azar**.
-Vamos a generar miles de situaciones donde la **hipótesis nula sea cierta**, y vamos a ver **qué valores de $\chi^2$** produce el azar por sí solo.
+Pero ahora vamos a hacer algo distinto. No vamos a mirar la fórmula. Vamos a **simular el azar**. Vamos a generar miles de situaciones donde la **hipótesis nula sea cierta**, y vamos a ver **qué valores de** $\chi^2$ produce el azar por sí solo.
 
 La idea es simple:
 
-> Si el azar genera a veces valores como el que observamos, entonces lo que vimos podría no ser tan raro.
-> Pero si el azar casi nunca produce valores así… entonces lo que vimos **probablemente no sea azar**.
-
+> Si el azar genera a veces valores como el que observamos, entonces lo que vimos podría no ser tan raro. Pero si el azar casi nunca produce valores así... entonces lo que vimos **probablemente no sea azar**.
 
 ### Simulemos caramelos honestos
 
@@ -384,28 +365,23 @@ ggplot(data.frame(chi = chi_vals), aes(x = chi)) +
   theme_minimal(base_size = 14)
 ```
 
-
-La línea roja muestra el valor de $\chi^2$ que obtuvimos con nuestro paquete de caramelos.
-Las barras muestran **qué tan comunes** son distintos valores de $\chi^2$ si la distribución es justa. Si la línea roja está muy a la derecha —en la cola de la distribución— entonces el valor observado es *raro* bajo la nula. Y eso es exactamente lo que nos dice el valor *p*.
-
+La línea roja muestra el valor de $\chi^2$ que obtuvimos con nuestro paquete de caramelos. Las barras muestran **qué tan comunes** son distintos valores de $\chi^2$ si la distribución es justa. Si la línea roja está muy a la derecha ---en la cola de la distribución--- entonces el valor observado es *raro* bajo la nula. Y eso es exactamente lo que nos dice el valor *p*.
 
 ### El valor *p*, una vez más
 
 Podemos calcular el valor *p* directamente desde esta simulación:
 
 ```{r}
+#| echo: false
 sum(chi_vals >= chisq.test(observado, p = prob)$statistic) / n_sim
 ```
 
-Este número es la **proporción de simulaciones** que dieron un valor de $\chi^2$ igual o mayor al observado.
-Es decir: una versión empírica del valor *p*.
-Y debería coincidir bastante bien con el valor *p* que calculamos antes con `chisq.test()`.
+Este número es la **proporción de simulaciones** que dieron un valor de $\chi^2$ igual o mayor al observado. Es decir: una versión empírica del valor *p*. Y debería coincidir bastante bien con el valor *p* que calculamos antes con `chisq.test()`.
 
-¿Por qué esto importa? Porque a veces, mirar un número no alcanza. Pero ver cuán frecuente —o infrecuente— es ese número en un mundo donde **no hay efecto real**, puede ayudar a construir una mejor intuición. Y eso es lo que hace el valor *p*: te dice **qué tan probable es tu resultado si todo fuera azar**.
+¿Por qué esto importa? Porque a veces, mirar un número no alcanza. Pero ver cuán frecuente ---o infrecuente--- es ese número en un mundo donde **no hay efecto real**, puede ayudar a construir una mejor intuición. Y eso es lo que hace el valor *p*: te dice **qué tan probable es tu resultado si todo fuera azar**.
 
-Perfecto, vamos ahora con la **segunda gran aplicación** de la prueba chi cuadrado: la **prueba de independencia entre dos variables categóricas**. Retomamos el estilo narrativo y visual, incorporando código en R y guiando al lector paso a paso para entender qué significa “independencia”, cómo se construyen las esperadas, cómo se ve la discrepancia y cómo se interpreta el test.
+Perfecto, vamos ahora con la **segunda gran aplicación** de la prueba chi cuadrado: la **prueba de independencia entre dos variables categóricas**. Retomamos el estilo narrativo y visual, incorporando código en R y guiando al lector paso a paso para entender qué significa "independencia", cómo se construyen las esperadas, cómo se ve la discrepancia y cómo se interpreta el test.
 
----
 
 ## Dos variables, una pregunta: ¿están relacionadas?
 
@@ -415,38 +391,38 @@ Hasta ahora usamos chi cuadrado para ver si una **sola variable** se distribuía
 
 Por ejemplo:
 
-* ¿Están asociadas la orientación política y la actitud frente a la legalización del cannabis?
-* ¿Varía el apoyo a la eutanasia según el nivel educativo?
-* ¿Hay diferencias de género en la elección de carrera?
+-   ¿Están asociadas la orientación política y la actitud frente a la legalización del cannabis?
+-   ¿Varía el apoyo a la eutanasia según el nivel educativo?
+-   ¿Hay diferencias de género en la elección de carrera?
 
 Lo que queremos saber no es si los porcentajes son iguales. Lo que queremos saber es si **las diferencias que vemos en la tabla podrían haberse generado por azar**.
 
----
+
 
 ## Un ejemplo realista: eutanasia y nivel educativo
 
 Supongamos que en una encuesta preguntamos dos cosas:
 
-1. ¿Está usted a favor o en contra de la legalización de la eutanasia?
-2. ¿Cuál es su nivel educativo (bajo, medio, alto)?
+1.  ¿Está usted a favor o en contra de la legalización de la eutanasia?
+2.  ¿Cuál es su nivel educativo (bajo, medio, alto)?
 
 Las respuestas nos dan esta tabla:
 
 ```{r}
 #| label: tabla-eutanasia
 #| tbl-cap: "Opinión sobre eutanasia según nivel educativo"
+#| echo: false
 
 niveles <- c(rep("Bajo", 40), rep("Medio", 40), rep("Alto", 40))
-opinion <- c(rep("A favor", 25), rep("En contra", 15),
+opinion <- c(rep("A favor", 20), rep("En contra", 20),
              rep("A favor", 30), rep("En contra", 10),
              rep("A favor", 35), rep("En contra", 5))
 
-datos <- data.frame(Nivel = niveles, Opinion = opinion)
+datos <- data.frame(Nivel = factor(niveles,levels=c("Alto","Medio","Bajo")), Opinion = opinion)
 tabla <- table(datos$Nivel, datos$Opinion)
 tabla
 ```
 
----
 
 ## Visualizar la tabla: proporciones por fila
 
@@ -455,6 +431,7 @@ Para ver mejor la tendencia, graficamos la proporción de personas a favor y en 
 ```{r}
 #| label: grafico-eutanasia
 #| fig-cap: "Distribución de opiniones sobre eutanasia por nivel educativo"
+#| echo: false
 
 library(ggplot2)
 
@@ -477,11 +454,11 @@ Eso significa que las frecuencias esperadas **se calculan como producto de los t
 ```{r}
 #| label: esperadas-eutanasia
 #| tbl-cap: "Frecuencias esperadas bajo independencia"
+#| echo: false
 
 chisq_resultado <- chisq.test(tabla)
 round(chisq_resultado$expected, 1)
 ```
-
 
 ## ¿Dónde están las mayores discrepancias?
 
@@ -490,6 +467,7 @@ Podemos usar el mismo enfoque visual que antes: calcular **residuales estandariz
 ```{r}
 #| label: mapa-evidencia-eutanasia
 #| fig-cap: "Evidencia por celda: diferencias entre observadas y esperadas"
+#| echo: false
 
 observada <- tabla
 esperada <- chisq_resultado$expected
@@ -525,95 +503,73 @@ ggplot(tabla_evidencia, aes(x = Var2, y = Var1, fill = Evidencia)) +
   theme_minimal(base_size = 14)
 ```
 
-
 ## Aplicar la prueba chi cuadrado
 
 ```{r}
 #| label: chisq-eutanasia
 #| tbl-cap: "Resultado de la prueba chi cuadrado de independencia"
+#| echo: false
 
 chisq_resultado
 ```
 
 La prueba nos da el valor de $\chi^2$, los grados de libertad, y el valor *p*.
 
-* Si *p* < 0.05 → rechazamos la hipótesis de independencia → hay evidencia de asociación.
-* Si *p* > 0.05 → no tenemos evidencia suficiente para decir que las variables están relacionadas.
+-   Si *p* \< 0.05 → rechazamos la hipótesis de independencia → hay evidencia de asociación.
+-   Si *p* \> 0.05 → no tenemos evidencia suficiente para decir que las variables están relacionadas.
 
 ## Errores comunes y buenas prácticas
 
 Aunque la prueba chi cuadrado es simple y poderosa, también es fácil de malinterpretar. Acá te dejamos una lista de errores típicos, con sus respectivas recomendaciones.
 
-
 ### Error 1: Usar chi cuadrado con frecuencias esperadas muy bajas
 
 La prueba chi cuadrado **asume que las frecuencias esperadas no son demasiado pequeñas**. Si hay celdas con valores esperados menores a 5, especialmente en tablas pequeñas, el test puede volverse poco fiable.
 
-*Buena práctica:*
-Si tenés celdas con esperadas < 5, intentá agrupar categorías o considerá una prueba exacta (como la de Fisher).
-
-
+*Buena práctica:* Si tenés celdas con esperadas \< 5, intentá agrupar categorías o considerá una prueba exacta (como la de Fisher).
 
 ### Error 2: Interpretar el valor *p* como tamaño del efecto
 
 Un valor *p* bajo te dice que la diferencia **es improbable bajo la nula**, pero **no te dice cuán grande o importante es la diferencia**.
 
-*Buena práctica:*
-Complementá la prueba con una visualización de las discrepancias y, si es posible, medidas de efecto (como el V de Cramer para tablas grandes).
-
-
+*Buena práctica:* Complementá la prueba con una visualización de las discrepancias y, si es posible, medidas de efecto (como el V de Cramer para tablas grandes).
 
 ### Error 3: Leer mal las proporciones condicionales
 
 A veces se malinterpreta una tabla normalizada por filas como si fuera por columnas, o viceversa (ver capítulo 3. Tablas). Eso puede llevar a conclusiones completamente erróneas.
 
-*Buena práctica:*
-Siempre chequeá qué representa cada celda: ¿proporción dentro de qué grupo? Acompañar las tablas con gráficos ayuda muchísimo.
-
-
+*Buena práctica:* Siempre chequeá qué representa cada celda: ¿proporción dentro de qué grupo? Acompañar las tablas con gráficos ayuda muchísimo.
 
 ### Error 4: Pensar que una relación estadística implica causalidad
 
 La prueba chi cuadrado detecta asociación, no dirección ni causalidad. Dos variables pueden estar relacionadas por muchos motivos.
 
-*Buena práctica:*
-Interpretá los resultados con cautela. Preguntate siempre qué otra variable podría estar influyendo.
-
-
+*Buena práctica:* Interpretá los resultados con cautela. Preguntate siempre qué otra variable podría estar influyendo.
 
 ### Error 5: Usar chi cuadrado para variables que no son categóricas
 
 No tiene sentido aplicar esta prueba a datos continuos discretizados sin justificación, o a variables numéricas que deberían analizarse con una prueba de medias.
 
-*Buena práctica:*
-Reservá chi cuadrado para variables nominales u ordinales con pocos niveles. Para otras situaciones, hay mejores herramientas.
-
+*Buena práctica:* Reservá chi cuadrado para variables nominales u ordinales con pocos niveles. Para otras situaciones, hay mejores herramientas.
 
 ## Lo que aprendimos
 
-Este capítulo fue una expansión natural del anterior. Aprendimos a aplicar la lógica de la inferencia —comparar lo que observamos con lo que esperaríamos por azar— al mundo de los **datos categóricos**.
+Este capítulo fue una expansión natural del anterior. Aprendimos a aplicar la lógica de la inferencia ---comparar lo que observamos con lo que esperaríamos por azar--- al mundo de los **datos categóricos**.
 
 Vimos que hay **dos grandes usos** de la prueba chi cuadrado:
 
-1. **Prueba de bondad de ajuste**
-   ¿Una sola variable se reparte como debería?
+1.  **Prueba de bondad de ajuste** ¿Una sola variable se reparte como debería?
 
-2. **Prueba de independencia**
-   ¿Dos variables categóricas están relacionadas?
+2.  **Prueba de independencia** ¿Dos variables categóricas están relacionadas?
 
 En ambos casos:
 
-* Calculamos las **frecuencias esperadas** bajo la hipótesis nula.
-* Comparamos esas esperadas con las observadas.
-* Sumamos las diferencias, ponderadas por el tamaño esperado.
-* Obtenemos un valor $\chi^2$.
-* Y con ese valor, consultamos la **distribución chi cuadrado** para saber si ese resultado **es raro** o no bajo la hipótesis nula.
+-   Calculamos las **frecuencias esperadas** bajo la hipótesis nula.
+-   Comparamos esas esperadas con las observadas.
+-   Sumamos las diferencias, ponderadas por el tamaño esperado.
+-   Obtenemos un valor $\chi^2$.
+-   Y con ese valor, consultamos la **distribución chi cuadrado** para saber si ese resultado **es raro** o no bajo la hipótesis nula.
 
-Vimos que el valor *p* representa **la probabilidad de ver un resultado así (o más extremo)** si no hubiera relación.
-Y aprendimos a visualizar las diferencias celda por celda, para entender **dónde** están las mayores discrepancias.
+Vimos que el valor *p* representa **la probabilidad de ver un resultado así (o más extremo)** si no hubiera relación. Y aprendimos a visualizar las diferencias celda por celda, para entender **dónde** están las mayores discrepancias.
 
-
-Una tabla puede contener una historia. La prueba chi cuadrado te ayuda a saber si esa historia es **una coincidencia pasajera**… o **algo más profundo que vale la pena investigar**.
-
-
-
+Una tabla puede contener una historia. La prueba chi cuadrado te ayuda a saber si esa historia es **una coincidencia pasajera**... o **algo más profundo que vale la pena investigar**.

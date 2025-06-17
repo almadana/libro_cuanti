@@ -124,7 +124,6 @@ La @fig-5expectedUnif muestra una versión animada del proceso de elegir repetid
 knitr::include_graphics(path = "imgs/gifs/sampleUnifExpected-1_es.gif")
 ```
 
-
 Observar los histogramas anteriores nos muestra que puede ser difícil averiguar de dónde vinieron nuestros números. En el mundo real, nuestras mediciones son muestras. Por lo general, solo tenemos el lujo de obtener **una única muestra** de mediciones, en lugar de repetirlas 10 veces o más. Si mirás los histogramas, verás que algunos de ellos parecen haber salido de una distribución uniforme: la mayoría de las barras están cerca de 2, y todas más o menos alineadas. Pero si te tocara otra muestra distinta, podrías ver un histograma muy irregular, con algunos números ocurriendo mucho más que otros. Eso podría hacerte pensar que esos números **no** provienen de una distribución uniforme (parecen demasiado irregulares). Pero recordá: **todas** estas muestras vinieron de una distribución uniforme. Así es como se ven las muestras tomadas de esa distribución. Esto es lo que el **azar** le hace a las muestras: introduce **ruido** en los datos individuales.
 
 ### Las muestras grandes se parecen más a la distribución de la que provienen
@@ -167,10 +166,10 @@ ggplot(df, aes(x = a)) +
   ylim(0,20)+
   labs(y = "conteo")
 ```
+
 De nuevo, la mayoría de estos histogramas no se ven muy planos, y todas las barras parecen ir hacia arriba o hacia abajo; además, no están exactamente en 10 cada una. Así que todavía estamos lidiando con el error muestral. Es un fastidio. Siempre está presente.
 
 Aumentemos el $N$ por muestra de 100 a 1000. Deberíamos esperar que cada número aparezca unas 100 veces. ¿Qué sucede?
-
 
 ```{r, echo = F}
 #| label: fig-5unifsamp1000
@@ -187,6 +186,7 @@ ggplot(df, aes(x = a)) +
   ylim(0,200)+
   labs(y = "conteo")
 ```
+
 La @fig-5unifsamp1000 muestra que los histogramas empiezan a aplanarse. Las barras todavía no están perfectamente en 100, porque sigue habiendo error muestral (siempre lo habrá). Pero si vieras un histograma que se ve plano y supieras que la muestra contiene muchas observaciones, podrías tener más confianza en que esos números provienen de una distribución uniforme.
 
 Solo por diversión, hagamos muestras realmente grandes. Digamos, 100.000 observaciones por muestra. En ese caso, deberíamos esperar que cada número ocurra unas 10.000 veces. ¿Qué pasa?
@@ -408,7 +408,6 @@ Upss, acabamos de realizar tantos experimentos simulados que el eje x es ilegibl
 
 Ahora que tenemos un método para simular las diferencias debidas al azar, vamos a realizar 10.000 experimentos simulados. Pero, en lugar de trazar las diferencias en un gráfico de barras para cada experimento, ¿qué tal si observamos el histograma de puntuaciones de diferencia? El histograma en la @fig-5histdiffbolita proporciona una imagen más clara sobre qué diferencias ocurren con más frecuencia y cuáles no. Esta será otra ventana para observar qué tipo de diferencias es capaz de producir el azar.
 
-
 ```{r, echo=F}
 #| label: fig-5histdiffbolita
 #| fig-cap: "Histograma de las diferencias obtenidas por azar en 10.000 repeticiones. La diferencia más frecuente es 0, que es lo que esperamos por azar. Pero las diferencias pueden llegar a ser tan grandes como -10 o +10. Las diferencias más grandes ocurren con menor frecuencia. El azar no puede hacer cualquier cosa."
@@ -508,7 +507,7 @@ plot_df <- data.frame(sim = 1:10000, diferencia)
 ggplot(plot_df, aes(x = diferencia)) +
   geom_histogram(bins = 100, color = "white") +
   theme_classic() +
-  ggtitle("Histograma de diferencias de medias entre dos muestras (n = 10)\nambas extraídas de la misma distribución normal (μ = 100, σ = 20)") +
+  ggtitle("Histograma de diferencias de medias entre dos muestras (n = 20)\nambas extraídas de la misma distribución normal (μ = 100, σ = 15)") +
   xlab("diferencia de medias") + ylab("frecuencia")
 ```
 
@@ -762,7 +761,7 @@ Esta forma de pensar se desarrolla de manera mucho más interesante en el mundo 
 
 #### Tomar decisiones y equivocarse
 
-No importa cómo planees tomar decisiones sobre tus datos, **siempre vas a estar propenso a cometer errores**. Podrías declarar que un resultado es real, cuando en realidad fue causado por azar. Eso se llama un **error tipo I**, o un **falso positivo**. Podrías ignorar un resultado, decir que fue azar, cuando en realidad **no lo fue** (aunque estaba dentro de la ventana). Eso se llama un **error tipo II**, o un **falso negativo**. 
+No importa cómo planees tomar decisiones sobre tus datos, **siempre vas a estar propenso a cometer errores**. Podrías declarar que un resultado es real, cuando en realidad fue causado por azar. Eso se llama un **error tipo I**, o un **falso positivo**. Podrías ignorar un resultado, decir que fue azar, cuando en realidad **no lo fue** (aunque estaba dentro de la ventana). Eso se llama un **error tipo II**, o un **falso negativo**.
 
 La forma en que tomás decisiones puede influir en **con qué frecuencia cometés errores a lo largo del tiempo**. Si sos investigador, vas a correr muchos experimentos, y vas a cometer cierta cantidad de errores con el tiempo.
 
@@ -805,6 +804,13 @@ all_df <- data.frame(
   ),
   sample_size = rep(ns, each = sims)
 )
+ggplot(all_df, aes(x = sample)) +
+  geom_histogram(bins = 50, color = "white") +
+  facet_wrap( ~ sample_size) + xlim(-30, 30) +
+  theme_classic() + ggtitle("Distribución muestral de diferencias de media, según N") +
+  ylab("conteo") +
+  xlab("Diferencias entre medias")
+
 ```
 
 Ahí lo tenés. La **distribución muestral de las diferencias de medias** se contrae hacia 0 a medida que aumenta el tamaño muestral. Esto significa que, si ejecutás un experimento con un tamaño muestral mayor, vas a poder detectar diferencias de medias más pequeñas, y estar seguro de que **no se deben al azar**.
@@ -820,10 +826,10 @@ La @tbl-5minmax muestra los valores mínimos y máximos que el azar produjo para
 #                                                  biggest=max(sample))
 the_range <- all_df %>%
   group_by(sample_size) %>%
-  summarize(smallest = min(sample),
-            largest = max(sample))
+  summarize(menor = min(sample),
+            mayor = max(sample))
 
-knitr::kable(the_range)
+knitr::kable(the_range,col.names = c("Tamaño de muestra","menor","mayor"),align = 'c',digits = 2)
 ```
 
 La tabla muestra que el rango de comportamiento del azar es **mucho más amplio para tamaños muestrales pequeños**, y **más estrecho para tamaños muestrales grandes**. Pensá en lo que implica ese estrechamiento para el diseño de tu experimento. Por ejemplo, un aspecto del diseño es la elección del tamaño muestral, `N` ---o, en un experimento de psicología, la cantidad de participantes. Si resulta que tu manipulación va a causar una diferencia de +11, ¿qué deberías hacer? ¿Ejecutar un experimento con `N = 20` personas? Espero que no. Si lo hicieras, podrías obtener una diferencia de medias de +11 **bastante seguido solo por azar**.

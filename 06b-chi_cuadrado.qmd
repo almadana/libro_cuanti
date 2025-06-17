@@ -72,8 +72,9 @@ Esa es la clave. Porque las diferencias entre grupos, por sí solas, no dicen na
 
 ## Un ejemplo simple
 
-Supongamos que queremos saber si hay una preferencia de colores en los caramelos que vende una empresa. Según la etiqueta, cada paquete debería tener la misma cantidad de cinco colores: rojo, azul, verde, amarillo y violeta.
+Imaginá que una empresa de caramelos asegura en su envoltorio, con total descaro y en letras bien grandes: “¡Colores distribuidos equitativamente!” Según ellos, cada paquete contiene la misma cantidad de caramelos rojos, azules, verdes, amarillos y violetas. Todo muy democrático… en teoría.
 
+Pero vos, que no naciste ayer, sospechás que algo huele raro (y no es el aroma a frambuesa artificial). Así que decidís hacer ciencia: comprás un paquete, lo abrís, y contás uno por uno los caramelos.
 Compramos un paquete, lo abrimos, y contamos los caramelos. Obtenemos:
 
 ```{r}
@@ -127,8 +128,6 @@ Ahora sí podemos ver la diferencia. El color **rojo** tiene 6 caramelos, cuando
 A simple vista, podríamos decir: *parece haber un pequeño desequilibrio*. Pero, otra vez, lo que importa no es solo que haya diferencia, sino **cuánto importa esa diferencia**.
 
 Por eso, vamos a dar un paso más: vamos a mirar **celda por celda**, y tratar de identificar **dónde están las discrepancias más grandes**, y si pueden ser explicadas por el azar.
-
-Perfecto, seguimos con la sección que pone el foco en las **discrepancias observadas–esperadas**, no solo para ver “cuánto se desviaron” los datos, sino para visualizar **qué tan fuerte es esa discrepancia** en cada categoría. Esta sección culmina con un **mapa de calor interpretativo**, que ilustra el nivel de evidencia *a favor* o *en contra* de la hipótesis nula.
 
 ## ¿Dónde están las diferencias más fuertes?
 
@@ -208,9 +207,6 @@ En este ejemplo:
 * Otros colores están cerca de lo esperado → residual bajo → evidencia *a favor* de la nula.
 
 Y ahora que sabemos **qué tanto se desvían los datos celda por celda**, podemos avanzar al siguiente paso: resumir todas esas discrepancias en un único número. Ese número es el **estadístico chi cuadrado**.
-
-
-Perfecto, vamos a seguir con la sección donde presentamos de forma intuitiva el **estadístico chi cuadrado** y lo conectamos con su **distribución de referencia**, ilustrando cómo cambia con los grados de libertad y cómo se interpreta el valor *p*. Incluiré visualizaciones y dejaré preparado el terreno para una animación opcional de simulación más adelante.
 
 ---
 
@@ -339,7 +335,6 @@ knitr::include_graphics("imgs/gifs/distribucion_chi2_animada.gif")
 Esto es fundamental para interpretar el valor *p*.
 Lo que consideramos “inusual” depende del **df**.
 Un valor de $\chi^2 = 10$ puede ser muy raro si df = 2, pero bastante común si df = 10.
-Perfecto. A continuación integro la **sección completa** al estilo del capítulo, donde mostramos mediante simulación cómo varía el valor de $\chi^2$ cuando los datos **no contienen un efecto real**, es decir, cuando la hipótesis nula es verdadera. Esto complementa la intuición sobre el valor *p*, mostrando cómo se genera su distribución bajo la nula.
 
 ## ¿Qué tan grande es grande? Simular para entender
 
@@ -459,7 +454,7 @@ Para ver mejor la tendencia, graficamos la proporción de personas a favor y en 
 
 ```{r}
 #| label: grafico-eutanasia
-#| fig-cap: "Distribución de opiniones por nivel educativo"
+#| fig-cap: "Distribución de opiniones sobre eutanasia por nivel educativo"
 
 library(ggplot2)
 
@@ -545,54 +540,52 @@ La prueba nos da el valor de $\chi^2$, los grados de libertad, y el valor *p*.
 * Si *p* < 0.05 → rechazamos la hipótesis de independencia → hay evidencia de asociación.
 * Si *p* > 0.05 → no tenemos evidencia suficiente para decir que las variables están relacionadas.
 
-Excelente, tiene todo el sentido cerrar con ambos: primero una sección que advierta sobre **errores comunes**, para prevenir malos usos, y luego un **resumen conceptual** que refuerce los aprendizajes clave del capítulo.
-
 ## Errores comunes y buenas prácticas
 
 Aunque la prueba chi cuadrado es simple y poderosa, también es fácil de malinterpretar. Acá te dejamos una lista de errores típicos, con sus respectivas recomendaciones.
 
 
-### ❌ Error 1: Usar chi cuadrado con frecuencias esperadas muy bajas
+### Error 1: Usar chi cuadrado con frecuencias esperadas muy bajas
 
 La prueba chi cuadrado **asume que las frecuencias esperadas no son demasiado pequeñas**. Si hay celdas con valores esperados menores a 5, especialmente en tablas pequeñas, el test puede volverse poco fiable.
 
-✅ *Buena práctica:*
+*Buena práctica:*
 Si tenés celdas con esperadas < 5, intentá agrupar categorías o considerá una prueba exacta (como la de Fisher).
 
 
 
-### ❌ Error 2: Interpretar el valor *p* como tamaño del efecto
+### Error 2: Interpretar el valor *p* como tamaño del efecto
 
 Un valor *p* bajo te dice que la diferencia **es improbable bajo la nula**, pero **no te dice cuán grande o importante es la diferencia**.
 
-✅ *Buena práctica:*
+*Buena práctica:*
 Complementá la prueba con una visualización de las discrepancias y, si es posible, medidas de efecto (como el V de Cramer para tablas grandes).
 
 
 
-### ❌ Error 3: Leer mal las proporciones condicionales
+### Error 3: Leer mal las proporciones condicionales
 
-A veces se malinterpreta una tabla normalizada por filas como si fuera por columnas, o viceversa. Eso puede llevar a conclusiones completamente erróneas.
+A veces se malinterpreta una tabla normalizada por filas como si fuera por columnas, o viceversa (ver capítulo 3. Tablas). Eso puede llevar a conclusiones completamente erróneas.
 
-✅ *Buena práctica:*
+*Buena práctica:*
 Siempre chequeá qué representa cada celda: ¿proporción dentro de qué grupo? Acompañar las tablas con gráficos ayuda muchísimo.
 
 
 
-### ❌ Error 4: Pensar que una relación estadística implica causalidad
+### Error 4: Pensar que una relación estadística implica causalidad
 
 La prueba chi cuadrado detecta asociación, no dirección ni causalidad. Dos variables pueden estar relacionadas por muchos motivos.
 
-✅ *Buena práctica:*
+*Buena práctica:*
 Interpretá los resultados con cautela. Preguntate siempre qué otra variable podría estar influyendo.
 
 
 
-### ❌ Error 5: Usar chi cuadrado para variables que no son categóricas
+### Error 5: Usar chi cuadrado para variables que no son categóricas
 
 No tiene sentido aplicar esta prueba a datos continuos discretizados sin justificación, o a variables numéricas que deberían analizarse con una prueba de medias.
 
-✅ *Buena práctica:*
+*Buena práctica:*
 Reservá chi cuadrado para variables nominales u ordinales con pocos niveles. Para otras situaciones, hay mejores herramientas.
 
 
@@ -614,7 +607,7 @@ En ambos casos:
 * Comparamos esas esperadas con las observadas.
 * Sumamos las diferencias, ponderadas por el tamaño esperado.
 * Obtenemos un valor $\chi^2$.
-* Y con ese valor, consultamos la **distribución chi cuadrado** para saber si ese resultado **es raro** o no bajo la nula.
+* Y con ese valor, consultamos la **distribución chi cuadrado** para saber si ese resultado **es raro** o no bajo la hipótesis nula.
 
 Vimos que el valor *p* representa **la probabilidad de ver un resultado así (o más extremo)** si no hubiera relación.
 Y aprendimos a visualizar las diferencias celda por celda, para entender **dónde** están las mayores discrepancias.

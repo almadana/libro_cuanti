@@ -237,7 +237,7 @@ Ya sabés que el resultado es 4. Pero, ¿qué está pasando en realidad? Estamos
 
 Para repasar la moda, la mediana y la media, mirá el siguiente histograma en la @fig-meanmodemed. Indicamos la ubicación de la media (rojo), la mediana (verde) y la moda (azul). Para este conjunto de datos, las tres medidas de tendencia central dan valores diferentes. La media es la más alta porque se ve influida por valores grandes, incluso si aparecen pocas veces. La moda y la mediana no se ven afectadas por esos valores extremos, por eso tienen valores más bajos.
 
-```{r, echo=F, warning=FALSE}
+```{r, echo=F, warning=FALSE, message=FALSE}
 #| label: fig-meanmodemed
 #| fig-cap: "Un histograma con la media (rojo), la mediana (verde) y la moda (azul)"
 
@@ -273,6 +273,44 @@ Considerá estos 10 números, que ya están ordenados de menor a mayor:
 Estos números varían, porque no son todos iguales. Podemos usar el rango para describir la amplitud de esa variación. El rango se refiere al **mínimo** (el valor más bajo) y al **máximo** (el valor más alto) del conjunto. Así que el rango sería 1 y 24.
 
 El rango es una forma rápida de resumir los límites de los datos con solo dos números. Al calcular el rango, sabemos que ningún valor es más chico ni más grande que esos extremos. Además, puede alertarte sobre valores atípicos. Por ejemplo, si esperás que tus números estén entre 1 y 7, pero el rango es 1--340.500, entonces sabés que hay algunos valores enormes que no deberían estar ahí. Eso te permite investigar por qué aparecieron (y posiblemente eliminarlos si hubo algún error).
+
+## Diagramas de caja (boxplots)
+
+Una alternativa a los histogramas es el diagrama de caja, a veces llamado "diagrama de caja y bigotes" (box and whiskers). Al igual que los histogramas, son más adecuados para datos en escala de intervalo o razón. La idea detrás de un boxplot es proporcionar una representación visual simple de la mediana, el rango intercuartílico y el rango de los datos. Y como lo hacen de manera bastante compacta, los diagramas de caja se han vuelto muy populares como gráficos estadísticos, especialmente en la etapa exploratoria del análisis de datos, cuando estás intentenado entender los datos.
+
+Al mirar este gráfico, esto es lo que deberías interpretar: la línea gruesa en el medio de la caja es la mediana; la caja en sí abarca desde el percentil 25 hasta el 75; y los "bigotes" cubren todo el rango desde el valor mínimo hasta el máximo. Puedes observarlo en la Figura @fig-boxplotanotado.
+
+```{r, echo=F, warning=FALSE}
+#| label: fig-boxplotanotado
+#| fig-cap: "Boxplot con anotaciones"
+knitr::include_graphics(here::here("imgs", "boxplot1_anotado_es.png"))
+```
+
+En la práctica, los boxplots no suelen funcionar exactamente así. En la mayoría de los casos, los "bigotes" no abarcan todo el rango desde el valor mínimo hasta el máximo. En cambio, se extienden hasta el punto más extremo que **no exceda un cierto límite preestablecido**. Por defecto, ese valor es 1.5 veces el rango intercuartílico. Cualquier observación que esté fuera de ese rango se grafica como un círculo en lugar de ser incluida en los bigotes, y comunmente se la denomina valor atípico (outlier).
+
+Veamos cómo luce tomando como ejempo la variable felicidad. Los datos que necesitamos son los siguientes:
+
+```{r, echo=F, warning=FALSE}
+resumen <- summary(felicidad) 
+names(resumen) <- c("Mínimo", "Perc. 25", "Mediana", "Media", "Perc. 75", "Máximo")
+
+print(resumen)
+```
+
+```{r, echo=F, warning=FALSE}
+#| label: fig-boxplotfelicidad
+#| fig-cap: "Boxplot - Felicidad"
+
+boxplot(felicidad)
+```
+
+## Uso de diagramas de caja para detectar valores atípicos
+
+Como el boxplot separa automáticamente aquellas observaciones que se encuentran fuera de cierto rango, suele utilizarse como un método informal para detectar valores atípicos: observaciones que están "sospechosamente" alejadas del resto de los datos.
+
+Los conjuntos de datos reales suelen estar llenos de errores, especialmente cuando alguien tuvo que tipear información en una computadora. De hecho, esta etapa del análisis tiene un nombre específico, ya que en la práctica puede llevar mucho tiempo: limpieza de datos (data cleaning). Implica buscar errores de tipeo, datos faltantes y todo tipo de problemas molestos en los archivos de datos crudos.
+
+¿Y qué pasa con los datos atípicos que son reales? La decisión de incluir o excluir valores atípicos depende en gran medida de por qué creés que los datos se ven como se ven y para qué querés usarlos. Las herramientas estadísticas pueden ofrecer un método automático para sugerir posibles candidatos a eliminar, pero acá es fundamental aplicar buen juicio. El software estadístico es un autómata sin criterio, le falta el contexto más amplio para tomar una decisión informada. Vos no sos un autómata sin criterio, así que usá tu juicio: si el valor atípico te parece legítimo, entonces dejalo.
 
 ### Las diferencias
 
@@ -494,7 +532,7 @@ the_df %>% rbind(c("Sumas",colSums(the_df[1:6,2:5]))) %>%
 
 Esto también funciona bastante bien. Al convertir las diferencias respecto de la media en valores positivos, ahora podemos sumarlas y obtener un valor distinto de cero (si es que hay diferencias). Después, podemos calcular el promedio de la suma de las desviaciones absolutas. Si quisiéramos hacer un paralelismo entre los términos suma de cuadrados (SS), varianza y desviación estándar, y estas nuevas medidas basadas en la desviación absoluta, ¿cómo sería ese mapeo? Por ejemplo, ¿qué valor en la tabla correspondería a la SS? Eso sería la **suma de desviaciones absolutas** en la última columna. ¿Y la varianza y la desviación estándar, a qué corresponderían? Recordá que la varianza es el promedio ($SS/N$), y que la desviación estándar es la raíz cuadrada de ese promedio ($\sqrt{SS/N}$).
 
-En la tabla de arriba solo tenemos un promedio: el promedio de la suma de desviaciones absolutas. Entonces, tenemos una medida de **varianza** que **no necesita extraer raíz cuadrada**. Podemos decir que la **desviación media absoluta** cumple un doble rol: es tanto una medida de varianza como de desviación estándar.     Gol.
+En la tabla de arriba solo tenemos un promedio: el promedio de la suma de desviaciones absolutas. Entonces, tenemos una medida de **varianza** que **no necesita extraer raíz cuadrada**. Podemos decir que la **desviación media absoluta** cumple un doble rol: es tanto una medida de varianza como de desviación estándar. Gol.
 
 ### Otras operaciones que invierten el signo
 

@@ -56,3 +56,4 @@ editor: visual
 
 execute:
   cache: true
+  echo: false

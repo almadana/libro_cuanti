@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -598,12 +564,11 @@ Extra
 <p>Esto es lo que pasa. Primero, notá que los departamentos <em>no son</em> todos iguales en cuanto a su porcentaje de admisión: algunos (como ingeniería o química) tienden a admitir a una gran parte de quienes se postulan; otros (como literatura inglesa) tienden a rechazar a la mayoría, incluso si tienen buen perfil. Así que, entre los seis departamentos de arriba, el departamento A es el más generoso, seguido por B, C, D, E y F, en ese orden. A continuación, fijate que los hombres y las mujeres tendían a postularse a departamentos diferentes. Si ordenamos los departamentos según el número total de postulaciones masculinas, obtenemos <strong>A</strong>&gt;<strong>B</strong>&gt;D&gt;C&gt;F&gt;E (los “departamentos fáciles” están en negrita). En general, los hombres tendieron a postularse a los departamentos con tasas de admisión altas. Ahora compara esto con la distribución de las postulaciones femeninas. Clasificar los departamentos según el número total de postulaciones femeninas produce un orden bastante diferente: C&gt;E&gt;D&gt;F&gt;<strong>A</strong>&gt;<strong>B</strong>. En otras palabras, estos datos parecen sugerir que las mujeres tendieron a postularse a departamentos “más difíciles”.</p>
 <p>Y si miramos <a href="#fig-simpson" class="quarto-xref">Figura&nbsp;<span>1.1</span></a>, vemos que esta tendencia es sistemática, y bastante notable. Este fenómeno se conoce como la <strong>paradoja de Simpson</strong>. No es común, pero ocurre en la vida real, y suele sorprender muchísimo cuando uno se la encuentra por primera vez. Mucha gente incluso se niega a creer que sea real. Pero lo es. Y aunque hay muchas lecciones estadísticas sutiles escondidas acá, quiero usar este ejemplo para señalar un punto más importante: hacer investigación es difícil, y está <strong>lleno</strong> de trampas sutiles y contraintuitivas esperando a quien no esté atento. Esa es la razón #2 por la que los científiquos aman la estadística, y por la que enseñamos métodos de investigación. Porque la ciencia es difícil, y la verdad a veces está escondida en los rincones más enredados de los datos.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"imgs/figures/1Simpson.png"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-simpson" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-simpson-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="imgs/figures/1Simpson.png" class="img-fluid figure-img" width="481">
+<img src="imgs/figures/1Simpson.png" class="img-fluid figure-img" style="width:75.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-simpson-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;1.1: Datos de admisión a la universidad de Berkeley en 1973. Esta figura muestra la tasa de admisión de los 85 departamentos que recibieron al menos una postulante mujer, en función del porcentaje de postulantes que eran mujeres. El gráfico es una recreación de la Figura 1 de Bickel et al.&nbsp;(1975). Los círculos representan departamentos con más de 40 postulantes; el área del círculo es proporcional al número total de postulantes. Las cruces representan departamentos con menos de 40 postulantes.

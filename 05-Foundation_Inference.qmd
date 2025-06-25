@@ -269,6 +269,7 @@ Hablar sobre algunas distribuciones distintas. Incluir app de Shiny.
 SHINY APP acá
 -->
 ```
+
 ## ¿Hay una diferencia?
 
 Volvamos a los experimentos. En un experimento, queremos saber si una **variable independiente** (nuestra manipulación) **causa un cambio** en una **variable dependiente** (la medición). Si esto ocurre, entonces esperamos ver **alguna diferencia** en nuestra medición como función de la manipulación.

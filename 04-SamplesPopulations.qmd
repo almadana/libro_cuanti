@@ -31,13 +31,13 @@ La **estadística inferencial** proporciona las herramientas necesarias para res
 
 Antes de empezar a hablar de teoría de la probabilidad, conviene dedicar un momento a pensar en la relación entre probabilidad y estadística. Las dos disciplinas están muy relacionadas, pero no son lo mismo. La teoría de la probabilidad es "la doctrina del azar". Es una rama de las matemáticas que te dice con qué frecuencia ocurren distintos tipos de eventos. Por ejemplo, todas estas preguntas pueden responderse usando teoría de la probabilidad:
 
-- ¿Cuál es la probabilidad de que una moneda salga cara 10 veces seguidas?
+-   ¿Cuál es la probabilidad de que una moneda salga cara 10 veces seguidas?
 
-- Si tiro dos dados de seis caras, ¿qué tan probable es que salgan dos seises?
+-   Si tiro dos dados de seis caras, ¿qué tan probable es que salgan dos seises?
 
-- ¿Qué probabilidad hay de que cinco cartas extraídas al azar de un mazo bien mezclado sean todas corazones?
+-   ¿Qué probabilidad hay de que cinco cartas extraídas al azar de un mazo bien mezclado sean todas corazones?
 
-- ¿Qué chance tengo de ganar la lotería?
+-   ¿Qué chance tengo de ganar la lotería?
 
 Fijate que todas estas preguntas tienen algo en común. En cada caso la "verdad del mundo" es conocida, y mi pregunta se relaciona con "qué clase de eventos" van a ocurrir. En la primera pregunta, **sabemos** que la moneda es justa, así que hay un 50% de probabilidad de que cualquier lanzamiento individual salga cara. En la segunda, **sabemos** que la chance de sacar un 6 con un dado es 1 en 6. En la tercera, **sabemos** que el mazo está bien mezclado. Y en la cuarta, **sabemos** que la lotería sigue reglas específicas. Ya te hacés una idea. Lo importante es que las preguntas de probabilidad parten de un **modelo** conocido del mundo, y usamos ese modelo para hacer algunos cálculos.
 
@@ -47,11 +47,11 @@ Como veremos más adelante, así como los porcentajes van de 0% a 100%, las prob
 
 Eso es la probabilidad. ¿Y la estadística? Las preguntas estadísticas **funcionan al revés**. En estadística, **no sabemos cómo es el mundo en realidad**. Lo único que tenemos son datos, y a partir de ellos queremos **aprender** la verdad sobre el mundo. Las preguntas estadísticas suelen ser más del tipo:
 
-- Si mi amiga lanza una moneda 10 veces y sale cara todas las veces, ¿me está haciendo trampa?
+-   Si mi amiga lanza una moneda 10 veces y sale cara todas las veces, ¿me está haciendo trampa?
 
-- Si saco cinco cartas y todas son corazones, ¿qué tan probable es que el mazo estuviera mezclado?
+-   Si saco cinco cartas y todas son corazones, ¿qué tan probable es que el mazo estuviera mezclado?
 
-- Si la pareja del comisario de la lotería gana la lotería, ¿qué tan probable es que esté arreglada?
+-   Si la pareja del comisario de la lotería gana la lotería, ¿qué tan probable es que esté arreglada?
 
 Esta vez, lo único que tenemos son los datos. Lo que **sé** es que vi a mi amiga lanzar la moneda 10 veces y salió cara todas las veces. Y lo que quiero *inferir* es si debería concluir que lo que acabo de ver fue realmente una moneda justa siendo lanzada 10 veces seguidas, o si debería sospechar que mi amiga me está haciendo una trampa. Los datos que tengo se ven así:
 
@@ -69,7 +69,7 @@ Así que voy a intentarlo. Supongamos que quiero apostar en un partido de fútbo
 
 -   Son equipos robot, así que puedo hacerlos jugar muchas veces. Si lo hiciera, **Arduino Arsenal** ganaría 8 de cada 10 partidos, en promedio.
 
--   Para cualquier partido en particular, solo estaría de acuerdo en que apostar es "justo" si una apuesta de $1 a favor de **C Milan** paga $5 (es decir, recupero mi $1 más $4 de ganancia), al igual que lo sería una apuesta de $4 a favor de **Arduino Arsenal** (recupero mis $4 más $1 de ganancia).
+-   Para cualquier partido en particular, solo estaría de acuerdo en que apostar es "justo" si una apuesta de \$1 a favor de **C Milan** paga \$5 (es decir, recupero mi \$1 más \$4 de ganancia), al igual que lo sería una apuesta de \$4 a favor de **Arduino Arsenal** (recupero mis \$4 más \$1 de ganancia).
 
 -   Mi "creencia" o "confianza" subjetiva en que gana **Arduino Arsenal** es cuatro veces más fuerte que la que tengo en que gane **C Milan**.
 
@@ -111,7 +111,7 @@ Más seriamente, la definición frecuentista tiene un alcance muy limitado. Hay 
 
 ### La visión bayesiana
 
-La **visión bayesiana** de la probabilidad también se llama la visión subjetivista, y es una posición minoritaria entre los estadísticos, pero que ha ido ganando terreno de forma sostenida en las últimas décadas. Hay muchas variantes del bayesianismo, lo que dificulta definir exactamente cuál es "la" visión bayesiana. La forma más común de pensar en la probabilidad subjetiva es definir la probabilidad de un evento como el **grado de creencia** que una persona (o agente racional e inteligente) asigna a la verdad de ese evento. Desde esta perspectiva, las probabilidades no existen en el mundo, sino que viven en los pensamientos y suposiciones de las personas (o seres inteligentes). Sin embargo, para que este enfoque funcione, necesitamos alguna forma de operacionalizar ese "grado de creencia". Una manera de hacerlo es formalizarlo en términos de "apuestas racionales", aunque existen otras formas. Supongamos que creo que hay un 60% de probabilidad de que mañana llueva. Si alguien me ofrece una apuesta que dice: si llueve, ganás $5; si no llueve, perdés $5, desde mi perspectiva es una buena apuesta. En cambio, si creo que hay solo un 40% de probabilidad de lluvia, entonces esa misma apuesta sería una mala idea. Así, podemos operacionalizar el concepto de "probabilidad subjetiva" en función de qué apuestas estoy dispuesto a aceptar.
+La **visión bayesiana** de la probabilidad también se llama la visión subjetivista, y es una posición minoritaria entre los estadísticos, pero que ha ido ganando terreno de forma sostenida en las últimas décadas. Hay muchas variantes del bayesianismo, lo que dificulta definir exactamente cuál es "la" visión bayesiana. La forma más común de pensar en la probabilidad subjetiva es definir la probabilidad de un evento como el **grado de creencia** que una persona (o agente racional e inteligente) asigna a la verdad de ese evento. Desde esta perspectiva, las probabilidades no existen en el mundo, sino que viven en los pensamientos y suposiciones de las personas (o seres inteligentes). Sin embargo, para que este enfoque funcione, necesitamos alguna forma de operacionalizar ese "grado de creencia". Una manera de hacerlo es formalizarlo en términos de "apuestas racionales", aunque existen otras formas. Supongamos que creo que hay un 60% de probabilidad de que mañana llueva. Si alguien me ofrece una apuesta que dice: si llueve, ganás \$5; si no llueve, perdés \$5, desde mi perspectiva es una buena apuesta. En cambio, si creo que hay solo un 40% de probabilidad de lluvia, entonces esa misma apuesta sería una mala idea. Así, podemos operacionalizar el concepto de "probabilidad subjetiva" en función de qué apuestas estoy dispuesto a aceptar.
 
 ¿Cuáles son las ventajas y desventajas de este enfoque bayesiano? La principal ventaja es que permite asignar probabilidades a cualquier evento que queramos. No es necesario que el evento sea repetible. La principal desventaja (para muchas personas) es que no podemos ser completamente objetivos: al asignar una probabilidad, es necesario especificar una entidad que posea el grado de creencia pertinente. Esa entidad puede ser una persona, un extraterrestre, un robot, o incluso un estadístico, pero tiene que haber un agente inteligente que tenga creencias. Para muchos esto resulta incómodo: hace que la probabilidad parezca arbitraria. Mientras que el enfoque bayesiano exige que el agente en cuestión sea racional (es decir, que respete las reglas de la probabilidad), permite que cada quien tenga sus propias creencias; yo puedo creer que la moneda está equilibrada y vos no, y aun así ambos ser racionales. La visión frecuentista no permite que dos observadores asignen probabilidades distintas al mismo evento: si eso ocurre, al menos uno de los dos está equivocado. La perspectiva bayesiana no impone esa restricción. Dos personas con conocimientos previos diferentes pueden, de forma legítima, tener creencias distintas sobre un mismo evento. En resumen, mientras que la visión frecuentista a veces se considera demasiado restrictiva (prohíbe asignar probabilidades a muchas cosas que nos interesa evaluar), la visión bayesiana a veces se percibe como demasiado amplia (permite demasiadas diferencias entre observadores).
 
@@ -135,13 +135,13 @@ Bien, ahora que tenemos un espacio muestral (un guardarropa), formado por varios
 
 A esta altura, ya casi terminamos. Lo último que necesitamos reconocer es que "algo siempre ocurre". Cada vez que me pongo pantalones, efectivamente termino con un par puesto (una locura, ¿no?). Esta afirmación algo trillada quiere decir, en términos probabilísticos, que las probabilidades de todos los eventos elementales deben sumar 1. Esto se conoce como la *ley de probabilidad total*, aunque a nadie le importe demasiado. Más importante, si se cumplen estos requisitos, lo que tenemos es una *distribución de probabilidad*. Por ejemplo, esta es una distribución de probabilidad
 
-| ¿Qué pantalón?     | Etiqueta  |    Probabilidad    |
-|:-------------------|:---------:|:------------------:|
-| Jean azul          |$X_1$ |$P(X_1) = 0.5$|
-| Jean gris          |$X_2$ |$P(X_2) = 0.3$|
-| Jean negro         |$X_3$ |$P(X_3) = 0.1$|
-| Pantalón de traje  |$X_4$ | $P(X_4) = 0$|
-| Pantalón deportivo |$X_5$ |$P(X_5) = 0.1$|
+| ¿Qué pantalón?     | Etiqueta |  Probabilidad  |
+|:-------------------|:--------:|:--------------:|
+| Jean azul          |  $X_1$   | $P(X_1) = 0.5$ |
+| Jean gris          |  $X_2$   | $P(X_2) = 0.3$ |
+| Jean negro         |  $X_3$   | $P(X_3) = 0.1$ |
+| Pantalón de traje  |  $X_4$   |  $P(X_4) = 0$  |
+| Pantalón deportivo |  $X_5$   | $P(X_5) = 0.1$ |
 
 Cada uno de estos eventos tiene una probabilidad que está entre 0 y 1, y si sumamos todas las probabilidades, el total es 1. Genial. Incluso podemos hacer un lindo gráfico de barras para visualizar esta distribución, como se muestra en la @fig-4pantsprob. Y en este punto, todos logramos algo. Vos aprendiste qué es una distribución de probabilidad, y yo por fin encontré la forma de hacer un gráfico que trata exclusivamente sobre mis pantalones. ¡Ganamos todos!
 
@@ -164,9 +164,9 @@ A esta altura tal vez estés pensando que todo esto es increíblemente obvio y s
 
 | Evento    | Notación      | =   | Regla                       |
 |-----------|---------------|-----|-----------------------------|
-| no $A$   |$P(\neg A)$  | =   |$1 - P(A)$                 |
-|$A$ o $B$|$P(A \cup B)$| =   |$P(A) + P(B) - P(A \cap B)$|
-|$A$ y $B$|$P(A \cap B)$| =   |$P(A|B) \cdot P(B)$        |
+| no $A$    | $P(\neg A)$   | =   | $1 - P(A)$                  |
+| $A$ o $B$ | $P(A \cup B)$ | =   | $P(A) + P(B) - P(A \cap B)$ |
+| $A$ y $B$ | $P(A \cap B)$ | =   | $P(A|B) \cdot P(B)$         |
 
 : Algunas reglas básicas que deben cumplir las probabilidades. No necesitás conocerlas para entender los análisis que vamos a ver más adelante en el libro, pero son importantes si querés entender la teoría de la probabilidad con más profundidad.
 
@@ -212,12 +212,12 @@ P(\neg A) + P(A) &=& P(x_1) + P(x_2) + P(x_3) + P(x_4) + P(x_5) \\
 \end{array}
 $$Excelente. Todo parece funcionar.
 
-"Guau", te escucho decir. "Todo esto para decirme lo increíblemente obvio". Y tenés razón: esto **es** increíblemente obvio. El **propósito** de la teoría de la probabilidad es formalizar y matematizar unas pocas intuiciones de sentido común. Así que sigamos un poco más con esta línea de razonamiento. En la sección anterior definí un evento correspondiente a **no** A, que denoté como $\neg A$. Ahora vamos a definir dos nuevos eventos que corresponden a conceptos cotidianos importantes: **$A$y$B$**, y **$A$o$B$**. Específicamente:
+"Guau", te escucho decir. "Todo esto para decirme lo increíblemente obvio". Y tenés razón: esto **es** increíblemente obvio. El **propósito** de la teoría de la probabilidad es formalizar y matematizar unas pocas intuiciones de sentido común. Así que sigamos un poco más con esta línea de razonamiento. En la sección anterior definí un evento correspondiente a **no** A, que denoté como $\neg A$. Ahora vamos a definir dos nuevos eventos que corresponden a conceptos cotidianos importantes: $A$y$B$, y $A$o$B$. Específicamente:
 
-| Afirmación en español                    | Notación matemática |
-|:-----------------------------------------|:-------------------:|
-| "$A$y$B$" ocurren ambos        |  $A \cap B$  |
-| ocurre al menos uno: "$A$o$B$" |  $A \cup B$  |
+| Afirmación en español          | Notación matemática |
+|:-------------------------------|:-------------------:|
+| "$A$y$B$" ocurren ambos        |     $A \cap B$      |
+| ocurre al menos uno: "$A$o$B$" |     $A \cup B$      |
 
 Ya que $A$y$B$ están definidos en términos de nuestros eventos elementales (los $x$s), necesitamos describir también $A \cap B$ y $A \cup B$ en términos de nuestros eventos elementales. ¿Podemos hacerlo? ¡Sí que podemos! La única forma en que ocurran ambos eventos, $A$y$B$, es que el evento elemental observado pertenezca tanto a $A$ como a $B$. Así que "$A \cap B$" incluye solamente aquellos eventos elementales que pertenecen a $A$ y $B$...
 
@@ -227,8 +227,7 @@ A &=& (x_1, x_2, x_3) \\
 B &=& (x_3, x_4) \\
 A \cap B &=& (x_3)
 \end{array}
-$$
-Es decir, la única forma en que pueda estar usando "jeans" ($x_1, x_2, x_3$) y “pantalón negro” ($x_3, x_4$) al mismo tiempo, es que esté usando los “jeans negros” ($x_3$). Otro triunfo para lo absolutamente obvio.
+$$ Es decir, la única forma en que pueda estar usando "jeans" ($x_1, x_2, x_3$) y “pantalón negro” ($x_3, x_4$) al mismo tiempo, es que esté usando los “jeans negros” ($x_3$). Otro triunfo para lo absolutamente obvio.
 
 A esta altura, no te va a sorprender para nada la definición de $A \cup B$, aunque probablemente te parezca increíblemente aburrida. La única forma en que puedo estar usando "jeans" o "pantalón negro" es si el pantalón elemental que realmente uso pertenece a $A$, o a $B$, o a ambos. Así que:
 
@@ -244,20 +243,17 @@ Vaaamooooooooo!!!! Matemáticas, sabelo!
 
 Entonces, ya definimos qué queremos decir con $A \cap B$ y $A \cup B$. Ahora asignemos probabilidades a esos eventos. Más específicamente, vamos a verificar la regla que dice que: $$P(A \cup B) = P(A) + P(B) - P(A \cap B)$$
 
-Usando las definiciones anteriores, sabemos que: $A \cup B = (x_1, x_2, x_3, x_4)$, entonces 
-$$
+Usando las definiciones anteriores, sabemos que: $A \cup B = (x_1, x_2, x_3, x_4)$, entonces $$
 P(A \cup B) = P(x_1) + P(x_2) + P(x_3) + P(x_4)
 $$
 
-y usando el hecho de que sabemos qué eventos elementales pertenecen a $A$,$B$, y $A \cap B$, tenemos:
-$$
+y usando el hecho de que sabemos qué eventos elementales pertenecen a $A$,$B$, y $A \cap B$, tenemos: $$
 \begin{array}{rcl}
 P(A) &=& P(x_1) + P(x_2) + P(x_3) \\
 P(B) &=& P(x_3) + P(x_4) \\
 P(A \cap B) &=& P(x_3)
 \end{array}
-$$
-y por lo tanto:
+$$ y por lo tanto:
 
 $$
 \begin{array}{rcl}
@@ -278,17 +274,17 @@ El próximo concepto que necesitamos definir es la notación "$B$ dado $A$", que
 
 Solo hay una forma de satisfacer estas restricciones: asignar probabilidad cero a los eventos imposibles (es decir, $P(x | A) = 0$ si $x$ no está en $A$), y luego dividir las probabilidades de todos los demás por $P(A)$. En este caso, como $P(A) = 0.9$, dividimos entre 0.9. Esto da:
 
-| ¿Qué pantalón?     | Evento elemental | Prob. original $P(x)$  | Nueva prob. $P(x | A)$     |
-|:-----------------|:----------------:|:----------------:|:----------------:|
-| Jean azul          |     $x_1$      |           0.5           |            0.556            |
-| Jean gris          |     $x_2$      |           0.3           |            0.333            |
-| Jean negro         |     $x_3$      |           0.1           |            0.111            |
-| Traje negro        |     $x_4$      |            0            |              0              |
-| Pantalón deportivo |     $x_5$      |           0.1           |              0              |
+| ¿Qué pantalón? | Evento elemental | Prob. original $P(x)$ | Nueva prob. $P(x | A)$ |
+|:---|:--:|:--:|:--:|
+| Jean azul | $x_1$ | 0.5 | 0.556 |
+| Jean gris | $x_2$ | 0.3 | 0.333 |
+| Jean negro | $x_3$ | 0.1 | 0.111 |
+| Traje negro | $x_4$ | 0 | 0 |
+| Pantalón deportivo | $x_5$ | 0.1 | 0 |
 
 En términos matemáticos, decimos que: $$P(x \mid A) = \frac{P(x)}{P(A)} \quad \text{si } x \in A, \quad \text{y } P(x \mid A) = 0 \text{ si } x \notin A$$
 
-Por lo tanto: 
+Por lo tanto:
 
 $$
 \begin{array}{rcl}
@@ -297,7 +293,6 @@ P(B \mid A) &=& P(x_3 \mid A) + P(x_4 \mid A) \\\\
 &=& \displaystyle \frac{P(x_3)}{P(A)}
 \end{array}
 $$
-
 
 Y recordando que $A \cap B = (x_3)$, podemos escribir esto como: $P(B \mid A) = \frac{P(A \cap B)}{P(A)}$
 
@@ -317,7 +312,7 @@ Como siempre, vamos a introducir algunos nombres y notación. Vamos a usar $N$ p
 
 $P(X \mid \theta, N)$
 
-y nos interesa el caso particular en el que $X = 4$, $\theta = 0{,}167$  y $N = 20$. Hay una última notación que quiero mencionar antes de pasar a cómo resolver el problema. Si quiero decir que $X$ fue generado aleatoriamente a partir de una distribución binomial con parámetros $\theta$ y $N$, lo escribo así: $$X \sim \mbox{Binomial}(\theta, N)$$
+y nos interesa el caso particular en el que $X = 4$, $\theta = 0{,}167$ y $N = 20$. Hay una última notación que quiero mencionar antes de pasar a cómo resolver el problema. Si quiero decir que $X$ fue generado aleatoriamente a partir de una distribución binomial con parámetros $\theta$ y $N$, lo escribo así: $$X \sim \mbox{Binomial}(\theta, N)$$
 
 Sí, sí, ya sé lo que estás pensando: notación, notación, notación. ¿A quién le importa? Muy pocos lectores están acá por la notación, así que mejor sigo y explico **cómo usar** la distribución binomial. Para eso, la @fig-4binomial1 muestra las probabilidades binomiales para todos los valores posibles de $X$ en nuestro experimento con los dados, desde $X = 0$ (ninguna calavera) hasta $X = 20$ (todas calaveras). Notá que básicamente es un gráfico de barras, y no es distinto del gráfico de "probabilidad de pantalones" que hicimos en @fig-4pantsprob. En el eje horizontal están todos los eventos posibles, y en el eje vertical podemos ver la probabilidad de cada uno de esos eventos. Entonces, la probabilidad de obtener 4 calaveras al lanzar 20 dados es de aproximadamente 0.20 (la respuesta exacta es 0.2022036, como veremos enseguida). En otras palabras, esperarías que eso ocurra alrededor del 20% de las veces que repitas este experimento.
 
@@ -601,7 +596,7 @@ Ahora supongamos que recolectamos algunos datos. Seleccionamos 100 personas al a
 
 `106 101 98 80 74 ... 107 72 100`
 
-Cada uno de estos puntajes de CI fue extraído de una distribución normal con media 100 y desviación estándar 15. Así que, si dibujo un histograma de la muestra, obtengo algo como lo que se muestra en  @fig-IQdist (panel b). Como podés ver, el histograma tiene una forma **aproximadamente** correcta, pero es una aproximación bastante burda de la verdadera distribución poblacional que aparece en @fig-IQdist (panel a). La media de la muestra está bastante cerca de la media poblacional (100), pero no es idéntica. En este caso, resulta que las personas de la muestra tienen un CI promedio de 98.5, y la desviación estándar de sus puntajes es 15.9. Estas **estadísticas muestrales** son propiedades del conjunto de datos, y aunque son bastante parecidas a los verdaderos valores poblacionales, no son iguales. **En general, las estadísticas muestrales son las cosas que podés calcular a partir de tus datos, y los parámetros poblacionales son las cosas sobre las que querés aprender.** Más adelante en este capítulo vamos a hablar sobre cómo podés estimar los parámetros poblacionales a partir de las estadísticas muestrales, y cómo calcular qué tan confiado podés estar en tus estimaciones. Pero antes de llegar a eso, todavía hay algunas ideas de teoría del muestreo que necesitás conocer.
+Cada uno de estos puntajes de CI fue extraído de una distribución normal con media 100 y desviación estándar 15. Así que, si dibujo un histograma de la muestra, obtengo algo como lo que se muestra en @fig-IQdist (panel b). Como podés ver, el histograma tiene una forma **aproximadamente** correcta, pero es una aproximación bastante burda de la verdadera distribución poblacional que aparece en @fig-IQdist (panel a). La media de la muestra está bastante cerca de la media poblacional (100), pero no es idéntica. En este caso, resulta que las personas de la muestra tienen un CI promedio de 98.5, y la desviación estándar de sus puntajes es 15.9. Estas **estadísticas muestrales** son propiedades del conjunto de datos, y aunque son bastante parecidas a los verdaderos valores poblacionales, no son iguales. **En general, las estadísticas muestrales son las cosas que podés calcular a partir de tus datos, y los parámetros poblacionales son las cosas sobre las que querés aprender.** Más adelante en este capítulo vamos a hablar sobre cómo podés estimar los parámetros poblacionales a partir de las estadísticas muestrales, y cómo calcular qué tan confiado podés estar en tus estimaciones. Pero antes de llegar a eso, todavía hay algunas ideas de teoría del muestreo que necesitás conocer.
 
 ## La ley de los grandes números
 
@@ -1131,20 +1126,19 @@ OK, ¿y por qué importa? Buena pregunta. Hay razones concretas para que te impo
 
 Primero, algunas razones concretas. Existen poblaciones reales ahí afuera, y a veces queremos conocer sus parámetros. Por ejemplo, si sos una empresa que fabrica calzado, te interesaría conocer los parámetros poblacionales del **tamaño de los pies**. Como primera aproximación, querrías saber la media y la desviación estándar de la población. Si tu empresa conoce esto, y otras no, probablemente te vaya mejor (asumiendo que todas fabrican zapatos de calidad similar). ¿Por qué te iría mejor y cómo podrías usar esos parámetros? Acá va una buena razón: como empresa, querés que la oferta coincida con la demanda. Si fabricás demasiados zapatos de talles muy chicos o muy grandes, y no hay suficientes personas que los compren, estás haciendo un montón de calzado que no se va a vender. Y si no fabricás suficientes zapatos de los talles más comunes, vas a estar dejando plata sobre la mesa. ¿Verdad? Sí. Entonces, ¿qué sería lo óptimo? Tal vez fabricarías diferentes cantidades de zapatos en cada talle, de acuerdo a la demanda de cada uno. Y sabrías algo sobre la demanda si conocieras la frecuencia de cada talle en la población. Para eso, necesitarías conocer los parámetros poblacionales.
 
-Por suerte, no es tan difícil obtener los parámetros poblacionales sin medir a toda la población. ¿Quién tiene tiempo para medirle los pies a todo el mundo? Nadie. Lo que hacés, en cambio, es seleccionar al azar un grupo de personas, medirles los pies, y después calcular los parámetros de esa muestra. Si la muestra es suficientemente grande, ya aprendimos que la media muestral es una muy buena estimación de la media poblacional. Y pronto vamos a ver que también hay versiones del desvío estándar muestral que estiman bastante bien la desviación estándar poblacional. Quizás la distribución de talles de calzado no tenga una forma exactamente normal. Aun así, si recolectás una muestra lo bastante grande, la forma de la distribución muestral será una buena aproximación a la forma de la distribución poblacional. Todas estas son buenas razones para interesarse por la estimación de parámetros poblacionales. Pero... ¿acaso dirigís una empresa de calzado? Probablemente no.
-### Parámetros poblacionales abstractos
+Por suerte, no es tan difícil obtener los parámetros poblacionales sin medir a toda la población. ¿Quién tiene tiempo para medirle los pies a todo el mundo? Nadie. Lo que hacés, en cambio, es seleccionar al azar un grupo de personas, medirles los pies, y después calcular los parámetros de esa muestra. Si la muestra es suficientemente grande, ya aprendimos que la media muestral es una muy buena estimación de la media poblacional. Y pronto vamos a ver que también hay versiones del desvío estándar muestral que estiman bastante bien la desviación estándar poblacional. Quizás la distribución de talles de calzado no tenga una forma exactamente normal. Aun así, si recolectás una muestra lo bastante grande, la forma de la distribución muestral será una buena aproximación a la forma de la distribución poblacional. Todas estas son buenas razones para interesarse por la estimación de parámetros poblacionales. Pero... ¿acaso dirigís una empresa de calzado? Probablemente no. \### Parámetros poblacionales abstractos
 
 Incluso cuando pensamos que estamos hablando de algo concreto en psicología, a menudo enseguida se vuelve abstracto. En lugar de medir la población de talles de calzado, ¿qué tal si intentamos medir la población de la **felicidad humana**? Todos creemos saber lo que es la felicidad. Todos tienen más o menos cantidad de ella. Hay mucha gente, así que... debe haber una "población de felicidad", ¿no? Tal vez. Pero no es algo muy concreto. El primer problema es cómo medir la felicidad. Supongamos que usamos un cuestionario. Considerá estas preguntas:
 
 > ¿Qué tan feliz te sentís ahora mismo en una escala del 1 al 7? ¿Qué tan feliz sos en general en una escala del 1 al 7? ¿Qué tan feliz te sentís a la mañana en una escala del 1 al 7? ¿Qué tan feliz te sentís a la tarde en una escala del 1 al 7?
 
-1. = muy infeliz 
-2. = infeliz 
-3. = algo infeliz 
-4. = en el medio 
-5. = algo feliz 
-6. = feliz 
-7. = muy feliz
+1.  = muy infeliz
+2.  = infeliz
+3.  = algo infeliz
+4.  = en el medio
+5.  = algo feliz
+6.  = feliz
+7.  = muy feliz
 
 Olvidémonos de preguntarle esto a todo el mundo. Supongamos que se lo preguntamos a mucha gente (nuestra muestra). ¿Qué creés que va a pasar? Bueno, obviamente, la gente va a dar todo tipo de respuestas, ¿no? Podemos contar cuántas veces se eligió cada opción y graficarlas en un histograma. Eso nos mostraría la distribución de puntajes de felicidad en nuestra muestra. "¡Genial, fantástico!", decís. Sí, está todo muy bien.
 
@@ -1198,11 +1192,11 @@ Con eso en mente, los profesionales de la estadística suelen usar notaciones di
 
 Para dejar clara la notación, acá va una tabla útil:
 
-| Símbolo     | Qué representa                     | ¿Conocido a partir de la muestra?           |
-|------------------------|------------------------|------------------------|
-|$\bar{X}$  | Media muestral                     | Sí, se calcula a partir de los datos crudos |
-|$\mu$      | Verdadera media poblacional        | Casi nunca se conoce con certeza            |
-|$\hat{\mu}$| Estimación de la media poblacional | Sí, es idéntica a la media muestral         |
+| Símbolo | Qué representa | ¿Conocido a partir de la muestra? |
+|----|----|----|
+| $\bar{X}$ | Media muestral | Sí, se calcula a partir de los datos crudos |
+| $\mu$ | Verdadera media poblacional | Casi nunca se conoce con certeza |
+| $\hat{\mu}$ | Estimación de la media poblacional | Sí, es idéntica a la media muestral |
 
 ### Estimación del desvío estándar poblacional
 
@@ -1285,19 +1279,19 @@ Vale la pena señalar que los programas de software toman decisiones **por vos**
 
 Un último punto: en la práctica, muchas personas se refieren a $\hat{\sigma}$(la fórmula con$N-1$) como el desvío estándar **muestral**. Técnicamente, esto es incorrecto: el desvío estándar muestral, como propiedad de la muestra, debería ser igual a $s$ (la fórmula con $N$). No son la misma cosa, ni conceptualmente ni numéricamente. Una es una propiedad de la muestra; la otra, una estimación del parámetro poblacional. Sin embargo, en casi todas las aplicaciones reales, lo que realmente nos importa es la estimación del parámetro poblacional. Por eso, la gente casi siempre reporta $\hat{\sigma}$ en lugar de $s$.
 
-::: callout-note  
-Ojo, si hay que dividir por 𝑁 o por 𝑁−1 también depende de cómo pensás lo que estás haciendo. Por ejemplo, si no creés que lo que estás haciendo es estimar un parámetro poblacional, entonces, ¿por qué dividirías por N−1? Además, cuando 𝑁 es grande, no importa tanto. La diferencia entre un 𝑁 grande y un 𝑁−1 grande es... simplemente 1. 
+::: callout-note
+Ojo, si hay que dividir por 𝑁 o por 𝑁−1 también depende de cómo pensás lo que estás haciendo. Por ejemplo, si no creés que lo que estás haciendo es estimar un parámetro poblacional, entonces, ¿por qué dividirías por N−1? Además, cuando 𝑁 es grande, no importa tanto. La diferencia entre un 𝑁 grande y un 𝑁−1 grande es... simplemente 1.
 :::
 
 Este es el número correcto que hay que reportar, claro. Pero la gente tiende a ser un poco imprecisa con la terminología cuando lo escribe, porque "desvío estándar muestral" es más corto que "estimación del desvío estándar poblacional". No es gran cosa, y en la práctica yo hago lo mismo que todos los demás. Sin embargo, creo que es importante mantener los dos **conceptos** separados: nunca es buena idea confundir "propiedades conocidas de tu muestra" con "conjeturas sobre la población de la que proviene". En el momento en que empezás a pensar que $s$ y $\hat{\sigma}$ son lo mismo, empezás a hacer justamente eso.
 
 Para cerrar esta sección, acá tenés un par de tablas más para ayudarte a mantener todo claro:
 
-| Símbolo           | ¿Qué es?                              | ¿Lo conocemos?                                   |
-|------------------------|------------------------|------------------------|
-|$s^2$           | Varianza muestral                     | Sí, se calcula a partir de los datos crudos      |
-|$\sigma^2$      | Varianza poblacional                  | Casi nunca se conoce con certeza                 |
-|$\hat{\sigma}^2$| Estimación de la varianza poblacional | Sí, pero no es lo mismo que la varianza muestral |
+| Símbolo | ¿Qué es? | ¿Lo conocemos? |
+|----|----|----|
+| $s^2$ | Varianza muestral | Sí, se calcula a partir de los datos crudos |
+| $\sigma^2$ | Varianza poblacional | Casi nunca se conoce con certeza |
+| $\hat{\sigma}^2$ | Estimación de la varianza poblacional | Sí, pero no es lo mismo que la varianza muestral |
 
 ## Estimación de un intervalo de confianza
 

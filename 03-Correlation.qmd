@@ -70,7 +70,7 @@ Le hicimos dos preguntas a cada persona, así que hay dos valores por persona: u
 
 ### Diagramas de dispersión
 
-Cuando tenés dos variables medidas, siempre podés convertirlas en puntos y mostrarlas en un diagrama de dispersión (*scatter plot*). Un gráfico de dispersión tiene un eje horizontal (x) y un eje vertical (y). Vos elegís qué variable va en qué eje. Vamos a poner el suministro de chocolate en el eje x, y el nivel de felicidad en el eje y. La  @fig-3scatter1 muestra 100 puntos, uno por cada persona.
+Cuando tenés dos variables medidas, siempre podés convertirlas en puntos y mostrarlas en un diagrama de dispersión (*scatter plot*). Un gráfico de dispersión tiene un eje horizontal (x) y un eje vertical (y). Vos elegís qué variable va en qué eje. Vamos a poner el suministro de chocolate en el eje x, y el nivel de felicidad en el eje y. La @fig-3scatter1 muestra 100 puntos, uno por cada persona.
 
 ```{r}
 #| label: fig-3scatter1
@@ -94,7 +94,7 @@ Más importante todavía: los puntos muestran una relación entre el suministro 
 ### Correlación positiva, negativa y nula
 
 Ya que estamos en el negocio de imaginar datos, sigamos imaginando un poco más. Ya imaginamos cómo se verían los datos si tener más chocolate aumentara la felicidad. Vamos a mostrar eso de nuevo en un momento. Pero, ¿cómo te imaginás que se vería un gráfico de dispersión si la relación fuera al revés, y tener más chocolate *disminuyera* la felicidad? ¿O cómo se vería si *no hubiera ninguna relación* entre la cantidad de chocolate y la felicidad?\
-Te invitamos a imaginarlo mirando la  @fig-3posnegrand:
+Te invitamos a imaginarlo mirando la @fig-3posnegrand:
 
 ```{r}
 #| label: fig-3posnegrand
@@ -333,7 +333,7 @@ Por ahora, podés pensar que es magia matemática. Funciona. Ya después veremos
 
 Vale decir que existen muchas fórmulas diferentes para calcular el *r* de Pearson. Podés buscarlas en Google y vas a ver varias versiones. Algunas aparecerán más adelante en este libro también. Pero todas dan el mismo resultado. Algunas son más elegantes que otras. Y algunas pueden parecer un poco intimidantes. En otros libros de estadística vas a encontrar fórmulas pensadas para facilitar los cálculos a mano, por ejemplo si solo tenés papel y lápiz. Para ser honestos, no estamos muy interesados en enseñarte cómo meter números en fórmulas. Damos una sola lección sobre eso aquí: pon los números donde están las letras y luego calcula el resultado. Perdón por ser sarcásticos. Hoy en día tenés una computadora que deberías usar para estas cosas. Así que nuestro interés está más en enseñarte **qué significan** los cálculos, más que en cómo hacerlos. Claro que igual, cada semana en el laboratorio te mostramos cómo hacer los cálculos en la compu, porque eso también es importante.
 
-¿El *r* de Pearson **siempre** queda entre --1 y 1, sin importar qué datos uses? Sí. Mirá la siguiente simulación. Reordenamos al azar los números del 1 al 10 para una variable X, y lo mismo para Y. Calculamos el *r* de Pearson y repetimos eso 1000 veces. Como podés ver en la  @fig-3onethousandr, **todos** los puntos caen entre --1 y 1. Tremendo, ¿no?
+¿El *r* de Pearson **siempre** queda entre --1 y 1, sin importar qué datos uses? Sí. Mirá la siguiente simulación. Reordenamos al azar los números del 1 al 10 para una variable X, y lo mismo para Y. Calculamos el *r* de Pearson y repetimos eso 1000 veces. Como podés ver en la @fig-3onethousandr, **todos** los puntos caen entre --1 y 1. Tremendo, ¿no?
 
 ```{r echo=F}
 #| label: fig-3onethousandr
@@ -361,7 +361,7 @@ ggplot(sim_df, aes(x = sims, y = simulated_sums))+
 
 En el laboratorio sobre correlación, vas a aprender a calcular correlaciones con datos reales usando software. Para darte una vista previa, miremos algunos datos del [Informe Mundial de la Felicidad](http://worldhappiness.report) (2018).
 
-Este informe mide diversas actitudes en personas de distintos países. Por ejemplo, una de las preguntas era sobre cuánta libertad sentían que tenían para tomar decisiones en la vida. Otra preguntaba cuánta confianza tenían en su gobierno nacional. La  @fig-3hsrdata muestra un gráfico de dispersión con la relación entre estas dos variables. Cada punto representa promedios para un país diferente.
+Este informe mide diversas actitudes en personas de distintos países. Por ejemplo, una de las preguntas era sobre cuánta libertad sentían que tenían para tomar decisiones en la vida. Otra preguntaba cuánta confianza tenían en su gobierno nacional. La @fig-3hsrdata muestra un gráfico de dispersión con la relación entre estas dos variables. Cada punto representa promedios para un país diferente.
 
 ```{r}
 #| label: fig-3hsrdata
@@ -409,7 +409,7 @@ Todas son buenas preguntas. Pero estos datos **no** nos dan la respuesta. Solo s
 Ahora vamos a agregar una cosita más a lo que venimos aprendiendo sobre correlación. Se llama **regresión lineal**. Suena intimidante, y... en parte lo es. Mucho más adelante, vas a descubrir que todo lo que estamos por aprender es en realidad un caso especial de la regresión.\
 Pero no queremos que salgas corriendo todavía, así que ahora solo te presentamos los conceptos básicos.
 
-Primero, miremos una regresión lineal. Así vas a ver de qué estamos hablando. La  @fig-3regression muestra los mismos diagramas de dispersión que antes, pero con algo nuevo: ¡líneas!
+Primero, miremos una regresión lineal. Así vas a ver de qué estamos hablando. La @fig-3regression muestra los mismos diagramas de dispersión que antes, pero con algo nuevo: ¡líneas!
 
 ```{r}
 #| label: fig-3regression
@@ -479,11 +479,11 @@ ggplot(d, aes(x = hp, y = mpg)) +
   xlab("X") + ylab("Y")
 ```
 
-Pasan muchas cosas en la  @fig-3regressionResiduals. Primero, estamos mirando un diagrama de dispersión de dos variables, una variable X y una variable Y. Cada punto negro representa los valores reales de esas variables. Podés ver que hay una correlación negativa: a medida que X aumenta, Y tiende a disminuir. Trazamos una línea de regresión sobre los datos ---esa es la línea azul. También aparecen unos puntitos blancos. Esos muestran **dónde la línea "cree" que deberían estar los puntos negros**. Y están también las líneas rojas, que son los residuos de los que veníamos hablando. Cada punto negro tiene una línea roja que baja (o sube) en línea recta desde su ubicación hasta tocar la línea. Ya podemos ver que muchos de los puntos **no están sobre la línea**, así que sabemos que la línea se equivoca un poco en cada punto. La línea roja simplemente hace que sea más fácil ver **exactamente cuánto se equivoca**.
+Pasan muchas cosas en la @fig-3regressionResiduals. Primero, estamos mirando un diagrama de dispersión de dos variables, una variable X y una variable Y. Cada punto negro representa los valores reales de esas variables. Podés ver que hay una correlación negativa: a medida que X aumenta, Y tiende a disminuir. Trazamos una línea de regresión sobre los datos ---esa es la línea azul. También aparecen unos puntitos blancos. Esos muestran **dónde la línea "cree" que deberían estar los puntos negros**. Y están también las líneas rojas, que son los residuos de los que veníamos hablando. Cada punto negro tiene una línea roja que baja (o sube) en línea recta desde su ubicación hasta tocar la línea. Ya podemos ver que muchos de los puntos **no están sobre la línea**, así que sabemos que la línea se equivoca un poco en cada punto. La línea roja simplemente hace que sea más fácil ver **exactamente cuánto se equivoca**.
 
 Lo importante que está ocurriendo acá es que la línea azul fue trazada de manera tal que **minimiza la suma total de las líneas rojas**. Por ejemplo, si quisiéramos saber **cuán equivocada** está esta línea, podríamos juntar todas las líneas rojas, medir cuánto miden, y sumar todas esas equivocaciones. Eso nos daría el **error total**. De hecho, ya hablamos de esta idea cuando discutimos la desviación estándar. Lo que realmente vamos a hacer con estas líneas rojas es **elevar al cuadrado su longitud** (para que los valores negativos no se cancelen), y luego **sumarlas**. Esa suma representa el **total de error**. Y esta línea azul **minimiza esa suma**. Cualquier otra línea tendría un error total mayor.
 
-La  @fig-3regressionGIF es una animación que muestra esto en acción. La animación compara la línea azul (la de mejor ajuste) con otras líneas posibles (en negro). La línea negra se mueve hacia arriba y abajo. Las líneas rojas muestran el error entre la línea negra y los puntos de datos. A medida que la línea negra se acerca a la línea azul, el error total ---representado visualmente como un área gris--- **se achica hasta su valor mínimo**. Ese error total se agranda a medida que la línea negra se aleja de la línea azul.
+La @fig-3regressionGIF es una animación que muestra esto en acción. La animación compara la línea azul (la de mejor ajuste) con otras líneas posibles (en negro). La línea negra se mueve hacia arriba y abajo. Las líneas rojas muestran el error entre la línea negra y los puntos de datos. A medida que la línea negra se acerca a la línea azul, el error total ---representado visualmente como un área gris--- **se achica hasta su valor mínimo**. Ese error total se agranda a medida que la línea negra se aleja de la línea azul.
 
 ::: {.content-visible when-format="html"}
 ```{r}
@@ -497,7 +497,7 @@ knitr::include_graphics(path="imgs/gifs/regression-1.gif")
 
 Siempre que la línea negra no coincida con la línea azul, es peor que la línea de mejor ajuste. La línea de regresión azul es como Ricitos de Oro: está justo en el medio, y es la adecuada.
 
-La  @fig-3minimizeSS muestra cómo se comporta la suma de las desviaciones al cuadrado (la suma de las longitudes al cuadrado de las líneas rojas) a medida que movemos la línea hacia arriba y hacia abajo. Lo que está ocurriendo aquí es que estamos calculando una medida del error total a medida que la línea negra pasa por la línea de mejor ajuste. Esto representa la suma de las desviaciones al cuadrado. Es decir, elevamos al cuadrado la longitud de cada línea roja de la animación anterior, luego sumamos todas esas líneas rojas al cuadrado y obtenemos el error total (la suma total de las desviaciones al cuadrado).
+La @fig-3minimizeSS muestra cómo se comporta la suma de las desviaciones al cuadrado (la suma de las longitudes al cuadrado de las líneas rojas) a medida que movemos la línea hacia arriba y hacia abajo. Lo que está ocurriendo aquí es que estamos calculando una medida del error total a medida que la línea negra pasa por la línea de mejor ajuste. Esto representa la suma de las desviaciones al cuadrado. Es decir, elevamos al cuadrado la longitud de cada línea roja de la animación anterior, luego sumamos todas esas líneas rojas al cuadrado y obtenemos el error total (la suma total de las desviaciones al cuadrado).
 
 El gráfico de abajo muestra cómo se ve el error total a medida que la línea negra se acerca y luego se aleja de la línea de mejor ajuste. Fijate que los puntos en este gráfico comienzan altos en el lado izquierdo, luego descienden hasta alcanzar un mínimo en la parte inferior central del gráfico. Cuando alcanzan ese punto mínimo, hemos encontrado una línea que minimiza el error total. Esa es la línea de regresión de mejor ajuste.
 
@@ -548,7 +548,7 @@ Esta es la fórmula de una línea recta. Otra forma de escribirla sería:
 
 $y = \text{pendiente} * x + \text{intercepto}$
 
-La **pendiente** indica la inclinación de la línea, y el **intercepto** o la **intersección con el eje y** es el punto donde la línea cruza el eje vertical. Miremos las líneas de la  @fig-3twolines.
+La **pendiente** indica la inclinación de la línea, y el **intercepto** o la **intersección con el eje y** es el punto donde la línea cruza el eje vertical. Miremos las líneas de la @fig-3twolines.
 
 ```{r}
 #| label: fig-3twolines
@@ -618,7 +618,7 @@ $\text{intercepto} = b = \frac{\sum{y}\sum{x^2}-\sum{x}\sum{xy}}{n\sum{x^2}-(\su
 
 $\text{pendiente} = m = \frac{n\sum{xy}-\sum{x}\sum{y}}{n\sum{x^2}-(\sum{x})^2} = \frac{7*231-34*39}{7*275-34^2} = 1.19$
 
-Genial. Ahora podemos verificar si lo hicimos bien. Vamos a graficar los datos en un diagrama de dispersión y trazar una línea con pendiente = 1.19 y una intersección en el eje y de --0.221. Como se muestra en la  @fig-3corwithLine, la línea debería atravesar el centro de los puntos.
+Genial. Ahora podemos verificar si lo hicimos bien. Vamos a graficar los datos en un diagrama de dispersión y trazar una línea con pendiente = 1.19 y una intersección en el eje y de --0.221. Como se muestra en la @fig-3corwithLine, la línea debería atravesar el centro de los puntos.
 
 ```{r}
 #| label: fig-3corwithLine
@@ -647,7 +647,7 @@ Probablemente ya escuchaste que "correlación no implica causalidad". ¿Pero por
 
 La primera planta, que no recibe nada de agua, seguramente lo va a pasar mal y eventualmente morir. Debería mostrar el menor crecimiento semanal. ¿Y las plantas que reciben solo unas pocas cucharaditas al día? Quizás reciban justo lo necesario para mantenerse vivas, pero no para crecer mucho. Si estás imaginando un gráfico de dispersión, cada punto sería una planta. Algunos puntos deberían estar en la esquina inferior izquierda (nada de agua = nada de crecimiento). A medida que aumenta el agua, los puntos deberían ir subiendo hacia la derecha: más agua, más crecimiento. ¿Pero qué pasa cuando le das **demasiada** agua a una planta serpiente? Por experiencia personal: se muere. Así que en algún momento, los puntos del gráfico deberían empezar a **bajar** otra vez. Las plantas que reciben **demasiada** agua no crecen bien.
 
-Ese gráfico imaginario tendría una forma de U invertida. De izquierda a derecha, los puntos suben, llegan a un máximo, y después vuelven a bajar. ¿Y qué pasa si calculás el *r* de Pearson con esos datos? Te puede dar un valor cercano a 0. El gráfico de dispersión se vería más o menos como en la  @fig-3snakeplant.
+Ese gráfico imaginario tendría una forma de U invertida. De izquierda a derecha, los puntos suben, llegan a un máximo, y después vuelven a bajar. ¿Y qué pasa si calculás el *r* de Pearson con esos datos? Te puede dar un valor cercano a 0. El gráfico de dispersión se vería más o menos como en la @fig-3snakeplant.
 
 ```{r}
 #| label: fig-3snakeplant
@@ -757,7 +757,7 @@ La @fig-3anotherthousand muestra esos 1000 valores de $r$ obtenidos en la simula
 
 Vamos a ilustrar esta idea de encontrar correlaciones "al azar" una vez más, con una pequeña animación. Esta vez, te vamos a mostrar un gráfico de dispersión con los valores aleatorios de las bolillas elegidas desde el Polo Norte y el Polo Sur. Si no hay relación, deberíamos ver puntos por todos lados. Si llega a aparecer una relación positiva (por pura casualidad), los puntos irán de abajo a la izquierda hacia arriba a la derecha. Si aparece una relación negativa (también por azar), los puntos irán de arriba a la izquierda hacia abajo a la derecha.
 
-Una cosa más para prepararte para la animación: abajo, en la  @fig-3reminder, hay tres diagramas de dispersión que muestran correlaciones negativa, positiva y nula entre dos variables. Ya viste ese gráfico antes. Solo te estamos recordando que las líneas azules ayudan a ver la dirección de la correlación. Las correlaciones negativas ocurren cuando la línea baja de izquierda a derecha. Las positivas, cuando la línea sube de izquierda a derecha. Y las correlaciones nulas, cuando la línea es plana (ni sube ni baja).
+Una cosa más para prepararte para la animación: abajo, en la @fig-3reminder, hay tres diagramas de dispersión que muestran correlaciones negativa, positiva y nula entre dos variables. Ya viste ese gráfico antes. Solo te estamos recordando que las líneas azules ayudan a ver la dirección de la correlación. Las correlaciones negativas ocurren cuando la línea baja de izquierda a derecha. Las positivas, cuando la línea sube de izquierda a derecha. Y las correlaciones nulas, cuando la línea es plana (ni sube ni baja).
 
 ```{r echo=F}
 #| label: fig-3reminder
@@ -852,7 +852,7 @@ Notá que este histograma **no es plano**. La mayoría de los valores de (r) sim
 
 Podés pensar este histograma como una "ventana del azar". Muestra lo que el azar suele hacer, y lo que no suele hacer. Si encontraste una correlación en estas mismas condiciones (por ejemplo, mediste la correlación entre dos conjuntos de 10 números al azar), entonces podrías consultar esta ventana. ¿Qué le preguntarías a la ventana? Algo como: ¿mi correlación observada (la que encontraste en tus datos) podría haber salido de esta ventana? Ponele que encontraste una correlación de r=0.1. ¿Podría haber salido un r=0.1 de este histograma? Bueno, mirá el histograma alrededor del punto 0.1 en el eje x. ¿Hay una barra grande ahí? Si la hay, eso significa que el azar genera ese valor bastante seguido. Podrías sentirte cómoda sacando la siguiente conclusión: sí, este 0.1 podría haber sido producto del azar, porque está bien dentro de la ventana del azar. ¿Y qué pasa con un r=0.5? La barra es mucho más chica ahí. Podrías pensar: "bueno, veo que el azar genera 0.5 algunas veces, así que podría haber sido producto del azar. ¿Lo fue? Tal vez sí, tal vez no, no estoy segura". En este punto, tu confianza para sacar una conclusión fuerte sobre el rol del azar quizás empieza a tambalear un poco. ¿Y un r=0.95? Capaz ves que la barra para 0.95 es muy muy chiquita, quizás tan chiquita que ni se ve. ¿Qué te dice eso? Que el azar no produce 0.95 muy seguido, casi nunca. Entonces, si encontraste un 0.95 en tus datos, ¿qué podrías inferir? Quizás te sentirías cómoda diciendo que el azar no generó ese 0.95, porque el 0.95 está casi completamente fuera de la ventana del azar.
 
-La  @fig-3corrandN muestra cuatro histogramas diferentes con los valores de correlación de Pearson ( r ) para cada uno de los escenarios. Cada escenario involucra un tamaño muestral distinto: 10, 50, 100 y 1000.
+La @fig-3corrandN muestra cuatro histogramas diferentes con los valores de correlación de Pearson ( r ) para cada uno de los escenarios. Cada escenario involucra un tamaño muestral distinto: 10, 50, 100 y 1000.
 
 ```{r}
 #| label: fig-3corrandN
@@ -899,7 +899,7 @@ Vamos a reforzar estas ideas con algunas animaciones más. Cuando el tamaño mue
 
 Abajo se muestran números generados aleatoriamente para dos variables, los graficamos, y mostramos la correlación usando una línea. Hay cuatro paneles, y cada uno muestra un tamaño muestral distinto: 10, 50, 100 y 1000 observaciones en cada muestra.
 
-Recordá: como estamos muestreando números aleatoriamente, no debería haber ninguna relación entre las variables X e Y. Pero, como venimos discutiendo, a veces podemos observar una correlación ---producto del azar. Lo importante es mirar **cómo se comporta la línea** en los cuatro paneles de la  @fig-3corRandfour.\
+Recordá: como estamos muestreando números aleatoriamente, no debería haber ninguna relación entre las variables X e Y. Pero, como venimos discutiendo, a veces podemos observar una correlación ---producto del azar. Lo importante es mirar **cómo se comporta la línea** en los cuatro paneles de la @fig-3corRandfour.\
 Con tamaño muestral de 10, la línea gira para cualquier lado. También se mueve bastante con tamaños de 50 o 100. Incluso con 1000 se mueve un poco, pero mucho menos. En todos los casos esperamos que la línea sea plana, pero cada vez que tomamos nuevas muestras, a veces la línea nos muestra **patrones falsos**.
 
 ::: {.content-visible when-format="html"}
@@ -946,7 +946,7 @@ ggplot(all_df,aes(x=North_pole,y=South_pole))+
 
 ¿En cuál de estas líneas deberías creer? Bueno, esperamos que veas que la línea correspondiente a N = 1000 es **la más estable**. Tiende a ser muy plana cada vez, y **no depende tanto de la muestra en particular**. En cambio, la línea con solo 10 observaciones **va para cualquier lado**. La conclusión acá es que si alguien te dice que encontró una correlación, deberías preguntar cuántas observaciones tenía en su muestra. Si solo tenía 10 observaciones, ¿cómo podrías confiar en esa afirmación? ¡No podés! Ahora que sabés que muestras tan chicas pueden producir cualquier cosa **solo por azar**, deberías desconfiar. En cambio, si descubrís que la muestra era grande, podés confiar un poco más en el hallazgo.
 
-En el ejemplo anterior, muestreamos números de una distribución **uniforme**. Muchos datos reales provienen de una distribución normal (o aproximadamente normal). Podemos repetir lo anterior, pero muestreando de una misma distribución normal. Igual habrá **cero correlación real** entre X e Y, porque todo fue generado al azar. La  @fig-3normCorfour muestra el mismo comportamiento. Con tamaños muestrales pequeños, la correlación calculada fluctúa mucho. Con muestras grandes, no.
+En el ejemplo anterior, muestreamos números de una distribución **uniforme**. Muchos datos reales provienen de una distribución normal (o aproximadamente normal). Podemos repetir lo anterior, pero muestreando de una misma distribución normal. Igual habrá **cero correlación real** entre X e Y, porque todo fue generado al azar. La @fig-3normCorfour muestra el mismo comportamiento. Con tamaños muestrales pequeños, la correlación calculada fluctúa mucho. Con muestras grandes, no.
 
 ::: {.content-visible when-format="html"}
 ```{r}
@@ -962,7 +962,7 @@ OK, ¿y cómo se ven las cosas cuando realmente hay una correlación entre las v
 
 ### Ver cómo se comporta la correlación cuando realmente **hay** una correlación
 
-A veces sí existen correlaciones entre dos variables que **no** son producto del azar. La  @fig-3realcorFour muestra una animación con cuatro gráficos de dispersión. Cada uno muestra la correlación entre dos variables. Nuevamente, variamos el tamaño muestral: 10, 50, 100 y 1000 observaciones. Los datos fueron generados de forma que **contengan una correlación positiva real**. Así que deberíamos esperar que la línea suba desde la esquina inferior izquierda hacia la esquina superior derecha. Sin embargo, los datos todavía tienen variabilidad. Así que esta vez, el error muestral debido al azar va a "difuminar" un poco la correlación. Sabemos que está ahí, pero a veces el azar puede hacer que desaparezca.
+A veces sí existen correlaciones entre dos variables que **no** son producto del azar. La @fig-3realcorFour muestra una animación con cuatro gráficos de dispersión. Cada uno muestra la correlación entre dos variables. Nuevamente, variamos el tamaño muestral: 10, 50, 100 y 1000 observaciones. Los datos fueron generados de forma que **contengan una correlación positiva real**. Así que deberíamos esperar que la línea suba desde la esquina inferior izquierda hacia la esquina superior derecha. Sin embargo, los datos todavía tienen variabilidad. Así que esta vez, el error muestral debido al azar va a "difuminar" un poco la correlación. Sabemos que está ahí, pero a veces el azar puede hacer que desaparezca.
 
 Notá que en el panel superior izquierdo (tamaño muestral = 10), la línea se mueve mucho más que en los otros paneles. Cada nuevo conjunto de muestras produce correlaciones distintas. A veces, la línea incluso se aplana o baja. Pero a medida que aumentamos el tamaño muestral, vemos que la línea **no cambia tanto**: siempre va hacia arriba, mostrando una correlación positiva.
 

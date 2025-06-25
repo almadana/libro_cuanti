@@ -368,7 +368,7 @@ window.Quarto = {
 <section id="distribución-uniforme" class="level3" data-number="6.2.1">
 <h3 data-number="6.2.1" class="anchored" data-anchor-id="distribución-uniforme"><span class="header-section-number">6.2.1</span> Distribución uniforme</h3>
 <p>Como recordatorio del capítulo anterior, la <a href="#fig-5unifagain" class="quarto-xref">Figura&nbsp;<span>6.1</span></a> muestra que la forma de una distribución uniforme es completamente plana.</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5unifagain_c3d275d950043f5a659b4cd7b06c4c95">
+<div class="cell">
 <div class="cell-output-display">
 <div id="fig-5unifagain" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -384,8 +384,8 @@ Figura&nbsp;6.1: Distribución uniforme que muestra que los números del 1 al 10
 </div>
 <p>OK, eso no parece gran cosa. ¿Qué está pasando acá? El eje y está etiquetado como <code>Probabilidad</code>, y va de 0 a 1. El eje x está etiquetado como <code>Número</code>, y va del 1 al 10. Hay una línea horizontal atravesando el gráfico. Esa línea indica la probabilidad de cada número del 1 al 10. Notá que la línea es plana. Esto significa que <strong>todos los números tienen la misma probabilidad de ocurrir</strong>. Más específicamente, hay 10 números del 1 al 10 (1,2,3,4,5,6,7,8,9,10), y todos tienen la misma chance de aparecer. 1 dividido 10 es 0,1, que es la probabilidad indicada por la línea horizontal.</p>
 <p>“¿Y qué con eso?” Imaginá que esta distribución uniforme es una máquina generadora de números. Escupe números, pero escupe <strong>cada número con la probabilidad indicada por la línea</strong>. Si esta distribución comenzara a generar números, escupiría un 10% de unos, un 10% de doses, un 10% de treses, y así sucesivamente, hasta un 10% de dieces. ¿Querés ver cómo se vería eso? Hagamos que escupa 100 números y pongámoslos en la <a href="#tbl-5100rand" class="quarto-xref">Tabla&nbsp;<span>6.1</span></a>.</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/tbl-5100rand_45db0cf74b2b30a9bca7b613edaba8a5">
-<div id="tbl-5100rand" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-hash="05-Foundation_Inference_cache/html/tbl-5100rand_45db0cf74b2b30a9bca7b613edaba8a5">
+<div class="cell">
+<div id="tbl-5100rand" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-5100rand-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Tabla&nbsp;6.1: 100 números muestreados aleatoriamente de una distribución uniforme.
@@ -395,124 +395,124 @@ Tabla&nbsp;6.1: 100 números muestreados aleatoriamente de una distribución uni
 <table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
 <td style="text-align: right;">6</td>
+<td style="text-align: right;">5</td>
 <td style="text-align: right;">8</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">7</td>
 <td style="text-align: right;">6</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">2</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">4</td>
 <td style="text-align: right;">6</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">4</td>
 <td style="text-align: right;">9</td>
-<td style="text-align: right;">9</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">10</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">9</td>
 <td style="text-align: right;">7</td>
-<td style="text-align: right;">5</td>
+<td style="text-align: right;">8</td>
 <td style="text-align: right;">6</td>
 <td style="text-align: right;">7</td>
+<td style="text-align: right;">6</td>
 <td style="text-align: right;">4</td>
-<td style="text-align: right;">5</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">1</td>
 <td style="text-align: right;">3</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">2</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">10</td>
+<td style="text-align: right;">2</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">3</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
 <td style="text-align: right;">9</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">3</td>
 <td style="text-align: right;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">10</td>
 <td style="text-align: right;">6</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">10</td>
 <td style="text-align: right;">8</td>
 <td style="text-align: right;">3</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">10</td>
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">9</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">3</td>
 <td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
 <td style="text-align: right;">8</td>
 <td style="text-align: right;">8</td>
-<td style="text-align: right;">10</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">3</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">6</td>
+<td style="text-align: right;">2</td>
 <td style="text-align: right;">7</td>
 <td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">10</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">3</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">2</td>
+<td style="text-align: right;">7</td>
 <td style="text-align: right;">4</td>
-<td style="text-align: right;">2</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">1</td>
 <td style="text-align: right;">7</td>
 <td style="text-align: right;">9</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">3</td>
 <td style="text-align: right;">4</td>
 <td style="text-align: right;">9</td>
 <td style="text-align: right;">6</td>
-<td style="text-align: right;">8</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
 <td style="text-align: right;">3</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">7</td>
 </tr>
 </tbody>
 </table>
@@ -523,7 +523,7 @@ Tabla&nbsp;6.1: 100 números muestreados aleatoriamente de una distribución uni
 </div>
 <p>Usamos la distribución uniforme para generar estos números. Formalmente, a esto lo llamamos <strong>muestreo</strong> desde una <strong>distribución</strong>. Muestrear es lo que hacés en el supermercado cuando hay comida para degustar. Podés seguir tomando más. Sin embargo, si tomás <strong>todas</strong> las muestras, lo que tenés se llama <strong>población</strong>. Vamos a hablar más sobre muestras y poblaciones más adelante. Como usamos la distribución uniforme para generar los números, ya sabemos de dónde vienen. Pero por ahora, podemos fingir que alguien aparece en tu puerta, te muestra estos números, y vos te preguntás de dónde salieron. ¿Podés decir, solo mirando los números, que provienen de una distribución uniforme?</p>
 <p>¿Qué deberías observar? Quizás quieras saber si todos los números ocurren con <strong>aproximadamente la misma frecuencia</strong> —después de todo, eso es lo que <strong>debería</strong> pasar, ¿no? Es decir, si cada número tiene la misma chance de ocurrir, deberíamos ver que <strong>cada número ocurre más o menos la misma cantidad de veces</strong>. Ya sabemos qué es un histograma, así que podemos poner nuestra muestra de 100 números en un histograma y ver cómo se distribuyen los conteos. Si todos los números del 1 al 10 aparecen con igual frecuencia, entonces cada número individual debería aparecer unas 10 veces. La <a href="#fig-5histunif" class="quarto-xref">Figura&nbsp;<span>6.2</span></a> muestra el histograma:</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5histunif_a54bf8bec11c0ec060e130275f3b5929">
+<div class="cell">
 <div class="cell-output-display">
 <div id="fig-5histunif" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -543,7 +543,7 @@ Figura&nbsp;6.2: Histograma de 100 números muestreados aleatoriamente de una di
 <h3 data-number="6.2.2" class="anchored" data-anchor-id="no-todas-las-muestras-son-iguales-de-hecho-suelen-ser-bastante-distintas"><span class="header-section-number">6.2.2</span> No todas las muestras son iguales — de hecho, suelen ser bastante distintas</h3>
 <p>Veamos más de cerca el error muestral. Vamos a tomar una muestra de 20 números de la distribución uniforme. Deberíamos esperar que cada número entre 1 y 10 ocurra unas dos veces. Como antes, esta expectativa puede visualizarse con un histograma.</p>
 <p>Para tener una mejor idea de la variabilidad muestral, repitamos ese proceso <strong>diez veces</strong>. La <a href="#fig-5manysamples" class="quarto-xref">Figura&nbsp;<span>6.3</span></a> muestra 10 histogramas, cada uno representando una muestra distinta de 20 números:</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5manysamples_656e30a9011c3e34d3e8afcd5ee1fe66">
+<div class="cell">
 <div class="cell-output-display">
 <div id="fig-5manysamples" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -559,7 +559,7 @@ Figura&nbsp;6.3: Histogramas de 10 muestras distintas de la distribución unifor
 </div>
 <p>Probablemente notes enseguida que ninguno de los histogramas es igual. Aunque estamos tomando aleatoriamente 20 números de la misma distribución uniforme, <strong>cada muestra de 20 números resulta diferente</strong>. Esto es <strong>variabilidad muestral</strong>, o <strong>error de muestreo</strong>.</p>
 <p>La <a href="#fig-5expectedUnif" class="quarto-xref">Figura&nbsp;<span>6.4</span></a> muestra una versión animada del proceso de elegir repetidamente 20 números aleatorios nuevos y graficar un histograma. La línea horizontal muestra la forma plana de la distribución uniforme. La línea cruza el eje y en el valor 2; y esperamos que cada número (del 1 al 10) ocurra unas 2 veces en una muestra de 20. Sin embargo, cada muestra varía bastante, debido al azar.</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5expectedUnif_3afb2cb154ee922603c09837ba8aa403">
+<div class="cell">
 <div class="cell-output-display">
 <div id="fig-5expectedUnif" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -578,7 +578,7 @@ Figura&nbsp;6.4: Animación de histogramas para diferentes muestras de 20 valore
 <section id="las-muestras-grandes-se-parecen-más-a-la-distribución-de-la-que-provienen" class="level3" data-number="6.2.3">
 <h3 data-number="6.2.3" class="anchored" data-anchor-id="las-muestras-grandes-se-parecen-más-a-la-distribución-de-la-que-provienen"><span class="header-section-number">6.2.3</span> Las muestras grandes se parecen más a la distribución de la que provienen</h3>
 <p>Volvamos a la pregunta: ¿cuál de las dos muestras en <a href="#fig-5whichone" class="quarto-xref">Figura&nbsp;<span>6.5</span></a> te parece que vino de una distribución uniforme?</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5whichone_fbdab88cf594bdcdab702b2595062a35">
+<div class="cell">
 <div class="cell-output-display">
 <div id="fig-5whichone" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -595,7 +595,7 @@ Figura&nbsp;6.5: ¿Cuál de estas dos muestras proviene de una distribución uni
 <p>La respuesta es que <strong>ambas</strong> vinieron de una distribución uniforme. Pero ninguna <strong>parece</strong> que lo haya hecho.</p>
 <p>¿Podemos mejorar las cosas y facilitar ver si una muestra proviene de una distribución uniforme? Sí, podemos. Lo único que necesitamos hacer es <strong>aumentar el tamaño de la muestra</strong>. A menudo usamos la letra <code>n</code> para referirnos al tamaño muestral. <code>n</code> es el número de observaciones en la muestra.</p>
 <p>Así que aumentemos el número de observaciones en cada muestra, de 20 a 100. Vamos a crear 10 muestras (cada una con 100 observaciones), y a graficar un histograma para cada una. Todas estas muestras se extraen de la <strong>misma</strong> distribución uniforme. Esto significa que deberíamos esperar que <strong>cada número del 1 al 10 ocurra unas 10 veces</strong> en cada muestra. Los histogramas están en la <a href="#fig-5unifsamp100" class="quarto-xref">Figura&nbsp;<span>6.6</span></a>.</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5unifsamp100_e949f4773fce909fa4b0b6029e408851">
+<div class="cell">
 <div class="cell-output-display">
 <div id="fig-5unifsamp100" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -611,7 +611,7 @@ Figura&nbsp;6.6: Histogramas de diferentes muestras de una distribución uniform
 </div>
 <p>De nuevo, la mayoría de estos histogramas no se ven muy planos, y todas las barras parecen ir hacia arriba o hacia abajo; además, no están exactamente en 10 cada una. Así que todavía estamos lidiando con el error muestral. Es un fastidio. Siempre está presente.</p>
 <p>Aumentemos el <span class="math inline">\(N\)</span> por muestra de 100 a 1000. Deberíamos esperar que cada número aparezca unas 100 veces. ¿Qué sucede?</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5unifsamp1000_d661c16f2ad303b66325c6cb27c93ecc">
+<div class="cell">
 <div class="cell-output-display">
 <div id="fig-5unifsamp1000" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -627,7 +627,7 @@ Figura&nbsp;6.7: Histogramas de diferentes muestras de una distribución uniform
 </div>
 <p>La <a href="#fig-5unifsamp1000" class="quarto-xref">Figura&nbsp;<span>6.7</span></a> muestra que los histogramas empiezan a aplanarse. Las barras todavía no están perfectamente en 100, porque sigue habiendo error muestral (siempre lo habrá). Pero si vieras un histograma que se ve plano y supieras que la muestra contiene muchas observaciones, podrías tener más confianza en que esos números provienen de una distribución uniforme.</p>
 <p>Solo por diversión, hagamos muestras realmente grandes. Digamos, 100.000 observaciones por muestra. En ese caso, deberíamos esperar que cada número ocurra unas 10.000 veces. ¿Qué pasa?</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5sampunifALOT_41c30c6a85c61702514ee18cef8bfa1c">
+<div class="cell">
 <div class="cell-output-display">
 <div id="fig-5sampunifALOT" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -656,7 +656,7 @@ Consejo pro
 </div>
 </div>
 <p>Antes de volver al tema de los experimentos con el que comenzamos, hagamos dos preguntas más. Primero: ¿cuál de las dos muestras en <a href="#fig-5whichoneB" class="quarto-xref">Figura&nbsp;<span>6.9</span></a> creés que proviene de una distribución uniforme? Dato: cada una de estas muestras tiene 20 observaciones.</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5whichoneB_840a907e7adc3becb32f4357cf9430d0">
+<div class="cell">
 <div class="cell-output-display">
 <div id="fig-5whichoneB" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -672,7 +672,7 @@ Figura&nbsp;6.9: ¿Cuál de estas muestras proviene de una distribución uniform
 </div>
 <p>Si no estás muy segurx de la respuesta, es porque el <strong>error muestral</strong> (el azar) está “difuminando” los histogramas.</p>
 <p>Acá va exactamente la misma pregunta, solo que esta vez tomamos <strong>1.000 observaciones por muestra</strong>. ¿Cuál histograma en <a href="#fig-5whichoneC" class="quarto-xref">Figura&nbsp;<span>6.10</span></a> creés que proviene de una distribución uniforme, y cuál no?</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5whichoneC_06cc4b18a876960bfeb6f7c6b4b6823c">
+<div class="cell">
 <div class="cell-output-display">
 <div id="fig-5whichoneC" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -722,7 +722,7 @@ SHINY APP acá
 </ol>
 <p>Esperamos que estés de acuerdo en que tus manos no pueden distinguir entre bolitas verdes y rojas. Si no estás de acuerdo, vamos a estipular además que las bolitas son completamente idénticas en todo, salvo en el color, así que sería imposible diferenciarlas usando el tacto. Entonces, ¿qué debería pasar en este experimento?</p>
 <p>—“Eh… quizás saques 5 bolitas rojas y 5 verdes con la mano izquierda, y lo mismo con la derecha?” Más o menos, eso es lo que usualmente pasaría. Pero no es lo único que podría pasar. Acá tenés algunos datos de un experimento ficticio:</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/unnamed-chunk-2_19fc695c944c2c5fb5cf5dd3968d1342">
+<div class="cell">
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
@@ -742,7 +742,15 @@ SHINY APP acá
 </tr>
 <tr class="odd">
 <td style="text-align: left;">izquierda</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">izquierda</td>
 <td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">izquierda</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">izquierda</td>
@@ -754,15 +762,7 @@ SHINY APP acá
 </tr>
 <tr class="even">
 <td style="text-align: left;">izquierda</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">izquierda</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">izquierda</td>
-<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">izquierda</td>
@@ -786,11 +786,11 @@ SHINY APP acá
 </tr>
 <tr class="even">
 <td style="text-align: left;">derecha</td>
-<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">derecha</td>
-<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">derecha</td>
@@ -798,19 +798,19 @@ SHINY APP acá
 </tr>
 <tr class="odd">
 <td style="text-align: left;">derecha</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">derecha</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">derecha</td>
-<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">derecha</td>
 <td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">derecha</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">derecha</td>
+<td style="text-align: right;">1</td>
 </tr>
 </tbody>
 </table>
@@ -818,7 +818,7 @@ SHINY APP acá
 </div>
 <p>—“¿Qué estoy viendo acá?” Esta es una tabla en formato largo. Cada fila es una bolita. La primera columna indica con qué mano se sacó. La segunda indica qué tipo de bolita es. Vamos a decir que los valores <code>1</code> representan bolitas verdes y los <code>0</code> representan bolitas rojas.</p>
 <p>Entonces… ¿la mano izquierda te hizo sacar más bolitas verdes que la mano derecha? Sería más fácil mirar los datos usando un gráfico de barras (<a href="#fig-5bolitaA" class="quarto-xref">Figura&nbsp;<span>6.11</span></a>). Para simplificar, vamos a contar solo las bolitas verdes (las otras necesariamente son rojas). Así que solo necesitamos sumar los unos; los ceros no suman nada.</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5bolitaA_8ff65e0fcce264699da77e474b77ae67">
+<div class="cell">
 <div class="cell-output-display">
 <div id="fig-5bolitaA" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -842,7 +842,7 @@ Figura&nbsp;6.11: Conteo de bolitas verdes seleccionadas al azar por cada mano.
 <p>Recordá cuando mostramos que el azar puede producir correlaciones. También mostramos que el azar tiene <strong>limitaciones</strong> en su capacidad para producir correlaciones. Por ejemplo, el azar <strong>genera con más frecuencia correlaciones débiles que fuertes</strong>. ¿Te acordás de la “ventana del azar”? Antes descubrimos que las correlaciones que caen fuera de esa ventana son muy poco probables.</p>
 <p>Podemos hacer lo mismo con las diferencias. Vamos a investigar exactamente qué puede hacer el azar en nuestro experimento. Una vez que sepamos de lo que el azar es capaz, vamos a estar en una mejor posición para juzgar si nuestra manipulación causó una diferencia, o si simplemente <strong>podría haber sido el azar</strong>.</p>
 <p>Lo primero que vamos a hacer es simular que realizás el experimento de las bolitas <strong>10 veces seguidas</strong>. Eso va a producir 10 conjuntos distintos de resultados. La <a href="#fig-5bolitasims" class="quarto-xref">Figura&nbsp;<span>6.12</span></a> muestra gráficos de barras para cada repetición del experimento. Ahora podemos ver si la mano izquierda sacó más bolitas verdes que la derecha.</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5bolitasims_55e4edcb54c3f54265a9bbaa57db1a83">
+<div class="cell">
 <div class="cell-output-display">
 <div id="fig-5bolitasims" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -863,7 +863,7 @@ Figura&nbsp;6.12: 10 repeticiones simuladas del experimento de sacar bolitas. Ca
 <h2 data-number="6.4" class="anchored" data-anchor-id="el-azar-hace-que-algunas-diferencias-sean-más-probables-que-otras"><span class="header-section-number">6.4</span> El azar hace que algunas diferencias sean más probables que otras</h2>
 <p>Bien, ya vimos que el azar puede producir diferencias. Pero todavía no tenemos una buena idea de qué es lo que el azar usualmente puede o no puede hacer. Por ejemplo, si pudiéramos encontrar la “ventana de oportunidad” acá, podríamos descubrir que el azar normalmente <strong>no produce diferencias demasiado grandes</strong>. Y si supiéramos cuál es ese umbral, entonces, si realizamos un experimento y nuestra diferencia es más grande que lo que el azar puede producir, podríamos tener confianza en que <strong>no fue el azar</strong> lo que generó nuestra diferencia.</p>
 <p>Pensemos en nuestra medición de bolitas verdes en términos de una <strong>diferencia</strong>. Por ejemplo, en cada experimento contamos las bolitas verdes para la mano izquierda y la derecha. Lo que realmente queremos saber es si hay una diferencia entre ellas. Así que podemos calcular el <strong>puntaje de diferencia</strong>. Vamos a definir ese puntaje de diferencia como: <strong># de bolitas verdes con la izquierda menos # de bolitas verdes con la derecha</strong>. Ahora vamos a simular este experimento mil veces. Cada vez, vamos a contar la cantidad de bolitas verdes para cada mano y calcular la diferencia. Luego, vamos a graficar los puntajes de diferencia para ver qué tipo de valores produce el azar.</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5bolitadiffs_fff4368cec5171e7574d1a1f11f5d15e">
+<div class="cell">
 <div class="cell-output-display">
 <div id="fig-5bolitadiffs" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -879,7 +879,7 @@ Figura&nbsp;6.13: Un vistazo a las diferencias en el número de bolitas verdes e
 </div>
 <p>Las barras faltantes significan que se extrajo la misma cantidad de bolitas verdes con ambas manos (puntaje de diferencia igual a 0). Un valor positivo indica que la mano izquierda sacó más bolitas verdes que la derecha. Un valor negativo significa que fue la derecha la que sacó más verdes. Notá que si hubiéramos decidido (y lo podemos hacer) calcular la diferencia al revés (mano derecha menos mano izquierda), los signos de los puntajes se invertirían.</p>
 <p>Empezamos a ver mejor qué tipo de diferencias puede generar el azar. Los puntajes de diferencia están mayormente entre -2 y +2. Podríamos hacernos una idea más clara si corremos este experimento ficticio <strong>100 veces</strong> en lugar de solo 10. Los resultados se muestran en <a href="#fig-5manydiffs" class="quarto-xref">Figura&nbsp;<span>6.14</span></a>.</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5manydiffs_2a5cf3b57ddb4f530bad7a396100cfa4">
+<div class="cell">
 <div class="cell-output-display">
 <div id="fig-5manydiffs" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -895,7 +895,7 @@ Figura&nbsp;6.14: Repetimos el experimento 100 veces y observamos las diferencia
 </div>
 <p>Upss, acabamos de realizar tantos experimentos simulados que el eje x es ilegible, pero va de 1 a 100. Cada barra representa la diferencia de número de bolas verdes elegidas al azar por la mano izquierda o derecha. ¿Empiezas a notar algo? Mira el eje y, éste muestra el tamaño de la diferencia. Sí, hay muchas barras de diferentes tamaños, esto nos muestra que muchos tipos de diferencias ocurren por azar. Sin embargo, el eje y también está restringido. No va de -10 a +10. Las grandes diferencias superiores a 5 o -5 no ocurren muy a menudo.</p>
 <p>Ahora que tenemos un método para simular las diferencias debidas al azar, vamos a realizar 10.000 experimentos simulados. Pero, en lugar de trazar las diferencias en un gráfico de barras para cada experimento, ¿qué tal si observamos el histograma de puntuaciones de diferencia? El histograma en la <a href="#fig-5histdiffbolita" class="quarto-xref">Figura&nbsp;<span>6.15</span></a> proporciona una imagen más clara sobre qué diferencias ocurren con más frecuencia y cuáles no. Esta será otra ventana para observar qué tipo de diferencias es capaz de producir el azar.</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5histdiffbolita_0bb847eda87835f7b4b3d113ccb9eaa8">
+<div class="cell">
 <div class="cell-output-display">
 <div id="fig-5histdiffbolita" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -967,7 +967,7 @@ Nota
 <p>Antes de hacer la simulación, necesitamos responder una pregunta: <strong>¿cuánto es “mucho”?</strong> Podríamos elegir cualquier número. Yo voy a elegir 10.000. Eso es mucho. Si algo ocurre solo 1 vez en 10.000, estoy dispuesto a decir que <strong>eso no es mucho</strong>.</p>
 <p>Bien, ya tenemos nuestro número. Vamos a simular las diferencias de medias entre los grupos A y B <strong>que podrían surgir solo por azar</strong>. Lo vamos a hacer 10.000 veces. Eso le da al azar muchas oportunidades para mostrarnos qué puede hacer y qué no.</p>
 <p>Esto es lo que hice: muestreé 20 números para el grupo A y 20 para el grupo B. Ambos grupos provienen de la misma distribución normal, con media = 100 y desviación estándar = 15. Como las muestras provienen de la <strong>misma distribución</strong>, esperamos que, en promedio, sean similares (aunque ya sabemos que las muestras siempre difieren entre sí). Después calculo la media de cada grupo, y luego la diferencia entre esas medias. Guardo ese <strong>puntaje de diferencia de medias</strong>, y repito esto hasta tener 10.000 de ellos. Después, dibujo un histograma como el de la <a href="#fig-5crumptestdiff" class="quarto-xref">Figura&nbsp;<span>6.16</span></a>.</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5crumptestdiff_6e151bd4722f27e7d16b5098d3be6c78">
+<div class="cell">
 <div class="cell-output-display">
 <div id="fig-5crumptestdiff" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -998,14 +998,14 @@ Nota
 <p>Pausa un segundo. ¿Por qué las diferencias de medias deberían tender a cero? ¿No era que la media poblacional era 100? ¿No deberían las diferencias rondar 100? No.&nbsp;La media del grupo A tenderá a estar alrededor de 100, y la del grupo B también. Entonces, la diferencia tenderá a ser 100 − 100 = 0.Por eso esperamos una <strong>diferencia de medias igual a cero</strong> cuando las muestras provienen de la misma población.</p>
 <p>Entonces, las diferencias cercanas a cero ocurren con más frecuencia —eso es bueno, es lo que esperábamos. Las diferencias más grandes (positivas o negativas) ocurren cada vez menos. Diferencias mayores que 15 o menores que -15 <strong>no ocurrieron nunca</strong>. Para nuestros fines, parece que el azar <strong>solo produce diferencias entre -15 y 15</strong>.</p>
 <p>OK, hagamos un par de preguntas simples.¿Cuál fue el número negativo más grande (es decir, el más negativo) que ocurrió en la simulación? Vamos a usar R para esto. Todos los 10.000 puntajes de diferencia están guardados en una variable que llamé <code>diferencia</code>. Si queremos encontrar el valor mínimo, usamos la función <code>min</code>. Este es el resultado:</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/unnamed-chunk-3_d7944ca3898e8d62aaa2cd25264c96d3">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(diferencia)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -16.25988</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -16.5173</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Bien, ¿y cuál fue el número positivo más grande que ocurrió? Usemos la función <code>max</code> para averiguarlo. Esa función encuentra el valor más grande (máximo) de una variable. Por cierto, acabamos de calcular el rango: el mínimo y el máximo de los datos. Recordá que ya aprendimos eso antes. De todos modos, acá va el máximo:</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/unnamed-chunk-4_86b68daf83474f61b3e0cc356d2cae47">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(diferencia)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 17.3742</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 16.68611</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Ambos valores extremos ocurrieron <strong>solo una vez</strong>. Fueron tan poco frecuentes que ni siquiera los pudimos ver en el histograma —la barra era tan baja que no se notaba. Además, el mayor valor negativo y el mayor positivo tienen prácticamente el mismo tamaño (ignorando el signo), lo cual tiene sentido porque la distribución parece bastante simétrica.</p>
 <p>Entonces, ¿qué podemos decir sobre estos dos números —el mínimo y el máximo? Podemos decir que el mínimo ocurrió 1 vez de cada 10.000. Y que el máximo ocurrió 1 vez de cada 10.000. ¿Eso es mucho? Para mí, no. <strong>No es mucho.</strong></p>
@@ -1025,7 +1025,7 @@ Nota
 </ol>
 <p>Las regiones están definidas por el valor mínimo y el valor máximo observados en la simulación. El azar <strong>nunca produjo un número menor ni mayor</strong> que esos extremos. La región <strong>dentro del rango</strong> es lo que el azar <strong>sí hizo</strong>, y la región <strong>fuera del rango</strong>, en ambos extremos, es lo que el azar <strong>nunca hizo</strong>.</p>
 <p>Se ve así en la <a href="#fig-5crumpdecision" class="quarto-xref">Figura&nbsp;<span>6.17</span></a>:</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5crumpdecision_b0c427886d365a85f40c2fa1a0439735">
+<div class="cell">
 <div class="cell-output-display">
 <div id="fig-5crumpdecision" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1051,7 +1051,7 @@ Figura&nbsp;6.17: Aplicación de límites de decisión al histograma de diferenc
 <p>—“¿De qué zonas grises estás hablando? ¡Solo veo rojo y verde! ¿Tengo daltonismo para el gris?”—</p>
 <p>Veamos dónde podrían estar algunas zonas grises. Digo “podrían”, porque la gente no se pone de acuerdo sobre <strong>dónde empieza el gris</strong>. Las personas tienen distintos niveles de tolerancia al gris.</p>
 <p>La <a href="#fig-5crumpuncertainty" class="quarto-xref">Figura&nbsp;<span>6.18</span></a> muestra <strong>mi</strong> opinión sobre dónde se ubican las zonas grises:</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5crumpuncertainty_3fc5277ed02d82d389ae6f58acff1c90">
+<div class="cell">
 <div class="cell-output-display">
 <div id="fig-5crumpuncertainty" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1070,7 +1070,7 @@ Figura&nbsp;6.18: Los signos de interrogación indican una zona donde hay cierta
 <p>Tal vez estés pensando que tus zonas grises no son iguales a las que dibujé yo. Quizás quieras ser más conservador y hacerlas más chicas. O, tal vez seas más arriesgado y prefieras hacerlas más grandes. O incluso, quizás quieras extender la zona gris un poco <strong>dentro de la zona verde</strong> (después de todo, el azar podría producir diferencias más grandes alguna que otra vez, y para evitarlas tendrías que hacer que la zona gris invada un poco el área verde).</p>
 <p>Otra cosa en la que pensar es en tu <strong>política de decisión</strong>. ¿Qué vas a hacer cuando tu diferencia observada caiga dentro de la zona gris? ¿Siempre vas a tomar la misma decisión sobre el papel del azar? ¿O a veces vas a cambiar de parecer, según cómo te sientas? Tal vez pienses que no debería haber una política estricta, y que deberías aceptar cierto nivel de incertidumbre. La diferencia que encontraste <strong>podría ser real… o tal vez no lo sea</strong>. Hay incertidumbre, es difícil evitarla.</p>
 <p>Así que vamos a ilustrar <strong>otro tipo de estrategia</strong> para tomar decisiones. Recién hablamos de una que incluía líneas y regiones. Eso hace que parezca una elección binaria: podemos <strong>descartar</strong> o <strong>no descartar</strong> el papel del azar. Otra perspectiva es que <strong>todo es un matiz de gris</strong>, como en la <a href="#fig-5crumpshade" class="quarto-xref">Figura&nbsp;<span>6.19</span></a>.</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5crumpshade_611902b9be6c0338308c10c0ef21701e">
+<div class="cell">
 <div class="cell-output-display">
 <div id="fig-5crumpshade" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1107,7 +1107,7 @@ Figura&nbsp;6.19: El sombreado de las barras azules indica los niveles de confia
 <p>Si cambiás el enfoque y pensás en las <strong>diferencias de medias</strong>, como la distribución que creamos en esta prueba, ¿qué creés que va a pasar con esa distribución a medida que aumentamos <code>N</code>? También se va a <strong>achicar</strong>. A medida que aumentamos <code>N</code> hacia el infinito, esa distribución se reduce a 0. Lo que significa que, cuando <code>N</code> es infinito, el azar <strong>nunca produce diferencias</strong>. Podemos usar esto a nuestro favor.</p>
 <p>Por ejemplo, podríamos correr nuestro experimento con 20 sujetos por grupo. O podríamos decidir invertir más tiempo y correrlo con 40 sujetos por grupo, o 80, o 150. Cuando vos sos quien ejecuta el experimento, <strong>vos decidís el diseño</strong>. Y esas decisiones importan muchísimo. Básicamente, <strong>cuantos más sujetos tenés, más sensible es tu experimento</strong>. Con un <code>N</code> más grande, vas a poder detectar de manera confiable diferencias de medias más pequeñas, y podés concluir con confianza que esas diferencias <strong>no fueron producidas por azar</strong>.</p>
 <p>Fijate en los histogramas de <a href="#fig-5sampleDistNormal" class="quarto-xref">Figura&nbsp;<span>6.20</span></a> . Es la misma simulación de antes, pero con cuatro tamaños muestrales distintos: 20, 40, 80, 160. Vamos duplicando el tamaño muestral en cada simulación, solo para ver qué pasa con el <strong>ancho de la ventana del azar</strong>.</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5sampleDistNormal_126ac39d3231637ae6f916ca1ddd660c">
+<div class="cell">
 <div class="cell-output-display">
 <div id="fig-5sampleDistNormal" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1123,8 +1123,8 @@ Figura&nbsp;6.20: El rango (o ancho) de las diferencias producidas por azar se r
 </div>
 <p>Ahí lo tenés. La <strong>distribución muestral de las diferencias de medias</strong> se contrae hacia 0 a medida que aumenta el tamaño muestral. Esto significa que, si ejecutás un experimento con un tamaño muestral mayor, vas a poder detectar diferencias de medias más pequeñas, y estar seguro de que <strong>no se deben al azar</strong>.</p>
 <p>La <a href="#tbl-5minmax" class="quarto-xref">Tabla&nbsp;<span>6.2</span></a> muestra los valores mínimos y máximos que el azar produjo para cada uno de los cuatro tamaños muestrales:</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/tbl-5minmax_d61f0bbc70c06ffb52597b7be7a50622">
-<div id="tbl-5minmax" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-hash="05-Foundation_Inference_cache/html/tbl-5minmax_d61f0bbc70c06ffb52597b7be7a50622">
+<div class="cell">
+<div id="tbl-5minmax" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-5minmax-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Tabla&nbsp;6.2: La diferencia de medias más pequeña y más grande producida por azar en función del tamaño muestral.
@@ -1142,23 +1142,23 @@ Tabla&nbsp;6.2: La diferencia de medias más pequeña y más grande producida po
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">20</td>
-<td style="text-align: center;">-21.46</td>
-<td style="text-align: center;">23.53</td>
+<td style="text-align: center;">-23.51</td>
+<td style="text-align: center;">22.73</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">40</td>
-<td style="text-align: center;">-15.71</td>
-<td style="text-align: center;">15.59</td>
+<td style="text-align: center;">-17.10</td>
+<td style="text-align: center;">17.44</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">80</td>
-<td style="text-align: center;">-13.51</td>
-<td style="text-align: center;">10.82</td>
+<td style="text-align: center;">-11.42</td>
+<td style="text-align: center;">11.11</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">160</td>
-<td style="text-align: center;">-8.03</td>
-<td style="text-align: center;">7.48</td>
+<td style="text-align: center;">-7.94</td>
+<td style="text-align: center;">8.91</td>
 </tr>
 </tbody>
 </table>
@@ -1181,7 +1181,7 @@ Tabla&nbsp;6.2: La diferencia de medias más pequeña y más grande producida po
 <p>La gran idea detrás del poder es el concepto de <strong>sensibilidad</strong>. El concepto de sensibilidad parte de la suposición de que <strong>hay algo a lo que ser sensible</strong>.</p>
 <p>Es decir, <strong>existe una diferencia real</strong> que puede ser medida. Entonces, la pregunta es: <strong>¿cuán sensible es tu experimento?</strong> Ya vimos que <strong>el número de sujetos (tamaño muestral)</strong> cambia la sensibilidad del diseño. Más sujetos = más sensibilidad para detectar efectos más pequeños.</p>
 <p>Veamos un gráfico más. Lo que vamos a hacer es simular una medida de sensibilidad para <strong>un conjunto de tamaños muestrales</strong>, desde 10 hasta 300. Lo haremos en incrementos de 10. Para cada simulación, vamos a calcular las diferencias de medias como lo hicimos antes. Pero, en lugar de mostrar el histograma, simplemente vamos a calcular <strong>el valor mínimo y el máximo</strong>. Esto es una buena medida del alcance extremo del azar. Luego vamos a graficar esos valores en función del tamaño muestral y ver qué obtenemos.</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5crumpminmax_49dca067c224c3bf72d7b06901a7858e">
+<div class="cell">
 <div class="cell-output-display">
 <div id="fig-5crumpminmax" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1197,7 +1197,7 @@ Figura&nbsp;6.21: Gráfico del máximo y mínimo de las diferencias de medias pr
 </div>
 <p>La <a href="#fig-5crumpminmax" class="quarto-xref">Figura&nbsp;<span>6.21</span></a> muestra una ventana de sensibilidad razonablemente precisa en función del tamaño muestral. Para cada tamaño muestral, podemos ver la diferencia máxima que el azar produjo y la mínima. En esas simulaciones, <strong>el azar nunca produjo diferencias mayores ni menores</strong> que esos valores extremos. Así que cada diseño es sensible a cualquier diferencia que esté <strong>por debajo de la línea inferior o por encima de la línea superior</strong>.</p>
 <p>Otra forma de decirlo es la siguiente: ¿Cuáles de los tamaños muestrales son sensibles a una diferencia de +10 o -10? Es decir, si se observa una diferencia de +10 o -10, entonces podríamos decir con mucha confianza que <strong>esa diferencia no fue causada por azar</strong>, porque según estas simulaciones, el azar <strong>nunca</strong> produjo diferencias tan grandes. Para ayudarnos a ver cuáles son sensibles, la <a href="#fig-5crumpredline" class="quarto-xref">Figura&nbsp;<span>6.22</span></a> traza líneas horizontales en -10 y +10:</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5crumpredline_d8409a80f3a3c10c4908055c31104e5a">
+<div class="cell">
 <div class="cell-output-display">
 <div id="fig-5crumpredline" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1227,7 +1227,7 @@ Figura&nbsp;6.22: La línea roja representa el tamaño de una diferencia de medi
 <h3 data-number="6.6.1" class="anchored" data-anchor-id="ejemplo-ficticio-masticar-chicle-mejora-tus-calificaciones"><span class="header-section-number">6.6.1</span> Ejemplo ficticio: ¿masticar chicle mejora tus calificaciones?</h3>
 <p>Supongamos que ejecutás un experimento para saber si masticar chicle hace que los estudiantes obtengan mejores notas en un examen de estadística. Asignás al azar a 20 estudiantes a la condición “con chicle”, y a otros 20 estudiantes a la condición “sin chicle”. Después, les tomás un examen de estadística a todos y medís sus notas. Si masticar chicle causa mejores calificaciones, entonces el grupo con chicle debería tener, en promedio, <strong>notas más altas</strong> que el grupo sin chicle.</p>
 <p>Digamos que los datos lucen así:</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/unnamed-chunk-5_dfe4210e8732c96c6c1b055719a58a09">
+<div class="cell">
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
@@ -1240,126 +1240,126 @@ Figura&nbsp;6.22: La línea roja representa el tamaño de una diferencia de medi
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">1</td>
-<td style="text-align: left;">95</td>
-<td style="text-align: left;">87</td>
+<td style="text-align: left;">83</td>
+<td style="text-align: left;">48</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">2</td>
-<td style="text-align: left;">87</td>
-<td style="text-align: left;">61</td>
+<td style="text-align: left;">71</td>
+<td style="text-align: left;">85</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">3</td>
-<td style="text-align: left;">98</td>
-<td style="text-align: left;">74</td>
+<td style="text-align: left;">80</td>
+<td style="text-align: left;">72</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">4</td>
-<td style="text-align: left;">79</td>
-<td style="text-align: left;">82</td>
+<td style="text-align: left;">78</td>
+<td style="text-align: left;">74</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">5</td>
-<td style="text-align: left;">85</td>
-<td style="text-align: left;">66</td>
+<td style="text-align: left;">75</td>
+<td style="text-align: left;">65</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">6</td>
-<td style="text-align: left;">98</td>
-<td style="text-align: left;">67</td>
+<td style="text-align: left;">99</td>
+<td style="text-align: left;">87</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">7</td>
-<td style="text-align: left;">97</td>
-<td style="text-align: left;">83</td>
+<td style="text-align: left;">94</td>
+<td style="text-align: left;">79</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">8</td>
-<td style="text-align: left;">90</td>
-<td style="text-align: left;">66</td>
+<td style="text-align: left;">96</td>
+<td style="text-align: left;">82</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">9</td>
-<td style="text-align: left;">76</td>
-<td style="text-align: left;">44</td>
+<td style="text-align: left;">94</td>
+<td style="text-align: left;">78</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">10</td>
-<td style="text-align: left;">96</td>
-<td style="text-align: left;">45</td>
+<td style="text-align: left;">92</td>
+<td style="text-align: left;">69</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">11</td>
-<td style="text-align: left;">74</td>
-<td style="text-align: left;">60</td>
+<td style="text-align: left;">82</td>
+<td style="text-align: left;">57</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">12</td>
-<td style="text-align: left;">84</td>
-<td style="text-align: left;">71</td>
+<td style="text-align: left;">85</td>
+<td style="text-align: left;">74</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">13</td>
-<td style="text-align: left;">85</td>
+<td style="text-align: left;">72</td>
 <td style="text-align: left;">86</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">14</td>
-<td style="text-align: left;">73</td>
-<td style="text-align: left;">86</td>
+<td style="text-align: left;">96</td>
+<td style="text-align: left;">90</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">15</td>
-<td style="text-align: left;">95</td>
-<td style="text-align: left;">59</td>
+<td style="text-align: left;">93</td>
+<td style="text-align: left;">69</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">16</td>
-<td style="text-align: left;">74</td>
-<td style="text-align: left;">78</td>
+<td style="text-align: left;">91</td>
+<td style="text-align: left;">62</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">17</td>
-<td style="text-align: left;">95</td>
-<td style="text-align: left;">87</td>
+<td style="text-align: left;">91</td>
+<td style="text-align: left;">45</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">18</td>
-<td style="text-align: left;">91</td>
-<td style="text-align: left;">61</td>
+<td style="text-align: left;">85</td>
+<td style="text-align: left;">50</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">19</td>
+<td style="text-align: left;">91</td>
 <td style="text-align: left;">74</td>
-<td style="text-align: left;">84</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">20</td>
-<td style="text-align: left;">78</td>
-<td style="text-align: left;">57</td>
+<td style="text-align: left;">75</td>
+<td style="text-align: left;">67</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Sumas</td>
-<td style="text-align: left;">1724</td>
-<td style="text-align: left;">1404</td>
+<td style="text-align: left;">1723</td>
+<td style="text-align: left;">1413</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Medias</td>
-<td style="text-align: left;">86.2</td>
-<td style="text-align: left;">70.2</td>
+<td style="text-align: left;">86.15</td>
+<td style="text-align: left;">70.65</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<p>Entonces, ¿los estudiantes que masticaron chicle tuvieron mejor desempeño que los que no lo hicieron? Mirá la fila de medias al final de la tabla. La media para los estudiantes que masticaron chicle fue 86.2, y la media para los estudiantes sin chicle fue 70.2. A simple vista, parece que masticar chicle <strong>funcionó</strong>.</p>
+<p>Entonces, ¿los estudiantes que masticaron chicle tuvieron mejor desempeño que los que no lo hicieron? Mirá la fila de medias al final de la tabla. La media para los estudiantes que masticaron chicle fue 86.15, y la media para los estudiantes sin chicle fue 70.65. A simple vista, parece que masticar chicle <strong>funcionó</strong>.</p>
 <p>“¡PAREN LAS ROTATIVAS, esto es ridículo!”. Ya sabemos que es ridículo porque estamos usando datos inventados. Pero, incluso si estos fueran datos reales, podrías pensar: “Eso del chicle no tiene sentido, esta diferencia podría haber sido causada por azar. Quizás los estudiantes más inteligentes cayeron por azar en el grupo con chicle, y por eso sus notas fueron más altas… el chicle en realidad no hizo nada…”. Estamos de acuerdo. Pero echemos un vistazo más de cerca. Ya sabemos cómo salieron los datos. Lo que queremos saber es <strong>cómo podrían haber salido</strong>. ¿Cuáles son todas las posibilidades?</p>
 <p>Por ejemplo, los datos habrían salido un poco distintos si hubiéramos asignado a algunos estudiantes del grupo con chicle al grupo sin chicle, y viceversa. Pensá en todas las formas posibles de asignar a los 40 estudiantes en dos grupos; hay <strong>muchísimas maneras</strong>. Y las medias de cada grupo serían diferentes dependiendo de cómo se asignen los estudiantes.</p>
 <p>En la práctica, no es posible ejecutar el experimento de todas esas formas posibles —eso llevaría demasiado tiempo. Pero <strong>sí podemos estimar cómo habrían salido todos esos experimentos</strong> usando simulación. Esta es la idea: Tomamos las 40 mediciones (las notas del examen) que obtuvimos para todos los estudiantes. Luego, seleccionamos aleatoriamente a 20 de ellas y fingimos que fueron del grupo con chicle, y las 20 restantes las asignamos al grupo sin chicle. Entonces, volvemos a calcular las medias para ver qué habría pasado. Y seguimos haciendo esto una y otra vez, cada vez calculando lo que habría pasado en esa versión alternativa del experimento.</p>
 <section id="haciendo-la-aleatorización" class="level4" data-number="6.6.1.1">
 <h4 data-number="6.6.1.1" class="anchored" data-anchor-id="haciendo-la-aleatorización"><span class="header-section-number">6.6.1.1</span> Haciendo la aleatorización</h4>
 <p>Antes de hacer eso, vamos a mostrar cómo funciona la parte de la aleatorización. Usaremos menos números para que el proceso sea más fácil de visualizar. Acá están los primeros 5 puntajes de examen para los estudiantes en ambos grupos:</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/unnamed-chunk-6_80cd3e85a7c5b946693141655e841b76">
+<div class="cell">
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
@@ -1372,51 +1372,51 @@ Figura&nbsp;6.22: La línea roja representa el tamaño de una diferencia de medi
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">1</td>
-<td style="text-align: left;">95</td>
-<td style="text-align: left;">87</td>
+<td style="text-align: left;">83</td>
+<td style="text-align: left;">48</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">2</td>
-<td style="text-align: left;">87</td>
-<td style="text-align: left;">61</td>
+<td style="text-align: left;">71</td>
+<td style="text-align: left;">85</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">3</td>
-<td style="text-align: left;">98</td>
-<td style="text-align: left;">74</td>
+<td style="text-align: left;">80</td>
+<td style="text-align: left;">72</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">4</td>
-<td style="text-align: left;">79</td>
-<td style="text-align: left;">82</td>
+<td style="text-align: left;">78</td>
+<td style="text-align: left;">74</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">5</td>
-<td style="text-align: left;">85</td>
-<td style="text-align: left;">66</td>
+<td style="text-align: left;">75</td>
+<td style="text-align: left;">65</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Sums</td>
-<td style="text-align: left;">444</td>
-<td style="text-align: left;">370</td>
+<td style="text-align: left;">387</td>
+<td style="text-align: left;">344</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Means</td>
-<td style="text-align: left;">88.8</td>
-<td style="text-align: left;">74</td>
+<td style="text-align: left;">77.4</td>
+<td style="text-align: left;">68.8</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 <p>Las cosas podrían haber salido diferente si algunos de los sujetos en el grupo con chicle hubieran sido intercambiados con sujetos del grupo sin chicle. Así es cómo podemos hacer un poco de aleatorización.</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/unnamed-chunk-7_215fa17f12eeeda57ac7b1db490711d4">
-<pre><code>#&gt; [1] 79 74 66 82 61
-#&gt; [1] 87 87 85 95 98</code></pre>
+<div class="cell">
+<pre><code>#&gt; [1] 65 48 78 80 75
+#&gt; [1] 85 71 83 72 74</code></pre>
 </div>
 <p>Tomamos los primeros 5 números de los datos originales, y los pusimos todos en una variable llamada <code>all_scores</code>. Luego usamos la función <code>sample</code> en R para mezclar los puntajes. Finalmente, tomamos los primeros 5 puntajes mezclados y los guardamos en una nueva variable llamada <code>new_chicle</code>. Después, colocamos los últimos 5 puntajes en la variable <code>new_no_chicle</code>. Luego los imprimimos, así podemos verlos.</p>
 <p>Si hacemos esto un par de veces y lo ponemos en una tabla, podemos ver que las medias para “con chicle” y “sin chicle” serían distintas si los sujetos se asignaran al azar de otra forma. Fijate:</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/unnamed-chunk-8_0a31089fa8c4a4c5d4874cc8d3fc2709">
+<div class="cell">
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <colgroup>
@@ -1442,66 +1442,66 @@ Figura&nbsp;6.22: La línea roja representa el tamaño de una diferencia de medi
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">1</td>
-<td style="text-align: left;">95</td>
-<td style="text-align: left;">87</td>
-<td style="text-align: left;">87</td>
-<td style="text-align: left;">61</td>
-<td style="text-align: left;">82</td>
+<td style="text-align: left;">83</td>
+<td style="text-align: left;">48</td>
+<td style="text-align: left;">83</td>
+<td style="text-align: left;">74</td>
+<td style="text-align: left;">80</td>
 <td style="text-align: left;">85</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">2</td>
-<td style="text-align: left;">87</td>
-<td style="text-align: left;">61</td>
-<td style="text-align: left;">74</td>
-<td style="text-align: left;">66</td>
-<td style="text-align: left;">61</td>
-<td style="text-align: left;">95</td>
+<td style="text-align: left;">71</td>
+<td style="text-align: left;">85</td>
+<td style="text-align: left;">75</td>
+<td style="text-align: left;">78</td>
+<td style="text-align: left;">75</td>
+<td style="text-align: left;">48</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">3</td>
-<td style="text-align: left;">98</td>
+<td style="text-align: left;">80</td>
+<td style="text-align: left;">72</td>
+<td style="text-align: left;">48</td>
+<td style="text-align: left;">85</td>
+<td style="text-align: left;">83</td>
 <td style="text-align: left;">74</td>
-<td style="text-align: left;">82</td>
-<td style="text-align: left;">98</td>
-<td style="text-align: left;">87</td>
-<td style="text-align: left;">79</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">4</td>
-<td style="text-align: left;">79</td>
-<td style="text-align: left;">82</td>
-<td style="text-align: left;">85</td>
-<td style="text-align: left;">79</td>
-<td style="text-align: left;">66</td>
-<td style="text-align: left;">87</td>
+<td style="text-align: left;">78</td>
+<td style="text-align: left;">74</td>
+<td style="text-align: left;">71</td>
+<td style="text-align: left;">65</td>
+<td style="text-align: left;">65</td>
+<td style="text-align: left;">71</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">5</td>
-<td style="text-align: left;">85</td>
-<td style="text-align: left;">66</td>
-<td style="text-align: left;">87</td>
-<td style="text-align: left;">95</td>
-<td style="text-align: left;">98</td>
-<td style="text-align: left;">74</td>
+<td style="text-align: left;">75</td>
+<td style="text-align: left;">65</td>
+<td style="text-align: left;">80</td>
+<td style="text-align: left;">72</td>
+<td style="text-align: left;">78</td>
+<td style="text-align: left;">72</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Sumas</td>
-<td style="text-align: left;">444</td>
-<td style="text-align: left;">370</td>
-<td style="text-align: left;">415</td>
-<td style="text-align: left;">399</td>
-<td style="text-align: left;">394</td>
-<td style="text-align: left;">420</td>
+<td style="text-align: left;">387</td>
+<td style="text-align: left;">344</td>
+<td style="text-align: left;">357</td>
+<td style="text-align: left;">374</td>
+<td style="text-align: left;">381</td>
+<td style="text-align: left;">350</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Medias</td>
-<td style="text-align: left;">88.8</td>
-<td style="text-align: left;">74</td>
-<td style="text-align: left;">83</td>
-<td style="text-align: left;">79.8</td>
-<td style="text-align: left;">78.8</td>
-<td style="text-align: left;">84</td>
+<td style="text-align: left;">77.4</td>
+<td style="text-align: left;">68.8</td>
+<td style="text-align: left;">71.4</td>
+<td style="text-align: left;">74.8</td>
+<td style="text-align: left;">76.2</td>
+<td style="text-align: left;">70</td>
 </tr>
 </tbody>
 </table>
@@ -1510,12 +1510,12 @@ Figura&nbsp;6.22: La línea roja representa el tamaño de una diferencia de medi
 </section>
 <section id="simulando-las-diferencias-de-medias-en-distintas-aleatorizaciones" class="level4" data-number="6.6.1.2">
 <h4 data-number="6.6.1.2" class="anchored" data-anchor-id="simulando-las-diferencias-de-medias-en-distintas-aleatorizaciones"><span class="header-section-number">6.6.1.2</span> Simulando las diferencias de medias en distintas aleatorizaciones</h4>
-<p>En nuestro experimento ficticio encontramos que la media para los estudiantes que masticaron chicle fue 86.2, y la media para los que no lo hicieron fue 70.2. La diferencia de medias (chicle – sin chicle) fue 16. Esa es una diferencia bastante grande. Eso es <strong>lo que pasó</strong>. Pero, <strong>¿qué podría haber pasado</strong>? Si probáramos todos los experimentos posibles en los que los sujetos se asignan de forma diferente, ¿cómo luciría la distribución de las posibles diferencias de medias?</p>
+<p>En nuestro experimento ficticio encontramos que la media para los estudiantes que masticaron chicle fue 86.15, y la media para los que no lo hicieron fue 70.65. La diferencia de medias (chicle – sin chicle) fue 15.5. Esa es una diferencia bastante grande. Eso es <strong>lo que pasó</strong>. Pero, <strong>¿qué podría haber pasado</strong>? Si probáramos todos los experimentos posibles en los que los sujetos se asignan de forma diferente, ¿cómo luciría la distribución de las posibles diferencias de medias?</p>
 <p>Vamos a averiguarlo. De eso se trata exactamente la prueba de aleatorización. Cuando hacemos nuestra prueba de aleatorización, vamos a medir la diferencia de medias en los puntajes del examen entre el grupo con chicle y el grupo sin chicle. Cada vez que hagamos una aleatorización, guardaremos la diferencia de medias.</p>
 <p>Veamos una pequeña animación de lo que ocurre durante la prueba de aleatorización. La <a href="#fig-5randtest" class="quarto-xref">Figura&nbsp;<span>6.23</span></a> muestra datos de otro experimento ficticio, pero los principios son los mismos. Después volveremos al experimento del chicle.</p>
 <p>La animación muestra tres cosas importantes: Primero, los puntos púrpuras muestran las medias de los puntajes en dos grupos (no estudió vs.&nbsp;estudió). Parece que hay una diferencia, ya que un punto está más bajo que el otro. Queremos saber si <strong>el azar podría producir una diferencia tan grande</strong>.</p>
 <p>Al comienzo de la animación, los puntos verde claro y rojo muestran los puntajes individuales de cada uno de los 10 sujetos en el diseño (los puntos púrpura son las medias de estos puntajes originales). Luego, durante las aleatorizaciones, mezclamos aleatoriamente los puntajes originales entre los grupos. Podés ver esto ocurriendo a lo largo de la animación, mientras los puntos verde y rojo aparecen en diferentes combinaciones aleatorias. Los puntos amarillos en movimiento te muestran las <strong>nuevas medias para cada grupo después de la aleatorización</strong>. Las diferencias entre los puntos amarillos te muestran el <strong>rango de diferencias que el azar podría producir</strong>.</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5randtest_7ed97a7079ad7c274f06b97927925d4d">
+<div class="cell">
 <div class="cell-output-display">
 <div id="fig-5randtest" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1533,7 +1533,7 @@ Figura&nbsp;6.23: Animación de una prueba de aleatorización. Los puntos púrpu
 <p>Si los puntos púrpura estuvieran <strong>dentro del rango de los puntos amarillos</strong>, entonces sabríamos que el azar <strong>es capaz de producir</strong> la diferencia que observamos, y que lo hace <strong>con bastante frecuencia</strong>. En ese caso, <strong>no deberíamos concluir</strong> que la manipulación causó la diferencia, porque <strong>podría haber ocurrido fácilmente por azar</strong>.</p>
 <p>Volvamos al ejemplo del chicle. Después de aleatorizar nuestras notas muchas veces, y de calcular las nuevas medias y las diferencias de medias, vamos a tener <strong>un montón de diferencias</strong> para observar, que podemos representar en un histograma. Ese histograma da una imagen de <strong>lo que podría haber pasado</strong>. Luego, podemos comparar <strong>lo que pasó realmente</strong> con <strong>lo que podría haber pasado</strong>.</p>
 <p>Este es el histograma de las diferencias de medias obtenidas con la prueba de aleatorización. Para esta simulación, aleatorizamos los resultados del experimento original 1000 veces. Esto es lo que <strong>podría haber pasado</strong>. La línea azul en la <a href="#fig-5randhist" class="quarto-xref">Figura&nbsp;<span>6.24</span></a> muestra <strong>dónde se ubica la diferencia observada</strong> sobre el eje x.</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5randhist_e12a2079e3c4aef0de44ce3fa682a25f">
+<div class="cell">
 <div class="cell-output-display">
 <div id="fig-5randhist" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1552,7 +1552,7 @@ Figura&nbsp;6.24: Histograma de diferencias de medias simuladas en una prueba de
 <p>Como podés ver, las diferencias de medias varían de negativas a positivas. La diferencia más frecuente es 0. Además, la distribución parece simétrica en torno al cero, lo que muestra que teníamos aproximadamente las mismas probabilidades de obtener una diferencia positiva o negativa. También notá que a medida que las diferencias se hacen más grandes (ya sea en dirección positiva o negativa), <strong>se vuelven menos frecuentes</strong>. La línea azul nos muestra <strong>la diferencia observada</strong>, la que encontramos en nuestro experimento inventado. ¿Dónde está? Muy a la derecha. Está <strong>bien fuera del histograma</strong>. En otras palabras, cuando miramos <strong>lo que podría haber pasado</strong>, vemos que <strong>lo que pasó realmente</strong> no ocurre muy seguido.</p>
 <p><strong>IMPORTANTE:</strong> En este caso, cuando hablamos de <strong>lo que podría haber pasado</strong>, nos referimos a lo que <strong>podría haber pasado por azar</strong>. Cuando comparamos lo que pasó con lo que el azar podría haber producido, podemos tener una mejor idea de si nuestro resultado fue o no <strong>causado por azar</strong>.</p>
 <p>OK, ahora vamos a fingir que obtuvimos una diferencia de medias <strong>mucho más pequeña</strong> cuando ejecutamos el experimento. Podemos trazar nuevas líneas (azul y roja) para representar una media más pequeña que podríamos haber encontrado.</p>
-<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5randquestion_7431ea7746509117ffcbb1d630f9e82c">
+<div class="cell">
 <div class="cell-output-display">
 <div id="fig-5randquestion" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">

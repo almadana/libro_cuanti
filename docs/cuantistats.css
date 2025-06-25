@@ -95,15 +95,13 @@ h1, h2, h3 {
     padding-top: 50px;
   }
 
-div.sidebar-item-container .active {
-  border-left: 3px solid #6446fa;
-  padding-left: 6px;
-}
-
+/* Sidebar izquierdo (capítulo activo) */
 div.sidebar-item-container .active,
 div.sidebar-item-container .show > .nav-link {
-  color: #6446fa !important;   /* tu violeta */
-  background-color: transparent; /* o poné un fondo si querés destacarlo más */
+  border-left: 3px solid #6446fa;
+  padding-left: 6px;
+  color: #6446fa !important;
+  background-color: transparent;
 }
 
 
@@ -186,11 +184,11 @@ div.sidebar-item-container .show > .nav-link {
   content: "";
   position: absolute;
   top: 20px;
-  left: 2vw;  /* margen izquierdo relativo al ancho */
+  left: 28vw;  /* margen izquierdo relativo al ancho */
   width: 20vw;
-  max-width: 150px;
+  max-width: 300px;
   aspect-ratio: 3 / 2;
-  background-image: url("URL_DEL_LOGO_IZQUIERDO");
+  background-image: url(https://psico.edu.uy/themes/custom/hemet/logo-m.png);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: top left;
@@ -214,6 +212,14 @@ div.sidebar-item-container .show > .nav-link {
   pointer-events: none;
 }
 
+.sidebar nav[role=doc-toc] .nav-link.active  {
+  color: #6446fa !important;
+  border-left: 1px solid #6446fa;
+  padding-left: 6px;
+  background-color: transparent;
+}
 
-
+.sidebar nav[role=doc-toc]>h2, .sidebar nav[role=doc-toc]>.h2 {
+  font-weight: bold;
+}
 

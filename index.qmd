@@ -2,9 +2,13 @@
 lang: es
 ---
 
+```{r}
+# chunk vacío para activar la sesión R
+```
+
 # Prefacio {.unnumbered}
 
-Primera traducción al español (versión 0.1 = 7 Abril 2025) Compilado: {{r Sys.Date()}}
+Primera traducción al español (versión 0.1 = 7 Abril 2025) Compilado: `r Sys.Date()`
 
 **Traducción de:** <https://crumplab.github.io/statistics/>
 

@@ -6,6 +6,8 @@ book:
   title: "Respondiendo preguntas con datos"
   cover-image: imgs/TextbookCover.png
   author:
+    - "Álvaro Cabana"
+    - "Clementina Tomás"
     - "Matthew J. C. Crump"
     - "Danielle J. Navarro"
     - "Jeffrey Suzuki"
@@ -22,11 +24,11 @@ book:
     - 06-ttests.qmd
     - 06b-chi_cuadrado.qmd
     - 07-ANOVA.qmd
-    - 08-RMANOVA.qmd
-    - 09-FactorialANOVA.qmd
-    - 10-MixedANOVA.qmd
-    - 11-Simulation.qmd
-    - 12-Thinking.qmd
+    #- 08-RMANOVA.qmd
+    #- 09-FactorialANOVA.qmd
+    #- 10-MixedANOVA.qmd
+    #- 11-Simulation.qmd
+    #- 12-Thinking.qmd
     - 13-Gifs.qmd
     - references.qmd
   site-url: https://almadana.github.io/libro_cuanti/
@@ -46,6 +48,7 @@ bibliography: [StatisticsTextbook.bib]
 format:
   html:
     theme: cosmo
+    css: cuantistats.css
   pdf:
     documentclass: scrreprt
 

@@ -18,32 +18,33 @@ Primera traducción al español (versión 0.1 = 7 Abril 2025) Compilado: `r Sys.
 
 This is a free textbook teaching introductory statistics for undergraduates in Psychology. This textbook is part of a larger OER course package for teaching undergraduate statistics in Psychology, including this textbook, a lab manual, and a course website. All of the materials are free and copiable, with source code maintained in Github repositories. The links below connect to various components of the project. The main OSF project link is <https://osf.io/3s68c/>.
 
-### Textbook
+### Texto original
 
 -   website: <https://crumplab.github.io/statistics/>
 -   OSF: <https://osf.io/jze52/>
 -   Github: <https://github.com/CrumpLab/statistics>
 -   DOI: 10.17605/OSF.IO/JZE52
 
-### Lab Manual
+### Texto traducido
 
--   website: <https://crumplab.github.io/statisticsLab/>
--   OSF: <https://osf.io/m2npj/>
--   Github: <https://github.com/CrumpLab/statisticsLab>
--   DOI: 10.17605/OSF.IO/M2NPJ
+-   website: <https://almadana.github.io/libro_cuanti/>
+-   Github: <https://github.com/almadana/libro_cuanti>
 
-### Course website
+### Sitios asociados al curso de Cuanti
 
--   website: <https://crumplab.github.io/psyc3400/>
--   OSF: <https://osf.io/awxu9/>
--   Github: <https://github.com/CrumpLab/psyc3400>
--   DOI: 10.17605/OSF.IO/AWXU9
+-   EVA: <https://eva-cursos.psico.edu.uy/>
+-   Lecciones: <https://almadana.github.io/lecciones_cuanti/>
+-   Repo Lecciones: <https://github.com/almadana/lecciones_cuanti/>
+-   Prácticos: <https://almadana.github.io/practicos_cuanti/>
+-   Repo prácticos: <https://github.com/CrumpLab/psyc3400>
 
-All resources are released under a creative commons licence [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Click the link to read more about the license, or read more below in the license section.
+Todos los recursos están bajo licencia Creative Commons [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Haz click para leer más sobre la licencia, o lee más abajo en la sección de licencia.
 
-### Contributors
+### Contribuyentes
 
 Traducción: ChatGPT-4o. Supervisión: Álvaro Cabana
+Nuevos capítulos: ChatGPT-4o. Supervisión: Álvaro Cabana
+Adendas: Clementina Tomás, Emilia Flo
 
 Team members contributing new content include, Matthew Crump, Alla Chavarga, Anjali Krishnan, Jeffrey Suzuki, and Stephen Volz. This textbook was primarily written by Matthew J. C. Crump. Jeff contributed the YouTube videos peppered throughout the textbook. All of Jeff's statistics videos are available on his Youtube channel: [Statistics Video playlist](https://www.youtube.com/playlist?list=PLKXdxQAT3tCvuex_E1ZnQYaw897ELUSaI).
 

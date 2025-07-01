@@ -17,12 +17,6 @@ This is a free textbook teaching introductory statistics for undergraduates in P
 -   Github: <https://github.com/CrumpLab/statistics>
 -   DOI: 10.17605/OSF.IO/JZE52
 
-### Lab Manual
-
--   website: <https://crumplab.github.io/statisticsLab/>
--   OSF: <https://osf.io/m2npj/>
--   Github: <https://github.com/CrumpLab/statisticsLab>
--   DOI: 10.17605/OSF.IO/M2NPJ
 
 ### Course website
 

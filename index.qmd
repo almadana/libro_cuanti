@@ -3,7 +3,7 @@ lang: es
 ---
 
 ```{r}
-# chunk vacío para activar la sesión R
+
 ```
 
 # Prefacio {.unnumbered}
@@ -42,9 +42,7 @@ Todos los recursos están bajo licencia Creative Commons [CC BY-SA 4.0](https://
 
 ### Contribuyentes
 
-Traducción: ChatGPT-4o. Supervisión: Álvaro Cabana
-Nuevos capítulos: ChatGPT-4o. Supervisión: Álvaro Cabana
-Adendas: Clementina Tomás, Emilia Flo
+Traducción: ChatGPT-4o. Supervisión: Álvaro Cabana Nuevos capítulos: ChatGPT-4o. Supervisión: Álvaro Cabana Adendas: Clementina Tomás, Emilia Flo
 
 Team members contributing new content include, Matthew Crump, Alla Chavarga, Anjali Krishnan, Jeffrey Suzuki, and Stephen Volz. This textbook was primarily written by Matthew J. C. Crump. Jeff contributed the YouTube videos peppered throughout the textbook. All of Jeff's statistics videos are available on his Youtube channel: [Statistics Video playlist](https://www.youtube.com/playlist?list=PLKXdxQAT3tCvuex_E1ZnQYaw897ELUSaI).
 

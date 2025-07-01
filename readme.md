@@ -10,7 +10,7 @@ Borrador de la traducción al Español (version 0.9 = 22 Mayo 2025) Compilado po
 
 This is a free textbook teaching introductory statistics for undergraduates in Psychology. This textbook is part of a larger OER course package for teaching undergraduate statistics in Psychology, including this textbook, a lab manual, and a course website. All of the materials are free and copiable, with source code maintained in Github repositories. The links below connect to various components of the project. The main OSF project link is <https://osf.io/3s68c/>.
 
-### Textbook
+### Libro de texto
 
 -   website: <https://crumplab.github.io/statistics/>
 -   OSF: <https://osf.io/jze52/>

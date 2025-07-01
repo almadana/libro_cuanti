@@ -1,0 +1,30 @@
+name: Export docs to docs-root branch
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  export-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Necesario para push con historial limpio
+
+      - name: Copy docs folder to root
+        run: |
+          rm -rf temp-export
+          mkdir temp-export
+          cp -r docs/* temp-export/
+          cd temp-export
+          git init
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git checkout -b docs-root
+          git add .
+          git commit -m "Update docs-root branch from docs/ folder"
+          git push --force https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} docs-root

@@ -3,7 +3,7 @@ name: Export docs to docs-root branch
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   export-docs:

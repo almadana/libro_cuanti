@@ -6,17 +6,16 @@ aliases: [Tablas.html]
 
 # Tablas
 
-
 Una de las primeras cosas que aprendemos cuando nos acercamos a la investigación —ya sea como estudiantes o como lectores críticos— es que muchas preguntas importantes no se responden con una única cifra, sino con **una tabla**. Y sin embargo, nadie nos enseña con suficiente detalle a leerlas bien.
 
 Las tablas están por todos lados. En artículos, en informes, en presentaciones de resultados. Se usan para mostrar diagnósticos, comparar tratamientos, resumir encuestas, registrar elecciones, agrupar síntomas, clasificar pacientes. A veces parecen triviales: solo una cuadrícula con números. Pero un malentendido en cómo leerlas puede llevar a **conclusiones completamente erradas**. De hecho, muchas de las ideas más equivocadas sobre datos sociales surgen de leer mal una tabla.
 
 En este capítulo vamos a detenernos en ese primer paso, fundamental pero a veces ignorado: **leer una tabla categórica**. No solo verla, sino entender:
 
-* qué representa cada número,
-* cómo se comparan las filas y las columnas,
-* qué tipo de proporción estamos leyendo (y cuál *creemos* que estamos leyendo),
-* y qué conclusiones podemos (o no podemos) sacar a partir de ella.
+-   qué representa cada número,
+-   cómo se comparan las filas y las columnas,
+-   qué tipo de proporción estamos leyendo (y cuál *creemos* que estamos leyendo),
+-   y qué conclusiones podemos (o no podemos) sacar a partir de ella.
 
 Porque antes de correr modelos, hacer tests, o calcular valores *p*, hay algo más simple y más poderoso: **mirar con atención qué dicen los datos, y cómo lo dicen**. Y lo vamos a hacer paso a paso, desde lo más básico: contar.
 
@@ -47,7 +46,6 @@ knitr::kable(tabla_absoluta,col.names = c("respuestas","frecuencia"),align="c")
 ```
 
 Esto nos da la tabla de frecuencias absolutas. Es lo más básico, pero ya nos permite ver cuál fue la opción más popular (en este caso, claramente *Perro*). Pero esa es solo una parte de la historia.
-
 
 ## Ver lo que contamos
 
@@ -96,13 +94,13 @@ knitr::kable(round(tabla_relativa, 3),col.names = c("respuestas","frecuencia"),a
 
 Ahora vemos que:
 
-* “Perro” fue elegido por el 50% de los estudiantes.
-* “Gato”, por el 35%.
-* “Ave”, por el 15%.
+-   “Perro” fue elegido por el 50% de los estudiantes.
+-   “Gato”, por el 35%.
+-   “Ave”, por el 15%.
 
 Más allá del conteo, ahora sabemos qué **fracción del grupo** representa cada preferencia. Y eso nos permite **comparar categorías con tamaños distintos**.
 
----
+------------------------------------------------------------------------
 
 ### Lo mismo, pero con el 100%
 
@@ -141,12 +139,11 @@ A veces, las categorías tienen **orden**.
 
 Pensá en escalas de respuesta como estas:
 
-* “Nada”, “Poco”, “Algo”, “Mucho”
-* “Nunca”, “A veces”, “Frecuentemente”, “Siempre”
-* “Totalmente en desacuerdo” a “Totalmente de acuerdo”
+-   “Nada”, “Poco”, “Algo”, “Mucho”
+-   “Nunca”, “A veces”, “Frecuentemente”, “Siempre”
+-   “Totalmente en desacuerdo” a “Totalmente de acuerdo”
 
 En estos casos, no estamos eligiendo simplemente una etiqueta. Estamos ubicándonos en una **serie ordenada de niveles**. Esa estructura permite hacer algo que antes no podíamos: **acumular**.
-
 
 ### ¿Para qué sirve acumular?
 
@@ -166,8 +163,8 @@ ansiedad_tabla
 
 Podés ver cuántas personas hay en cada nivel. Eso es útil. Pero capaz lo que te interesa no es tanto “¿cuántas dijeron 3?”, sino:
 
-* ¿Cuántas personas tienen ansiedad de 3 **o menos**?
-* ¿Qué porcentaje del grupo está en los niveles **más bajos**?
+-   ¿Cuántas personas tienen ansiedad de 3 **o menos**?
+-   ¿Qué porcentaje del grupo está en los niveles **más bajos**?
 
 Ahí es donde entra la **frecuencia acumulada**: sumás progresivamente las frecuencias hasta cada punto del orden.
 
@@ -199,7 +196,7 @@ Por ejemplo, podemos ver que el **73% de las personas** tiene una puntuación de
 
 Las frecuencias acumuladas nos ayudan a identificar **umbrales**, **cortes** y **agrupamientos** en escalas ordinales. Son especialmente útiles en psicología, donde se usan constantemente escalas de Likert, niveles de severidad, o clasificaciones de síntomas.
 
----
+------------------------------------------------------------------------
 
 ### Ver la acumulación
 
@@ -220,7 +217,7 @@ La línea gris horizontal marca el 50%. Donde la curva lo cruza, está la **medi
 
 **Contar** es solo el principio. Pero cuando hay orden, **sumar** nos cuenta una historia diferente. Una historia de acumulación, de corte, de “hasta aquí” y “a partir de acá”. Y eso, en psicología, es a veces la diferencia entre un caso leve y uno severo.
 
----
+------------------------------------------------------------------------
 
 ## Dos variables, una tabla: cuando las categorías se cruzan
 
@@ -228,12 +225,11 @@ Hasta ahora veníamos mirando **una sola variable a la vez**. Contábamos cuánt
 
 Pero la mayoría de las preguntas interesantes en psicología —y en ciencias sociales en general— no se responden mirando una sola variable. Nos interesa saber **cómo se relacionan entre sí**.
 
-* ¿Tienen más actitudes negativas hacia la terapia los varones que las mujeres?
-* ¿Se diagnostica más ansiedad en quienes tienen trabajos precarios?
-* ¿Hay más rechazo a la eutanasia entre personas con menor nivel educativo?
+-   ¿Tienen más actitudes negativas hacia la terapia los varones que las mujeres?
+-   ¿Se diagnostica más ansiedad en quienes tienen trabajos precarios?
+-   ¿Hay más rechazo a la eutanasia entre personas con menor nivel educativo?
 
 Todas estas preguntas implican **dos variables categóricas**. Y cuando eso pasa, aparece un recurso fundamental: la **tabla de contingencia**.
-
 
 ### ¿Qué es una tabla de contingencia?
 
@@ -256,21 +252,19 @@ tabla_conjunta
 
 Esta tabla nos muestra **frecuencias absolutas conjuntas**. Es decir, cuántas personas hay en cada cruce de categorías: cuántas mujeres con opinión positiva, cuántos hombres con opinión negativa, etc.
 
-
 ### ¿Qué se puede leer de esta tabla?
 
 A simple vista, parece que:
 
-* Hay más mujeres con opinión positiva que negativa.
-* Entre los hombres, la distribución es más pareja.
-* El grupo “Otro” también tiende a opinar más positivamente.
+-   Hay más mujeres con opinión positiva que negativa.
+-   Entre los hombres, la distribución es más pareja.
+-   El grupo “Otro” también tiende a opinar más positivamente.
 
 Pero, como veremos más adelante, **mirar sólo los números absolutos puede ser engañoso**.
 
 Por ahora, quedémonos con la idea de que la tabla de contingencia **resume cómo se distribuyen dos variables categóricas**, y que es la puerta de entrada a casi todo lo que vamos a querer analizar después: proporciones condicionales, relaciones, independencias, efectos.
 
 Y, por supuesto, la vamos a querer ver también como gráfico.
-
 
 ### Visualizar la tabla
 
@@ -293,7 +287,7 @@ ggplot(datos, aes(x = genero, fill = opinion)) +
 
 Este gráfico nos permite ver **en paralelo** las frecuencias de cada categoría, lo que a veces es más fácil que comparar números en una cuadrícula. Pero —y esto es clave— este gráfico está mostrando los **valores absolutos**, no proporciones. Y ahí es donde pueden empezar los malentendidos.
 
----
+------------------------------------------------------------------------
 
 ## Los totales mandan: leer bien una tabla (y no cometer errores)
 
@@ -301,7 +295,7 @@ Cuando uno mira una tabla de contingencia, lo primero que suele hacer es compara
 
 El problema está en no tener en cuenta **de qué total estamos hablando**.
 
----
+------------------------------------------------------------------------
 
 ### Tres tipos de totales, tres formas de leer
 
@@ -327,12 +321,12 @@ round(prop_filas, 2)
 
 Esto responde preguntas del tipo:
 
-* ¿Qué porcentaje de mujeres tuvo opinión positiva?
-* ¿Qué porcentaje de hombres fue negativo?
+-   ¿Qué porcentaje de mujeres tuvo opinión positiva?
+-   ¿Qué porcentaje de hombres fue negativo?
 
 Estas proporciones **son condicionales a la fila**. Y se usan todo el tiempo en psicología, especialmente cuando hay **grupos naturales** (género, diagnóstico, condición experimental).
 
----
+------------------------------------------------------------------------
 
 ### 2. Totales por columna
 
@@ -352,11 +346,10 @@ round(prop_columnas, 2)
 
 Esto responde preguntas como:
 
-* ¿De qué género son la mayoría de los que opinaron negativamente?
-* ¿Qué grupo está sobrerrepresentado entre los que opinan positivamente?
+-   ¿De qué género son la mayoría de los que opinaron negativamente?
+-   ¿Qué grupo está sobrerrepresentado entre los que opinan positivamente?
 
 Estas proporciones **pueden ser útiles**, pero se prestan a confusión si uno cree que está viendo lo mismo que en la tabla anterior. **No lo está.**
-
 
 ### 3. Total general
 
@@ -372,11 +365,10 @@ round(prop_total, 2)
 
 Esto responde:
 
-* ¿Qué fracción de la muestra son mujeres con opinión positiva?
-* ¿Qué porcentaje total del estudio representa cada celda?
+-   ¿Qué fracción de la muestra son mujeres con opinión positiva?
+-   ¿Qué porcentaje total del estudio representa cada celda?
 
 Es útil para estimar prevalencias conjuntas. Pero no sirve para comparar respuestas dentro de grupos.
-
 
 ## ¿Por qué importa esto?
 
@@ -394,10 +386,9 @@ Cuando al calcular los porcentajes **dentro de cada grupo**, tal vez descubrimos
 
 Estos errores son **muy comunes** en artículos, medios, e incluso investigaciones. Y se derivan de no distinguir claramente **la estructura del total**.
 
-
 > **Regla de oro: Nunca interpretes una tabla de contingencia sin saber primero de qué total estás hablando.**
 
----
+------------------------------------------------------------------------
 
 ## Tablas de prevalencia: ver cuánto hay de algo, dentro de algo
 
@@ -407,15 +398,15 @@ En psicología clínica, epidemiología y salud mental, una de las preguntas má
 
 Por ejemplo:
 
-* ¿Qué porcentaje de adolescentes varones tiene síntomas de depresión?
-* ¿Cuál es la proporción de pacientes con ansiedad en personas desempleadas?
-* ¿Cuántas personas con bajo nivel educativo han intentado suicidarse?
+-   ¿Qué porcentaje de adolescentes varones tiene síntomas de depresión?
+-   ¿Cuál es la proporción de pacientes con ansiedad en personas desempleadas?
+-   ¿Cuántas personas con bajo nivel educativo han intentado suicidarse?
 
 Este tipo de preguntas no apunta a una comparación entre grupos, ni a una inferencia estadística (todavía). Lo que busca es saber **cuánto hay de una característica** (un diagnóstico, un síntoma, una conducta) **dentro de una población determinada**.
 
 Esa pregunta tiene nombre: se llama **prevalencia**.
 
----
+------------------------------------------------------------------------
 
 ### ¿Qué es la prevalencia?
 
@@ -425,7 +416,7 @@ Es la proporción de personas que presentan una característica determinada dent
 
 Es una proporción condicional. Es decir, está **condicionada al grupo de referencia**.
 
----
+------------------------------------------------------------------------
 
 ### Ejemplo: prevalencia de ansiedad por nivel educativo
 
@@ -444,7 +435,6 @@ tabla_ansiedad <- table(educacion, ansiedad)
 tabla_ansiedad
 ```
 
-
 ### ¿Cómo se calcula la prevalencia?
 
 Queremos saber qué proporción de personas de cada nivel educativo reportó ansiedad. Para eso, **normalizamos por fila**, es decir calculamos proporciones **dentro de cada grupo**.
@@ -459,9 +449,9 @@ round(prevalencias, 2)
 
 Ahora vemos que:
 
-* En el grupo de educación básica, el 37.5% reportó ansiedad.
-* En el grupo medio, el 25%.
-* En el grupo superior, solo el 12.5%.
+-   En el grupo de educación básica, el 37.5% reportó ansiedad.
+-   En el grupo medio, el 25%.
+-   En el grupo superior, solo el 12.5%.
 
 Estas proporciones **son las prevalencias** de ansiedad en cada grupo.
 
@@ -489,13 +479,12 @@ ggplot(datos_prev, aes(x = educacion, y = Prevalencia)) +
   theme_minimal(base_size = 14)
 ```
 
-
 ### ¿Cómo sé si estoy viendo una tabla de prevalencia?
 
 Muy fácil. Preguntate:
 
-* ¿Estoy viendo **qué porcentaje de cada grupo** presenta cierta condición?
-* ¿Las proporciones están calculadas por **fila**?
+-   ¿Estoy viendo **qué porcentaje de cada grupo** presenta cierta condición?
+-   ¿Las proporciones están calculadas por **fila**?
 
 Si la respuesta es sí, **estás frente a una tabla de prevalencia**.
 
@@ -505,8 +494,7 @@ Y ahora viene lo más importante:
 
 Porque si alguien te dice:
 
-> “La mayoría de las personas con ansiedad tienen educación básica”,
-> eso podría ser cierto simplemente porque hay **más personas con ese nivel educativo**.
+> “La mayoría de las personas con ansiedad tienen educación básica”, eso podría ser cierto simplemente porque hay **más personas con ese nivel educativo**.
 
 Pero eso **no significa** que ese grupo tenga **mayor prevalencia**. Por eso, **es clave identificar el tipo de tabla** que estás mirando. Y saber **desde qué total están calculadas las proporciones**.
 
@@ -534,7 +522,6 @@ tabla
 
 Esta tabla muestra cuántas personas de cada nivel educativo reportaron ansiedad clínica (“Sí”) o no (“No”). A simple vista, podrías pensar que el grupo de educación básica tiene más casos de ansiedad que el de nivel medio o superior. Pero, ¿eso significa que la ansiedad es más prevalente en ese grupo? Depende de **cómo leas la tabla**.
 
-
 ### Historia 1: la tabla de prevalencia
 
 Vamos a calcular **proporciones por fila**, es decir, respecto al total de personas **dentro de cada grupo educativo**:
@@ -549,14 +536,13 @@ round(prop_fila, 2)
 
 Y ahí vemos:
 
-* 37.5% de ansiedad en educación básica
-* 25% en educación media
-* 12.5% en educación superior
+-   37.5% de ansiedad en educación básica
+-   25% en educación media
+-   12.5% en educación superior
 
 **Historia 1:** la ansiedad es más prevalente entre personas con menor nivel educativo. Cuanto mayor el nivel, menor la prevalencia.
 
 > Esta es una tabla de **prevalencia**.
-
 
 ### Historia 2: proporciones por columna
 
@@ -572,9 +558,9 @@ round(prop_col, 2)
 
 Y ahora vemos otra historia:
 
-* De todas las personas con ansiedad (“Sí”), el 50% tiene educación básica
-* El 33% tiene educación media
-* El 17% tiene educación superior
+-   De todas las personas con ansiedad (“Sí”), el 50% tiene educación básica
+-   El 33% tiene educación media
+-   El 17% tiene educación superior
 
 **Historia 2:** la mayoría de las personas con ansiedad tienen bajo nivel educativo.
 
@@ -584,8 +570,8 @@ Y ahora vemos otra historia:
 
 Las dos son válidas. Y las dos cuentan cosas distintas.
 
-* La **tabla de prevalencia** (por fila) te dice cómo **afecta** una condición a un grupo.
-* La **tabla por columna** te dice **quiénes componen** una categoría de respuesta.
+-   La **tabla de prevalencia** (por fila) te dice cómo **afecta** una condición a un grupo.
+-   La **tabla por columna** te dice **quiénes componen** una categoría de respuesta.
 
 El problema no está en cuál tabla usás, sino en **creer que una te está diciendo lo que en realidad dice la otra**.
 
@@ -627,7 +613,6 @@ ggplot(df_col[df_col$Ansiedad == "Sí", ], aes(x = Nivel_educativo, y = Freq)) +
 
 Este es uno de los momentos clave del capítulo. La misma tabla puede sostener **dos narrativas distintas**, ambas basadas en números reales, pero con énfasis diferente. Y si no sabés cuál estás leyendo, podés llegar a conclusiones **opuestas** sin darte cuenta.
 
-
 ## ¿Qué porcentaje de qué? Pensar en condicionales
 
 Las proporciones no son neutrales. Siempre están **condicionadas a algo**. Decir que “el 30% de las personas tienen ansiedad” no es lo mismo que decir “el 30% de las personas con ansiedad son estudiantes”.
@@ -649,8 +634,8 @@ tabla
 
 A partir de esta tabla, podés hacer dos preguntas:
 
-* **P1.** Entre las personas de nivel educativo *básico*, ¿qué proporción tiene ansiedad?
-* **P2.** Entre las personas con *ansiedad*, ¿qué proporción tiene nivel educativo *básico*?
+-   **P1.** Entre las personas de nivel educativo *básico*, ¿qué proporción tiene ansiedad?
+-   **P2.** Entre las personas con *ansiedad*, ¿qué proporción tiene nivel educativo *básico*?
 
 Las dos preguntas son válidas. Pero **están invirtiendo la condicionalidad**.
 
@@ -667,7 +652,6 @@ Esta tabla responde a la primera pregunta: **¿qué porcentaje de cada grupo edu
 
 > Es decir: “Dado el grupo, ¿cuál es la respuesta?”
 
-
 ### Proporciones por columna (P2)
 
 ```{r}
@@ -681,21 +665,17 @@ Esta tabla responde a la segunda pregunta: **¿qué porcentaje de las personas c
 
 > Es decir: “Dada la respuesta, ¿de dónde viene?”
 
-
 ### No confundas estas dos
 
 Esto puede parecer obvio en teoría, pero en la práctica se confunde todo el tiempo. Y las consecuencias son reales. Por ejemplo:
 
-* Podés tener una condición que afecta proporcionalmente más a un grupo (mayor **prevalencia**)…
-  …pero que está compuesta en su mayoría por otro grupo (mayor **peso absoluto**).
+-   Podés tener una condición que afecta proporcionalmente más a un grupo (mayor **prevalencia**)… …pero que está compuesta en su mayoría por otro grupo (mayor **peso absoluto**).
 
-* Podés pensar que hay una “relación fuerte” entre dos variables, solo porque no estás viendo **desde qué total** se calculó cada proporción.
-
+-   Podés pensar que hay una “relación fuerte” entre dos variables, solo porque no estás viendo **desde qué total** se calculó cada proporción.
 
 ### ¿Cómo saber cuál estás viendo?
 
-Buena práctica: **mirá cómo están normalizadas las proporciones**. Si cada fila suma 1 (o 100%), entonces estás viendo proporciones **condicionales al grupo**.
-Si cada columna suma 1, entonces estás viendo proporciones **condicionales a la respuesta**.
+Buena práctica: **mirá cómo están normalizadas las proporciones**. Si cada fila suma 1 (o 100%), entonces estás viendo proporciones **condicionales al grupo**. Si cada columna suma 1, entonces estás viendo proporciones **condicionales a la respuesta**.
 
 Visualmente, podés graficarlo así:
 
@@ -737,8 +717,7 @@ Entender bien las proporciones condicionales no solo evita errores. También te 
 
 ## Incidencia: cuando contar también implica tiempo
 
-Hasta ahora veníamos preguntándonos cuántas personas tienen algo.
-Pero en muchos casos, la pregunta más importante no es quién **tiene**, sino quién **empezó a tener**.
+Hasta ahora veníamos preguntándonos cuántas personas tienen algo. Pero en muchos casos, la pregunta más importante no es quién **tiene**, sino quién **empezó a tener**.
 
 Esa diferencia —sutil pero crucial— nos lleva a un nuevo concepto: la **incidencia**.
 
@@ -754,8 +733,8 @@ Porque no es lo mismo que muchas personas tengan algo, a que muchas personas **e
 
 Un trastorno puede tener:
 
-* **Alta prevalencia y baja incidencia**: por ejemplo, una condición crónica que pocas personas desarrollan, pero que dura mucho tiempo (como la esquizofrenia).
-* **Baja prevalencia y alta incidencia**: por ejemplo, una reacción aguda y breve que mucha gente experimenta pero que se resuelve rápido (como ataques de pánico en situaciones específicas).
+-   **Alta prevalencia y baja incidencia**: por ejemplo, una condición crónica que pocas personas desarrollan, pero que dura mucho tiempo (como la esquizofrenia).
+-   **Baja prevalencia y alta incidencia**: por ejemplo, una reacción aguda y breve que mucha gente experimenta pero que se resuelve rápido (como ataques de pánico en situaciones específicas).
 
 Y eso cambia radicalmente lo que entendemos del fenómeno.
 
@@ -763,11 +742,10 @@ Y eso cambia radicalmente lo que entendemos del fenómeno.
 
 Supongamos que medimos ansiedad clínica en una muestra de estudiantes **al comienzo** y **al final** del primer mes del semestre. De los 100 estudiantes:
 
-* 10 ya tenían ansiedad cuando comenzó el semestre → **prevalencia al inicio**.
-* 15 desarrollaron ansiedad durante el primer mes → **incidencia en el primer mes**.
+-   10 ya tenían ansiedad cuando comenzó el semestre → **prevalencia al inicio**.
+-   15 desarrollaron ansiedad durante el primer mes → **incidencia en el primer mes**.
 
 Esto nos dice que hubo 15 nuevos casos, y que la **incidencia mensual** fue del 15%.
-
 
 ### Diferencias en visualización
 
@@ -808,16 +786,14 @@ incidencia <- casos_nuevos / poblacion_riesgo
 round(incidencia, 2)
 ```
 
-> Resultado: **15 de 90 personas** sin ansiedad al inicio desarrollaron ansiedad en el primer mes.
-> La incidencia fue del **17%**.
-
+> Resultado: **15 de 90 personas** sin ansiedad al inicio desarrollaron ansiedad en el primer mes. La incidencia fue del **17%**.
 
 ### Comparar no es mezclar
 
 Una tabla puede mostrarte:
 
-* la **prevalencia actual**, si te dice “cuántos tienen ansiedad ahora”;
-* o la **incidencia**, si te muestra “cuántos nuevos casos hubo entre los que no tenían”.
+-   la **prevalencia actual**, si te dice “cuántos tienen ansiedad ahora”;
+-   o la **incidencia**, si te muestra “cuántos nuevos casos hubo entre los que no tenían”.
 
 Si no sabés cuál es cuál, podés **malinterpretar el fenómeno**. Por ejemplo, podés pensar que un tratamiento fue efectivo porque bajó la prevalencia, sin darte cuenta de que la incidencia sigue siendo alta.
 
@@ -827,9 +803,9 @@ A lo largo de este capítulo recorrimos un camino que parece sencillo: contar co
 
 Aprendimos que no todas las frecuencias son iguales. Que contar puede significar:
 
-* simplemente saber **cuántos casos hay** (frecuencia absoluta),
-* o **qué proporción representan** (frecuencia relativa y porcentual),
-* o incluso, en casos con orden, **cuántos están por debajo de cierto umbral** (frecuencia acumulada).
+-   simplemente saber **cuántos casos hay** (frecuencia absoluta),
+-   o **qué proporción representan** (frecuencia relativa y porcentual),
+-   o incluso, en casos con orden, **cuántos están por debajo de cierto umbral** (frecuencia acumulada).
 
 Vimos que cuando dos variables se cruzan, todo se vuelve más interesante —y más confuso. Que no basta con ver los números: hay que saber **desde qué total se están leyendo**.
 
@@ -837,8 +813,7 @@ Nos enfrentamos a la diferencia entre **prevalencia** e **incidencia**, entre co
 
 Y, sobre todo, aprendimos algo fundamental:
 
-> **Los números en una tabla no hablan por sí solos.**
-> Necesitan contexto. Dirección. Una lectura cuidadosa.
+> **Los números en una tabla no hablan por sí solos.** Necesitan contexto. Dirección. Una lectura cuidadosa.
 
 ## ¿Y si lo que vemos es solo azar?
 
@@ -846,22 +821,16 @@ Al final de este recorrido, aparece una nueva inquietud. Una que viene acechando
 
 > *¿Y si las diferencias que veo en esta tabla se deben simplemente al azar?*
 
-Cuando ves que un grupo tiene más casos que otro…
-Cuando una categoría aparece con más frecuencia…
-Cuando una proporción parece desbalanceada…
+Cuando ves que un grupo tiene más casos que otro… Cuando una categoría aparece con más frecuencia… Cuando una proporción parece desbalanceada…
 
 … ¿cómo sabés que eso no es simplemente un efecto de la muestra? ¿De cómo justo se dieron los datos?
 
 Ahí es donde empieza la **inferencia estadística**.
 
-No porque los datos no alcancen, sino porque queremos ir más allá.
-No para complicarnos, sino para poder decir con mayor confianza:
+No porque los datos no alcancen, sino porque queremos ir más allá. No para complicarnos, sino para poder decir con mayor confianza:
 
 > *“esto que vemos no es casualidad”*.
 
-
 Y eso, precisamente, es lo que vamos a empezar a explorar en el próximo capítulo.
 
-Pero antes de probar nada, hay que saber cómo se mide una diferencia.
-Y para eso, necesitamos dar otro paso.
-
+Pero antes de probar nada, hay que saber cómo se mide una diferencia. Y para eso, necesitamos dar otro paso.

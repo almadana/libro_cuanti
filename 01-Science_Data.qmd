@@ -26,58 +26,16 @@ Es una pregunta ingenua en cierto sentido, pero muchas de las buenas preguntas l
 
 De hecho, pensándolo bien, esto suena bastante a una pregunta psicológica. Y como trabajo en un departamento de psicología, parece buena idea profundizar un poco más. ¿Es realmente razonable pensar que el "sentido común" es confiable? Los argumentos verbales tienen que construirse con lenguaje, y todo lenguaje tiene sesgos: algunas cosas son más difíciles de decir que otras, y no necesariamente porque sean falsas (por ejemplo, la electrodinámica cuántica es una buena teoría, pero difícil de explicar con palabras). Las corazonadas no están diseñadas para resolver problemas científicos, sino para manejar inferencias cotidianas ---y considerando que la evolución biológica es más lenta que el cambio cultural, deberíamos decir que están diseñadas para resolver problemas de otro mundo, distinto al que vivimos ahora. Más fundamentalmente, razonar con sentido común requiere hacer "inducción", es decir, conjeturas razonables y generalizaciones más allá de la evidencia inmediata. Si creés que podés hacer eso sin verte influenciado por distracciones o sesgos, bueno... te puedo vender el obelisco. De hecho, como veremos en la siguiente sección, ni siquiera podemos resolver problemas deductivos (que no requieren conjeturas) sin que nuestros sesgos previos se metan en el medio.
 
-### La maldición del sesgo de creencia
+### El cerebro tramposo: sesgos que nos hacen ver lo que queremos ver
 
-La mayoría de las personas son bastante inteligentes. Claramente más que otras especies con las que compartimos el planeta (aunque muchos no estarían de acuerdo). Nuestras mentes son asombrosas, capaces de hazañas increíbles de pensamiento y razonamiento. Pero eso no nos hace perfectos. Una de las muchas cosas que la psicología ha demostrado a lo largo del tiempo es que nos cuesta mucho mantenernos neutrales, evaluar la evidencia de manera imparcial y sin dejarnos llevar por nuestras creencias previas. Un buen ejemplo de esto es el sesgo de creencia en el razonamiento lógico: si le pedís a alguien que juzgue si un argumento es lógicamente válido (es decir, si la conclusión se sigue de las premisas), solemos dejarnos influenciar por qué tan creíble parece la conclusión, incluso cuando no deberíamos. Por ejemplo, este argumento es válido y tiene una conclusión creíble:
+> Yo no tengo sesgos. --- Alguien con un montón de sesgos
 
--   Ningún cigarrillo es barato (Premisa 1)
--   Algunas cosas adictivas son baratas (Premisa 2)
--   Por lo tanto, algunas cosas adictivas no son cigarrillos (Conclusión)
+La mayoría de las personas son bastante inteligentes. Claramente más que otras especies con las que compartimos el planeta (aunque muchos no estarían de acuerdo). Nuestras mentes son asombrosas, capaces de hazañas increíbles de pensamiento y razonamiento. Pero eso no nos hace perfectos. Una de las muchas cosas que la psicología ha demostrado a lo largo del tiempo es que nos cuesta mucho mantenernos neutrales, evaluar la evidencia de manera imparcial y sin dejarnos llevar por nuestras creencias previas. Un buen ejemplo de esto son los sesgos en el razonamiento lógico: si le pedís a alguien que juzgue si un argumento es lógicamente válido (es decir, si la conclusión se sigue de las premisas), solemos dejarnos influenciar por qué tan creíble parece la conclusión, incluso cuando no deberíamos. Este error tiene nombre: **sesgo de creencia**. Y está reestudiado. En un estudio clásico, @Evans1983 vio que cuando la lógica y las creencias se alinean, a la gente le va bastante bien. Pero cuando entran en conflicto… ¡ay mamita! Muchos prefieren lo que les "suena bien" a lo que es lógicamente correcto.
+Otro sesgo cognitivo brutal es el **sesgo de supervivencia**. Vayamos al pasado para explicarlo! Durante la Segunda Guerra Mundial, los Aliados querían reforzar los aviones de combate para que resistieran más tiros. Para eso, estudiaron los aviones que volvían de las misiones, y vieron que las zonas más agujereadas por balas estaban en las alas y el fuselaje. ¿Solución lógica? Reforzar esas zonas. Pero apareció Abraham Wald, un estadístico con la cabeza bien puesta, que dijo: "Pará. Estamos viendo solo los aviones que volvieron. ¿Y los que no volvieron?" Quizás los que recibieron disparos en otras partes (como el motor) nunca llegaron a contarlo. Ese es el sesgo de supervivencia: sacar conclusiones solo a partir de los casos que “sobrevivieron” a cierta selección, y olvidarnos de los que se quedaron afuera del análisis. Podemos pensar en un ejemplo más actual: ves un montón de historias de gente que dejó la facultad para emprender y ahora es millonaria. ¿La conclusión obvia? “Dejar la facultad y ser emprendedor es el camino al éxito”. Pero lo que no estás viendo son los miles que hicieron lo mismo y no llegaron a nada. Esos no aparecen en los videos motivacionales de TikToK, pero existen —y son la mayoría. 
+Un clásico del cerebro humano es el **sesgo de confirmación** que se basa en nuestra tendencia a buscar, recordar e interpretar la información de forma que confirme lo que ya creemos.
+Pongamos un ejemplo simple: supongamos que pensás que tu vecina es antipática. La saludás una vez, no te contesta, y ya está: confirmado. Pero si otro día te saluda re amable, lo más probable es que lo minimices (“seguro estaba de buen humor justo ese día”). ¿Qué pasó? Te acordás de lo que encaja con tu idea previa y descartás lo demás. En psicología pasa todo el tiempo. Supongamos que tenés una teoría sobre por qué tu paciente evita situaciones sociales. Si no tenés cuidado, vas a empezar a notar más las cosas que confirman tu hipótesis, y a pasar por alto las que no encajan. Y si no usás herramientas más objetivas (como tests o registros sistemáticos), terminás haciendo terapia basada en corazonadas. También nos pasa cuando estudiamos. Si estás convencido de que Freud la tenía clara, vas a encontrar mil citas que te lo confirmen. Y si lo odiás, vas a encontrar mil cosas para tirarlo abajo. ¿Y quién tiene razón? Depende más de lo que ya creías que de lo que estás leyendo. El sesgo de confirmación es como tener un algoritmo mental que te muestra solo lo que te gusta pero no te muestra la realidad completa. El sesgo de confirmación es cómodo, porque nos evita la molestia de cambiar de opinión. Pero también es peligroso: si no lo vigilamos, podemos terminar convencidos de cualquier cosa, siempre y cuando nos guste cómo suena. Y si queremos hacer buena ciencia —o simplemente tomar buenas decisiones— necesitamos salir de esa burbuja mental.
 
-Y este también es válido, pero la conclusión suena menos creíble:
-
--   Ninguna cosa adictiva es barata (Premisa 1)
--   Algunos cigarrillos son baratos (Premisa 2)
--   Por lo tanto, algunos cigarrillos no son adictivos (Conclusión)
-
-La estructura lógica del argumento #2 es idéntica a la del #1, y ambos son válidos. Sin embargo, en el segundo caso, hay buenas razones para pensar que la premisa 1 es falsa, así que probablemente también lo sea la conclusión. Pero eso no importa: un argumento es deductivamente válido si la conclusión se sigue lógicamente de las premisas. No importa si las premisas o la conclusión son verdaderas. Ahora veamos un argumento inválido con una conclusión creíble:
-
--   Ninguna cosa adictiva es barata (Premisa 1)
--   Algunos cigarrillos son baratos (Premisa 2)
--   Por lo tanto, algunas cosas adictivas no son cigarrillos (Conclusión)
-
-Y uno inválido con una conclusión poco creíble:
-
--   Ningún cigarrillo es barato (Premisa 1)
--   Algunas cosas adictivas son baratas (Premisa 2)
--   Por lo tanto, algunos cigarrillos no son adictivos (Conclusión)
-
-Ahora bien, supongamos que las personas realmente pueden dejar de lado sus sesgos previos sobre qué es verdadero y qué no, y evaluar un argumento únicamente por su lógica. Esperaríamos que el 100% diga que los argumentos válidos son válidos, y que el 0% diga que los inválidos lo son. Si hiciéramos un experimento sobre esto, esperaríamos ver datos así:
-
-|   | la conclusión parece verdadera | la conclusión parece falsa |
-|----|:--:|:--:|
-| el argumento es válido | 100% dice "válido" | 100% dice "válido" |
-| el argumento es inválido | 0% dice "válido" | 0% dice "válido" |
-
-Si los datos psicológicos se vieran así (o incluso se acercaran bastante), podríamos sentirnos seguros confiando en nuestras corazonadas. O sea, estaría perfecto dejar que los científicos evaluaran los datos según su sentido común, sin molestarse con todo este asunto turbio de la estadística. Pero ustedes ya han cursado psicología, y a esta altura seguro sospechan hacia dónde va esto.
-
-En un estudio clásico, @Evans1983 hicieron un experimento sobre esto mismo. Y lo que encontraron fue que, cuando las creencias previas (o sea, los sesgos) coincidían con la estructura lógica del argumento, todo iba bastante bien:
-
-|   | la conclusión parece verdadera | la conclusión parece falsa |
-|----|:--:|:--:|
-| el argumento es válido | 92% dice "válido" | -- |
-| el argumento es inválido | -- | 8% dice "válido" |
-
-No es perfecto, pero está bastante bien. Ahora mirá lo que pasa cuando la intuición sobre la verdad de la conclusión entra en conflicto con la lógica del argumento:
-
-|   | la conclusión parece verdadera | la conclusión parece falsa |
-|----|:--:|:--:|
-| el argumento es válido | 92% dice "válido" | **46% dice "válido"** |
-| el argumento es inválido | **92% dice "válido"** | 8% dice "válido" |
-
-Ay. Eso ya no está tan bien. Al parecer, cuando a la gente se le presenta un argumento fuerte que contradice sus creencias previas, le cuesta bastante incluso reconocer que es un buen argumento (solo el 46% lo logró). Y peor todavía: cuando se les da un argumento débil que coincide con sus creencias, casi nadie nota que es débil (¡el 92% se equivocó!).
-
-Ahora bien, si lo pensás, tampoco es que estos datos sean una catástrofe total. En promedio, a la gente le va un poco mejor que al azar al tratar de compensar sus sesgos previos: más o menos el 60% de los juicios fueron correctos (el azar daría 50%). Aun así, si fueras un profesional encargado de evaluar evidencia, y alguien te ofreciera una herramienta mágica que mejora tus chances de decidir bien del 60% al 95%, ¿no la aceptarías? Obvio que sí. Por suerte, esa herramienta existe. No es magia, es estadística. Y esa es la razón #1 por la que los científicos aman la estadística: es demasiado fácil creer lo que una ya cree; así que si queremos "creer en los datos" en lugar de nuestras intuiciones, necesitamos una ayudita para mantener a raya nuestros sesgos. Eso es lo que hace la estadística: nos ayuda a ser honestos.
+¿Y entonces qué? ¿Estamos condenades a razonar mal? No, para nada. Pero necesitamos herramientas que nos ayuden a pensar mejor. Por suerte, esa herramienta existe. No es magia, es estadística. Y esa es la razón #1 por la que los científicos aman la estadística: es demasiado fácil creer lo que una ya cree; así que si queremos "creer en los datos" en lugar de nuestras intuiciones, necesitamos una ayudita para mantener a raya nuestros sesgos. Eso es lo que hace la estadística: nos ayuda a ser honestos.
 
 ## La advertencia de la paradoja de Simpson
 
@@ -113,7 +71,7 @@ Increíblemente, la mayoría de los departamentos admitían *más* mujeres (en p
 
 Esto es lo que pasa. Primero, notá que los departamentos *no son* todos iguales en cuanto a su porcentaje de admisión: algunos (como ingeniería o química) tienden a admitir a una gran parte de quienes se postulan; otros (como literatura inglesa) tienden a rechazar a la mayoría, incluso si tienen buen perfil. Así que, entre los seis departamentos de arriba, el departamento A es el más generoso, seguido por B, C, D, E y F, en ese orden. A continuación, fijate que los hombres y las mujeres tendían a postularse a departamentos diferentes. Si ordenamos los departamentos según el número total de postulaciones masculinas, obtenemos **A**\>**B**\>D\>C\>F\>E (los "departamentos fáciles" están en negrita). En general, los hombres tendieron a postularse a los departamentos con tasas de admisión altas. Ahora compara esto con la distribución de las postulaciones femeninas. Clasificar los departamentos según el número total de postulaciones femeninas produce un orden bastante diferente: C\>E\>D\>F\>**A**\>**B**. En otras palabras, estos datos parecen sugerir que las mujeres tendieron a postularse a departamentos "más difíciles".
 
-Y si miramos @fig-simpson, vemos que esta tendencia es sistemática, y bastante notable. Este fenómeno se conoce como la **paradoja de Simpson**. No es común, pero ocurre en la vida real, y suele sorprender muchísimo cuando uno se la encuentra por primera vez. Mucha gente incluso se niega a creer que sea real. Pero lo es. Y aunque hay muchas lecciones estadísticas sutiles escondidas acá, quiero usar este ejemplo para señalar un punto más importante: hacer investigación es difícil, y está **lleno** de trampas sutiles y contraintuitivas esperando a quien no esté atento. Esa es la razón #2 por la que los científiquos aman la estadística, y por la que enseñamos métodos de investigación. Porque la ciencia es difícil, y la verdad a veces está escondida en los rincones más enredados de los datos.
+Y si miramos @fig-simpson, vemos que esta tendencia es sistemática, y bastante notable. Este fenómeno se conoce como la **paradoja de Simpson**. No es común, pero ocurre en la vida real, y suele sorprender muchísimo cuando uno se la encuentra por primera vez. Mucha gente incluso se niega a creer que sea real. Pero lo es. Y aunque hay muchas lecciones estadísticas sutiles escondidas acá, quiero usar este ejemplo para señalar un punto más importante: hacer investigación es difícil, y está **lleno** de trampas sutiles y contraintuitivas esperando a quien no esté atento. Esa es la razón #2 por la que los científicos aman la estadística, y por la que enseñamos métodos de investigación. Porque la ciencia es difícil, y la verdad a veces está escondida en los rincones más enredados de los datos.
 
 ```{r}
 #| label: fig-simpson

@@ -274,6 +274,45 @@ Estos números varían, porque no son todos iguales. Podemos usar el rango para 
 
 El rango es una forma rápida de resumir los límites de los datos con solo dos números. Al calcular el rango, sabemos que ningún valor es más chico ni más grande que esos extremos. Además, puede alertarte sobre valores atípicos. Por ejemplo, si esperás que tus números estén entre 1 y 7, pero el rango es 1--340.500, entonces sabés que hay algunos valores enormes que no deberían estar ahí. Eso te permite investigar por qué aparecieron (y posiblemente eliminarlos si hubo algún error).
 
+## Cuantiles, cuartiles y percentiles: cortando la torta de los datos
+
+Antes de meternos con los **diagramas de caja**, necesitamos conocer una idea básica pero poderosa: **cómo dividir los datos ordenaditos en partes**. Para eso están los **cuantiles**.
+
+### ¿Qué son los cuantiles?
+
+Imaginate que tenés una lista de datos, como por ejemplo puntajes en un test, y los ordenás de menor a mayor. Los cuantiles son como cortes que hacés en esa lista para dividirla en partes iguales. Según en cuántas partes la quieras dividir, cambian de nombre:
+
+- Si la dividís en 4 partes → **cuartiles**
+- Si la dividís en 10 → **deciles**
+- Si la dividís en 100 → **percentiles**
+
+Cada uno de esos cortes nos ayuda a entender cómo están repartidos los datos. ¿Están todos apretados en un extremo? ¿Se reparten parejito? ¿Hay alguno que se va al pasto? Los cuantiles te dan pistas.
+
+### Percentiles: lo escuchaste desde bebé
+
+Probablemente la primera vez que escuchaste hablar de **percentiles** fue cuando eras un ser humano de apenas unos kilos. Alguna vez alguien te dijo (o escuchaste que le dijeron a un bebé):
+
+> "Está en el percentil 99 de peso"  
+> o  
+> "Uy, está medio flaquito, está en el percentil 3 de talla"
+
+¿Eso qué quiere decir?  
+Que si estabas en el **percentil 99**, pesabas más que el 99% de bebés de tu edad.  
+Y si estabas en el **percentil 1**, solo el 1% pesaba menos que vos.
+
+¡Así de simple! Los percentiles te dicen **qué porcentaje de la población está por debajo tuyo**.
+
+### ¿Y los cuartiles?
+
+Bueno, los **cuartiles** son un caso especial de percentiles:
+
+- **Primer cuartil (Q1)** = percentil 25  
+- **Segundo cuartil (Q2)** = percentil 50 (también conocido como la **mediana**)  
+- **Tercer cuartil (Q3)** = percentil 75
+
+Es decir, el Q1 es el valor debajo del cual cae el 25% de los datos. El Q3 es el punto debajo del cual cae el 75%. Entre Q1 y Q3 está la mitad de tus datos: eso se llama el **rango intercuartílico** (pero tranqui, ya lo vamos a ver con un dibujito).
+
+
 ## Diagramas de caja (boxplots)
 
 Una alternativa a los histogramas es el diagrama de caja, a veces llamado "diagrama de caja y bigotes" (box and whiskers). Al igual que los histogramas, son más adecuados para datos en escala de intervalo o razón. La idea detrás de un boxplot es proporcionar una representación visual simple de la mediana, el rango intercuartílico y el rango de los datos. Y como lo hacen de manera bastante compacta, los diagramas de caja se han vuelto muy populares como gráficos estadísticos, especialmente en la etapa exploratoria del análisis de datos, cuando estás intentenado entender los datos.

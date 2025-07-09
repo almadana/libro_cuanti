@@ -2,7 +2,7 @@
 author: Danielle J. Navarro
 lang: es
 abstract-title: Notas
-abstract: Adaptado casi al pie de la letra de los capítulos 1 y 2 de Navarro, D. J. "Learning Statistics with R." <https://compcogscisydney.org/learning-statistics-with-r/>. Traducido al español rioplatense por ChatGPT4-o bajo la supervisión de Álvaro Cabana.
+abstract: Adaptado casi al pie de la letra de los capítulos 1 y 2 de Navarro, D. J. "Learning Statistics with R." <https://compcogscisydney.org/learning-statistics-with-r/>, salvo secciones sobre sesgos, autoría de Emilia Flo. Traducido al español rioplatense por ChatGPT4-o bajo la supervisión de Álvaro Cabana.
 aliases: [why-statistics.html]
 ---
 

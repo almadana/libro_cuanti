@@ -281,29 +281,35 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#el-rango" id="toc-el-rango" class="nav-link" data-scroll-target="#el-rango"><span class="header-section-number">2.5.1</span> El rango</a></li>
   </ul></li>
-  <li><a href="#diagramas-de-caja-boxplots" id="toc-diagramas-de-caja-boxplots" class="nav-link" data-scroll-target="#diagramas-de-caja-boxplots"><span class="header-section-number">2.6</span> Diagramas de caja (boxplots)</a></li>
-  <li><a href="#uso-de-diagramas-de-caja-para-detectar-valores-atípicos" id="toc-uso-de-diagramas-de-caja-para-detectar-valores-atípicos" class="nav-link" data-scroll-target="#uso-de-diagramas-de-caja-para-detectar-valores-atípicos"><span class="header-section-number">2.7</span> Uso de diagramas de caja para detectar valores atípicos</a>
+  <li><a href="#cuantiles-cuartiles-y-percentiles-cortando-la-torta-de-los-datos" id="toc-cuantiles-cuartiles-y-percentiles-cortando-la-torta-de-los-datos" class="nav-link" data-scroll-target="#cuantiles-cuartiles-y-percentiles-cortando-la-torta-de-los-datos"><span class="header-section-number">2.6</span> Cuantiles, cuartiles y percentiles: cortando la torta de los datos</a>
   <ul class="collapse">
-  <li><a href="#las-diferencias" id="toc-las-diferencias" class="nav-link" data-scroll-target="#las-diferencias"><span class="header-section-number">2.7.1</span> Las diferencias</a></li>
-  <li><a href="#la-varianza" id="toc-la-varianza" class="nav-link" data-scroll-target="#la-varianza"><span class="header-section-number">2.7.2</span> La varianza</a></li>
-  <li><a href="#la-media-como-punto-de-equilibrio-de-los-datos" id="toc-la-media-como-punto-de-equilibrio-de-los-datos" class="nav-link" data-scroll-target="#la-media-como-punto-de-equilibrio-de-los-datos"><span class="header-section-number">2.7.3</span> La media como punto de equilibrio de los datos</a></li>
-  <li><a href="#las-desviaciones-al-cuadrado" id="toc-las-desviaciones-al-cuadrado" class="nav-link" data-scroll-target="#las-desviaciones-al-cuadrado"><span class="header-section-number">2.7.4</span> Las desviaciones al cuadrado</a></li>
-  <li><a href="#finalmente-la-varianza" id="toc-finalmente-la-varianza" class="nav-link" data-scroll-target="#finalmente-la-varianza"><span class="header-section-number">2.7.5</span> Finalmente, la varianza</a></li>
-  <li><a href="#la-desviación-estándar" id="toc-la-desviación-estándar" class="nav-link" data-scroll-target="#la-desviación-estándar"><span class="header-section-number">2.7.6</span> La desviación estándar</a></li>
-  <li><a href="#desviaciones-absolutas" id="toc-desviaciones-absolutas" class="nav-link" data-scroll-target="#desviaciones-absolutas"><span class="header-section-number">2.7.7</span> Desviaciones absolutas</a></li>
-  <li><a href="#otras-operaciones-que-invierten-el-signo" id="toc-otras-operaciones-que-invierten-el-signo" class="nav-link" data-scroll-target="#otras-operaciones-que-invierten-el-signo"><span class="header-section-number">2.7.8</span> Otras operaciones que invierten el signo</a></li>
+  <li><a href="#qué-son-los-cuantiles" id="toc-qué-son-los-cuantiles" class="nav-link" data-scroll-target="#qué-son-los-cuantiles"><span class="header-section-number">2.6.1</span> ¿Qué son los cuantiles?</a></li>
+  <li><a href="#percentiles-lo-escuchaste-desde-bebé" id="toc-percentiles-lo-escuchaste-desde-bebé" class="nav-link" data-scroll-target="#percentiles-lo-escuchaste-desde-bebé"><span class="header-section-number">2.6.2</span> Percentiles: lo escuchaste desde bebé</a></li>
+  <li><a href="#y-los-cuartiles" id="toc-y-los-cuartiles" class="nav-link" data-scroll-target="#y-los-cuartiles"><span class="header-section-number">2.6.3</span> ¿Y los cuartiles?</a></li>
   </ul></li>
-  <li><a href="#acordate-de-mirar-los-datos" id="toc-acordate-de-mirar-los-datos" class="nav-link" data-scroll-target="#acordate-de-mirar-los-datos"><span class="header-section-number">2.8</span> Acordate de mirar los datos</a>
+  <li><a href="#diagramas-de-caja-boxplots" id="toc-diagramas-de-caja-boxplots" class="nav-link" data-scroll-target="#diagramas-de-caja-boxplots"><span class="header-section-number">2.7</span> Diagramas de caja (boxplots)</a></li>
+  <li><a href="#uso-de-diagramas-de-caja-para-detectar-valores-atípicos" id="toc-uso-de-diagramas-de-caja-para-detectar-valores-atípicos" class="nav-link" data-scroll-target="#uso-de-diagramas-de-caja-para-detectar-valores-atípicos"><span class="header-section-number">2.8</span> Uso de diagramas de caja para detectar valores atípicos</a>
   <ul class="collapse">
-  <li><a href="#el-cuarteto-de-anscombe" id="toc-el-cuarteto-de-anscombe" class="nav-link" data-scroll-target="#el-cuarteto-de-anscombe"><span class="header-section-number">2.8.1</span> El cuarteto de Anscombe</a></li>
-  <li><a href="#el-datasaurus-dozen" id="toc-el-datasaurus-dozen" class="nav-link" data-scroll-target="#el-datasaurus-dozen"><span class="header-section-number">2.8.2</span> El “Datasaurus Dozen”</a></li>
+  <li><a href="#las-diferencias" id="toc-las-diferencias" class="nav-link" data-scroll-target="#las-diferencias"><span class="header-section-number">2.8.1</span> Las diferencias</a></li>
+  <li><a href="#la-varianza" id="toc-la-varianza" class="nav-link" data-scroll-target="#la-varianza"><span class="header-section-number">2.8.2</span> La varianza</a></li>
+  <li><a href="#la-media-como-punto-de-equilibrio-de-los-datos" id="toc-la-media-como-punto-de-equilibrio-de-los-datos" class="nav-link" data-scroll-target="#la-media-como-punto-de-equilibrio-de-los-datos"><span class="header-section-number">2.8.3</span> La media como punto de equilibrio de los datos</a></li>
+  <li><a href="#las-desviaciones-al-cuadrado" id="toc-las-desviaciones-al-cuadrado" class="nav-link" data-scroll-target="#las-desviaciones-al-cuadrado"><span class="header-section-number">2.8.4</span> Las desviaciones al cuadrado</a></li>
+  <li><a href="#finalmente-la-varianza" id="toc-finalmente-la-varianza" class="nav-link" data-scroll-target="#finalmente-la-varianza"><span class="header-section-number">2.8.5</span> Finalmente, la varianza</a></li>
+  <li><a href="#la-desviación-estándar" id="toc-la-desviación-estándar" class="nav-link" data-scroll-target="#la-desviación-estándar"><span class="header-section-number">2.8.6</span> La desviación estándar</a></li>
+  <li><a href="#desviaciones-absolutas" id="toc-desviaciones-absolutas" class="nav-link" data-scroll-target="#desviaciones-absolutas"><span class="header-section-number">2.8.7</span> Desviaciones absolutas</a></li>
+  <li><a href="#otras-operaciones-que-invierten-el-signo" id="toc-otras-operaciones-que-invierten-el-signo" class="nav-link" data-scroll-target="#otras-operaciones-que-invierten-el-signo"><span class="header-section-number">2.8.8</span> Otras operaciones que invierten el signo</a></li>
   </ul></li>
-  <li><a href="#videos-en-inglés" id="toc-videos-en-inglés" class="nav-link" data-scroll-target="#videos-en-inglés"><span class="header-section-number">2.9</span> Videos (en inglés)</a>
+  <li><a href="#acordate-de-mirar-los-datos" id="toc-acordate-de-mirar-los-datos" class="nav-link" data-scroll-target="#acordate-de-mirar-los-datos"><span class="header-section-number">2.9</span> Acordate de mirar los datos</a>
   <ul class="collapse">
-  <li><a href="#medidas-de-tendencia-central-moda" id="toc-medidas-de-tendencia-central-moda" class="nav-link" data-scroll-target="#medidas-de-tendencia-central-moda"><span class="header-section-number">2.9.1</span> Medidas de tendencia central: Moda</a></li>
-  <li><a href="#medidas-de-tendencia-central-mediana-y-media" id="toc-medidas-de-tendencia-central-mediana-y-media" class="nav-link" data-scroll-target="#medidas-de-tendencia-central-mediana-y-media"><span class="header-section-number">2.9.2</span> Medidas de tendencia central: Mediana y Media</a></li>
-  <li><a href="#desviación-estándar-parte-i" id="toc-desviación-estándar-parte-i" class="nav-link" data-scroll-target="#desviación-estándar-parte-i"><span class="header-section-number">2.9.3</span> Desviación estándar – Parte I</a></li>
-  <li><a href="#desviación-estándar-parte-ii" id="toc-desviación-estándar-parte-ii" class="nav-link" data-scroll-target="#desviación-estándar-parte-ii"><span class="header-section-number">2.9.4</span> Desviación estándar – Parte II</a></li>
+  <li><a href="#el-cuarteto-de-anscombe" id="toc-el-cuarteto-de-anscombe" class="nav-link" data-scroll-target="#el-cuarteto-de-anscombe"><span class="header-section-number">2.9.1</span> El cuarteto de Anscombe</a></li>
+  <li><a href="#el-datasaurus-dozen" id="toc-el-datasaurus-dozen" class="nav-link" data-scroll-target="#el-datasaurus-dozen"><span class="header-section-number">2.9.2</span> El “Datasaurus Dozen”</a></li>
+  </ul></li>
+  <li><a href="#videos-en-inglés" id="toc-videos-en-inglés" class="nav-link" data-scroll-target="#videos-en-inglés"><span class="header-section-number">2.10</span> Videos (en inglés)</a>
+  <ul class="collapse">
+  <li><a href="#medidas-de-tendencia-central-moda" id="toc-medidas-de-tendencia-central-moda" class="nav-link" data-scroll-target="#medidas-de-tendencia-central-moda"><span class="header-section-number">2.10.1</span> Medidas de tendencia central: Moda</a></li>
+  <li><a href="#medidas-de-tendencia-central-mediana-y-media" id="toc-medidas-de-tendencia-central-mediana-y-media" class="nav-link" data-scroll-target="#medidas-de-tendencia-central-mediana-y-media"><span class="header-section-number">2.10.2</span> Medidas de tendencia central: Mediana y Media</a></li>
+  <li><a href="#desviación-estándar-parte-i" id="toc-desviación-estándar-parte-i" class="nav-link" data-scroll-target="#desviación-estándar-parte-i"><span class="header-section-number">2.10.3</span> Desviación estándar – Parte I</a></li>
+  <li><a href="#desviación-estándar-parte-ii" id="toc-desviación-estándar-parte-ii" class="nav-link" data-scroll-target="#desviación-estándar-parte-ii"><span class="header-section-number">2.10.4</span> Desviación estándar – Parte II</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/almadana/libro_cuanti/edit/master/02-Describing_Data.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li></ul></div></nav>
@@ -364,604 +370,604 @@ window.Quarto = {
 <table class="caption-top table table-sm table-striped small">
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">376</td>
-<td style="text-align: right;">-784</td>
-<td style="text-align: right;">56</td>
-<td style="text-align: right;">-303</td>
-<td style="text-align: right;">1054</td>
-<td style="text-align: right;">-653</td>
-<td style="text-align: right;">365</td>
-<td style="text-align: right;">-379</td>
-<td style="text-align: right;">-153</td>
+<td style="text-align: right;">308</td>
+<td style="text-align: right;">-225</td>
+<td style="text-align: right;">374</td>
+<td style="text-align: right;">-129</td>
+<td style="text-align: right;">537</td>
+<td style="text-align: right;">244</td>
+<td style="text-align: right;">253</td>
+<td style="text-align: right;">341</td>
+<td style="text-align: right;">656</td>
+<td style="text-align: right;">-5</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">-35</td>
-<td style="text-align: right;">732</td>
-<td style="text-align: right;">1005</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">174</td>
-<td style="text-align: right;">-231</td>
-<td style="text-align: right;">752</td>
-<td style="text-align: right;">458</td>
-<td style="text-align: right;">432</td>
-<td style="text-align: right;">353</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-78</td>
-<td style="text-align: right;">278</td>
-<td style="text-align: right;">-310</td>
-<td style="text-align: right;">491</td>
-<td style="text-align: right;">202</td>
-<td style="text-align: right;">639</td>
-<td style="text-align: right;">872</td>
-<td style="text-align: right;">203</td>
-<td style="text-align: right;">173</td>
-<td style="text-align: right;">-454</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">973</td>
-<td style="text-align: right;">131</td>
-<td style="text-align: right;">-235</td>
-<td style="text-align: right;">1074</td>
-<td style="text-align: right;">-67</td>
-<td style="text-align: right;">652</td>
-<td style="text-align: right;">600</td>
-<td style="text-align: right;">-227</td>
-<td style="text-align: right;">-428</td>
-<td style="text-align: right;">247</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">318</td>
-<td style="text-align: right;">545</td>
-<td style="text-align: right;">154</td>
-<td style="text-align: right;">860</td>
-<td style="text-align: right;">-445</td>
-<td style="text-align: right;">-1297</td>
-<td style="text-align: right;">-509</td>
-<td style="text-align: right;">-469</td>
-<td style="text-align: right;">97</td>
-<td style="text-align: right;">-45</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">89</td>
-<td style="text-align: right;">-49</td>
-<td style="text-align: right;">-48</td>
-<td style="text-align: right;">-266</td>
-<td style="text-align: right;">729</td>
-<td style="text-align: right;">-272</td>
-<td style="text-align: right;">-1544</td>
-<td style="text-align: right;">874</td>
-<td style="text-align: right;">-622</td>
-<td style="text-align: right;">-315</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1305</td>
-<td style="text-align: right;">-564</td>
-<td style="text-align: right;">-707</td>
-<td style="text-align: right;">-50</td>
-<td style="text-align: right;">315</td>
-<td style="text-align: right;">135</td>
-<td style="text-align: right;">-658</td>
-<td style="text-align: right;">648</td>
-<td style="text-align: right;">-962</td>
-<td style="text-align: right;">-419</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">108</td>
-<td style="text-align: right;">1061</td>
-<td style="text-align: right;">422</td>
-<td style="text-align: right;">222</td>
-<td style="text-align: right;">-727</td>
-<td style="text-align: right;">157</td>
-<td style="text-align: right;">320</td>
-<td style="text-align: right;">201</td>
-<td style="text-align: right;">-21</td>
-<td style="text-align: right;">-737</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">381</td>
-<td style="text-align: right;">-928</td>
-<td style="text-align: right;">209</td>
-<td style="text-align: right;">563</td>
-<td style="text-align: right;">493</td>
-<td style="text-align: right;">-470</td>
-<td style="text-align: right;">-431</td>
-<td style="text-align: right;">398</td>
-<td style="text-align: right;">-556</td>
-<td style="text-align: right;">631</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-266</td>
-<td style="text-align: right;">63</td>
-<td style="text-align: right;">-448</td>
-<td style="text-align: right;">-455</td>
-<td style="text-align: right;">-102</td>
-<td style="text-align: right;">1248</td>
-<td style="text-align: right;">-339</td>
-<td style="text-align: right;">477</td>
-<td style="text-align: right;">575</td>
-<td style="text-align: right;">-435</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-395</td>
-<td style="text-align: right;">483</td>
-<td style="text-align: right;">-119</td>
-<td style="text-align: right;">567</td>
-<td style="text-align: right;">-104</td>
-<td style="text-align: right;">577</td>
-<td style="text-align: right;">-283</td>
-<td style="text-align: right;">-65</td>
-<td style="text-align: right;">184</td>
-<td style="text-align: right;">319</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">16</td>
-<td style="text-align: right;">-276</td>
-<td style="text-align: right;">-32</td>
-<td style="text-align: right;">-23</td>
-<td style="text-align: right;">-43</td>
-<td style="text-align: right;">-804</td>
-<td style="text-align: right;">534</td>
-<td style="text-align: right;">472</td>
-<td style="text-align: right;">-550</td>
-<td style="text-align: right;">-111</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">162</td>
-<td style="text-align: right;">349</td>
-<td style="text-align: right;">-524</td>
-<td style="text-align: right;">33</td>
-<td style="text-align: right;">474</td>
-<td style="text-align: right;">268</td>
-<td style="text-align: right;">639</td>
-<td style="text-align: right;">627</td>
-<td style="text-align: right;">1023</td>
-<td style="text-align: right;">-530</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">228</td>
-<td style="text-align: right;">-633</td>
-<td style="text-align: right;">622</td>
-<td style="text-align: right;">-290</td>
-<td style="text-align: right;">-471</td>
 <td style="text-align: right;">46</td>
-<td style="text-align: right;">-114</td>
-<td style="text-align: right;">119</td>
-<td style="text-align: right;">41</td>
-<td style="text-align: right;">-183</td>
+<td style="text-align: right;">-100</td>
+<td style="text-align: right;">-280</td>
+<td style="text-align: right;">463</td>
+<td style="text-align: right;">424</td>
+<td style="text-align: right;">-382</td>
+<td style="text-align: right;">-18</td>
+<td style="text-align: right;">-693</td>
+<td style="text-align: right;">151</td>
+<td style="text-align: right;">562</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">635</td>
-<td style="text-align: right;">-445</td>
-<td style="text-align: right;">891</td>
-<td style="text-align: right;">551</td>
-<td style="text-align: right;">-108</td>
-<td style="text-align: right;">1000</td>
-<td style="text-align: right;">526</td>
-<td style="text-align: right;">1083</td>
-<td style="text-align: right;">-533</td>
-<td style="text-align: right;">880</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-52</td>
-<td style="text-align: right;">-6</td>
-<td style="text-align: right;">-8</td>
-<td style="text-align: right;">442</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">791</td>
-<td style="text-align: right;">778</td>
-<td style="text-align: right;">896</td>
-<td style="text-align: right;">655</td>
-<td style="text-align: right;">-388</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">214</td>
-<td style="text-align: right;">227</td>
-<td style="text-align: right;">344</td>
-<td style="text-align: right;">629</td>
-<td style="text-align: right;">130</td>
-<td style="text-align: right;">-1291</td>
-<td style="text-align: right;">853</td>
-<td style="text-align: right;">-198</td>
-<td style="text-align: right;">77</td>
-<td style="text-align: right;">-618</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">476</td>
-<td style="text-align: right;">-70</td>
-<td style="text-align: right;">267</td>
-<td style="text-align: right;">106</td>
-<td style="text-align: right;">264</td>
-<td style="text-align: right;">-190</td>
-<td style="text-align: right;">-31</td>
-<td style="text-align: right;">-1092</td>
-<td style="text-align: right;">1065</td>
-<td style="text-align: right;">201</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-71</td>
+<td style="text-align: right;">-210</td>
+<td style="text-align: right;">687</td>
 <td style="text-align: right;">268</td>
-<td style="text-align: right;">21</td>
-<td style="text-align: right;">1068</td>
-<td style="text-align: right;">-217</td>
-<td style="text-align: right;">192</td>
-<td style="text-align: right;">-690</td>
-<td style="text-align: right;">916</td>
-<td style="text-align: right;">364</td>
-<td style="text-align: right;">119</td>
+<td style="text-align: right;">405</td>
+<td style="text-align: right;">116</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">-713</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: right;">-1255</td>
+<td style="text-align: right;">678</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">324</td>
-<td style="text-align: right;">-76</td>
-<td style="text-align: right;">649</td>
-<td style="text-align: right;">131</td>
-<td style="text-align: right;">-352</td>
 <td style="text-align: right;">486</td>
-<td style="text-align: right;">-41</td>
-<td style="text-align: right;">643</td>
-<td style="text-align: right;">677</td>
-<td style="text-align: right;">-215</td>
+<td style="text-align: right;">332</td>
+<td style="text-align: right;">556</td>
+<td style="text-align: right;">366</td>
+<td style="text-align: right;">855</td>
+<td style="text-align: right;">-143</td>
+<td style="text-align: right;">-15</td>
+<td style="text-align: right;">183</td>
+<td style="text-align: right;">-14</td>
+<td style="text-align: right;">-716</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">823</td>
-<td style="text-align: right;">504</td>
-<td style="text-align: right;">1025</td>
-<td style="text-align: right;">43</td>
-<td style="text-align: right;">472</td>
-<td style="text-align: right;">707</td>
-<td style="text-align: right;">343</td>
-<td style="text-align: right;">43</td>
-<td style="text-align: right;">1398</td>
-<td style="text-align: right;">992</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">-365</td>
+<td style="text-align: right;">-193</td>
+<td style="text-align: right;">154</td>
+<td style="text-align: right;">91</td>
+<td style="text-align: right;">742</td>
+<td style="text-align: right;">-253</td>
+<td style="text-align: right;">577</td>
+<td style="text-align: right;">-152</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">283</td>
-<td style="text-align: right;">533</td>
-<td style="text-align: right;">540</td>
-<td style="text-align: right;">590</td>
-<td style="text-align: right;">34</td>
-<td style="text-align: right;">718</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">138</td>
-<td style="text-align: right;">211</td>
-<td style="text-align: right;">-180</td>
+<td style="text-align: right;">-553</td>
+<td style="text-align: right;">513</td>
+<td style="text-align: right;">-97</td>
+<td style="text-align: right;">236</td>
+<td style="text-align: right;">-735</td>
+<td style="text-align: right;">438</td>
+<td style="text-align: right;">-225</td>
+<td style="text-align: right;">292</td>
+<td style="text-align: right;">128</td>
+<td style="text-align: right;">-716</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">24</td>
-<td style="text-align: right;">355</td>
-<td style="text-align: right;">169</td>
-<td style="text-align: right;">720</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">-533</td>
+<td style="text-align: right;">425</td>
+<td style="text-align: right;">383</td>
+<td style="text-align: right;">-391</td>
+<td style="text-align: right;">305</td>
+<td style="text-align: right;">575</td>
+<td style="text-align: right;">307</td>
+<td style="text-align: right;">135</td>
+<td style="text-align: right;">-523</td>
+</tr>
+<tr class="even">
 <td style="text-align: right;">806</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">175</td>
-<td style="text-align: right;">237</td>
-<td style="text-align: right;">546</td>
-<td style="text-align: right;">657</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">400</td>
-<td style="text-align: right;">-419</td>
-<td style="text-align: right;">391</td>
-<td style="text-align: right;">301</td>
-<td style="text-align: right;">1092</td>
-<td style="text-align: right;">-1356</td>
-<td style="text-align: right;">-1516</td>
-<td style="text-align: right;">-16</td>
-<td style="text-align: right;">-795</td>
-<td style="text-align: right;">581</td>
+<td style="text-align: right;">-254</td>
+<td style="text-align: right;">448</td>
+<td style="text-align: right;">1133</td>
+<td style="text-align: right;">-594</td>
+<td style="text-align: right;">-668</td>
+<td style="text-align: right;">812</td>
+<td style="text-align: right;">254</td>
+<td style="text-align: right;">392</td>
+<td style="text-align: right;">101</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">492</td>
-<td style="text-align: right;">647</td>
-<td style="text-align: right;">346</td>
-<td style="text-align: right;">-705</td>
-<td style="text-align: right;">685</td>
-<td style="text-align: right;">310</td>
-<td style="text-align: right;">-73</td>
-<td style="text-align: right;">-501</td>
-<td style="text-align: right;">-335</td>
-<td style="text-align: right;">-38</td>
+<td style="text-align: right;">-98</td>
+<td style="text-align: right;">-51</td>
+<td style="text-align: right;">76</td>
+<td style="text-align: right;">-133</td>
+<td style="text-align: right;">-511</td>
+<td style="text-align: right;">63</td>
+<td style="text-align: right;">720</td>
+<td style="text-align: right;">343</td>
+<td style="text-align: right;">922</td>
+<td style="text-align: right;">872</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">342</td>
-<td style="text-align: right;">554</td>
-<td style="text-align: right;">541</td>
-<td style="text-align: right;">-260</td>
-<td style="text-align: right;">-54</td>
+<td style="text-align: right;">-550</td>
+<td style="text-align: right;">562</td>
+<td style="text-align: right;">396</td>
 <td style="text-align: right;">367</td>
-<td style="text-align: right;">617</td>
-<td style="text-align: right;">1132</td>
-<td style="text-align: right;">690</td>
-<td style="text-align: right;">-237</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">312</td>
+<td style="text-align: right;">-329</td>
+<td style="text-align: right;">681</td>
+<td style="text-align: right;">207</td>
+<td style="text-align: right;">-427</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">-489</td>
-<td style="text-align: right;">226</td>
-<td style="text-align: right;">170</td>
-<td style="text-align: right;">206</td>
-<td style="text-align: right;">300</td>
-<td style="text-align: right;">426</td>
-<td style="text-align: right;">527</td>
-<td style="text-align: right;">-24</td>
-<td style="text-align: right;">-535</td>
-<td style="text-align: right;">115</td>
+<td style="text-align: right;">-91</td>
+<td style="text-align: right;">-967</td>
+<td style="text-align: right;">-70</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">-633</td>
+<td style="text-align: right;">-402</td>
+<td style="text-align: right;">-19</td>
+<td style="text-align: right;">259</td>
+<td style="text-align: right;">892</td>
+<td style="text-align: right;">-130</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">24</td>
-<td style="text-align: right;">-970</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">833</td>
-<td style="text-align: right;">194</td>
-<td style="text-align: right;">59</td>
-<td style="text-align: right;">-104</td>
-<td style="text-align: right;">140</td>
-<td style="text-align: right;">-1009</td>
-<td style="text-align: right;">-36</td>
+<td style="text-align: right;">102</td>
+<td style="text-align: right;">896</td>
+<td style="text-align: right;">-165</td>
+<td style="text-align: right;">-131</td>
+<td style="text-align: right;">-230</td>
+<td style="text-align: right;">436</td>
+<td style="text-align: right;">455</td>
+<td style="text-align: right;">-487</td>
+<td style="text-align: right;">306</td>
+<td style="text-align: right;">141</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">95</td>
-<td style="text-align: right;">525</td>
-<td style="text-align: right;">-420</td>
+<td style="text-align: right;">322</td>
+<td style="text-align: right;">224</td>
+<td style="text-align: right;">-142</td>
+<td style="text-align: right;">720</td>
+<td style="text-align: right;">1103</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">314</td>
+<td style="text-align: right;">-493</td>
+<td style="text-align: right;">111</td>
+<td style="text-align: right;">237</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">611</td>
+<td style="text-align: right;">-188</td>
+<td style="text-align: right;">112</td>
+<td style="text-align: right;">271</td>
+<td style="text-align: right;">101</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">-95</td>
+<td style="text-align: right;">-45</td>
+<td style="text-align: right;">591</td>
+<td style="text-align: right;">-493</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">243</td>
+<td style="text-align: right;">-675</td>
+<td style="text-align: right;">-641</td>
+<td style="text-align: right;">-457</td>
+<td style="text-align: right;">669</td>
+<td style="text-align: right;">-142</td>
+<td style="text-align: right;">566</td>
+<td style="text-align: right;">-103</td>
+<td style="text-align: right;">240</td>
+<td style="text-align: right;">538</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-205</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">-555</td>
+<td style="text-align: right;">-236</td>
 <td style="text-align: right;">217</td>
-<td style="text-align: right;">-114</td>
-<td style="text-align: right;">66</td>
-<td style="text-align: right;">-900</td>
-<td style="text-align: right;">24</td>
-<td style="text-align: right;">330</td>
+<td style="text-align: right;">-330</td>
+<td style="text-align: right;">-117</td>
+<td style="text-align: right;">-58</td>
+<td style="text-align: right;">1211</td>
+<td style="text-align: right;">136</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">509</td>
+<td style="text-align: right;">-526</td>
+<td style="text-align: right;">-434</td>
+<td style="text-align: right;">599</td>
+<td style="text-align: right;">-663</td>
+<td style="text-align: right;">612</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">-277</td>
+<td style="text-align: right;">368</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-384</td>
+<td style="text-align: right;">-10</td>
+<td style="text-align: right;">-761</td>
+<td style="text-align: right;">473</td>
+<td style="text-align: right;">346</td>
+<td style="text-align: right;">-172</td>
+<td style="text-align: right;">372</td>
+<td style="text-align: right;">254</td>
+<td style="text-align: right;">-207</td>
+<td style="text-align: right;">-510</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">194</td>
+<td style="text-align: right;">986</td>
+<td style="text-align: right;">269</td>
+<td style="text-align: right;">801</td>
+<td style="text-align: right;">-137</td>
+<td style="text-align: right;">-175</td>
+<td style="text-align: right;">-182</td>
+<td style="text-align: right;">-309</td>
+<td style="text-align: right;">-109</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">746</td>
+<td style="text-align: right;">164</td>
+<td style="text-align: right;">414</td>
+<td style="text-align: right;">168</td>
+<td style="text-align: right;">969</td>
+<td style="text-align: right;">303</td>
+<td style="text-align: right;">-100</td>
+<td style="text-align: right;">-290</td>
+<td style="text-align: right;">418</td>
+<td style="text-align: right;">-535</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">-631</td>
+<td style="text-align: right;">949</td>
+<td style="text-align: right;">279</td>
+<td style="text-align: right;">997</td>
+<td style="text-align: right;">-180</td>
+<td style="text-align: right;">640</td>
+<td style="text-align: right;">271</td>
+<td style="text-align: right;">-392</td>
+<td style="text-align: right;">82</td>
 <td style="text-align: right;">-125</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">-176</td>
-<td style="text-align: right;">-577</td>
-<td style="text-align: right;">-10</td>
-<td style="text-align: right;">514</td>
-<td style="text-align: right;">484</td>
-<td style="text-align: right;">-192</td>
-<td style="text-align: right;">-333</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">126</td>
-<td style="text-align: right;">-323</td>
+<td style="text-align: right;">-765</td>
+<td style="text-align: right;">-614</td>
+<td style="text-align: right;">-437</td>
+<td style="text-align: right;">-38</td>
+<td style="text-align: right;">262</td>
+<td style="text-align: right;">169</td>
+<td style="text-align: right;">-454</td>
+<td style="text-align: right;">-144</td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">-502</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">-288</td>
-<td style="text-align: right;">-486</td>
-<td style="text-align: right;">1042</td>
-<td style="text-align: right;">955</td>
-<td style="text-align: right;">-98</td>
-<td style="text-align: right;">109</td>
-<td style="text-align: right;">-527</td>
-<td style="text-align: right;">-61</td>
-<td style="text-align: right;">179</td>
-<td style="text-align: right;">619</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1413</td>
-<td style="text-align: right;">-21</td>
-<td style="text-align: right;">-207</td>
-<td style="text-align: right;">744</td>
-<td style="text-align: right;">-489</td>
-<td style="text-align: right;">458</td>
-<td style="text-align: right;">74</td>
-<td style="text-align: right;">404</td>
-<td style="text-align: right;">779</td>
-<td style="text-align: right;">470</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1233</td>
-<td style="text-align: right;">695</td>
-<td style="text-align: right;">-210</td>
-<td style="text-align: right;">-327</td>
-<td style="text-align: right;">-531</td>
-<td style="text-align: right;">-24</td>
-<td style="text-align: right;">670</td>
-<td style="text-align: right;">671</td>
-<td style="text-align: right;">374</td>
-<td style="text-align: right;">740</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-355</td>
-<td style="text-align: right;">183</td>
-<td style="text-align: right;">935</td>
-<td style="text-align: right;">388</td>
-<td style="text-align: right;">176</td>
-<td style="text-align: right;">-401</td>
-<td style="text-align: right;">-22</td>
-<td style="text-align: right;">498</td>
-<td style="text-align: right;">-7</td>
-<td style="text-align: right;">-141</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">162</td>
-<td style="text-align: right;">-426</td>
-<td style="text-align: right;">-195</td>
-<td style="text-align: right;">-31</td>
-<td style="text-align: right;">358</td>
-<td style="text-align: right;">94</td>
-<td style="text-align: right;">33</td>
-<td style="text-align: right;">692</td>
-<td style="text-align: right;">-619</td>
-<td style="text-align: right;">-336</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-199</td>
-<td style="text-align: right;">-209</td>
-<td style="text-align: right;">40</td>
-<td style="text-align: right;">386</td>
-<td style="text-align: right;">88</td>
-<td style="text-align: right;">-732</td>
-<td style="text-align: right;">401</td>
-<td style="text-align: right;">-77</td>
-<td style="text-align: right;">-235</td>
-<td style="text-align: right;">-824</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">560</td>
-<td style="text-align: right;">-199</td>
-<td style="text-align: right;">623</td>
-<td style="text-align: right;">-769</td>
-<td style="text-align: right;">532</td>
-<td style="text-align: right;">199</td>
-<td style="text-align: right;">-249</td>
-<td style="text-align: right;">-377</td>
-<td style="text-align: right;">840</td>
-<td style="text-align: right;">53</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-178</td>
-<td style="text-align: right;">-96</td>
-<td style="text-align: right;">-124</td>
-<td style="text-align: right;">160</td>
-<td style="text-align: right;">296</td>
-<td style="text-align: right;">645</td>
-<td style="text-align: right;">-458</td>
-<td style="text-align: right;">404</td>
+<td style="text-align: right;">-272</td>
+<td style="text-align: right;">934</td>
 <td style="text-align: right;">508</td>
-<td style="text-align: right;">-212</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">109</td>
-<td style="text-align: right;">393</td>
-<td style="text-align: right;">-669</td>
-<td style="text-align: right;">-466</td>
-<td style="text-align: right;">244</td>
-<td style="text-align: right;">-11</td>
-<td style="text-align: right;">1194</td>
-<td style="text-align: right;">360</td>
-<td style="text-align: right;">-497</td>
-<td style="text-align: right;">326</td>
+<td style="text-align: right;">51</td>
+<td style="text-align: right;">-225</td>
+<td style="text-align: right;">-341</td>
+<td style="text-align: right;">-183</td>
+<td style="text-align: right;">513</td>
+<td style="text-align: right;">411</td>
+<td style="text-align: right;">-865</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">605</td>
-<td style="text-align: right;">-201</td>
-<td style="text-align: right;">787</td>
-<td style="text-align: right;">342</td>
-<td style="text-align: right;">695</td>
-<td style="text-align: right;">189</td>
-<td style="text-align: right;">727</td>
-<td style="text-align: right;">-199</td>
-<td style="text-align: right;">950</td>
-<td style="text-align: right;">-25</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">272</td>
+<td style="text-align: right;">646</td>
+<td style="text-align: right;">435</td>
+<td style="text-align: right;">635</td>
+<td style="text-align: right;">260</td>
+<td style="text-align: right;">-571</td>
+<td style="text-align: right;">-190</td>
+<td style="text-align: right;">-173</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">399</td>
-<td style="text-align: right;">598</td>
-<td style="text-align: right;">382</td>
-<td style="text-align: right;">202</td>
-<td style="text-align: right;">-371</td>
-<td style="text-align: right;">-319</td>
-<td style="text-align: right;">-913</td>
-<td style="text-align: right;">159</td>
-<td style="text-align: right;">495</td>
-<td style="text-align: right;">-245</td>
+<td style="text-align: right;">-1050</td>
+<td style="text-align: right;">435</td>
+<td style="text-align: right;">-8</td>
+<td style="text-align: right;">859</td>
+<td style="text-align: right;">439</td>
+<td style="text-align: right;">-8</td>
+<td style="text-align: right;">541</td>
+<td style="text-align: right;">-345</td>
+<td style="text-align: right;">142</td>
+<td style="text-align: right;">135</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">708</td>
-<td style="text-align: right;">216</td>
-<td style="text-align: right;">-710</td>
-<td style="text-align: right;">-720</td>
-<td style="text-align: right;">403</td>
+<td style="text-align: right;">-431</td>
+<td style="text-align: right;">577</td>
+<td style="text-align: right;">-655</td>
+<td style="text-align: right;">1240</td>
+<td style="text-align: right;">-1155</td>
+<td style="text-align: right;">835</td>
+<td style="text-align: right;">655</td>
+<td style="text-align: right;">-267</td>
+<td style="text-align: right;">-766</td>
+<td style="text-align: right;">-700</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">418</td>
+<td style="text-align: right;">85</td>
+<td style="text-align: right;">893</td>
+<td style="text-align: right;">115</td>
+<td style="text-align: right;">-361</td>
+<td style="text-align: right;">-88</td>
+<td style="text-align: right;">-244</td>
+<td style="text-align: right;">586</td>
+<td style="text-align: right;">-254</td>
+<td style="text-align: right;">-165</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">734</td>
+<td style="text-align: right;">-1021</td>
+<td style="text-align: right;">960</td>
+<td style="text-align: right;">-107</td>
+<td style="text-align: right;">460</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">467</td>
+<td style="text-align: right;">-795</td>
+<td style="text-align: right;">-845</td>
+<td style="text-align: right;">-709</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">85</td>
+<td style="text-align: right;">-64</td>
+<td style="text-align: right;">525</td>
+<td style="text-align: right;">-3</td>
+<td style="text-align: right;">417</td>
+<td style="text-align: right;">503</td>
+<td style="text-align: right;">225</td>
+<td style="text-align: right;">177</td>
+<td style="text-align: right;">475</td>
+<td style="text-align: right;">-848</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-685</td>
+<td style="text-align: right;">-356</td>
+<td style="text-align: right;">-296</td>
+<td style="text-align: right;">626</td>
+<td style="text-align: right;">647</td>
+<td style="text-align: right;">-578</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">141</td>
 <td style="text-align: right;">45</td>
-<td style="text-align: right;">620</td>
-<td style="text-align: right;">-247</td>
-<td style="text-align: right;">633</td>
+<td style="text-align: right;">-71</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">760</td>
+<td style="text-align: right;">159</td>
+<td style="text-align: right;">340</td>
+<td style="text-align: right;">679</td>
+<td style="text-align: right;">-262</td>
+<td style="text-align: right;">-505</td>
+<td style="text-align: right;">167</td>
+<td style="text-align: right;">-154</td>
+<td style="text-align: right;">-88</td>
+<td style="text-align: right;">471</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-998</td>
+<td style="text-align: right;">258</td>
+<td style="text-align: right;">76</td>
+<td style="text-align: right;">913</td>
+<td style="text-align: right;">95</td>
+<td style="text-align: right;">-268</td>
+<td style="text-align: right;">1057</td>
+<td style="text-align: right;">-446</td>
+<td style="text-align: right;">508</td>
 <td style="text-align: right;">599</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">-125</td>
-<td style="text-align: right;">196</td>
-<td style="text-align: right;">-164</td>
-<td style="text-align: right;">797</td>
-<td style="text-align: right;">-388</td>
-<td style="text-align: right;">284</td>
-<td style="text-align: right;">748</td>
-<td style="text-align: right;">-146</td>
-<td style="text-align: right;">-310</td>
-<td style="text-align: right;">-275</td>
+<td style="text-align: right;">-1000</td>
+<td style="text-align: right;">-200</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">513</td>
+<td style="text-align: right;">1179</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">413</td>
+<td style="text-align: right;">477</td>
+<td style="text-align: right;">371</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">-294</td>
-<td style="text-align: right;">-660</td>
-<td style="text-align: right;">-598</td>
-<td style="text-align: right;">595</td>
-<td style="text-align: right;">440</td>
-<td style="text-align: right;">706</td>
-<td style="text-align: right;">-92</td>
-<td style="text-align: right;">46</td>
-<td style="text-align: right;">438</td>
-<td style="text-align: right;">-215</td>
+<td style="text-align: right;">-335</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">85</td>
+<td style="text-align: right;">-190</td>
+<td style="text-align: right;">831</td>
+<td style="text-align: right;">533</td>
+<td style="text-align: right;">-632</td>
+<td style="text-align: right;">-227</td>
+<td style="text-align: right;">353</td>
+<td style="text-align: right;">-673</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">239</td>
+<td style="text-align: right;">-836</td>
+<td style="text-align: right;">687</td>
+<td style="text-align: right;">267</td>
+<td style="text-align: right;">-338</td>
+<td style="text-align: right;">-425</td>
+<td style="text-align: right;">43</td>
+<td style="text-align: right;">-787</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">-530</td>
+<td style="text-align: right;">415</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">846</td>
+<td style="text-align: right;">958</td>
+<td style="text-align: right;">-159</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">533</td>
+<td style="text-align: right;">589</td>
+<td style="text-align: right;">409</td>
+<td style="text-align: right;">305</td>
+<td style="text-align: right;">-461</td>
+<td style="text-align: right;">893</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">179</td>
+<td style="text-align: right;">81</td>
+<td style="text-align: right;">1141</td>
+<td style="text-align: right;">-361</td>
+<td style="text-align: right;">-189</td>
+<td style="text-align: right;">482</td>
+<td style="text-align: right;">-102</td>
+<td style="text-align: right;">184</td>
+<td style="text-align: right;">1069</td>
+<td style="text-align: right;">-154</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-485</td>
+<td style="text-align: right;">663</td>
+<td style="text-align: right;">-502</td>
+<td style="text-align: right;">273</td>
+<td style="text-align: right;">422</td>
+<td style="text-align: right;">-260</td>
+<td style="text-align: right;">96</td>
+<td style="text-align: right;">569</td>
+<td style="text-align: right;">-409</td>
+<td style="text-align: right;">28</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">-535</td>
+<td style="text-align: right;">-141</td>
+<td style="text-align: right;">-109</td>
+<td style="text-align: right;">-603</td>
+<td style="text-align: right;">-818</td>
+<td style="text-align: right;">-91</td>
+<td style="text-align: right;">74</td>
+<td style="text-align: right;">763</td>
 <td style="text-align: right;">196</td>
 <td style="text-align: right;">-17</td>
-<td style="text-align: right;">-71</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">899</td>
-<td style="text-align: right;">242</td>
-<td style="text-align: right;">64</td>
-<td style="text-align: right;">211</td>
-<td style="text-align: right;">589</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">208</td>
-<td style="text-align: right;">758</td>
-<td style="text-align: right;">682</td>
-<td style="text-align: right;">-196</td>
-<td style="text-align: right;">-139</td>
-<td style="text-align: right;">318</td>
-<td style="text-align: right;">-37</td>
-<td style="text-align: right;">-11</td>
-<td style="text-align: right;">452</td>
-<td style="text-align: right;">237</td>
+<td style="text-align: right;">551</td>
+<td style="text-align: right;">-255</td>
+<td style="text-align: right;">-204</td>
+<td style="text-align: right;">612</td>
+<td style="text-align: right;">-444</td>
+<td style="text-align: right;">392</td>
+<td style="text-align: right;">302</td>
+<td style="text-align: right;">-141</td>
+<td style="text-align: right;">-496</td>
+<td style="text-align: right;">-204</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">-642</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">691</td>
-<td style="text-align: right;">364</td>
-<td style="text-align: right;">-256</td>
-<td style="text-align: right;">152</td>
-<td style="text-align: right;">124</td>
-<td style="text-align: right;">293</td>
-<td style="text-align: right;">-257</td>
-<td style="text-align: right;">-347</td>
+<td style="text-align: right;">-79</td>
+<td style="text-align: right;">736</td>
+<td style="text-align: right;">454</td>
+<td style="text-align: right;">312</td>
+<td style="text-align: right;">-584</td>
+<td style="text-align: right;">-272</td>
+<td style="text-align: right;">-836</td>
+<td style="text-align: right;">226</td>
+<td style="text-align: right;">384</td>
+<td style="text-align: right;">-150</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">337</td>
-<td style="text-align: right;">888</td>
-<td style="text-align: right;">230</td>
-<td style="text-align: right;">362</td>
-<td style="text-align: right;">639</td>
-<td style="text-align: right;">-132</td>
-<td style="text-align: right;">525</td>
-<td style="text-align: right;">-721</td>
-<td style="text-align: right;">198</td>
-<td style="text-align: right;">765</td>
+<td style="text-align: right;">-38</td>
+<td style="text-align: right;">301</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: right;">843</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">-751</td>
+<td style="text-align: right;">-19</td>
+<td style="text-align: right;">-7</td>
+<td style="text-align: right;">-403</td>
+<td style="text-align: right;">-944</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">559</td>
-<td style="text-align: right;">-458</td>
-<td style="text-align: right;">-209</td>
-<td style="text-align: right;">122</td>
-<td style="text-align: right;">-89</td>
-<td style="text-align: right;">-524</td>
-<td style="text-align: right;">-52</td>
-<td style="text-align: right;">744</td>
-<td style="text-align: right;">335</td>
-<td style="text-align: right;">-276</td>
+<td style="text-align: right;">-612</td>
+<td style="text-align: right;">149</td>
+<td style="text-align: right;">355</td>
+<td style="text-align: right;">67</td>
+<td style="text-align: right;">-127</td>
+<td style="text-align: right;">637</td>
+<td style="text-align: right;">212</td>
+<td style="text-align: right;">342</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">446</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">-662</td>
-<td style="text-align: right;">524</td>
-<td style="text-align: right;">-861</td>
-<td style="text-align: right;">-920</td>
-<td style="text-align: right;">1056</td>
-<td style="text-align: right;">-717</td>
-<td style="text-align: right;">-61</td>
-<td style="text-align: right;">750</td>
-<td style="text-align: right;">623</td>
+<td style="text-align: right;">92</td>
+<td style="text-align: right;">578</td>
+<td style="text-align: right;">-367</td>
 <td style="text-align: right;">507</td>
+<td style="text-align: right;">105</td>
+<td style="text-align: right;">-725</td>
+<td style="text-align: right;">-29</td>
+<td style="text-align: right;">-690</td>
+<td style="text-align: right;">598</td>
+<td style="text-align: right;">321</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">318</td>
+<td style="text-align: right;">-314</td>
+<td style="text-align: right;">-422</td>
+<td style="text-align: right;">741</td>
+<td style="text-align: right;">832</td>
+<td style="text-align: right;">57</td>
+<td style="text-align: right;">-86</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">68</td>
+<td style="text-align: right;">421</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-170</td>
+<td style="text-align: right;">350</td>
+<td style="text-align: right;">220</td>
+<td style="text-align: right;">713</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">-314</td>
+<td style="text-align: right;">-209</td>
+<td style="text-align: right;">-73</td>
+<td style="text-align: right;">-589</td>
+<td style="text-align: right;">-279</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">572</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">-391</td>
+<td style="text-align: right;">128</td>
+<td style="text-align: right;">-549</td>
+<td style="text-align: right;">-511</td>
+<td style="text-align: right;">-246</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">-264</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-648</td>
+<td style="text-align: right;">316</td>
+<td style="text-align: right;">-15</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">-834</td>
+<td style="text-align: right;">169</td>
+<td style="text-align: right;">-587</td>
+<td style="text-align: right;">-251</td>
+<td style="text-align: right;">661</td>
+<td style="text-align: right;">-149</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">-891</td>
+<td style="text-align: right;">423</td>
+<td style="text-align: right;">-946</td>
+<td style="text-align: right;">176</td>
+<td style="text-align: right;">618</td>
+<td style="text-align: right;">1030</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">757</td>
+<td style="text-align: right;">205</td>
+<td style="text-align: right;">-305</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-564</td>
+<td style="text-align: right;">-322</td>
+<td style="text-align: right;">393</td>
+<td style="text-align: right;">-253</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">-462</td>
+<td style="text-align: right;">667</td>
+<td style="text-align: right;">-97</td>
+<td style="text-align: right;">-288</td>
+<td style="text-align: right;">418</td>
 </tr>
 </tbody>
 </table>
@@ -981,7 +987,7 @@ window.Quarto = {
 <div id="fig-happyPlot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-happyPlot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-Describing_Data_files/figure-html/fig-happyPlot-1.png" class="img-fluid figure-img" style="width:75.0%">
+<img src="02-Describing_Data_files/figure-html/fig-happyPlot-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-happyPlot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.1: Supuestas puntuaciones de felicidad de 500 personas
@@ -1006,7 +1012,7 @@ Figura&nbsp;2.1: Supuestas puntuaciones de felicidad de 500 personas
 <div id="fig-happyHist" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-happyHist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-Describing_Data_files/figure-html/fig-happyHist-1.png" class="img-fluid figure-img" style="width:75.0%">
+<img src="02-Describing_Data_files/figure-html/fig-happyHist-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-happyHist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.2: Un histograma de las puntuaciones de felicidad
@@ -1024,7 +1030,7 @@ Figura&nbsp;2.2: Un histograma de las puntuaciones de felicidad
 <div id="fig-manyhistbin" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-manyhistbin-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-Describing_Data_files/figure-html/fig-manyhistbin-1.png" class="img-fluid figure-img" style="width:75.0%">
+<img src="02-Describing_Data_files/figure-html/fig-manyhistbin-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-manyhistbin-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.3: Cuatro histogramas del mismo conjunto de datos usando diferentes anchos de bin
@@ -1145,7 +1151,7 @@ Ahora tanto 1 como 2 aparecen tres veces. ¿Qué hacemos? Decimos que hay dos mo
 <div id="fig-meanmodemed" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-meanmodemed-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-Describing_Data_files/figure-html/fig-meanmodemed-1.png" class="img-fluid figure-img" style="width:75.0%">
+<img src="02-Describing_Data_files/figure-html/fig-meanmodemed-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-meanmodemed-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.4: Un histograma con la media (rojo), la mediana (verde) y la moda (azul)
@@ -1170,8 +1176,47 @@ Figura&nbsp;2.4: Un histograma con la media (rojo), la mediana (verde) y la moda
 <p>El rango es una forma rápida de resumir los límites de los datos con solo dos números. Al calcular el rango, sabemos que ningún valor es más chico ni más grande que esos extremos. Además, puede alertarte sobre valores atípicos. Por ejemplo, si esperás que tus números estén entre 1 y 7, pero el rango es 1–340.500, entonces sabés que hay algunos valores enormes que no deberían estar ahí. Eso te permite investigar por qué aparecieron (y posiblemente eliminarlos si hubo algún error).</p>
 </section>
 </section>
-<section id="diagramas-de-caja-boxplots" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="diagramas-de-caja-boxplots"><span class="header-section-number">2.6</span> Diagramas de caja (boxplots)</h2>
+<section id="cuantiles-cuartiles-y-percentiles-cortando-la-torta-de-los-datos" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="cuantiles-cuartiles-y-percentiles-cortando-la-torta-de-los-datos"><span class="header-section-number">2.6</span> Cuantiles, cuartiles y percentiles: cortando la torta de los datos</h2>
+<p>Antes de meternos con los <strong>diagramas de caja</strong>, necesitamos conocer una idea básica pero poderosa: <strong>cómo dividir los datos ordenaditos en partes</strong>. Para eso están los <strong>cuantiles</strong>.</p>
+<section id="qué-son-los-cuantiles" class="level3" data-number="2.6.1">
+<h3 data-number="2.6.1" class="anchored" data-anchor-id="qué-son-los-cuantiles"><span class="header-section-number">2.6.1</span> ¿Qué son los cuantiles?</h3>
+<p>Imaginate que tenés una lista de datos, como por ejemplo puntajes en un test, y los ordenás de menor a mayor. Los cuantiles son como cortes que hacés en esa lista para dividirla en partes iguales. Según en cuántas partes la quieras dividir, cambian de nombre:</p>
+<ul>
+<li>Si la dividís en 4 partes → <strong>cuartiles</strong></li>
+<li>Si la dividís en 10 → <strong>deciles</strong></li>
+<li>Si la dividís en 100 → <strong>percentiles</strong></li>
+</ul>
+<p>Cada uno de esos cortes nos ayuda a entender cómo están repartidos los datos. ¿Están todos apretados en un extremo? ¿Se reparten parejito? ¿Hay alguno que se va al pasto? Los cuantiles te dan pistas.</p>
+</section>
+<section id="percentiles-lo-escuchaste-desde-bebé" class="level3" data-number="2.6.2">
+<h3 data-number="2.6.2" class="anchored" data-anchor-id="percentiles-lo-escuchaste-desde-bebé"><span class="header-section-number">2.6.2</span> Percentiles: lo escuchaste desde bebé</h3>
+<p>Probablemente la primera vez que escuchaste hablar de <strong>percentiles</strong> fue cuando eras un ser humano de apenas unos kilos. Alguna vez alguien te dijo (o escuchaste que le dijeron a un bebé):</p>
+<blockquote class="blockquote">
+<p>“Está en el percentil 99 de peso”<br>
+o<br>
+“Uy, está medio flaquito, está en el percentil 3 de talla”</p>
+</blockquote>
+<p>¿Eso qué quiere decir?<br>
+Que si estabas en el <strong>percentil 99</strong>, pesabas más que el 99% de bebés de tu edad.<br>
+Y si estabas en el <strong>percentil 1</strong>, solo el 1% pesaba menos que vos.</p>
+<p>¡Así de simple! Los percentiles te dicen <strong>qué porcentaje de la población está por debajo tuyo</strong>.</p>
+</section>
+<section id="y-los-cuartiles" class="level3" data-number="2.6.3">
+<h3 data-number="2.6.3" class="anchored" data-anchor-id="y-los-cuartiles"><span class="header-section-number">2.6.3</span> ¿Y los cuartiles?</h3>
+<p>Bueno, los <strong>cuartiles</strong> son un caso especial de percentiles:</p>
+<ul>
+<li><strong>Primer cuartil (Q1)</strong> = percentil 25<br>
+</li>
+<li><strong>Segundo cuartil (Q2)</strong> = percentil 50 (también conocido como la <strong>mediana</strong>)<br>
+</li>
+<li><strong>Tercer cuartil (Q3)</strong> = percentil 75</li>
+</ul>
+<p>Es decir, el Q1 es el valor debajo del cual cae el 25% de los datos. El Q3 es el punto debajo del cual cae el 75%. Entre Q1 y Q3 está la mitad de tus datos: eso se llama el <strong>rango intercuartílico</strong> (pero tranqui, ya lo vamos a ver con un dibujito).</p>
+</section>
+</section>
+<section id="diagramas-de-caja-boxplots" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="diagramas-de-caja-boxplots"><span class="header-section-number">2.7</span> Diagramas de caja (boxplots)</h2>
 <p>Una alternativa a los histogramas es el diagrama de caja, a veces llamado “diagrama de caja y bigotes” (box and whiskers). Al igual que los histogramas, son más adecuados para datos en escala de intervalo o razón. La idea detrás de un boxplot es proporcionar una representación visual simple de la mediana, el rango intercuartílico y el rango de los datos. Y como lo hacen de manera bastante compacta, los diagramas de caja se han vuelto muy populares como gráficos estadísticos, especialmente en la etapa exploratoria del análisis de datos, cuando estás intentenado entender los datos.</p>
 <p>Al mirar este gráfico, esto es lo que deberías interpretar: la línea gruesa en el medio de la caja es la mediana; la caja en sí abarca desde el percentil 25 hasta el 75; y los “bigotes” cubren todo el rango desde el valor mínimo hasta el máximo. Puedes observarlo en la Figura <a href="#fig-boxplotanotado" class="quarto-xref">Figura&nbsp;<span>2.5</span></a>.</p>
 <div class="cell">
@@ -1179,7 +1224,7 @@ Figura&nbsp;2.4: Un histograma con la media (rojo), la mediana (verde) y la moda
 <div id="fig-boxplotanotado" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-boxplotanotado-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="imgs/boxplot1_anotado_es.png" class="img-fluid figure-img" style="width:75.0%">
+<img src="imgs/boxplot1_anotado_es.png" class="img-fluid figure-img" width="300">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-boxplotanotado-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.5: Boxplot con anotaciones
@@ -1191,15 +1236,17 @@ Figura&nbsp;2.5: Boxplot con anotaciones
 <p>En la práctica, los boxplots no suelen funcionar exactamente así. En la mayoría de los casos, los “bigotes” no abarcan todo el rango desde el valor mínimo hasta el máximo. En cambio, se extienden hasta el punto más extremo que <strong>no exceda un cierto límite preestablecido</strong>. Por defecto, ese valor es 1.5 veces el rango intercuartílico. Cualquier observación que esté fuera de ese rango se grafica como un círculo en lugar de ser incluida en los bigotes, y comunmente se la denomina valor atípico (outlier).</p>
 <p>Veamos cómo luce tomando como ejempo la variable felicidad. Los datos que necesitamos son los siguientes:</p>
 <div class="cell">
-<pre><code>#&gt;   Mínimo Perc. 25  Mediana    Media Perc. 75   Máximo 
-#&gt;  -1544.2   -202.7    130.8    126.9    495.9   1412.6</code></pre>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Mínimo Perc. 25  Mediana    Media Perc. 75   Máximo 
+-1255.24  -253.67    57.47    61.78   413.24  1240.49 </code></pre>
+</div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-boxplotfelicidad" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-boxplotfelicidad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-Describing_Data_files/figure-html/fig-boxplotfelicidad-1.png" class="img-fluid figure-img" style="width:75.0%">
+<img src="02-Describing_Data_files/figure-html/fig-boxplotfelicidad-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-boxplotfelicidad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.6: Boxplot - Felicidad
@@ -1209,13 +1256,13 @@ Figura&nbsp;2.6: Boxplot - Felicidad
 </div>
 </div>
 </section>
-<section id="uso-de-diagramas-de-caja-para-detectar-valores-atípicos" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="uso-de-diagramas-de-caja-para-detectar-valores-atípicos"><span class="header-section-number">2.7</span> Uso de diagramas de caja para detectar valores atípicos</h2>
+<section id="uso-de-diagramas-de-caja-para-detectar-valores-atípicos" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="uso-de-diagramas-de-caja-para-detectar-valores-atípicos"><span class="header-section-number">2.8</span> Uso de diagramas de caja para detectar valores atípicos</h2>
 <p>Como el boxplot separa automáticamente aquellas observaciones que se encuentran fuera de cierto rango, suele utilizarse como un método informal para detectar valores atípicos: observaciones que están “sospechosamente” alejadas del resto de los datos.</p>
 <p>Los conjuntos de datos reales suelen estar llenos de errores, especialmente cuando alguien tuvo que tipear información en una computadora. De hecho, esta etapa del análisis tiene un nombre específico, ya que en la práctica puede llevar mucho tiempo: limpieza de datos (data cleaning). Implica buscar errores de tipeo, datos faltantes y todo tipo de problemas molestos en los archivos de datos crudos.</p>
 <p>¿Y qué pasa con los datos atípicos que son reales? La decisión de incluir o excluir valores atípicos depende en gran medida de por qué creés que los datos se ven como se ven y para qué querés usarlos. Las herramientas estadísticas pueden ofrecer un método automático para sugerir posibles candidatos a eliminar, pero acá es fundamental aplicar buen juicio. El software estadístico es un autómata sin criterio, le falta el contexto más amplio para tomar una decisión informada. Vos no sos un autómata sin criterio, así que usá tu juicio: si el valor atípico te parece legítimo, entonces dejalo.</p>
-<section id="las-diferencias" class="level3" data-number="2.7.1">
-<h3 data-number="2.7.1" class="anchored" data-anchor-id="las-diferencias"><span class="header-section-number">2.7.1</span> Las diferencias</h3>
+<section id="las-diferencias" class="level3" data-number="2.8.1">
+<h3 data-number="2.8.1" class="anchored" data-anchor-id="las-diferencias"><span class="header-section-number">2.8.1</span> Las diferencias</h3>
 <p>Estaría bueno poder resumir cuánto difieren los datos entre sí. ¿Por qué? Bueno, si pensás que los datos crudos (muchos números) ya son difíciles de mirar, vas a entrar en pánico al ver cuántas diferencias hay entre todos esos valores. Por ejemplo, estos 10 números son fáciles de ver:</p>
 <blockquote class="blockquote">
 <p>1 3 4 5 5 6 7 8 9 24</p>
@@ -1421,8 +1468,8 @@ Figura&nbsp;2.6: Boxplot - Felicidad
 <p>Además, capaz ya te diste cuenta de que estas matrices de diferencias son redundantes. La diagonal siempre tiene ceros, y los valores a un lado de la diagonal son iguales a los del otro lado, pero con el signo cambiado. Esa es una de las razones por las que la suma de las diferencias da cero.</p>
 <p>Estos pequeños problemas se pueden resolver con el uso de la <strong>varianza</strong> y la <strong>desviación estándar</strong>. Por ahora, podés pensar que la desviación estándar es un truco para evitar obtener cero. Más adelante vas a ver que tiene propiedades importantes por otras razones.</p>
 </section>
-<section id="la-varianza" class="level3" data-number="2.7.2">
-<h3 data-number="2.7.2" class="anchored" data-anchor-id="la-varianza"><span class="header-section-number">2.7.2</span> La varianza</h3>
+<section id="la-varianza" class="level3" data-number="2.8.2">
+<h3 data-number="2.8.2" class="anchored" data-anchor-id="la-varianza"><span class="header-section-number">2.8.2</span> La varianza</h3>
 <p>Variabilidad, variación, varianza, variar, variable, variado, variedad. ¿Confundido? Antes de describir <strong>la varianza</strong>, queremos que te sientas cómodo con cómo se usa esta palabra. Primero, no te olvides de lo importante: sabemos que variabilidad y variación se refieren a la gran idea de que los números pueden ser diferentes. Podemos usar “varianza” en ese mismo sentido. Cuando los números son distintos, tienen varianza.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1439,8 +1486,8 @@ Nota
 </div>
 <p>La palabra <strong>varianza</strong> también se refiere a una estadística específica: la suma de las desviaciones al cuadrado respecto de la media. ¿Qué? Tranquilo. En lenguaje claro: la varianza es la suma de los cuadrados de las diferencias entre cada valor y la media. ¿Cuáles son esos valores? Los del conjunto de datos. Primero veamos la fórmula en lenguaje común:</p>
 <p><span class="math inline">\(\text{varianza} = \frac{\text{suma de las diferencias al cuadrado}}{\text{cantidad de valores}}\)</span></p>
-<section id="desviaciones-respecto-de-la-media.-puntajes-de-diferencia-con-respecto-a-la-media" class="level4" data-number="2.7.2.1">
-<h4 data-number="2.7.2.1" class="anchored" data-anchor-id="desviaciones-respecto-de-la-media.-puntajes-de-diferencia-con-respecto-a-la-media"><span class="header-section-number">2.7.2.1</span> Desviaciones respecto de la media. Puntajes de diferencia con respecto a la media</h4>
+<section id="desviaciones-respecto-de-la-media.-puntajes-de-diferencia-con-respecto-a-la-media" class="level4" data-number="2.8.2.1">
+<h4 data-number="2.8.2.1" class="anchored" data-anchor-id="desviaciones-respecto-de-la-media.-puntajes-de-diferencia-con-respecto-a-la-media"><span class="header-section-number">2.8.2.1</span> Desviaciones respecto de la media. Puntajes de diferencia con respecto a la media</h4>
 <p>Antes nos complicamos un poco calculando todas las diferencias entre los valores del conjunto. Ahora hagámoslo de una manera más simple. Esta vez, calculamos la diferencia entre cada valor y la media. La idea es:</p>
 <ol type="1">
 <li>Podemos saber qué tan similares son nuestros valores calculando la media.<br>
@@ -1521,8 +1568,8 @@ Nota
 <p>Podemos ver que hay valores distintos de cero en las diferencias, así que sabemos que hay variación en los datos. Pero cuando las sumamos, obtenemos cero, lo que haría pensar que no hay ninguna diferencia en los datos… ¿por qué pasa esto? ¿Y qué hacemos al respecto?</p>
 </section>
 </section>
-<section id="la-media-como-punto-de-equilibrio-de-los-datos" class="level3" data-number="2.7.3">
-<h3 data-number="2.7.3" class="anchored" data-anchor-id="la-media-como-punto-de-equilibrio-de-los-datos"><span class="header-section-number">2.7.3</span> La media como punto de equilibrio de los datos</h3>
+<section id="la-media-como-punto-de-equilibrio-de-los-datos" class="level3" data-number="2.8.3">
+<h3 data-number="2.8.3" class="anchored" data-anchor-id="la-media-como-punto-de-equilibrio-de-los-datos"><span class="header-section-number">2.8.3</span> La media como punto de equilibrio de los datos</h3>
 <p>Hacemos una pausa para destacar otra propiedad genial de la media: es el punto de equilibrio del conjunto de datos. Si agarrás una birome o un lápiz e intentás equilibrarlo en un dedo, ¿qué estás haciendo? Buscás el centro de masa, el punto donde hay la misma cantidad de peso de un lado y del otro. Así funciona el equilibrio: un lado = el otro.</p>
 <p>Podemos pensar los datos como si tuvieran peso. Si los pusiéramos sobre una balanza, podríamos saber cuánto “pesan” sumándolos. Si quisiéramos dividir ese peso por la mitad, para que un lado tenga lo mismo que el otro, podríamos poner un alfiler para hacer de eje. La media nos dice exactamente dónde colocar ese alfiler. Es el punto donde los números de un lado suman lo mismo que los del otro.</p>
 <p>Si lo pensás, eso significa que la suma de las diferencias con respecto a la media siempre va a dar cero. Porque los números a un lado de la media suman -x, y los del otro lado suman +x. Y:</p>
@@ -1530,8 +1577,8 @@ Nota
 <p>¿No?</p>
 <p>Exacto.</p>
 </section>
-<section id="las-desviaciones-al-cuadrado" class="level3" data-number="2.7.4">
-<h3 data-number="2.7.4" class="anchored" data-anchor-id="las-desviaciones-al-cuadrado"><span class="header-section-number">2.7.4</span> Las desviaciones al cuadrado</h3>
+<section id="las-desviaciones-al-cuadrado" class="level3" data-number="2.8.4">
+<h3 data-number="2.8.4" class="anchored" data-anchor-id="las-desviaciones-al-cuadrado"><span class="header-section-number">2.8.4</span> Las desviaciones al cuadrado</h3>
 <p>Alguien muy ingenioso ideó una solución al hecho de que las diferencias con respecto a la media siempre suman cero. ¿Se te ocurre alguna? Por ejemplo, ¿qué podrías hacer con esas diferencias para que, al sumarlas, te den algo útil (o sea, que no sea cero)?</p>
 <p>La solución ingeniosa es elevarlas al cuadrado. Elevar al cuadrado convierte todos los valores negativos en positivos. Por ejemplo,<span class="math inline">\(2^2 = 4\)</span>, y <span class="math inline">\(-2^2 = 4\)</span>. Recordá cómo funciona: <span class="math inline">\(2^2 = 2 \times 2 = 4\)</span>, y <span class="math inline">\((-2)^2 = -2 \times -2 = 4\)</span>. Usamos el término <strong>desviaciones al cuadrado</strong> para referirnos a las diferencias que han sido elevadas al cuadrado. Las desviaciones son justamente eso: apartamientos. Las diferencias con respecto a la media son desviaciones.</p>
 <p>Volvamos a mirar la tabla anterior, pero ahora con una columna adicional de desviaciones al cuadrado:</p>
@@ -1611,8 +1658,8 @@ Nota
 <p>Bien, ahora tenemos una nueva columna llamada <code>Desvíos_cuadráticos</code>. Son simplemente las diferencias elevadas al cuadrado. Por ejemplo, <span class="math inline">\((-3,5)^2 = 12,25\)</span>, etc. Lo podés comprobar con la calculadora del celular.</p>
 <p>Ahora que todas las desviaciones al cuadrado son positivas, podemos sumarlos. Y al hacerlo obtenemos algo muy importante: la <strong>suma de los cuadrados</strong> (SS, por “sum of squares” en ingles), o sea, la suma de las desviaciones al cuadrado respecto de la media. Vamos a hablar mucho de esta SS más adelante, en el capítulo de ANOVA. Pero cuando llegues ahí, ya vas a saber de qué se trata: solo una suma de cuadrados, nada raro.</p>
 </section>
-<section id="finalmente-la-varianza" class="level3" data-number="2.7.5">
-<h3 data-number="2.7.5" class="anchored" data-anchor-id="finalmente-la-varianza"><span class="header-section-number">2.7.5</span> Finalmente, la varianza</h3>
+<section id="finalmente-la-varianza" class="level3" data-number="2.8.5">
+<h3 data-number="2.8.5" class="anchored" data-anchor-id="finalmente-la-varianza"><span class="header-section-number">2.8.5</span> Finalmente, la varianza</h3>
 <p>Sorpresa: ya calculamos la varianza. Sí, ya pasó… capaz no te diste cuenta.<br>
 “¿Eh? ¿Qué me perdí?”</p>
 <p>Bueno, antes que nada: ¿te acordás qué problema estábamos tratando de resolver? Hacé una pausa y tratá de decírtelo a vos mismo:</p>
@@ -1627,8 +1674,8 @@ Nota
 <p>Si pensaste en sacar la raíz cuadrada, ¡ding ding ding! Correcto! Siempre podés deshacer un cuadrado sacando la raíz cuadrada. Entonces, hagámoslo con 5,916:</p>
 <p><span class="math inline">\(\sqrt{5,916} = \text{desviación estándar}\)</span></p>
 </section>
-<section id="la-desviación-estándar" class="level3" data-number="2.7.6">
-<h3 data-number="2.7.6" class="anchored" data-anchor-id="la-desviación-estándar"><span class="header-section-number">2.7.6</span> La desviación estándar</h3>
+<section id="la-desviación-estándar" class="level3" data-number="2.8.6">
+<h3 data-number="2.8.6" class="anchored" data-anchor-id="la-desviación-estándar"><span class="header-section-number">2.8.6</span> La desviación estándar</h3>
 <p>Sí, otra vez lo hicimos sin avisarte. Ya calculamos la desviación estándar (o desvío estándar, o desviación típica, o desvío típico, tiene varios nombres en español). Es simplemente la raíz cuadrada de la varianza. Al menos, por ahora… en el próximo capítulo se va a complicar un poquito más.</p>
 <p>Acá va la fórmula:</p>
 <p><span class="math inline">\(\text{Desviación estándar} = \sqrt{\text{Varianza}} = \sqrt{\frac{SS}{N}}\)</span></p>
@@ -1713,8 +1760,8 @@ Nota
 <p>¿Qué significa todo esto? Bueno, si alguien te dice que tiene un conjunto de datos con media 4,5 (como los de nuestra tabla) y desviación estándar <code>√5,916</code>, ya tenés un muy buen resumen de esos valores: sabés que giran alrededor del 4,5, pero no todos son iguales, y que esa dispersión no es muy grande.</p>
 <p>Si tuvieras un montón de datos, podrías resumirlos con solo dos números: la media y la desviación estándar. Y eso ya te daría una idea bastante buena del conjunto.</p>
 </section>
-<section id="desviaciones-absolutas" class="level3" data-number="2.7.7">
-<h3 data-number="2.7.7" class="anchored" data-anchor-id="desviaciones-absolutas"><span class="header-section-number">2.7.7</span> Desviaciones absolutas</h3>
+<section id="desviaciones-absolutas" class="level3" data-number="2.8.7">
+<h3 data-number="2.8.7" class="anchored" data-anchor-id="desviaciones-absolutas"><span class="header-section-number">2.8.7</span> Desviaciones absolutas</h3>
 <p>¿Y si simplemente tomamos el valor absoluto de las diferencias respecto de la media? Recordá que el valor absoluto convierte cualquier número en un valor positivo. Fijate en la siguiente tabla:</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -1799,24 +1846,24 @@ Nota
 <p>Esto también funciona bastante bien. Al convertir las diferencias respecto de la media en valores positivos, ahora podemos sumarlas y obtener un valor distinto de cero (si es que hay diferencias). Después, podemos calcular el promedio de la suma de las desviaciones absolutas. Si quisiéramos hacer un paralelismo entre los términos suma de cuadrados (SS), varianza y desviación estándar, y estas nuevas medidas basadas en la desviación absoluta, ¿cómo sería ese mapeo? Por ejemplo, ¿qué valor en la tabla correspondería a la SS? Eso sería la <strong>suma de desviaciones absolutas</strong> en la última columna. ¿Y la varianza y la desviación estándar, a qué corresponderían? Recordá que la varianza es el promedio (<span class="math inline">\(SS/N\)</span>), y que la desviación estándar es la raíz cuadrada de ese promedio (<span class="math inline">\(\sqrt{SS/N}\)</span>).</p>
 <p>En la tabla de arriba solo tenemos un promedio: el promedio de la suma de desviaciones absolutas. Entonces, tenemos una medida de <strong>varianza</strong> que <strong>no necesita extraer raíz cuadrada</strong>. Podemos decir que la <strong>desviación media absoluta</strong> cumple un doble rol: es tanto una medida de varianza como de desviación estándar. Gol.</p>
 </section>
-<section id="otras-operaciones-que-invierten-el-signo" class="level3" data-number="2.7.8">
-<h3 data-number="2.7.8" class="anchored" data-anchor-id="otras-operaciones-que-invierten-el-signo"><span class="header-section-number">2.7.8</span> Otras operaciones que invierten el signo</h3>
+<section id="otras-operaciones-que-invierten-el-signo" class="level3" data-number="2.8.8">
+<h3 data-number="2.8.8" class="anchored" data-anchor-id="otras-operaciones-que-invierten-el-signo"><span class="header-section-number">2.8.8</span> Otras operaciones que invierten el signo</h3>
 <p>En principio, podríamos crear muchas estadísticas de resumen distintas para la variación que resuelvan el problema de que la suma de las diferencias da cero. Por ejemplo, podríamos elevar cada diferencia a cualquier potencia par mayor que 2 (además del cuadrado). Podríamos usar 4, 6, 8, 10, etc. Hay infinitos números pares, así que hay infinitas estadísticas posibles de varianza. También podríamos usar potencias impares y luego tomar el valor absoluto. Muchas cosas son posibles. Lo importante es tener una razón clara para lo que estás haciendo, y elegir un método que funcione bien con el problema que estás analizando. También te mostramos esto porque queremos que entiendas que la estadística es un ejercicio creativo. Inventamos cosas cuando las necesitamos, y usamos cosas que ya existen cuando resuelven bien el problema.</p>
 </section>
 </section>
-<section id="acordate-de-mirar-los-datos" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="acordate-de-mirar-los-datos"><span class="header-section-number">2.8</span> Acordate de mirar los datos</h2>
+<section id="acordate-de-mirar-los-datos" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="acordate-de-mirar-los-datos"><span class="header-section-number">2.9</span> Acordate de mirar los datos</h2>
 <p>Las estadísticas descriptivas son geniales y las vamos a usar mucho en el curso para describir datos. Pero tal vez sospechás que también tienen algunas limitaciones. Y tenés razón. Son resúmenes comprimidos de montones de números. Casi nunca van a poder representar fielmente todos los valores. Además, hay distintos tipos de estadísticas descriptivas, y a veces no es claro cuál conviene usar.</p>
 <p>Tal vez lo más importante que podés hacer cuando usás estadísticas descriptivas es complementarlas con una visualización gráfica de los datos. Esto puede ayudarte a ver si esos resúmenes realmente están capturando lo que hay en los datos.</p>
-<section id="el-cuarteto-de-anscombe" class="level3" data-number="2.8.1">
-<h3 data-number="2.8.1" class="anchored" data-anchor-id="el-cuarteto-de-anscombe"><span class="header-section-number">2.8.1</span> El cuarteto de Anscombe</h3>
+<section id="el-cuarteto-de-anscombe" class="level3" data-number="2.9.1">
+<h3 data-number="2.9.1" class="anchored" data-anchor-id="el-cuarteto-de-anscombe"><span class="header-section-number">2.9.1</span> El cuarteto de Anscombe</h3>
 <p>Para ilustrar este punto —y prepararte para los temas del próximo capítulo— mirá este ejemplo. Se llama el Cuarteto de Anscombe, porque estos gráficos y valores tan curiosos fueron producidos por [Anscombe, 1973]. En la <a href="#fig-anscombe" class="quarto-xref">Figura&nbsp;<span>2.7</span></a> estás viendo pares de mediciones. Cada gráfico tiene un eje X y un eje Y, y cada punto representa dos valores. A simple vista, cada gráfico se ve muy distinto, ¿no?</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-anscombe" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-anscombe-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-Describing_Data_files/figure-html/fig-anscombe-1.png" class="img-fluid figure-img" style="width:75.0%">
+<img src="02-Describing_Data_files/figure-html/fig-anscombe-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anscombe-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.7: El Cuarteto de Anscombe
@@ -1873,31 +1920,31 @@ Figura&nbsp;2.7: El Cuarteto de Anscombe
 </div>
 <p>¡Las estadísticas descriptivas son todas iguales! Anscombe armó estos conjuntos especiales justamente para mostrar por qué es tan importante graficar los datos. Si solo mirás los resúmenes numéricos, no tenés idea de qué patrones están ocultando. Pero si mirás el gráfico, podés comprender mucho más.</p>
 </section>
-<section id="el-datasaurus-dozen" class="level3" data-number="2.8.2">
-<h3 data-number="2.8.2" class="anchored" data-anchor-id="el-datasaurus-dozen"><span class="header-section-number">2.8.2</span> El “Datasaurus Dozen”</h3>
+<section id="el-datasaurus-dozen" class="level3" data-number="2.9.2">
+<h3 data-number="2.9.2" class="anchored" data-anchor-id="el-datasaurus-dozen"><span class="header-section-number">2.9.2</span> El “Datasaurus Dozen”</h3>
 <p>Si te pareció genial el Cuarteto de Anscombe, no te pierdas el <a href="https://www.autodeskresearch.com/publications/samestats">Datasaurus Dozen</a> <span class="citation" data-cites="matejka2017same">(<a href="references.html#ref-matejka2017same" role="doc-biblioref">Matejka y Fitzmaurice 2017</a>)</span>. Bajá un poco en la página para ver los ejemplos. Vas a ver diagramas de puntos con muchísimos patrones distintos —¡incluso dinosaurios!— y lo más increíble es que todos tienen estadísticas descriptivas <em>casi</em> idénticas. Otro recordatorio más: <strong>mirá tus datos</strong>, ¡quizás tengan forma de dinosaurio!</p>
 <hr>
 </section>
 </section>
-<section id="videos-en-inglés" class="level2" data-number="2.9">
-<h2 data-number="2.9" class="anchored" data-anchor-id="videos-en-inglés"><span class="header-section-number">2.9</span> Videos (en inglés)</h2>
-<section id="medidas-de-tendencia-central-moda" class="level3" data-number="2.9.1">
-<h3 data-number="2.9.1" class="anchored" data-anchor-id="medidas-de-tendencia-central-moda"><span class="header-section-number">2.9.1</span> Medidas de tendencia central: Moda</h3>
+<section id="videos-en-inglés" class="level2" data-number="2.10">
+<h2 data-number="2.10" class="anchored" data-anchor-id="videos-en-inglés"><span class="header-section-number">2.10</span> Videos (en inglés)</h2>
+<section id="medidas-de-tendencia-central-moda" class="level3" data-number="2.10.1">
+<h3 data-number="2.10.1" class="anchored" data-anchor-id="medidas-de-tendencia-central-moda"><span class="header-section-number">2.10.1</span> Medidas de tendencia central: Moda</h3>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/hQ2p-QQpGso" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
 </iframe>
 </section>
-<section id="medidas-de-tendencia-central-mediana-y-media" class="level3" data-number="2.9.2">
-<h3 data-number="2.9.2" class="anchored" data-anchor-id="medidas-de-tendencia-central-mediana-y-media"><span class="header-section-number">2.9.2</span> Medidas de tendencia central: Mediana y Media</h3>
+<section id="medidas-de-tendencia-central-mediana-y-media" class="level3" data-number="2.10.2">
+<h3 data-number="2.10.2" class="anchored" data-anchor-id="medidas-de-tendencia-central-mediana-y-media"><span class="header-section-number">2.10.2</span> Medidas de tendencia central: Mediana y Media</h3>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/BopmCXCjq08" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
 </iframe>
 </section>
-<section id="desviación-estándar-parte-i" class="level3" data-number="2.9.3">
-<h3 data-number="2.9.3" class="anchored" data-anchor-id="desviación-estándar-parte-i"><span class="header-section-number">2.9.3</span> Desviación estándar – Parte I</h3>
+<section id="desviación-estándar-parte-i" class="level3" data-number="2.10.3">
+<h3 data-number="2.10.3" class="anchored" data-anchor-id="desviación-estándar-parte-i"><span class="header-section-number">2.10.3</span> Desviación estándar – Parte I</h3>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/8Yguf93s5dI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
 </iframe>
 </section>
-<section id="desviación-estándar-parte-ii" class="level3" data-number="2.9.4">
-<h3 data-number="2.9.4" class="anchored" data-anchor-id="desviación-estándar-parte-ii"><span class="header-section-number">2.9.4</span> Desviación estándar – Parte II</h3>
+<section id="desviación-estándar-parte-ii" class="level3" data-number="2.10.4">
+<h3 data-number="2.10.4" class="anchored" data-anchor-id="desviación-estándar-parte-ii"><span class="header-section-number">2.10.4</span> Desviación estándar – Parte II</h3>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/KodmsOXScBc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
 </iframe>
 

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -41,10 +41,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-1c4f673b5ad71a23e38d87f497bd0754.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -86,10 +86,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <link rel="stylesheet" href="cuantistats.css">
 <meta property="og:title" content="Respondiendo preguntas con datos">
 <meta property="og:description" content="Un libro gratis que introduce la estadística a nivel de grado para psicología, incluye un manual de laboratorio, y una web del curso. Licensia: CC BY SA 4.0">
-<meta property="og:image" content="https://almadana.github.io/libro_cuanti/imgs/TextbookCover.png">
 <meta property="og:site_name" content="Respondiendo preguntas con datos">
-<meta property="og:image:height" content="1310">
-<meta property="og:image:width" content="916">
 <meta name="twitter:title" content="Respondiendo preguntas con datos">
 <meta name="twitter:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
 <meta name="twitter:image" content="https://almadana.github.io/libro_cuanti/imgs/TextbookCover.png">
@@ -285,7 +282,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 
 <section id="prefacio" class="level1 unnumbered">
 <h1 class="unnumbered">Prefacio</h1><p><img src="imgs/TextbookCover.png" title="Respondiendo preguntas con datos" class="quarto-cover-image img-fluid"></p>
-<p>Primera traducción al español (versión 0.1 = 7 Abril 2025) Compilado: 2025-07-01</p>
+<p>Primera traducción al español (versión 0.1 = 7 Abril 2025) Compilado: 2025-07-09</p>
 <p><strong>Traducción de:</strong> <a href="https://crumplab.github.io/statistics/" class="uri">https://crumplab.github.io/statistics/</a></p>
 <p><strong>Cita original</strong>: Crump, M. J. C., Navarro, D. J., &amp; Suzuki, J. (2019, June 5). Answering Questions with Data (Textbook): Introductory Statistics for Psychology Students. https://doi.org/10.17605/OSF.IO/JZE52</p>
 <section id="notas-importantes" class="level2">
@@ -452,6 +449,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -562,6 +561,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
+      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

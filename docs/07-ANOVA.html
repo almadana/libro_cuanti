@@ -260,8 +260,11 @@ window.Quarto = {
   </ul></li>
   <li><a href="#anova-con-datos-reales" id="toc-anova-con-datos-reales" class="nav-link" data-scroll-target="#anova-con-datos-reales"><span class="header-section-number">9.4</span> 7.4 ANOVA con Datos Reales</a>
   <ul class="collapse">
-  <li><a href="#tetris-y-los-malos-recuerdos" id="toc-tetris-y-los-malos-recuerdos" class="nav-link" data-scroll-target="#tetris-y-los-malos-recuerdos"><span class="header-section-number">9.4.1</span> 7.4.1 Tetris y los malos recuerdos</a></li>
+  <li><a href="#tetris-y-los-malos-recuerdos" id="toc-tetris-y-los-malos-recuerdos" class="nav-link" data-scroll-target="#tetris-y-los-malos-recuerdos"><span class="header-section-number">9.4.1</span> Tetris y los malos recuerdos</a></li>
+  <li><a href="#comparando-medias-después-del-anova" id="toc-comparando-medias-después-del-anova" class="nav-link" data-scroll-target="#comparando-medias-después-del-anova"><span class="header-section-number">9.4.2</span> Comparando medias después del ANOVA</a></li>
   </ul></li>
+  <li><a href="#control-vs.-reactivacióntetris" id="toc-control-vs.-reactivacióntetris" class="nav-link" data-scroll-target="#control-vs.-reactivacióntetris"><span class="header-section-number">9.5</span> 7.4.2.1 Control vs.&nbsp;Reactivación+Tetris</a></li>
+  <li><a href="#resumen-del-anova" id="toc-resumen-del-anova" class="nav-link" data-scroll-target="#resumen-del-anova"><span class="header-section-number">9.6</span> Resumen del ANOVA</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/almadana/libro_cuanti/edit/master/07-ANOVA.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -783,11 +786,14 @@ Figure&nbsp;9.2: The critical value for <span class="math inline">\(F\)</span> w
 <p>El símbolo <span class="math inline">\(\neq\)</span> significa “no es igual a”, es un signo de igual con una cruz (¡no se permiten iguales!).</p>
 <p>¿Cómo juntamos todo esto? Generalmente, cuando obtenemos un valor <span class="math inline">\(p\)</span> chico, con un valor <span class="math inline">\(F\)</span> grande, no vamos a rechazar la hipótesis de no diferencias. Diremos que no tenemos evidencia de que las medias de los tres grupos sean diferentes de alguna manera, y que las diferencias que existen podrían haber sido producidas fácilmente por el azar. Cuando obtenemos una <span class="math inline">\(F\)</span> grande con un valor <span class="math inline">\(p\)</span> chico (uno que esté por debajo de nuestro criterio alfa), generalmente vamos a rechazar la hipótesis de no diferencias. Entonces asumiríamos que al menos la media de un grupo no es igual a una de las otras. Esa es la prueba ómnibus. Rechazar la hipótesis nula de esta manera es rechazar la idea de que no hay diferencias. Pero la prueba <span class="math inline">\(F\)</span> todavía no te dice cuál de las posibles diferencias de grupo es la que marca la diferencia.</p>
 </section>
-<section id="section" class="level4" data-number="9.3.2.2">
-<h4 data-number="9.3.2.2" class="anchored" data-anchor-id="section"><span class="header-section-number">9.3.2.2</span> 7.3.2.2</h4>
-<p>Observando un montón de medias de grupo</p>
+<section id="observando-un-montón-de-medias-de-grupo" class="level4" data-number="9.3.2.2">
+<h4 data-number="9.3.2.2" class="anchored" data-anchor-id="observando-un-montón-de-medias-de-grupo"><span class="header-section-number">9.3.2.2</span> Observando un montón de medias de grupo</h4>
 <p>Acabamos de correr 10.000 experimentos y ni siquiera miramos una sola vez las medias de los grupos en ninguno de ellos. En la Figura 7.3 se muestran diferentes patrones de medias de grupo bajo la hipótesis nula para un subconjunto de 10 simulaciones aleatorias.</p>
 <div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'simulations'. You can override using the
+`.groups` argument.</code></pre>
+</div>
 <div class="cell-output-display">
 <div id="fig-7manyDiffs" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -806,11 +812,14 @@ Figure&nbsp;9.3: Different patterns of group means under the null (all scores fo
 <p>Podés ver que cada uno de los 10 experimentos resulta diferente. Recordá que muestreamos 10 números para cada grupo de la misma distribución normal con media = 100 y DE = 10. Por lo tanto, sabemos que las medias correctas para cada muestra deberían ser 100 en cada ocasión. Sin embargo, no son 100 cada vez debido a… ¿el error de muestreo? (nuestro buen amigo del que hablamos todo el tiempo).</p>
 <p>Para la mayoría de las simulaciones, las barras de error se superponen, lo que sugiere visualmente que las medias no son diferentes. Sin embargo, en algunas parece que no se superponen tanto, y esto sugeriría que son diferentes. Este es el canto de sirena del azar (las sirenas atraían a los marineros a su muerte en el mar… cuidado con el canto de sirena del azar). Si concluyéramos que alguno de estos conjuntos de medias tiene una diferencia verdadera, estaríamos cometiendo un error de tipo I. Como nosotros hicimos la simulación, sabemos que ninguna de estas medias es realmente diferente. Pero, cuando estás corriendo un experimento real, no llegás a saber esto con seguridad.</p>
 </section>
-<section id="section-1" class="level4" data-number="9.3.2.3">
-<h4 data-number="9.3.2.3" class="anchored" data-anchor-id="section-1"><span class="header-section-number">9.3.2.3</span> 7.3.2.3</h4>
-<p>Observando gráficos de barras</p>
+<section id="observando-gráficos-de-barras" class="level4" data-number="9.3.2.3">
+<h4 data-number="9.3.2.3" class="anchored" data-anchor-id="observando-gráficos-de-barras"><span class="header-section-number">9.3.2.3</span> Observando gráficos de barras</h4>
 <p>Miremos el mismo gráfico que antes, pero esta vez usemos barras para ilustrar visualmente las medias, en lugar de puntos. Vamos a rehacer nuestra simulación de 10 experimentos, por lo que el patrón será un poco diferente:</p>
 <div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'simulations'. You can override using the
+`.groups` argument.</code></pre>
+</div>
 <div class="cell-output-display">
 <div id="fig-7manyDiffsBar" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -827,12 +836,15 @@ Figure&nbsp;9.4: Different patterns of group means under the null (all scores fo
 <p>Figura 7.4: Diferentes patrones de las medias de grupo bajo la nula (todas las puntuaciones de cada grupo muestreadas de la misma distribución).</p>
 <p>En la Figura 7.4 las alturas de las barras muestran las medias para cada grupo de pastillas. El patrón a través de las simulaciones es generalmente el mismo. Algunos de los experimentos falsos parece que podrían tener diferencias, y otros no.</p>
 </section>
-<section id="section-2" class="level4" data-number="9.3.2.4">
-<h4 data-number="9.3.2.4" class="anchored" data-anchor-id="section-2"><span class="header-section-number">9.3.2.4</span> 7.3.2.4</h4>
-<p>Cómo se ven las diferencias de medias cuando <span class="math inline">\(F\)</span> es menor que 1</p>
+<section id="cómo-se-ven-las-diferencias-de-medias-cuando-f-es-menor-que-1" class="level4" data-number="9.3.2.4">
+<h4 data-number="9.3.2.4" class="anchored" data-anchor-id="cómo-se-ven-las-diferencias-de-medias-cuando-f-es-menor-que-1"><span class="header-section-number">9.3.2.4</span> Cómo se ven las diferencias de medias cuando <span class="math inline">\(F\)</span> es menor que 1</h4>
 <p>Ahora te vamos a dar un poco de experiencia visual para que veas cómo se ven las medias de un experimento en particular. Esto es para tu intuición estadística. Estamos tratando de mejorar tus “sentidos para los datos”.</p>
 <p>Lo que vamos a hacer ahora es parecido a lo que hicimos antes. Salvo que esta vez vamos a mirar 10 experimentos simulados, donde todos los valores de <span class="math inline">\(F\)</span> fueron menores a 1. Todos estos valores de <span class="math inline">\(F\)</span> también estarían asociados con valores <span class="math inline">\(p\)</span> bastante grandes. Cuando <span class="math inline">\(F\)</span> es menor que uno, no rechazaríamos la hipótesis de no diferencias. Así que, cuando miramos los patrones de las medias cuando <span class="math inline">\(F\)</span> es menor a 1, deberíamos ver mayormente las mismas medias, y ninguna diferencia grande.</p>
 <div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'simulations'. You can override using the
+`.groups` argument.</code></pre>
+</div>
 <div class="cell-output-display">
 <div id="fig-7flesshthanone" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -851,6 +863,10 @@ Figure&nbsp;9.5: Different patterns of group means under the null (sampled from 
 <p>Acá vemos que no todas las barras son perfectamente planas, y está bien. Lo que es más importante es que, para cada panel, las barras de error de cada media se superponen totalmente con todas las demás barras de error. Podemos ver visualmente que nuestra estimación de la media para cada muestra es más o menos la misma para todas las barras. Eso es bueno, no cometeríamos ningún error de tipo I acá.</p>
 <p>7.3.2.5 Cómo se ven las diferencias de medias cuando <span class="math inline">\(F\)</span> &gt; 3.35 Antes encontramos que el valor crítico para <span class="math inline">\(F\)</span> en nuestra situación era 3.35, esta era la ubicación en la distribución <span class="math inline">\(F\)</span> donde solo el 5% de los <span class="math inline">\(F\)</span> eran 3.35 o mayores. Rechazaríamos la hipótesis de no diferencias cada vez que <span class="math inline">\(F\)</span> fuera mayor a 3.35. En este caso, cada vez que hiciéramos eso, estaríamos cometiendo un error de tipo I. Esto es porque estamos simulando la distribución de no diferencias (recordá que todas nuestras medias muestrales vienen exactamente de la misma distribución). Así que ahora podemos echar un vistazo a cómo se ven los errores de tipo I. En otras palabras, podemos correr algunas simulaciones y mirar el patrón en las medias, solo cuando <span class="math inline">\(F\)</span> resulta ser 3.35 o mayor (esto solo pasa el 5% de las veces, así que puede que tengamos que dejar que la computadora simule por un rato). Veamos cómo se ve eso:</p>
 <div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'simulations'. You can override using the
+`.groups` argument.</code></pre>
+</div>
 <div class="cell-output-display">
 <div id="fig-7sigdiffs" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -858,13 +874,12 @@ Figure&nbsp;9.5: Different patterns of group means under the null (sampled from 
 <img src="07-ANOVA_files/figure-html/fig-7sigdiffs-1.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-7sigdiffs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.6: Different patterns of group means under the null when F is above critical value (these are all type I Errors).
+Figure&nbsp;9.6: Diferentes patrones de las medias de grupo bajo la nula cuando <span class="math inline">\(F\)</span> está por encima del valor crítico (todos estos son Errores de tipo I).
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Figura 7.6: Diferentes patrones de las medias de grupo bajo la nula cuando <span class="math inline">\(F\)</span> está por encima del valor crítico (todos estos son Errores de tipo I).</p>
 <p>Los números en los paneles ahora nos dicen qué simulaciones produjeron realmente <span class="math inline">\(F\)</span> que fueron mayores a 3.35.</p>
 <p>¿Qué notás sobre el patrón de las medias dentro de cada panel de la Figura 7.6? Ahora, todos los paneles muestran al menos una media que es diferente de las otras. Específicamente, las barras de error para una media no se superponen con las barras de error para una u otra media. Así es como se ven los errores. Todos estos son errores de tipo I. Son insidiosos. Cuando te pasan por azar, ¡los datos realmente parecen mostrar un patrón fuerte, tu valor de <span class="math inline">\(F\)</span> es grande y tu valor <span class="math inline">\(p\)</span> es chico! Es fácil dejarse convencer por un error de tipo I (es el canto de sirena del azar). &nbsp;</p>
 </section>
@@ -876,7 +891,7 @@ Figure&nbsp;9.6: Different patterns of group means under the null when F is abov
 <p>Pero, probablemente también perdimos el hilo de todo esto. El hilo conductor es que cuando hacemos un experimento, usamos nuestros estadísticos inferenciales, como el ANOVA, para ayudarnos a determinar si las diferencias que encontramos son probablemente debidas al azar o no. En general, nos gusta descubrir que las diferencias que encontramos no se deben al azar, sino a nuestra manipulación.</p>
 <p>Así que volvemos a la aplicación del ANOVA a un conjunto de datos real con una pregunta real. Es el mismo que vas a estar aprendiendo en el laboratorio. Acá te damos un panorama general para que sepas qué esperar.</p>
 <section id="tetris-y-los-malos-recuerdos" class="level3" data-number="9.4.1">
-<h3 data-number="9.4.1" class="anchored" data-anchor-id="tetris-y-los-malos-recuerdos"><span class="header-section-number">9.4.1</span> 7.4.1 Tetris y los malos recuerdos</h3>
+<h3 data-number="9.4.1" class="anchored" data-anchor-id="tetris-y-los-malos-recuerdos"><span class="header-section-number">9.4.1</span> Tetris y los malos recuerdos</h3>
 <p>Sip, leíste bien. La investigación que vas a aprender evalúa si jugar al Tetris después de ver una película de terror puede ayudar a evitar que tengas malos recuerdos de la película (James et al.&nbsp;2015). A veces en la vida, las personas tienen recuerdos intrusivos y piensan en cosas en las que preferirían no tener que pensar. Esta investigación analiza un método que podría reducir la frecuencia de los recuerdos intrusivos. &nbsp;</p>
 <p>Esto es lo que hicieron. Los sujetos vieron una película de terror, y al final de la semana reportaron cuántos recuerdos intrusivos tuvieron sobre la película. El número promedio de recuerdos intrusivos fue la medición (la variable dependiente). Este fue un experimento entre-sujetos con cuatro grupos. Cada grupo de sujetos recibió un tratamiento diferente después de la película de terror. La pregunta era si alguno de estos tratamientos reduciría el número de recuerdos intrusivos. Todos estos tratamientos ocurrieron después de ver la película de terror: &nbsp;</p>
 <p>Control sin tarea: Estos participantes completaron una tarea de relleno de 10 minutos con música después de ver la película de terror.</p>
@@ -939,9 +954,66 @@ Figure&nbsp;9.7: Mean number of intrusive memories per week as a function of exp
 <p>Ahí arriba vemos la tabla ANOVA. Podríamos reportar los resultados de la tabla ANOVA de esta manera:</p>
 <p>Hubo un efecto principal significativo de la condición de tratamiento, F(3, 68) = 3.79, CME = 10.08, p=0.014.</p>
 <p>A esto lo llamamos un efecto significativo porque el valor <span class="math inline">\(p\)</span> fue menor a 0.05. En otras palabras, el valor de <span class="math inline">\(F\)</span> de 3.79 solo ocurre el 1.4% de las veces cuando la hipótesis nula es verdadera. O sea, las diferencias que observamos en las medias solo ocurren por puro azar (error de muestreo) el 1.4% de las veces. Como el azar rara vez produce este tipo de resultado, los investigadores infirieron que el azar NO produjo sus diferencias y, en cambio, se inclinaron a concluir que el tratamiento de Reactivación + Tetris realmente causó una reducción en los recuerdos intrusivos. Eso está buenísimo.</p>
-
-
 </section>
+<section id="comparando-medias-después-del-anova" class="level3" data-number="9.4.2">
+<h3 data-number="9.4.2" class="anchored" data-anchor-id="comparando-medias-después-del-anova"><span class="header-section-number">9.4.2</span> Comparando medias después del ANOVA</h3>
+<p>Recordá que el ANOVA es una prueba ómnibus, solo nos dice si podemos rechazar la idea de que todas las medias son iguales. La prueba F (sinónimo de ANOVA) que acabamos de realizar sugirió que podíamos rechazar la hipótesis de no diferencias. Como discutimos antes, eso debe significar que hay algunas diferencias en el patrón de las medias.</p>
+<p>Generalmente, después de realizar un ANOVA, los investigadores realizan pruebas de seguimiento para comparar diferencias entre medias específicas. Vamos a hablar más de esta práctica a lo largo del libro. Hay muchas prácticas recomendadas para las pruebas de seguimiento, y hay mucho debate sobre qué deberías hacer. No nos vamos a meter en este debate ahora. En cambio, vamos a señalar que necesitás hacer algo para comparar las medias de interés después de realizar el ANOVA, porque el ANOVA es solo el comienzo… Generalmente no te dice lo que querés saber. Te preguntarás para qué molestarse en hacer el ANOVA en primer lugar… Para nada una mala pregunta. Es una buena pregunta. Vas a ver, a medida que hablemos de diseños más complicados, por qué los ANOVAs son tan útiles. En el presente ejemplo, son solo un primer paso común. Hay próximos pasos obligatorios, como el que damos a continuación.</p>
+<p>¿Cómo podés comparar la diferencia entre dos medias, de un diseño entre-sujetos, para determinar si la diferencia que observaste es probable o improbable que se produzca por azar? Esto ya lo vimos, es la prueba <span class="math inline">\(t\)</span> para muestras independientes. Vamos a hacer un par de pruebas <span class="math inline">\(t\)</span> para mostrar el proceso.</p>
+</section>
+</section>
+<section id="control-vs.-reactivacióntetris" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="control-vs.-reactivacióntetris"><span class="header-section-number">9.5</span> 7.4.2.1 Control vs.&nbsp;Reactivación+Tetris</h2>
+<p>Lo que realmente queremos saber es si Reactivación+Tetris causó menos recuerdos intrusivos… pero, ¿comparado con qué? Bueno, si hizo algo, el grupo de Reactivación+Tetris debería tener una media más chica que el grupo Control. Así que hagamos esa comparación:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Two Sample t-test
+
+data:  Days_One_to_Seven_Number_of_Intrusions by Condition
+t = 2.9893, df = 34, p-value = 0.005167
+alternative hypothesis: true difference in means between group Control and group Reactivation+Tetris is not equal to 0
+95 percent confidence interval:
+ 1.031592 5.412852
+sample estimates:
+            mean in group Control mean in group Reactivation+Tetris 
+                         5.111111                          1.888889 </code></pre>
+</div>
+</div>
+<p>Encontramos que hubo una diferencia significativa entre el grupo control (M=5.11) y el grupo de Reactivación + Tetris (M=1.89), t(34) = 2.99, p=0.005.</p>
+<p>Arriba acabás de ver un ejemplo de cómo reportar otra prueba <span class="math inline">\(t\)</span>. Esta oración hace un buen trabajo al decirle al lector todo lo que quiere saber. Tiene las medias de cada grupo y las partes importantes de la prueba <span class="math inline">\(t\)</span>.</p>
+<p>Más importante aún, como sospechábamos, la diferencia entre el grupo control y el de Reactivación + Tetris probablemente no se debió al azar.</p>
+<p>7.4.2.2 Control vs.&nbsp;Solo Tetris Ahora sí que podemos empezar a preguntarnos qué causó la diferencia. ¿Fue solo por jugar al Tetris? ¿Jugar solo al Tetris reduce el número de recuerdos intrusivos durante la semana? Comparémoslo con el grupo de control:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Two Sample t-test
+
+data:  Days_One_to_Seven_Number_of_Intrusions by Condition
+t = 1.0129, df = 34, p-value = 0.3183
+alternative hypothesis: true difference in means between group Control and group Tetris_only is not equal to 0
+95 percent confidence interval:
+ -1.230036  3.674480
+sample estimates:
+    mean in group Control mean in group Tetris_only 
+                 5.111111                  3.888889 </code></pre>
+</div>
+</div>
+<p>Acá no encontramos una diferencia significativa. Encontramos que no hubo una diferencia significativa entre el grupo control (M=5.11) y el grupo de Solo Tetris (M=3.89), t(34) = 2.99, p=0.318.</p>
+<p>Entonces, parece que no todas las diferencias entre nuestras medias son lo suficientemente grandes como para ser llamadas estadísticamente significativas. En particular, esta diferencia, o una mayor, ocurre por azar el 31.8% de las veces.</p>
+<p>Podrías seguir haciendo más comparaciones, entre todos los diferentes pares de medias. Cada vez haciendo una prueba <span class="math inline">\(t\)</span>, y cada vez diciendo algo más específico sobre los patrones entre las medias de lo que podés decir con la prueba ómnibus que provee el ANOVA.</p>
+<p>Generalmente, es el patrón de diferencias entre las medias lo que a vos, como investigador, te interesa entender principalmente. Tus teorías harán predicciones sobre cómo resulta el patrón (por ejemplo, qué medias específicas deberían ser más altas o más bajas y por cuánto). Por lo tanto, la práctica de hacer comparaciones después de un ANOVA es realmente importante para establecer los patrones en las medias.</p>
+</section>
+<section id="resumen-del-anova" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="resumen-del-anova"><span class="header-section-number">9.6</span> Resumen del ANOVA</h2>
+<p>Acabamos de terminar una introducción bastante larga al ANOVA y la prueba <span class="math inline">\(F\)</span>. El próximo par de capítulos continúan explorando las propiedades del ANOVA para diferentes tipos de diseños experimentales. En general, el proceso a seguir para todos los diseños más complicados es muy similar a lo que hicimos acá, que se resume en dos pasos:</p>
+<ol type="1">
+<li><p>realizar el ANOVA sobre los datos</p></li>
+<li><p>realizar pruebas de seguimiento, observando las diferencias entre medias particulares</p></li>
+</ol>
+<p>Entonces, ¿qué sigue?… el ANOVA para diseños de medidas repetidas. Nos vemos en el próximo capítulo.</p>
+
+
 </section>
 
 </main> <!-- /main -->

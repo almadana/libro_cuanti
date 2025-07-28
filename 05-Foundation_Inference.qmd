@@ -1,4 +1,4 @@
----
+f---
 author: 
   - Matthew J. C. Crump
 lang: es
@@ -233,7 +233,7 @@ ggplot(df, aes(x = a)) +
   labs(y = "conteo")
 ```
 
-Si no estás muy segurx de la respuesta, es porque el **error muestral** (el azar) está "difuminando" los histogramas.
+Si no estás muy segura de la respuesta, es porque el **error muestral** (el azar) está "difuminando" los histogramas.
 
 Acá va exactamente la misma pregunta, solo que esta vez tomamos **1.000 observaciones por muestra**. ¿Cuál histograma en @fig-5whichoneC creés que proviene de una distribución uniforme, y cuál no?
 

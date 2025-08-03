@@ -1,4 +1,4 @@
----
+f---
 author: 
   - Matthew J. C. Crump
 lang: es
@@ -153,7 +153,7 @@ Así que aumentemos el número de observaciones en cada muestra, de 20 a 100. Va
 
 ```{r, echo = F}
 #| label: fig-5unifsamp100
-#| fig-cap: "Histogramas de diferentes muestras de una distribución uniforme. N = 1000 para cada muestra."
+#| fig-cap: "Histogramas de diferentes muestras de una distribución uniforme. N = 100 para cada muestra."
 #| out-width: "100%"
 
 a <- sample(1:10, 100 * 10, replace = TRUE)
@@ -173,7 +173,7 @@ Aumentemos el $N$ por muestra de 100 a 1000. Deberíamos esperar que cada númer
 
 ```{r, echo = F}
 #| label: fig-5unifsamp1000
-#| fig-cap: "Histogramas de diferentes muestras de una distribución uniforme. N = 100 para cada muestra."
+#| fig-cap: "Histogramas de diferentes muestras de una distribución uniforme. N = 1000 para cada muestra."
 #| out-width: "100%"
 
 a <- sample(1:10, 1000 * 10, replace = TRUE)
@@ -233,7 +233,7 @@ ggplot(df, aes(x = a)) +
   labs(y = "conteo")
 ```
 
-Si no estás muy segurx de la respuesta, es porque el **error muestral** (el azar) está "difuminando" los histogramas.
+Si no estás muy segura de la respuesta, es porque el **error muestral** (el azar) está "difuminando" los histogramas.
 
 Acá va exactamente la misma pregunta, solo que esta vez tomamos **1.000 observaciones por muestra**. ¿Cuál histograma en @fig-5whichoneC creés que proviene de una distribución uniforme, y cuál no?
 

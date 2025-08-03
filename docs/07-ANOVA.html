@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.57">
@@ -21,7 +21,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -31,7 +51,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./13-Gifs.html" rel="next">
+<link href="./references.html" rel="next">
 <link href="./06b-chi_cuadrado.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -56,17 +76,17 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
   }
 }</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1116FZ99DZ"></script>
@@ -128,13 +148,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07-ANOVA.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">ANOVA</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -154,7 +174,7 @@ window.Quarto = {
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
+        <div id="quarto-search" class="" title="Buscar"></div>
         </div>
         </div>
     <div class="sidebar-menu-container"> 
@@ -221,12 +241,6 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13-Gifs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">GIFs</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -238,7 +252,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+    <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
   <li><a href="#anova-es-análisis-de-varianza" id="toc-anova-es-análisis-de-varianza" class="nav-link active" data-scroll-target="#anova-es-análisis-de-varianza"><span class="header-section-number">9.1</span> ANOVA es Análisis de Varianza</a></li>
@@ -266,7 +280,7 @@ window.Quarto = {
   <li><a href="#control-vs.-reactivacióntetris" id="toc-control-vs.-reactivacióntetris" class="nav-link" data-scroll-target="#control-vs.-reactivacióntetris"><span class="header-section-number">9.5</span> 7.4.2.1 Control vs.&nbsp;Reactivación+Tetris</a></li>
   <li><a href="#resumen-del-anova" id="toc-resumen-del-anova" class="nav-link" data-scroll-target="#resumen-del-anova"><span class="header-section-number">9.6</span> Resumen del ANOVA</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/almadana/libro_cuanti/edit/master/07-ANOVA.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/almadana/libro_cuanti/edit/master/07-ANOVA.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -281,7 +295,7 @@ window.Quarto = {
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
     <div class="quarto-title-meta-contents">
              <p>Matthew J. C. Crump </p>
           </div>
@@ -296,7 +310,7 @@ window.Quarto = {
 </header>
 
 
-<p>Un dato curioso de la historia de la estadística [@salsburg2001lady]. Sir Ronald Fisher inventó el ANOVA, que aprenderemos en esta sección. Quería publicar su nueva prueba en la revista <em>Biometrika</em>. El editor en ese momento era Karl Pearson (¿recuerdas la <span class="math inline">\(r\)</span> de Pearson para la correlación?). Aparentemente, Pearson y Fisher no se llevaban bien; no se agradaban. Pearson se negó a publicar la nueva prueba de Fisher. Así que, finalmente, Fisher publicó su trabajo en el <em>Journal of Agricultural Science</em>. Curiosamente, la enemistad continuó en la siguiente generación. Años después de que Fisher publicara su ANOVA, el hijo de Karl Pearson, Egon Pearson, y Jersey Neyman renovaron las ideas de Fisher y las reformularon en lo que comúnmente se conoce como prueba de hipótesis nula frente a alternativa. A Fisher no le gustó mucho esto.</p>
+<p>Un dato curioso de la historia de la estadística <span class="citation" data-cites="salsburg2001lady">(<a href="references.html#ref-salsburg2001lady" role="doc-biblioref">Salsburg 2001</a>)</span>. Sir Ronald Fisher inventó el ANOVA, que aprenderemos en esta sección. Quería publicar su nueva prueba en la revista <em>Biometrika</em>. El editor en ese momento era Karl Pearson (¿recuerdas la <span class="math inline">\(r\)</span> de Pearson para la correlación?). Aparentemente, Pearson y Fisher no se llevaban bien; no se agradaban. Pearson se negó a publicar la nueva prueba de Fisher. Así que, finalmente, Fisher publicó su trabajo en el <em>Journal of Agricultural Science</em>. Curiosamente, la enemistad continuó en la siguiente generación. Años después de que Fisher publicara su ANOVA, el hijo de Karl Pearson, Egon Pearson, y Jersey Neyman renovaron las ideas de Fisher y las reformularon en lo que comúnmente se conoce como prueba de hipótesis nula frente a alternativa. A Fisher no le gustó mucho esto.</p>
 <p>Presentamos el ANOVA en el sentido fisheriano y, al final, describimos el enfoque de Neyman-Pearson que invoca el concepto de hipótesis nula frente a hipótesis alternativa.</p>
 <section id="anova-es-análisis-de-varianza" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="anova-es-análisis-de-varianza"><span class="header-section-number">9.1</span> ANOVA es Análisis de Varianza</h2>
@@ -309,12 +323,12 @@ window.Quarto = {
 <p>El ANOVA de un factor también se denomina a veces ANOVA entre-sujetos, ANOVA de factor independiente o ANOVA de una vía (lo cual es un nombre algo inapropiado, como discutiremos más adelante). El ingrediente fundamental para un ANOVA de un factor entre-sujetos es que tienes una <strong>variable independiente</strong>, con al menos <strong>dos niveles</strong>. Cuando tienes una VI con dos niveles, puedes realizar una prueba <span class="math inline">\(t\)</span>. También puedes realizar un ANOVA. Curiosamente, te dan resultados casi idénticos. Obtendrás un valor <span class="math inline">\(p\)</span> idéntico en ambas pruebas (en el fondo, realmente están haciendo lo mismo). La prueba <span class="math inline">\(t\)</span> proporciona un valor <span class="math inline">\(t\)</span> como el estadístico muestral importante. El ANOVA te da el <strong>valor</strong> <span class="math inline">\(F\)</span> (por Fisher, el inventor de la prueba) como el estadístico muestral importante. Resulta que <span class="math inline">\(t^2\)</span> es igual a <span class="math inline">\(F\)</span> cuando solo hay dos grupos en el diseño. Son la misma prueba. Nota al margen, resulta que todos están relacionados también con la r de Pearson (pero aún no hemos escrito sobre esta relación en este libro de texto).</p>
 <p>Recuerda que <span class="math inline">\(t\)</span> se calcula directamente a partir de los datos. Es como una media y un error estándar que medimos de la muestra. De hecho, es la diferencia de medias dividida por el error estándar de la muestra. Es solo otro estadístico descriptivo, ¿no es así?</p>
 <p>Lo mismo ocurre con <span class="math inline">\(F\)</span>. <span class="math inline">\(F\)</span> se calcula directamente a partir de los datos. De hecho, la idea detrás de <span class="math inline">\(F\)</span> es la misma idea básica que se utiliza para <span class="math inline">\(t\)</span>. Aquí está la idea general detrás de la fórmula; es nuevamente una razón entre el efecto que estamos midiendo (en el numerador) y la variación asociada con el efecto (en el denominador).</p>
-<p><span class="math inline">\(\text{name of statistic} = \frac{\text{measure of effect}}{\text{measure of error}}\)</span></p>
-<p><span class="math inline">\(\text{F} = \frac{\text{measure of effect}}{\text{measure of error}}\)</span></p>
+<p><span class="math inline">\(\text{nombre del estadístico} = \frac{\text{medida del efecto}}{\text{medida del error}}\)</span></p>
+<p><span class="math inline">\(\text{F} = \frac{\text{medida del efecto}}{\text{medida del error}}\)</span></p>
 <p>La diferencia con <span class="math inline">\(F\)</span> es que usamos <strong>varianzas</strong> para describir tanto la medida del efecto como la medida del error. Por lo tanto, <span class="math inline">\(F\)</span> es una razón de dos varianzas.</p>
 <p>Recuerda lo que dijimos sobre cómo funcionan estas razones. Cuando la varianza asociada con el efecto es del mismo tamaño que la varianza asociada con el error de muestreo, obtendremos dos números iguales, lo que resultará en un valor <span class="math inline">\(F\)</span> de 1. Cuando la varianza debida al efecto es mayor que la varianza asociada con el error de muestreo, entonces <span class="math inline">\(F\)</span> será mayor que 1. Cuando la varianza asociada con el efecto es menor que la varianza asociada con el error de muestreo, <span class="math inline">\(F\)</span> será menor que uno.</p>
 <p>Reescribámoslo en un lenguaje más sencillo. Estamos hablando de dos conceptos que nos gustaría medir a partir de nuestros datos: 1) una medida de lo que <strong>podemos explicar</strong>, y 2) una medida de error, o cosas sobre nuestros datos que <strong>no podemos explicar</strong>. Entonces, la fórmula de <span class="math inline">\(F\)</span> se ve así: &nbsp;</p>
-<p><span class="math inline">\(\text{F} = \frac{\text{Can Explain}}{\text{Can't Explain}}\)</span></p>
+<p><span class="math inline">\(\text{F} = \frac{\text{Puede explicarse}}{\text{No puede explicarse}}\)</span></p>
 <p>Cuando podemos explicar tanto como no podemos explicar, <span class="math inline">\(F\)</span> = 1. Esta no es una situación muy buena para nosotros. Significa que tenemos mucha incertidumbre. Cuando podemos explicar mucho más de lo que no podemos, estamos haciendo un buen trabajo, y <span class="math inline">\(F\)</span> será mayor que 1. Cuando podemos explicar menos de lo que no podemos, realmente no podemos explicar mucho, y <span class="math inline">\(F\)</span> será menor que 1. Ese es el concepto detrás de la creación de <span class="math inline">\(F\)</span>.</p>
 <p>Si vieras un <span class="math inline">\(F\)</span> en la naturaleza y fuera de 0.6, sabrías automáticamente que los investigadores no pudieron explicar gran parte de sus datos. Si vieras un <span class="math inline">\(F\)</span> de 5, entonces sabrías que los investigadores pudieron explicar 5 veces más de lo que no pudieron, eso es bastante bueno. Y el objetivo de esto es darte una intuición sobre el significado de un valor <span class="math inline">\(F\)</span>, incluso antes de que sepas cómo calcularlo.</p>
 <section id="calculando-el-valor-f" class="level3" data-number="9.2.1">
@@ -323,21 +337,21 @@ window.Quarto = {
 <p>Variación Total = Variación debida a la Manipulación + Variación debida al error de muestreo</p>
 <p>Esta es una buena idea, pero también es vaga. No hemos especificado nuestra medida de variación. ¿Qué deberíamos usar?</p>
 <p>¿Recuerdas las sumas de cuadrados que usamos para calcular la varianza y la desviación estándar? Eso es lo que usaremos. Echemos otro vistazo a la fórmula, usando las sumas de cuadrados como medida de la variación:</p>
-<p><span class="math inline">\(SS_\text{total} = SS_\text{Effect} + SS_\text{Error}\)</span></p>
+<p><span class="math inline">\(SC_\text{total} = SC_\text{Efecto} + SC_\text{Error}\)</span></p>
 </section>
 <section id="sc-total" class="level3" data-number="9.2.2">
 <h3 data-number="9.2.2" class="anchored" data-anchor-id="sc-total"><span class="header-section-number">9.2.2</span> SC Total</h3>
-<p>Las sumas de cuadrados totales, o <span class="math inline">\(SS\text{Total}\)</span>, es una forma de pensar en toda la variación de un conjunto de datos. Es bastante sencillo de medir. Sin trucos. Todo lo que hacemos es encontrar la diferencia entre cada puntuación y la media general, luego elevamos al cuadrado las diferencias y las sumamos todas.</p>
+<p>Las sumas de cuadrados totales, o <span class="math inline">\(SC\text{Total}\)</span>, es una forma de pensar en toda la variación de un conjunto de datos. Es bastante sencillo de medir. Sin trucos. Todo lo que hacemos es encontrar la diferencia entre cada puntuación y la media general, luego elevamos al cuadrado las diferencias y las sumamos todas.</p>
 <p>Imaginemos que tenemos algunos datos en tres grupos: A, B y C. Por ejemplo, podríamos tener 3 puntuaciones en cada grupo. Los datos podrían verse así:</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
-<th style="text-align: left;">groups</th>
-<th style="text-align: left;">scores</th>
-<th style="text-align: left;">diff</th>
-<th style="text-align: left;">diff_squared</th>
+<th style="text-align: left;">grupos</th>
+<th style="text-align: left;">puntajes</th>
+<th style="text-align: left;">dif</th>
+<th style="text-align: left;">dif_cuadradas</th>
 </tr>
 </thead>
 <tbody>
@@ -396,13 +410,13 @@ window.Quarto = {
 <td style="text-align: left;">25</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Sums</td>
+<td style="text-align: left;">Sumas</td>
 <td style="text-align: left;">63</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">302</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Means</td>
+<td style="text-align: left;">Medias</td>
 <td style="text-align: left;">7</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">33.5555555555556</td>
@@ -412,32 +426,32 @@ window.Quarto = {
 </div>
 </div>
 <p>Los datos están organizados en formato largo, de modo que cada fila es una única puntuación. Hay tres puntuaciones para los grupos A, B y C. La media de todas las puntuaciones se llama la <strong>Media General</strong>. Está calculada en la tabla, la Media General = 7.</p>
-<p>También calculamos todas las puntuaciones de diferencia <strong>con respecto a la Media General</strong>. Las puntuaciones de diferencia están en la columna titulada <code>diff</code>. A continuación, elevamos al cuadrado las puntuaciones de diferencia, y esas están en la siguiente columna llamada <code>diff_squared</code>.</p>
+<p>También calculamos todas las puntuaciones de diferencia <strong>con respecto a la Media General</strong>. Las puntuaciones de diferencia están en la columna titulada <code>dif</code>. A continuación, elevamos al cuadrado las puntuaciones de diferencia, y esas están en la siguiente columna llamada <code>dif_cuadradas</code>.</p>
 <p>Recuerda, las puntuaciones de diferencia son una forma de medir la variación. Representan qué tan lejos está cada número de la Media General. Si la Media General representa nuestra mejor estimación para resumir los datos, las puntuaciones de diferencia representan el error entre esa estimación y cada punto de dato real. El único problema con las puntuaciones de diferencia es que suman cero (porque la media es el punto de equilibrio en los datos). Por lo tanto, es conveniente elevar al cuadrado las puntuaciones de diferencia, lo que las convierte a todas en números positivos. El tamaño de las puntuaciones de diferencia al cuadrado todavía representa el error entre la media y cada puntuación. Y, la operación de elevar al cuadrado exacerba las diferencias a medida que el error aumenta (elevar al cuadrado un número grande produce un número muy grande, mientras que elevar al cuadrado un número pequeño sigue produciendo un número pequeño).</p>
 <p>¡De acuerdo! Tenemos las desviaciones al cuadrado de la media general, sabemos que representan el error entre la media general y cada puntuación. ¿Qué sigue? ¡SUMARLAS TODAS!</p>
-<p>Cuando sumas todas las desviaciones individuales al cuadrado (puntuaciones de diferencia), obtienes las sumas de cuadrados. Por eso se llama sumas de cuadrados (SC o SS en inglés).</p>
+<p>Cuando sumas todas las desviaciones individuales al cuadrado (puntuaciones de diferencia), obtienes las sumas de cuadrados. Por eso se llama sumas de cuadrados (SC o SC en inglés).</p>
 <p>Ahora, tenemos la primera parte de nuestra respuesta:</p>
-<p><span class="math inline">\(SS_\text{total} = SS_\text{Effect} + SS_\text{Error}\)</span></p>
-<p><span class="math inline">\(SS_\text{total} = 302\)</span> y</p>
-<p><span class="math inline">\(302 = SS_\text{Effect} + SS_\text{Error}\)</span></p>
-<p>¿Qué sigue? Si piensas en lo que aprendiste sobre álgebra y resolver para X, podrías notar que no necesitamos encontrar las respuestas a las dos partes faltantes de la ecuación. Solo necesitamos una, y podemos resolver para la otra. Por ejemplo, si encontramos <span class="math inline">\(SS_\text{Effect}\)</span>, entonces podríamos resolver para <span class="math inline">\(SS_\text{Error}\)</span>.</p>
+<p><span class="math inline">\(SC_\text{total} = SC_\text{Efecto} + SC_\text{Error}\)</span></p>
+<p><span class="math inline">\(SC_\text{total} = 302\)</span> y</p>
+<p><span class="math inline">\(302 = SC_\text{Efecto} + SC_\text{Error}\)</span></p>
+<p>¿Qué sigue? Si piensas en lo que aprendiste sobre álgebra y resolver para X, podrías notar que no necesitamos encontrar las respuestas a las dos partes faltantes de la ecuación. Solo necesitamos una, y podemos resolver para la otra. Por ejemplo, si encontramos <span class="math inline">\(SC_\text{Efecto}\)</span>, entonces podríamos resolver para <span class="math inline">\(SC_\text{Error}\)</span>.</p>
 </section>
 <section id="sc-efecto" class="level3" data-number="9.2.3">
 <h3 data-number="9.2.3" class="anchored" data-anchor-id="sc-efecto"><span class="header-section-number">9.2.3</span> SC Efecto</h3>
-<p><span class="math inline">\(SS_\text{Total}\)</span> nos dio un número que representa todo el cambio en nuestros datos, cómo todas las puntuaciones son diferentes de la media general.</p>
+<p><span class="math inline">\(SC_\text{Total}\)</span> nos dio un número que representa todo el cambio en nuestros datos, cómo todas las puntuaciones son diferentes de la media general.</p>
 <p>Lo que queremos hacer a continuación es estimar cuánto del cambio total en los datos podría deberse a la manipulación experimental. Por ejemplo, si realizamos un experimento que causa un cambio en la medición, entonces las medias de cada grupo serán diferentes entre sí. Como resultado, la manipulación fuerza un cambio en los números, y esto significará naturalmente que una parte de la variación total en los números es causada por la manipulación.</p>
-<p>La forma de aislar la variación debida a la manipulación (también llamada efecto) es observar las medias de cada grupo, calcular las puntuaciones de diferencia entre cada media de grupo y la media general, y luego sumar las desviaciones al cuadrado para encontrar <span class="math inline">\(SS_\text{Effect}\)</span>.</p>
-<p>Considera esta tabla, que muestra los cálculos para <span class="math inline">\(SS_\text{Effect}\)</span>.</p>
+<p>La forma de aislar la variación debida a la manipulación (también llamada efecto) es observar las medias de cada grupo, calcular las puntuaciones de diferencia entre cada media de grupo y la media general, y luego sumar las desviaciones al cuadrado para encontrar <span class="math inline">\(SC_\text{Efecto}\)</span>.</p>
+<p>Considera esta tabla, que muestra los cálculos para <span class="math inline">\(SC_\text{Efecto}\)</span>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
-<th style="text-align: left;">groups</th>
-<th style="text-align: left;">scores</th>
-<th style="text-align: left;">means</th>
-<th style="text-align: left;">diff</th>
-<th style="text-align: left;">diff_squared</th>
+<th style="text-align: left;">grupos</th>
+<th style="text-align: left;">puntajes</th>
+<th style="text-align: left;">medias</th>
+<th style="text-align: left;">dif</th>
+<th style="text-align: left;">dif_cuadradas</th>
 </tr>
 </thead>
 <tbody>
@@ -512,7 +526,7 @@ window.Quarto = {
 <td style="text-align: left;">72</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Means</td>
+<td style="text-align: left;">medias</td>
 <td style="text-align: left;">7</td>
 <td style="text-align: left;">7</td>
 <td style="text-align: left;">0</td>
@@ -522,33 +536,33 @@ window.Quarto = {
 </table>
 </div>
 </div>
-<p>Observa que creamos una nueva columna llamada <code>means</code>. Por ejemplo, la media del grupo A fue 11. Puedes ver que hay tres 11, uno por cada observación en la fila A. Las medias para los grupos B y C resultan ser ambas 5. Por lo tanto, el resto de los números en la columna de medias son 5.</p>
+<p>Observa que creamos una nueva columna llamada <code>medias</code>. Por ejemplo, la media del grupo A fue 11. Puedes ver que hay tres 11, uno por cada observación en la fila A. Las medias para los grupos B y C resultan ser ambas 5. Por lo tanto, el resto de los números en la columna de medias son 5.</p>
 <p>Lo que estamos haciendo aquí es pensar en cada puntuación en los datos desde el punto de vista de las medias de grupo. Las medias de grupo son nuestro mejor intento de resumir los datos en esos grupos. Desde el punto de vista de la media, todos los números son tratados como si fueran iguales. La media no sabe qué tan lejos está de cada puntuación, solo sabe que todas las puntuaciones están centradas en ella.</p>
 <blockquote class="blockquote">
 <p>Imaginemos que eres la media del grupo A. Eso significa que eres un 11. Alguien te pregunta “¿cuál es la puntuación del primer dato del grupo A?”. Como eres la media, dices: “Lo sé, es 11”. “¿Y la segunda puntuación?”… “es 11”… “todas son 11, hasta donde yo sé… ¿Me estoy perdiendo de algo?”, preguntó la media.</p>
 </blockquote>
-<p>Ahora que hemos convertido cada puntuación a su valor medio, podemos encontrar las diferencias entre cada puntuación media y la media general, luego elevarlas al cuadrado y sumarlas. Hicimos eso y encontramos que el <span class="math inline">\(SS_\text{Effect} = 72\)</span>.</p>
-<p><span class="math inline">\(SS_\text{Effect}\)</span> representa la cantidad de variación que es causada por las diferencias entre las medias. También me refiero a esto como la cantidad de variación que el investigador puede explicar (por las medias, que representan diferencias entre grupos o condiciones que fueron manipuladas por el investigador).</p>
-<p>Observa también que <span class="math inline">\(SS_\text{Effect} = 72\)</span>, y que 72 es menor que <span class="math inline">\(SS_\text{total} = 302\)</span>. Eso es muy importante. <span class="math inline">\(SS_\text{Effect}\)</span> por definición nunca puede ser mayor que <span class="math inline">\(SS_\text{total}\)</span>.</p>
+<p>Ahora que hemos convertido cada puntuación a su valor medio, podemos encontrar las diferencias entre cada puntuación media y la media general, luego elevarlas al cuadrado y sumarlas. Hicimos eso y encontramos que el <span class="math inline">\(SC_\text{Efecto} = 72\)</span>.</p>
+<p><span class="math inline">\(SC_\text{Efecto}\)</span> representa la cantidad de variación que es causada por las diferencias entre las medias. También me refiero a esto como la cantidad de variación que el investigador puede explicar (por las medias, que representan diferencias entre grupos o condiciones que fueron manipuladas por el investigador).</p>
+<p>Observa también que <span class="math inline">\(SC_\text{Efecto} = 72\)</span>, y que 72 es menor que <span class="math inline">\(SC_\text{total} = 302\)</span>. Eso es muy importante. <span class="math inline">\(SC_\text{Efecto}\)</span> por definición nunca puede ser mayor que <span class="math inline">\(SC_\text{total}\)</span>.</p>
 </section>
 <section id="sc-error" class="level3" data-number="9.2.4">
 <h3 data-number="9.2.4" class="anchored" data-anchor-id="sc-error"><span class="header-section-number">9.2.4</span> SC Error</h3>
 <p>Genial, llegamos a la SC de Error. Ya encontramos la SC Total y la SC de Efecto, así que ahora podemos resolver para la SC de Error de esta manera:</p>
-<p><span class="math inline">\(SS_\text{total} = SS_\text{Effect} + SS_\text{Error}\)</span></p>
+<p><span class="math inline">\(SC_\text{total} = SC_\text{Efecto} + SC_\text{Error}\)</span></p>
 <p>Reordenando:</p>
-<p>$ SS_ = SS_ - SS_ $</p>
-<p>$ SS_ = 302 - 72 = 230 $</p>
-<p>Podríamos detenernos aquí y mostrarte el resto del ANOVA, ya casi llegamos. Pero, el siguiente paso podría no tener sentido a menos que te mostremos cómo calcular <span class="math inline">\(SS_\text{Error}\)</span> directamente desde los datos, en lugar de simplemente resolverlo. Deberíamos hacer esto solo para verificar nuestro trabajo de todos modos.</p>
+<p><span class="math display">\[ SC_\text{Error} = SC_\text{total} - SC_\text{Efecto} \]</span></p>
+<p><span class="math display">\[ SC_\text{Error} = 302 - 72 = 230 \]</span></p>
+<p>Podríamos detenernos aquí y mostrarte el resto del ANOVA, ya casi llegamos. Pero, el siguiente paso podría no tener sentido a menos que te mostremos cómo calcular <span class="math inline">\(SC_\text{Error}\)</span> directamente desde los datos, en lugar de simplemente resolverlo. Deberíamos hacer esto solo para verificar nuestro trabajo de todos modos.</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
-<th style="text-align: left;">groups</th>
-<th style="text-align: left;">scores</th>
-<th style="text-align: left;">means</th>
-<th style="text-align: left;">diff</th>
-<th style="text-align: left;">diff_squared</th>
+<th style="text-align: left;">grupos</th>
+<th style="text-align: left;">puntajes</th>
+<th style="text-align: left;">medias</th>
+<th style="text-align: left;">dif</th>
+<th style="text-align: left;">dif_cuadradas</th>
 </tr>
 </thead>
 <tbody>
@@ -623,7 +637,7 @@ window.Quarto = {
 <td style="text-align: left;">230</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Means</td>
+<td style="text-align: left;">medias</td>
 <td style="text-align: left;">7</td>
 <td style="text-align: left;">7</td>
 <td style="text-align: left;">0</td>
@@ -633,40 +647,40 @@ window.Quarto = {
 </table>
 </div>
 </div>
-<p>Muy bien, hicimos casi lo mismo que para encontrar <span class="math inline">\(SS_\text{Effect}\)</span>. ¿Puedes ver la diferencia? Esta vez, para cada puntuación, primero encontramos la media del grupo, luego encontramos el error en la estimación de la media del grupo para cada puntuación. En otras palabras, los valores en la columna <span class="math inline">\(diff\)</span> son las diferencias entre cada puntuación y la media de su grupo. Los valores en la columna <code>diff_squared</code> son las desviaciones al cuadrado. Cuando sumamos las desviaciones al cuadrado, obtenemos otra Suma de Cuadrados, esta vez es la <span class="math inline">\(SS_\text{Error}\)</span>. Este es un nombre apropiado, ¡porque estas desviaciones son las que las medias de los grupos no pueden explicar!</p>
+<p>Muy bien, hicimos casi lo mismo que para encontrar <span class="math inline">\(SC_\text{Efecto}\)</span>. ¿Puedes ver la diferencia? Esta vez, para cada puntuación, primero encontramos la media del grupo, luego encontramos el error en la estimación de la media del grupo para cada puntuación. En otras palabras, los valores en la columna <span class="math inline">\(dif\)</span> son las diferencias entre cada puntuación y la media de su grupo. Los valores en la columna <code>dif_cuadradas</code> son las desviaciones al cuadrado. Cuando sumamos las desviaciones al cuadrado, obtenemos otra Suma de Cuadrados, esta vez es la <span class="math inline">\(SC_\text{Error}\)</span>. Este es un nombre apropiado, ¡porque estas desviaciones son las que las medias de los grupos no pueden explicar!</p>
 </section>
 <section id="grados-de-libertad" class="level3" data-number="9.2.5">
 <h3 data-number="9.2.5" class="anchored" data-anchor-id="grados-de-libertad"><span class="header-section-number">9.2.5</span> Grados de libertad</h3>
 <p>Los grados de libertad vuelven a entrar en juego con el ANOVA. Esta vez, su propósito es un poco más claro. Los <span class="math inline">\(Df\)</span>s pueden ser bastante simples cuando hacemos un ANOVA relativamente simple como este, pero pueden volverse complicados cuando los diseños se complican.</p>
-<p>Hablemos de los grados de libertad para la <span class="math inline">\(SS_\text{Effect}\)</span> y la <span class="math inline">\(SS_\text{Error}\)</span>.</p>
-<p>La fórmula para los grados de libertad para <span class="math inline">\(SS_\text{Effect}\)</span> es:</p>
-<p><span class="math inline">\(df_\text{Effect} = \text{Groups} -1\)</span>, donde Grupos es el número de grupos en el diseño.</p>
+<p>Hablemos de los grados de libertad para la <span class="math inline">\(SC_\text{Efecto}\)</span> y la <span class="math inline">\(SC_\text{Error}\)</span>.</p>
+<p>La fórmula para los grados de libertad para <span class="math inline">\(SC_\text{Efecto}\)</span> es:</p>
+<p><span class="math inline">\(df_\text{Efecto} = \text{grupos} -1\)</span>, donde Grupos es el número de grupos en el diseño.</p>
 <p>En nuestro ejemplo, hay 3 grupos, por lo que los gl son 3-1 = 2. Puedes pensar en los gl para el efecto de esta manera. Cuando estimamos la media general (la media total), estamos restando un grado de libertad para las medias de los grupos. Dos de las medias de los grupos pueden ser lo que quieran (tienen total libertad), pero para que las tres sean consistentes con la Media General, la última media de grupo tiene que ser fija.</p>
-<p>La fórmula para los grados de libertad para <span class="math inline">\(SS_\text{Error}\)</span> es:</p>
-<p><span class="math inline">\(df_\text{Error} = \text{scores} - \text{groups}\)</span>, o el número de puntuaciones menos el número de grupos. Tenemos 9 puntuaciones y 3 grupos, por lo que nuestros <span class="math inline">\(df\)</span> para el término de error son 9-3 = 6. Recuerda, cuando calculamos la puntuación de diferencia entre cada puntuación y la media de su grupo, tuvimos que calcular tres medias (una para cada grupo) para hacerlo. Por lo tanto, eso reduce los grados de libertad en 3. 6 de las puntuaciones de diferencia podrían ser lo que quisieran, pero las últimas 3 tienen que ser fijas para coincidir con las medias de los grupos.</p>
+<p>La fórmula para los grados de libertad para <span class="math inline">\(SC_\text{Error}\)</span> es:</p>
+<p><span class="math inline">\(df_\text{Error} = \text{puntajes} - \text{grupos}\)</span>, o el número de puntuaciones menos el número de grupos. Tenemos 9 puntuaciones y 3 grupos, por lo que nuestros <span class="math inline">\(df\)</span> para el término de error son 9-3 = 6. Recuerda, cuando calculamos la puntuación de diferencia entre cada puntuación y la media de su grupo, tuvimos que calcular tres medias (una para cada grupo) para hacerlo. Por lo tanto, eso reduce los grados de libertad en 3. 6 de las puntuaciones de diferencia podrían ser lo que quisieran, pero las últimas 3 tienen que ser fijas para coincidir con las medias de los grupos.</p>
 </section>
 <section id="cuadrado-medio-del-error" class="level3" data-number="9.2.6">
 <h3 data-number="9.2.6" class="anchored" data-anchor-id="cuadrado-medio-del-error"><span class="header-section-number">9.2.6</span> Cuadrado Medio del Error</h3>
 <p>Bien, ya tenemos los grados de libertad. ¿Qué sigue? Quedan dos pasos. Primero, dividimos las SC por sus respectivos grados de libertad para crear algo nuevo llamado <strong>Cuadrado Medio del Error</strong> (o <em>Mean Squared Error</em>, MSE). Hablemos de por qué hacemos esto.</p>
 <p>Primero que nada, recuerda que estamos tratando de lograr este objetivo:</p>
-<p><span class="math inline">\(\text{F} = \frac{\text{measure of effect}}{\text{measure of error}}\)</span></p>
-<p>Queremos construir una razón que divida una medida de un efecto por una medida de error. Quizás te diste cuenta de que ya tenemos una medida de un efecto y del error: <span class="math inline">\(SS_\text{Effect}\)</span> y <span class="math inline">\(SS_\text{Error}\)</span>. Ambas representan la variación debida al efecto y la variación restante que no se explica. ¿Por qué no hacemos simplemente esto?</p>
-<p><span class="math inline">\(\frac{SS_\text{Effect}}{SS_\text{Error}}\)</span></p>
+<p><span class="math inline">\(\text{F} = \frac{\text{medida delEfecto}}{\text{medida delerror}}\)</span></p>
+<p>Queremos construir una razón que divida una medida de un efecto por una medida de error. Quizás te diste cuenta de que ya tenemos una medida de un efecto y del error: <span class="math inline">\(SC_\text{Efecto}\)</span> y <span class="math inline">\(SC_\text{Error}\)</span>. Ambas representan la variación debida al efecto y la variación restante que no se explica. ¿Por qué no hacemos simplemente esto?</p>
+<p><span class="math inline">\(\frac{SC_\text{Efecto}}{SC_\text{Error}}\)</span></p>
 <p>Bueno, por supuesto que podrías hacer eso. Lo que pasaría es que puedes obtener números muy grandes y muy pequeños para tu estadístico inferencial. Y, el tipo de número que obtendrías no sería fácilmente interpretable como un valor <span class="math inline">\(t\)</span> o una puntuación <span class="math inline">\(z\)</span>.</p>
-<p>La solución es <strong>normalizar</strong> los términos <span class="math inline">\(SS\)</span> No te preocupes, normalizar es solo una palabra elegante para sacar el promedio o encontrar la media. Recuerda, los términos SC son todos sumas. Y cada suma representa un número diferente de propiedades subyacentes.</p>
-<p>Por ejemplo, el SS_ representa la suma de la variación para tres medias en nuestro estudio. Podríamos preguntarnos, bueno, ¿cuál es la cantidad promedio de variación para cada media? Podrías pensar en dividir SS_ por 3, porque hay tres medias, pero como estamos estimando esta propiedad, dividimos por los grados de libertad en su lugar (# grupos - 1 = 3-1 = 2). Ahora hemos creado algo nuevo, se llama el <span class="math inline">\(MSE_\text{Effect}\)</span>.</p>
-<p><span class="math inline">\(MSE_\text{Effect} = \frac{SS_\text{Effect}}{df_\text{Effect}}\)</span></p>
-<p><span class="math inline">\(MSE_\text{Effect} = \frac{72}{2} = 36\)</span></p>
-<p>Esto puede parecer extraño y un poco complicado. Pero es solo otra media. Es la media de las sumas de cuadrados para el efecto. Si esto te recuerda a la fórmula de la varianza, buena memoria. El <span class="math inline">\(SME_\text{Effect}\)</span> es una medida de la varianza para el cambio en los datos debido a los cambios en las medias (que están vinculadas a las condiciones experimentales).</p>
-<p>El <span class="math inline">\(SS_\text{Error}\)</span> representa la suma de la variación para nueve puntuaciones en nuestro estudio. Eso es mucho más puntuaciones, por lo que el <span class="math inline">\(SS_\text{Error}\)</span> suele ser mucho más grande que el <span class="math inline">\(SS_\text{Effect}\)</span>. Si dejáramos nuestras SSes de esta manera y las dividiéramos, casi siempre obtendríamos números menores que uno, porque el <span class="math inline">\(SS_\text{Error}\)</span> es muy grande. Lo que necesitamos hacer es reducirlo al tamaño promedio. Entonces, podríamos querer dividir nuestro <span class="math inline">\(SS_\text{Error}\)</span> por 9, después de todo había nueve puntuaciones. Sin embargo, como estamos estimando esta propiedad, dividimos por los grados de libertad en su lugar (puntuaciones-grupos) = 9-3 = 6. Ahora hemos creado algo nuevo, se llama el <span class="math inline">\(MSE_\text{Error}\)</span>.</p>
-<p><span class="math inline">\(MSE_\text{Error} = \frac{SS_\text{Error}}{df_\text{Error}}\)</span></p>
+<p>La solución es <strong>normalizar</strong> los términos <span class="math inline">\(SC\)</span> No te preocupes, normalizar es solo una palabra elegante para sacar el promedio o encontrar la media. Recuerda, los términos SC son todos sumas. Y cada suma representa un número diferente de propiedades subyacentes.</p>
+<p>Por ejemplo, el SC_ representa la suma de la variación para tres medias en nuestro estudio. Podríamos preguntarnos, bueno, ¿cuál es la cantidad promedio de variación para cada media? Podrías pensar en dividir SC_ por 3, porque hay tres medias, pero como estamos estimando esta propiedad, dividimos por los grados de libertad en su lugar (# grupos - 1 = 3-1 = 2). Ahora hemos creado algo nuevo, se llama el <span class="math inline">\(MSE_\text{Efecto}\)</span>.</p>
+<p><span class="math inline">\(MSE_\text{Efecto} = \frac{SC_\text{Efecto}}{df_\text{Efecto}}\)</span></p>
+<p><span class="math inline">\(MSE_\text{Efecto} = \frac{72}{2} = 36\)</span></p>
+<p>Esto puede parecer extraño y un poco complicado. Pero es solo otra media. Es la media de las sumas de cuadrados para el efecto. Si esto te recuerda a la fórmula de la varianza, buena memoria. El <span class="math inline">\(SME_\text{Efecto}\)</span> es una medida de la varianza para el cambio en los datos debido a los cambios en las medias (que están vinculadas a las condiciones experimentales).</p>
+<p>El <span class="math inline">\(SC_\text{Error}\)</span> representa la suma de la variación para nueve puntuaciones en nuestro estudio. Eso es mucho más puntuaciones, por lo que el <span class="math inline">\(SC_\text{Error}\)</span> suele ser mucho más grande que el <span class="math inline">\(SC_\text{Efecto}\)</span>. Si dejáramos nuestras SCes de esta manera y las dividiéramos, casi siempre obtendríamos números menores que uno, porque el <span class="math inline">\(SC_\text{Error}\)</span> es muy grande. Lo que necesitamos hacer es reducirlo al tamaño promedio. Entonces, podríamos querer dividir nuestro <span class="math inline">\(SC_\text{Error}\)</span> por 9, después de todo había nueve puntuaciones. Sin embargo, como estamos estimando esta propiedad, dividimos por los grados de libertad en su lugar (puntuaciones-grupos) = 9-3 = 6. Ahora hemos creado algo nuevo, se llama el <span class="math inline">\(MSE_\text{Error}\)</span>.</p>
+<p><span class="math inline">\(MSE_\text{Error} = \frac{SC_\text{Error}}{df_\text{Error}}\)</span></p>
 <p><span class="math inline">\(MSE_\text{Error} = \frac{230}{6} = 38.33\)</span></p>
 </section>
 <section id="calcular-f" class="level3" data-number="9.2.7">
 <h3 data-number="9.2.7" class="anchored" data-anchor-id="calcular-f"><span class="header-section-number">9.2.7</span> Calcular F</h3>
 <p>Ahora que hemos hecho todo el trabajo duro, calcular <span class="math inline">\(F\)</span> es fácil:</p>
-<p><span class="math inline">\(\text{F} = \frac{\text{measure of effect}}{\text{measure of error}}\)</span></p>
-<p><span class="math inline">\(\text{F} = \frac{MSE_\text{Effect}}{MSE_\text{Error}}\)</span></p>
+<p><span class="math inline">\(\text{F} = \frac{\text{medida delEfecto}}{\text{medida delerror}}\)</span></p>
+<p><span class="math inline">\(\text{F} = \frac{MSE_\text{Efecto}}{MSE_\text{Error}}\)</span></p>
 <p><span class="math inline">\(\text{F} = \frac{36}{38.33} = .939\)</span></p>
 <p>¡Listo!</p>
 </section>
@@ -689,7 +703,7 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">groups</td>
+<td style="text-align: left;">grupos</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">72</td>
 <td style="text-align: right;">36.00000</td>
@@ -708,7 +722,7 @@ window.Quarto = {
 </table>
 </div>
 </div>
-<p>Estás viendo la salida de una tabla de resumen de ANOVA de R. Observa que tiene columnas para <span class="math inline">\(Df\)</span> (gl), <span class="math inline">\(SS\)</span> (Sum Sq o SC), <span class="math inline">\(MSE\)</span> (cuadrado de la media), <span class="math inline">\(F\)</span>, y un valor <span class="math inline">\(p\)</span>. Hay dos filas. La fila <code>groups</code> es para el Efecto (lo que nuestras medias pueden explicar). La fila <code>Residuals</code> es para el Error (lo que nuestras medias no pueden explicar). Diferentes programas dan etiquetas ligeramente diferentes, pero todos intentan presentar la misma información en la tabla ANOVA. No hay nada especial en la tabla ANOVA, es solo una forma de organizar todas las piezas. Observa que el CME para el efecto (36) se coloca sobre el CME para el error (38.333), y esto parece natural porque dividimos 36/38.33 para obtener el valor <span class="math inline">\(F\)</span>!.</p>
+<p>Estás viendo la salida de una tabla de resumen de ANOVA de R. Observa que tiene columnas para <span class="math inline">\(Df\)</span> (gl), <span class="math inline">\(SC\)</span> (Sum Sq o SC), <span class="math inline">\(MSE\)</span> (cuadrado de la media), <span class="math inline">\(F\)</span>, y un valor <span class="math inline">\(p\)</span>. Hay dos filas. La fila <code>grupos</code> es para el Efecto (lo que nuestras medias pueden explicar). La fila <code>Residuals</code> es para el Error (lo que nuestras medias no pueden explicar). Diferentes programas dan etiquetas ligeramente diferentes, pero todos intentan presentar la misma información en la tabla ANOVA. No hay nada especial en la tabla ANOVA, es solo una forma de organizar todas las piezas. Observa que el CME para el efecto (36) se coloca sobre el CME para el error (38.333), y esto parece natural porque dividimos 36/38.33 para obtener el valor <span class="math inline">\(F\)</span>!.</p>
 </section>
 </section>
 <section id="qué-significa-f" class="level2" data-number="9.3">
@@ -718,7 +732,7 @@ window.Quarto = {
 <p>Hagámoslo para <span class="math inline">\(F\)</span>. Esto te ayudará a entender qué es realmente <span class="math inline">\(F\)</span> y cómo se comporta. Vamos a crear la distribución de muestreo de <span class="math inline">\(F\)</span>. Una vez que la tengamos, podrás ver de dónde vienen los valores <span class="math inline">\(p\)</span>. Es el mismo proceso básico que seguimos para las pruebas <span class="math inline">\(t\)</span>, excepto que estamos midiendo <span class="math inline">\(F\)</span> en lugar de <span class="math inline">\(t\)</span>.</p>
 <p>Aquí está la configuración: vamos a realizar un experimento con tres niveles. En nuestro experimento imaginario, vamos a probar si una nueva píldora mágica puede hacerte más inteligente. La variable independiente es el número de píldoras mágicas que tomas: 1, 2 o 3. Mediremos tu inteligencia usando una prueba de inteligencia. Asumiremos que la prueba de inteligencia tiene algunas propiedades conocidas: la puntuación media en la prueba es de 100, con una desviación estándar de 10 (y la distribución es normal). &nbsp;</p>
 <p>El único truco es que nuestra píldora mágica NO HACE NADA EN ABSOLUTO. Las personas falsas en nuestro experimento falso tomarán todas píldoras de azúcar que no afectan en absoluto su inteligencia. ¿Por qué querríamos simular tal sarta de tonterías? La respuesta es que este tipo de simulación es fundamental para hacer inferencias sobre el azar si fueras a realizar un experimento real.</p>
-<p>Aquí hay más detalles para el experimento. Cada grupo tendrá 10 sujetos diferentes, por lo que habrá un total de 30 sujetos. Vamos a realizar este experimento 10.000 veces. Cada vez, extrayendo números al azar de la misma distribución normal. Vamos a calcular <span class="math inline">\(F\)</span> a partir de nuestros datos de muestra cada vez, y luego vamos a dibujar el histograma de los valores <span class="math inline">\(F\)</span>. La <a href="#fig-7fnull" class="quarto-xref">Figure&nbsp;<span>9.1</span></a> muestra la distribución de muestreo de <span class="math inline">\(F\)</span> para nuestra situación.</p>
+<p>Aquí hay más detalles para el experimento. Cada grupo tendrá 10 sujetos diferentes, por lo que habrá un total de 30 sujetos. Vamos a realizar este experimento 10.000 veces. Cada vez, extrayendo números al azar de la misma distribución normal. Vamos a calcular <span class="math inline">\(F\)</span> a partir de nuestros datos de muestra cada vez, y luego vamos a dibujar el histograma de los valores <span class="math inline">\(F\)</span>. La <a href="#fig-7fnull" class="quarto-xref">Figura&nbsp;<span>9.1</span></a> muestra la distribución de muestreo de <span class="math inline">\(F\)</span> para nuestra situación.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-7fnull" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -727,7 +741,7 @@ window.Quarto = {
 <img src="07-ANOVA_files/figure-html/fig-7fnull-1.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-7fnull-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.1: A simulation of 10,000 experiments from a null distribution where there is no differences. The histogram shows 10,000 <span class="math inline">\(F\)</span>-values, one for each simulation. These are values that F can take in this situation. All of these <span class="math inline">\(F\)</span>-values were produced by random sampling error.
+Figura&nbsp;9.1: Una simulación de 10.000 experimentos a partir de una distribución nula donde no hay diferencias. El histograma muestra 10.000 valores de <span class="math inline">\(F\)</span>, uno por cada simulación. Estos son los valores que puede tomar <span class="math inline">\(F\)</span> en esta situación. Todos estos valores de <span class="math inline">\(F\)</span> fueron producidos por error muestral aleatorio.
 </figcaption>
 </figure>
 </div>
@@ -743,7 +757,7 @@ Figure&nbsp;9.1: A simulation of 10,000 experiments from a null distribution whe
 <li><p>Establecer un criterio alfa de <span class="math inline">\(p\)</span> = 0.05</p></li>
 <li><p>Encontrar el valor crítico para <span class="math inline">\(F\)</span>, para nuestra situación particular (con nuestros <span class="math inline">\(df\)</span>s (gl) para el numerador y el denominador).</p></li>
 </ol>
-<p>Hagámoslo. He dibujado la línea para el valor crítico en el histograma en la <a href="#fig-7criticalF" class="quarto-xref">Figure&nbsp;<span>9.2</span></a>:</p>
+<p>Hagámoslo. He dibujado la línea para el valor crítico en el histograma en la <a href="#fig-7criticalF" class="quarto-xref">Figura&nbsp;<span>9.2</span></a>:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-7criticalF" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -752,7 +766,7 @@ Figure&nbsp;9.1: A simulation of 10,000 experiments from a null distribution whe
 <img src="07-ANOVA_files/figure-html/fig-7criticalF-1.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-7criticalF-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.2: The critical value for <span class="math inline">\(F\)</span> where 5% of all <span class="math inline">\(F\)</span>-values lie beyond this point
+Figura&nbsp;9.2: El valor crítico de <span class="math inline">\(F\)</span>, donde el 5% de todos los valores de <span class="math inline">\(F\)</span> se encuentran más allá de este punto.
 </figcaption>
 </figure>
 </div>
@@ -795,13 +809,13 @@ Figure&nbsp;9.2: The critical value for <span class="math inline">\(F\)</span> w
 `.groups` argument.</code></pre>
 </div>
 <div class="cell-output-display">
-<div id="fig-7manyDiffs" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-7manydifs" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-7manyDiffs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="07-ANOVA_files/figure-html/fig-7manyDiffs-1.png" class="img-fluid figure-img" style="width:100.0%">
+<div aria-describedby="fig-7manydifs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="07-ANOVA_files/figure-html/fig-7manydifs-1.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-7manyDiffs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.3: Different patterns of group means under the null (all scores for each group sampled from the same distribution).
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-7manydifs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.3: Diferentes patrones de medias grupales bajo la hipótesis nula (todos los puntajes de cada grupo se muestrean de la misma distribución).
 </figcaption>
 </figure>
 </div>
@@ -821,13 +835,13 @@ Figure&nbsp;9.3: Different patterns of group means under the null (all scores fo
 `.groups` argument.</code></pre>
 </div>
 <div class="cell-output-display">
-<div id="fig-7manyDiffsBar" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-7manydifsBar" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-7manyDiffsBar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="07-ANOVA_files/figure-html/fig-7manyDiffsBar-1.png" class="img-fluid figure-img" style="width:100.0%">
+<div aria-describedby="fig-7manydifsBar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="07-ANOVA_files/figure-html/fig-7manydifsBar-1.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-7manyDiffsBar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.4: Different patterns of group means under the null (all scores for each group sampled from the same distribution).
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-7manydifsBar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.4: Diferentes patrones de medias grupales bajo la hipótesis nula (todos los puntajes de cada grupo se muestrean de la misma distribución).
 </figcaption>
 </figure>
 </div>
@@ -852,7 +866,7 @@ Figure&nbsp;9.4: Different patterns of group means under the null (all scores fo
 <img src="07-ANOVA_files/figure-html/fig-7flesshthanone-1.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-7flesshthanone-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.5: Different patterns of group means under the null (sampled from same distribution) when F is less than 1.
+Figura&nbsp;9.5: Diferentes patrones de medias grupales bajo la hipótesis nula (muestreados de la misma distribución) cuando el valor de <span class="math inline">\(F\)</span> es menor que 1.
 </figcaption>
 </figure>
 </div>
@@ -868,13 +882,13 @@ Figure&nbsp;9.5: Different patterns of group means under the null (sampled from 
 `.groups` argument.</code></pre>
 </div>
 <div class="cell-output-display">
-<div id="fig-7sigdiffs" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-7sigdifs" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-7sigdiffs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="07-ANOVA_files/figure-html/fig-7sigdiffs-1.png" class="img-fluid figure-img" style="width:100.0%">
+<div aria-describedby="fig-7sigdifs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="07-ANOVA_files/figure-html/fig-7sigdifs-1.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-7sigdiffs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.6: Diferentes patrones de las medias de grupo bajo la nula cuando <span class="math inline">\(F\)</span> está por encima del valor crítico (todos estos son Errores de tipo I).
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-7sigdifs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.6: Diferentes patrones de las medias de grupo bajo la nula cuando <span class="math inline">\(F\)</span> está por encima del valor crítico (todos estos son Errores de tipo I).
 </figcaption>
 </figure>
 </div>
@@ -892,12 +906,14 @@ Figure&nbsp;9.6: Diferentes patrones de las medias de grupo bajo la nula cuando 
 <p>Así que volvemos a la aplicación del ANOVA a un conjunto de datos real con una pregunta real. Es el mismo que vas a estar aprendiendo en el laboratorio. Acá te damos un panorama general para que sepas qué esperar.</p>
 <section id="tetris-y-los-malos-recuerdos" class="level3" data-number="9.4.1">
 <h3 data-number="9.4.1" class="anchored" data-anchor-id="tetris-y-los-malos-recuerdos"><span class="header-section-number">9.4.1</span> Tetris y los malos recuerdos</h3>
-<p>Sip, leíste bien. La investigación que vas a aprender evalúa si jugar al Tetris después de ver una película de terror puede ayudar a evitar que tengas malos recuerdos de la película (James et al.&nbsp;2015). A veces en la vida, las personas tienen recuerdos intrusivos y piensan en cosas en las que preferirían no tener que pensar. Esta investigación analiza un método que podría reducir la frecuencia de los recuerdos intrusivos. &nbsp;</p>
-<p>Esto es lo que hicieron. Los sujetos vieron una película de terror, y al final de la semana reportaron cuántos recuerdos intrusivos tuvieron sobre la película. El número promedio de recuerdos intrusivos fue la medición (la variable dependiente). Este fue un experimento entre-sujetos con cuatro grupos. Cada grupo de sujetos recibió un tratamiento diferente después de la película de terror. La pregunta era si alguno de estos tratamientos reduciría el número de recuerdos intrusivos. Todos estos tratamientos ocurrieron después de ver la película de terror: &nbsp;</p>
-<p>Control sin tarea: Estos participantes completaron una tarea de relleno de 10 minutos con música después de ver la película de terror.</p>
-<p>Reactivación + Tetris: A estos participantes se les mostró una serie de imágenes de la película traumática para reactivar los recuerdos traumáticos (es decir, tarea de reactivación). Luego, jugaron al videojuego Tetris durante 12 minutos.</p>
-<p>Solo Tetris: Estos participantes jugaron al Tetris durante 12 minutos, pero no completaron la tarea de reactivación.</p>
-<p>Solo Reactivación: Estos participantes completaron la tarea de reactivación, pero no jugaron al Tetris.</p>
+<p>Sip, leíste bien. La investigación que vas a aprender evalúa si jugar al Tetris después de ver una película de terror puede ayudar a evitar que tengas malos recuerdos de la película (James et al.&nbsp;2015). A veces en la vida, las personas tienen recuerdos intrusivos y piensan en cosas en las que preferirían no tener que pensar. Esta investigación analiza un método que podría reducir la frecuencia de los recuerdos intrusivos.</p>
+<p>Esto es lo que hicieron. Los sujetos vieron una película de terror, y al final de la semana reportaron cuántos recuerdos intrusivos tuvieron sobre la película. El número promedio de recuerdos intrusivos fue la medición (la variable dependiente). Este fue un experimento entre-sujetos con cuatro grupos. Cada grupo de sujetos recibió un tratamiento diferente después de la película de terror. La pregunta era si alguno de estos tratamientos reduciría el número de recuerdos intrusivos. Todos estos tratamientos ocurrieron después de ver la película de terror:</p>
+<ul>
+<li><p>Control sin tarea: Estos participantes completaron una tarea de relleno de 10 minutos con música después de ver la película de terror.</p></li>
+<li><p>Reactivación + Tetris: A estos participantes se les mostró una serie de imágenes de la película traumática para reactivar los recuerdos traumáticos (es decir, tarea de reactivación). Luego, jugaron al videojuego Tetris durante 12 minutos.</p></li>
+<li><p>Solo Tetris: Estos participantes jugaron al Tetris durante 12 minutos, pero no completaron la tarea de reactivación.</p></li>
+<li><p>Solo Reactivación: Estos participantes completaron la tarea de reactivación, pero no jugaron al Tetris.</p></li>
+</ul>
 <p>Por razones que explicamos en detalle en el laboratorio, los investigadores plantearon la hipótesis de que el grupo de Reactivación+Tetris tendría menos recuerdos intrusivos durante la semana que los otros grupos.</p>
 <p>Miremos los hallazgos. Tené en cuenta que vas a aprender a hacer todos estos pasos en el laboratorio. Por ahora, solo mostramos los hallazgos y la tabla ANOVA. Después repasamos cómo interpretarlo.</p>
 <div class="cell">
@@ -908,13 +924,13 @@ Figure&nbsp;9.6: Diferentes patrones de las medias de grupo bajo la nula cuando 
 <img src="07-ANOVA_files/figure-html/fig-7tetrisData-1.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-7tetrisData-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.7: Mean number of intrusive memories per week as a function of experimental treatments.
+Figura&nbsp;9.7: Número promedio de recuerdos intrusivos por semana según los tratamientos experimentales.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Mirá vos. Hicimos algo canchero. La Figura 7.7 muestra los datos de los cuatro grupos. La altura de cada barra muestra el promedio de recuerdos intrusivos de la semana. Los puntos muestran las puntuaciones individuales de cada sujeto en cada grupo (útil para ver la dispersión de los datos). Las barras de error muestran los errores estándar de la media.</p>
+<p>Mirá vos. Hicimos algo canchero. La <a href="#fig-7tetrisData" class="quarto-xref">Figura&nbsp;<span>9.7</span></a> muestra los datos de los cuatro grupos. La altura de cada barra muestra el promedio de recuerdos intrusivos de la semana. Los puntos muestran las puntuaciones individuales de cada sujeto en cada grupo (útil para ver la dispersión de los datos). Las barras de error muestran los errores estándar de la media.</p>
 <p>¿Qué podemos ver acá? De entrada, parece que hay cierto respaldo a la hipótesis de la investigación. La barra verde, del grupo de Reactivación + Tetris, tuvo el número promedio más bajo de recuerdos intrusivos. Además, la barra de error no se superpone con ninguna de las otras. Esto implica que la media del grupo de Reactivación + Tetris es diferente de las medias de los otros grupos. Y es poco probable que esta diferencia sea por azar.</p>
 <p>Ahora podemos realizar el ANOVA sobre los datos para hacer la pregunta ómnibus. Si obtenemos un valor de <span class="math inline">\(F\)</span> con un valor <span class="math inline">\(p\)</span> asociado menor a .05 (el criterio alfa establecido por los autores), entonces podemos rechazar la hipótesis de no diferencias. Veamos qué pasa:</p>
 <div class="cell">
@@ -957,7 +973,7 @@ Figure&nbsp;9.7: Mean number of intrusive memories per week as a function of exp
 </section>
 <section id="comparando-medias-después-del-anova" class="level3" data-number="9.4.2">
 <h3 data-number="9.4.2" class="anchored" data-anchor-id="comparando-medias-después-del-anova"><span class="header-section-number">9.4.2</span> Comparando medias después del ANOVA</h3>
-<p>Recordá que el ANOVA es una prueba ómnibus, solo nos dice si podemos rechazar la idea de que todas las medias son iguales. La prueba F (sinónimo de ANOVA) que acabamos de realizar sugirió que podíamos rechazar la hipótesis de no diferencias. Como discutimos antes, eso debe significar que hay algunas diferencias en el patrón de las medias.</p>
+<p>Recordá que el ANOVA es una prueba ómnibus, solo nos dice si podemos rechazar la idea de que todas las medias son iguales. La prueba <span class="math inline">\(F\)</span> (sinónimo de ANOVA) que acabamos de realizar sugirió que podíamos rechazar la hipótesis de no diferencias. Como discutimos antes, eso debe significar que hay algunas diferencias en el patrón de las medias.</p>
 <p>Generalmente, después de realizar un ANOVA, los investigadores realizan pruebas de seguimiento para comparar diferencias entre medias específicas. Vamos a hablar más de esta práctica a lo largo del libro. Hay muchas prácticas recomendadas para las pruebas de seguimiento, y hay mucho debate sobre qué deberías hacer. No nos vamos a meter en este debate ahora. En cambio, vamos a señalar que necesitás hacer algo para comparar las medias de interés después de realizar el ANOVA, porque el ANOVA es solo el comienzo… Generalmente no te dice lo que querés saber. Te preguntarás para qué molestarse en hacer el ANOVA en primer lugar… Para nada una mala pregunta. Es una buena pregunta. Vas a ver, a medida que hablemos de diseños más complicados, por qué los ANOVAs son tan útiles. En el presente ejemplo, son solo un primer paso común. Hay próximos pasos obligatorios, como el que damos a continuación.</p>
 <p>¿Cómo podés comparar la diferencia entre dos medias, de un diseño entre-sujetos, para determinar si la diferencia que observaste es probable o improbable que se produzca por azar? Esto ya lo vimos, es la prueba <span class="math inline">\(t\)</span> para muestras independientes. Vamos a hacer un par de pruebas <span class="math inline">\(t\)</span> para mostrar el proceso.</p>
 </section>
@@ -1014,6 +1030,11 @@ sample estimates:
 <p>Entonces, ¿qué sigue?… el ANOVA para diseños de medidas repetidas. Nos vemos en el próximo capítulo.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-salsburg2001lady" class="csl-entry" role="listitem">
+Salsburg, David. 2001. <em>The Lady Tasting Tea: <span>How</span> Statistics Revolutionized Science in the Twentieth Century</em>. <span>Macmillan</span>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -1060,12 +1081,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "Copiado");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "Copiado");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
@@ -1444,8 +1465,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./13-Gifs.html" class="pagination-link" aria-label="GIFs">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">GIFs</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1454,4 +1475,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/almadana/libro_cuanti/edit/master/07-ANOVA.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/almadana/libro_cuanti/edit/master/07-ANOVA.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li></ul></div></div></div></footer></body></html>

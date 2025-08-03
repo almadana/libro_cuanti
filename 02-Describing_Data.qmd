@@ -28,6 +28,7 @@ Supongamos que querés saber cuán feliz se siente la gente. Entonces salís a l
 Bueno, podrías mirar esos números y ver si eso te ayuda a entender algo sobre la felicidad de las personas. ¿Cómo podrían verse esos números? Quizás algo así:
 
 ```{r 2toomany,echo=F, warning=FALSE}
+set.seed(42)
 felicidad<-rnorm(500,100,500)
 knitr::kable(matrix(round(felicidad),ncol=10,nrow=50))
 ```
@@ -68,7 +69,8 @@ Hacer un histograma será nuestro primer acto de resumir oficialmente algo sobre
 ```{r, echo=F, warning=FALSE}
 #| label: fig-happyHist
 #| fig-cap: "Un histograma de las puntuaciones de felicidad"
-hist(felicidad,ylab = "frecuencia",main="Histograma de la variable felicidad")
+hist(felicidad,ylab = "frecuencia",main="Histograma de la variable felicidad",breaks = 
+       seq(from = -1500, to = 2000, by = 500))
 
 ```
 
@@ -76,7 +78,7 @@ Los puntos desaparecieron, y ahora vemos unas barras. Cada barra resume varios p
 
 En general, vemos que hay muchos bins en el eje x. Dividimos los datos en intervalos de 500. El bin #1 va de -2000 a -1500, el bin #2 de -1500 a -1000, y así sucesivamente hasta el último intervalo. Para hacer el histograma, simplemente contamos cuántos valores caen en cada intervalo, y graficamos esas frecuencias como función de los bins. Voilà, un histograma.
 
-¿Qué nos ayuda a ver el histograma sobre los datos? Primero, podemos ver la **forma** de los datos. La forma del histograma se refiere a cómo sube y baja. Nos dice dónde están concentrados los datos. Por ejemplo, cuando las barras son bajas, sabemos que no hay muchos datos ahí. Cuando son altas, sabemos que hay más. Entonces, ¿dónde están la mayoría de los datos? Parece que están sobre todo en los dos bins del medio, entre -500 y 500. También podemos ver el **rango** de los datos, o sea los mínimos y máximos. La mayoría de los datos están entre -1500 y +1500, así que no hay felicidad ni tristeza infinitas en este conjunto de datos.
+¿Qué nos ayuda a ver el histograma sobre los datos? Primero, podemos ver la **forma** de los datos. La forma del histograma se refiere a cómo sube y baja. Nos dice dónde están concentrados los datos. Por ejemplo, cuando las barras son bajas, sabemos que no hay muchos datos ahí. Cuando son altas, sabemos que hay más. Entonces, ¿dónde está la mayoría de los datos? Parece que están sobre todo en los dos bins del medio, entre -500 y 500. También podemos ver el **rango** de los datos, o sea los mínimos y máximos. La mayoría de los datos están entre -1500 y +1500, así que no hay felicidad ni tristeza infinitas en este conjunto de datos.
 
 Cuando hacés un histograma, podés elegir qué tan ancho será cada intervalo. Por ejemplo, abajo hay cuatro histogramas diferentes del mismo conjunto de datos de felicidad. Lo que cambia es el ancho de los intervalos.
 
@@ -282,9 +284,9 @@ Antes de meternos con los **diagramas de caja**, necesitamos conocer una idea b�
 
 Imaginate que tenés una lista de datos, como por ejemplo puntajes en un test, y los ordenás de menor a mayor. Los cuantiles son como cortes que hacés en esa lista para dividirla en partes iguales. Según en cuántas partes la quieras dividir, cambian de nombre:
 
-- Si la dividís en 4 partes → **cuartiles**
-- Si la dividís en 10 → **deciles**
-- Si la dividís en 100 → **percentiles**
+-   Si la dividís en 4 partes → **cuartiles**
+-   Si la dividís en 10 → **deciles**
+-   Si la dividís en 100 → **percentiles**
 
 Cada uno de esos cortes nos ayuda a entender cómo están repartidos los datos. ¿Están todos apretados en un extremo? ¿Se reparten parejito? ¿Hay alguno que se va al pasto? Los cuantiles te dan pistas.
 
@@ -292,12 +294,12 @@ Cada uno de esos cortes nos ayuda a entender cómo están repartidos los datos. 
 
 Probablemente la primera vez que escuchaste hablar de **percentiles** fue cuando eras un ser humano de apenas unos kilos. Alguna vez alguien te dijo (o escuchaste que le dijeron a un bebé):
 
-> "Está en el percentil 99 de peso"  
-> o  
+> "Está en el percentil 99 de peso"\
+> o\
 > "Uy, está medio flaquito, está en el percentil 3 de talla"
 
-¿Eso qué quiere decir?  
-Que si estabas en el **percentil 99**, pesabas más que el 99% de bebés de tu edad.  
+¿Eso qué quiere decir?\
+Que si estabas en el **percentil 99**, pesabas más que el 99% de bebés de tu edad.\
 Y si estabas en el **percentil 1**, solo el 1% pesaba menos que vos.
 
 ¡Así de simple! Los percentiles te dicen **qué porcentaje de la población está por debajo tuyo**.
@@ -306,18 +308,17 @@ Y si estabas en el **percentil 1**, solo el 1% pesaba menos que vos.
 
 Bueno, los **cuartiles** son un caso especial de percentiles:
 
-- **Primer cuartil (Q1)** = percentil 25  
-- **Segundo cuartil (Q2)** = percentil 50 (también conocido como la **mediana**)  
-- **Tercer cuartil (Q3)** = percentil 75
+-   **Primer cuartil (Q1)** = percentil 25\
+-   **Segundo cuartil (Q2)** = percentil 50 (también conocido como la **mediana**)\
+-   **Tercer cuartil (Q3)** = percentil 75
 
 Es decir, el Q1 es el valor debajo del cual cae el 25% de los datos. El Q3 es el punto debajo del cual cae el 75%. Entre Q1 y Q3 está la mitad de tus datos: eso se llama el **rango intercuartílico** (pero tranqui, ya lo vamos a ver con un dibujito).
-
 
 ## Diagramas de caja (boxplots)
 
 Una alternativa a los histogramas es el diagrama de caja, a veces llamado "diagrama de caja y bigotes" (box and whiskers). Al igual que los histogramas, son más adecuados para datos en escala de intervalo o razón. La idea detrás de un boxplot es proporcionar una representación visual simple de la mediana, el rango intercuartílico y el rango de los datos. Y como lo hacen de manera bastante compacta, los diagramas de caja se han vuelto muy populares como gráficos estadísticos, especialmente en la etapa exploratoria del análisis de datos, cuando estás intentenado entender los datos.
 
-Al mirar este gráfico, esto es lo que deberías interpretar: la línea gruesa en el medio de la caja es la mediana; la caja en sí abarca desde el percentil 25 hasta el 75; y los "bigotes" cubren todo el rango desde el valor mínimo hasta el máximo. Puedes observarlo en la Figura @fig-boxplotanotado.
+Al mirar este gráfico, esto es lo que deberías interpretar: la línea gruesa en el medio de la caja es la mediana; la caja en sí abarca desde el percentil 25 hasta el 75; y los "bigotes" cubren todo el rango desde el valor mínimo hasta el máximo. Puedes observarlo en la @fig-boxplotanotado.
 
 ```{r, echo=F, warning=FALSE}
 #| label: fig-boxplotanotado

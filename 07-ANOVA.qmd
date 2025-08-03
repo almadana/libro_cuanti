@@ -2,6 +2,7 @@
 author: 
   - Matthew J. C. Crump
 aliases: [anova.html]
+lang: es
 ---
 
 ```{r, include = FALSE}
@@ -15,7 +16,7 @@ library(ggplot2)
 library(dplyr)
 ```
 
-Un dato curioso de la historia de la estadística \[\@salsburg2001lady\]. Sir Ronald Fisher inventó el ANOVA, que aprenderemos en esta sección. Quería publicar su nueva prueba en la revista *Biometrika*. El editor en ese momento era Karl Pearson (¿recuerdas la $r$ de Pearson para la correlación?). Aparentemente, Pearson y Fisher no se llevaban bien; no se agradaban. Pearson se negó a publicar la nueva prueba de Fisher. Así que, finalmente, Fisher publicó su trabajo en el *Journal of Agricultural Science*. Curiosamente, la enemistad continuó en la siguiente generación. Años después de que Fisher publicara su ANOVA, el hijo de Karl Pearson, Egon Pearson, y Jersey Neyman renovaron las ideas de Fisher y las reformularon en lo que comúnmente se conoce como prueba de hipótesis nula frente a alternativa. A Fisher no le gustó mucho esto.
+Un dato curioso de la historia de la estadística [@salsburg2001lady]. Sir Ronald Fisher inventó el ANOVA, que aprenderemos en esta sección. Quería publicar su nueva prueba en la revista *Biometrika*. El editor en ese momento era Karl Pearson (¿recuerdas la $r$ de Pearson para la correlación?). Aparentemente, Pearson y Fisher no se llevaban bien; no se agradaban. Pearson se negó a publicar la nueva prueba de Fisher. Así que, finalmente, Fisher publicó su trabajo en el *Journal of Agricultural Science*. Curiosamente, la enemistad continuó en la siguiente generación. Años después de que Fisher publicara su ANOVA, el hijo de Karl Pearson, Egon Pearson, y Jersey Neyman renovaron las ideas de Fisher y las reformularon en lo que comúnmente se conoce como prueba de hipótesis nula frente a alternativa. A Fisher no le gustó mucho esto.
 
 Presentamos el ANOVA en el sentido fisheriano y, al final, describimos el enfoque de Neyman-Pearson que invoca el concepto de hipótesis nula frente a hipótesis alternativa.
 
@@ -35,9 +36,9 @@ Recuerda que $t$ se calcula directamente a partir de los datos. Es como una medi
 
 Lo mismo ocurre con $F$. $F$ se calcula directamente a partir de los datos. De hecho, la idea detrás de $F$ es la misma idea básica que se utiliza para $t$. Aquí está la idea general detrás de la fórmula; es nuevamente una razón entre el efecto que estamos midiendo (en el numerador) y la variación asociada con el efecto (en el denominador).
 
-$\text{name of statistic} = \frac{\text{measure of effect}}{\text{measure of error}}$
+$\text{nombre del estadístico} = \frac{\text{medida del efecto}}{\text{medida del error}}$
 
-$\text{F} = \frac{\text{measure of effect}}{\text{measure of error}}$
+$\text{F} = \frac{\text{medida del efecto}}{\text{medida del error}}$
 
 La diferencia con $F$ es que usamos **varianzas** para describir tanto la medida del efecto como la medida del error. Por lo tanto, $F$ es una razón de dos varianzas.
 
@@ -45,7 +46,7 @@ Recuerda lo que dijimos sobre cómo funcionan estas razones. Cuando la varianza 
 
 Reescribámoslo en un lenguaje más sencillo. Estamos hablando de dos conceptos que nos gustaría medir a partir de nuestros datos: 1) una medida de lo que **podemos explicar**, y 2) una medida de error, o cosas sobre nuestros datos que **no podemos explicar**. Entonces, la fórmula de $F$ se ve así:  
 
-$\text{F} = \frac{\text{Can Explain}}{\text{Can't Explain}}$
+$\text{F} = \frac{\text{Puede explicarse}}{\text{No puede explicarse}}$
 
 Cuando podemos explicar tanto como no podemos explicar, $F$ = 1. Esta no es una situación muy buena para nosotros. Significa que tenemos mucha incertidumbre. Cuando podemos explicar mucho más de lo que no podemos, estamos haciendo un buen trabajo, y $F$ será mayor que 1. Cuando podemos explicar menos de lo que no podemos, realmente no podemos explicar mucho, y $F$ será menor que 1. Ese es el concepto detrás de la creación de $F$.
 
@@ -61,26 +62,26 @@ Esta es una buena idea, pero también es vaga. No hemos especificado nuestra med
 
 ¿Recuerdas las sumas de cuadrados que usamos para calcular la varianza y la desviación estándar? Eso es lo que usaremos. Echemos otro vistazo a la fórmula, usando las sumas de cuadrados como medida de la variación:
 
-$SS_\text{total} = SS_\text{Effect} + SS_\text{Error}$
+$SC_\text{total} = SC_\text{Efecto} + SC_\text{Error}$
 
 ### SC Total
 
-Las sumas de cuadrados totales, o $SS\text{Total}$, es una forma de pensar en toda la variación de un conjunto de datos. Es bastante sencillo de medir. Sin trucos. Todo lo que hacemos es encontrar la diferencia entre cada puntuación y la media general, luego elevamos al cuadrado las diferencias y las sumamos todas.
+Las sumas de cuadrados totales, o $SC\text{Total}$, es una forma de pensar en toda la variación de un conjunto de datos. Es bastante sencillo de medir. Sin trucos. Todo lo que hacemos es encontrar la diferencia entre cada puntuación y la media general, luego elevamos al cuadrado las diferencias y las sumamos todas.
 
 Imaginemos que tenemos algunos datos en tres grupos: A, B y C. Por ejemplo, podríamos tener 3 puntuaciones en cada grupo. Los datos podrían verse así:
 
 ```{r}
 library(dplyr)
-scores <- c(20, 11, 2, 6, 2, 7, 2, 11, 2)
-groups <- as.character(rep(c("A", "B", "C"), each = 3))
-diff <- scores - mean(scores)
-diff_squared <- diff ^ 2
-df <- data.frame(groups, scores, diff, diff_squared)
-df$groups <- as.character(df$groups)
+puntajes <- c(20, 11, 2, 6, 2, 7, 2, 11, 2)
+grupos <- as.character(rep(c("A", "B", "C"), each = 3))
+dif <- puntajes - mean(puntajes)
+dif_cuadradas <- dif ^ 2
+df <- data.frame(grupos, puntajes, dif, dif_cuadradas)
+df$grupos <- as.character(df$grupos)
 
 df <- df %>%
-  rbind(c("Sums", colSums(df[1:9, 2:4]))) %>%
-  rbind(c("Means", colMeans(df[1:9, 2:4])))
+  rbind(c("Sumas", colSums(df[1:9, 2:4]))) %>%
+  rbind(c("Medias", colMeans(df[1:9, 2:4])))
 
 knitr::kable(df)
 
@@ -88,112 +89,112 @@ knitr::kable(df)
 
 Los datos están organizados en formato largo, de modo que cada fila es una única puntuación. Hay tres puntuaciones para los grupos A, B y C. La media de todas las puntuaciones se llama la **Media General**. Está calculada en la tabla, la Media General = 7.
 
-También calculamos todas las puntuaciones de diferencia **con respecto a la Media General**. Las puntuaciones de diferencia están en la columna titulada `diff`. A continuación, elevamos al cuadrado las puntuaciones de diferencia, y esas están en la siguiente columna llamada `diff_squared`.
+También calculamos todas las puntuaciones de diferencia **con respecto a la Media General**. Las puntuaciones de diferencia están en la columna titulada `dif`. A continuación, elevamos al cuadrado las puntuaciones de diferencia, y esas están en la siguiente columna llamada `dif_cuadradas`.
 
 Recuerda, las puntuaciones de diferencia son una forma de medir la variación. Representan qué tan lejos está cada número de la Media General. Si la Media General representa nuestra mejor estimación para resumir los datos, las puntuaciones de diferencia representan el error entre esa estimación y cada punto de dato real. El único problema con las puntuaciones de diferencia es que suman cero (porque la media es el punto de equilibrio en los datos). Por lo tanto, es conveniente elevar al cuadrado las puntuaciones de diferencia, lo que las convierte a todas en números positivos. El tamaño de las puntuaciones de diferencia al cuadrado todavía representa el error entre la media y cada puntuación. Y, la operación de elevar al cuadrado exacerba las diferencias a medida que el error aumenta (elevar al cuadrado un número grande produce un número muy grande, mientras que elevar al cuadrado un número pequeño sigue produciendo un número pequeño).
 
 ¡De acuerdo! Tenemos las desviaciones al cuadrado de la media general, sabemos que representan el error entre la media general y cada puntuación. ¿Qué sigue? ¡SUMARLAS TODAS!
 
-Cuando sumas todas las desviaciones individuales al cuadrado (puntuaciones de diferencia), obtienes las sumas de cuadrados. Por eso se llama sumas de cuadrados (SC o SS en inglés).
+Cuando sumas todas las desviaciones individuales al cuadrado (puntuaciones de diferencia), obtienes las sumas de cuadrados. Por eso se llama sumas de cuadrados (SC o SC en inglés).
 
 Ahora, tenemos la primera parte de nuestra respuesta:
 
-$SS_\text{total} = SS_\text{Effect} + SS_\text{Error}$
+$SC_\text{total} = SC_\text{Efecto} + SC_\text{Error}$
 
-$SS_\text{total} = 302$ y
+$SC_\text{total} = 302$ y
 
-$302 = SS_\text{Effect} + SS_\text{Error}$
+$302 = SC_\text{Efecto} + SC_\text{Error}$
 
-¿Qué sigue? Si piensas en lo que aprendiste sobre álgebra y resolver para X, podrías notar que no necesitamos encontrar las respuestas a las dos partes faltantes de la ecuación. Solo necesitamos una, y podemos resolver para la otra. Por ejemplo, si encontramos $SS_\text{Effect}$, entonces podríamos resolver para $SS_\text{Error}$.
+¿Qué sigue? Si piensas en lo que aprendiste sobre álgebra y resolver para X, podrías notar que no necesitamos encontrar las respuestas a las dos partes faltantes de la ecuación. Solo necesitamos una, y podemos resolver para la otra. Por ejemplo, si encontramos $SC_\text{Efecto}$, entonces podríamos resolver para $SC_\text{Error}$.
 
 ### SC Efecto
 
-$SS_\text{Total}$ nos dio un número que representa todo el cambio en nuestros datos, cómo todas las puntuaciones son diferentes de la media general.
+$SC_\text{Total}$ nos dio un número que representa todo el cambio en nuestros datos, cómo todas las puntuaciones son diferentes de la media general.
 
 Lo que queremos hacer a continuación es estimar cuánto del cambio total en los datos podría deberse a la manipulación experimental. Por ejemplo, si realizamos un experimento que causa un cambio en la medición, entonces las medias de cada grupo serán diferentes entre sí. Como resultado, la manipulación fuerza un cambio en los números, y esto significará naturalmente que una parte de la variación total en los números es causada por la manipulación.
 
-La forma de aislar la variación debida a la manipulación (también llamada efecto) es observar las medias de cada grupo, calcular las puntuaciones de diferencia entre cada media de grupo y la media general, y luego sumar las desviaciones al cuadrado para encontrar $SS_\text{Effect}$.
+La forma de aislar la variación debida a la manipulación (también llamada efecto) es observar las medias de cada grupo, calcular las puntuaciones de diferencia entre cada media de grupo y la media general, y luego sumar las desviaciones al cuadrado para encontrar $SC_\text{Efecto}$.
 
-Considera esta tabla, que muestra los cálculos para $SS_\text{Effect}$.
+Considera esta tabla, que muestra los cálculos para $SC_\text{Efecto}$.
 
 ```{r}
 library(dplyr)
-scores <- c(20, 11, 2, 6, 2, 7, 2, 11, 2)
-means <- c(11, 11, 11, 5, 5, 5, 5, 5, 5)
-groups <- as.character(rep(c("A", "B", "C"), each = 3))
-diff <- means - mean(scores)
-diff_squared <- diff ^ 2
-df <- data.frame(groups, scores, means, diff, diff_squared)
-df$groups <- as.character(df$groups)
+puntajes <- c(20, 11, 2, 6, 2, 7, 2, 11, 2)
+medias <- c(11, 11, 11, 5, 5, 5, 5, 5, 5)
+grupos <- as.character(rep(c("A", "B", "C"), each = 3))
+dif <- medias - mean(puntajes)
+dif_cuadradas <- dif ^ 2
+df <- data.frame(grupos, puntajes, medias, dif, dif_cuadradas)
+df$grupos <- as.character(df$grupos)
 
 df <- df %>%
   rbind(c("Sums", colSums(df[1:9, 2:5]))) %>%
-  rbind(c("Means", colMeans(df[1:9, 2:5])))
+  rbind(c("medias", colMeans(df[1:9, 2:5])))
 
 knitr::kable(df)
 
 ```
 
-Observa que creamos una nueva columna llamada `means`. Por ejemplo, la media del grupo A fue 11. Puedes ver que hay tres 11, uno por cada observación en la fila A. Las medias para los grupos B y C resultan ser ambas 5. Por lo tanto, el resto de los números en la columna de medias son 5.
+Observa que creamos una nueva columna llamada `medias`. Por ejemplo, la media del grupo A fue 11. Puedes ver que hay tres 11, uno por cada observación en la fila A. Las medias para los grupos B y C resultan ser ambas 5. Por lo tanto, el resto de los números en la columna de medias son 5.
 
 Lo que estamos haciendo aquí es pensar en cada puntuación en los datos desde el punto de vista de las medias de grupo. Las medias de grupo son nuestro mejor intento de resumir los datos en esos grupos. Desde el punto de vista de la media, todos los números son tratados como si fueran iguales. La media no sabe qué tan lejos está de cada puntuación, solo sabe que todas las puntuaciones están centradas en ella.
 
 > Imaginemos que eres la media del grupo A. Eso significa que eres un 11. Alguien te pregunta "¿cuál es la puntuación del primer dato del grupo A?". Como eres la media, dices: "Lo sé, es 11". "¿Y la segunda puntuación?"... "es 11"... "todas son 11, hasta donde yo sé... ¿Me estoy perdiendo de algo?", preguntó la media.
 
-Ahora que hemos convertido cada puntuación a su valor medio, podemos encontrar las diferencias entre cada puntuación media y la media general, luego elevarlas al cuadrado y sumarlas. Hicimos eso y encontramos que el $SS_\text{Effect} = 72$.
+Ahora que hemos convertido cada puntuación a su valor medio, podemos encontrar las diferencias entre cada puntuación media y la media general, luego elevarlas al cuadrado y sumarlas. Hicimos eso y encontramos que el $SC_\text{Efecto} = 72$.
 
-$SS_\text{Effect}$ representa la cantidad de variación que es causada por las diferencias entre las medias. También me refiero a esto como la cantidad de variación que el investigador puede explicar (por las medias, que representan diferencias entre grupos o condiciones que fueron manipuladas por el investigador).
+$SC_\text{Efecto}$ representa la cantidad de variación que es causada por las diferencias entre las medias. También me refiero a esto como la cantidad de variación que el investigador puede explicar (por las medias, que representan diferencias entre grupos o condiciones que fueron manipuladas por el investigador).
 
-Observa también que $SS_\text{Effect} = 72$, y que 72 es menor que $SS_\text{total} = 302$. Eso es muy importante. $SS_\text{Effect}$ por definición nunca puede ser mayor que $SS_\text{total}$.
+Observa también que $SC_\text{Efecto} = 72$, y que 72 es menor que $SC_\text{total} = 302$. Eso es muy importante. $SC_\text{Efecto}$ por definición nunca puede ser mayor que $SC_\text{total}$.
 
 ### SC Error
 
 Genial, llegamos a la SC de Error. Ya encontramos la SC Total y la SC de Efecto, así que ahora podemos resolver para la SC de Error de esta manera:
 
-$SS_\text{total} = SS_\text{Effect} + SS_\text{Error}$
+$SC_\text{total} = SC_\text{Efecto} + SC_\text{Error}$
 
 Reordenando:
 
-\$ SS\_\text{Error} = SS\_\text{total} - SS\_\text{Effect} \$
+$$ SC_\text{Error} = SC_\text{total} - SC_\text{Efecto} $$
 
-\$ SS\_\text{Error} = 302 - 72 = 230 \$
+$$ SC_\text{Error} = 302 - 72 = 230 $$
 
-Podríamos detenernos aquí y mostrarte el resto del ANOVA, ya casi llegamos. Pero, el siguiente paso podría no tener sentido a menos que te mostremos cómo calcular $SS_\text{Error}$ directamente desde los datos, en lugar de simplemente resolverlo. Deberíamos hacer esto solo para verificar nuestro trabajo de todos modos.
+Podríamos detenernos aquí y mostrarte el resto del ANOVA, ya casi llegamos. Pero, el siguiente paso podría no tener sentido a menos que te mostremos cómo calcular $SC_\text{Error}$ directamente desde los datos, en lugar de simplemente resolverlo. Deberíamos hacer esto solo para verificar nuestro trabajo de todos modos.
 
 ```{r}
-scores <- c(20, 11, 2, 6, 2, 7, 2, 11, 2)
-means <- c(11, 11, 11, 5, 5, 5, 5, 5, 5)
-groups <- as.character(rep(c("A", "B", "C"), each = 3))
-diff <- means - scores
-diff_squared <- diff ^ 2
-df <- data.frame(groups, scores, means, diff, diff_squared)
-df$groups <- as.character(df$groups)
+puntajes <- c(20, 11, 2, 6, 2, 7, 2, 11, 2)
+medias <- c(11, 11, 11, 5, 5, 5, 5, 5, 5)
+grupos <- as.character(rep(c("A", "B", "C"), each = 3))
+dif <- medias - puntajes
+dif_cuadradas <- dif ^ 2
+df <- data.frame(grupos, puntajes, medias, dif, dif_cuadradas)
+df$grupos <- as.character(df$grupos)
 
 df <- df %>%
   rbind(c("Sums", colSums(df[1:9, 2:5]))) %>%
-  rbind(c("Means", colMeans(df[1:9, 2:5])))
+  rbind(c("medias", colMeans(df[1:9, 2:5])))
 
 knitr::kable(df)
 
 ```
 
-Muy bien, hicimos casi lo mismo que para encontrar $SS_\text{Effect}$. ¿Puedes ver la diferencia? Esta vez, para cada puntuación, primero encontramos la media del grupo, luego encontramos el error en la estimación de la media del grupo para cada puntuación. En otras palabras, los valores en la columna $diff$ son las diferencias entre cada puntuación y la media de su grupo. Los valores en la columna `diff_squared` son las desviaciones al cuadrado. Cuando sumamos las desviaciones al cuadrado, obtenemos otra Suma de Cuadrados, esta vez es la $SS_\text{Error}$. Este es un nombre apropiado, ¡porque estas desviaciones son las que las medias de los grupos no pueden explicar!
+Muy bien, hicimos casi lo mismo que para encontrar $SC_\text{Efecto}$. ¿Puedes ver la diferencia? Esta vez, para cada puntuación, primero encontramos la media del grupo, luego encontramos el error en la estimación de la media del grupo para cada puntuación. En otras palabras, los valores en la columna $dif$ son las diferencias entre cada puntuación y la media de su grupo. Los valores en la columna `dif_cuadradas` son las desviaciones al cuadrado. Cuando sumamos las desviaciones al cuadrado, obtenemos otra Suma de Cuadrados, esta vez es la $SC_\text{Error}$. Este es un nombre apropiado, ¡porque estas desviaciones son las que las medias de los grupos no pueden explicar!
 
 ### Grados de libertad
 
 Los grados de libertad vuelven a entrar en juego con el ANOVA. Esta vez, su propósito es un poco más claro. Los $Df$s pueden ser bastante simples cuando hacemos un ANOVA relativamente simple como este, pero pueden volverse complicados cuando los diseños se complican.
 
-Hablemos de los grados de libertad para la $SS_\text{Effect}$ y la $SS_\text{Error}$.
+Hablemos de los grados de libertad para la $SC_\text{Efecto}$ y la $SC_\text{Error}$.
 
-La fórmula para los grados de libertad para $SS_\text{Effect}$ es:
+La fórmula para los grados de libertad para $SC_\text{Efecto}$ es:
 
-$df_\text{Effect} = \text{Groups} -1$, donde Grupos es el número de grupos en el diseño.
+$df_\text{Efecto} = \text{grupos} -1$, donde Grupos es el número de grupos en el diseño.
 
 En nuestro ejemplo, hay 3 grupos, por lo que los gl son 3-1 = 2. Puedes pensar en los gl para el efecto de esta manera. Cuando estimamos la media general (la media total), estamos restando un grado de libertad para las medias de los grupos. Dos de las medias de los grupos pueden ser lo que quieran (tienen total libertad), pero para que las tres sean consistentes con la Media General, la última media de grupo tiene que ser fija.
 
-La fórmula para los grados de libertad para $SS_\text{Error}$ es:
+La fórmula para los grados de libertad para $SC_\text{Error}$ es:
 
-$df_\text{Error} = \text{scores} - \text{groups}$, o el número de puntuaciones menos el número de grupos. Tenemos 9 puntuaciones y 3 grupos, por lo que nuestros $df$ para el término de error son 9-3 = 6. Recuerda, cuando calculamos la puntuación de diferencia entre cada puntuación y la media de su grupo, tuvimos que calcular tres medias (una para cada grupo) para hacerlo. Por lo tanto, eso reduce los grados de libertad en 3. 6 de las puntuaciones de diferencia podrían ser lo que quisieran, pero las últimas 3 tienen que ser fijas para coincidir con las medias de los grupos.
+$df_\text{Error} = \text{puntajes} - \text{grupos}$, o el número de puntuaciones menos el número de grupos. Tenemos 9 puntuaciones y 3 grupos, por lo que nuestros $df$ para el término de error son 9-3 = 6. Recuerda, cuando calculamos la puntuación de diferencia entre cada puntuación y la media de su grupo, tuvimos que calcular tres medias (una para cada grupo) para hacerlo. Por lo tanto, eso reduce los grados de libertad en 3. 6 de las puntuaciones de diferencia podrían ser lo que quisieran, pero las últimas 3 tienen que ser fijas para coincidir con las medias de los grupos.
 
 ### Cuadrado Medio del Error
 
@@ -201,27 +202,27 @@ Bien, ya tenemos los grados de libertad. ¿Qué sigue? Quedan dos pasos. Primero
 
 Primero que nada, recuerda que estamos tratando de lograr este objetivo:
 
-$\text{F} = \frac{\text{measure of effect}}{\text{measure of error}}$
+$\text{F} = \frac{\text{medida delEfecto}}{\text{medida delerror}}$
 
-Queremos construir una razón que divida una medida de un efecto por una medida de error. Quizás te diste cuenta de que ya tenemos una medida de un efecto y del error: $SS_\text{Effect}$ y $SS_\text{Error}$. Ambas representan la variación debida al efecto y la variación restante que no se explica. ¿Por qué no hacemos simplemente esto?
+Queremos construir una razón que divida una medida de un efecto por una medida de error. Quizás te diste cuenta de que ya tenemos una medida de un efecto y del error: $SC_\text{Efecto}$ y $SC_\text{Error}$. Ambas representan la variación debida al efecto y la variación restante que no se explica. ¿Por qué no hacemos simplemente esto?
 
-$\frac{SS_\text{Effect}}{SS_\text{Error}}$
+$\frac{SC_\text{Efecto}}{SC_\text{Error}}$
 
 Bueno, por supuesto que podrías hacer eso. Lo que pasaría es que puedes obtener números muy grandes y muy pequeños para tu estadístico inferencial. Y, el tipo de número que obtendrías no sería fácilmente interpretable como un valor  $t$ o una puntuación $z$.
 
-La solución es **normalizar** los términos $SS$ No te preocupes, normalizar es solo una palabra elegante para sacar el promedio o encontrar la media. Recuerda, los términos SC son todos sumas. Y cada suma representa un número diferente de propiedades subyacentes.
+La solución es **normalizar** los términos $SC$ No te preocupes, normalizar es solo una palabra elegante para sacar el promedio o encontrar la media. Recuerda, los términos SC son todos sumas. Y cada suma representa un número diferente de propiedades subyacentes.
 
-Por ejemplo, el SS\_\text{Effect} representa la suma de la variación para tres medias en nuestro estudio. Podríamos preguntarnos, bueno, ¿cuál es la cantidad promedio de variación para cada media? Podrías pensar en dividir SS\_\text{Effect} por 3, porque hay tres medias, pero como estamos estimando esta propiedad, dividimos por los grados de libertad en su lugar (# grupos - 1 = 3-1 = 2). Ahora hemos creado algo nuevo, se llama el $MSE_\text{Effect}$.
+Por ejemplo, el SC\_\text{Efecto} representa la suma de la variación para tres medias en nuestro estudio. Podríamos preguntarnos, bueno, ¿cuál es la cantidad promedio de variación para cada media? Podrías pensar en dividir SC\_\text{Efecto} por 3, porque hay tres medias, pero como estamos estimando esta propiedad, dividimos por los grados de libertad en su lugar (# grupos - 1 = 3-1 = 2). Ahora hemos creado algo nuevo, se llama el $MSE_\text{Efecto}$.
 
-$MSE_\text{Effect} = \frac{SS_\text{Effect}}{df_\text{Effect}}$
+$MSE_\text{Efecto} = \frac{SC_\text{Efecto}}{df_\text{Efecto}}$
 
-$MSE_\text{Effect} = \frac{72}{2} = 36$
+$MSE_\text{Efecto} = \frac{72}{2} = 36$
 
-Esto puede parecer extraño y un poco complicado. Pero es solo otra media. Es la media de las sumas de cuadrados para el efecto. Si esto te recuerda a la fórmula de la varianza, buena memoria. El $SME_\text{Effect}$ es una medida de la varianza para el cambio en los datos debido a los cambios en las medias (que están vinculadas a las condiciones experimentales).
+Esto puede parecer extraño y un poco complicado. Pero es solo otra media. Es la media de las sumas de cuadrados para el efecto. Si esto te recuerda a la fórmula de la varianza, buena memoria. El $SME_\text{Efecto}$ es una medida de la varianza para el cambio en los datos debido a los cambios en las medias (que están vinculadas a las condiciones experimentales).
 
-El $SS_\text{Error}$ representa la suma de la variación para nueve puntuaciones en nuestro estudio. Eso es mucho más puntuaciones, por lo que el $SS_\text{Error}$ suele ser mucho más grande que el $SS_\text{Effect}$. Si dejáramos nuestras SSes de esta manera y las dividiéramos, casi siempre obtendríamos números menores que uno, porque el $SS_\text{Error}$ es muy grande. Lo que necesitamos hacer es reducirlo al tamaño promedio. Entonces, podríamos querer dividir nuestro $SS_\text{Error}$ por 9, después de todo había nueve puntuaciones. Sin embargo, como estamos estimando esta propiedad, dividimos por los grados de libertad en su lugar (puntuaciones-grupos) = 9-3 = 6. Ahora hemos creado algo nuevo, se llama el $MSE_\text{Error}$.
+El $SC_\text{Error}$ representa la suma de la variación para nueve puntuaciones en nuestro estudio. Eso es mucho más puntuaciones, por lo que el $SC_\text{Error}$ suele ser mucho más grande que el $SC_\text{Efecto}$. Si dejáramos nuestras SCes de esta manera y las dividiéramos, casi siempre obtendríamos números menores que uno, porque el $SC_\text{Error}$ es muy grande. Lo que necesitamos hacer es reducirlo al tamaño promedio. Entonces, podríamos querer dividir nuestro $SC_\text{Error}$ por 9, después de todo había nueve puntuaciones. Sin embargo, como estamos estimando esta propiedad, dividimos por los grados de libertad en su lugar (puntuaciones-grupos) = 9-3 = 6. Ahora hemos creado algo nuevo, se llama el $MSE_\text{Error}$.
 
-$MSE_\text{Error} = \frac{SS_\text{Error}}{df_\text{Error}}$
+$MSE_\text{Error} = \frac{SC_\text{Error}}{df_\text{Error}}$
 
 $MSE_\text{Error} = \frac{230}{6} = 38.33$
 
@@ -229,9 +230,9 @@ $MSE_\text{Error} = \frac{230}{6} = 38.33$
 
 Ahora que hemos hecho todo el trabajo duro, calcular $F$ es fácil:
 
-$\text{F} = \frac{\text{measure of effect}}{\text{measure of error}}$
+$\text{F} = \frac{\text{medida delEfecto}}{\text{medida delerror}}$
 
-$\text{F} = \frac{MSE_\text{Effect}}{MSE_\text{Error}}$
+$\text{F} = \frac{MSE_\text{Efecto}}{MSE_\text{Error}}$
 
 $\text{F} = \frac{36}{38.33} = .939$
 
@@ -245,14 +246,14 @@ Todas estas pequeñas piezas se organizan convenientemente en tablas ANOVA. Las 
 
 ```{r}
 library(xtable)
-aov_out <- aov(scores ~ groups, df[1:9, ])
+aov_out <- aov(puntajes ~ grupos, df[1:9, ])
 summary_out <- summary(aov_out)
 
 knitr::kable(xtable(summary_out))
 
 ```
 
-Estás viendo la salida de una tabla de resumen de ANOVA de R. Observa que tiene columnas para $Df$ (gl), $SS$ (Sum Sq o SC), $MSE$ (cuadrado de la media), $F$, y un valor $p$. Hay dos filas. La fila `groups` es para el Efecto (lo que nuestras medias pueden explicar). La fila `Residuals` es para el Error (lo que nuestras medias no pueden explicar). Diferentes programas dan etiquetas ligeramente diferentes, pero todos intentan presentar la misma información en la tabla ANOVA. No hay nada especial en la tabla ANOVA, es solo una forma de organizar todas las piezas. Observa que el CME para el efecto (36) se coloca sobre el CME para el error (38.333), y esto parece natural porque dividimos 36/38.33 para obtener el valor $F$!.
+Estás viendo la salida de una tabla de resumen de ANOVA de R. Observa que tiene columnas para $Df$ (gl), $SC$ (Sum Sq o SC), $MSE$ (cuadrado de la media), $F$, y un valor $p$. Hay dos filas. La fila `grupos` es para el Efecto (lo que nuestras medias pueden explicar). La fila `Residuals` es para el Error (lo que nuestras medias no pueden explicar). Diferentes programas dan etiquetas ligeramente diferentes, pero todos intentan presentar la misma información en la tabla ANOVA. No hay nada especial en la tabla ANOVA, es solo una forma de organizar todas las piezas. Observa que el CME para el efecto (36) se coloca sobre el CME para el error (38.333), y esto parece natural porque dividimos 36/38.33 para obtener el valor $F$!.
 
 ## ¿Qué significa F?
 
@@ -270,7 +271,7 @@ Aquí hay más detalles para el experimento. Cada grupo tendrá 10 sujetos difer
 
 ```{r}
 #| label: fig-7fnull
-#| fig.cap: "A simulation of 10,000 experiments from a null distribution where there is no differences. The histogram shows 10,000 $F$-values, one for each simulation. These are values that F can take in this situation. All of these $F$-values were produced by random sampling error."
+#| fig.cap: "Una simulación de 10.000 experimentos a partir de una distribución nula donde no hay diferencias. El histograma muestra 10.000 valores de $F$, uno por cada simulación. Estos son los valores que puede tomar $F$ en esta situación. Todos estos valores de $F$ fueron producidos por error muestral aleatorio."
 #| fig-asp: 0.5
 #| out-width: "100%"
 
@@ -291,7 +292,8 @@ plot_df <- plot_df[plot_df$save_F < 10, ]
 
 ggplot(plot_df, aes(x = save_F)) +
   geom_histogram(color = "white", bins = 100) +
-  theme_classic()
+  theme_classic()+
+  labs(x="Valores de F",y="frecuencia")
 
 ```
 
@@ -313,7 +315,7 @@ Hagámoslo. He dibujado la línea para el valor crítico en el histograma en la 
 
 ```{r}
 #| label: fig-7criticalF
-#| fig-cap: "The critical value for $F$ where 5% of all $F$-values lie beyond this point"
+#| fig-cap: "El valor crítico de $F$, donde el 5% de todos los valores de $F$ se encuentran más allá de este punto."
 #| out-width: "100%"
 #| fig-asp: 0.5
 
@@ -335,8 +337,9 @@ ggplot(plot_df, aes(x = save_F)) +
     y = 500,
     label = round(qf(.95, 2, 27), digits = 2)
   ), aes(x = x, y = y, label = label)) +
-  geom_label(data = data.frame(x = 7.5, y = 500, label = "5% of F-values"),
-             aes(x = x, y = y, label = label))
+  geom_label(data = data.frame(x = 7.5, y = 500, label = "5% de valores F"),
+             aes(x = x, y = y, label = label))+
+  labs(x="F",y="frecuencia")
 
 ```
 
@@ -366,13 +369,13 @@ Por ejemplo, si tuvieras tres grupos, A, B y C. Podrías obtener diferencias ent
 
 Esas son tres posibles diferencias que podrías obtener. Podrías realizar pruebas $t$ por separado para probar si cada una de esas diferencias que pudiste haber encontrado podría haber sido producida por el azar. O podrías realizar un ANOVA, como lo que hemos estado haciendo, para hacer una pregunta más general sobre las diferencias. Aquí hay una forma de pensar sobre lo que está probando la prueba ómnibus:  
 
-Hipótesis de no diferencias en ninguna parte: \$ A = B = C \$
+Hipótesis de no diferencias en ninguna parte: $ A = B = C $
 
 Cualquier diferencia en alguna parte:
 
-a.  \$ A \neq B = C \$
-b.  \$ A = B \neq C \$
-c.  \$ A \neq C = B \$
+a.  $ A \neq B = C $
+b.  $ A = B \neq C $
+c.  $ A \neq C = B $
 
 El símbolo $\neq$ significa "no es igual a", es un signo de igual con una cruz (¡no se permiten iguales!).
 
@@ -383,8 +386,8 @@ El símbolo $\neq$ significa "no es igual a", es un signo de igual con una cruz 
 Acabamos de correr 10.000 experimentos y ni siquiera miramos una sola vez las medias de los grupos en ninguno de ellos. En la Figura 7.3 se muestran diferentes patrones de medias de grupo bajo la hipótesis nula para un subconjunto de 10 simulaciones aleatorias.
 
 ```{r}
-#| label: fig-7manyDiffs
-#| fig-cap: "Different patterns of group means under the null (all scores for each group sampled from the same distribution)."
+#| label: fig-7manydifs
+#| fig-cap: "Diferentes patrones de medias grupales bajo la hipótesis nula (todos los puntajes de cada grupo se muestrean de la misma distribución)."
 #| out-width: "100%"
 
 #library(dplyr)
@@ -406,17 +409,17 @@ all_df$simulations  <- as.factor(all_df$simulations)
 
 plot_df2 <- all_df %>%
   dplyr::group_by(simulations, pill_group) %>%
-  dplyr::summarise(group_means = mean(smartness),
+  dplyr::summarise(group_medias = mean(smartness),
                    group_SE = sd(smartness) / sqrt(length(smartness)))
 
 #print(plot_df2[1:10,])
 
-ggplot(data = plot_df2, aes(x = pill_group, y = group_means, color = simulations)) +
+ggplot(data = plot_df2, aes(x = pill_group, y = group_medias, color = simulations)) +
   geom_point() +
-  geom_errorbar(aes(ymin = group_means - group_SE, ymax = group_means +
+  geom_errorbar(aes(ymin = group_medias - group_SE, ymax = group_medias +
                       group_SE)) +
   theme_classic() +
-  ylab("Mean Smartness") +
+  labs(y="Inteligencia media",x="Grupo de píldora",col="simulaciones") +
   facet_wrap( ~ simulations, nrow=2)
 
 ```
@@ -434,8 +437,8 @@ Para la mayoría de las simulaciones, las barras de error se superponen, lo que 
 Miremos el mismo gráfico que antes, pero esta vez usemos barras para ilustrar visualmente las medias, en lugar de puntos. Vamos a rehacer nuestra simulación de 10 experimentos, por lo que el patrón será un poco diferente:
 
 ```{r}
-#| label: fig-7manyDiffsBar
-#| fig-cap: "Different patterns of group means under the null (all scores for each group sampled from the same distribution)."
+#| label: fig-7manydifsBar
+#| fig-cap: "Diferentes patrones de medias grupales bajo la hipótesis nula (todos los puntajes de cada grupo se muestrean de la misma distribución)."
 #| out-width: "100%"
 
 all_df <- data.frame()
@@ -452,15 +455,15 @@ all_df$simulations  <- as.factor(all_df$simulations)
 
 plot_df2 <- all_df %>%
   dplyr::group_by(simulations, pill_group) %>%
-  dplyr::summarize(group_means = mean(smartness),
+  dplyr::summarize(group_medias = mean(smartness),
                    group_SE = sd(smartness) / sqrt(length(smartness)))
 
-ggplot(plot_df2, aes(x = pill_group, y = group_means, fill = simulations)) +
+ggplot(plot_df2, aes(x = pill_group, y = group_medias, fill = simulations)) +
   geom_bar(stat = "identity", position = "dodge") +
-  geom_errorbar(aes(ymin = group_means - group_SE, ymax = group_means +
+  geom_errorbar(aes(ymin = group_medias - group_SE, ymax = group_medias +
                       group_SE)) +
   theme_classic() +
-  ylab("Mean Smartness") +
+  labs(y="Inteligencia media",x="Grupo de píldora",fill="simulaciones") +
   facet_wrap( ~ simulations, nrow=2) +
   coord_cartesian(ylim = c(90, 110))
 
@@ -479,7 +482,7 @@ Lo que vamos a hacer ahora es parecido a lo que hicimos antes. Salvo que esta ve
 
 ```{r}
 #| label: fig-7flesshthanone
-#| fig-cap: "Different patterns of group means under the null (sampled from same distribution) when F is less than 1."
+#| fig-cap: "Diferentes patrones de medias grupales bajo la hipótesis nula (muestreados de la misma distribución) cuando el valor de $F$ es menor que 1."
 #| out-width: "100%"
 
 all_df <- data.frame()
@@ -504,15 +507,15 @@ all_df$simulations  <- as.factor(all_df$simulations)
 
 plot_df <- all_df %>%
   dplyr::group_by(simulations, pill_group) %>%
-  dplyr::summarise(means = mean(smartness),
+  dplyr::summarise(medias = mean(smartness),
                    SEs = sd(smartness) / sqrt(length(smartness)))
 
-ggplot(plot_df, aes(x = pill_group, y = means, fill = simulations)) +
+ggplot(plot_df, aes(x = pill_group, y = medias, fill = simulations)) +
   geom_bar(stat = "identity", position = "dodge") +
-  geom_errorbar(aes(ymin = means - SEs, ymax = means + SEs)) +
+  geom_errorbar(aes(ymin = medias - SEs, ymax = medias + SEs)) +
   theme_classic() +
   facet_wrap( ~ simulations, nrow=2) +
-  ylab("Mean Smartness") +
+  labs(y="Inteligencia media",x="Grupo de píldora",fill="simulaciones") +
   coord_cartesian(ylim = c(85, 115))
 
 ```
@@ -527,7 +530,7 @@ Acá vemos que no todas las barras son perfectamente planas, y está bien. Lo qu
 Antes encontramos que el valor crítico para $F$ en nuestra situación era 3.35, esta era la ubicación en la distribución $F$ donde solo el 5% de los $F$ eran 3.35 o mayores. Rechazaríamos la hipótesis de no diferencias cada vez que $F$ fuera mayor a 3.35. En este caso, cada vez que hiciéramos eso, estaríamos cometiendo un error de tipo I. Esto es porque estamos simulando la distribución de no diferencias (recordá que todas nuestras medias muestrales vienen exactamente de la misma distribución). Así que ahora podemos echar un vistazo a cómo se ven los errores de tipo I. En otras palabras, podemos correr algunas simulaciones y mirar el patrón en las medias, solo cuando $F$ resulta ser 3.35 o mayor (esto solo pasa el 5% de las veces, así que puede que tengamos que dejar que la computadora simule por un rato). Veamos cómo se ve eso:
 
 ```{r}
-#| label: fig-7sigdiffs
+#| label: fig-7sigdifs
 #| fig-cap: "Diferentes patrones de las medias de grupo bajo la nula cuando $F$ está por encima del valor crítico (todos estos son Errores de tipo I)."
 #| out-width: "100%"
 
@@ -553,15 +556,15 @@ all_df$simulations  <- as.factor(all_df$simulations)
 
 plot_df <- all_df %>%
   dplyr::group_by(simulations, pill_group) %>%
-  dplyr::summarise(means = mean(smartness),
+  dplyr::summarise(medias = mean(smartness),
                    SEs = sd(smartness) / sqrt(length(smartness)))
 
-ggplot(plot_df, aes(x = pill_group, y = means, fill = simulations)) +
+ggplot(plot_df, aes(x = pill_group, y = medias, fill = simulations)) +
   geom_bar(stat = "identity", position = "dodge") +
-  geom_errorbar(aes(ymin = means - SEs, ymax = means + SEs)) +
+  geom_errorbar(aes(ymin = medias - SEs, ymax = medias + SEs)) +
   theme_classic() +
   facet_wrap( ~ simulations, nrow = 2) +
-  ylab("Mean Smartness") +
+  labs(y="Inteligencia media",x="Grupo de píldora",fill="simulaciones") +
   coord_cartesian(ylim = c(85, 115))
 
 ```
@@ -582,17 +585,17 @@ Así que volvemos a la aplicación del ANOVA a un conjunto de datos real con una
 
 ### Tetris y los malos recuerdos
 
-Sip, leíste bien. La investigación que vas a aprender evalúa si jugar al Tetris después de ver una película de terror puede ayudar a evitar que tengas malos recuerdos de la película (James et al. 2015). A veces en la vida, las personas tienen recuerdos intrusivos y piensan en cosas en las que preferirían no tener que pensar. Esta investigación analiza un método que podría reducir la frecuencia de los recuerdos intrusivos.   
+Sip, leíste bien. La investigación que vas a aprender evalúa si jugar al Tetris después de ver una película de terror puede ayudar a evitar que tengas malos recuerdos de la película (James et al. 2015). A veces en la vida, las personas tienen recuerdos intrusivos y piensan en cosas en las que preferirían no tener que pensar. Esta investigación analiza un método que podría reducir la frecuencia de los recuerdos intrusivos.  
 
-Esto es lo que hicieron. Los sujetos vieron una película de terror, y al final de la semana reportaron cuántos recuerdos intrusivos tuvieron sobre la película. El número promedio de recuerdos intrusivos fue la medición (la variable dependiente). Este fue un experimento entre-sujetos con cuatro grupos. Cada grupo de sujetos recibió un tratamiento diferente después de la película de terror. La pregunta era si alguno de estos tratamientos reduciría el número de recuerdos intrusivos. Todos estos tratamientos ocurrieron después de ver la película de terror:   
+Esto es lo que hicieron. Los sujetos vieron una película de terror, y al final de la semana reportaron cuántos recuerdos intrusivos tuvieron sobre la película. El número promedio de recuerdos intrusivos fue la medición (la variable dependiente). Este fue un experimento entre-sujetos con cuatro grupos. Cada grupo de sujetos recibió un tratamiento diferente después de la película de terror. La pregunta era si alguno de estos tratamientos reduciría el número de recuerdos intrusivos. Todos estos tratamientos ocurrieron después de ver la película de terror: 
 
-Control sin tarea: Estos participantes completaron una tarea de relleno de 10 minutos con música después de ver la película de terror.
+* Control sin tarea: Estos participantes completaron una tarea de relleno de 10 minutos con música después de ver la película de terror.
 
-Reactivación + Tetris: A estos participantes se les mostró una serie de imágenes de la película traumática para reactivar los recuerdos traumáticos (es decir, tarea de reactivación). Luego, jugaron al videojuego Tetris durante 12 minutos.
+* Reactivación + Tetris: A estos participantes se les mostró una serie de imágenes de la película traumática para reactivar los recuerdos traumáticos (es decir, tarea de reactivación). Luego, jugaron al videojuego Tetris durante 12 minutos.
 
-Solo Tetris: Estos participantes jugaron al Tetris durante 12 minutos, pero no completaron la tarea de reactivación.
+* Solo Tetris: Estos participantes jugaron al Tetris durante 12 minutos, pero no completaron la tarea de reactivación.
 
-Solo Reactivación: Estos participantes completaron la tarea de reactivación, pero no jugaron al Tetris.
+* Solo Reactivación: Estos participantes completaron la tarea de reactivación, pero no jugaron al Tetris.
 
 Por razones que explicamos en detalle en el laboratorio, los investigadores plantearon la hipótesis de que el grupo de Reactivación+Tetris tendría menos recuerdos intrusivos durante la semana que los otros grupos.
 
@@ -600,7 +603,7 @@ Miremos los hallazgos. Tené en cuenta que vas a aprender a hacer todos estos pa
 
 ```{r}
 #| label: fig-7tetrisData
-#| fig-cap: "Mean number of intrusive memories per week as a function of experimental treatments."
+#| fig-cap: "Número promedio de recuerdos intrusivos por semana según los tratamientos experimentales."
 #| fig-asp: 0.5
 #| out-width: "100%"
 
@@ -610,36 +613,36 @@ all_data <- fread("data/Jamesetal2015Experiment2.csv")
 
 all_data$Condition <- as.factor(all_data$Condition)
 levels(all_data$Condition) <- c("Control",
-                                "Reactivation+Tetris",
-                                "Tetris_only",
-                                "Reactivation_only")
+                                "Reactivación+Tetris",
+                                "Solo_Tetris",
+                                "Solo_Reactivacion")
 
-# get means and SEs
+# get medias and SEs
 descriptive_df <- all_data %>%
   dplyr::group_by(Condition) %>%
   dplyr::summarise(
-    means = mean(Days_One_to_Seven_Number_of_Intrusions),
+    medias = mean(Days_One_to_Seven_Number_of_Intrusions),
     SEs = sd(Days_One_to_Seven_Number_of_Intrusions) /
       sqrt(length(Days_One_to_Seven_Number_of_Intrusions))
   )
 
 # Make the plot
-ggplot(descriptive_df, aes(x = Condition, y = means)) +
-  geom_bar(stat = "identity", aes(fill = Condition)) + # add means
-  geom_errorbar(aes(ymin = means - SEs,               # add error bars
-                    ymax = means + SEs), width = .1) +
+ggplot(descriptive_df, aes(x = Condition, y = medias)) +
+  geom_bar(stat = "identity", aes(fill = Condition)) + # add medias
+  geom_errorbar(aes(ymin = medias - SEs,               # add error bars
+                    ymax = medias + SEs), width = .1) +
   geom_point(
     data = all_data,
     aes(x = Condition, y = Days_One_to_Seven_Number_of_Intrusions),
     alpha = .5
   ) +
   geom_point(alpha = .25) +
-  ylab("Intrusive Memories (Mean for Week)")+
+  labs(y="Recuerdos intrusivos (Media semanal)",x="Condición",fill="Condición")+
   theme_classic()
 
 ```
 
-Mirá vos. Hicimos algo canchero. La Figura 7.7 muestra los datos de los cuatro grupos. La altura de cada barra muestra el promedio de recuerdos intrusivos de la semana. Los puntos muestran las puntuaciones individuales de cada sujeto en cada grupo (útil para ver la dispersión de los datos). Las barras de error muestran los errores estándar de la media.
+Mirá vos. Hicimos algo canchero. La @fig-7tetrisData muestra los datos de los cuatro grupos. La altura de cada barra muestra el promedio de recuerdos intrusivos de la semana. Los puntos muestran las puntuaciones individuales de cada sujeto en cada grupo (útil para ver la dispersión de los datos). Las barras de error muestran los errores estándar de la media.
 
 ¿Qué podemos ver acá? De entrada, parece que hay cierto respaldo a la hipótesis de la investigación. La barra verde, del grupo de Reactivación + Tetris, tuvo el número promedio más bajo de recuerdos intrusivos. Además, la barra de error no se superpone con ninguna de las otras. Esto implica que la media del grupo de Reactivación + Tetris es diferente de las medias de los otros grupos. Y es poco probable que esta diferencia sea por azar.
 
@@ -663,7 +666,7 @@ A esto lo llamamos un efecto significativo porque el valor $p$ fue menor a 0.05.
 
 ###  Comparando medias después del ANOVA
 
-Recordá que el ANOVA es una prueba ómnibus, solo nos dice si podemos rechazar la idea de que todas las medias son iguales. La prueba F (sinónimo de ANOVA) que acabamos de realizar sugirió que podíamos rechazar la hipótesis de no diferencias. Como discutimos antes, eso debe significar que hay algunas diferencias en el patrón de las medias.
+Recordá que el ANOVA es una prueba ómnibus, solo nos dice si podemos rechazar la idea de que todas las medias son iguales. La prueba $F$ (sinónimo de ANOVA) que acabamos de realizar sugirió que podíamos rechazar la hipótesis de no diferencias. Como discutimos antes, eso debe significar que hay algunas diferencias en el patrón de las medias.
 
 Generalmente, después de realizar un ANOVA, los investigadores realizan pruebas de seguimiento para comparar diferencias entre medias específicas. Vamos a hablar más de esta práctica a lo largo del libro. Hay muchas prácticas recomendadas para las pruebas de seguimiento, y hay mucho debate sobre qué deberías hacer. No nos vamos a meter en este debate ahora. En cambio, vamos a señalar que necesitás hacer algo para comparar las medias de interés después de realizar el ANOVA, porque el ANOVA es solo el comienzo... Generalmente no te dice lo que querés saber. Te preguntarás para qué molestarse en hacer el ANOVA en primer lugar... Para nada una mala pregunta. Es una buena pregunta. Vas a ver, a medida que hablemos de diseños más complicados, por qué los ANOVAs son tan útiles. En el presente ejemplo, son solo un primer paso común. Hay próximos pasos obligatorios, como el que damos a continuación.
 
@@ -714,4 +717,4 @@ Acabamos de terminar una introducción bastante larga al ANOVA y la prueba $F$. 
 
 2. realizar pruebas de seguimiento, observando las diferencias entre medias particulares
 
-Entonces, ¿qué sigue?… el ANOVA para diseños de medidas repetidas. Nos vemos en el próximo capítulo.
+Entonces, ¿qué sigue?...  el ANOVA para diseños de medidas repetidas. Nos vemos en el próximo capítulo.

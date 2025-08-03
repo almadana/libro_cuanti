@@ -29,7 +29,7 @@ book:
     #- 10-MixedANOVA.qmd
     #- 11-Simulation.qmd
     #- 12-Thinking.qmd
-    - 13-Gifs.qmd
+    #- 13-Gifs.qmd
     - references.qmd
   site-url: https://almadana.github.io/libro_cuanti/
   repo-url: https://github.com/almadana/libro_cuanti/

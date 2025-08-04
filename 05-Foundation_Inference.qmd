@@ -1,11 +1,4 @@
-f---
-author: 
-  - Matthew J. C. Crump
-lang: es
-abstract-title: Notas
-abstract: Traducido al español rioplatense por ChatGPT4-o bajo la supervisión de Álvaro Cabana.
-aliases: [foundations-for-inference.html]
----
+f--- author: - Matthew J. C. Crump lang: es abstract-title: Notas abstract: Traducido al español rioplatense por ChatGPT4-o bajo la supervisión de Álvaro Cabana. aliases: \[foundations-for-inference.html\] ---
 
 ```{r, include = FALSE}
 source("global_stuff.R")

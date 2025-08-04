@@ -344,7 +344,7 @@ print(resumen)
 boxplot(felicidad)
 ```
 
-## Uso de diagramas de caja para detectar valores atípicos
+### Uso de diagramas de caja para detectar valores atípicos
 
 Como el boxplot separa automáticamente aquellas observaciones que se encuentran fuera de cierto rango, suele utilizarse como un método informal para detectar valores atípicos: observaciones que están "sospechosamente" alejadas del resto de los datos.
 
@@ -352,7 +352,7 @@ Los conjuntos de datos reales suelen estar llenos de errores, especialmente cuan
 
 ¿Y qué pasa con los datos atípicos que son reales? La decisión de incluir o excluir valores atípicos depende en gran medida de por qué creés que los datos se ven como se ven y para qué querés usarlos. Las herramientas estadísticas pueden ofrecer un método automático para sugerir posibles candidatos a eliminar, pero acá es fundamental aplicar buen juicio. El software estadístico es un autómata sin criterio, le falta el contexto más amplio para tomar una decisión informada. Vos no sos un autómata sin criterio, así que usá tu juicio: si el valor atípico te parece legítimo, entonces dejalo.
 
-### Las diferencias
+## Las diferencias
 
 Estaría bueno poder resumir cuánto difieren los datos entre sí. ¿Por qué? Bueno, si pensás que los datos crudos (muchos números) ya son difíciles de mirar, vas a entrar en pánico al ver cuántas diferencias hay entre todos esos valores. Por ejemplo, estos 10 números son fáciles de ver:
 

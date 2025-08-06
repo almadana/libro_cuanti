@@ -208,7 +208,7 @@ Queremos construir una razón que divida una medida de un efecto por una medida 
 
 $\frac{SC_\text{Efecto}}{SC_\text{Error}}$
 
-Bueno, por supuesto que podrías hacer eso. Lo que pasaría es que puedes obtener números muy grandes y muy pequeños para tu estadístico inferencial. Y, el tipo de número que obtendrías no sería fácilmente interpretable como un valor  $t$ o una puntuación $z$.
+Bueno, por supuesto que podrías hacer eso. Lo que pasaría es que puedes obtener números muy grandes y muy pequeños para tu estadístico inferencial. Y, el tipo de número que obtendrías no sería fácilmente interpretable como un valor $t$ o una puntuación $z$.
 
 La solución es **normalizar** los términos $SC$ No te preocupes, normalizar es solo una palabra elegante para sacar el promedio o encontrar la media. Recuerda, los términos SC son todos sumas. Y cada suma representa un número diferente de propiedades subyacentes.
 
@@ -369,13 +369,13 @@ Por ejemplo, si tuvieras tres grupos, A, B y C. Podrías obtener diferencias ent
 
 Esas son tres posibles diferencias que podrías obtener. Podrías realizar pruebas $t$ por separado para probar si cada una de esas diferencias que pudiste haber encontrado podría haber sido producida por el azar. O podrías realizar un ANOVA, como lo que hemos estado haciendo, para hacer una pregunta más general sobre las diferencias. Aquí hay una forma de pensar sobre lo que está probando la prueba ómnibus:  
 
-Hipótesis de no diferencias en ninguna parte: $ A = B = C $
+Hipótesis de no diferencias en ninguna parte: \$ A = B = C \$
 
 Cualquier diferencia en alguna parte:
 
-a.  $ A \neq B = C $
-b.  $ A = B \neq C $
-c.  $ A \neq C = B $
+a.  \$ A \neq B = C \$
+b.  \$ A = B \neq C \$
+c.  \$ A \neq C = B \$
 
 El símbolo $\neq$ significa "no es igual a", es un signo de igual con una cruz (¡no se permiten iguales!).
 
@@ -526,8 +526,7 @@ En la Figura 7.5 los números en los paneles ahora nos dicen qué simulaciones p
 
 Acá vemos que no todas las barras son perfectamente planas, y está bien. Lo que es más importante es que, para cada panel, las barras de error de cada media se superponen totalmente con todas las demás barras de error. Podemos ver visualmente que nuestra estimación de la media para cada muestra es más o menos la misma para todas las barras. Eso es bueno, no cometeríamos ningún error de tipo I acá.
 
-7.3.2.5 Cómo se ven las diferencias de medias cuando $F$ > 3.35
-Antes encontramos que el valor crítico para $F$ en nuestra situación era 3.35, esta era la ubicación en la distribución $F$ donde solo el 5% de los $F$ eran 3.35 o mayores. Rechazaríamos la hipótesis de no diferencias cada vez que $F$ fuera mayor a 3.35. En este caso, cada vez que hiciéramos eso, estaríamos cometiendo un error de tipo I. Esto es porque estamos simulando la distribución de no diferencias (recordá que todas nuestras medias muestrales vienen exactamente de la misma distribución). Así que ahora podemos echar un vistazo a cómo se ven los errores de tipo I. En otras palabras, podemos correr algunas simulaciones y mirar el patrón en las medias, solo cuando $F$ resulta ser 3.35 o mayor (esto solo pasa el 5% de las veces, así que puede que tengamos que dejar que la computadora simule por un rato). Veamos cómo se ve eso:
+7.3.2.5 Cómo se ven las diferencias de medias cuando $F$ \> 3.35 Antes encontramos que el valor crítico para $F$ en nuestra situación era 3.35, esta era la ubicación en la distribución $F$ donde solo el 5% de los $F$ eran 3.35 o mayores. Rechazaríamos la hipótesis de no diferencias cada vez que $F$ fuera mayor a 3.35. En este caso, cada vez que hiciéramos eso, estaríamos cometiendo un error de tipo I. Esto es porque estamos simulando la distribución de no diferencias (recordá que todas nuestras medias muestrales vienen exactamente de la misma distribución). Así que ahora podemos echar un vistazo a cómo se ven los errores de tipo I. En otras palabras, podemos correr algunas simulaciones y mirar el patrón en las medias, solo cuando $F$ resulta ser 3.35 o mayor (esto solo pasa el 5% de las veces, así que puede que tengamos que dejar que la computadora simule por un rato). Veamos cómo se ve eso:
 
 ```{r}
 #| label: fig-7sigdifs
@@ -569,11 +568,9 @@ ggplot(plot_df, aes(x = pill_group, y = medias, fill = simulations)) +
 
 ```
 
-
-
 Los números en los paneles ahora nos dicen qué simulaciones produjeron realmente $F$ que fueron mayores a 3.35.
 
-¿Qué notás sobre el patrón de las medias dentro de cada panel de la Figura 7.6? Ahora, todos los paneles muestran al menos una media que es diferente de las otras. Específicamente, las barras de error para una media no se superponen con las barras de error para una u otra media. Así es como se ven los errores. Todos estos son errores de tipo I. Son insidiosos. Cuando te pasan por azar, ¡los datos realmente parecen mostrar un patrón fuerte, tu valor de $F$ es grande y tu valor $p$ es chico! Es fácil dejarse convencer por un error de tipo I (es el canto de sirena del azar).   
+¿Qué notás sobre el patrón de las medias dentro de cada panel de la Figura 7.6? Ahora, todos los paneles muestran al menos una media que es diferente de las otras. Específicamente, las barras de error para una media no se superponen con las barras de error para una u otra media. Así es como se ven los errores. Todos estos son errores de tipo I. Son insidiosos. Cuando te pasan por azar, ¡los datos realmente parecen mostrar un patrón fuerte, tu valor de $F$ es grande y tu valor $p$ es chico! Es fácil dejarse convencer por un error de tipo I (es el canto de sirena del azar).  
 
 ## 7.4 ANOVA con Datos Reales
 
@@ -585,17 +582,17 @@ Así que volvemos a la aplicación del ANOVA a un conjunto de datos real con una
 
 ### Tetris y los malos recuerdos
 
-Sip, leíste bien. La investigación que vas a aprender evalúa si jugar al Tetris después de ver una película de terror puede ayudar a evitar que tengas malos recuerdos de la película (James et al. 2015). A veces en la vida, las personas tienen recuerdos intrusivos y piensan en cosas en las que preferirían no tener que pensar. Esta investigación analiza un método que podría reducir la frecuencia de los recuerdos intrusivos.  
+Sip, leíste bien. La investigación que vas a aprender evalúa si jugar al Tetris después de ver una película de terror puede ayudar a evitar que tengas malos recuerdos de la película (James et al. 2015). A veces en la vida, las personas tienen recuerdos intrusivos y piensan en cosas en las que preferirían no tener que pensar. Esta investigación analiza un método que podría reducir la frecuencia de los recuerdos intrusivos.
 
-Esto es lo que hicieron. Los sujetos vieron una película de terror, y al final de la semana reportaron cuántos recuerdos intrusivos tuvieron sobre la película. El número promedio de recuerdos intrusivos fue la medición (la variable dependiente). Este fue un experimento entre-sujetos con cuatro grupos. Cada grupo de sujetos recibió un tratamiento diferente después de la película de terror. La pregunta era si alguno de estos tratamientos reduciría el número de recuerdos intrusivos. Todos estos tratamientos ocurrieron después de ver la película de terror: 
+Esto es lo que hicieron. Los sujetos vieron una película de terror, y al final de la semana reportaron cuántos recuerdos intrusivos tuvieron sobre la película. El número promedio de recuerdos intrusivos fue la medición (la variable dependiente). Este fue un experimento entre-sujetos con cuatro grupos. Cada grupo de sujetos recibió un tratamiento diferente después de la película de terror. La pregunta era si alguno de estos tratamientos reduciría el número de recuerdos intrusivos. Todos estos tratamientos ocurrieron después de ver la película de terror:
 
-* Control sin tarea: Estos participantes completaron una tarea de relleno de 10 minutos con música después de ver la película de terror.
+-   Control sin tarea: Estos participantes completaron una tarea de relleno de 10 minutos con música después de ver la película de terror.
 
-* Reactivación + Tetris: A estos participantes se les mostró una serie de imágenes de la película traumática para reactivar los recuerdos traumáticos (es decir, tarea de reactivación). Luego, jugaron al videojuego Tetris durante 12 minutos.
+-   Reactivación + Tetris: A estos participantes se les mostró una serie de imágenes de la película traumática para reactivar los recuerdos traumáticos (es decir, tarea de reactivación). Luego, jugaron al videojuego Tetris durante 12 minutos.
 
-* Solo Tetris: Estos participantes jugaron al Tetris durante 12 minutos, pero no completaron la tarea de reactivación.
+-   Solo Tetris: Estos participantes jugaron al Tetris durante 12 minutos, pero no completaron la tarea de reactivación.
 
-* Solo Reactivación: Estos participantes completaron la tarea de reactivación, pero no jugaron al Tetris.
+-   Solo Reactivación: Estos participantes completaron la tarea de reactivación, pero no jugaron al Tetris.
 
 Por razones que explicamos en detalle en el laboratorio, los investigadores plantearon la hipótesis de que el grupo de Reactivación+Tetris tendría menos recuerdos intrusivos durante la semana que los otros grupos.
 
@@ -664,7 +661,7 @@ Hubo un efecto principal significativo de la condición de tratamiento, F(3, 68)
 
 A esto lo llamamos un efecto significativo porque el valor $p$ fue menor a 0.05. En otras palabras, el valor de $F$ de 3.79 solo ocurre el 1.4% de las veces cuando la hipótesis nula es verdadera. O sea, las diferencias que observamos en las medias solo ocurren por puro azar (error de muestreo) el 1.4% de las veces. Como el azar rara vez produce este tipo de resultado, los investigadores infirieron que el azar NO produjo sus diferencias y, en cambio, se inclinaron a concluir que el tratamiento de Reactivación + Tetris realmente causó una reducción en los recuerdos intrusivos. Eso está buenísimo.
 
-###  Comparando medias después del ANOVA
+### Comparando medias después del ANOVA
 
 Recordá que el ANOVA es una prueba ómnibus, solo nos dice si podemos rechazar la idea de que todas las medias son iguales. La prueba $F$ (sinónimo de ANOVA) que acabamos de realizar sugirió que podíamos rechazar la hipótesis de no diferencias. Como discutimos antes, eso debe significar que hay algunas diferencias en el patrón de las medias.
 
@@ -673,6 +670,7 @@ Generalmente, después de realizar un ANOVA, los investigadores realizan pruebas
 ¿Cómo podés comparar la diferencia entre dos medias, de un diseño entre-sujetos, para determinar si la diferencia que observaste es probable o improbable que se produzca por azar? Esto ya lo vimos, es la prueba $t$ para muestras independientes. Vamos a hacer un par de pruebas $t$ para mostrar el proceso.
 
 ## 7.4.2.1 Control vs. Reactivación+Tetris
+
 Lo que realmente queremos saber es si Reactivación+Tetris causó menos recuerdos intrusivos... pero, ¿comparado con qué? Bueno, si hizo algo, el grupo de Reactivación+Tetris debería tener una media más chica que el grupo Control. Así que hagamos esa comparación:
 
 ```{r}
@@ -690,8 +688,7 @@ Arriba acabás de ver un ejemplo de cómo reportar otra prueba $t$. Esta oració
 
 Más importante aún, como sospechábamos, la diferencia entre el grupo control y el de Reactivación + Tetris probablemente no se debió al azar.
 
-7.4.2.2 Control vs. Solo Tetris
-Ahora sí que podemos empezar a preguntarnos qué causó la diferencia. ¿Fue solo por jugar al Tetris? ¿Jugar solo al Tetris reduce el número de recuerdos intrusivos durante la semana? Comparémoslo con el grupo de control:
+7.4.2.2 Control vs. Solo Tetris Ahora sí que podemos empezar a preguntarnos qué causó la diferencia. ¿Fue solo por jugar al Tetris? ¿Jugar solo al Tetris reduce el número de recuerdos intrusivos durante la semana? Comparémoslo con el grupo de control:
 
 ```{r}
 comparison_df <- all_data %>% 
@@ -701,7 +698,7 @@ t.test(Days_One_to_Seven_Number_of_Intrusions ~ Condition,
        comparison_df,
        var.equal=TRUE)
 ```
- 
+
 Acá no encontramos una diferencia significativa. Encontramos que no hubo una diferencia significativa entre el grupo control (M=5.11) y el grupo de Solo Tetris (M=3.89), t(34) = 2.99, p=0.318.
 
 Entonces, parece que no todas las diferencias entre nuestras medias son lo suficientemente grandes como para ser llamadas estadísticamente significativas. En particular, esta diferencia, o una mayor, ocurre por azar el 31.8% de las veces.
@@ -711,10 +708,11 @@ Podrías seguir haciendo más comparaciones, entre todos los diferentes pares de
 Generalmente, es el patrón de diferencias entre las medias lo que a vos, como investigador, te interesa entender principalmente. Tus teorías harán predicciones sobre cómo resulta el patrón (por ejemplo, qué medias específicas deberían ser más altas o más bajas y por cuánto). Por lo tanto, la práctica de hacer comparaciones después de un ANOVA es realmente importante para establecer los patrones en las medias.
 
 ## Resumen del ANOVA
-Acabamos de terminar una introducción bastante larga al ANOVA y la prueba $F$. El próximo par de capítulos continúan explorando las propiedades del ANOVA para diferentes tipos de diseños experimentales. En general, el proceso a seguir para todos los diseños más complicados es muy similar a lo que hicimos acá, que se resume en dos pasos: 
 
-1. realizar el ANOVA sobre los datos
+Acabamos de terminar una introducción bastante larga al ANOVA y la prueba $F$. El próximo par de capítulos continúan explorando las propiedades del ANOVA para diferentes tipos de diseños experimentales. En general, el proceso a seguir para todos los diseños más complicados es muy similar a lo que hicimos acá, que se resume en dos pasos:
 
-2. realizar pruebas de seguimiento, observando las diferencias entre medias particulares
+1.  realizar el ANOVA sobre los datos
 
-Entonces, ¿qué sigue?...  el ANOVA para diseños de medidas repetidas. Nos vemos en el próximo capítulo.
+2.  realizar pruebas de seguimiento, observando las diferencias entre medias particulares
+
+Entonces, ¿qué sigue?... el ANOVA para diseños de medidas repetidas. Nos vemos en el próximo capítulo.

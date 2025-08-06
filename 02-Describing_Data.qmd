@@ -365,7 +365,7 @@ La palabra **varianza** también se refiere a una estadística específica: la s
 
 $\text{varianza} = \frac{\text{suma de las diferencias al cuadrado}}{\text{cantidad de valores}}$
 
-#### Desviaciones respecto de la media. Puntajes de diferencia con respecto a la media
+#### Desviaciones respecto de la media, puntajes de diferencia con respecto a la media
 
 Antes nos complicamos un poco calculando todas las diferencias entre los valores del conjunto. Ahora hagámoslo de una manera más simple. Esta vez, calculamos la diferencia entre cada valor y la media. La idea es:
 

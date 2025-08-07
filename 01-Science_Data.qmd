@@ -233,7 +233,7 @@ Acá hay un ejemplo más interesante desde el punto de vista psicológico. Supon
 > (3) Las temperaturas están subiendo, pero no por causa humana
 > (4) Las temperaturas no están subiendo
 
-Fijate que estas cuatro afirmaciones tienen un orden natural, en cuanto al "grado en que coinciden con el consenso científico actual". La afirmación 1 coincide completamente, la 2 coincide de forma razonable, la 3 no coincide mucho, y la 4 está en fuerte desacuerdo con la ciencia. Así que, en relación con lo que me interesa (el grado en que la gente avala la ciencia), puedo ordenarlas como 1 $>$ 2 $>$ 3 \$\>\$4. Por eso, sería muy raro listar las opciones así...
+Fijate que estas cuatro afirmaciones tienen un orden natural, en cuanto al "grado en que coinciden con el consenso científico actual". La afirmación 1 coincide completamente, la 2 coincide de forma razonable, la 3 no coincide mucho, y la 4 está en fuerte desacuerdo con la ciencia. Así que, en relación con lo que me interesa (el grado en que la gente avala la ciencia), puedo ordenarlas como 1 $>$ 2 $>$ 3 $>$4. Por eso, sería muy raro listar las opciones así...
 
 > (3) Las temperaturas están subiendo, pero no por causa humana
 > (4) Las temperaturas están subiendo debido a la actividad humana

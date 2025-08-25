@@ -15,7 +15,7 @@ source("global_stuff.R")
 > La correlación no implica causalidad\
 > ---Todo docente de Estadística y Métodos de Investigación, alguna vez
 
-En el capítulo anterior teníamos un conjunto de datos. Era demasiado para mirar y no tenía mucho sentido. Así que hablamos de cómo visualizar los datos usando gráficos e histogramas, y de cómo resumir un montón de números para determinar su tendencia central (lo común) y su variabilidad (lo diferente). Y todo estaba bien en el mundo.
+En el capítulo dos teníamos un conjunto de datos. Era demasiado para mirar y no tenía mucho sentido. Así que hablamos de cómo visualizar los datos usando gráficos e histogramas, y de cómo resumir un montón de números para determinar su tendencia central (lo común) y su variabilidad (lo diferente). Y todo estaba bien en el mundo.
 
 Pero no olvidemos la gran razón por la que aprendimos sobre estadísticas descriptivas. La gran razón es que estamos interesados en responder preguntas usando datos.
 
@@ -28,7 +28,7 @@ En el capítulo dos empezamos con unos datos ficticios sobre la felicidad humana
 
 ¿Qué obtenés cuando le pedís a la gente que use un número para describir cuán feliz está? Un montón de números. ¿Qué tipo de preguntas podés hacer con esos números? Bueno, podés mirar los valores y estimar sus propiedades generales, como ya hicimos. Esperamos que esos números nos digan cosas que más o menos ya sabemos. Que hay personas diferentes, y que cada persona tiene un nivel diferente de felicidad. Probablemente conociste a algunas personas realmente felices, y otras realmente infelices, y vos también seguramente tengas algún nivel de felicidad. "Buenísimo, ¡chocolate por la noticia!".
 
-Antes de seguir, también deberías tener una actitud crítica respecto a qué significan esos números. Por ejemplo, si forzás a las personas a calificar su felicidad con un número entre 0 y 100, ¿ese número refleja realmente cuán felices son? ¿Puede una persona saber cuán feliz está? ¿El formato de la pregunta influye en la respuesta? ¿La felicidad es siquiera algo real?. Estas son todas preguntas válidas sobre la **validez** del constructo (la felicidad misma) y del instrumento de medida (los números) que estás usando para cuantificarlo. Pero por ahora vamos a dejar esas preguntas importantes de lado, y vamos a asumir que la felicidad existe, y que nuestra medida de felicidad refleja algo sobre cuán feliz está la gente.
+Antes de seguir, también deberías tener una actitud crítica respecto a qué significan esos números. Por ejemplo, si forzás a las personas a calificar su felicidad con un número entre 0 y 100, ¿ese número refleja realmente cuán felices son? ¿Puede una persona saber cuán feliz está? ¿El formato de la pregunta influye en la respuesta? ¿La felicidad es siquiera algo real? Estas son todas preguntas válidas sobre la **validez** del constructo (la felicidad misma) y del instrumento de medida (los números) que estás usando para cuantificarlo. Pero por ahora vamos a dejar esas preguntas importantes de lado, y vamos a asumir que la felicidad existe, y que nuestra medida de felicidad refleja algo sobre cuán feliz está la gente.
 
 Bien. Una vez que medimos un poco de felicidad, seguro se te ocurren preguntas más importantes. Por ejemplo, ¿qué cosas hacen que la felicidad suba o baje? Si supieras qué la causa, ¿qué podrías hacer? ¿Qué tal aumentar tu propia felicidad?; o ayudar a personas que están infelices; o entender mejor por qué Ígor, el burrito de *Winnie the Pooh*, está siempre bajoneado; o presentar argumentos científicos válidos contra afirmaciones erróneas sobre las causas de la felicidad. Una teoría causal y un entendimiento de la felicidad servirían para todo eso. Entonces, ¿cómo hacemos para llegar ahí?
 
@@ -130,7 +130,7 @@ ggplot(all_data,aes(x=chocolate_x,y=happiness_x))+
 
 ```
 
-El primer panel muestra una **correlación negativa**. La felicidad disminuye a medida que aumenta el suministro de chocolate. La correlación negativa ocurre cuando una variable sube y la otra baja; o sea, cuando tener más de X implica tener menos de Y, y viceversa. El segundo panel muestra una **correlación positiva**. La felicidad aumenta a medida que aumenta el suministro de chocolate. En una correlación positiva, ambas cosas suben juntas, o bajan juntas: más de X implica más de Y, y viceversa. El tercer panel muestra **ausencia de correlación**. En este caso, no parece haber ninguna relación clara entre el suministro de chocolate y la felicidad. Los puntos están totalmente dispersos ---el más disperso de todos los gráficos de dispersión.
+El primer panel muestra una **correlación negativa**. La felicidad disminuye a medida que aumenta el suministro de chocolate. La correlación negativa ocurre cuando una variable sube y la otra baja; o sea, cuando tener más de X implica tener menos de Y, y viceversa. El tercer panel muestra una **correlación positiva**. La felicidad aumenta a medida que aumenta el suministro de chocolate. En una correlación positiva, ambas cosas suben juntas, o bajan juntas: más de X implica más de Y, y viceversa. El segundo panel muestra **ausencia de correlación**. En este caso, no parece haber ninguna relación clara entre el suministro de chocolate y la felicidad. Los puntos están totalmente dispersos ---el más disperso de todos los gráficos de dispersión.
 
 ::: callout-note
 Nos estamos metiendo en la idea de que las mediciones de dos cosas pueden estar relacionadas, o correlacionadas entre sí. Las relaciones pueden ser más complejas que simplemente "sube" o "baja". Por ejemplo, podríamos tener una relación en la que los puntos suben en la primera mitad del eje X, y bajan en la segunda.
@@ -146,7 +146,7 @@ Ya aprendimos a calcular estadísticos descriptivos para una sola variable, como
 Las historias sobre la invención de distintas estadísticas son muy interesantes. Podés leer más sobre eso en el libro *The Lady Tasting Tea* [@salsburg2001lady].
 :::
 
-Existe una estadística para eso, y Karl Pearson la inventó. Hoy en día todxs la llaman el **r de Pearson**. Más adelante veremos que Pearson fue editor de *Biometrika* en los años 30. Le tenía bastante bronca a otro estadístico famoso, Sir Ronald Fisher (del que también vamos a hablar), y se tiraban con estadísticas... ¿Por qué no podemos simplemente llevarnos bien en estadística?
+Existe una estadística para eso, y Karl Pearson la inventó. Hoy en día todos la llaman el **r de Pearson**. Más adelante veremos que Pearson fue editor de *Biometrika* en los años 30. Le tenía bastante bronca a otro estadístico famoso, Sir Ronald Fisher (del que también vamos a hablar), y se tiraban con estadísticas... ¿Por qué no podemos simplemente llevarnos bien en estadística?
 
 ¿Cómo funciona el *r* de Pearson? Volvamos a mirar los datos de los primeros 10 sujetos de nuestro experimento ficticio:
 
@@ -163,8 +163,7 @@ knitr::kable(the_df_short)
 
 ### La idea de la covarianza
 
-"Por favor no... otra vez no uses la palabra *varianza*". Sí, lo vamos a hacer. Vamos a usar la palabra *varianza* una y otra vez, hasta que tenga sentido.\
-Recordá lo que significa la varianza respecto a un conjunto de números: significa que los números tienen cierta variación, que no son todos iguales, que algunos son más grandes y otros más chicos. Podemos ver que hay varianza en el suministro de chocolate entre los 10 sujetos. También hay varianza en los niveles de felicidad. Y también vimos, en el gráfico de dispersión, que la felicidad aumenta cuando aumenta el chocolate ---una relación positiva, una correlación positiva. ¿Qué tiene que ver eso con la varianza? Bueno, quiere decir que hay una relación entre la varianza en el suministro de chocolate y la varianza en los niveles de felicidad. ¿No te parece que ambas medidas varían juntas? Cuando tenemos dos variables que varían juntas, son como una pareja feliz que comparte su varianza. Eso es lo que significa **covarianza**: la idea de que el patrón de variación en una medida se comparte con el patrón de variación en otra.
+"Por favor no... otra vez no uses la palabra *varianza*". Sí, lo vamos a hacer. Vamos a usar la palabra *varianza* una y otra vez, hasta que tenga sentido. Recordá lo que significa la varianza respecto a un conjunto de números: significa que los números tienen cierta variación, que no son todos iguales, que algunos son más grandes y otros más chicos. Podemos ver que hay varianza en el suministro de chocolate entre los 10 sujetos. También hay varianza en los niveles de felicidad. Y también vimos, en el gráfico de dispersión, que la felicidad aumenta cuando aumenta el chocolate ---una relación positiva, una correlación positiva. ¿Qué tiene que ver eso con la varianza? Bueno, quiere decir que hay una relación entre la varianza en el suministro de chocolate y la varianza en los niveles de felicidad. ¿No te parece que ambas medidas varían juntas? Cuando tenemos dos variables que varían juntas, son como una pareja feliz que comparte su varianza. Eso es lo que significa **covarianza**: la idea de que el patrón de variación en una medida se comparte con el patrón de variación en otra.
 
 La **covarianza** es **muy, muy, muy, muy** importante. Sabemos que al principio puede ser una palabra confusa, especialmente si todavía no te sentís del todo cómoda con lo que significa varianza en una sola variable. Sin embargo, tenemos que seguir adelante y usar la idea de covarianza una y otra vez, para que quede bien grabada en tu mente estadística (sí, ya lo dijimos, pero repetir ayuda, es una hecho).
 
@@ -211,8 +210,7 @@ the_df_short <- the_df_short %>%
 knitr::kable(the_df_short)
 ```
 
-Observá las columnas $X$ y $Y$. Los valores de $X$ y $Y$ covarían perfectamente. Cuando $X$ es 1, $Y$ también es 1; cuando $X$ es 2, $Y$ es 2, y así. Están perfectamente alineados.\
-Los valores de $A$ y $B$ también covarían perfectamente, pero en sentido opuesto. Cuando $A$ es 1, $B$ es 10; cuando $A$ es 2, $B$ es 9, y así. $B$ es una copia invertida de $A$.
+Observá las columnas $X$ y $Y$. Los valores de $X$ y $Y$ covarían perfectamente. Cuando $X$ es 1, $Y$ también es 1; cuando $X$ es 2, $Y$ es 2, y así. Están perfectamente alineados. Los valores de $A$ y $B$ también covarían perfectamente, pero en sentido opuesto. Cuando $A$ es 1, $B$ es 10; cuando $A$ es 2, $B$ es 9, y así. $B$ es una copia invertida de $A$.
 
 Ahora mirá la columna $XY$. Son los productos que obtenemos al multiplicar cada valor de $X$ con el correspondiente valor de $Y$. Y la columna $AB$ son los productos de $A$ por $B$ en cada fila. Hasta acá todo bien.
 
@@ -295,23 +293,17 @@ La fórmula de la covarianza es:
 
 $cov(X,Y) = \frac{\sum_{i}^{n}(x_{i}-\bar{X})(y_{i}-\bar{Y})}{N}$
 
-OK, ahora tenemos un número formal que resume la relación entre dos variables. Esto está buenísimo, era lo que veníamos buscando.\
-Sin embargo, hay un problema. ¿Te acordás cuando aprendimos a calcular la **varianza**? Obteníamos un número y no sabíamos bien qué hacer con él. Estaba al cuadrado, no estaba en la misma escala que los datos originales. Entonces sacábamos la raíz cuadrada de la varianza para obtener la **desviación estándar**, que era un número más interpretable, en la misma escala que los datos.\
-Bueno, con la **covarianza** pasa algo parecido. Cuando la calculás como acabamos de hacer, no sabés inmediatamente en qué escala está. ¿Un valor de 3 es grande? ¿Y 6? ¿100? ¿Qué tan grande o chico es?
+OK, ahora tenemos un número formal que resume la relación entre dos variables. Esto está buenísimo, era lo que veníamos buscando. Sin embargo, hay un problema. ¿Te acordás cuando aprendimos a calcular la **varianza**? Obteníamos un número y no sabíamos bien qué hacer con él. Estaba al cuadrado, no estaba en la misma escala que los datos originales. Entonces sacábamos la raíz cuadrada de la varianza para obtener la **desviación estándar**, que era un número más interpretable, en la misma escala que los datos. Bueno, con la **covarianza** pasa algo parecido. Cuando la calculás como acabamos de hacer, no sabés inmediatamente en qué escala está. ¿Un valor de 3 es grande? ¿Y 6? ¿100? ¿Qué tan grande o chico es?
 
-En la discusión previa sobre covarianza, aprendimos que la suma de productos entre dos variables puede ir de un valor mínimo a un valor máximo. Lo mismo vale para la covarianza. Para un conjunto de datos determinado, hay un valor máximo posible de covarianza positiva (cuando la correlación es perfectamente positiva), y un mínimo posible para la negativa (cuando es perfectamente negativa). Y cuando no hay covariación, adiviná qué pasa: da cero.
+En la discusión previa sobre la idea de covarianza, aprendimos que la suma de productos entre dos variables puede ir de un valor mínimo a un valor máximo. Lo mismo vale para la covarianza. Para un conjunto de datos determinado, hay un valor máximo posible de covarianza positiva (cuando la correlación es perfectamente positiva), y un mínimo posible para la negativa (cuando es perfectamente negativa). Y cuando no hay covariación, adiviná qué pasa: da cero.
 
-Así que al menos, cuando miramos una covarianza, podemos ver si apunta en dirección positiva o negativa. Pero **no sabemos cuán grande o chica es** en relación con los valores máximos o mínimos posibles. Eso significa que **no podemos decir qué tan fuerte es la correlación**.\
-Entonces... ¿qué hacemos?
+Así que al menos, cuando miramos una covarianza, podemos ver si apunta en dirección positiva o negativa. Pero **no sabemos cuán grande o chica es** en relación con los valores máximos o mínimos posibles. Eso significa que **no podemos decir qué tan fuerte es la correlación**. Entonces... ¿qué hacemos?
 
 ### ¿Ya llegamos al *r* de Pearson?
 
 Sí, ya llegamos. ¿No estaría bueno si pudiéramos forzar nuestra medida de covarianza a estar siempre entre --1 y +1?
 
---1 sería el valor mínimo para una correlación negativa perfecta.\
-+1 sería el máximo posible para una correlación positiva perfecta. 0 indicaría que no hay correlación.
-
-Todo lo que esté entre 0 y --1 serían correlaciones negativas cada vez más fuertes. Todo lo que esté entre 0 y +1 serían correlaciones positivas cada vez más fuertes.\
+--1 sería el valor mínimo para una correlación negativa perfecta. +1 sería el máximo posible para una correlación positiva perfecta. 0 indicaría que no hay correlación. Todo lo que esté entre 0 y --1 serían correlaciones negativas cada vez más fuertes. Todo lo que esté entre 0 y +1 serían correlaciones positivas cada vez más fuertes.\
 Sería un sistema fantástico, coherente, fácil de interpretar. Si tan solo pudiéramos forzar el número de covarianza a estar entre --1 y 1...
 
 Por suerte, este episodio está auspiciado por el **r de Pearson**, que hace justamente eso tan maravilloso.
@@ -322,8 +314,7 @@ $$
 r = \frac{\mathrm{cov}(X,Y)}{\sigma_{X}\sigma_{Y}} = \frac{\mathrm{cov}(X,Y)}{\mathrm{SD}_{X}\mathrm{SD}_{Y}}
 $$
 
-Aparece el símbolo $\sigma$ (sí, más griego para vos). $\sigma$ es el símbolo que se usa frecuentemente para la desviación estándar.\
-Leído en voz alta: *r* es la covarianza de X e Y dividida por el producto de las desviaciones estándar de X y Y. ¿Y por qué hacemos esa división? Porque esta operación tiene el efecto de **normalizar** la covarianza, forzándola a caer dentro del rango --1 a 1.
+Aparece el símbolo $\sigma$ (sí, más griego para vos). $\sigma$ es el símbolo que se usa frecuentemente para la desviación estándar. Leído en voz alta: *r* es la covarianza de X e Y dividida por el producto de las desviaciones estándar de X y Y. ¿Y por qué hacemos esa división? Porque esta operación tiene el efecto de **normalizar** la covarianza, forzándola a caer dentro del rango --1 a 1.
 
 ::: callout-note
 Más adelante vamos a explicar esta magia matemática... prometido. Pero te adelantamos que no es magia. La explicación rápida es que dividir cada variable por su desviación estándar garantiza que todas las mediciones estén en el mismo rango de escala.
@@ -363,7 +354,7 @@ En el laboratorio sobre correlación, vas a aprender a calcular correlaciones co
 
 Este informe mide diversas actitudes en personas de distintos países. Por ejemplo, una de las preguntas era sobre cuánta libertad sentían que tenían para tomar decisiones en la vida. Otra preguntaba cuánta confianza tenían en su gobierno nacional. La @fig-3hsrdata muestra un gráfico de dispersión con la relación entre estas dos variables. Cada punto representa promedios para un país diferente.
 
-```{r}
+```{r echo=F}
 #| label: fig-3hsrdata
 #| fig-cap: "Relación entre la libertad para tomar decisiones en la vida y la confianza en el gobierno nacional. Datos del Informe Mundial de la Felicidad de 2018"
 
@@ -411,7 +402,7 @@ Pero no queremos que salgas corriendo todavía, así que ahora solo te presentam
 
 Primero, miremos una regresión lineal. Así vas a ver de qué estamos hablando. La @fig-3regression muestra los mismos diagramas de dispersión que antes, pero con algo nuevo: ¡líneas!
 
-```{r}
+```{r echo=F}
 #| label: fig-3regression
 #| fig-cap: "Tres diagramas de dispersión que muestran una correlación negativa, una positiva y una aleatoria (donde se espera que el valor de r sea 0), junto con la línea de regresión de mejor ajuste"
 
@@ -460,7 +451,7 @@ Código R para graficar los residuos, cortesía del blog de Simon Jackson: <http
 
 Mirá este próximo gráfico. Muestra una línea que atraviesa algunos puntos. Pero también muestra unas líneas pequeñas que bajan desde cada punto hasta la línea. Cada una de esas líneas chiquitas se llama **residuo**. Los residuos te muestran cuán lejos está cada punto de la línea. Es una medida de error, y nos dice **qué tan equivocada está** la línea. Después de todo, no todos los puntos están sobre la línea. Eso significa que **la línea no representa perfectamente a los datos**. Pero la línea de mejor ajuste es **la menos equivocada** de todas las posibles.
 
-```{r}
+```{r echo=F}
 #| label: fig-3regressionResiduals
 #| fig-cap: "Los puntos negros representan los datos reales. La línea azul es la de mejor ajuste. Los puntos blancos indican los valores predichos por la línea azul. Las líneas rojas muestran el error entre cada punto real y su predicción. La línea azul es la mejor porque minimiza ese error."
 
@@ -620,7 +611,7 @@ $\text{pendiente} = m = \frac{n\sum{xy}-\sum{x}\sum{y}}{n\sum{x^2}-(\sum{x})^2} 
 
 Genial. Ahora podemos verificar si lo hicimos bien. Vamos a graficar los datos en un diagrama de dispersión y trazar una línea con pendiente = 1.19 y una intersección en el eje y de --0.221. Como se muestra en la @fig-3corwithLine, la línea debería atravesar el centro de los puntos.
 
-```{r}
+```{r echo=F}
 #| label: fig-3corwithLine
 #| fig-cap: "Ejemplo de una línea de regresión con bandas de confianza que atraviesa algunos puntos en un diagrama de dispersión"
 #| out-width: "75%"
@@ -680,7 +671,7 @@ Este ejemplo muestra algunas complicaciones al interpretar correlaciones. Ya sab
 
 > Consejo pro: Esta es una de las razones por las que es tan importante graficar tus datos. Si ves un patrón en forma de U invertida, entonces un análisis de correlación probablemente **no sea el mejor** para esos datos.
 
-#### Variable confundida, o problema de la tercera variable
+#### Variable confusora, o problema de la tercera variable
 
 Cualquiera puede correlacionar dos cosas que se puedan medir. Por ejemplo, podríamos tomar a 100 personas y preguntarles todo tipo de cosas, como:
 
@@ -854,7 +845,7 @@ Podés pensar este histograma como una "ventana del azar". Muestra lo que el aza
 
 La @fig-3corrandN muestra cuatro histogramas diferentes con los valores de correlación de Pearson ( r ) para cada uno de los escenarios. Cada escenario involucra un tamaño muestral distinto: 10, 50, 100 y 1000.
 
-```{r}
+```{r echo=F}
 #| label: fig-3corrandN
 #| fig-cap: "Histograma de 1000 valores simulados de r, generados al azar, con diferentes tamaños muestrales. Cada panel muestra el histograma para N = 10, 50, 100 y 1000. Cuanto más grande el tamaño muestral, más cerca de 0 tienden los valores de r generados por azar."
 
@@ -884,10 +875,9 @@ Si observás los cuatro histogramas, deberías notar un patrón claro. El ancho 
 
 Cuando el tamaño muestral es 10, aparecen muchos valores diferentes de ( r ). Ese histograma es bastante plano y extendido. Pero a medida que el tamaño muestral aumenta, vemos que la ventana del azar se vuelve más angosta. Por ejemplo, cuando llegamos a N = 1000, casi todos los valores de ( r ) están muy cerca de 0.
 
-Una conclusión importante es que **aumentar el tamaño muestral estrecha la ventana del azar**. Entonces, si hacés un estudio con 1000 observaciones por variable y encontrás una correlación de 0.5, podés mirar el histograma de abajo a la derecha y ver que ese valor **no ocurre muy seguido solo por azar**. De hecho, puede que no aparezca ni una sola vez en 1000 simulaciones.\
-Como resultado, si tenés una muestra grande como N = 1000 y encontrás una correlación observada de 0.5, podés estar más seguro de que **no es espuria**. Si no fue el azar el que la produjo, entonces **algo más sí lo hizo**.
+Una conclusión importante es que **aumentar el tamaño muestral estrecha la ventana del azar**. Entonces, si hacés un estudio con 1000 observaciones por variable y encontrás una correlación de 0.5, podés mirar el histograma de abajo a la derecha y ver que ese valor **no ocurre muy seguido solo por azar**. De hecho, puede que no aparezca ni una sola vez en 1000 simulaciones. Como resultado, si tenés una muestra grande como N = 1000 y encontrás una correlación observada de 0.5, podés estar más seguro de que **no es espuria**. Si no fue el azar el que la produjo, entonces **algo más sí lo hizo**.
 
-Por último, notá cómo tu confianza respecto a si el azar está afectando tus resultados depende **del tamaño de tu muestra**. Si solo tenés 10 observaciones por variable y encontrás ( r = 0.5 ), no deberías estar tan seguro de que refleja una relación real. Como ves, valores de ( r = 0.5 ) ocurren bastante seguido **solo por azar** cuando la muestra es pequeña.
+Por último, notá cómo tu confianza respecto a si el azar está afectando tus resultados depende **del tamaño de tu muestra**. Si solo tenés 10 observaciones por variable y encontrás (r = 0.5), no deberías estar tan seguro de que refleja una relación real. Como ves, valores de (r = 0.5) ocurren bastante seguido **solo por azar** cuando la muestra es pequeña.
 
 > Consejo pro: cuando diseñás un experimento, vos decidís cuántas muestras vas a recolectar. Eso significa que podés elegir **estrechar la ventana del azar**. Así, si encontrás una relación en los datos, podés tener más confianza en que es real, y no un simple capricho del azar.
 
@@ -976,8 +966,7 @@ knitr::include_graphics(path="imgs/gifs/corRealgif-1_es.gif")
 ```
 :::
 
-La lección principal acá es que **incluso cuando hay una correlación positiva real entre dos variables, podrías no verla si tu muestra es muy pequeña**. Por ejemplo, podrías tener mala suerte con la muestra que recolectaste. Esa muestra podría mostrar una correlación negativa, ¡aunque la verdadera correlación sea positiva!\
-Lamentablemente, en el mundo real casi siempre tenemos solo una muestra, la que logramos recolectar. Así que siempre tenemos que preguntarnos si tuvimos suerte... o no. Por suerte, si querés eliminar el factor suerte, **todo lo que necesitás es recolectar una muestra más grande**. Así vas a tener muchas más chances de observar el patrón real, y no uno que apareció por azar.
+La lección principal acá es que **incluso cuando hay una correlación positiva real entre dos variables, podrías no verla si tu muestra es muy pequeña**. Por ejemplo, podrías tener mala suerte con la muestra que recolectaste. Esa muestra podría mostrar una correlación negativa, ¡aunque la verdadera correlación sea positiva! Lamentablemente, en el mundo real casi siempre tenemos solo una muestra, la que logramos recolectar. Así que siempre tenemos que preguntarnos si tuvimos suerte... o no. Por suerte, si querés eliminar el factor suerte, **todo lo que necesitás es recolectar una muestra más grande**. Así vas a tener muchas más chances de observar el patrón real, y no uno que apareció por azar.
 
 ## Resumen
 

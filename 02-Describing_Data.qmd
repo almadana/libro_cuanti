@@ -352,8 +352,7 @@ Los conjuntos de datos reales suelen estar llenos de errores, especialmente cuan
 
 ¿Y qué pasa con los datos atípicos que son reales? La decisión de incluir o excluir valores atípicos depende en gran medida de por qué creés que los datos se ven como se ven y para qué querés usarlos. Las herramientas estadísticas pueden ofrecer un método automático para sugerir posibles candidatos a eliminar, pero acá es fundamental aplicar buen juicio. El software estadístico es un autómata sin criterio, le falta el contexto más amplio para tomar una decisión informada. Vos no sos un autómata sin criterio, así que usá tu juicio: si el valor atípico te parece legítimo, entonces dejalo.
 
-
-### La varianza
+## La varianza
 
 Variabilidad, variación, varianza, variar, variable, variado, variedad. ¿Confundido? Antes de describir **la varianza**, queremos que te sientas cómodo con cómo se usa esta palabra. Primero, no te olvides de lo importante: sabemos que variabilidad y variación se refieren a la gran idea de que los números pueden ser diferentes. Podemos usar "varianza" en ese mismo sentido. Cuando los números son distintos, tienen varianza.
 
@@ -365,7 +364,7 @@ La palabra **varianza** también se refiere a una estadística específica: la s
 
 $\text{varianza} = \frac{\text{suma de las diferencias al cuadrado}}{\text{cantidad de valores}}$
 
-#### Desviaciones respecto de la media, puntajes de diferencia con respecto a la media
+### Desviaciones respecto de la media, puntajes de diferencia con respecto a la media
 
 Antes nos complicamos un poco calculando todas las diferencias entre los valores del conjunto. Ahora hagámoslo de una manera más simple. Esta vez, calculamos la diferencia entre cada valor y la media. La idea es:
 
@@ -421,7 +420,7 @@ Exacto.
 
 Alguien muy ingenioso ideó una solución al hecho de que las diferencias con respecto a la media siempre suman cero. ¿Se te ocurre alguna? Por ejemplo, ¿qué podrías hacer con esas diferencias para que, al sumarlas, te den algo útil (o sea, que no sea cero)?
 
-La solución ingeniosa es elevarlas al cuadrado. Elevar al cuadrado convierte todos los valores negativos en positivos. Por ejemplo,$2^2 = 4$, y $-2^2 = 4$. Recordá cómo funciona: $2^2 = 2 \times 2 = 4$, y $(-2)^2 = -2 \times -2 = 4$. Usamos el término **desviaciones al cuadrado** para referirnos a las diferencias que han sido elevadas al cuadrado. Las desviaciones son justamente eso: apartamientos. Las diferencias con respecto a la media son desviaciones.
+La solución ingeniosa es elevarlas al cuadrado. Elevar al cuadrado convierte todos los valores negativos en positivos. Por ejemplo, $2^2 = 4$, y $-2^2 = 4$. Recordá cómo funciona: $2^2 = 2 \times 2 = 4$, y $(-2)^2 = -2 \times -2 = 4$. Usamos el término **desviaciones al cuadrado** para referirnos a las diferencias que han sido elevadas al cuadrado. Las desviaciones son justamente eso: apartamientos. Las diferencias con respecto a la media son desviaciones.
 
 Volvamos a mirar la tabla anterior, pero ahora con una columna adicional de desviaciones al cuadrado:
 
@@ -540,7 +539,7 @@ Tal vez lo más importante que podés hacer cuando usás estadísticas descripti
 
 ### El cuarteto de Anscombe
 
-Para ilustrar este punto ---y prepararte para los temas del próximo capítulo--- mirá este ejemplo. Se llama el Cuarteto de Anscombe, porque estos gráficos y valores tan curiosos fueron producidos por [Anscombe, 1973]. En la @fig-anscombe estás viendo pares de mediciones. Cada gráfico tiene un eje X y un eje Y, y cada punto representa dos valores. A simple vista, cada gráfico se ve muy distinto, ¿no?
+Para ilustrar este punto ---y prepararte para los temas del próximo capítulo--- mirá este ejemplo. Se llama el Cuarteto de Anscombe, porque estos gráficos y valores tan curiosos fueron producidos por \[Anscombe, 1973\]. En la @fig-anscombe estás viendo pares de mediciones. Cada gráfico tiene un eje X y un eje Y, y cada punto representa dos valores. A simple vista, cada gráfico se ve muy distinto, ¿no?
 
 ```{r, echo=F, warning=FALSE}
 #| label: fig-anscombe

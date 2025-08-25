@@ -269,7 +269,7 @@ La idea era darte una intuición conceptual sobre cómo se refleja la **covarian
 
 Veamos cómo se ve esto en una tabla:
 
-```{r 3cov,echo=F}
+```{r 3cov, echo=F, warnings=F}
 the_df<-the_df_CC
 
 the_df_short<-the_df[1:10,]

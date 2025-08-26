@@ -572,7 +572,7 @@ Los números en los paneles ahora nos dicen qué simulaciones produjeron realmen
 
 ¿Qué notás sobre el patrón de las medias dentro de cada panel de la Figura 7.6? Ahora, todos los paneles muestran al menos una media que es diferente de las otras. Específicamente, las barras de error para una media no se superponen con las barras de error para una u otra media. Así es como se ven los errores. Todos estos son errores de tipo I. Son insidiosos. Cuando te pasan por azar, ¡los datos realmente parecen mostrar un patrón fuerte, tu valor de $F$ es grande y tu valor $p$ es chico! Es fácil dejarse convencer por un error de tipo I (es el canto de sirena del azar).  
 
-## 7.4 ANOVA con Datos Reales
+## ANOVA con Datos Reales
 
 Cubrimos muchos de los fundamentos sobre el ANOVA, cómo calcular los valores necesarios para obtener un estadístico $F$ y cómo interpretarlo junto con su valor $p$ asociado una vez que lo tenemos. En general, vas a estar haciendo ANOVAs y jugando con $F$ y ps usando software que te va a escupir los números automáticamente. Es importante que entiendas qué significan los números, por eso le dedicamos tiempo a los conceptos. También te recomendamos que intentes calcular un ANOVA a mano al menos una vez. Forja el carácter y te permite saber que sabés lo que estás haciendo con los números.
 

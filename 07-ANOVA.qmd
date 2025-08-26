@@ -688,7 +688,9 @@ Arriba acabás de ver un ejemplo de cómo reportar otra prueba $t$. Esta oració
 
 Más importante aún, como sospechábamos, la diferencia entre el grupo control y el de Reactivación + Tetris probablemente no se debió al azar.
 
-### Control vs. Solo Tetris Ahora sí que podemos empezar a preguntarnos qué causó la diferencia. ¿Fue solo por jugar al Tetris? ¿Jugar solo al Tetris reduce el número de recuerdos intrusivos durante la semana? Comparémoslo con el grupo de control:
+### Control vs. Solo Tetris
+
+Ahora sí que podemos empezar a preguntarnos qué causó la diferencia. ¿Fue solo por jugar al Tetris? ¿Jugar solo al Tetris reduce el número de recuerdos intrusivos durante la semana? Comparémoslo con el grupo de control:
 
 ```{r}
 comparison_df <- all_data %>% 

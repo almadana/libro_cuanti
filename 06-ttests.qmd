@@ -2,6 +2,7 @@
 author: 
   - Matthew J. C. Crump
 aliases: [t-tests.html]
+lang: es
 ---
 
 ```{r, include = FALSE}
@@ -120,7 +121,7 @@ $t$ es una propiedad de los datos que recolectás. Se calcula con la media de la
 
 Empecemos con un ejemplo simple. Imaginá que tu media muestral es 5, y querés saber si viene de una población con media 5. ¿Cuál sería el valor de *t*? Cero: restamos 5 - 5 = 0. Como el numerador es 0, *t* también lo es. Así que *t* = 0 ocurre cuando **no hay diferencia**. Ahora tomás otra muestra. ¿La media será siempre 5? Probablemente no. Supongamos que da 6. ¿Qué valor tendrá *t*? El numerador es positivo: 6 - 5 = +1. Pero *t* no necesariamente será 1, eso depende del error estándar. Si es 1, entonces *t* será 1, porque 1/1 = 1. Si el error estándar es menor que 1, ¿qué pasa con *t*? Aumenta. Por ejemplo, 1 dividido por 0.5 da 2. Si el error estándar fuera 0.5, entonces *t* sería 2. Y con ese valor podríamos tener más confianza en que la diferencia que observamos no es casual.
 
-¿Puede *t* ser menor que 1? Claro. Si el error estándar es grande, digamos 2, entonces *t* será más chico que 1 (en nuestro caso, 1/2 = 0.5). La dirección de la diferencia entre la media muestral y la poblacional también puede hacer que *t* sea negativo. Si la media muestral fuera 4, entonces la diferencia es negativa, y *t* también lo será, porque el numerador es negativo. El denominador (el error estándar) siempre será positivo (acordate por qué: se calcula a partir de la desviación estándar de la muestra, que siempre es positiva porque usamos cuadrados al calcularla). 
+¿Puede *t* ser menor que 1? Claro. Si el error estándar es grande, digamos 2, entonces *t* será más chico que 1 (en nuestro caso, 1/2 = 0.5). La dirección de la diferencia entre la media muestral y la poblacional también puede hacer que *t* sea negativo. Si la media muestral fuera 4, entonces la diferencia es negativa, y *t* también lo será, porque el numerador es negativo. El denominador (el error estándar) siempre será positivo (acordate por qué: se calcula a partir de la desviación estándar de la muestra, que siempre es positiva porque usamos cuadrados al calcularla).
 
 Así que estas son algunas intuiciones sobre los valores posibles de *t*. Puede ser positivo o negativo, grande o chico.
 

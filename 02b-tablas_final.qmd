@@ -100,7 +100,6 @@ Ahora vemos que:
 
 Más allá del conteo, ahora sabemos qué **fracción del grupo** representa cada preferencia. Y eso nos permite **comparar categorías con tamaños distintos**.
 
-------------------------------------------------------------------------
 
 ### Lo mismo, pero con el 100%
 
@@ -158,7 +157,7 @@ Tenés los siguientes resultados de una encuesta a 30 personas:
 set.seed(123)
 ansiedad <- sample(1:5, size = 30, replace = TRUE, prob = c(0.2, 0.3, 0.3, 0.1, 0.1))
 ansiedad_tabla <- table(ansiedad)
-ansiedad_tabla
+knitr::kable(ansiedad_tabla,align = "c")
 ```
 
 Podés ver cuántas personas hay en cada nivel. Eso es útil. Pero capaz lo que te interesa no es tanto “¿cuántas dijeron 3?”, sino:
@@ -629,7 +628,7 @@ Volvamos al ejemplo anterior con ansiedad y nivel educativo. Recordá que tenía
 #| label: tabla-condicional-base
 #| tbl-cap: "Casos de ansiedad por nivel educativo"
 
-tabla
+knitr::kable(tabla,align = "c")
 ```
 
 A partir de esta tabla, podés hacer dos preguntas:
@@ -645,7 +644,7 @@ Las dos preguntas son válidas. Pero **están invirtiendo la condicionalidad**.
 #| label: proporciones-fila-cond
 #| tbl-cap: "Proporciones por fila: ¿quién tiene ansiedad dentro de cada grupo educativo?"
 
-prop_fila
+knitr::kable(prop_fila,align="c")
 ```
 
 Esta tabla responde a la primera pregunta: **¿qué porcentaje de cada grupo educativo tiene ansiedad?**
@@ -658,7 +657,7 @@ Esta tabla responde a la primera pregunta: **¿qué porcentaje de cada grupo edu
 #| label: proporciones-col-cond
 #| tbl-cap: "Proporciones por columna: ¿de qué grupo educativo son quienes tienen ansiedad?"
 
-prop_col
+knitr::kable(prop_col,align="c")
 ```
 
 Esta tabla responde a la segunda pregunta: **¿qué porcentaje de las personas con ansiedad pertenece a cada grupo educativo?**
@@ -753,7 +752,6 @@ Para mostrar estas diferencias, necesitamos saber **cuándo** se midió cada cos
 
 ```{r}
 #| label: incidencia-ejemplo
-#| echo: true
 
 library(tibble)
 
@@ -765,7 +763,7 @@ estudiantes <- tibble(
 
 tabla_cambios <- table(estudiantes$Ansiedad_inicio, estudiantes$Ansiedad_mes1)
 dimnames(tabla_cambios) <- list("Inicio" = c("No", "Sí"), "Mes1" = c("No", "Sí"))
-tabla_cambios
+knitr::kable(tabla_cambios,align = "c")
 ```
 
 Esto muestra cuántas personas **desarrollaron ansiedad** (de “No” a “Sí”) durante el mes.

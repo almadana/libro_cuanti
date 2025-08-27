@@ -226,14 +226,8 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13-Gifs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">GIFs</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
+ <span class="menu-text">Referencias</span></a>
   </div>
 </li>
     </ul>
@@ -465,7 +459,6 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <li>“Ave”, por el 15%.</li>
 </ul>
 <p>Más allá del conteo, ahora sabemos qué <strong>fracción del grupo</strong> representa cada preferencia. Y eso nos permite <strong>comparar categorías con tamaños distintos</strong>.</p>
-<hr>
 </section>
 <section id="lo-mismo-pero-con-el-100" class="level3" data-number="3.3.2">
 <h3 data-number="3.3.2" class="anchored" data-anchor-id="lo-mismo-pero-con-el-100"><span class="header-section-number">3.3.2</span> Lo mismo, pero con el 100%</h3>
@@ -514,11 +507,38 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ansiedad <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.3</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>ansiedad_tabla <span class="ot">&lt;-</span> <span class="fu">table</span>(ansiedad)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>ansiedad_tabla</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>ansiedad
-1 2 3 4 5 
-6 7 9 4 4 </code></pre>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(ansiedad_tabla,<span class="at">align =</span> <span class="st">"c"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: center;">ansiedad</th>
+<th style="text-align: center;">Freq</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">9</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">4</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <p>Podés ver cuántas personas hay en cada nivel. Eso es útil. Pero capaz lo que te interesa no es tanto “¿cuántas dijeron 3?”, sino:</p>
@@ -920,13 +940,35 @@ Nivel_educativo   Sí   No
 <section id="dos-preguntas-dos-tablas" class="level3" data-number="3.11.1">
 <h3 data-number="3.11.1" class="anchored" data-anchor-id="dos-preguntas-dos-tablas"><span class="header-section-number">3.11.1</span> Dos preguntas, dos tablas</h3>
 <p>Volvamos al ejemplo anterior con ansiedad y nivel educativo. Recordá que teníamos la siguiente tabla:</p>
-<div class="cell" data-tbl-cap="Casos de ansiedad por nivel educativo">
-<div class="cell-output cell-output-stdout">
-<pre><code>               Ansiedad
-Nivel_educativo Sí No
-       Básico   15 25
-       Medio    10 30
-       Superior  5 35</code></pre>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Casos de ansiedad por nivel educativo</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;">Sí</th>
+<th style="text-align: center;">No</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Básico</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">25</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Medio</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">30</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Superior</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">35</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <p>A partir de esta tabla, podés hacer dos preguntas:</p>
@@ -938,13 +980,35 @@ Nivel_educativo Sí No
 </section>
 <section id="proporciones-por-fila-p1" class="level3" data-number="3.11.2">
 <h3 data-number="3.11.2" class="anchored" data-anchor-id="proporciones-por-fila-p1"><span class="header-section-number">3.11.2</span> Proporciones por fila (P1)</h3>
-<div class="cell" data-tbl-cap="Proporciones por fila: ¿quién tiene ansiedad dentro de cada grupo educativo?">
-<div class="cell-output cell-output-stdout">
-<pre><code>               Ansiedad
-Nivel_educativo    Sí    No
-       Básico   0.375 0.625
-       Medio    0.250 0.750
-       Superior 0.125 0.875</code></pre>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Proporciones por fila: ¿quién tiene ansiedad dentro de cada grupo educativo?</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;">Sí</th>
+<th style="text-align: center;">No</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Básico</td>
+<td style="text-align: center;">0.375</td>
+<td style="text-align: center;">0.625</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Medio</td>
+<td style="text-align: center;">0.250</td>
+<td style="text-align: center;">0.750</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Superior</td>
+<td style="text-align: center;">0.125</td>
+<td style="text-align: center;">0.875</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <p>Esta tabla responde a la primera pregunta: <strong>¿qué porcentaje de cada grupo educativo tiene ansiedad?</strong></p>
@@ -954,13 +1018,35 @@ Nivel_educativo    Sí    No
 </section>
 <section id="proporciones-por-columna-p2" class="level3" data-number="3.11.3">
 <h3 data-number="3.11.3" class="anchored" data-anchor-id="proporciones-por-columna-p2"><span class="header-section-number">3.11.3</span> Proporciones por columna (P2)</h3>
-<div class="cell" data-tbl-cap="Proporciones por columna: ¿de qué grupo educativo son quienes tienen ansiedad?">
-<div class="cell-output cell-output-stdout">
-<pre><code>               Ansiedad
-Nivel_educativo        Sí        No
-       Básico   0.5000000 0.2777778
-       Medio    0.3333333 0.3333333
-       Superior 0.1666667 0.3888889</code></pre>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Proporciones por columna: ¿de qué grupo educativo son quienes tienen ansiedad?</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;">Sí</th>
+<th style="text-align: center;">No</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Básico</td>
+<td style="text-align: center;">0.5000000</td>
+<td style="text-align: center;">0.2777778</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Medio</td>
+<td style="text-align: center;">0.3333333</td>
+<td style="text-align: center;">0.3333333</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Superior</td>
+<td style="text-align: center;">0.1666667</td>
+<td style="text-align: center;">0.3888889</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <p>Esta tabla responde a la segunda pregunta: <strong>¿qué porcentaje de las personas con ansiedad pertenece a cada grupo educativo?</strong></p>
@@ -1044,22 +1130,28 @@ Nivel_educativo        Sí        No
 <h3 data-number="3.12.4" class="anchored" data-anchor-id="diferencias-en-visualización"><span class="header-section-number">3.12.4</span> Diferencias en visualización</h3>
 <p>Para mostrar estas diferencias, necesitamos saber <strong>cuándo</strong> se midió cada cosa.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>estudiantes <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ID =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Ansiedad_inicio =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Sí"</span>, <span class="dv">10</span>), <span class="fu">rep</span>(<span class="st">"No"</span>, <span class="dv">90</span>)),</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Ansiedad_mes1 =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Sí"</span>, <span class="dv">10</span>), <span class="fu">rep</span>(<span class="st">"Sí"</span>, <span class="dv">15</span>), <span class="fu">rep</span>(<span class="st">"No"</span>, <span class="dv">75</span>))</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>tabla_cambios <span class="ot">&lt;-</span> <span class="fu">table</span>(estudiantes<span class="sc">$</span>Ansiedad_inicio, estudiantes<span class="sc">$</span>Ansiedad_mes1)</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(tabla_cambios) <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"Inicio"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"No"</span>, <span class="st">"Sí"</span>), <span class="st">"Mes1"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"No"</span>, <span class="st">"Sí"</span>))</span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>tabla_cambios</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>      Mes1
-Inicio No Sí
-    No 75 15
-    Sí  0 10</code></pre>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;">No</th>
+<th style="text-align: center;">Sí</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">No</td>
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sí</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">10</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <p>Esto muestra cuántas personas <strong>desarrollaron ansiedad</strong> (de “No” a “Sí”) durante el mes.</p>

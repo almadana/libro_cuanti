@@ -242,7 +242,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
+ <span class="menu-text">Referencias</span></a>
   </div>
 </li>
     </ul>
@@ -272,14 +272,14 @@ window.Quarto = {
   <li><a href="#tomando-decisiones" id="toc-tomando-decisiones" class="nav-link" data-scroll-target="#tomando-decisiones"><span class="header-section-number">9.3.1</span> Tomando Decisiones</a></li>
   <li><a href="#fs-y-medias" id="toc-fs-y-medias" class="nav-link" data-scroll-target="#fs-y-medias"><span class="header-section-number">9.3.2</span> Fs y medias</a></li>
   </ul></li>
-  <li><a href="#anova-con-datos-reales" id="toc-anova-con-datos-reales" class="nav-link" data-scroll-target="#anova-con-datos-reales"><span class="header-section-number">9.4</span> 7.4 ANOVA con Datos Reales</a>
+  <li><a href="#anova-con-datos-reales" id="toc-anova-con-datos-reales" class="nav-link" data-scroll-target="#anova-con-datos-reales"><span class="header-section-number">9.4</span> ANOVA con Datos Reales</a>
   <ul class="collapse">
   <li><a href="#tetris-y-los-malos-recuerdos" id="toc-tetris-y-los-malos-recuerdos" class="nav-link" data-scroll-target="#tetris-y-los-malos-recuerdos"><span class="header-section-number">9.4.1</span> Tetris y los malos recuerdos</a></li>
   <li><a href="#comparando-medias-después-del-anova" id="toc-comparando-medias-después-del-anova" class="nav-link" data-scroll-target="#comparando-medias-después-del-anova"><span class="header-section-number">9.4.2</span> Comparando medias después del ANOVA</a></li>
   </ul></li>
   <li><a href="#control-vs.-reactivacióntetris" id="toc-control-vs.-reactivacióntetris" class="nav-link" data-scroll-target="#control-vs.-reactivacióntetris"><span class="header-section-number">9.5</span> Control vs.&nbsp;Reactivación+Tetris</a>
   <ul class="collapse">
-  <li><a href="#control-vs.-solo-tetris-ahora-sí-que-podemos-empezar-a-preguntarnos-qué-causó-la-diferencia.-fue-solo-por-jugar-al-tetris-jugar-solo-al-tetris-reduce-el-número-de-recuerdos-intrusivos-durante-la-semana-comparémoslo-con-el-grupo-de-control" id="toc-control-vs.-solo-tetris-ahora-sí-que-podemos-empezar-a-preguntarnos-qué-causó-la-diferencia.-fue-solo-por-jugar-al-tetris-jugar-solo-al-tetris-reduce-el-número-de-recuerdos-intrusivos-durante-la-semana-comparémoslo-con-el-grupo-de-control" class="nav-link" data-scroll-target="#control-vs.-solo-tetris-ahora-sí-que-podemos-empezar-a-preguntarnos-qué-causó-la-diferencia.-fue-solo-por-jugar-al-tetris-jugar-solo-al-tetris-reduce-el-número-de-recuerdos-intrusivos-durante-la-semana-comparémoslo-con-el-grupo-de-control"><span class="header-section-number">9.5.1</span> Control vs.&nbsp;Solo Tetris Ahora sí que podemos empezar a preguntarnos qué causó la diferencia. ¿Fue solo por jugar al Tetris? ¿Jugar solo al Tetris reduce el número de recuerdos intrusivos durante la semana? Comparémoslo con el grupo de control:</a></li>
+  <li><a href="#control-vs.-solo-tetris" id="toc-control-vs.-solo-tetris" class="nav-link" data-scroll-target="#control-vs.-solo-tetris"><span class="header-section-number">9.5.1</span> Control vs.&nbsp;Solo Tetris</a></li>
   </ul></li>
   <li><a href="#resumen-del-anova" id="toc-resumen-del-anova" class="nav-link" data-scroll-target="#resumen-del-anova"><span class="header-section-number">9.6</span> Resumen del ANOVA</a></li>
   </ul>
@@ -903,7 +903,7 @@ Figura&nbsp;9.6: Diferentes patrones de las medias de grupo bajo la nula cuando 
 </section>
 </section>
 <section id="anova-con-datos-reales" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="anova-con-datos-reales"><span class="header-section-number">9.4</span> 7.4 ANOVA con Datos Reales</h2>
+<h2 data-number="9.4" class="anchored" data-anchor-id="anova-con-datos-reales"><span class="header-section-number">9.4</span> ANOVA con Datos Reales</h2>
 <p>Cubrimos muchos de los fundamentos sobre el ANOVA, cómo calcular los valores necesarios para obtener un estadístico <span class="math inline">\(F\)</span> y cómo interpretarlo junto con su valor <span class="math inline">\(p\)</span> asociado una vez que lo tenemos. En general, vas a estar haciendo ANOVAs y jugando con <span class="math inline">\(F\)</span> y ps usando software que te va a escupir los números automáticamente. Es importante que entiendas qué significan los números, por eso le dedicamos tiempo a los conceptos. También te recomendamos que intentes calcular un ANOVA a mano al menos una vez. Forja el carácter y te permite saber que sabés lo que estás haciendo con los números.</p>
 <p>Pero, probablemente también perdimos el hilo de todo esto. El hilo conductor es que cuando hacemos un experimento, usamos nuestros estadísticos inferenciales, como el ANOVA, para ayudarnos a determinar si las diferencias que encontramos son probablemente debidas al azar o no. En general, nos gusta descubrir que las diferencias que encontramos no se deben al azar, sino a nuestra manipulación.</p>
 <p>Así que volvemos a la aplicación del ANOVA a un conjunto de datos real con una pregunta real. Es el mismo que vas a estar aprendiendo en el laboratorio. Acá te damos un panorama general para que sepas qué esperar.</p>
@@ -1002,8 +1002,9 @@ sample estimates:
 <p>Encontramos que hubo una diferencia significativa entre el grupo control (M=5.11) y el grupo de Reactivación + Tetris (M=1.89), t(34) = 2.99, p=0.005.</p>
 <p>Arriba acabás de ver un ejemplo de cómo reportar otra prueba <span class="math inline">\(t\)</span>. Esta oración hace un buen trabajo al decirle al lector todo lo que quiere saber. Tiene las medias de cada grupo y las partes importantes de la prueba <span class="math inline">\(t\)</span>.</p>
 <p>Más importante aún, como sospechábamos, la diferencia entre el grupo control y el de Reactivación + Tetris probablemente no se debió al azar.</p>
-<section id="control-vs.-solo-tetris-ahora-sí-que-podemos-empezar-a-preguntarnos-qué-causó-la-diferencia.-fue-solo-por-jugar-al-tetris-jugar-solo-al-tetris-reduce-el-número-de-recuerdos-intrusivos-durante-la-semana-comparémoslo-con-el-grupo-de-control" class="level3" data-number="9.5.1">
-<h3 data-number="9.5.1" class="anchored" data-anchor-id="control-vs.-solo-tetris-ahora-sí-que-podemos-empezar-a-preguntarnos-qué-causó-la-diferencia.-fue-solo-por-jugar-al-tetris-jugar-solo-al-tetris-reduce-el-número-de-recuerdos-intrusivos-durante-la-semana-comparémoslo-con-el-grupo-de-control"><span class="header-section-number">9.5.1</span> Control vs.&nbsp;Solo Tetris Ahora sí que podemos empezar a preguntarnos qué causó la diferencia. ¿Fue solo por jugar al Tetris? ¿Jugar solo al Tetris reduce el número de recuerdos intrusivos durante la semana? Comparémoslo con el grupo de control:</h3>
+<section id="control-vs.-solo-tetris" class="level3" data-number="9.5.1">
+<h3 data-number="9.5.1" class="anchored" data-anchor-id="control-vs.-solo-tetris"><span class="header-section-number">9.5.1</span> Control vs.&nbsp;Solo Tetris</h3>
+<p>Ahora sí que podemos empezar a preguntarnos qué causó la diferencia. ¿Fue solo por jugar al Tetris? ¿Jugar solo al Tetris reduce el número de recuerdos intrusivos durante la semana? Comparémoslo con el grupo de control:</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -1470,8 +1471,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link" aria-label="Referencias">
+        <span class="nav-page-text">Referencias</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="ChatGPT4o y Álvaro Cabana">
 
-<title>Respondiendo preguntas con datos - 8&nbsp; Pruebas chi cuadrado</title>
+<title>8&nbsp; Pruebas chi cuadrado – Respondiendo preguntas con datos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -48,7 +48,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "Sin resultados",
     "search-matching-documents-text": "documentos encontrados",
@@ -57,6 +63,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "resultado adicional en este documento",
     "search-more-matches-text": "resultados adicionales en este documento",
     "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancelar",
     "search-submit-button-title": "Enviar",
     "search-label": "Buscar"
@@ -72,16 +79,41 @@ gtag('js', new Date());
 gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 </script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Respondiendo preguntas con datos - 8&nbsp; Pruebas chi cuadrado">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="cuantistats.css">
+<meta property="og:title" content="8&nbsp; Pruebas chi cuadrado – Respondiendo preguntas con datos">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://almadana.github.io/libro_cuanti/06b-chi_cuadrado_files/figure-html/grafico-caramelos-1.png">
-<meta property="og:site-name" content="Respondiendo preguntas con datos">
-<meta property="og:image:height" content="960">
-<meta property="og:image:width" content="1344">
-<meta name="twitter:title" content="Respondiendo preguntas con datos - 8&nbsp; Pruebas chi cuadrado">
+<meta property="og:site_name" content="Respondiendo preguntas con datos">
+<meta name="twitter:title" content="8&nbsp; Pruebas chi cuadrado – Respondiendo preguntas con datos">
 <meta name="twitter:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
 <meta name="twitter:image" content="https://almadana.github.io/libro_cuanti/imgs/TextbookCover.png">
 <meta name="twitter:site" content="@MattCrumpLab">
@@ -96,13 +128,13 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06b-chi_cuadrado.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Pruebas chi cuadrado</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06b-chi_cuadrado.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Pruebas chi cuadrado</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -111,12 +143,12 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Respondiendo preguntas con datos</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/almadana/libro_cuanti/" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/almadana/libro_cuanti/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
@@ -189,42 +221,6 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-RMANOVA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Repeated Measures ANOVA</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./09-FactorialANOVA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Factorial ANOVA</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./10-MixedANOVA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">More On Factorial Designs</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./11-Simulation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Simulating Data</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./12-Thinking.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Thinking about answering questions with data</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./13-Gifs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">GIFs</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -232,7 +228,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -280,7 +276,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
   </ul></li>
   <li><a href="#lo-que-aprendimos" id="toc-lo-que-aprendimos" class="nav-link" data-scroll-target="#lo-que-aprendimos"><span class="header-section-number">8.21</span> Lo que aprendimos</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/almadana/libro_cuanti/edit/master/06b-chi_cuadrado.qmd" class="toc-action">Editar esta página</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/almadana/libro_cuanti/edit/master/06b-chi_cuadrado.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -306,7 +302,9 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
   </div>
   
 
+
 </header>
+
 
 <section id="de-promedios-a-categorías" class="level2" data-number="8.1">
 <h2 data-number="8.1" class="anchored" data-anchor-id="de-promedios-a-categorías"><span class="header-section-number">8.1</span> De promedios a categorías</h2>
@@ -322,7 +320,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <li>¿Está usted a favor o en contra de la legalización de la eutanasia?</li>
 </ol>
 <p>Los datos nos dan esta tabla:</p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Nivel educativo</th>
@@ -386,13 +384,13 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <h2 data-number="8.6" class="anchored" data-anchor-id="un-ejemplo-simple"><span class="header-section-number">8.6</span> Un ejemplo simple</h2>
 <p>Imaginá que una empresa de caramelos asegura en su envoltorio, con total descaro y en letras bien grandes: “¡Colores distribuidos equitativamente!” Según ellos, cada paquete contiene la misma cantidad de caramelos rojos, azules, verdes, amarillos y violetas. Todo muy democrático… en teoría.</p>
 <p>Pero vos, que no naciste ayer, sospechás que algo huele raro (y no es el aroma a frambuesa artificial). Así que decidís hacer ciencia: comprás un paquete, lo abrís, y contás uno por uno los caramelos. Compramos un paquete, lo abrimos, y contamos los caramelos. Obtenemos:</p>
-<div class="cell" data-tbl-cap="Frecuencias observadas de colores de caramelos" data-hash="06b-chi_cuadrado_cache/html/caramelos-observados_f418c30319308b5ef2685ebd4d1d7c01">
+<div class="cell" data-tbl-cap="Frecuencias observadas de colores de caramelos">
 <pre><code>#&gt;     Rojo     Azul    Verde Amarillo  Violeta 
 #&gt;        6        2        5        3        4</code></pre>
 </div>
 <p>Lo que vemos es que hay <strong>más rojos</strong>, <strong>menos azules</strong>, y los otros colores más o menos cerca de lo prometido. Pero la pregunta no es si hay diferencias. Las hay. La pregunta es: <em>¿Estas diferencias son lo suficientemente grandes como para pensar que los caramelos no están bien distribuidos?</em></p>
 <p>Si la empresa cumpliera con su promesa, y la distribución fuera perfectamente equitativa, deberíamos haber visto 4 caramelos de cada color:</p>
-<div class="cell" data-hash="06b-chi_cuadrado_cache/html/caramelos-esperados_4e6f9ff799dd618ce645a1335992797c">
+<div class="cell">
 <pre><code>#&gt;     Rojo     Azul    Verde Amarillo  Violeta 
 #&gt;        4        4        4        4        4</code></pre>
 </div>
@@ -400,12 +398,12 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <section id="pongámoslos-uno-al-lado-del-otro" class="level2" data-number="8.7">
 <h2 data-number="8.7" class="anchored" data-anchor-id="pongámoslos-uno-al-lado-del-otro"><span class="header-section-number">8.7</span> Pongámoslos uno al lado del otro</h2>
 <p>Para verlo más claro, vamos a graficar las frecuencias observadas y esperadas:</p>
-<div class="cell" data-hash="06b-chi_cuadrado_cache/html/grafico-caramelos_980f5db35bc31b705566103946224a07">
+<div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="06b-chi_cuadrado_files/figure-html/grafico-caramelos-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">Frecuencias observadas y esperadas por color de caramelo</figcaption>
+<figcaption>Frecuencias observadas y esperadas por color de caramelo</figcaption>
 </figure>
 </div>
 </div>
@@ -437,12 +435,12 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <li>Si el valor es mayor a +2 o menor a -2, la discrepancia es <strong>grande</strong> en relación a lo esperado → evidencia en contra de la hipótesis nula.</li>
 <li>Si es menor a ±1, podemos decir que <strong>la diferencia es irrelevante</strong> → evidencia a favor de la nula.</li>
 </ul>
-<div class="cell" data-hash="06b-chi_cuadrado_cache/html/mapa-evidencia-caramelos_e8dcfbf4efb9b1dbb5899baec44f46e9">
+<div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="06b-chi_cuadrado_files/figure-html/mapa-evidencia-caramelos-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">¿Dónde están las mayores discrepancias? Evidencia por celda</figcaption>
+<figcaption>¿Dónde están las mayores discrepancias? Evidencia por celda</figcaption>
 </figure>
 </div>
 </div>
@@ -483,7 +481,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 </section>
 <section id="calculemos-el-chi2-de-los-caramelos" class="level3" data-number="8.10.2">
 <h3 data-number="8.10.2" class="anchored" data-anchor-id="calculemos-el-chi2-de-los-caramelos"><span class="header-section-number">8.10.2</span> Calculemos el <span class="math inline">\(\chi^2\)</span> de los caramelos</h3>
-<div class="cell" data-tbl-cap="Resultado del test chi cuadrado para la distribución de caramelos" data-hash="06b-chi_cuadrado_cache/html/chisq-caramelos_fe7138b1dd0f4585875a54b21eb7f812">
+<div class="cell" data-tbl-cap="Resultado del test chi cuadrado para la distribución de caramelos">
 <pre><code>#&gt; 
 #&gt;  Chi-squared test for given probabilities
 #&gt; 
@@ -510,12 +508,12 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <li><strong>Cambia de forma según los grados de libertad (df)</strong>.</li>
 </ul>
 <p>Veamos cómo se ve:</p>
-<div class="cell" data-hash="06b-chi_cuadrado_cache/html/distribucion-chi_63e42b2ad5ea0de680ebc0fa69935af1">
+<div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="06b-chi_cuadrado_files/figure-html/distribucion-chi-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">Distribuciones chi cuadrado para diferentes grados de libertad</figcaption>
+<figcaption>Distribuciones chi cuadrado para diferentes grados de libertad</figcaption>
 </figure>
 </div>
 </div>
@@ -539,12 +537,12 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <section id="una-animación-para-verlo-mejor" class="level3" data-number="8.12.1">
 <h3 data-number="8.12.1" class="anchored" data-anchor-id="una-animación-para-verlo-mejor"><span class="header-section-number">8.12.1</span> Una animación para verlo mejor</h3>
 <p>En lugar de mostrar una curva estática para cada valor de df, vamos a ver cómo evoluciona la forma de la distribución chi cuadrado cuando los grados de libertad aumentan.</p>
-<div class="cell" data-hash="06b-chi_cuadrado_cache/html/animacion-chi2_bfe4fc777d0d7e63c25ee0e9b9eb01a2">
+<div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="imgs/gifs/distribucion_chi2_animada.gif" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">Cómo cambia la distribución chi cuadrado a medida que aumentan los grados de libertad</figcaption>
+<figcaption>Cómo cambia la distribución chi cuadrado a medida que aumentan los grados de libertad</figcaption>
 </figure>
 </div>
 </div>
@@ -571,12 +569,12 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <section id="simulemos-caramelos-honestos" class="level3" data-number="8.13.1">
 <h3 data-number="8.13.1" class="anchored" data-anchor-id="simulemos-caramelos-honestos"><span class="header-section-number">8.13.1</span> Simulemos caramelos honestos</h3>
 <p>Supongamos que la empresa de caramelos efectivamente <strong>cumple con la proporción uniforme</strong> (20% para cada color). Simulamos muchos paquetes de 80 caramelos, cada uno con colores elegidos al azar con esa distribución, y para cada uno calculamos su <span class="math inline">\(\chi^2\)</span>.</p>
-<div class="cell" data-hash="06b-chi_cuadrado_cache/html/simular-caramelos_27765c25b05264cde6ee07ec9f0a118e">
+<div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="06b-chi_cuadrado_files/figure-html/simular-caramelos-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">Distribución simulada del estadístico chi cuadrado bajo la hipótesis nula</figcaption>
+<figcaption>Distribución simulada del estadístico chi cuadrado bajo la hipótesis nula</figcaption>
 </figure>
 </div>
 </div>
@@ -586,7 +584,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <section id="el-valor-p-una-vez-más" class="level3" data-number="8.13.2">
 <h3 data-number="8.13.2" class="anchored" data-anchor-id="el-valor-p-una-vez-más"><span class="header-section-number">8.13.2</span> El valor <em>p</em>, una vez más</h3>
 <p>Podemos calcular el valor <em>p</em> directamente desde esta simulación:</p>
-<div class="cell" data-hash="06b-chi_cuadrado_cache/html/unnamed-chunk-2_ce581fe6bcf026460dcadb536aad4780">
+<div class="cell">
 <pre><code>#&gt; [1] 0.673</code></pre>
 </div>
 <p>Este número es la <strong>proporción de simulaciones</strong> que dieron un valor de <span class="math inline">\(\chi^2\)</span> igual o mayor al observado. Es decir: una versión empírica del valor <em>p</em>. Y debería coincidir bastante bien con el valor <em>p</em> que calculamos antes con <code>chisq.test()</code>.</p>
@@ -616,7 +614,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <li>¿Cuál es su nivel educativo (bajo, medio, alto)?</li>
 </ol>
 <p>Las respuestas nos dan esta tabla:</p>
-<div class="cell" data-tbl-cap="Opinión sobre eutanasia según nivel educativo" data-hash="06b-chi_cuadrado_cache/html/tabla-eutanasia_8cc627dadf5a9111c88021b0b1eac717">
+<div class="cell" data-tbl-cap="Opinión sobre eutanasia según nivel educativo">
 <pre><code>#&gt;        
 #&gt;         A favor En contra
 #&gt;   Alto       35         5
@@ -627,12 +625,12 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <section id="visualizar-la-tabla-proporciones-por-fila" class="level2" data-number="8.16">
 <h2 data-number="8.16" class="anchored" data-anchor-id="visualizar-la-tabla-proporciones-por-fila"><span class="header-section-number">8.16</span> Visualizar la tabla: proporciones por fila</h2>
 <p>Para ver mejor la tendencia, graficamos la proporción de personas a favor y en contra dentro de cada nivel educativo.</p>
-<div class="cell" data-hash="06b-chi_cuadrado_cache/html/grafico-eutanasia_02594af64c2ea07874dcbf2c90d305a0">
+<div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="06b-chi_cuadrado_files/figure-html/grafico-eutanasia-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">Distribución de opiniones sobre eutanasia por nivel educativo</figcaption>
+<figcaption>Distribución de opiniones sobre eutanasia por nivel educativo</figcaption>
 </figure>
 </div>
 </div>
@@ -643,7 +641,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <h2 data-number="8.17" class="anchored" data-anchor-id="qué-esperaríamos-ver-si-no-hubiera-relación"><span class="header-section-number">8.17</span> ¿Qué esperaríamos ver si no hubiera relación?</h2>
 <p>Si <strong>nivel educativo y opinión fueran independientes</strong>, esperaríamos ver una distribución en la que <strong>la proporción de personas a favor o en contra fuera la misma en todos los niveles</strong>.</p>
 <p>Eso significa que las frecuencias esperadas <strong>se calculan como producto de los totales marginales</strong>. R lo hace por nosotros:</p>
-<div class="cell" data-tbl-cap="Frecuencias esperadas bajo independencia" data-hash="06b-chi_cuadrado_cache/html/esperadas-eutanasia_aed2f1f9908ce57d171979111d3a69d8">
+<div class="cell" data-tbl-cap="Frecuencias esperadas bajo independencia">
 <pre><code>#&gt;        
 #&gt;         A favor En contra
 #&gt;   Alto     28.3      11.7
@@ -654,12 +652,12 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <section id="dónde-están-las-mayores-discrepancias" class="level2" data-number="8.18">
 <h2 data-number="8.18" class="anchored" data-anchor-id="dónde-están-las-mayores-discrepancias"><span class="header-section-number">8.18</span> ¿Dónde están las mayores discrepancias?</h2>
 <p>Podemos usar el mismo enfoque visual que antes: calcular <strong>residuales estandarizados</strong> y clasificarlos según el nivel de evidencia frente a la hipótesis nula.</p>
-<div class="cell" data-hash="06b-chi_cuadrado_cache/html/mapa-evidencia-eutanasia_6c8939b2772e63cd32c484ff10a11d3f">
+<div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="06b-chi_cuadrado_files/figure-html/mapa-evidencia-eutanasia-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">Evidencia por celda: diferencias entre observadas y esperadas</figcaption>
+<figcaption>Evidencia por celda: diferencias entre observadas y esperadas</figcaption>
 </figure>
 </div>
 </div>
@@ -667,7 +665,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 </section>
 <section id="aplicar-la-prueba-chi-cuadrado" class="level2" data-number="8.19">
 <h2 data-number="8.19" class="anchored" data-anchor-id="aplicar-la-prueba-chi-cuadrado"><span class="header-section-number">8.19</span> Aplicar la prueba chi cuadrado</h2>
-<div class="cell" data-tbl-cap="Resultado de la prueba chi cuadrado de independencia" data-hash="06b-chi_cuadrado_cache/html/chisq-eutanasia_17f49eca8fbadf1acc4f981ed6759ac0">
+<div class="cell" data-tbl-cap="Resultado de la prueba chi cuadrado de independencia">
 <pre><code>#&gt; 
 #&gt;  Pearson's Chi-squared test
 #&gt; 
@@ -767,18 +765,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -810,11 +797,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/almadana\.github\.io\/libro_cuanti\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -824,8 +850,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -837,7 +872,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -881,6 +1039,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -906,6 +1065,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -967,12 +1152,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./06-ttests.html" class="pagination-link">
+      <a href="./06-ttests.html" class="pagination-link" aria-label="Pruebas t">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Pruebas t</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./07-ANOVA.html" class="pagination-link">
+      <a href="./07-ANOVA.html" class="pagination-link" aria-label="ANOVA">
         <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">ANOVA</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -981,4 +1166,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/almadana/libro_cuanti/edit/master/06b-chi_cuadrado.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li></ul></div></div></div></footer></body></html>

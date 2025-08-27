@@ -18,7 +18,6 @@ Muchas preguntas que nos hacemos sobre datos involucran relaciones entre dos var
 
 Cuando ambas variables son **categóricas**, una de las herramientas más útiles es la **tabla de contingencia**. Estas tablas nos permiten observar cómo se distribuyen los casos entre combinaciones de niveles de dos variables. En este capítulo vamos a explorar distintas formas de construir, leer e interpretar tablas bivariadas categóricas, señalando también errores comunes y preguntas que conviene hacerse frente a los datos.
 
-
 ### Tablas de contingencia: la base
 
 Una tabla de contingencia muestra cuántas observaciones hay en cada combinación de categorías. A veces se le llama también "tabla cruzada" o simplemente "crosstab". Las filas y columnas representan los niveles de las variables, y las celdas indican la cantidad de casos que pertenecen a cada combinación.
@@ -49,7 +48,6 @@ Cuando la tabla incluye la **fila y columna de totales**, es mucho más fácil o
 > 🔎 **Un detalle importante:** muchas veces las tablas se presentan sin estos totales. Cuando eso ocurre, debemos tener cuidado al interpretar los porcentajes: sin totales, es fácil confundirse respecto a si los porcentajes fueron calculados por fila, por columna, o sobre el total general.
 
 Siempre que sea posible, incluir los totales (al menos como referencia visual) puede facilitar mucho la lectura y previene errores comunes.
-
 
 ### Proporciones y porcentajes: viendo mejor los datos
 
@@ -98,7 +96,6 @@ Lo inverso: proporciones dentro de cada columna. Permite ver cómo se distribuye
 
 > ⚠️ Muchas veces estas tablas no incluyen totales explícitos, pero deberían. La fila de totales (100%) ayuda a recordar que las proporciones fueron calculadas verticalmente, y evita errores comunes al leer la tabla.
 
-
 ### Una situación especial: una variable dicotómica
 
 Cuando una de las variables tiene solo dos categorías (por ejemplo, fumador: sí/no), suele ser más claro reportar directamente el porcentaje de personas que cumplen una condición. Este tipo de resumen es especialmente útil cuando queremos comunicar tasas, proporciones o prevalencias.
@@ -129,7 +126,6 @@ Otro ejemplo clásico: % de personas que votaron un partido según región o niv
 
 Aquí también podemos interrogarnos: - ¿Existe una relación entre nivel socioeconómico y elección de partido? - ¿Qué tan marcada es la diferencia entre los extremos? - ¿Falta información sobre el total de personas por grupo? ¿Sería útil incluirla?
 
-
 ### Cuidado al interpretar
 
 Las tablas bivariadas son descriptivas. Te muestran cómo están distribuidos los datos, pero **no prueban causalidad**. Aun así, permiten generar hipótesis, detectar patrones interesantes y comunicar resultados con claridad.
@@ -143,7 +139,6 @@ Algunas cosas a tener en cuenta:
 -   La presencia (o ausencia) de totales puede afectar significativamente la interpretación: siempre preguntate si la tabla te da suficiente información para verificar los cálculos.
 
 > 📌 Siempre preguntate: ¿estos números reflejan lo que quiero saber? ¿O necesito ajustar, estandarizar, o usar otro enfoque?
-
 
 ### Más allá de mirar: analizar
 

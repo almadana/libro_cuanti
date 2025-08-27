@@ -207,7 +207,6 @@ En este ejemplo:
 
 Y ahora que sabemos **qué tanto se desvían los datos celda por celda**, podemos avanzar al siguiente paso: resumir todas esas discrepancias en un único número. Ese número es el **estadístico chi cuadrado**.
 
-
 ## Un número para resumir toda la discrepancia
 
 Ya calculamos las diferencias entre lo observado y lo esperado. Las miramos una por una, y hasta las coloreamos según si apoyaban o desafiaban la hipótesis nula. Ahora vamos a dar el siguiente paso: **resumir todas esas diferencias en un solo número**.
@@ -217,8 +216,6 @@ Ese número es el **estadístico chi cuadrado**, y su lógica es simple:
 > Cuanto más lejos estén los valores observados de los esperados, más grande será el valor de $\chi^2$.
 
 Y si el valor de $\chi^2$ es muy grande, tenemos motivos para pensar que **las diferencias no se deben solo al azar**.
-
-
 
 ### Cómo se calcula
 
@@ -232,8 +229,6 @@ $$
 -   $E$ = frecuencia esperada
 
 Esto se hace **celda por celda**, y después se suman todos los valores. El resultado es un único número, que representa **el total de discrepancia relativa** en la tabla.
-
-
 
 ### Calculemos el $\chi^2$ de los caramelos
 
@@ -382,7 +377,6 @@ Este número es la **proporción de simulaciones** que dieron un valor de $\chi^
 
 Perfecto, vamos ahora con la **segunda gran aplicación** de la prueba chi cuadrado: la **prueba de independencia entre dos variables categóricas**. Retomamos el estilo narrativo y visual, incorporando código en R y guiando al lector paso a paso para entender qué significa "independencia", cómo se construyen las esperadas, cómo se ve la discrepancia y cómo se interpreta el test.
 
-
 ## Dos variables, una pregunta: ¿están relacionadas?
 
 Hasta ahora usamos chi cuadrado para ver si una **sola variable** se distribuía como esperábamos. Pero la pregunta más común en psicología y ciencias sociales es otra:
@@ -396,8 +390,6 @@ Por ejemplo:
 -   ¿Hay diferencias de género en la elección de carrera?
 
 Lo que queremos saber no es si los porcentajes son iguales. Lo que queremos saber es si **las diferencias que vemos en la tabla podrían haberse generado por azar**.
-
-
 
 ## Un ejemplo realista: eutanasia y nivel educativo
 
@@ -422,7 +414,6 @@ datos <- data.frame(Nivel = factor(niveles,levels=c("Alto","Medio","Bajo")), Opi
 tabla <- table(datos$Nivel, datos$Opinion)
 tabla
 ```
-
 
 ## Visualizar la tabla: proporciones por fila
 

@@ -2,7 +2,6 @@
 author:
   - Danielle J. Navarro
   - Matthew J. C. Crump
-  
 abstract-title: Notas
 abstract: Traducido al español rioplatense por ChatGPT4-o bajo la supervisión de Álvaro Cabana.
 lang: es
@@ -367,6 +366,7 @@ Veamos qué hace cada una de estas funciones. Primero, las cuatro versiones de l
 Esto puede sonar algo abstracto, así que veamos algunos ejemplos concretos. Como ya vimos `dbinom`, vamos a concentrarnos en las otras tres. Empecemos con `pbinom`, y volvamos al ejemplo de los dados con calaveras. Recordá: lanzo 20 dados, cada uno tiene una chance de 1 en 6 de mostrar una calavera. Supongamos, en cambio, que quiero saber la probabilidad de obtener 4 **o menos** calaveras. Podría usar `dbinom` para calcular la probabilidad exacta de obtener 0, 1, 2, 3 y 4 calaveras, y luego sumar esos valores. Pero hay una forma más rápida: usar la función `pbinom`. El comando sería:
 
 ```{r}
+#| echo: true
 pbinom(q = 4, size = 20, prob = 1/6)
 ```
 
@@ -375,6 +375,7 @@ En otras palabras, hay un 76.9% de probabilidad de que al lanzar los 20 dados ob
 Ahora consideremos la función `qbinom`. Supongamos que quiero calcular el percentil 75 de la distribución binomial. Siguiendo con el ejemplo de las calaveras, el comando sería:
 
 ```{r }
+#| echo: true
 qbinom(p = 0.75, size = 20, prob = 1/6)
 ```
 
@@ -385,6 +386,7 @@ La función `qbinom` redondea hacia arriba: si pedís un percentil que no existe
 Finalmente, tenemos el generador de números aleatorios. Para usar la función `rbinom`, tenés que especificar cuántas veces querés que R "simule" el experimento usando el argumento `n`, y te va a generar resultados aleatorios tomados de la distribución binomial. Por ejemplo, si quisiera repetir el experimento de tirar dados 100 veces, puedo hacer que R simule esos resultados así:
 
 ```{r}
+#| echo: true
 rbinom(n = 100, size = 20, prob = 1/6)
 ```
 
@@ -621,7 +623,7 @@ También podés calcular la media con `mean(IQ)` y la desviación estándar con 
 
 Me siento un poco tonta al decir esto, pero lo que quiero que te lleves de todo esto es que las muestras grandes, en general, te dan mejor información. Me siento tonta porque es tan tremendamente obvio que no debería hacer falta decirlo. De hecho, es tan obvio que cuando Jacob Bernoulli ---uno de los fundadores de la teoría de la probabilidad--- formalizó esta idea allá por 1713, fue medio arrogante al respecto. Así fue como describió el hecho de que todos compartimos esta intuición:
 
-> **Pues incluso el más estúpido de los hombres, por algún instinto natural, por sí mismo y sin ninguna instrucción (lo cual es notable), está convencido de que cuantas más observaciones se han hecho, menor es el peligro de desviarse del objetivo** (ver Stigler, 1986, p. 65).
+> **Pues incluso el más estúpido de los hombres, por algún instinto natural, por sí mismo y sin ninguna instrucción (lo cual es notable), está convencido de que cuantas más observaciones se han hecho, menor es el peligro de desviarse del objetivo**  (ver Stigler, 1986, p. 65)[@Stigler1986].
 
 Bueno, el pasaje suena un poco condescendiente (por no decir sexista), pero su punto principal es correcto: realmente parece obvio que más datos te van a dar mejores respuestas. La pregunta es: ¿por qué es así? No sorprende que esta intuición que todos compartimos resulta ser correcta, y los estadísticos se refieren a ella como la **ley de los grandes números**. La ley de los grandes números es una ley matemática que se aplica a muchas estadísticas muestrales, pero la forma más simple de entenderla es como una ley sobre promedios. La media muestral es el ejemplo más obvio de una estadística que se basa en promediar (porque eso es justamente lo que es la media... un promedio), así que vamos a mirar eso. **Aplicada a la media muestral, lo que dice la ley de los grandes números es que a medida que la muestra se hace más grande, la media muestral tiende a acercarse a la media verdadera de la población.** O, dicho de manera un poco más precisa, cuando el tamaño de la muestra "tiende" a infinito (se escribe$N \rightarrow \infty$), la media muestral se aproxima a la media poblacional ($\bar{X} \rightarrow \mu$).
 
@@ -631,7 +633,7 @@ No tengo intención de torturarte con una demostración de que la ley de los gra
 
 La ley de los grandes números es una herramienta muy poderosa, pero no alcanza para responder todas nuestras preguntas. Entre otras cosas, lo único que nos ofrece es una "garantía en el largo plazo". A largo plazo, si de alguna manera pudiéramos recolectar una cantidad infinita de datos, entonces la ley de los grandes números garantiza que nuestras estadísticas muestrales serán correctas. Pero como John Maynard Keynes argumentó con razón en economía, una garantía en el largo plazo tiene poca utilidad en la vida real:
 
-> [\*\*El] largo plazo es una guía engañosa para los asuntos actuales. A largo plazo, todos estaremos muertos. Los economistas se asignan una tarea demasiado fácil, y por lo tanto inútil, si en tiempos tormentosos sólo pueden decirnos que, cuando la tormenta haya pasado hace tiempo, el océano volverá a estar calmo.\*\* --- @Keynes1923 [p.80]
+> [**El] largo plazo es una guía engañosa para los asuntos actuales. A largo plazo, todos estaremos muertos. Los economistas se asignan una tarea demasiado fácil, y por lo tanto inútil, si en tiempos tormentosos sólo pueden decirnos que, cuando la tormenta haya pasado hace tiempo, el océano volverá a estar calmo.** --- @Keynes1923 [p.80]
 
 Lo mismo que en economía vale también para la psicología y la estadística. No basta con saber que **eventualmente** llegaremos a la respuesta correcta al calcular la media muestral. Saber que un conjunto de datos infinitamente grande nos dará el valor correcto no resuelve nuestros problemas prácticos en el presente. Saber que un conjunto de datos infinitamente grande me dará el valor exacto de la media poblacional no es precisamente reconfortante cuando mi conjunto de datos **real** tiene un tamaño de muestra de $N=100$. En la vida real, entonces, necesitamos saber algo sobre el comportamiento de la media muestral cuando se calcula a partir de un conjunto de datos más modesto.
 
@@ -696,6 +698,7 @@ Segunda pregunta: ¿Qué deberíamos hacer con las medias de nuestras muestras? 
 
 ```{r, echo=F}
 #| label: fig-4unifmany
+#| warning: false
 #| fig-cap: "Histograma de las medias muestrales de 10.000 muestras, cada una de tamaño 20, tomadas de una distribución uniforme de números del 1 al 10. La media esperada es 5.5, y el histograma está centrado en 5.5. La media de cada muestra no es siempre 5.5, debido al error muestral o al azar."
 
 a <- round(runif(20 * 10000, 1, 10))
@@ -729,6 +732,7 @@ Solo por diversión, acá van algunas distribuciones muestrales para distintos e
 
 ```{r echo=F}
 #| label: fig-4samplestats
+#| warning: false
 #| fig-cap: "Cada panel muestra un histograma de un estadístico muestral distinto"
 #| out.width: "100%"
 
@@ -848,6 +852,7 @@ Hagámoslo de nuevo. Esta vez vamos a tomar muestras de una distribución unifor
 
 ```{r echo=F}
 #| label: fig-4samplemeanunif
+#| warning: false
 #| fig-cap: "Ilustración de que la forma de la distribución muestral de la media es normal, incluso cuando las muestras provienen de una distribución no normal (en este caso, uniforme)"
 #| out-width: "100%"
 
@@ -1101,14 +1106,14 @@ $$
 
 Por ejemplo, si tenemos estos 10 puntajes tomados de una distribución normal con media = 100 y desvío estándar = 25:
 
-``` r
+``` {r}
 scores <- round(rnorm(10, 100, 25), digits = 2)
 print(scores)
 ```
 
 Los puntajes z correspondientes serían:
 
-``` r
+``` {r}
 (scores - 100) / 25
 ```
 
@@ -1124,7 +1129,9 @@ Paremos un momento para ubicarnos. Estamos por meternos en el tema de la **estim
 
 OK, ¿y por qué importa? Buena pregunta. Hay razones concretas para que te importe. Y también hay muy buenas razones abstractas. Desafortunadamente, en investigación, casi siempre son las razones abstractas las que más importan ---y también las más difíciles de entender al principio.
 
+
 ### Parámetros poblacionales concretos
+
 
 Primero, algunas razones concretas. Existen poblaciones reales ahí afuera, y a veces queremos conocer sus parámetros. Por ejemplo, si sos una empresa que fabrica calzado, te interesaría conocer los parámetros poblacionales del **tamaño de los pies**. Como primera aproximación, querrías saber la media y la desviación estándar de la población. Si tu empresa conoce esto, y otras no, probablemente te vaya mejor (asumiendo que todas fabrican zapatos de calidad similar). ¿Por qué te iría mejor y cómo podrías usar esos parámetros? Acá va una buena razón: como empresa, querés que la oferta coincida con la demanda. Si fabricás demasiados zapatos de talles muy chicos o muy grandes, y no hay suficientes personas que los compren, estás haciendo un montón de calzado que no se va a vender. Y si no fabricás suficientes zapatos de los talles más comunes, vas a estar dejando plata sobre la mesa. ¿Verdad? Sí. Entonces, ¿qué sería lo óptimo? Tal vez fabricarías diferentes cantidades de zapatos en cada talle, de acuerdo a la demanda de cada uno. Y sabrías algo sobre la demanda si conocieras la frecuencia de cada talle en la población. Para eso, necesitarías conocer los parámetros poblacionales.
 
@@ -1156,7 +1163,7 @@ Antes de listar un montón de complicaciones, dejame decirte qué creo que sí p
 
 **Problema 2: ¿Qué miden realmente estas preguntas?** Si todo el propósito de hacer el cuestionario es estimar la felicidad de la población, entonces realmente tenemos que preguntarnos si nuestras mediciones nos dicen algo sobre la felicidad en primer lugar. Algunas preguntas que surgen: ¿Las personas son precisas al decir cuán felices son? ¿La medición de felicidad depende de la escala usada? Por ejemplo, ¿los resultados serían distintos si usáramos una escala de 0 a 100, o de -100 a +100, o si no usáramos números en absoluto? ¿La medición de felicidad depende de cómo está redactada la pregunta? ¿Una medida como esta nos dice **todo** lo que queremos saber sobre la felicidad? (probablemente no). ¿Qué cosas está dejando afuera? (¿quién sabe? probablemente muchas).
 
-En resumen, nadie sabe con certeza si este tipo de preguntas miden lo que queremos que midan, solo esperamos que lo hagan. Lo que sí sabemos bastante bien es qué tipo de cosas miden realmente este tipo de preguntas. Es algo bastante evidente, que está justo frente a nosotros: las mediciones de cuestionarios miden cómo la gente responde cuestionarios. Dicho de otro modo: miden cómo se comportan las personas cuando se les da un cuestionario para responder. Esto puede también reflejar algo sobre la felicidad, si la pregunta trata sobre felicidad. Pero, resulta que las personas son notablemente consistentes en cómo responden, incluso cuando las preguntas son totalmente absurdas, o cuando ni siquiera hay preguntas (¡solo números para elegir!) @maul_rethinking_2017.
+En resumen, nadie sabe con certeza si este tipo de preguntas miden lo que queremos que midan, solo esperamos que lo hagan. Lo que sí sabemos bastante bien es qué tipo de cosas miden realmente este tipo de preguntas. Es algo bastante evidente, que está justo frente a nosotros: las mediciones de cuestionarios miden cómo la gente responde cuestionarios. Dicho de otro modo: miden cómo se comportan las personas cuando se les da un cuestionario para responder. Esto puede también reflejar algo sobre la felicidad, si la pregunta trata sobre felicidad. Pero, resulta que las personas son notablemente consistentes en cómo responden, incluso cuando las preguntas son totalmente absurdas, o cuando ni siquiera hay preguntas (¡solo números para elegir!) [@maul_rethinking_2017].
 
 La enseñanza que nos dejan estas complicaciones es que, en psicología, podemos recolectar muestras... pero muchas veces no tenemos una idea clara de qué población está asociada a esas muestras. Puede haber muchas poblaciones distintas. O la población puede variar dependiendo de a quién le preguntes. Y finalmente, la "población" quizás no sea la que vos querés que sea.
 

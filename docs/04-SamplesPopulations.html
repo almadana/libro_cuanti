@@ -166,7 +166,7 @@ window.Quarto = {
 
 <link rel="stylesheet" href="cuantistats.css">
 <meta property="og:title" content="5&nbsp; Probabilidad, muestreo y estimación – Respondiendo preguntas con datos">
-<meta property="og:description" content="">
+<meta property="og:description" content="Traducido al español rioplatense por ChatGPT4-o bajo la supervisión de Álvaro Cabana.">
 <meta property="og:site_name" content="Respondiendo preguntas con datos">
 <meta name="twitter:title" content="5&nbsp; Probabilidad, muestreo y estimación – Respondiendo preguntas con datos">
 <meta name="twitter:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
@@ -277,7 +277,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
+ <span class="menu-text">Referencias</span></a>
   </div>
 </li>
     </ul>
@@ -381,6 +381,12 @@ window.Quarto = {
     
   </div>
   
+<div>
+  <div class="abstract">
+    <div class="block-title">Notas</div>
+    Traducido al español rioplatense por ChatGPT4-o bajo la supervisión de Álvaro Cabana.
+  </div>
+</div>
 
 
 </header>
@@ -898,6 +904,7 @@ Figura&nbsp;5.4: Dos distribuciones binomiales, en un escenario donde lanzo una 
 </ul>
 <p>Esto puede sonar algo abstracto, así que veamos algunos ejemplos concretos. Como ya vimos <code>dbinom</code>, vamos a concentrarnos en las otras tres. Empecemos con <code>pbinom</code>, y volvamos al ejemplo de los dados con calaveras. Recordá: lanzo 20 dados, cada uno tiene una chance de 1 en 6 de mostrar una calavera. Supongamos, en cambio, que quiero saber la probabilidad de obtener 4 <strong>o menos</strong> calaveras. Podría usar <code>dbinom</code> para calcular la probabilidad exacta de obtener 0, 1, 2, 3 y 4 calaveras, y luego sumar esos valores. Pero hay una forma más rápida: usar la función <code>pbinom</code>. El comando sería:</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="at">q =</span> <span class="dv">4</span>, <span class="at">size =</span> <span class="dv">20</span>, <span class="at">prob =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7687492</code></pre>
 </div>
@@ -905,6 +912,7 @@ Figura&nbsp;5.4: Dos distribuciones binomiales, en un escenario donde lanzo una 
 <p>En otras palabras, hay un 76.9% de probabilidad de que al lanzar los 20 dados obtenga 4 calaveras o menos. O, dicho de otra manera, R nos está diciendo que 4 es el percentil 76.9 de esta distribución binomial.</p>
 <p>Ahora consideremos la función <code>qbinom</code>. Supongamos que quiero calcular el percentil 75 de la distribución binomial. Siguiendo con el ejemplo de las calaveras, el comando sería:</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qbinom</span>(<span class="at">p =</span> <span class="fl">0.75</span>, <span class="at">size =</span> <span class="dv">20</span>, <span class="at">prob =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4</code></pre>
 </div>
@@ -913,10 +921,11 @@ Figura&nbsp;5.4: Dos distribuciones binomiales, en un escenario donde lanzo una 
 <p>La función <code>qbinom</code> redondea hacia arriba: si pedís un percentil que no existe literalmente (como el 75 en este ejemplo), R encuentra el valor más pequeño cuyo percentil acumulado sea <strong>al menos</strong> el que pediste. En este caso, como el “verdadero” percentil 75 (sea lo que sea que eso signifique) está entre 3 y 4 calaveras, R redondea hacia arriba y te da 4. Esta sutileza puede ser molesta, lo admito, pero por suerte solo es un problema en distribuciones discretas como la binomial. Las otras distribuciones de las que voy a hablar (normal, <span class="math inline">\(t\)</span>, <span class="math inline">\(\chi^2\)</span> y <span class="math inline">\(F\)</span>) son todas continuas, así que R siempre puede devolver un cuantil exacto cuando se lo pedís.</p>
 <p>Finalmente, tenemos el generador de números aleatorios. Para usar la función <code>rbinom</code>, tenés que especificar cuántas veces querés que R “simule” el experimento usando el argumento <code>n</code>, y te va a generar resultados aleatorios tomados de la distribución binomial. Por ejemplo, si quisiera repetir el experimento de tirar dados 100 veces, puedo hacer que R simule esos resultados así:</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">size =</span> <span class="dv">20</span>, <span class="at">prob =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  [1] 3 6 1 2 3 3 4 1 5 4 3 2 2 1 1 2 1 2 3 1 4 3 4 4 3 3 4 0 5 3 1 4 4 2 5 2 3
- [38] 5 3 2 1 2 3 2 1 4 5 3 4 2 2 3 1 1 4 7 3 2 4 3 6 3 2 2 4 3 2 3 3 3 2 3 1 4
- [75] 4 5 2 2 4 2 2 1 6 6 1 3 3 2 0 1 6 6 3 2 4 2 8 3 2 5</code></pre>
+<pre><code>  [1] 3 4 3 1 5 5 2 4 2 3 2 4 4 3 0 3 3 1 3 5 3 1 1 5 4 4 4 4 6 3 2 1 6 4 2 1 2
+ [38] 5 3 3 7 6 5 4 6 2 2 5 4 3 5 5 3 5 2 6 6 7 2 3 2 4 3 6 7 3 2 2 5 3 3 5 2 2
+ [75] 7 3 2 2 4 2 6 7 4 2 5 3 5 2 2 2 1 8 4 2 1 3 3 4 4 6</code></pre>
 </div>
 </div>
 <p>Como podés ver, los números que aparecen son lo que uno esperaría, dada la distribución que se muestra en la <a href="#fig-4binomial1" class="quarto-xref">Figura&nbsp;<span>5.3</span></a>. La mayoría de las veces saco entre 1 y 5 calaveras. Hay muchas sutilezas sobre cómo se generan números aleatorios en una computadora, pero para los fines de este libro no necesitamos preocuparnos demasiado.</p>
@@ -1151,7 +1160,7 @@ Figura&nbsp;5.11: Distribución poblacional de puntuaciones de CI (panel a) y do
 <p>También podés calcular la media con <code>mean(IQ)</code> y la desviación estándar con <code>sd(IQ)</code>, y hacer un histograma con <code>hist()</code>. El histograma de esta muestra mucho más grande se muestra en el panel c de la <a href="#fig-IQdist" class="quarto-xref">Figura&nbsp;<span>5.11</span></a>. Con solo mirarlo, se nota que esta muestra es una mejor aproximación a la distribución poblacional real que la muestra más pequeña. Eso también se ve en las estadísticas muestrales: la media muestral es 99.9 y la desviación estándar es 15.1. Estos valores son ahora cercanos a los valores reales de la población.</p>
 <p>Me siento un poco tonta al decir esto, pero lo que quiero que te lleves de todo esto es que las muestras grandes, en general, te dan mejor información. Me siento tonta porque es tan tremendamente obvio que no debería hacer falta decirlo. De hecho, es tan obvio que cuando Jacob Bernoulli —uno de los fundadores de la teoría de la probabilidad— formalizó esta idea allá por 1713, fue medio arrogante al respecto. Así fue como describió el hecho de que todos compartimos esta intuición:</p>
 <blockquote class="blockquote">
-<p><strong>Pues incluso el más estúpido de los hombres, por algún instinto natural, por sí mismo y sin ninguna instrucción (lo cual es notable), está convencido de que cuantas más observaciones se han hecho, menor es el peligro de desviarse del objetivo</strong> (ver Stigler, 1986, p.&nbsp;65).</p>
+<p><strong>Pues incluso el más estúpido de los hombres, por algún instinto natural, por sí mismo y sin ninguna instrucción (lo cual es notable), está convencido de que cuantas más observaciones se han hecho, menor es el peligro de desviarse del objetivo</strong> (ver Stigler, 1986, p.&nbsp;65)<span class="citation" data-cites="Stigler1986">(<a href="references.html#ref-Stigler1986" role="doc-biblioref">Stigler 1986</a>)</span>.</p>
 </blockquote>
 <p>Bueno, el pasaje suena un poco condescendiente (por no decir sexista), pero su punto principal es correcto: realmente parece obvio que más datos te van a dar mejores respuestas. La pregunta es: ¿por qué es así? No sorprende que esta intuición que todos compartimos resulta ser correcta, y los estadísticos se refieren a ella como la <strong>ley de los grandes números</strong>. La ley de los grandes números es una ley matemática que se aplica a muchas estadísticas muestrales, pero la forma más simple de entenderla es como una ley sobre promedios. La media muestral es el ejemplo más obvio de una estadística que se basa en promediar (porque eso es justamente lo que es la media… un promedio), así que vamos a mirar eso. <strong>Aplicada a la media muestral, lo que dice la ley de los grandes números es que a medida que la muestra se hace más grande, la media muestral tiende a acercarse a la media verdadera de la población.</strong> O, dicho de manera un poco más precisa, cuando el tamaño de la muestra “tiende” a infinito (se escribe<span class="math inline">\(N \rightarrow \infty\)</span>), la media muestral se aproxima a la media poblacional (<span class="math inline">\(\bar{X} \rightarrow \mu\)</span>).</p>
 <p>No tengo intención de torturarte con una demostración de que la ley de los grandes números es cierta, pero es una de las herramientas más importantes de la teoría estadística. Es lo que podemos usar para justificar nuestra creencia de que, si seguimos recolectando más y más datos, eventualmente vamos a llegar a la verdad. Para un conjunto de datos en particular, las estadísticas muestrales que calculemos estarán equivocadas, pero la ley de los grandes números nos dice que si seguimos recolectando más datos, esas estadísticas tenderán a acercarse cada vez más a los verdaderos parámetros de la población.</p>
@@ -1217,9 +1226,6 @@ Figura&nbsp;5.13: Animación que muestra histogramas para diferentes muestras de
 <p>Primera pregunta: ¿Las medias muestrales son todas iguales? La respuesta es no. Aunque son todas más o menos parecidas, están todas alrededor de cinco, más o menos un par de números. Esto es interesante. Aunque nuestras muestras se ven bastante diferentes entre sí, las medias de esas muestras se ven más similares que distintas.</p>
 <p>Segunda pregunta: ¿Qué deberíamos hacer con las medias de nuestras muestras? Bueno, ¿qué tal si las juntamos todas y graficamos un histograma de ellas? Eso nos permitiría ver cómo se ve la distribución de las medias muestrales. El próximo histograma muestra exactamente eso. Solo que, en lugar de tomar 10 muestras, vamos a tomar 10.000. Y para cada una vamos a calcular su media. Así que vamos a tener 10.000 medias muestrales. La figura <a href="#fig-4unifmany" class="quarto-xref">Figura&nbsp;<span>5.14</span></a> muestra ese histograma:</p>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-</div>
 <div class="cell-output-display">
 <div id="fig-4unifmany" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1245,12 +1251,6 @@ Figura&nbsp;5.14: Histograma de las medias muestrales de 10.000 muestras, cada u
 <p>Algo importante a tener en cuenta cuando hablamos de distribuciones muestrales es que <strong>cualquier</strong> estadístico muestral que quieras calcular tiene su propia distribución muestral. Por ejemplo, supongamos que cada vez que tomás una muestra de números, anotás el valor más alto de esa muestra. Si repetís esto muchas veces, vas a obtener una distribución muestral completamente distinta: la <strong>distribución muestral del máximo</strong>. Podrías calcular el número más pequeño, o la moda, o la mediana, o la varianza, o el desvío estándar, o cualquier otra cosa a partir de tu muestra. Luego podrías repetir ese procedimiento muchas veces y obtener la distribución muestral de esos estadísticos. ¡Qué genial!</p>
 <p>Solo por diversión, acá van algunas distribuciones muestrales para distintos estadísticos. Vamos a tomar una distribución normal con media = 100 y desvío estándar = 20. Luego tomamos muchas muestras de tamaño n = 50 (50 observaciones por muestra). Guardamos todos los estadísticos muestrales y graficamos sus histogramas en la figura <a href="#fig-4samplestats" class="quarto-xref">Figura&nbsp;<span>5.15</span></a>. Hagámoslo:</p>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-</div>
 <div class="cell-output-display">
 <div id="fig-4samplestats" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1308,10 +1308,6 @@ Figura&nbsp;5.17: Comparación entre dos distribuciones normales y los histogram
 </div>
 <p>Hagámoslo de nuevo. Esta vez vamos a tomar muestras de una distribución uniforme plana, representada por la línea roja. Sin embargo, la <a href="#fig-4samplemeanunif" class="quarto-xref">Figura&nbsp;<span>5.18</span></a> muestra que la distribución de las medias muestrales, representada por las barras azules, no es plana: se parece a una distribución normal.</p>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 4 rows containing missing values or values outside the scale range
-(`geom_bar()`).</code></pre>
-</div>
 <div class="cell-output-display">
 <div id="fig-4samplemeanunif" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1456,10 +1452,18 @@ Figura&nbsp;5.21: Una distribución normal. Cada línea representa una desviaci�
 z = \frac{\text{puntaje bruto} - \text{media}}{\text{desvío estándar}}
 \]</span></p>
 <p>Por ejemplo, si tenemos estos 10 puntajes tomados de una distribución normal con media = 100 y desvío estándar = 25:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">25</span>), <span class="at">digits =</span> <span class="dv">2</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(scores)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  44.70  91.42 105.16  97.40  76.10  80.65  89.32  91.67 102.47  75.70</code></pre>
+</div>
+</div>
 <p>Los puntajes z correspondientes serían:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(scores <span class="sc">-</span> <span class="dv">100</span>) <span class="sc">/</span> <span class="dv">25</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] -2.2120 -0.3432  0.2064 -0.1040 -0.9560 -0.7740 -0.4272 -0.3332  0.0988
+[10] -0.9720</code></pre>
+</div>
+</div>
 <p>Una vez que tenés los puntajes z, podés usarlos como una forma alternativa de describir tus datos. Por ejemplo, ahora con solo mirar un puntaje sabés si es más o menos probable que ocurra, porque ya conocés cómo funciona el área bajo la curva normal. Puntajes z entre -1 y 1 ocurren bastante seguido; mayores que ±1 todavía ocurren, pero con menos frecuencia; y los que superan ±2 son bastante poco comunes. Esta es una forma práctica de mirar tus números y tener una idea general de qué tan seguido ocurren.</p>
 <p>En general, no conocés la media ni el desvío estándar de la población de la que provienen tus datos. Por eso, podés usar la <strong>media y el desvío estándar de tu muestra</strong> como estimaciones, y usarlos para calcular los puntajes z.</p>
 <p>Finalmente, los puntajes z también se llaman <strong>puntajes estandarizados</strong>, porque cada puntaje bruto se expresa en términos de cuántas desviaciones estándar se encuentra respecto de la media. Es muy probable que esta sea la última vez que hablemos de puntajes z en este libro. Y podrías preguntarte por qué nos molestamos en explicarlos. Primero, porque vale la pena saber que existen. Segundo, porque se vuelven importantes a medida que tu conocimiento estadístico se vuelve más avanzado. Tercero, porque algunos conceptos estadísticos —como la correlación— pueden expresarse en términos de puntajes z, y eso ilumina aspectos de esos estadísticos. Y por último, porque los puntajes z son muy útiles cuando estás trabajando con una distribución normal cuya media y desviación estándar son conocidas.</p>
@@ -1494,7 +1498,7 @@ z = \frac{\text{puntaje bruto} - \text{media}}{\text{desvío estándar}}
 <p>Antes de listar un montón de complicaciones, dejame decirte qué creo que sí podemos hacer con nuestra muestra. Siempre que sea lo suficientemente grande, los parámetros de nuestra muestra serán una bastante buena estimación de cómo se vería otra muestra tomada de la misma población. Y por los motivos que vamos a discutir, muchas veces eso es todo lo que podemos decir. Pero está bien: como vas a ver a lo largo de este libro, podemos trabajar con eso.</p>
 <p><strong>Problema 1: múltiples poblaciones</strong> Si observás una muestra grande de respuestas a un cuestionario, vas a encontrar evidencia de múltiples distribuciones dentro de tu muestra. Las personas responden de maneras distintas. Algunas personas son muy cautas y evitan los extremos. Sus respuestas tienden a concentrarse en el centro de la escala, con muchos 3, 4 y 5. Otras personas responden de manera muy bimodal: se sienten muy felices o muy infelices dependiendo del momento del día. Sus respuestas se agrupan mayormente en los extremos: 1, 2, 6 y 7. Esos números parecen provenir de una distribución completamente distinta. También hay personas que son completamente felices o completamente infelices. Una vez más, estos dos “grupos” de personas generan respuestas que parecen venir de dos distribuciones diferentes: una con casi todos 6 y 7, y otra con casi todos 1 y 2. Otras personas responden de forma bastante aleatoria, y sus respuestas se distribuyen de manera casi uniforme en toda la escala. Entonces, ¿existe una única población con parámetros que podamos estimar a partir de nuestra muestra? Probablemente no. Podría tratarse de una mezcla de muchas poblaciones, cada una con su propia distribución.</p>
 <p><strong>Problema 2: ¿Qué miden realmente estas preguntas?</strong> Si todo el propósito de hacer el cuestionario es estimar la felicidad de la población, entonces realmente tenemos que preguntarnos si nuestras mediciones nos dicen algo sobre la felicidad en primer lugar. Algunas preguntas que surgen: ¿Las personas son precisas al decir cuán felices son? ¿La medición de felicidad depende de la escala usada? Por ejemplo, ¿los resultados serían distintos si usáramos una escala de 0 a 100, o de -100 a +100, o si no usáramos números en absoluto? ¿La medición de felicidad depende de cómo está redactada la pregunta? ¿Una medida como esta nos dice <strong>todo</strong> lo que queremos saber sobre la felicidad? (probablemente no). ¿Qué cosas está dejando afuera? (¿quién sabe? probablemente muchas).</p>
-<p>En resumen, nadie sabe con certeza si este tipo de preguntas miden lo que queremos que midan, solo esperamos que lo hagan. Lo que sí sabemos bastante bien es qué tipo de cosas miden realmente este tipo de preguntas. Es algo bastante evidente, que está justo frente a nosotros: las mediciones de cuestionarios miden cómo la gente responde cuestionarios. Dicho de otro modo: miden cómo se comportan las personas cuando se les da un cuestionario para responder. Esto puede también reflejar algo sobre la felicidad, si la pregunta trata sobre felicidad. Pero, resulta que las personas son notablemente consistentes en cómo responden, incluso cuando las preguntas son totalmente absurdas, o cuando ni siquiera hay preguntas (¡solo números para elegir!) <span class="citation" data-cites="maul_rethinking_2017">Maul (<a href="references.html#ref-maul_rethinking_2017" role="doc-biblioref">2017</a>)</span>.</p>
+<p>En resumen, nadie sabe con certeza si este tipo de preguntas miden lo que queremos que midan, solo esperamos que lo hagan. Lo que sí sabemos bastante bien es qué tipo de cosas miden realmente este tipo de preguntas. Es algo bastante evidente, que está justo frente a nosotros: las mediciones de cuestionarios miden cómo la gente responde cuestionarios. Dicho de otro modo: miden cómo se comportan las personas cuando se les da un cuestionario para responder. Esto puede también reflejar algo sobre la felicidad, si la pregunta trata sobre felicidad. Pero, resulta que las personas son notablemente consistentes en cómo responden, incluso cuando las preguntas son totalmente absurdas, o cuando ni siquiera hay preguntas (¡solo números para elegir!) <span class="citation" data-cites="maul_rethinking_2017">(<a href="references.html#ref-maul_rethinking_2017" role="doc-biblioref">Maul 2017</a>)</span>.</p>
 <p>La enseñanza que nos dejan estas complicaciones es que, en psicología, podemos recolectar muestras… pero muchas veces no tenemos una idea clara de qué población está asociada a esas muestras. Puede haber muchas poblaciones distintas. O la población puede variar dependiendo de a quién le preguntes. Y finalmente, la “población” quizás no sea la que vos querés que sea.</p>
 </section>
 </section>
@@ -1769,6 +1773,9 @@ Maul, Andrew. 2017. <span>«Rethinking <span>Traditional Methods</span> of <span
 </div>
 <div id="ref-Meehl1967" class="csl-entry" role="listitem">
 Meehl, P. H. 1967. <span>«Theory Testing in Psychology and Physics: <span>A</span> Methodological Paradox»</span>. <em>Philosophy of Science</em> 34: 103-15. <a href="https://doi.org/10.1086/288135">https://doi.org/10.1086/288135</a>.
+</div>
+<div id="ref-Stigler1986" class="csl-entry" role="listitem">
+Stigler, S. M. 1986. <em>The History of Statistics</em>. <span>Cambridge, MA</span>: <span>Harvard University Press</span>.
 </div>
 </div>
 </section>

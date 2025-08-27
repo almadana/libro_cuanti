@@ -2,7 +2,9 @@
 author:
   - Danielle J. Navarro
   - Matthew J. C. Crump
-abstract-title: Chapter notes
+  
+abstract-title: Notas
+abstract: Traducido al español rioplatense por ChatGPT4-o bajo la supervisión de Álvaro Cabana.
 lang: es
 aliases: [probability-sampling-and-estimation.html]
 ---

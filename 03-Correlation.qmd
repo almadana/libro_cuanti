@@ -425,7 +425,7 @@ felicidad_x<-round(runif(100,0,100))
 df_random<-data.frame(sujeto_x,chocolate_x,felicidad_x)
 
 all_data<-rbind(df_positive,df_negative,df_random)
-all_data<-cbind(all_data,correlation=rep(c("positiva","negativa","aleatoria"),each=100))
+all_data<-cbind(all_data,correlation=rep(c("positiva","negativa","nula"),each=100))
 
 ggplot(all_data,aes(x=chocolate_x,y=felicidad_x))+
   geom_point()+
@@ -724,7 +724,7 @@ Abajo hay un script escrito en el lenguaje de programación R. No vamos a entrar
 ```{r}
 #| label: fig-3anotherthousand
 #| fig-cap: "Otra figura que muestra el rango de valores de r que pueden obtenerse por azar."
-#| echo: true
+#| warning: false
 
 correlaciones_simuladas <- length(0)
 for(sim in 1:1000){

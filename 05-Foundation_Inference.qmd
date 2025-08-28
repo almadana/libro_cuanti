@@ -1035,7 +1035,7 @@ Volvamos al ejemplo del chicle. Después de aleatorizar nuestras notas muchas ve
 
 Este es el histograma de las diferencias de medias obtenidas con la prueba de aleatorización. Para esta simulación, aleatorizamos los resultados del experimento original 1000 veces. Esto es lo que **podría haber pasado**. La línea azul en la @fig-5randhist muestra **dónde se ubica la diferencia observada** sobre el eje x.
 
-```{r, echo=F,warning=F}
+```{r, echo = F, warning=F,message=F}
 #| label: fig-5randhist
 #| fig-cap: "Histograma de diferencias de medias simuladas en una prueba de aleatorización"
 

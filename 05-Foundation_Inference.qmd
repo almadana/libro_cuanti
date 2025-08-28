@@ -1,4 +1,10 @@
-f--- author: - Matthew J. C. Crump lang: es abstract-title: Notas abstract: Traducido al español rioplatense por ChatGPT4-o bajo la supervisión de Álvaro Cabana. aliases: \[foundations-for-inference.html\] ---
+---
+author: Matthew J. C. Crump 
+lang: es 
+abstract-title: Notas 
+abstract: Traducido al español rioplatense por ChatGPT4-o bajo la supervisión de Álvaro Cabana. 
+aliases: [foundations-for-inference.html] 
+---
 
 ```{r, include = FALSE}
 source("global_stuff.R")
@@ -939,7 +945,7 @@ chicle_df <- chicle_df %>%
   rbind(c("Sumas", colSums(chicle_df[, 2:3]))) %>%
   rbind(c("Medias", colMeans(chicle_df[, 2:3])))
 
-knitr::kable(chicle_df)
+knitr::kable(chicle_df,align="c")
 ```
 
 Entonces, ¿los estudiantes que masticaron chicle tuvieron mejor desempeño que los que no lo hicieron? Mirá la fila de medias al final de la tabla. La media para los estudiantes que masticaron chicle fue `r mean(chicle)`, y la media para los estudiantes sin chicle fue `r mean(no_chicle)`. A simple vista, parece que masticar chicle **funcionó**.
@@ -962,7 +968,7 @@ chicle_df_small$no_chicle <- as.numeric(chicle_df_small$no_chicle)
 chicle_df_small <- chicle_df_small %>%
   rbind(c("Sums", colSums(chicle_df_small[, 2:3]))) %>%
   rbind(c("Means", colMeans(chicle_df_small[, 2:3])))
-knitr::kable(chicle_df_small)
+knitr::kable(chicle_df_small,align = "c")
 ```
 
 Las cosas podrían haber salido diferente si algunos de los sujetos en el grupo con chicle hubieran sido intercambiados con sujetos del grupo sin chicle. Así es cómo podemos hacer un poco de aleatorización.

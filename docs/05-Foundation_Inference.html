@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Matthew J. C. Crump">
 
 <title>6&nbsp; Fundamentos de la inferencia – Respondiendo preguntas con datos</title>
 <style>
@@ -89,17 +90,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
   }
 }</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1116FZ99DZ"></script>
@@ -144,7 +145,7 @@ window.Quarto = {
 
 <link rel="stylesheet" href="cuantistats.css">
 <meta property="og:title" content="6&nbsp; Fundamentos de la inferencia – Respondiendo preguntas con datos">
-<meta property="og:description" content="">
+<meta property="og:description" content="Traducido al español rioplatense por ChatGPT4-o bajo la supervisión de Álvaro Cabana.">
 <meta property="og:site_name" content="Respondiendo preguntas con datos">
 <meta name="twitter:title" content="6&nbsp; Fundamentos de la inferencia – Respondiendo preguntas con datos">
 <meta name="twitter:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
@@ -161,13 +162,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-Foundation_Inference.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Fundamentos de la inferencia</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -187,7 +188,7 @@ window.Quarto = {
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
+        <div id="quarto-search" class="" title="Buscar"></div>
         </div>
         </div>
     <div class="sidebar-menu-container"> 
@@ -265,7 +266,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+    <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
   <li><a href="#breve-repaso-de-los-experimentos" id="toc-breve-repaso-de-los-experimentos" class="nav-link active" data-scroll-target="#breve-repaso-de-los-experimentos"><span class="header-section-number">6.1</span> Breve repaso de los experimentos</a></li>
@@ -303,7 +304,7 @@ window.Quarto = {
   <li><a href="#tipos-de-errores" id="toc-tipos-de-errores" class="nav-link" data-scroll-target="#tipos-de-errores"><span class="header-section-number">6.7.2</span> Tipos de Errores</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/almadana/libro_cuanti/edit/master/05-Foundation_Inference.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/almadana/libro_cuanti/edit/master/05-Foundation_Inference.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -317,17 +318,28 @@ window.Quarto = {
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Matthew J. C. Crump </p>
+          </div>
+  </div>
     
   
     
   </div>
   
+<div>
+  <div class="abstract">
+    <div class="block-title">Notas</div>
+    Traducido al español rioplatense por ChatGPT4-o bajo la supervisión de Álvaro Cabana.
+  </div>
+</div>
 
 
 </header>
 
 
-<p>f— author: - Matthew J. C. Crump lang: es abstract-title: Notas abstract: Traducido al español rioplatense por ChatGPT4-o bajo la supervisión de Álvaro Cabana. aliases: [foundations-for-inference.html] —</p>
 <blockquote class="blockquote">
 <p>Los datos y los conjuntos de datos no son objetivos; son creaciones del diseño humano. Les damos voz a los números, inferimos a partir de ellos, y definimos su significado a través de nuestras interpretaciones. — Katie Crawford</p>
 </blockquote>
@@ -349,152 +361,152 @@ window.Quarto = {
 <p>Lo que viene a continuación puede parecer un poco repetitivo con respecto al capítulo anterior. Volvemos a mirar muestreo de números desde una distribución uniforme. Mostramos que las muestras individuales pueden lucir bastante diferentes entre sí. Gran parte del comienzo de este capítulo ya te va a resultar familiar, pero llevamos los conceptos en una dirección un poco distinta: la dirección es cómo hacer inferencias sobre el papel del azar en tu experimento.</p>
 <section id="distribución-uniforme" class="level3" data-number="6.2.1">
 <h3 data-number="6.2.1" class="anchored" data-anchor-id="distribución-uniforme"><span class="header-section-number">6.2.1</span> Distribución uniforme</h3>
-<p>Como recordatorio del capítulo anterior, la <a href="#fig-5unifagain" class="quarto-xref">Figure&nbsp;<span>6.1</span></a> muestra que la forma de una distribución uniforme es completamente plana.</p>
+<p>Como recordatorio del capítulo anterior, la <a href="#fig-5unifagain" class="quarto-xref">Figura&nbsp;<span>6.1</span></a> muestra que la forma de una distribución uniforme es completamente plana.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-5unifagain" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-5unifagain-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="05-Foundation_Inference_files/figure-html/fig-5unifagain-1.png" class="img-fluid figure-img" width="672">
+<img src="05-Foundation_Inference_files/figure-html/fig-5unifagain-1.png" class="img-fluid figure-img" style="width:75.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5unifagain-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.1: Distribución uniforme que muestra que los números del 1 al 10 tienen la misma probabilidad de ser muestreados
+Figura&nbsp;6.1: Distribución uniforme que muestra que los números del 1 al 10 tienen la misma probabilidad de ser muestreados
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>OK, eso no parece gran cosa. ¿Qué está pasando acá? El eje y está etiquetado como <code>Probabilidad</code>, y va de 0 a 1. El eje x está etiquetado como <code>Número</code>, y va del 1 al 10. Hay una línea horizontal atravesando el gráfico. Esa línea indica la probabilidad de cada número del 1 al 10. Notá que la línea es plana. Esto significa que <strong>todos los números tienen la misma probabilidad de ocurrir</strong>. Más específicamente, hay 10 números del 1 al 10 (1,2,3,4,5,6,7,8,9,10), y todos tienen la misma chance de aparecer. 1 dividido 10 es 0,1, que es la probabilidad indicada por la línea horizontal.</p>
-<p>“¿Y qué con eso?” Imaginá que esta distribución uniforme es una máquina generadora de números. Escupe números, pero escupe <strong>cada número con la probabilidad indicada por la línea</strong>. Si esta distribución comenzara a generar números, escupiría un 10% de unos, un 10% de doses, un 10% de treses, y así sucesivamente, hasta un 10% de dieces. ¿Querés ver cómo se vería eso? Hagamos que escupa 100 números y pongámoslos en la <a href="#tbl-5100rand" class="quarto-xref">Table&nbsp;<span>6.1</span></a>.</p>
+<p>“¿Y qué con eso?” Imaginá que esta distribución uniforme es una máquina generadora de números. Escupe números, pero escupe <strong>cada número con la probabilidad indicada por la línea</strong>. Si esta distribución comenzara a generar números, escupiría un 10% de unos, un 10% de doses, un 10% de treses, y así sucesivamente, hasta un 10% de dieces. ¿Querés ver cómo se vería eso? Hagamos que escupa 100 números y pongámoslos en la <a href="#tbl-5100rand" class="quarto-xref">Tabla&nbsp;<span>6.1</span></a>.</p>
 <div class="cell">
 <div id="tbl-5100rand" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-5100rand-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;6.1: 100 números muestreados aleatoriamente de una distribución uniforme.
+Tabla&nbsp;6.1: 100 números muestreados aleatoriamente de una distribución uniforme.
 </figcaption>
 <div aria-describedby="tbl-5100rand-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">1</td>
 <td style="text-align: right;">10</td>
-<td style="text-align: right;">7</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
 <td style="text-align: right;">9</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">4</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">9</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">4</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">3</td>
 <td style="text-align: right;">5</td>
 <td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">10</td>
 <td style="text-align: right;">3</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">6</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">9</td>
-<td style="text-align: right;">2</td>
+<td style="text-align: right;">9</td>
 <td style="text-align: right;">8</td>
 <td style="text-align: right;">9</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">9</td>
 <td style="text-align: right;">5</td>
-<td style="text-align: right;">2</td>
+<td style="text-align: right;">10</td>
 <td style="text-align: right;">9</td>
-<td style="text-align: right;">6</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">2</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">6</td>
 <td style="text-align: right;">6</td>
 <td style="text-align: right;">9</td>
-<td style="text-align: right;">4</td>
 <td style="text-align: right;">9</td>
 <td style="text-align: right;">7</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">2</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">4</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">6</td>
 <td style="text-align: right;">3</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">8</td>
 <td style="text-align: right;">9</td>
-<td style="text-align: right;">8</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">4</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">7</td>
 <td style="text-align: right;">5</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
 <td style="text-align: right;">4</td>
+<td style="text-align: right;">9</td>
 <td style="text-align: right;">8</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">2</td>
 <td style="text-align: right;">7</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6</td>
 </tr>
 </tbody>
 </table>
@@ -504,16 +516,16 @@ Table&nbsp;6.1: 100 números muestreados aleatoriamente de una distribución uni
 </div>
 </div>
 <p>Usamos la distribución uniforme para generar estos números. Formalmente, a esto lo llamamos <strong>muestreo</strong> desde una <strong>distribución</strong>. Muestrear es lo que hacés en el supermercado cuando hay comida para degustar. Podés seguir tomando más. Sin embargo, si tomás <strong>todas</strong> las muestras, lo que tenés se llama <strong>población</strong>. Vamos a hablar más sobre muestras y poblaciones más adelante. Como usamos la distribución uniforme para generar los números, ya sabemos de dónde vienen. Pero por ahora, podemos fingir que alguien aparece en tu puerta, te muestra estos números, y vos te preguntás de dónde salieron. ¿Podés decir, solo mirando los números, que provienen de una distribución uniforme?</p>
-<p>¿Qué deberías observar? Quizás quieras saber si todos los números ocurren con <strong>aproximadamente la misma frecuencia</strong> —después de todo, eso es lo que <strong>debería</strong> pasar, ¿no? Es decir, si cada número tiene la misma chance de ocurrir, deberíamos ver que <strong>cada número ocurre más o menos la misma cantidad de veces</strong>. Ya sabemos qué es un histograma, así que podemos poner nuestra muestra de 100 números en un histograma y ver cómo se distribuyen los conteos. Si todos los números del 1 al 10 aparecen con igual frecuencia, entonces cada número individual debería aparecer unas 10 veces. La <a href="#fig-5histunif" class="quarto-xref">Figure&nbsp;<span>6.2</span></a> muestra el histograma:</p>
+<p>¿Qué deberías observar? Quizás quieras saber si todos los números ocurren con <strong>aproximadamente la misma frecuencia</strong> —después de todo, eso es lo que <strong>debería</strong> pasar, ¿no? Es decir, si cada número tiene la misma chance de ocurrir, deberíamos ver que <strong>cada número ocurre más o menos la misma cantidad de veces</strong>. Ya sabemos qué es un histograma, así que podemos poner nuestra muestra de 100 números en un histograma y ver cómo se distribuyen los conteos. Si todos los números del 1 al 10 aparecen con igual frecuencia, entonces cada número individual debería aparecer unas 10 veces. La <a href="#fig-5histunif" class="quarto-xref">Figura&nbsp;<span>6.2</span></a> muestra el histograma:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-5histunif" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-5histunif-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="05-Foundation_Inference_files/figure-html/fig-5histunif-1.png" class="img-fluid figure-img" width="672">
+<img src="05-Foundation_Inference_files/figure-html/fig-5histunif-1.png" class="img-fluid figure-img" style="width:75.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5histunif-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.2: Histograma de 100 números muestreados aleatoriamente de una distribución uniforme que contiene los enteros del 1 al 10
+Figura&nbsp;6.2: Histograma de 100 números muestreados aleatoriamente de una distribución uniforme que contiene los enteros del 1 al 10
 </figcaption>
 </figure>
 </div>
@@ -524,7 +536,7 @@ Figure&nbsp;6.2: Histograma de 100 números muestreados aleatoriamente de una di
 <section id="no-todas-las-muestras-son-iguales-de-hecho-suelen-ser-bastante-distintas" class="level3" data-number="6.2.2">
 <h3 data-number="6.2.2" class="anchored" data-anchor-id="no-todas-las-muestras-son-iguales-de-hecho-suelen-ser-bastante-distintas"><span class="header-section-number">6.2.2</span> No todas las muestras son iguales — de hecho, suelen ser bastante distintas</h3>
 <p>Veamos más de cerca el error muestral. Vamos a tomar una muestra de 20 números de la distribución uniforme. Deberíamos esperar que cada número entre 1 y 10 ocurra unas dos veces. Como antes, esta expectativa puede visualizarse con un histograma.</p>
-<p>Para tener una mejor idea de la variabilidad muestral, repitamos ese proceso <strong>diez veces</strong>. La <a href="#fig-5manysamples" class="quarto-xref">Figure&nbsp;<span>6.3</span></a> muestra 10 histogramas, cada uno representando una muestra distinta de 20 números:</p>
+<p>Para tener una mejor idea de la variabilidad muestral, repitamos ese proceso <strong>diez veces</strong>. La <a href="#fig-5manysamples" class="quarto-xref">Figura&nbsp;<span>6.3</span></a> muestra 10 histogramas, cada uno representando una muestra distinta de 20 números:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-5manysamples" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -533,23 +545,23 @@ Figure&nbsp;6.2: Histograma de 100 números muestreados aleatoriamente de una di
 <img src="05-Foundation_Inference_files/figure-html/fig-5manysamples-1.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5manysamples-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.3: Histogramas de 10 muestras distintas de la distribución uniforme. Cada muestra contiene 20 números. Todos los histogramas se ven bastante distintos. Las diferencias entre las muestras se deben al error muestral o al azar.
+Figura&nbsp;6.3: Histogramas de 10 muestras distintas de la distribución uniforme. Cada muestra contiene 20 números. Todos los histogramas se ven bastante distintos. Las diferencias entre las muestras se deben al error muestral o al azar.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Probablemente notes enseguida que ninguno de los histogramas es igual. Aunque estamos tomando aleatoriamente 20 números de la misma distribución uniforme, <strong>cada muestra de 20 números resulta diferente</strong>. Esto es <strong>variabilidad muestral</strong>, o <strong>error de muestreo</strong>.</p>
-<p>La <a href="#fig-5expectedUnif" class="quarto-xref">Figure&nbsp;<span>6.4</span></a> muestra una versión animada del proceso de elegir repetidamente 20 números aleatorios nuevos y graficar un histograma. La línea horizontal muestra la forma plana de la distribución uniforme. La línea cruza el eje y en el valor 2; y esperamos que cada número (del 1 al 10) ocurra unas 2 veces en una muestra de 20. Sin embargo, cada muestra varía bastante, debido al azar.</p>
+<p>La <a href="#fig-5expectedUnif" class="quarto-xref">Figura&nbsp;<span>6.4</span></a> muestra una versión animada del proceso de elegir repetidamente 20 números aleatorios nuevos y graficar un histograma. La línea horizontal muestra la forma plana de la distribución uniforme. La línea cruza el eje y en el valor 2; y esperamos que cada número (del 1 al 10) ocurra unas 2 veces en una muestra de 20. Sin embargo, cada muestra varía bastante, debido al azar.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-5expectedUnif" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-5expectedUnif-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="imgs/gifs/sampleUnifExpected-1_es.gif" class="img-fluid figure-img">
+<img src="imgs/gifs/sampleUnifExpected-1_es.gif" class="img-fluid figure-img" style="width:75.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5expectedUnif-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.4: Animación de histogramas para diferentes muestras de 20 valores de una distribución uniforme (números del 1 al 10). Las líneas negras muestran la cantidad esperada de veces que debería aparecer cada número. El hecho de que no todos los números aparezcan exactamente 2 veces ilustra el error asociado al muestreo.
+Figura&nbsp;6.4: Animación de histogramas para diferentes muestras de 20 valores de una distribución uniforme (números del 1 al 10). Las líneas negras muestran la cantidad esperada de veces que debería aparecer cada número. El hecho de que no todos los números aparezcan exactamente 2 veces ilustra el error asociado al muestreo.
 </figcaption>
 </figure>
 </div>
@@ -559,16 +571,16 @@ Figure&nbsp;6.4: Animación de histogramas para diferentes muestras de 20 valore
 </section>
 <section id="las-muestras-grandes-se-parecen-más-a-la-distribución-de-la-que-provienen" class="level3" data-number="6.2.3">
 <h3 data-number="6.2.3" class="anchored" data-anchor-id="las-muestras-grandes-se-parecen-más-a-la-distribución-de-la-que-provienen"><span class="header-section-number">6.2.3</span> Las muestras grandes se parecen más a la distribución de la que provienen</h3>
-<p>Volvamos a la pregunta: ¿cuál de las dos muestras en <a href="#fig-5whichone" class="quarto-xref">Figure&nbsp;<span>6.5</span></a> te parece que vino de una distribución uniforme?</p>
+<p>Volvamos a la pregunta: ¿cuál de las dos muestras en <a href="#fig-5whichone" class="quarto-xref">Figura&nbsp;<span>6.5</span></a> te parece que vino de una distribución uniforme?</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-5whichone" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-5whichone-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="05-Foundation_Inference_files/figure-html/fig-5whichone-1.png" class="img-fluid figure-img" width="672">
+<img src="05-Foundation_Inference_files/figure-html/fig-5whichone-1.png" class="img-fluid figure-img" style="width:75.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5whichone-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.5: ¿Cuál de estas dos muestras proviene de una distribución uniforme?
+Figura&nbsp;6.5: ¿Cuál de estas dos muestras proviene de una distribución uniforme?
 </figcaption>
 </figure>
 </div>
@@ -576,7 +588,7 @@ Figure&nbsp;6.5: ¿Cuál de estas dos muestras proviene de una distribución uni
 </div>
 <p>La respuesta es que <strong>ambas</strong> vinieron de una distribución uniforme. Pero ninguna <strong>parece</strong> que lo haya hecho.</p>
 <p>¿Podemos mejorar las cosas y facilitar ver si una muestra proviene de una distribución uniforme? Sí, podemos. Lo único que necesitamos hacer es <strong>aumentar el tamaño de la muestra</strong>. A menudo usamos la letra <code>n</code> para referirnos al tamaño muestral. <code>n</code> es el número de observaciones en la muestra.</p>
-<p>Así que aumentemos el número de observaciones en cada muestra, de 20 a 100. Vamos a crear 10 muestras (cada una con 100 observaciones), y a graficar un histograma para cada una. Todas estas muestras se extraen de la <strong>misma</strong> distribución uniforme. Esto significa que deberíamos esperar que <strong>cada número del 1 al 10 ocurra unas 10 veces</strong> en cada muestra. Los histogramas están en la <a href="#fig-5unifsamp100" class="quarto-xref">Figure&nbsp;<span>6.6</span></a>.</p>
+<p>Así que aumentemos el número de observaciones en cada muestra, de 20 a 100. Vamos a crear 10 muestras (cada una con 100 observaciones), y a graficar un histograma para cada una. Todas estas muestras se extraen de la <strong>misma</strong> distribución uniforme. Esto significa que deberíamos esperar que <strong>cada número del 1 al 10 ocurra unas 10 veces</strong> en cada muestra. Los histogramas están en la <a href="#fig-5unifsamp100" class="quarto-xref">Figura&nbsp;<span>6.6</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-5unifsamp100" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -585,7 +597,7 @@ Figure&nbsp;6.5: ¿Cuál de estas dos muestras proviene de una distribución uni
 <img src="05-Foundation_Inference_files/figure-html/fig-5unifsamp100-1.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5unifsamp100-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.6: Histogramas de diferentes muestras de una distribución uniforme. N = 100 para cada muestra.
+Figura&nbsp;6.6: Histogramas de diferentes muestras de una distribución uniforme. N = 100 para cada muestra.
 </figcaption>
 </figure>
 </div>
@@ -601,13 +613,13 @@ Figure&nbsp;6.6: Histogramas de diferentes muestras de una distribución uniform
 <img src="05-Foundation_Inference_files/figure-html/fig-5unifsamp1000-1.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5unifsamp1000-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.7: Histogramas de diferentes muestras de una distribución uniforme. N = 1000 para cada muestra.
+Figura&nbsp;6.7: Histogramas de diferentes muestras de una distribución uniforme. N = 1000 para cada muestra.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>La <a href="#fig-5unifsamp1000" class="quarto-xref">Figure&nbsp;<span>6.7</span></a> muestra que los histogramas empiezan a aplanarse. Las barras todavía no están perfectamente en 100, porque sigue habiendo error muestral (siempre lo habrá). Pero si vieras un histograma que se ve plano y supieras que la muestra contiene muchas observaciones, podrías tener más confianza en que esos números provienen de una distribución uniforme.</p>
+<p>La <a href="#fig-5unifsamp1000" class="quarto-xref">Figura&nbsp;<span>6.7</span></a> muestra que los histogramas empiezan a aplanarse. Las barras todavía no están perfectamente en 100, porque sigue habiendo error muestral (siempre lo habrá). Pero si vieras un histograma que se ve plano y supieras que la muestra contiene muchas observaciones, podrías tener más confianza en que esos números provienen de una distribución uniforme.</p>
 <p>Solo por diversión, hagamos muestras realmente grandes. Digamos, 100.000 observaciones por muestra. En ese caso, deberíamos esperar que cada número ocurra unas 10.000 veces. ¿Qué pasa?</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -617,13 +629,13 @@ Figure&nbsp;6.7: Histogramas de diferentes muestras de una distribución uniform
 <img src="05-Foundation_Inference_files/figure-html/fig-5sampunifALOT-1.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5sampunifALOT-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.8: Histogramas de distintas muestras de una distribución uniforme. N = 100.000 para cada muestra.
+Figura&nbsp;6.8: Histogramas de distintas muestras de una distribución uniforme. N = 100.000 para cada muestra.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>La <a href="#fig-5sampunifALOT" class="quarto-xref">Figure&nbsp;<span>6.8</span></a> muestra que los histogramas de cada muestra empiezan a parecerse entre sí. Todas tienen 100.000 observaciones, y eso le da suficiente oportunidad al azar para distribuir los números de manera más equitativa, asegurándose aproximadamente de que todos ocurran más o menos la misma cantidad de veces. Como podés ver, las barras están todas muy cerca de 10.000, que es donde deberían estar si la muestra realmente proviene de una distribución uniforme. De nuevo, <strong>no todas las barras tienen exactamente el mismo alto</strong> —todavía hay error muestral—, pero <strong>el patrón general</strong> es ahora mucho más claro. Cada número ocurre más o menos la misma cantidad de veces, y las diferencias entre muestras son mucho menores.</p>
+<p>La <a href="#fig-5sampunifALOT" class="quarto-xref">Figura&nbsp;<span>6.8</span></a> muestra que los histogramas de cada muestra empiezan a parecerse entre sí. Todas tienen 100.000 observaciones, y eso le da suficiente oportunidad al azar para distribuir los números de manera más equitativa, asegurándose aproximadamente de que todos ocurran más o menos la misma cantidad de veces. Como podés ver, las barras están todas muy cerca de 10.000, que es donde deberían estar si la muestra realmente proviene de una distribución uniforme. De nuevo, <strong>no todas las barras tienen exactamente el mismo alto</strong> —todavía hay error muestral—, pero <strong>el patrón general</strong> es ahora mucho más claro. Cada número ocurre más o menos la misma cantidad de veces, y las diferencias entre muestras son mucho menores.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -637,32 +649,32 @@ Consejo pro
 <p>El patrón que muestra una muestra tiende a estabilizarse a medida que aumenta el tamaño muestral. Las muestras pequeñas pueden mostrar todo tipo de patrones, debido al error muestral (el azar).</p>
 </div>
 </div>
-<p>Antes de volver al tema de los experimentos con el que comenzamos, hagamos dos preguntas más. Primero: ¿cuál de las dos muestras en <a href="#fig-5whichoneB" class="quarto-xref">Figure&nbsp;<span>6.9</span></a> creés que proviene de una distribución uniforme? Dato: cada una de estas muestras tiene 20 observaciones.</p>
+<p>Antes de volver al tema de los experimentos con el que comenzamos, hagamos dos preguntas más. Primero: ¿cuál de las dos muestras en <a href="#fig-5whichoneB" class="quarto-xref">Figura&nbsp;<span>6.9</span></a> creés que proviene de una distribución uniforme? Dato: cada una de estas muestras tiene 20 observaciones.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-5whichoneB" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-5whichoneB-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="05-Foundation_Inference_files/figure-html/fig-5whichoneB-1.png" class="img-fluid figure-img" width="672">
+<img src="05-Foundation_Inference_files/figure-html/fig-5whichoneB-1.png" class="img-fluid figure-img" style="width:75.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5whichoneB-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.9: ¿Cuál de estas muestras proviene de una distribución uniforme?
+Figura&nbsp;6.9: ¿Cuál de estas muestras proviene de una distribución uniforme?
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Si no estás muy segura de la respuesta, es porque el <strong>error muestral</strong> (el azar) está “difuminando” los histogramas.</p>
-<p>Acá va exactamente la misma pregunta, solo que esta vez tomamos <strong>1.000 observaciones por muestra</strong>. ¿Cuál histograma en <a href="#fig-5whichoneC" class="quarto-xref">Figure&nbsp;<span>6.10</span></a> creés que proviene de una distribución uniforme, y cuál no?</p>
+<p>Acá va exactamente la misma pregunta, solo que esta vez tomamos <strong>1.000 observaciones por muestra</strong>. ¿Cuál histograma en <a href="#fig-5whichoneC" class="quarto-xref">Figura&nbsp;<span>6.10</span></a> creés que proviene de una distribución uniforme, y cuál no?</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-5whichoneC" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-5whichoneC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="05-Foundation_Inference_files/figure-html/fig-5whichoneC-1.png" class="img-fluid figure-img" width="672">
+<img src="05-Foundation_Inference_files/figure-html/fig-5whichoneC-1.png" class="img-fluid figure-img" style="width:75.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5whichoneC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.10: ¿Cuál de estas muestras proviene de una distribución uniforme?
+Figura&nbsp;6.10: ¿Cuál de estas muestras proviene de una distribución uniforme?
 </figcaption>
 </figure>
 </div>
@@ -716,19 +728,11 @@ SHINY APP acá
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">izquierda</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">izquierda</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">izquierda</td>
 <td style="text-align: right;">1</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">izquierda</td>
-<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">izquierda</td>
@@ -755,11 +759,11 @@ SHINY APP acá
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">derecha</td>
-<td style="text-align: right;">1</td>
+<td style="text-align: left;">izquierda</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">derecha</td>
+<td style="text-align: left;">izquierda</td>
 <td style="text-align: right;">1</td>
 </tr>
 <tr class="odd">
@@ -780,7 +784,15 @@ SHINY APP acá
 </tr>
 <tr class="odd">
 <td style="text-align: left;">derecha</td>
-<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">derecha</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">derecha</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">derecha</td>
@@ -799,16 +811,16 @@ SHINY APP acá
 </div>
 </div>
 <p>—“¿Qué estoy viendo acá?” Esta es una tabla en formato largo. Cada fila es una bolita. La primera columna indica con qué mano se sacó. La segunda indica qué tipo de bolita es. Vamos a decir que los valores <code>1</code> representan bolitas verdes y los <code>0</code> representan bolitas rojas.</p>
-<p>Entonces… ¿la mano izquierda te hizo sacar más bolitas verdes que la mano derecha? Sería más fácil mirar los datos usando un gráfico de barras (<a href="#fig-5bolitaA" class="quarto-xref">Figure&nbsp;<span>6.11</span></a>). Para simplificar, vamos a contar solo las bolitas verdes (las otras necesariamente son rojas). Así que solo necesitamos sumar los unos; los ceros no suman nada.</p>
+<p>Entonces… ¿la mano izquierda te hizo sacar más bolitas verdes que la mano derecha? Sería más fácil mirar los datos usando un gráfico de barras (<a href="#fig-5bolitaA" class="quarto-xref">Figura&nbsp;<span>6.11</span></a>). Para simplificar, vamos a contar solo las bolitas verdes (las otras necesariamente son rojas). Así que solo necesitamos sumar los unos; los ceros no suman nada.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-5bolitaA" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-5bolitaA-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="05-Foundation_Inference_files/figure-html/fig-5bolitaA-1.png" class="img-fluid figure-img" width="672">
+<img src="05-Foundation_Inference_files/figure-html/fig-5bolitaA-1.png" class="img-fluid figure-img" style="width:75.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5bolitaA-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.11: Conteo de bolitas verdes seleccionadas al azar por cada mano.
+Figura&nbsp;6.11: Conteo de bolitas verdes seleccionadas al azar por cada mano.
 </figcaption>
 </figure>
 </div>
@@ -823,7 +835,7 @@ Figure&nbsp;6.11: Conteo de bolitas verdes seleccionadas al azar por cada mano.
 <h3 data-number="6.3.2" class="anchored" data-anchor-id="las-diferencias-causadas-por-el-azar-se-pueden-simular"><span class="header-section-number">6.3.2</span> Las diferencias causadas por el azar se pueden simular</h3>
 <p>Recordá cuando mostramos que el azar puede producir correlaciones. También mostramos que el azar tiene <strong>limitaciones</strong> en su capacidad para producir correlaciones. Por ejemplo, el azar <strong>genera con más frecuencia correlaciones débiles que fuertes</strong>. ¿Te acordás de la “ventana del azar”? Antes descubrimos que las correlaciones que caen fuera de esa ventana son muy poco probables.</p>
 <p>Podemos hacer lo mismo con las diferencias. Vamos a investigar exactamente qué puede hacer el azar en nuestro experimento. Una vez que sepamos de lo que el azar es capaz, vamos a estar en una mejor posición para juzgar si nuestra manipulación causó una diferencia, o si simplemente <strong>podría haber sido el azar</strong>.</p>
-<p>Lo primero que vamos a hacer es simular que realizás el experimento de las bolitas <strong>10 veces seguidas</strong>. Eso va a producir 10 conjuntos distintos de resultados. La <a href="#fig-5bolitasims" class="quarto-xref">Figure&nbsp;<span>6.12</span></a> muestra gráficos de barras para cada repetición del experimento. Ahora podemos ver si la mano izquierda sacó más bolitas verdes que la derecha.</p>
+<p>Lo primero que vamos a hacer es simular que realizás el experimento de las bolitas <strong>10 veces seguidas</strong>. Eso va a producir 10 conjuntos distintos de resultados. La <a href="#fig-5bolitasims" class="quarto-xref">Figura&nbsp;<span>6.12</span></a> muestra gráficos de barras para cada repetición del experimento. Ahora podemos ver si la mano izquierda sacó más bolitas verdes que la derecha.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-5bolitasims" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -832,7 +844,7 @@ Figure&nbsp;6.11: Conteo de bolitas verdes seleccionadas al azar por cada mano.
 <img src="05-Foundation_Inference_files/figure-html/fig-5bolitasims-1.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5bolitasims-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.12: 10 repeticiones simuladas del experimento de sacar bolitas. Cada repetición da una respuesta ligeramente distinta. Cualquier diferencia entre las barras se debe al azar, o al error muestral. Esto muestra que el azar por sí solo puede producir diferencias, simplemente por el acto de muestrear.
+Figura&nbsp;6.12: 10 repeticiones simuladas del experimento de sacar bolitas. Cada repetición da una respuesta ligeramente distinta. Cualquier diferencia entre las barras se debe al azar, o al error muestral. Esto muestra que el azar por sí solo puede producir diferencias, simplemente por el acto de muestrear.
 </figcaption>
 </figure>
 </div>
@@ -850,42 +862,42 @@ Figure&nbsp;6.12: 10 repeticiones simuladas del experimento de sacar bolitas. Ca
 <div id="fig-5bolitadiffs" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-5bolitadiffs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="05-Foundation_Inference_files/figure-html/fig-5bolitadiffs-1.png" class="img-fluid figure-img" width="672">
+<img src="05-Foundation_Inference_files/figure-html/fig-5bolitadiffs-1.png" class="img-fluid figure-img" style="width:75.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5bolitadiffs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.13: Un vistazo a las diferencias en el número de bolitas verdes entre manos en distintas repeticiones. La diferencia esperada es cero, pero el error muestral produce diferencias distintas de cero.
+Figura&nbsp;6.13: Un vistazo a las diferencias en el número de bolitas verdes entre manos en distintas repeticiones. La diferencia esperada es cero, pero el error muestral produce diferencias distintas de cero.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Las barras faltantes significan que se extrajo la misma cantidad de bolitas verdes con ambas manos (puntaje de diferencia igual a 0). Un valor positivo indica que la mano izquierda sacó más bolitas verdes que la derecha. Un valor negativo significa que fue la derecha la que sacó más verdes. Notá que si hubiéramos decidido (y lo podemos hacer) calcular la diferencia al revés (mano derecha menos mano izquierda), los signos de los puntajes se invertirían.</p>
-<p>Empezamos a ver mejor qué tipo de diferencias puede generar el azar. Los puntajes de diferencia están mayormente entre -2 y +2. Podríamos hacernos una idea más clara si corremos este experimento ficticio <strong>100 veces</strong> en lugar de solo 10. Los resultados se muestran en <a href="#fig-5manydiffs" class="quarto-xref">Figure&nbsp;<span>6.14</span></a>.</p>
+<p>Empezamos a ver mejor qué tipo de diferencias puede generar el azar. Los puntajes de diferencia están mayormente entre -2 y +2. Podríamos hacernos una idea más clara si corremos este experimento ficticio <strong>100 veces</strong> en lugar de solo 10. Los resultados se muestran en <a href="#fig-5manydiffs" class="quarto-xref">Figura&nbsp;<span>6.14</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-5manydiffs" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-5manydiffs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="05-Foundation_Inference_files/figure-html/fig-5manydiffs-1.png" class="img-fluid figure-img" width="672">
+<img src="05-Foundation_Inference_files/figure-html/fig-5manydiffs-1.png" class="img-fluid figure-img" style="width:75.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5manydiffs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.14: Repetimos el experimento 100 veces y observamos las diferencias en cada repetición. Hay muchas diferencias que pueden ser causadas solo por el azar.
+Figura&nbsp;6.14: Repetimos el experimento 100 veces y observamos las diferencias en cada repetición. Hay muchas diferencias que pueden ser causadas solo por el azar.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Upss, acabamos de realizar tantos experimentos simulados que el eje x es ilegible, pero va de 1 a 100. Cada barra representa la diferencia de número de bolas verdes elegidas al azar por la mano izquierda o derecha. ¿Empiezas a notar algo? Mira el eje y, éste muestra el tamaño de la diferencia. Sí, hay muchas barras de diferentes tamaños, esto nos muestra que muchos tipos de diferencias ocurren por azar. Sin embargo, el eje y también está restringido. No va de -10 a +10. Las grandes diferencias superiores a 5 o -5 no ocurren muy a menudo.</p>
-<p>Ahora que tenemos un método para simular las diferencias debidas al azar, vamos a realizar 10.000 experimentos simulados. Pero, en lugar de trazar las diferencias en un gráfico de barras para cada experimento, ¿qué tal si observamos el histograma de puntuaciones de diferencia? El histograma en la <a href="#fig-5histdiffbolita" class="quarto-xref">Figure&nbsp;<span>6.15</span></a> proporciona una imagen más clara sobre qué diferencias ocurren con más frecuencia y cuáles no. Esta será otra ventana para observar qué tipo de diferencias es capaz de producir el azar.</p>
+<p>Ahora que tenemos un método para simular las diferencias debidas al azar, vamos a realizar 10.000 experimentos simulados. Pero, en lugar de trazar las diferencias en un gráfico de barras para cada experimento, ¿qué tal si observamos el histograma de puntuaciones de diferencia? El histograma en la <a href="#fig-5histdiffbolita" class="quarto-xref">Figura&nbsp;<span>6.15</span></a> proporciona una imagen más clara sobre qué diferencias ocurren con más frecuencia y cuáles no. Esta será otra ventana para observar qué tipo de diferencias es capaz de producir el azar.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-5histdiffbolita" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-5histdiffbolita-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="05-Foundation_Inference_files/figure-html/fig-5histdiffbolita-1.png" class="img-fluid figure-img" width="672">
+<img src="05-Foundation_Inference_files/figure-html/fig-5histdiffbolita-1.png" class="img-fluid figure-img" style="width:75.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5histdiffbolita-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.15: Histograma de las diferencias obtenidas por azar en 10.000 repeticiones. La diferencia más frecuente es 0, que es lo que esperamos por azar. Pero las diferencias pueden llegar a ser tan grandes como -10 o +10. Las diferencias más grandes ocurren con menor frecuencia. El azar no puede hacer cualquier cosa.
+Figura&nbsp;6.15: Histograma de las diferencias obtenidas por azar en 10.000 repeticiones. La diferencia más frecuente es 0, que es lo que esperamos por azar. Pero las diferencias pueden llegar a ser tan grandes como -10 o +10. Las diferencias más grandes ocurren con menor frecuencia. El azar no puede hacer cualquier cosa.
 </figcaption>
 </figure>
 </div>
@@ -909,7 +921,7 @@ Figure&nbsp;6.15: Histograma de las diferencias obtenidas por azar en 10.000 rep
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+Nota
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -948,16 +960,16 @@ Note
 <p>Pero vamos a hacer <strong>algo muy importante</strong>: vamos a fingir que <strong>no hicimos ninguna manipulación</strong>. Si hacemos esto —no hacemos nada, ninguna intervención que pudiera causar una diferencia—, entonces sabemos que <strong>cualquier diferencia entre las medias de los grupos A y B solo puede deberse al error muestral</strong>. Eliminamos todas las demás causas: solo queda el azar. Haciendo esto, vamos a poder ver exactamente qué puede hacer el azar. Más importante aún, vamos a ver qué tipo de diferencias ocurren frecuentemente, y cuáles no.</p>
 <p>Antes de hacer la simulación, necesitamos responder una pregunta: <strong>¿cuánto es “mucho”?</strong> Podríamos elegir cualquier número. Yo voy a elegir 10.000. Eso es mucho. Si algo ocurre solo 1 vez en 10.000, estoy dispuesto a decir que <strong>eso no es mucho</strong>.</p>
 <p>Bien, ya tenemos nuestro número. Vamos a simular las diferencias de medias entre los grupos A y B <strong>que podrían surgir solo por azar</strong>. Lo vamos a hacer 10.000 veces. Eso le da al azar muchas oportunidades para mostrarnos qué puede hacer y qué no.</p>
-<p>Esto es lo que hice: muestreé 20 números para el grupo A y 20 para el grupo B. Ambos grupos provienen de la misma distribución normal, con media = 100 y desviación estándar = 15. Como las muestras provienen de la <strong>misma distribución</strong>, esperamos que, en promedio, sean similares (aunque ya sabemos que las muestras siempre difieren entre sí). Después calculo la media de cada grupo, y luego la diferencia entre esas medias. Guardo ese <strong>puntaje de diferencia de medias</strong>, y repito esto hasta tener 10.000 de ellos. Después, dibujo un histograma como el de la <a href="#fig-5crumptestdiff" class="quarto-xref">Figure&nbsp;<span>6.16</span></a>.</p>
+<p>Esto es lo que hice: muestreé 20 números para el grupo A y 20 para el grupo B. Ambos grupos provienen de la misma distribución normal, con media = 100 y desviación estándar = 15. Como las muestras provienen de la <strong>misma distribución</strong>, esperamos que, en promedio, sean similares (aunque ya sabemos que las muestras siempre difieren entre sí). Después calculo la media de cada grupo, y luego la diferencia entre esas medias. Guardo ese <strong>puntaje de diferencia de medias</strong>, y repito esto hasta tener 10.000 de ellos. Después, dibujo un histograma como el de la <a href="#fig-5crumptestdiff" class="quarto-xref">Figura&nbsp;<span>6.16</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-5crumptestdiff" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-5crumptestdiff-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="05-Foundation_Inference_files/figure-html/fig-5crumptestdiff-1.png" class="img-fluid figure-img" width="672">
+<img src="05-Foundation_Inference_files/figure-html/fig-5crumptestdiff-1.png" class="img-fluid figure-img" style="width:75.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5crumptestdiff-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.16: Histograma de diferencias entre medias surgidas por azar.
+Figura&nbsp;6.16: Histograma de diferencias entre medias surgidas por azar.
 </figcaption>
 </figure>
 </div>
@@ -969,7 +981,7 @@ Figure&nbsp;6.16: Histograma de diferencias entre medias surgidas por azar.
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+Nota
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -981,17 +993,13 @@ Note
 <p>Entonces, las diferencias cercanas a cero ocurren con más frecuencia —eso es bueno, es lo que esperábamos. Las diferencias más grandes (positivas o negativas) ocurren cada vez menos. Diferencias mayores que 15 o menores que -15 <strong>no ocurrieron nunca</strong>. Para nuestros fines, parece que el azar <strong>solo produce diferencias entre -15 y 15</strong>.</p>
 <p>OK, hagamos un par de preguntas simples.¿Cuál fue el número negativo más grande (es decir, el más negativo) que ocurrió en la simulación? Vamos a usar R para esto. Todos los 10.000 puntajes de diferencia están guardados en una variable que llamé <code>diferencia</code>. Si queremos encontrar el valor mínimo, usamos la función <code>min</code>. Este es el resultado:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(diferencia)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -18.58477</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(diferencia)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -17.13554</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Bien, ¿y cuál fue el número positivo más grande que ocurrió? Usemos la función <code>max</code> para averiguarlo. Esa función encuentra el valor más grande (máximo) de una variable. Por cierto, acabamos de calcular el rango: el mínimo y el máximo de los datos. Recordá que ya aprendimos eso antes. De todos modos, acá va el máximo:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(diferencia)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 16.37724</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(diferencia)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 17.56678</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Ambos valores extremos ocurrieron <strong>solo una vez</strong>. Fueron tan poco frecuentes que ni siquiera los pudimos ver en el histograma —la barra era tan baja que no se notaba. Además, el mayor valor negativo y el mayor positivo tienen prácticamente el mismo tamaño (ignorando el signo), lo cual tiene sentido porque la distribución parece bastante simétrica.</p>
 <p>Entonces, ¿qué podemos decir sobre estos dos números —el mínimo y el máximo? Podemos decir que el mínimo ocurrió 1 vez de cada 10.000. Y que el máximo ocurrió 1 vez de cada 10.000. ¿Eso es mucho? Para mí, no. <strong>No es mucho.</strong></p>
@@ -1010,16 +1018,16 @@ Note
 <li><strong>Región del no azar</strong>. El azar <strong>no</strong> lo hizo. El azar <strong>no podría</strong> haberlo hecho.</li>
 </ol>
 <p>Las regiones están definidas por el valor mínimo y el valor máximo observados en la simulación. El azar <strong>nunca produjo un número menor ni mayor</strong> que esos extremos. La región <strong>dentro del rango</strong> es lo que el azar <strong>sí hizo</strong>, y la región <strong>fuera del rango</strong>, en ambos extremos, es lo que el azar <strong>nunca hizo</strong>.</p>
-<p>Se ve así en la <a href="#fig-5crumpdecision" class="quarto-xref">Figure&nbsp;<span>6.17</span></a>:</p>
+<p>Se ve así en la <a href="#fig-5crumpdecision" class="quarto-xref">Figura&nbsp;<span>6.17</span></a>:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-5crumpdecision" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-5crumpdecision-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="05-Foundation_Inference_files/figure-html/fig-5crumpdecision-1.png" class="img-fluid figure-img" width="672">
+<img src="05-Foundation_Inference_files/figure-html/fig-5crumpdecision-1.png" class="img-fluid figure-img" style="width:75.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5crumpdecision-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.17: Aplicación de límites de decisión al histograma de diferencias de medias. Los límites identifican qué diferencias produjo (o no produjo) el azar en la simulación.
+Figura&nbsp;6.17: Aplicación de límites de decisión al histograma de diferencias de medias. Los límites identifican qué diferencias produjo (o no produjo) el azar en la simulación.
 </figcaption>
 </figure>
 </div>
@@ -1036,16 +1044,16 @@ Figure&nbsp;6.17: Aplicación de límites de decisión al histograma de diferenc
 <p>Estas son afirmaciones ambiguas, imprecisas, entre el “sí” y el “no”. Y está bien. El gris también es un color. Vamos a darle un poco de respeto al gris.</p>
 <p>—“¿De qué zonas grises estás hablando? ¡Solo veo rojo y verde! ¿Tengo daltonismo para el gris?”—</p>
 <p>Veamos dónde podrían estar algunas zonas grises. Digo “podrían”, porque la gente no se pone de acuerdo sobre <strong>dónde empieza el gris</strong>. Las personas tienen distintos niveles de tolerancia al gris.</p>
-<p>La <a href="#fig-5crumpuncertainty" class="quarto-xref">Figure&nbsp;<span>6.18</span></a> muestra <strong>mi</strong> opinión sobre dónde se ubican las zonas grises:</p>
+<p>La <a href="#fig-5crumpuncertainty" class="quarto-xref">Figura&nbsp;<span>6.18</span></a> muestra <strong>mi</strong> opinión sobre dónde se ubican las zonas grises:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-5crumpuncertainty" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-5crumpuncertainty-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="05-Foundation_Inference_files/figure-html/fig-5crumpuncertainty-1.png" class="img-fluid figure-img" width="672">
+<img src="05-Foundation_Inference_files/figure-html/fig-5crumpuncertainty-1.png" class="img-fluid figure-img" style="width:75.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5crumpuncertainty-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.18: Los signos de interrogación indican una zona donde hay cierta incertidumbre. Las diferencias dentro de esta zona no ocurren muy seguido por azar. Cuando encontrás diferencias de ese tamaño, ¿deberías rechazar la idea de que fueron causadas por azar? Siempre vas a tener algo de incertidumbre asociada a esa decisión, porque está claro que el azar podría haber causado la diferencia. Pero, el azar usualmente no produce diferencias de ese tamaño.
+Figura&nbsp;6.18: Los signos de interrogación indican una zona donde hay cierta incertidumbre. Las diferencias dentro de esta zona no ocurren muy seguido por azar. Cuando encontrás diferencias de ese tamaño, ¿deberías rechazar la idea de que fueron causadas por azar? Siempre vas a tener algo de incertidumbre asociada a esa decisión, porque está claro que el azar podría haber causado la diferencia. Pero, el azar usualmente no produce diferencias de ese tamaño.
 </figcaption>
 </figure>
 </div>
@@ -1055,16 +1063,16 @@ Figure&nbsp;6.18: Los signos de interrogación indican una zona donde hay cierta
 <p>¿Qué podés concluir o decir sobre ese 15 que encontraste? ¿Podés decir, sin lugar a dudas, que el azar <strong>no</strong> produjo esa diferencia? Por supuesto que no. Sabés que el azar <strong>podría haberla producido</strong>. Aun así, es una de esas cosas que <strong>no ocurren mucho</strong>. Eso hace que el azar sea una explicación <strong>poco probable</strong>. En lugar de pensar que fue el azar, quizás estés dispuesto a <strong>tomar el riesgo</strong> y decir que tu manipulación experimental <strong>causó la diferencia</strong>. Estás haciendo una apuesta de que no fue el azar… pero podría ser una apuesta razonable, ya que sabés que <strong>las probabilidades están de tu lado</strong>.</p>
 <p>Tal vez estés pensando que tus zonas grises no son iguales a las que dibujé yo. Quizás quieras ser más conservador y hacerlas más chicas. O, tal vez seas más arriesgado y prefieras hacerlas más grandes. O incluso, quizás quieras extender la zona gris un poco <strong>dentro de la zona verde</strong> (después de todo, el azar podría producir diferencias más grandes alguna que otra vez, y para evitarlas tendrías que hacer que la zona gris invada un poco el área verde).</p>
 <p>Otra cosa en la que pensar es en tu <strong>política de decisión</strong>. ¿Qué vas a hacer cuando tu diferencia observada caiga dentro de la zona gris? ¿Siempre vas a tomar la misma decisión sobre el papel del azar? ¿O a veces vas a cambiar de parecer, según cómo te sientas? Tal vez pienses que no debería haber una política estricta, y que deberías aceptar cierto nivel de incertidumbre. La diferencia que encontraste <strong>podría ser real… o tal vez no lo sea</strong>. Hay incertidumbre, es difícil evitarla.</p>
-<p>Así que vamos a ilustrar <strong>otro tipo de estrategia</strong> para tomar decisiones. Recién hablamos de una que incluía líneas y regiones. Eso hace que parezca una elección binaria: podemos <strong>descartar</strong> o <strong>no descartar</strong> el papel del azar. Otra perspectiva es que <strong>todo es un matiz de gris</strong>, como en la <a href="#fig-5crumpshade" class="quarto-xref">Figure&nbsp;<span>6.19</span></a>.</p>
+<p>Así que vamos a ilustrar <strong>otro tipo de estrategia</strong> para tomar decisiones. Recién hablamos de una que incluía líneas y regiones. Eso hace que parezca una elección binaria: podemos <strong>descartar</strong> o <strong>no descartar</strong> el papel del azar. Otra perspectiva es que <strong>todo es un matiz de gris</strong>, como en la <a href="#fig-5crumpshade" class="quarto-xref">Figura&nbsp;<span>6.19</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-5crumpshade" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-5crumpshade-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="05-Foundation_Inference_files/figure-html/fig-5crumpshade-1.png" class="img-fluid figure-img" width="672">
+<img src="05-Foundation_Inference_files/figure-html/fig-5crumpshade-1.png" class="img-fluid figure-img" style="width:75.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5crumpshade-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.19: El sombreado de las barras azules indica los niveles de confianza en si una diferencia podría haber sido producida por azar. Las barras más oscuras representan mayor confianza en que la diferencia no fue causada por azar. Las barras se oscurecen a medida que la diferencia de medias aumenta en valor absoluto.
+Figura&nbsp;6.19: El sombreado de las barras azules indica los niveles de confianza en si una diferencia podría haber sido producida por azar. Las barras más oscuras representan mayor confianza en que la diferencia no fue causada por azar. Las barras se oscurecen a medida que la diferencia de medias aumenta en valor absoluto.
 </figcaption>
 </figure>
 </div>
@@ -1092,28 +1100,28 @@ Figure&nbsp;6.19: El sombreado de las barras azules indica los niveles de confia
 <p>¿Tenés alguna idea de cómo se puede hacer esto? Acá va una pista: es todo eso que aprendiste sobre la distribución muestral de la media muestral, y el papel del tamaño muestral. ¿Qué le pasa a la distribución muestral de la media cuando <code>N</code> (el tamaño de muestra) aumenta? La distribución <strong>se vuelve más y más angosta</strong>, y empieza a parecerse a un único número (la media hipotética de la población hipotética). Eso es genial.</p>
 <p>Si cambiás el enfoque y pensás en las <strong>diferencias de medias</strong>, como la distribución que creamos en esta prueba, ¿qué creés que va a pasar con esa distribución a medida que aumentamos <code>N</code>? También se va a <strong>achicar</strong>. A medida que aumentamos <code>N</code> hacia el infinito, esa distribución se reduce a 0. Lo que significa que, cuando <code>N</code> es infinito, el azar <strong>nunca produce diferencias</strong>. Podemos usar esto a nuestro favor.</p>
 <p>Por ejemplo, podríamos correr nuestro experimento con 20 sujetos por grupo. O podríamos decidir invertir más tiempo y correrlo con 40 sujetos por grupo, o 80, o 150. Cuando vos sos quien ejecuta el experimento, <strong>vos decidís el diseño</strong>. Y esas decisiones importan muchísimo. Básicamente, <strong>cuantos más sujetos tenés, más sensible es tu experimento</strong>. Con un <code>N</code> más grande, vas a poder detectar de manera confiable diferencias de medias más pequeñas, y podés concluir con confianza que esas diferencias <strong>no fueron producidas por azar</strong>.</p>
-<p>Fijate en los histogramas de <a href="#fig-5sampleDistNormal" class="quarto-xref">Figure&nbsp;<span>6.20</span></a> . Es la misma simulación de antes, pero con cuatro tamaños muestrales distintos: 20, 40, 80, 160. Vamos duplicando el tamaño muestral en cada simulación, solo para ver qué pasa con el <strong>ancho de la ventana del azar</strong>.</p>
+<p>Fijate en los histogramas de <a href="#fig-5sampleDistNormal" class="quarto-xref">Figura&nbsp;<span>6.20</span></a> . Es la misma simulación de antes, pero con cuatro tamaños muestrales distintos: 20, 40, 80, 160. Vamos duplicando el tamaño muestral en cada simulación, solo para ver qué pasa con el <strong>ancho de la ventana del azar</strong>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-5sampleDistNormal" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-5sampleDistNormal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="05-Foundation_Inference_files/figure-html/fig-5sampleDistNormal-1.png" class="img-fluid figure-img" width="672">
+<img src="05-Foundation_Inference_files/figure-html/fig-5sampleDistNormal-1.png" class="img-fluid figure-img" style="width:75.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5sampleDistNormal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.20: El rango (o ancho) de las diferencias producidas por azar se reduce a medida que aumenta el tamaño muestral.
+Figura&nbsp;6.20: El rango (o ancho) de las diferencias producidas por azar se reduce a medida que aumenta el tamaño muestral.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Ahí lo tenés. La <strong>distribución muestral de las diferencias de medias</strong> se contrae hacia 0 a medida que aumenta el tamaño muestral. Esto significa que, si ejecutás un experimento con un tamaño muestral mayor, vas a poder detectar diferencias de medias más pequeñas, y estar seguro de que <strong>no se deben al azar</strong>.</p>
-<p>La <a href="#tbl-5minmax" class="quarto-xref">Table&nbsp;<span>6.2</span></a> muestra los valores mínimos y máximos que el azar produjo para cada uno de los cuatro tamaños muestrales:</p>
+<p>La <a href="#tbl-5minmax" class="quarto-xref">Tabla&nbsp;<span>6.2</span></a> muestra los valores mínimos y máximos que el azar produjo para cada uno de los cuatro tamaños muestrales:</p>
 <div class="cell">
 <div id="tbl-5minmax" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-5minmax-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;6.2: La diferencia de medias más pequeña y más grande producida por azar en función del tamaño muestral.
+Tabla&nbsp;6.2: La diferencia de medias más pequeña y más grande producida por azar en función del tamaño muestral.
 </figcaption>
 <div aria-describedby="tbl-5minmax-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -1128,23 +1136,23 @@ Table&nbsp;6.2: La diferencia de medias más pequeña y más grande producida po
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">20</td>
-<td style="text-align: center;">-23.34</td>
-<td style="text-align: center;">25.61</td>
+<td style="text-align: center;">-23.63</td>
+<td style="text-align: center;">22.41</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">40</td>
-<td style="text-align: center;">-14.15</td>
-<td style="text-align: center;">17.30</td>
+<td style="text-align: center;">-16.84</td>
+<td style="text-align: center;">16.52</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">80</td>
-<td style="text-align: center;">-10.92</td>
-<td style="text-align: center;">10.70</td>
+<td style="text-align: center;">-10.39</td>
+<td style="text-align: center;">10.41</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">160</td>
-<td style="text-align: center;">-8.59</td>
-<td style="text-align: center;">8.24</td>
+<td style="text-align: center;">-7.59</td>
+<td style="text-align: center;">8.86</td>
 </tr>
 </tbody>
 </table>
@@ -1172,26 +1180,26 @@ Table&nbsp;6.2: La diferencia de medias más pequeña y más grande producida po
 <div id="fig-5crumpminmax" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-5crumpminmax-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="05-Foundation_Inference_files/figure-html/fig-5crumpminmax-1.png" class="img-fluid figure-img" width="672">
+<img src="05-Foundation_Inference_files/figure-html/fig-5crumpminmax-1.png" class="img-fluid figure-img" style="width:75.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5crumpminmax-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.21: Gráfico del máximo y mínimo de las diferencias de medias producidas por azar en función del tamaño muestral. El rango se reduce a medida que el tamaño muestral aumenta, mostrando que el azar por sí solo produce un rango más pequeño de diferencias cuando el tamaño muestral es mayor.
+Figura&nbsp;6.21: Gráfico del máximo y mínimo de las diferencias de medias producidas por azar en función del tamaño muestral. El rango se reduce a medida que el tamaño muestral aumenta, mostrando que el azar por sí solo produce un rango más pequeño de diferencias cuando el tamaño muestral es mayor.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>La <a href="#fig-5crumpminmax" class="quarto-xref">Figure&nbsp;<span>6.21</span></a> muestra una ventana de sensibilidad razonablemente precisa en función del tamaño muestral. Para cada tamaño muestral, podemos ver la diferencia máxima que el azar produjo y la mínima. En esas simulaciones, <strong>el azar nunca produjo diferencias mayores ni menores</strong> que esos valores extremos. Así que cada diseño es sensible a cualquier diferencia que esté <strong>por debajo de la línea inferior o por encima de la línea superior</strong>.</p>
-<p>Otra forma de decirlo es la siguiente: ¿Cuáles de los tamaños muestrales son sensibles a una diferencia de +10 o -10? Es decir, si se observa una diferencia de +10 o -10, entonces podríamos decir con mucha confianza que <strong>esa diferencia no fue causada por azar</strong>, porque según estas simulaciones, el azar <strong>nunca</strong> produjo diferencias tan grandes. Para ayudarnos a ver cuáles son sensibles, la <a href="#fig-5crumpredline" class="quarto-xref">Figure&nbsp;<span>6.22</span></a> traza líneas horizontales en -10 y +10:</p>
+<p>La <a href="#fig-5crumpminmax" class="quarto-xref">Figura&nbsp;<span>6.21</span></a> muestra una ventana de sensibilidad razonablemente precisa en función del tamaño muestral. Para cada tamaño muestral, podemos ver la diferencia máxima que el azar produjo y la mínima. En esas simulaciones, <strong>el azar nunca produjo diferencias mayores ni menores</strong> que esos valores extremos. Así que cada diseño es sensible a cualquier diferencia que esté <strong>por debajo de la línea inferior o por encima de la línea superior</strong>.</p>
+<p>Otra forma de decirlo es la siguiente: ¿Cuáles de los tamaños muestrales son sensibles a una diferencia de +10 o -10? Es decir, si se observa una diferencia de +10 o -10, entonces podríamos decir con mucha confianza que <strong>esa diferencia no fue causada por azar</strong>, porque según estas simulaciones, el azar <strong>nunca</strong> produjo diferencias tan grandes. Para ayudarnos a ver cuáles son sensibles, la <a href="#fig-5crumpredline" class="quarto-xref">Figura&nbsp;<span>6.22</span></a> traza líneas horizontales en -10 y +10:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-5crumpredline" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-5crumpredline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="05-Foundation_Inference_files/figure-html/fig-5crumpredline-1.png" class="img-fluid figure-img" width="672">
+<img src="05-Foundation_Inference_files/figure-html/fig-5crumpredline-1.png" class="img-fluid figure-img" style="width:75.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5crumpredline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.22: La línea roja representa el tamaño de una diferencia de medias que un investigador podría estar interesado en detectar. Todos los puntos que están por fuera (por encima o por debajo) de la línea roja representan diseños con tamaños muestrales pequeños. Cuando ocurre una diferencia de 10 en esos diseños, podemos descartar con confianza que haya sido causada por azar. Los puntos entre las líneas rojas representan diseños con tamaños muestrales grandes. Estos diseños nunca producen diferencias tan grandes como 10, así que cuando ocurren, podemos confiar en que no fueron producto del azar.
+Figura&nbsp;6.22: La línea roja representa el tamaño de una diferencia de medias que un investigador podría estar interesado en detectar. Todos los puntos que están por fuera (por encima o por debajo) de la línea roja representan diseños con tamaños muestrales pequeños. Cuando ocurre una diferencia de 10 en esos diseños, podemos descartar con confianza que haya sido causada por azar. Los puntos entre las líneas rojas representan diseños con tamaños muestrales grandes. Estos diseños nunca producen diferencias tan grandes como 10, así que cuando ocurren, podemos confiar en que no fueron producto del azar.
 </figcaption>
 </figure>
 </div>
@@ -1226,119 +1234,119 @@ Figure&nbsp;6.22: La línea roja representa el tamaño de una diferencia de medi
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">1</td>
-<td style="text-align: left;">99</td>
-<td style="text-align: left;">47</td>
+<td style="text-align: left;">81</td>
+<td style="text-align: left;">62</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">2</td>
-<td style="text-align: left;">75</td>
-<td style="text-align: left;">90</td>
+<td style="text-align: left;">97</td>
+<td style="text-align: left;">61</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">3</td>
-<td style="text-align: left;">76</td>
-<td style="text-align: left;">79</td>
+<td style="text-align: left;">88</td>
+<td style="text-align: left;">87</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">4</td>
-<td style="text-align: left;">77</td>
-<td style="text-align: left;">73</td>
+<td style="text-align: left;">87</td>
+<td style="text-align: left;">48</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">5</td>
-<td style="text-align: left;">73</td>
-<td style="text-align: left;">73</td>
+<td style="text-align: left;">79</td>
+<td style="text-align: left;">62</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">6</td>
-<td style="text-align: left;">73</td>
-<td style="text-align: left;">53</td>
+<td style="text-align: left;">82</td>
+<td style="text-align: left;">63</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">7</td>
-<td style="text-align: left;">95</td>
-<td style="text-align: left;">61</td>
+<td style="text-align: left;">84</td>
+<td style="text-align: left;">59</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">8</td>
-<td style="text-align: left;">84</td>
-<td style="text-align: left;">58</td>
+<td style="text-align: left;">76</td>
+<td style="text-align: left;">66</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">9</td>
-<td style="text-align: left;">90</td>
-<td style="text-align: left;">61</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">10</td>
-<td style="text-align: left;">75</td>
-<td style="text-align: left;">51</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">11</td>
-<td style="text-align: left;">89</td>
-<td style="text-align: left;">90</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">12</td>
-<td style="text-align: left;">73</td>
-<td style="text-align: left;">55</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">13</td>
-<td style="text-align: left;">94</td>
-<td style="text-align: left;">85</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">14</td>
-<td style="text-align: left;">98</td>
-<td style="text-align: left;">61</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">15</td>
-<td style="text-align: left;">83</td>
-<td style="text-align: left;">70</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">16</td>
-<td style="text-align: left;">90</td>
-<td style="text-align: left;">70</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">17</td>
-<td style="text-align: left;">89</td>
+<td style="text-align: left;">92</td>
 <td style="text-align: left;">81</td>
 </tr>
 <tr class="even">
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">93</td>
+<td style="text-align: left;">71</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">83</td>
+<td style="text-align: left;">68</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">85</td>
+<td style="text-align: left;">60</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">81</td>
+<td style="text-align: left;">51</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">14</td>
+<td style="text-align: left;">71</td>
+<td style="text-align: left;">49</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">90</td>
+<td style="text-align: left;">75</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">92</td>
+<td style="text-align: left;">67</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">73</td>
+<td style="text-align: left;">45</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">18</td>
-<td style="text-align: left;">84</td>
-<td style="text-align: left;">54</td>
+<td style="text-align: left;">78</td>
+<td style="text-align: left;">41</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">19</td>
-<td style="text-align: left;">77</td>
-<td style="text-align: left;">80</td>
+<td style="text-align: left;">84</td>
+<td style="text-align: left;">70</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">20</td>
-<td style="text-align: left;">96</td>
-<td style="text-align: left;">43</td>
+<td style="text-align: left;">76</td>
+<td style="text-align: left;">58</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Sumas</td>
-<td style="text-align: left;">1690</td>
-<td style="text-align: left;">1335</td>
+<td style="text-align: left;">1672</td>
+<td style="text-align: left;">1244</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Medias</td>
-<td style="text-align: left;">84.5</td>
-<td style="text-align: left;">66.75</td>
+<td style="text-align: left;">83.6</td>
+<td style="text-align: left;">62.2</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<p>Entonces, ¿los estudiantes que masticaron chicle tuvieron mejor desempeño que los que no lo hicieron? Mirá la fila de medias al final de la tabla. La media para los estudiantes que masticaron chicle fue 84.5, y la media para los estudiantes sin chicle fue 66.75. A simple vista, parece que masticar chicle <strong>funcionó</strong>.</p>
+<p>Entonces, ¿los estudiantes que masticaron chicle tuvieron mejor desempeño que los que no lo hicieron? Mirá la fila de medias al final de la tabla. La media para los estudiantes que masticaron chicle fue 83.6, y la media para los estudiantes sin chicle fue 62.2. A simple vista, parece que masticar chicle <strong>funcionó</strong>.</p>
 <p>“¡PAREN LAS ROTATIVAS, esto es ridículo!”. Ya sabemos que es ridículo porque estamos usando datos inventados. Pero, incluso si estos fueran datos reales, podrías pensar: “Eso del chicle no tiene sentido, esta diferencia podría haber sido causada por azar. Quizás los estudiantes más inteligentes cayeron por azar en el grupo con chicle, y por eso sus notas fueron más altas… el chicle en realidad no hizo nada…”. Estamos de acuerdo. Pero echemos un vistazo más de cerca. Ya sabemos cómo salieron los datos. Lo que queremos saber es <strong>cómo podrían haber salido</strong>. ¿Cuáles son todas las posibilidades?</p>
 <p>Por ejemplo, los datos habrían salido un poco distintos si hubiéramos asignado a algunos estudiantes del grupo con chicle al grupo sin chicle, y viceversa. Pensá en todas las formas posibles de asignar a los 40 estudiantes en dos grupos; hay <strong>muchísimas maneras</strong>. Y las medias de cada grupo serían diferentes dependiendo de cómo se asignen los estudiantes.</p>
 <p>En la práctica, no es posible ejecutar el experimento de todas esas formas posibles —eso llevaría demasiado tiempo. Pero <strong>sí podemos estimar cómo habrían salido todos esos experimentos</strong> usando simulación. Esta es la idea: Tomamos las 40 mediciones (las notas del examen) que obtuvimos para todos los estudiantes. Luego, seleccionamos aleatoriamente a 20 de ellas y fingimos que fueron del grupo con chicle, y las 20 restantes las asignamos al grupo sin chicle. Entonces, volvemos a calcular las medias para ver qué habría pasado. Y seguimos haciendo esto una y otra vez, cada vez calculando lo que habría pasado en esa versión alternativa del experimento.</p>
@@ -1358,38 +1366,38 @@ Figure&nbsp;6.22: La línea roja representa el tamaño de una diferencia de medi
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">1</td>
-<td style="text-align: left;">99</td>
-<td style="text-align: left;">47</td>
+<td style="text-align: left;">81</td>
+<td style="text-align: left;">62</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">2</td>
-<td style="text-align: left;">75</td>
-<td style="text-align: left;">90</td>
+<td style="text-align: left;">97</td>
+<td style="text-align: left;">61</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">3</td>
-<td style="text-align: left;">76</td>
-<td style="text-align: left;">79</td>
+<td style="text-align: left;">88</td>
+<td style="text-align: left;">87</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">4</td>
-<td style="text-align: left;">77</td>
-<td style="text-align: left;">73</td>
+<td style="text-align: left;">87</td>
+<td style="text-align: left;">48</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">5</td>
-<td style="text-align: left;">73</td>
-<td style="text-align: left;">73</td>
+<td style="text-align: left;">79</td>
+<td style="text-align: left;">62</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Sums</td>
-<td style="text-align: left;">400</td>
-<td style="text-align: left;">362</td>
+<td style="text-align: left;">432</td>
+<td style="text-align: left;">320</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Means</td>
-<td style="text-align: left;">80</td>
-<td style="text-align: left;">72.4</td>
+<td style="text-align: left;">86.4</td>
+<td style="text-align: left;">64</td>
 </tr>
 </tbody>
 </table>
@@ -1397,12 +1405,8 @@ Figure&nbsp;6.22: La línea roja representa el tamaño de una diferencia de medi
 </div>
 <p>Las cosas podrían haber salido diferente si algunos de los sujetos en el grupo con chicle hubieran sido intercambiados con sujetos del grupo sin chicle. Así es cómo podemos hacer un poco de aleatorización.</p>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 47 73 75 79 99</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 90 73 73 76 77</code></pre>
-</div>
+<pre><code>#&gt; [1] 87 79 62 62 48
+#&gt; [1] 81 61 88 87 97</code></pre>
 </div>
 <p>Tomamos los primeros 5 números de los datos originales, y los pusimos todos en una variable llamada <code>all_scores</code>. Luego usamos la función <code>sample</code> en R para mezclar los puntajes. Finalmente, tomamos los primeros 5 puntajes mezclados y los guardamos en una nueva variable llamada <code>new_chicle</code>. Después, colocamos los últimos 5 puntajes en la variable <code>new_no_chicle</code>. Luego los imprimimos, así podemos verlos.</p>
 <p>Si hacemos esto un par de veces y lo ponemos en una tabla, podemos ver que las medias para “con chicle” y “sin chicle” serían distintas si los sujetos se asignaran al azar de otra forma. Fijate:</p>
@@ -1432,66 +1436,66 @@ Figure&nbsp;6.22: La línea roja representa el tamaño de una diferencia de medi
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">1</td>
-<td style="text-align: left;">99</td>
-<td style="text-align: left;">47</td>
-<td style="text-align: left;">73</td>
-<td style="text-align: left;">76</td>
-<td style="text-align: left;">73</td>
-<td style="text-align: left;">99</td>
+<td style="text-align: left;">81</td>
+<td style="text-align: left;">62</td>
+<td style="text-align: left;">62</td>
+<td style="text-align: left;">97</td>
+<td style="text-align: left;">97</td>
+<td style="text-align: left;">61</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">2</td>
-<td style="text-align: left;">75</td>
-<td style="text-align: left;">90</td>
-<td style="text-align: left;">73</td>
-<td style="text-align: left;">75</td>
-<td style="text-align: left;">90</td>
-<td style="text-align: left;">47</td>
+<td style="text-align: left;">97</td>
+<td style="text-align: left;">61</td>
+<td style="text-align: left;">61</td>
+<td style="text-align: left;">81</td>
+<td style="text-align: left;">81</td>
+<td style="text-align: left;">48</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">3</td>
-<td style="text-align: left;">76</td>
+<td style="text-align: left;">88</td>
+<td style="text-align: left;">87</td>
+<td style="text-align: left;">87</td>
+<td style="text-align: left;">48</td>
 <td style="text-align: left;">79</td>
-<td style="text-align: left;">77</td>
-<td style="text-align: left;">79</td>
-<td style="text-align: left;">77</td>
-<td style="text-align: left;">75</td>
+<td style="text-align: left;">88</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">4</td>
-<td style="text-align: left;">77</td>
-<td style="text-align: left;">73</td>
-<td style="text-align: left;">73</td>
-<td style="text-align: left;">90</td>
-<td style="text-align: left;">73</td>
+<td style="text-align: left;">87</td>
+<td style="text-align: left;">48</td>
 <td style="text-align: left;">79</td>
+<td style="text-align: left;">87</td>
+<td style="text-align: left;">87</td>
+<td style="text-align: left;">62</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">5</td>
-<td style="text-align: left;">73</td>
-<td style="text-align: left;">73</td>
-<td style="text-align: left;">47</td>
-<td style="text-align: left;">99</td>
-<td style="text-align: left;">73</td>
-<td style="text-align: left;">76</td>
+<td style="text-align: left;">79</td>
+<td style="text-align: left;">62</td>
+<td style="text-align: left;">62</td>
+<td style="text-align: left;">88</td>
+<td style="text-align: left;">62</td>
+<td style="text-align: left;">87</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Sumas</td>
-<td style="text-align: left;">400</td>
-<td style="text-align: left;">362</td>
-<td style="text-align: left;">343</td>
-<td style="text-align: left;">419</td>
-<td style="text-align: left;">386</td>
-<td style="text-align: left;">376</td>
+<td style="text-align: left;">432</td>
+<td style="text-align: left;">320</td>
+<td style="text-align: left;">351</td>
+<td style="text-align: left;">401</td>
+<td style="text-align: left;">406</td>
+<td style="text-align: left;">346</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Medias</td>
-<td style="text-align: left;">80</td>
-<td style="text-align: left;">72.4</td>
-<td style="text-align: left;">68.6</td>
-<td style="text-align: left;">83.8</td>
-<td style="text-align: left;">77.2</td>
-<td style="text-align: left;">75.2</td>
+<td style="text-align: left;">86.4</td>
+<td style="text-align: left;">64</td>
+<td style="text-align: left;">70.2</td>
+<td style="text-align: left;">80.2</td>
+<td style="text-align: left;">81.2</td>
+<td style="text-align: left;">69.2</td>
 </tr>
 </tbody>
 </table>
@@ -1500,9 +1504,9 @@ Figure&nbsp;6.22: La línea roja representa el tamaño de una diferencia de medi
 </section>
 <section id="simulando-las-diferencias-de-medias-en-distintas-aleatorizaciones" class="level4" data-number="6.6.1.2">
 <h4 data-number="6.6.1.2" class="anchored" data-anchor-id="simulando-las-diferencias-de-medias-en-distintas-aleatorizaciones"><span class="header-section-number">6.6.1.2</span> Simulando las diferencias de medias en distintas aleatorizaciones</h4>
-<p>En nuestro experimento ficticio encontramos que la media para los estudiantes que masticaron chicle fue 84.5, y la media para los que no lo hicieron fue 66.75. La diferencia de medias (chicle – sin chicle) fue 17.75. Esa es una diferencia bastante grande. Eso es <strong>lo que pasó</strong>. Pero, <strong>¿qué podría haber pasado</strong>? Si probáramos todos los experimentos posibles en los que los sujetos se asignan de forma diferente, ¿cómo luciría la distribución de las posibles diferencias de medias?</p>
+<p>En nuestro experimento ficticio encontramos que la media para los estudiantes que masticaron chicle fue 83.6, y la media para los que no lo hicieron fue 62.2. La diferencia de medias (chicle – sin chicle) fue 21.4. Esa es una diferencia bastante grande. Eso es <strong>lo que pasó</strong>. Pero, <strong>¿qué podría haber pasado</strong>? Si probáramos todos los experimentos posibles en los que los sujetos se asignan de forma diferente, ¿cómo luciría la distribución de las posibles diferencias de medias?</p>
 <p>Vamos a averiguarlo. De eso se trata exactamente la prueba de aleatorización. Cuando hacemos nuestra prueba de aleatorización, vamos a medir la diferencia de medias en los puntajes del examen entre el grupo con chicle y el grupo sin chicle. Cada vez que hagamos una aleatorización, guardaremos la diferencia de medias.</p>
-<p>Veamos una pequeña animación de lo que ocurre durante la prueba de aleatorización. La <a href="#fig-5randtest" class="quarto-xref">Figure&nbsp;<span>6.23</span></a> muestra datos de otro experimento ficticio, pero los principios son los mismos. Después volveremos al experimento del chicle.</p>
+<p>Veamos una pequeña animación de lo que ocurre durante la prueba de aleatorización. La <a href="#fig-5randtest" class="quarto-xref">Figura&nbsp;<span>6.23</span></a> muestra datos de otro experimento ficticio, pero los principios son los mismos. Después volveremos al experimento del chicle.</p>
 <p>La animación muestra tres cosas importantes: Primero, los puntos púrpuras muestran las medias de los puntajes en dos grupos (no estudió vs.&nbsp;estudió). Parece que hay una diferencia, ya que un punto está más bajo que el otro. Queremos saber si <strong>el azar podría producir una diferencia tan grande</strong>.</p>
 <p>Al comienzo de la animación, los puntos verde claro y rojo muestran los puntajes individuales de cada uno de los 10 sujetos en el diseño (los puntos púrpura son las medias de estos puntajes originales). Luego, durante las aleatorizaciones, mezclamos aleatoriamente los puntajes originales entre los grupos. Podés ver esto ocurriendo a lo largo de la animación, mientras los puntos verde y rojo aparecen en diferentes combinaciones aleatorias. Los puntos amarillos en movimiento te muestran las <strong>nuevas medias para cada grupo después de la aleatorización</strong>. Las diferencias entre los puntos amarillos te muestran el <strong>rango de diferencias que el azar podría producir</strong>.</p>
 <div class="cell">
@@ -1510,10 +1514,10 @@ Figure&nbsp;6.22: La línea roja representa el tamaño de una diferencia de medi
 <div id="fig-5randtest" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-5randtest-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="imgs/gifs/randomizationTest-1_es.gif" class="img-fluid figure-img">
+<img src="imgs/gifs/randomizationTest-1_es.gif" class="img-fluid figure-img" style="width:75.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5randtest-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.23: Animación de una prueba de aleatorización. Los puntos púrpura representan la ubicación de las medias originales en cada condición. Los puntos amarillos representan las medias de cada muestra aleatorizada. Los puntos azules y rojos muestran cómo los puntajes originales son redistribuidos al azar en cada aleatorización.
+Figura&nbsp;6.23: Animación de una prueba de aleatorización. Los puntos púrpura representan la ubicación de las medias originales en cada condición. Los puntos amarillos representan las medias de cada muestra aleatorizada. Los puntos azules y rojos muestran cómo los puntajes originales son redistribuidos al azar en cada aleatorización.
 </figcaption>
 </figure>
 </div>
@@ -1522,19 +1526,16 @@ Figure&nbsp;6.23: Animación de una prueba de aleatorización. Los puntos púrpu
 <p>Estamos haciendo una inferencia estadística <strong>visual</strong>. Al observar el rango de movimiento de los puntos amarillos, estamos viendo qué tipo de diferencias puede producir el azar. En esta animación, los puntos púrpura —que representan la diferencia original— están generalmente <strong>fuera del rango del azar</strong>. Los puntos amarillos <strong>no se mueven más allá</strong> de los puntos púrpura, así que el azar parece ser una explicación poco probable de la diferencia.</p>
 <p>Si los puntos púrpura estuvieran <strong>dentro del rango de los puntos amarillos</strong>, entonces sabríamos que el azar <strong>es capaz de producir</strong> la diferencia que observamos, y que lo hace <strong>con bastante frecuencia</strong>. En ese caso, <strong>no deberíamos concluir</strong> que la manipulación causó la diferencia, porque <strong>podría haber ocurrido fácilmente por azar</strong>.</p>
 <p>Volvamos al ejemplo del chicle. Después de aleatorizar nuestras notas muchas veces, y de calcular las nuevas medias y las diferencias de medias, vamos a tener <strong>un montón de diferencias</strong> para observar, que podemos representar en un histograma. Ese histograma da una imagen de <strong>lo que podría haber pasado</strong>. Luego, podemos comparar <strong>lo que pasó realmente</strong> con <strong>lo que podría haber pasado</strong>.</p>
-<p>Este es el histograma de las diferencias de medias obtenidas con la prueba de aleatorización. Para esta simulación, aleatorizamos los resultados del experimento original 1000 veces. Esto es lo que <strong>podría haber pasado</strong>. La línea azul en la <a href="#fig-5randhist" class="quarto-xref">Figure&nbsp;<span>6.24</span></a> muestra <strong>dónde se ubica la diferencia observada</strong> sobre el eje x.</p>
+<p>Este es el histograma de las diferencias de medias obtenidas con la prueba de aleatorización. Para esta simulación, aleatorizamos los resultados del experimento original 1000 veces. Esto es lo que <strong>podría haber pasado</strong>. La línea azul en la <a href="#fig-5randhist" class="quarto-xref">Figura&nbsp;<span>6.24</span></a> muestra <strong>dónde se ubica la diferencia observada</strong> sobre el eje x.</p>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-</div>
 <div class="cell-output-display">
 <div id="fig-5randhist" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-5randhist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="05-Foundation_Inference_files/figure-html/fig-5randhist-1.png" class="img-fluid figure-img" width="672">
+<img src="05-Foundation_Inference_files/figure-html/fig-5randhist-1.png" class="img-fluid figure-img" style="width:75.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5randhist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.24: Histograma de diferencias de medias simuladas en una prueba de aleatorización
+Figura&nbsp;6.24: Histograma de diferencias de medias simuladas en una prueba de aleatorización
 </figcaption>
 </figure>
 </div>
@@ -1550,16 +1551,16 @@ Figure&nbsp;6.24: Histograma de diferencias de medias simuladas en una prueba de
 <div id="fig-5randquestion" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-5randquestion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="05-Foundation_Inference_files/figure-html/fig-5randquestion-1.png" class="img-fluid figure-img" width="672">
+<img src="05-Foundation_Inference_files/figure-html/fig-5randquestion-1.png" class="img-fluid figure-img" style="width:75.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5randquestion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.25: ¿Esperarías que una diferencia de medias representada por la línea azul ocurra más o menos seguido por azar, en comparación con la diferencia representada por la línea roja?
+Figura&nbsp;6.25: ¿Esperarías que una diferencia de medias representada por la línea azul ocurra más o menos seguido por azar, en comparación con la diferencia representada por la línea roja?
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Fijate en la línea azul de la <a href="#fig-5randquestion" class="quarto-xref">Figure&nbsp;<span>6.25</span></a>. Si encontraras una diferencia de medias de 10, ¿te convencería de que esa diferencia <strong>no fue causada por azar</strong>? Como podés ver, la línea azul <strong>está dentro de la ventana del azar</strong>. Aunque las diferencias de +10 <strong>no ocurren muy seguido</strong>, podrías inferir que <strong>probablemente no fueron causadas por azar</strong> (pero tal vez te mantendrías algo escéptico, porque <strong>sí podrían haberlo sido</strong>).</p>
+<p>Fijate en la línea azul de la <a href="#fig-5randquestion" class="quarto-xref">Figura&nbsp;<span>6.25</span></a>. Si encontraras una diferencia de medias de 10, ¿te convencería de que esa diferencia <strong>no fue causada por azar</strong>? Como podés ver, la línea azul <strong>está dentro de la ventana del azar</strong>. Aunque las diferencias de +10 <strong>no ocurren muy seguido</strong>, podrías inferir que <strong>probablemente no fueron causadas por azar</strong> (pero tal vez te mantendrías algo escéptico, porque <strong>sí podrían haberlo sido</strong>).</p>
 <p>¿Y qué pasa con la línea roja? La línea roja representa una diferencia de +5. Si encontraras una diferencia de +5 acá, ¿estarías seguro de que <strong>no fue causada por azar</strong>? Yo no lo estaría. La línea roja está completamente dentro de la ventana del azar —<strong>este tipo de diferencia ocurre con bastante frecuencia</strong>. Necesitaría <strong>más evidencia</strong> para considerar la afirmación de que alguna variable independiente realmente <strong>causó la diferencia</strong>. Me sentiría mucho más cómodo asumiendo que la diferencia fue probablemente <strong>causada por error muestral</strong>.</p>
 </section>
 </section>
@@ -1636,12 +1637,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "Copiado");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "Copiado");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
@@ -2030,4 +2031,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/almadana/libro_cuanti/edit/master/05-Foundation_Inference.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/almadana/libro_cuanti/edit/master/05-Foundation_Inference.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li></ul></div></div></div></footer></body></html>

@@ -983,7 +983,7 @@ window.Quarto = {
 <div id="fig-happyPlot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-happyPlot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-Describing_Data_files/figure-html/fig-happyPlot-1.png" class="img-fluid figure-img" width="672">
+<img src="02-Describing_Data_files/figure-html/fig-happyPlot-1.png" class="img-fluid figure-img" style="width:75.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-happyPlot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.1: Supuestas puntuaciones de felicidad de 500 personas
@@ -1008,7 +1008,7 @@ Figura&nbsp;2.1: Supuestas puntuaciones de felicidad de 500 personas
 <div id="fig-happyHist" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-happyHist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-Describing_Data_files/figure-html/fig-happyHist-1.png" class="img-fluid figure-img" width="672">
+<img src="02-Describing_Data_files/figure-html/fig-happyHist-1.png" class="img-fluid figure-img" style="width:75.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-happyHist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.2: Un histograma de las puntuaciones de felicidad
@@ -1026,7 +1026,7 @@ Figura&nbsp;2.2: Un histograma de las puntuaciones de felicidad
 <div id="fig-manyhistbin" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-manyhistbin-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-Describing_Data_files/figure-html/fig-manyhistbin-1.png" class="img-fluid figure-img" width="672">
+<img src="02-Describing_Data_files/figure-html/fig-manyhistbin-1.png" class="img-fluid figure-img" style="width:75.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-manyhistbin-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.3: Cuatro histogramas del mismo conjunto de datos usando diferentes anchos de bin
@@ -1147,7 +1147,7 @@ Ahora tanto 1 como 2 aparecen tres veces. ¿Qué hacemos? Decimos que hay dos mo
 <div id="fig-meanmodemed" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-meanmodemed-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-Describing_Data_files/figure-html/fig-meanmodemed-1.png" class="img-fluid figure-img" width="672">
+<img src="02-Describing_Data_files/figure-html/fig-meanmodemed-1.png" class="img-fluid figure-img" style="width:75.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-meanmodemed-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.4: Un histograma con la media (rojo), la mediana (verde) y la moda (azul)
@@ -1220,7 +1220,7 @@ Y si estabas en el <strong>percentil 1</strong>, solo el 1% pesaba menos que vos
 <div id="fig-boxplotanotado" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-boxplotanotado-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="imgs/boxplot1_anotado_es.png" class="img-fluid figure-img" width="300">
+<img src="imgs/boxplot1_anotado_es.png" class="img-fluid figure-img" style="width:75.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-boxplotanotado-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.5: Boxplot con anotaciones
@@ -1232,17 +1232,15 @@ Figura&nbsp;2.5: Boxplot con anotaciones
 <p>En la práctica, los boxplots no suelen funcionar exactamente así. En la mayoría de los casos, los “bigotes” no abarcan todo el rango desde el valor mínimo hasta el máximo. En cambio, se extienden hasta el punto más extremo que <strong>no exceda un cierto límite preestablecido</strong>. Por defecto, ese valor es 1.5 veces el rango intercuartílico. Cualquier observación que esté fuera de ese rango se grafica como un círculo en lugar de ser incluida en los bigotes, y comunmente se la denomina valor atípico (outlier).</p>
 <p>Veamos cómo luce tomando como ejempo la variable felicidad. Los datos que necesitamos son los siguientes:</p>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>  Mínimo Perc. 25  Mediana    Media Perc. 75   Máximo 
--1396.55  -230.29    81.01    84.98   417.81  1582.93 </code></pre>
-</div>
+<pre><code>#&gt;   Mínimo Perc. 25  Mediana    Media Perc. 75   Máximo 
+#&gt; -1396.55  -230.29    81.01    84.98   417.81  1582.93</code></pre>
 </div>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-boxplotfelicidad" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-boxplotfelicidad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-Describing_Data_files/figure-html/fig-boxplotfelicidad-1.png" class="img-fluid figure-img" width="672">
+<img src="02-Describing_Data_files/figure-html/fig-boxplotfelicidad-1.png" class="img-fluid figure-img" style="width:75.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-boxplotfelicidad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.6: Boxplot - Felicidad
@@ -1652,7 +1650,7 @@ Nota
 <div id="fig-anscombe" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-anscombe-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-Describing_Data_files/figure-html/fig-anscombe-1.png" class="img-fluid figure-img" width="672">
+<img src="02-Describing_Data_files/figure-html/fig-anscombe-1.png" class="img-fluid figure-img" style="width:75.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anscombe-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.7: El Cuarteto de Anscombe

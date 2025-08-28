@@ -675,7 +675,7 @@ Lo que realmente queremos saber es si Reactivación+Tetris causó menos recuerdo
 
 ```{r}
 comparison_df <- all_data %>% 
-                  filter(Condition %in% c('Control','Reactivation+Tetris')==TRUE)
+                  filter(Condition %in% c('Control','Reactivación+Tetris')==TRUE)
                         
 t.test(Days_One_to_Seven_Number_of_Intrusions ~ Condition, 
        comparison_df,
@@ -694,7 +694,7 @@ Ahora sí que podemos empezar a preguntarnos qué causó la diferencia. ¿Fue so
 
 ```{r}
 comparison_df <- all_data %>% 
-                  filter(Condition %in% c('Control','Tetris_only')==TRUE)
+                  filter(Condition %in% c('Control','Solo Tetris')==TRUE)
                         
 t.test(Days_One_to_Seven_Number_of_Intrusions ~ Condition, 
        comparison_df,

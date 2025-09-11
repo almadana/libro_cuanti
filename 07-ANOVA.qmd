@@ -369,13 +369,13 @@ Por ejemplo, si tuvieras tres grupos, A, B y C. Podrías obtener diferencias ent
 
 Esas son tres posibles diferencias que podrías obtener. Podrías realizar pruebas $t$ por separado para probar si cada una de esas diferencias que pudiste haber encontrado podría haber sido producida por el azar. O podrías realizar un ANOVA, como lo que hemos estado haciendo, para hacer una pregunta más general sobre las diferencias. Aquí hay una forma de pensar sobre lo que está probando la prueba ómnibus:  
 
-Hipótesis de no diferencias en ninguna parte: \$ A = B = C \$
+Hipótesis de no diferencias en ninguna parte: $A = B = C$
 
 Cualquier diferencia en alguna parte:
 
-a.  \$ A \neq B = C \$
-b.  \$ A = B \neq C \$
-c.  \$ A \neq C = B \$
+a. $A \neq B = C$
+b. $A = B \neq C$
+c. $A \neq C = B$
 
 El símbolo $\neq$ significa "no es igual a", es un signo de igual con una cruz (¡no se permiten iguales!).
 

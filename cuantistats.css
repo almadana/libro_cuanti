@@ -1,0 +1,225 @@
+/* ---------- General ---------- */
+
+  body {
+    font-family: "Roboto", sans-serif;
+    #background-image: url(https://i.ibb.co/CHZLyFH/Recurso-33.png);
+    background-repeat: no-repeat;
+    background-position: 90% 3%;
+    background-size: 30%;
+    color: #222;
+
+  }
+
+main.content {
+  margin-top: 100px;
+}
+
+
+a {
+  color: #000;
+    text-decoration: none;
+}
+
+a:hover, a:focus {
+  color: #6446fa;
+    text-decoration: underline;
+}
+
+h1, h2, h3 {
+  color: #6446fa;
+    margin-top: 30px;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+/* ---------- Tablas ---------- */
+
+  th {
+    padding: 8px 10px;
+  }
+
+.table > thead > tr > th {
+  border-bottom: 2px solid #8c7ddc;
+  background-color: #f5f5f5;
+}
+
+.table td, .table th {
+  border-top: 1px solid #8c7ddc;
+  padding: 8px;
+}
+
+/* ---------- Bloques tipo well (personalizados) ---------- */
+
+  .well, .callout-note {
+    background-color: #e7e6ff;
+      border-radius: 15px;
+    border: 2px solid #8c7ddc;
+    padding: 15px;
+    margin: 20px 0;
+  }
+
+/* ---------- Pie de página personalizado ---------- */
+
+  .barraPie {
+    border-top: 1px solid #CCC;
+    height: 100px;
+    font-size: 1rem;
+    line-height: 75px;
+    text-align: center;
+    font-weight: bold;
+    margin: 60px 0 20px;
+    padding-top: 20px;
+  }
+
+/* ---------- Navegación ---------- */
+
+  .nav-tabs {
+    margin-bottom: 30px;
+  }
+
+.nav-tabs .nav-link:hover {
+  background-color: #e7e6ff;
+    font-weight: bold;
+}
+
+/* ---------- Imagen logo ---------- */
+
+  .logo {
+    height: 95%;
+  }
+
+/* ---------- Sidebar / container layout ---------- */
+
+  .container-fluid {
+    width: 85%;
+    padding-top: 50px;
+  }
+
+/* Sidebar izquierdo (capítulo activo) */
+div.sidebar-item-container .active,
+div.sidebar-item-container .show > .nav-link {
+  border-left: 3px solid #6446fa;
+  padding-left: 6px;
+  color: #6446fa !important;
+  background-color: transparent;
+}
+
+
+
+
+.container-fluid::before {
+  content: "";
+  display: block;
+  background-image: url(https://psico.edu.uy/themes/custom/hemet/logo-m.png);
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-size: 50%;
+  height: 60px;
+  width: 100%;
+}
+
+/* ---------- Rangeslider override (si usás shiny widgets) ---------- */
+
+  .irs--shiny .irs-bar {
+    border-top: 1px solid #9bfa82;
+    border-bottom: 1px solid #9bfa82;
+    background: #9bfa82;
+  }
+
+.irs--shiny .irs-from,
+.irs--shiny .irs-to,
+.irs--shiny .irs-single {
+  background-color: #6446fa;
+}
+
+/* ---------- Listas ---------- */
+
+  ol, ul {
+    margin-top: 30px;
+  }
+
+/* ---------- Responsive ---------- */
+
+  @media (max-width: 768px) {
+    body {
+      background: none;
+      padding: 10px;
+    }
+
+    .logo {
+      display: none;
+    }
+
+    .barraPie {
+      height: auto;
+      line-height: normal;
+      margin: 20px 0 10px;
+      font-size: 0.8rem;
+    }
+
+    .container-fluid {
+      width: 100%;
+      padding-top: 20px;
+    }
+
+    .container-fluid::before {
+      background-size: 50%;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    .table td, .table th {
+      font-size: 0.9rem;
+      padding: 5px;
+    }
+
+    ol, ul {
+      margin-top: 15px;
+    }
+  }
+
+.page-columns::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 28vw;  /* margen izquierdo relativo al ancho */
+  width: 20vw;
+  max-width: 300px;
+  aspect-ratio: 3 / 2;
+  background-image: url(https://psico.edu.uy/themes/custom/hemet/logo-m.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top left;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.page-columns::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  right: 28vw; /* margen derecho relativo */
+  width: 25vw;
+  max-width: 300px;
+  aspect-ratio: 2 / 1;
+  background-image: url("https://i.ibb.co/CHZLyFH/Recurso-33.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top right;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.sidebar nav[role=doc-toc] .nav-link.active  {
+  color: #6446fa !important;
+  border-left: 1px solid #6446fa;
+  padding-left: 6px;
+  background-color: transparent;
+}
+
+.sidebar nav[role=doc-toc]>h2, .sidebar nav[role=doc-toc]>.h2 {
+  font-weight: bold;
+}
+

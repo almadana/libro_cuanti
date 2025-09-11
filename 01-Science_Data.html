@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Danielle J. Navarro">
+
+<title>1&nbsp; ¿Por qué estadística? – Respondiendo preguntas con datos</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./02-Describing_Data.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1116FZ99DZ"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="cuantistats.css">
+<meta property="og:title" content="1&nbsp; ¿Por qué estadística? – Respondiendo preguntas con datos">
+<meta property="og:description" content="Adaptado casi al pie de la letra de los capítulos 1 y 2 de Navarro, D. J. “Learning Statistics with R.” https://compcogscisydney.org/learning-statistics-with-r/, salvo secciones sobre sesgos, autoría de Emilia Flo. Traducido al español rioplatense por ChatGPT4-o bajo la supervisión de Álvaro Cabana.">
+<meta property="og:site_name" content="Respondiendo preguntas con datos">
+<meta name="twitter:title" content="1&nbsp; ¿Por qué estadística? – Respondiendo preguntas con datos">
+<meta name="twitter:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
+<meta name="twitter:image" content="https://almadana.github.io/libro_cuanti/imgs/TextbookCover.png">
+<meta name="twitter:site" content="@MattCrumpLab">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image-height" content="1310">
+<meta name="twitter:image-width" content="916">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-Science_Data.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">¿Por qué estadística?</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Respondiendo preguntas con datos</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/almadana/libro_cuanti/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-Science_Data.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">¿Por qué estadística?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-Describing_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describir los datos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02b-tablas_final.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tablas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-Correlation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Correlación</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-SamplesPopulations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probabilidad, muestreo y estimación</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-Foundation_Inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Fundamentos de la inferencia</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-ttests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Pruebas t</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06b-chi_cuadrado.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Pruebas chi cuadrado</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-ANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">ANOVA</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referencias</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#sobre-la-psicología-de-la-estadística" id="toc-sobre-la-psicología-de-la-estadística" class="nav-link active" data-scroll-target="#sobre-la-psicología-de-la-estadística"><span class="header-section-number">1.1</span> Sobre la psicología de la estadística</a>
+  <ul class="collapse">
+  <li><a href="#el-cerebro-tramposo-sesgos-que-nos-hacen-ver-lo-que-queremos-ver" id="toc-el-cerebro-tramposo-sesgos-que-nos-hacen-ver-lo-que-queremos-ver" class="nav-link" data-scroll-target="#el-cerebro-tramposo-sesgos-que-nos-hacen-ver-lo-que-queremos-ver"><span class="header-section-number">1.1.1</span> El cerebro tramposo: sesgos que nos hacen ver lo que queremos ver</a></li>
+  </ul></li>
+  <li><a href="#la-advertencia-de-la-paradoja-de-simpson" id="toc-la-advertencia-de-la-paradoja-de-simpson" class="nav-link" data-scroll-target="#la-advertencia-de-la-paradoja-de-simpson"><span class="header-section-number">1.2</span> La advertencia de la paradoja de Simpson</a></li>
+  <li><a href="#estadística-en-psicología" id="toc-estadística-en-psicología" class="nav-link" data-scroll-target="#estadística-en-psicología"><span class="header-section-number">1.3</span> Estadística en psicología</a></li>
+  <li><a href="#estadística-en-la-vida-cotidiana" id="toc-estadística-en-la-vida-cotidiana" class="nav-link" data-scroll-target="#estadística-en-la-vida-cotidiana"><span class="header-section-number">1.4</span> Estadística en la vida cotidiana</a></li>
+  <li><a href="#hay-más-en-los-métodos-de-investigación-que-solo-la-estadística" id="toc-hay-más-en-los-métodos-de-investigación-que-solo-la-estadística" class="nav-link" data-scroll-target="#hay-más-en-los-métodos-de-investigación-que-solo-la-estadística"><span class="header-section-number">1.5</span> Hay más en los métodos de investigación que solo la estadística</a></li>
+  <li><a href="#una-breve-introducción-al-diseño-de-investigación" id="toc-una-breve-introducción-al-diseño-de-investigación" class="nav-link" data-scroll-target="#una-breve-introducción-al-diseño-de-investigación"><span class="header-section-number">1.6</span> Una breve introducción al diseño de investigación</a></li>
+  <li><a href="#introducción-a-la-medición-psicológica" id="toc-introducción-a-la-medición-psicológica" class="nav-link" data-scroll-target="#introducción-a-la-medición-psicológica"><span class="header-section-number">1.7</span> Introducción a la medición psicológica</a>
+  <ul class="collapse">
+  <li><a href="#algunas-ideas-sobre-la-medición-psicológica" id="toc-algunas-ideas-sobre-la-medición-psicológica" class="nav-link" data-scroll-target="#algunas-ideas-sobre-la-medición-psicológica"><span class="header-section-number">1.7.1</span> Algunas ideas sobre la medición psicológica</a></li>
+  <li><a href="#operacionalización-definir-tu-medición" id="toc-operacionalización-definir-tu-medición" class="nav-link" data-scroll-target="#operacionalización-definir-tu-medición"><span class="header-section-number">1.7.2</span> Operacionalización: definir tu medición</a></li>
+  <li><a href="#escalas-de-medición" id="toc-escalas-de-medición" class="nav-link" data-scroll-target="#escalas-de-medición"><span class="header-section-number">1.7.3</span> Escalas de medición</a></li>
+  <li><a href="#escala-nominal" id="toc-escala-nominal" class="nav-link" data-scroll-target="#escala-nominal"><span class="header-section-number">1.7.4</span> Escala nominal</a></li>
+  <li><a href="#escala-ordinal" id="toc-escala-ordinal" class="nav-link" data-scroll-target="#escala-ordinal"><span class="header-section-number">1.7.5</span> Escala ordinal</a></li>
+  <li><a href="#escala-de-intervalo" id="toc-escala-de-intervalo" class="nav-link" data-scroll-target="#escala-de-intervalo"><span class="header-section-number">1.7.6</span> Escala de intervalo</a></li>
+  <li><a href="#escala-de-razón" id="toc-escala-de-razón" class="nav-link" data-scroll-target="#escala-de-razón"><span class="header-section-number">1.7.7</span> Escala de razón</a></li>
+  <li><a href="#variables-continuas-versus-discretas" id="toc-variables-continuas-versus-discretas" class="nav-link" data-scroll-target="#variables-continuas-versus-discretas"><span class="header-section-number">1.7.8</span> Variables continuas versus discretas</a></li>
+  <li><a href="#algunas-complejidades" id="toc-algunas-complejidades" class="nav-link" data-scroll-target="#algunas-complejidades"><span class="header-section-number">1.7.9</span> Algunas complejidades</a></li>
+  </ul></li>
+  <li><a href="#evaluación-de-la-confiabilidad-de-una-medición" id="toc-evaluación-de-la-confiabilidad-de-una-medición" class="nav-link" data-scroll-target="#evaluación-de-la-confiabilidad-de-una-medición"><span class="header-section-number">1.8</span> Evaluación de la confiabilidad de una medición</a></li>
+  <li><a href="#el-rol-de-las-variables-predictoras-y-dependientes" id="toc-el-rol-de-las-variables-predictoras-y-dependientes" class="nav-link" data-scroll-target="#el-rol-de-las-variables-predictoras-y-dependientes"><span class="header-section-number">1.9</span> El rol de las variables: predictoras y dependientes</a></li>
+  <li><a href="#investigación-experimental-y-no-experimental" id="toc-investigación-experimental-y-no-experimental" class="nav-link" data-scroll-target="#investigación-experimental-y-no-experimental"><span class="header-section-number">1.10</span> Investigación experimental y no experimental</a>
+  <ul class="collapse">
+  <li><a href="#investigación-experimental" id="toc-investigación-experimental" class="nav-link" data-scroll-target="#investigación-experimental"><span class="header-section-number">1.10.1</span> Investigación experimental</a></li>
+  <li><a href="#investigación-no-experimental" id="toc-investigación-no-experimental" class="nav-link" data-scroll-target="#investigación-no-experimental"><span class="header-section-number">1.10.2</span> Investigación no experimental</a></li>
+  </ul></li>
+  <li><a href="#evaluar-la-validez-de-un-estudio" id="toc-evaluar-la-validez-de-un-estudio" class="nav-link" data-scroll-target="#evaluar-la-validez-de-un-estudio"><span class="header-section-number">1.11</span> Evaluar la validez de un estudio</a>
+  <ul class="collapse">
+  <li><a href="#validez-interna" id="toc-validez-interna" class="nav-link" data-scroll-target="#validez-interna"><span class="header-section-number">1.11.1</span> Validez interna</a></li>
+  <li><a href="#validez-externa" id="toc-validez-externa" class="nav-link" data-scroll-target="#validez-externa"><span class="header-section-number">1.11.2</span> Validez externa</a></li>
+  <li><a href="#validez-de-constructo" id="toc-validez-de-constructo" class="nav-link" data-scroll-target="#validez-de-constructo"><span class="header-section-number">1.11.3</span> Validez de constructo</a></li>
+  <li><a href="#validez-aparente" id="toc-validez-aparente" class="nav-link" data-scroll-target="#validez-aparente"><span class="header-section-number">1.11.4</span> Validez aparente</a></li>
+  <li><a href="#validez-ecológica" id="toc-validez-ecológica" class="nav-link" data-scroll-target="#validez-ecológica"><span class="header-section-number">1.11.5</span> Validez ecológica</a></li>
+  </ul></li>
+  <li><a href="#confusores-artefactos-y-otras-amenazas-a-la-validez" id="toc-confusores-artefactos-y-otras-amenazas-a-la-validez" class="nav-link" data-scroll-target="#confusores-artefactos-y-otras-amenazas-a-la-validez"><span class="header-section-number">1.12</span> Confusores, artefactos y otras amenazas a la validez</a>
+  <ul class="collapse">
+  <li><a href="#efectos-de-historia" id="toc-efectos-de-historia" class="nav-link" data-scroll-target="#efectos-de-historia"><span class="header-section-number">1.12.1</span> Efectos de historia</a></li>
+  <li><a href="#efectos-de-maduración" id="toc-efectos-de-maduración" class="nav-link" data-scroll-target="#efectos-de-maduración"><span class="header-section-number">1.12.2</span> Efectos de maduración</a></li>
+  <li><a href="#efectos-de-pruebas-repetidas" id="toc-efectos-de-pruebas-repetidas" class="nav-link" data-scroll-target="#efectos-de-pruebas-repetidas"><span class="header-section-number">1.12.3</span> Efectos de pruebas repetidas</a></li>
+  <li><a href="#sesgo-de-selección" id="toc-sesgo-de-selección" class="nav-link" data-scroll-target="#sesgo-de-selección"><span class="header-section-number">1.12.4</span> Sesgo de selección</a></li>
+  <li><a href="#abandono-diferencial" id="toc-abandono-diferencial" class="nav-link" data-scroll-target="#abandono-diferencial"><span class="header-section-number">1.12.5</span> Abandono diferencial</a></li>
+  <li><a href="#sesgo-por-no-respuesta" id="toc-sesgo-por-no-respuesta" class="nav-link" data-scroll-target="#sesgo-por-no-respuesta"><span class="header-section-number">1.12.6</span> Sesgo por no respuesta</a></li>
+  <li><a href="#regresión-a-la-media" id="toc-regresión-a-la-media" class="nav-link" data-scroll-target="#regresión-a-la-media"><span class="header-section-number">1.12.7</span> Regresión a la media</a></li>
+  <li><a href="#sesgo-del-experimentador" id="toc-sesgo-del-experimentador" class="nav-link" data-scroll-target="#sesgo-del-experimentador"><span class="header-section-number">1.12.8</span> Sesgo del experimentador</a></li>
+  <li><a href="#efectos-de-demanda-y-reactividad" id="toc-efectos-de-demanda-y-reactividad" class="nav-link" data-scroll-target="#efectos-de-demanda-y-reactividad"><span class="header-section-number">1.12.9</span> Efectos de demanda y reactividad</a></li>
+  <li><a href="#efectos-placebo" id="toc-efectos-placebo" class="nav-link" data-scroll-target="#efectos-placebo"><span class="header-section-number">1.12.10</span> Efectos placebo</a></li>
+  <li><a href="#efectos-de-situación-medición-y-subpoblación" id="toc-efectos-de-situación-medición-y-subpoblación" class="nav-link" data-scroll-target="#efectos-de-situación-medición-y-subpoblación"><span class="header-section-number">1.12.11</span> Efectos de situación, medición y subpoblación</a></li>
+  <li><a href="#fraude-engaño-y-autoengaño" id="toc-fraude-engaño-y-autoengaño" class="nav-link" data-scroll-target="#fraude-engaño-y-autoengaño"><span class="header-section-number">1.12.12</span> Fraude, engaño y autoengaño</a></li>
+  </ul></li>
+  <li><a href="#resumen" id="toc-resumen" class="nav-link" data-scroll-target="#resumen"><span class="header-section-number">1.13</span> Resumen</a></li>
+  <li><a href="#videos" id="toc-videos" class="nav-link" data-scroll-target="#videos"><span class="header-section-number">1.14</span> Videos</a>
+  <ul class="collapse">
+  <li><a href="#términos-en-estadística-video-en-inglés" id="toc-términos-en-estadística-video-en-inglés" class="nav-link" data-scroll-target="#términos-en-estadística-video-en-inglés"><span class="header-section-number">1.14.1</span> Términos en Estadística (video en inglés)</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/almadana/libro_cuanti/edit/master/01-Science_Data.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">¿Por qué estadística?</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Danielle J. Navarro </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Notas</div>
+    Adaptado casi al pie de la letra de los capítulos 1 y 2 de Navarro, D. J. “Learning Statistics with R.” <a href="https://compcogscisydney.org/learning-statistics-with-r/" class="uri">https://compcogscisydney.org/learning-statistics-with-r/</a>, salvo secciones sobre sesgos, autoría de Emilia Flo. Traducido al español rioplatense por ChatGPT4-o bajo la supervisión de Álvaro Cabana.
+  </div>
+</div>
+
+
+</header>
+
+
+<blockquote class="blockquote">
+<p>Consultar al estadístico después de que un experimento ha terminado es, a menudo, simplemente pedirle que realice una autopsia. Tal vez pueda decir de qué murió el experimento. — Sir Ronald Fisher</p>
+</blockquote>
+<section id="sobre-la-psicología-de-la-estadística" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="sobre-la-psicología-de-la-estadística"><span class="header-section-number">1.1</span> Sobre la psicología de la estadística</h2>
+<p>Para sorpresa de muchos estudiantes, la estadística es una parte bastante importante de la formación en psicología. Para sorpresa de nadie, la estadística rara vez es la parte favorita de esa formación. Después de todo, si realmente te encantara la idea de hacer estadística, probablemente estarías en una clase de estadística ahora mismo, no en una clase de psicología. Así que, como era de esperar, hay una buena parte del estudiantado que no está muy feliz con el hecho de que la psicología incluya tanta estadística. Por eso, me pareció un buen punto de partida responder algunas de las preguntas más comunes que suelen tener sobre este tema…</p>
+<p>Una parte importante del problema tiene que ver con la idea misma de estadística. ¿Qué es? ¿Para qué sirve? ¿Y por qué los científicos están tan obsesionados con ella? Son todas buenas preguntas. Empecemos por la última. Como grupo, los científicos parecen estar extrañamente empeñados en hacer pruebas estadísticas de todo. De hecho, usamos estadísticas tan seguido que a veces se nos olvida explicar por qué lo hacemos. Es casi un dogma entre los científicos —y especialmente entre los de las ciencias sociales— que los resultados no son confiables hasta que hacemos estadística. A los estudiantes de grado se les podría perdonar por pensar que estamos completamente locos, porque nadie se toma el tiempo de responder una pregunta muy simple:</p>
+<blockquote class="blockquote">
+<p><em>¿Por qué hacen estadística? ¿Por qué no usar solo el sentido común?</em></p>
+</blockquote>
+<p>Es una pregunta ingenua en cierto sentido, pero muchas de las buenas preguntas lo son. Hay muchas buenas respuestas, pero para mí, la mejor es muy simple: no confiamos lo suficiente en nosotros mismos. Nos preocupa ser humanos, y estar sujetos a todos los sesgos, tentaciones y debilidades que eso implica. Gran parte de la estadística funciona como una especie de red de seguridad. Usar el “sentido común” para evaluar evidencia implica confiar en las corazonadas, en los argumentos verbales y en el puro poder del razonamiento humano para llegar a la respuesta correcta. La mayoría de los científicos no cree que ese enfoque funcione muy bien.</p>
+<p>De hecho, pensándolo bien, esto suena bastante a una pregunta psicológica. Y como trabajo en un departamento de psicología, parece buena idea profundizar un poco más. ¿Es realmente razonable pensar que el “sentido común” es confiable? Los argumentos verbales tienen que construirse con lenguaje, y todo lenguaje tiene sesgos: algunas cosas son más difíciles de decir que otras, y no necesariamente porque sean falsas (por ejemplo, la electrodinámica cuántica es una buena teoría, pero difícil de explicar con palabras). Las corazonadas no están diseñadas para resolver problemas científicos, sino para manejar inferencias cotidianas —y considerando que la evolución biológica es más lenta que el cambio cultural, deberíamos decir que están diseñadas para resolver problemas de otro mundo, distinto al que vivimos ahora. Más fundamentalmente, razonar con sentido común requiere hacer “inducción”, es decir, conjeturas razonables y generalizaciones más allá de la evidencia inmediata. Si creés que podés hacer eso sin verte influenciado por distracciones o sesgos, bueno… te puedo vender el obelisco. De hecho, como veremos en la siguiente sección, ni siquiera podemos resolver problemas deductivos (que no requieren conjeturas) sin que nuestros sesgos previos se metan en el medio.</p>
+<section id="el-cerebro-tramposo-sesgos-que-nos-hacen-ver-lo-que-queremos-ver" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="el-cerebro-tramposo-sesgos-que-nos-hacen-ver-lo-que-queremos-ver"><span class="header-section-number">1.1.1</span> El cerebro tramposo: sesgos que nos hacen ver lo que queremos ver</h3>
+<blockquote class="blockquote">
+<p>Yo no tengo sesgos. — Alguien con un montón de sesgos</p>
+</blockquote>
+<p>La mayoría de las personas son bastante inteligentes. Claramente más que otras especies con las que compartimos el planeta (aunque muchos no estarían de acuerdo). Nuestras mentes son asombrosas, capaces de hazañas increíbles de pensamiento y razonamiento. Pero eso no nos hace perfectos. Una de las muchas cosas que la psicología ha demostrado a lo largo del tiempo es que nos cuesta mucho mantenernos neutrales, evaluar la evidencia de manera imparcial y sin dejarnos llevar por nuestras creencias previas. Un buen ejemplo de esto son los sesgos en el razonamiento lógico: si le pedís a alguien que juzgue si un argumento es lógicamente válido (es decir, si la conclusión se sigue de las premisas), solemos dejarnos influenciar por qué tan creíble parece la conclusión, incluso cuando no deberíamos. Este error tiene nombre: <strong>sesgo de creencia</strong>. Y está reestudiado. En un estudio clásico, <span class="citation" data-cites="Evans1983">Evans, Barston, y Pollard (<a href="references.html#ref-Evans1983" role="doc-biblioref">1983</a>)</span> vieron que cuando la lógica y las creencias se alinean, a la gente le va bastante bien. Pero cuando entran en conflicto… ¡ay mamita! Muchos prefieren lo que les “suena bien” a lo que es lógicamente correcto. Otro sesgo cognitivo brutal es el <strong>sesgo de supervivencia</strong>. Vayamos al pasado para explicarlo! Durante la Segunda Guerra Mundial, los Aliados querían reforzar los aviones de combate para que resistieran más tiros. Para eso, estudiaron los aviones que volvían de las misiones, y vieron que las zonas más agujereadas por balas estaban en las alas y el fuselaje. ¿Solución lógica? Reforzar esas zonas. Pero apareció Abraham Wald, un estadístico con la cabeza bien puesta, que dijo: “Pará. Estamos viendo solo los aviones que volvieron. ¿Y los que no volvieron?” Quizás los que recibieron disparos en otras partes (como el motor) nunca llegaron a contarlo. Ese es el sesgo de supervivencia: sacar conclusiones solo a partir de los casos que “sobrevivieron” a cierta selección, y olvidarnos de los que se quedaron afuera del análisis. Podemos pensar en un ejemplo más actual: ves un montón de historias de gente que dejó la facultad para emprender y ahora es millonaria. ¿La conclusión obvia? “Dejar la facultad y ser emprendedor es el camino al éxito”. Pero lo que no estás viendo son los miles que hicieron lo mismo y no llegaron a nada. Esos no aparecen en los videos motivacionales de TikToK, pero existen —y son la mayoría. Un clásico del cerebro humano es el <strong>sesgo de confirmación</strong> que se basa en nuestra tendencia a buscar, recordar e interpretar la información de forma que confirme lo que ya creemos. Pongamos un ejemplo simple: supongamos que pensás que tu vecina es antipática. La saludás una vez, no te contesta, y ya está: confirmado. Pero si otro día te saluda re amable, lo más probable es que lo minimices (“seguro estaba de buen humor justo ese día”). ¿Qué pasó? Te acordás de lo que encaja con tu idea previa y descartás lo demás. En psicología pasa todo el tiempo. Supongamos que tenés una teoría sobre por qué tu paciente evita situaciones sociales. Si no tenés cuidado, vas a empezar a notar más las cosas que confirman tu hipótesis, y a pasar por alto las que no encajan. Y si no usás herramientas más objetivas (como tests o registros sistemáticos), terminás haciendo terapia basada en corazonadas. También nos pasa cuando estudiamos. Si estás convencido de que Freud la tenía clara, vas a encontrar mil citas que te lo confirmen. Y si lo odiás, vas a encontrar mil cosas para tirarlo abajo. ¿Y quién tiene razón? Depende más de lo que ya creías que de lo que estás leyendo. El sesgo de confirmación es como tener un algoritmo mental que te muestra solo lo que te gusta pero no te muestra la realidad completa. El sesgo de confirmación es cómodo, porque nos evita la molestia de cambiar de opinión. Pero también es peligroso: si no lo vigilamos, podemos terminar convencidos de cualquier cosa, siempre y cuando nos guste cómo suena. Y si queremos hacer buena ciencia —o simplemente tomar buenas decisiones— necesitamos salir de esa burbuja mental.</p>
+<p>¿Y entonces qué? ¿Estamos condenades a razonar mal? No, para nada. Pero necesitamos herramientas que nos ayuden a pensar mejor. Por suerte, esa herramienta existe. No es magia, es estadística. Y esa es la razón #1 por la que los científicos aman la estadística: es demasiado fácil creer lo que una ya cree; así que si queremos “creer en los datos” en lugar de nuestras intuiciones, necesitamos una ayudita para mantener a raya nuestros sesgos. Eso es lo que hace la estadística: nos ayuda a ser honestos.</p>
+</section>
+</section>
+<section id="la-advertencia-de-la-paradoja-de-simpson" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="la-advertencia-de-la-paradoja-de-simpson"><span class="header-section-number">1.2</span> La advertencia de la paradoja de Simpson</h2>
+<p>La siguiente es una historia real (creo…). En 1973, la Universidad de California en Berkeley estaba preocupada por los ingresos a sus programas de posgrado. En particular, el problema era la distribución por género de los ingresos, que se veía así:</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td></td>
+<td style="text-align: center;">Número de postulantes</td>
+<td style="text-align: center;">Percentaje admitido</td>
+</tr>
+<tr class="even">
+<td>Hombres</td>
+<td style="text-align: center;">8442</td>
+<td style="text-align: center;">44%</td>
+</tr>
+<tr class="odd">
+<td>Mujeres</td>
+<td style="text-align: center;">4321</td>
+<td style="text-align: center;">35%</td>
+</tr>
+</tbody>
+</table>
+<p>Y tenían miedo de que los demandaran. Con casi 13.000 postulantes, una diferencia del 9% entre hombres y mujeres es demasiado grande como para ser una simple coincidencia. Bastante convincente, ¿no? Y si te dijera que estos datos en realidad reflejan un leve sesgo a favor de las mujeres (¡más o menos!), probablemente pensarías que estoy loca o que soy sexista.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Extra
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Versiones anteriores de estas notas sugerían incorrectamente que Berkeley fue demandada —aparentemente eso no es cierto. Hay un buen comentario al respecto acá: <a href="https://www.refsmmat.com/posts/2016-05-08-simpsons-paradox-berkeley.html" class="uri">https://www.refsmmat.com/posts/2016-05-08-simpsons-paradox-berkeley.html</a>. ¡Gracias a Wilfried Van Hirtum por señalarlo!</p>
+</div>
+</div>
+<p>Cuando la gente empezó a mirar los datos con más detalle <span class="citation" data-cites="Bickel1975">(<a href="references.html#ref-Bickel1975" role="doc-biblioref">Bickel, Hammel, y O’Connell 1975</a>)</span>, la historia resultó ser bastante diferente. En particular, cuando se analizaron los ingresos por departamento, se encontró que la mayoría de los departamentos en realidad tenían una tasa de admisión más alta para mujeres que para hombres. La siguiente tabla muestra los datos de los seis departamentos más grandes (los nombres fueron removidos por privacidad):</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 22%">
+<col style="width: 18%">
+<col style="width: 22%">
+<col style="width: 18%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Departamento</td>
+<td style="text-align: center;">Postulantes (H)</td>
+<td style="text-align: center;">% admitidos</td>
+<td style="text-align: center;">Postulantes (M)</td>
+<td style="text-align: center;">% admitidas</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">825</td>
+<td style="text-align: center;">62%</td>
+<td style="text-align: center;">108</td>
+<td style="text-align: center;">82%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">B</td>
+<td style="text-align: center;">560</td>
+<td style="text-align: center;">63%</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">68%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">C</td>
+<td style="text-align: center;">325</td>
+<td style="text-align: center;">37%</td>
+<td style="text-align: center;">593</td>
+<td style="text-align: center;">34%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">D</td>
+<td style="text-align: center;">417</td>
+<td style="text-align: center;">33%</td>
+<td style="text-align: center;">375</td>
+<td style="text-align: center;">35%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">E</td>
+<td style="text-align: center;">191</td>
+<td style="text-align: center;">28%</td>
+<td style="text-align: center;">393</td>
+<td style="text-align: center;">24%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">272</td>
+<td style="text-align: center;">6%</td>
+<td style="text-align: center;">341</td>
+<td style="text-align: center;">7%</td>
+</tr>
+</tbody>
+</table>
+<p>Increíblemente, la mayoría de los departamentos admitían <em>más</em> mujeres (en proporción) que hombres. Sin embargo, la tasa de admisión general en toda la universidad era <em>más baja</em> para las mujeres. ¿Cómo puede ser? ¿Cómo pueden ser verdaderas las dos cosas al mismo tiempo?</p>
+<p>Esto es lo que pasa. Primero, notá que los departamentos <em>no son</em> todos iguales en cuanto a su porcentaje de admisión: algunos (como ingeniería o química) tienden a admitir a una gran parte de quienes se postulan; otros (como literatura inglesa) tienden a rechazar a la mayoría, incluso si tienen buen perfil. Así que, entre los seis departamentos de arriba, el departamento A es el más generoso, seguido por B, C, D, E y F, en ese orden. A continuación, fijate que los hombres y las mujeres tendían a postularse a departamentos diferentes. Si ordenamos los departamentos según el número total de postulaciones masculinas, obtenemos <strong>A</strong>&gt;<strong>B</strong>&gt;D&gt;C&gt;F&gt;E (los “departamentos fáciles” están en negrita). En general, los hombres tendieron a postularse a los departamentos con tasas de admisión altas. Ahora compara esto con la distribución de las postulaciones femeninas. Clasificar los departamentos según el número total de postulaciones femeninas produce un orden bastante diferente: C&gt;E&gt;D&gt;F&gt;<strong>A</strong>&gt;<strong>B</strong>. En otras palabras, estos datos parecen sugerir que las mujeres tendieron a postularse a departamentos “más difíciles”.</p>
+<p>Y si miramos <a href="#fig-simpson" class="quarto-xref">Figura&nbsp;<span>1.1</span></a>, vemos que esta tendencia es sistemática, y bastante notable. Este fenómeno se conoce como la <strong>paradoja de Simpson</strong>. No es común, pero ocurre en la vida real, y suele sorprender muchísimo cuando uno se la encuentra por primera vez. Mucha gente incluso se niega a creer que sea real. Pero lo es. Y aunque hay muchas lecciones estadísticas sutiles escondidas acá, quiero usar este ejemplo para señalar un punto más importante: hacer investigación es difícil, y está <strong>lleno</strong> de trampas sutiles y contraintuitivas esperando a quien no esté atento. Esa es la razón #2 por la que los científicos aman la estadística, y por la que enseñamos métodos de investigación. Porque la ciencia es difícil, y la verdad a veces está escondida en los rincones más enredados de los datos.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-simpson" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-simpson-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="imgs/figures/1Simpson.png" class="img-fluid figure-img" width="481">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-simpson-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1.1: Datos de admisión a la universidad de Berkeley en 1973. Esta figura muestra la tasa de admisión de los 85 departamentos que recibieron al menos una postulante mujer, en función del porcentaje de postulantes que eran mujeres. El gráfico es una recreación de la Figura 1 de Bickel et al.&nbsp;(1975). Los círculos representan departamentos con más de 40 postulantes; el área del círculo es proporcional al número total de postulantes. Las cruces representan departamentos con menos de 40 postulantes.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Antes de dejar este tema por completo, quiero señalar algo realmente importante que muchas veces se pasa por alto en los cursos de métodos de investigación: la estadística solo resuelve <em>parte</em> del problema. Recordemos que todo esto empezó con la preocupación de que el proceso de admisión de Berkeley pudiera estar sesgado en contra de las mujeres. Cuando miramos los datos “agregados”, parecía que la universidad estaba discriminando. Pero cuando desagregamos y analizamos el comportamiento de los departamentos individuales, resultó que, en todo caso, había un sesgo a favor de las mujeres. El sesgo de género en las cifras totales se debía a que las mujeres tendían a postularse a los departamentos más exigentes. Desde una perspectiva legal, eso probablemente exime a la universidad. Las decisiones de admisión se toman a nivel de cada departamento (y hay buenas razones para que sea así), y a ese nivel las decisiones fueron más o menos imparciales (el leve sesgo a favor de las mujeres era pequeño y no sistemático). Como la universidad no puede decidir a qué departamento se postula cada quien, y la decisión se toma dentro del departamento, no se le puede responsabilizar por los sesgos que esas elecciones puedan producir.</p>
+<p>Esa era la base de mis comentarios un poco superficiales más arriba, pero no es toda la historia, ¿no? Si miramos esto desde una perspectiva más sociológica o psicológica, podríamos preguntarnos <em>por qué</em> hay diferencias tan marcadas en las postulaciones. ¿Por qué hay más hombres postulando a ingeniería y más mujeres a literatura? ¿Y por qué los departamentos con más postulaciones femeninas tienden a tener tasas de admisión más bajas que aquellos con más postulaciones masculinas? ¿No podría eso reflejar también un sesgo de género, aunque cada departamento individual no lo tenga? Supongamos, hipotéticamente, que los hombres prefieren postularse a ciencias duras y las mujeres a humanidades. Y supongamos que las tasas bajas de admisión en humanidades se deben a que el gobierno no quiere financiarlas (por ejemplo, los cupos para doctorados suelen estar atados a proyectos con financiación estatal). ¿Eso es un sesgo de género? ¿O simplemente una visión poco iluminada sobre el valor de las humanidades? ¿Y si alguien con poder político recortó fondos para humanidades porque piensa que “son cosas de chicas, sin utilidad”? Eso ya suena <em>claramente</em> sesgado por género. Nada de esto lo resuelve la estadística. Pero sí importa para el proyecto de investigación. Si te interesan los efectos estructurales de sesgos de género sutiles, probablemente querrás mirar <em>tanto los datos agregados como los desagregados</em>. Si solo te interesa cómo se toman decisiones dentro de Berkeley, entonces solo te importan los datos desagregados.</p>
+<p>En resumen, hay muchas preguntas fundamentales que no se responden con estadística, pero que cambian por completo cómo analizás e interpretás los datos. Y por eso deberías pensar en la estadística como una herramienta para ayudarte a entender tus datos, ni más ni menos. Es una <em>herramienta</em> poderosa, pero no reemplaza la reflexión cuidadosa.</p>
+</section>
+<section id="estadística-en-psicología" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="estadística-en-psicología"><span class="header-section-number">1.3</span> Estadística en psicología</h2>
+<p>Espero que la discusión anterior haya ayudado a entender por qué la ciencia en general le da tanta importancia a la estadística. Pero seguro todavía tenés muchas preguntas sobre qué rol juega la estadística en psicología, y en especial por qué las materias de psicología tienen tantas clases dedicadas a esto. Así que acá va mi intento de responder algunas…</p>
+<ul>
+<li><strong>¿Por qué hay tanta estadística en psicología?</strong></li>
+</ul>
+<p>Siendo sinceros, hay varias razones, y algunas son mejores que otras. La más importante es que la psicología es una ciencia estadística. ¿Qué quiero decir con eso? Que lo que estudiamos son personas. Personas reales, complicadas, caóticas, contradictorias. La física estudia “cosas” como electrones, y aunque la física tiene sus complejidades, los electrones no tienen mente propia. No tienen opiniones, no difieren entre sí de maneras extrañas y arbitrarias, no se aburren a mitad de un experimento, y no se enojan con el experimentador para luego tratar deliberadamente de sabotear los datos (no es que yo alguna vez haya hecho eso…). A un nivel fundamental, la psicología es más difícil que la física.</p>
+<p>Básicamente, te enseñamos estadística porque, como psicólogo, necesitás ser mejor en esto que un físico. En física a veces se dice: “si tu experimento necesita estadística, tendrías que haber hecho un mejor experimento”. Pero ellos pueden decir eso porque sus objetos de estudio son ridículamente simples comparados con el lío que enfrentamos en las ciencias sociales. No es solo psicología: casi todas las ciencias sociales dependen mucho de la estadística. No porque seamos experimentadores mediocres, sino porque elegimos problemas más difíciles. Te enseñamos estadística porque realmente la vas a necesitar.</p>
+<ul>
+<li><strong>¿No puede encargarse otra persona de la estadística?</strong></li>
+</ul>
+<p>Hasta cierto punto, sí, pero no completamente. No hace falta que te conviertas en un estadístico profesional para hacer psicología, pero sí necesitas alcanzar un cierto nivel de competencia estadística. Para mí, hay tres razones por las que todo investigador en psicología debería saber estadística básica:</p>
+<ol type="1">
+<li><p>La razón fundamental: la estadística está completamente ligada al diseño de investigación. Si querés diseñar buenos estudios, tenés que entender al menos lo básico.</p></li>
+<li><p>En segundo lugar, si querés ser bueno en la parte psicológica de la investigación, necesitás poder entender la literatura psicológica, ¿no? Pero casi todos los artículos en esa literatura presentan resultados de análisis estadísticos. Así que, si de verdad querés entender la psicología, tenés que poder entender qué hicieron los demás con sus datos. Y eso significa saber al menos algo de estadística.</p></li>
+<li><p>Ser dependiente de otros para hacer análisis estadísticos tiene un gran problema práctico: es caro. En la mayoría de los casos no vas a tener presupuesto para contratar un estadístico. Así que, por economía, tenés que poder arreglártelas por tu cuenta.</p></li>
+</ol>
+<p>Y ojo, esto no aplica solo a investigadores. Si querés ejercer como psicólogo y mantenerte al día, te conviene poder leer la literatura científica, que está llena de estadística.</p>
+<ul>
+<li><strong>No me interesan ni los trabajos, ni la investigación, ni lo clínico. ¿Igual necesito estadística?</strong></li>
+</ul>
+<p>Ahora ya me estás tomando el pelo. Pero igual te debería importar. La estadística te debería importar como le debería importar a todo el mundo: vivimos en el siglo XXI, y los datos están por todos lados. Honestamente, con el mundo como está hoy, saber un poco de estadística es casi una herramienta de supervivencia.</p>
+<p>Y eso nos lleva al próximo tema…</p>
+</section>
+<section id="estadística-en-la-vida-cotidiana" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="estadística-en-la-vida-cotidiana"><span class="header-section-number">1.4</span> Estadística en la vida cotidiana</h2>
+<blockquote class="blockquote">
+<p><em>“Nos estamos ahogando en información,<br>
+pero nos morimos de hambre por conocimiento”</em><br>
+</p>
+<p>– Varios autores, original probablemente de John Naisbitt</p>
+</blockquote>
+<p>Cuando empecé a escribir estas notas, tomé los 20 artículos más recientes del sitio de noticias de ABC. De esos 20, resultó que 8 trataban sobre algo que yo consideraría un tema estadístico; 6 de esos 8 tenían algún error. El error más común, por si te da curiosidad, era no reportar datos de línea de base (por ejemplo, el artículo dice que el 5% de las personas en la situación X tienen cierta característica Y, pero no dice cuán común es esa característica en la población general). El punto no es que los periodistas sean malísimos en estadística (aunque casi siempre lo son), sino que tener un conocimiento básico de estadística te ayuda mucho para darte cuenta cuando alguien se equivoca —o directamente te está mintiendo. Quizás, una de las mayores consecuencias de aprender estadística es que te vas a enojar con el diario o con internet mucho más seguido :).</p>
+</section>
+<section id="hay-más-en-los-métodos-de-investigación-que-solo-la-estadística" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="hay-más-en-los-métodos-de-investigación-que-solo-la-estadística"><span class="header-section-number">1.5</span> Hay más en los métodos de investigación que solo la estadística</h2>
+<p>Hasta ahora, la mayoría de lo que dije fue sobre estadística, así que no te culpo si pensás que es lo único que me importa en la vida. Para ser justos, no estarías tan equivocado, pero la metodología de investigación es un concepto más amplio. Por eso, los cursos de métodos suelen cubrir un montón de temas más ligados a los aspectos prácticos del diseño de investigaciones, especialmente cuando trabajás con personas. Sin embargo, el 99% de los miedos estudiantiles tienen que ver con la parte estadística del curso, así que me enfoqué en eso, y espero haberte convencido de que la estadística importa, y más importante aún, que no hay que tenerle miedo. Dicho eso, es bastante típico que los cursos introductorios de métodos estén muy cargados de estadística. Y no es (generalmente) porque los docentes sean gente malvada. Al contrario. Los cursos introductorios se enfocan tanto en estadística porque la vas a necesitar antes que el resto del entrenamiento metodológico. ¿Por qué? Porque en casi todas tus otras materias, los trabajos prácticos van a requerir análisis estadístico, mucho más que cualquier otra herramienta de metodología. No es común que te pidan diseñar un estudio desde cero (en cuyo caso sí necesitarías saber mucho sobre diseño de investigación), pero sí es común que te pidan analizar e interpretar datos recolectados por otra persona (en cuyo caso necesitás estadística). En ese sentido, si pensás en lo que más te va a servir para rendir bien en tus materias, la estadística es lo más urgente.</p>
+<p>Pero tené en cuenta que “urgente” es diferente de “importante”; ambos son relevantes. De verdad quiero insistir en que el diseño de investigación es tan importante como el análisis de datos, y este libro le dedica bastante espacio. Aun así, mientras que la estadística tiene un carácter más universal y te da un conjunto de herramientas útiles para casi cualquier investigación en psicología, el diseño de investigación no es tan generalizable. Hay principios básicos que todos deberían tener en cuenta, pero muchos aspectos del diseño son muy específicos del área en la que trabajás. Y como lo que más importa está en los detalles, esos detalles casi nunca aparecen en un curso introductorio de estadística y métodos.</p>
+</section>
+<section id="una-breve-introducción-al-diseño-de-investigación" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="una-breve-introducción-al-diseño-de-investigación"><span class="header-section-number">1.6</span> Una breve introducción al diseño de investigación</h2>
+<p>En este capítulo vamos a empezar a pensar en las ideas básicas que intervienen al diseñar un estudio, recolectar datos, verificar si la recolección funciona, etc. No te va a dar suficiente info como para que puedas diseñar tus propios estudios, pero sí te va a dar herramientas básicas para evaluar los estudios de otros. Sin embargo, como este libro está más enfocado en el análisis de datos que en la recolección, solo voy a dar un panorama general.</p>
+<p>Este capítulo es “especial” por dos razones. Primero, es mucho más específico de la psicología que los capítulos que vienen después. Segundo, se enfoca mucho más en el problema científico del diseño metodológico, y mucho menos en el problema estadístico del análisis de datos. De todos modos, los dos problemas están relacionados entre sí, así que es común que los libros de estadística los traten con cierto detalle.</p>
+<p>Este capítulo se basa bastante en <span class="citation" data-cites="Campbell1963">Campbell y Stanley (<a href="references.html#ref-Campbell1963" role="doc-biblioref">1963</a>)</span> para el diseño de estudios, y en <span class="citation" data-cites="Stevens1946">Stevens (<a href="references.html#ref-Stevens1946" role="doc-biblioref">1946</a>)</span> para la discusión sobre escalas de medición.</p>
+</section>
+<section id="introducción-a-la-medición-psicológica" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="introducción-a-la-medición-psicológica"><span class="header-section-number">1.7</span> Introducción a la medición psicológica</h2>
+<p>Lo primero que hay que entender es que la recolección de datos puede pensarse como una forma de medición. Es decir, lo que estamos tratando de hacer acá es medir algo sobre el comportamiento o la mente humana. ¿Qué quiero decir con “medición”?</p>
+<section id="algunas-ideas-sobre-la-medición-psicológica" class="level3" data-number="1.7.1">
+<h3 data-number="1.7.1" class="anchored" data-anchor-id="algunas-ideas-sobre-la-medición-psicológica"><span class="header-section-number">1.7.1</span> Algunas ideas sobre la medición psicológica</h3>
+<p>La medición es un concepto sutil, pero básicamente se trata de encontrar una forma de asignar números, etiquetas u otras descripciones bien definidas a “cosas”. Así que, cualquiera de los siguientes ejemplos cuenta como una medición psicológica:</p>
+<ul>
+<li><p>Mi <strong>edad</strong> es <em>33</em> años.</p></li>
+<li><p><em>No me gustan</em> las <strong>anchoas</strong>.</p></li>
+<li><p>Mi <strong>sexo cromosómico</strong> es <em>masculino</em>.</p></li>
+<li><p>Mi <strong>género autoidentificado</strong> es <em>masculino</em>.</p></li>
+</ul>
+<p>En esta lista, lo que está <strong>en negrita</strong> es “lo que se quiere medir”, y lo que está <em>en cursiva</em> es “la medida en sí”. Podemos ir un poco más allá y pensar en el conjunto de posibles mediciones que podrían haber surgido en cada caso:</p>
+<ul>
+<li><p>Mi <strong>edad</strong> (en años) podría haber sido <em>0, 1, 2, 3</em>… etc. El límite superior de lo que podría ser mi edad es un poco impreciso, pero en la práctica podrías decir tranquilamente que la edad máxima posible es 150, ya que ningún ser humano ha vivido tanto.</p></li>
+<li><p>Al preguntarme si me <strong>gustan las anchoas</strong>, podría haber respondido <em>sí</em>, <em>no</em>, <em>no tengo opinión</em>, o <em>a veces</em>.</p></li>
+<li><p>Mi <strong>sexo cromosómico</strong> casi seguro será <em>masculino (XY)</em> o <em>femenino (XX)</em>, pero hay otras posibilidades, como el <em>síndrome de Klinefelter (XXY)</em>, que es más similar al masculino. Y seguro hay más posibilidades.</p></li>
+<li><p>Mi <strong>género autoidentificado</strong> también podría ser <em>masculino</em> o <em>femenino</em>, pero no tiene por qué coincidir con el sexo cromosómico. También podría identificarme con <em>ninguno</em>, o declararme explícitamente <em>transgénero</em>.</p></li>
+</ul>
+<p>Como ves, para algunas cosas (como la edad) es bastante claro cuál es el conjunto de valores posibles, pero para otras se vuelve más complicado. Incluso con la edad, hay sutilezas. En el ejemplo anterior asumí que medir en años estaba bien. Pero si sos psicólogo del desarrollo, eso es muy burdo: se suele usar <em>años</em> y <em>meses</em> (por ejemplo, “2;11” para 2 años y 11 meses). Si trabajás con recién nacidos, tal vez necesites medir <em>días desde el nacimiento</em>, o incluso <em>horas</em>.</p>
+<p>Y si lo pensás más, te das cuenta de que el concepto de “edad” no es tan preciso. En general, cuando decimos “edad” nos referimos al tiempo desde el nacimiento. Pero eso no siempre es lo ideal. Supongamos que te interesa estudiar el control ocular en recién nacidos. En ese caso, podrías cuestionarte si “nacimiento” es el punto de referencia adecuado. Si María nace 3 semanas antes de término y Juana una semana después, ¿tienen la “misma edad” si las observamos a las 2 horas de nacidas? Socialmente, sí. Pero desde una perspectiva biológica, no. Tal vez convenga definir dos conceptos distintos: tiempo desde la concepción, y tiempo desde el nacimiento. Para adultos no hace diferencia, pero para recién nacidos sí.</p>
+<p>Más allá de eso, está la cuestión metodológica: ¿qué “método de medición” vas a usar para averiguar la edad? Como antes, hay muchas posibilidades.</p>
+<ul>
+<li><p>Podés simplemente preguntar: “¿cuántos años tenés?” El autorreporte es rápido, barato y sencillo, pero solo sirve con personas lo suficientemente grandes como para entender la pregunta, y alguna gente miente sobre su edad.</p></li>
+<li><p>Podrías preguntarle a una persona referente (por ejemplo, a la madre o al padre): “¿Qué edad tiene tu hijo?” Este método es rápido, y cuando se trata de niños no suele ser complicado, ya que casi siempre hay algún adulto presente. No funciona tan bien si querés saber la “edad desde la concepción”, porque muchas veces los padres no saben con certeza cuándo ocurrió. Para eso, quizás necesites otra autoridad (por ejemplo, un obstetra).</p></li>
+<li><p>Podés consultar registros oficiales, como partidas de nacimiento. Es un proceso tedioso y lleva tiempo, pero puede ser útil (por ejemplo, si la persona ya falleció).</p></li>
+</ul>
+</section>
+<section id="operacionalización-definir-tu-medición" class="level3" data-number="1.7.2">
+<h3 data-number="1.7.2" class="anchored" data-anchor-id="operacionalización-definir-tu-medición"><span class="header-section-number">1.7.2</span> Operacionalización: definir tu medición</h3>
+<p>Todas las ideas discutidas en la sección anterior se relacionan con el concepto de operacionalización. Para ser un poco más precisos, es el proceso de tomar un concepto significativo pero vago, y convertirlo en una medición precisa. La operacionalización puede incluir varias cosas diferentes:</p>
+<ul>
+<li><p>Ser preciso sobre qué intentás medir. Por ejemplo, ¿“edad” significa tiempo desde el nacimiento o desde la concepción en el contexto de tu investigación?</p></li>
+<li><p>Definir el método que vas a usar. ¿Vas a usar autorreporte, le vas a preguntar a alguien más, o vas a consultar registros? Y si usás autorreporte, ¿cómo vas a formular la pregunta?</p></li>
+<li><p>Definir el conjunto de valores permitidos: Tené en cuenta que estos valores no siempre tienen que ser numéricos, aunque muchas veces lo son. Al medir la edad, los valores son numéricos, pero aún así necesitamos pensar bien qué números vamos a permitir. ¿Queremos la edad en años, en años y meses, en días, en horas? Y así. Para otros tipos de mediciones (por ejemplo, el género), los valores no son numéricos. Pero, como antes, tenemos que pensar qué valores vamos a permitir. Si les pedimos a las personas que autoinformen su género, ¿qué opciones les vamos a ofrecer? ¿Alcanza con permitir solo “masculino” o “femenino”? ¿Necesitamos una opción de “otro”? ¿O sería mejor no dar opciones cerradas y dejar que respondan con sus propias palabras? Y si abrimos el conjunto de valores posibles para incluir todas las respuestas verbales, ¿cómo vamos a interpretar sus respuestas?</p></li>
+</ul>
+<p>La operacionalización no es una tarea sencilla, y no existe una única manera “correcta” de llevarla a cabo. La forma en que elijas operacionalizar un concepto informal como “edad” o “género” en una medición formal depende del uso que vayas a darle a esa medición. A menudo, vas a encontrar que la comunidad científica que trabaja en tu área ya tiene ideas bastante consolidadas sobre cómo hacerlo. En otras palabras, la operacionalización debe pensarse caso por caso. Dicho esto, aunque hay muchos aspectos que dependen del proyecto de investigación particular, también hay elementos que son bastante generales.</p>
+<p>Antes de continuar, quiero detenerme un momento para aclarar algunos términos y, de paso, introducir uno más. A continuación, presento cuatro conceptos estrechamente relacionados entre sí:</p>
+<ul>
+<li><p><strong>Un constructo teórico:</strong> es lo que querés medir, como “edad”, “género” u “opinión”. No se puede observar directamente, y suele ser algo vago.</p></li>
+<li><p><strong>Una medida:</strong> es el método o herramienta que usás para hacer tus observaciones. Puede ser una pregunta en una encuesta, una observación conductual o una resonancia.</p></li>
+<li><p><strong>Una operacionalización:</strong> es la conexión lógica entre el constructo y la medida, o el proceso por el cual derivás una medida a partir del constructo teórico.</p></li>
+<li><p><strong>Una variable:</strong> Finalmente, un término nuevo: una variable es lo que obtenemos cuando aplicamos una medida a algo del mundo real. Es decir, las variables son los datos concretos que terminamos registrando en nuestros conjuntos de datos.</p></li>
+</ul>
+<p>En la práctica, incluso los científicos tienden a mezclar estos términos, pero es muy útil tratar de comprender en qué se distinguen.</p>
+</section>
+<section id="escalas-de-medición" class="level3" data-number="1.7.3">
+<h3 data-number="1.7.3" class="anchored" data-anchor-id="escalas-de-medición"><span class="header-section-number">1.7.3</span> Escalas de medición</h3>
+<p>Como vimos en la sección anterior, el resultado de una medición psicológica se llama variable. Pero no todas las variables tienen las mismas cualidades, y es muy útil entender qué tipos existen. Un concepto muy útil para distinguir entre tipos de variables es el de <strong>escalas de medición</strong>.</p>
+</section>
+<section id="escala-nominal" class="level3" data-number="1.7.4">
+<h3 data-number="1.7.4" class="anchored" data-anchor-id="escala-nominal"><span class="header-section-number">1.7.4</span> Escala nominal</h3>
+<p>Una variable de <strong>escala nominal</strong> (también llamada <strong>categórica</strong>) es aquella en la que no hay una relación particular entre las distintas opciones: para este tipo de variables no tiene sentido decir que una es “mayor” o “mejor” que otra, y mucho menos calcular un promedio. El ejemplo clásico es el “color de ojos”. Pueden ser azules, verdes o marrones, entre otras opciones, pero ninguna es mejor que otra. Por eso sería raro hablar de un “color de ojos promedio”. Lo mismo pasa con el género: ser hombre no es mejor ni peor que ser mujer, y no tiene sentido hablar de un “género promedio”. En resumen, las variables nominales son aquellas en las que lo único que podés decir es que las categorías son diferentes. Y nada más.</p>
+<p>Veamos esto más de cerca. Supongamos que estoy investigando cómo viaja la gente al trabajo. Una variable que tendría que medir es el medio de transporte. Esta variable “medio de transporte” podría incluir varios valores, incluyendo: “tren”, “ómnibus”, “auto”, “bicicleta”, etc. Supongamos por ahora que esas cuatro son las únicas opciones, y que al preguntar a 100 personas cómo llegaron hoy al trabajo, obtengo esto:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Medio de transporte</th>
+<th style="text-align: center;">Cantidad de personas</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(1) Tren</td>
+<td style="text-align: center;">12</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">(2) Ómnibus</td>
+<td style="text-align: center;">30</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">(3) Auto</td>
+<td style="text-align: center;">48</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">(4) Bicicleta</td>
+<td style="text-align: center;">10</td>
+</tr>
+</tbody>
+</table>
+<p>Entonces, ¿cuál es el medio de transporte promedio? Obviamente, no lo hay. Es una pregunta sin sentido. Podés decir que el auto es el medio más popular y que la bicicleta es el menos popular, pero nada más. Fijate además que el orden en que puse las opciones no importa mucho. Podría haber presentado los datos así, y nada cambia realmente:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Medio de transporte</th>
+<th style="text-align: center;">Cantidad de personas</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(3) Auto</td>
+<td style="text-align: center;">48</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">(1) Tren</td>
+<td style="text-align: center;">12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">(4) Bicicleta</td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">(2) Ómnibus</td>
+<td style="text-align: center;">30</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="escala-ordinal" class="level3" data-number="1.7.5">
+<h3 data-number="1.7.5" class="anchored" data-anchor-id="escala-ordinal"><span class="header-section-number">1.7.5</span> Escala ordinal</h3>
+<p>Las variables de <strong>escala ordinal</strong> tienen un poco más de estructura que las variables de escala nominal, pero no mucho más. Una variable ordinal es aquella en la que hay una forma natural y significativa de ordenar las distintas opciones, pero no se puede hacer mucho más. El ejemplo habitual es la “posición de llegada en una carrera”. <em>Podés</em> decir que la persona que llegó primera fue más rápida que la que llegó segunda, pero <em>no sabés</em> cuánto más rápida. Como consecuencia, sabemos que 1.º <span class="math inline">\(&gt;\)</span> 2.º y que 2.º <span class="math inline">\(&gt;\)</span> 3.º, pero la diferencia entre 1.º y 2.º podría ser mucho mayor que la diferencia entre 2.º y 3.º.</p>
+<p>Acá hay un ejemplo más interesante desde el punto de vista psicológico. Supongamos que me interesa conocer las actitudes de las personas frente al cambio climático, y les pido que elijan una de estas cuatro afirmaciones, la que más se acerque a sus creencias:</p>
+<blockquote class="blockquote">
+<ol type="1">
+<li>Las temperaturas están subiendo debido a la actividad humana</li>
+<li>Las temperaturas están subiendo, pero no sabemos por qué</li>
+<li>Las temperaturas están subiendo, pero no por causa humana</li>
+<li>Las temperaturas no están subiendo</li>
+</ol>
+</blockquote>
+<p>Fijate que estas cuatro afirmaciones tienen un orden natural, en cuanto al “grado en que coinciden con el consenso científico actual”. La afirmación 1 coincide completamente, la 2 coincide de forma razonable, la 3 no coincide mucho, y la 4 está en fuerte desacuerdo con la ciencia. Así que, en relación con lo que me interesa (el grado en que la gente avala la ciencia), puedo ordenarlas como 1 <span class="math inline">\(&gt;\)</span> 2 <span class="math inline">\(&gt;\)</span> 3 $&gt;$4. Por eso, sería muy raro listar las opciones así…</p>
+<blockquote class="blockquote">
+<ol start="3" type="1">
+<li>Las temperaturas están subiendo, pero no por causa humana</li>
+<li>Las temperaturas están subiendo debido a la actividad humana</li>
+<li>Las temperaturas no están subiendo</li>
+<li>Las temperaturas están subiendo, pero no sabemos por qué</li>
+</ol>
+</blockquote>
+<p>…porque parece violar la “estructura” natural de la pregunta.</p>
+<p>Ahora supongamos que les hago esta pregunta a 100 personas y obtengo las siguientes respuestas:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Personas</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>(1) Las temperaturas están subiendo debido a la actividad humana</td>
+<td style="text-align: center;">51</td>
+</tr>
+<tr class="even">
+<td>(2) Las temperaturas están subiendo, pero no sabemos por qué</td>
+<td style="text-align: center;">20</td>
+</tr>
+<tr class="odd">
+<td>(3) Las temperaturas están subiendo, pero no por causa humana</td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr class="even">
+<td>(4) Las temperaturas no están subiendo</td>
+<td style="text-align: center;">19</td>
+</tr>
+</tbody>
+</table>
+<p>Al analizar estos datos, parece bastante razonable agrupar las respuestas (1), (2) y (3), y decir que 81 de 100 personas están dispuestas a <em>al menos en parte</em> avalar la ciencia. Y también es razonable agrupar (2), (3) y (4), y decir que 49 de 100 expresan <em>al menos cierto desacuerdo</em> con el consenso científico. Pero sería completamente extraño agrupar (1), (2) y (4) y decir que 90 de 100 personas dijeron… ¿qué? No hay nada sensato que permita agrupar esas respuestas.</p>
+<p>Dicho eso, aunque <em>sí</em> podemos usar el orden natural de estas opciones para construir agrupamientos sensatos, lo que no podemos hacer es promediarlas. Por ejemplo, en este caso, la respuesta “promedio” sería 1.97. Si podés explicarme qué significa eso, me encantaría saberlo. ¡Porque a mí me suena a puro disparate!</p>
+</section>
+<section id="escala-de-intervalo" class="level3" data-number="1.7.6">
+<h3 data-number="1.7.6" class="anchored" data-anchor-id="escala-de-intervalo"><span class="header-section-number">1.7.6</span> Escala de intervalo</h3>
+<p>A diferencia de las variables de escala nominal y ordinal, las variables de <strong>escala de intervalo</strong> y de razón son aquellas en las que el valor numérico tiene un significado genuino. En el caso de las variables de escala de intervalo, las <em>diferencias</em> entre los números son interpretables, pero la variable no tiene un valor cero “natural”. Un buen ejemplo de una variable de escala de intervalo es la temperatura medida en grados Celsius. Por ejemplo, si ayer hizo 15 °C y hoy hace 18 °C, la diferencia de 3 °C entre ambos días tiene un significado real. Además, esa diferencia de 3 °C es <em>exactamente la misma</em> que la diferencia entre 7 °C y 10 °C. En resumen, la suma y la resta tienen sentido para variables de escala de intervalo.</p>
+<p>Sin embargo, notá que 0 °C no significa “ausencia total de temperatura”: en realidad significa “la temperatura a la que se congela el agua”, lo cual es bastante arbitrario. Como consecuencia, resulta inútil intentar multiplicar o dividir temperaturas. Está mal decir que 20 °C es <em>el doble de caliente</em> que 10 °C, así como también es raro y carece de sentido decir que 20 °C es “menos dos veces más caliente” que –10 °C.</p>
+<p>Veamos otro ejemplo más relacionado con la psicología. Supongamos que me interesa estudiar cómo han cambiado las actitudes de los estudiantes de primer año de universidad a lo largo del tiempo. Obviamente, voy a querer registrar el año en que cada estudiante ingresó. Ese año es una variable de escala de intervalo. Un estudiante que ingresó en 2003 lo hizo cinco años antes que uno que ingresó en 2008. Sin embargo, sería completamente absurdo dividir 2008 entre 2003 y decir que la segunda persona ingresó “1,0024 veces más tarde” que la primera. Eso no tiene ningún sentido.</p>
+<hr>
+</section>
+<section id="escala-de-razón" class="level3" data-number="1.7.7">
+<h3 data-number="1.7.7" class="anchored" data-anchor-id="escala-de-razón"><span class="header-section-number">1.7.7</span> Escala de razón</h3>
+<p>El cuarto y último tipo de variable que vamos a considerar es la variable de <strong>escala de razón</strong>, en la cual el cero realmente significa cero, y está bien multiplicar y dividir. Un buen ejemplo psicológico de una variable de escala de razón es el tiempo de respuesta. En muchas tareas es común registrar cuánto tiempo le lleva a alguien resolver un problema o responder una pregunta, ya que eso puede ser un indicador de cuán difícil es la tarea. Supongamos que Alan tarda 2,3 segundos en responder una pregunta, mientras que Ben tarda 3,1 segundos. Al igual que con una variable de escala de intervalo, la suma y la resta tienen sentido: Ben realmente tardó (3,1 - 2,3 = 0,8) segundos más que Alan. Sin embargo, también tiene sentido multiplicar y dividir: Ben tardó (3,1 / 2,3 = 1,35) veces más que Alan en responder. Y esto tiene sentido porque, para una variable de escala de razón como el tiempo de respuesta, “cero segundos” realmente significa “ningún tiempo en absoluto”.</p>
+<hr>
+</section>
+<section id="variables-continuas-versus-discretas" class="level3" data-number="1.7.8">
+<h3 data-number="1.7.8" class="anchored" data-anchor-id="variables-continuas-versus-discretas"><span class="header-section-number">1.7.8</span> Variables continuas versus discretas</h3>
+<p>Hay otro tipo de distinción que tenés que tener en cuenta respecto a los tipos de variables con los que podés encontrarte. Es la distinción entre variables continuas y variables discretas. La diferencia es la siguiente:</p>
+<ul>
+<li><p>Una <strong>variable continua</strong> es aquella en la que, entre cualquier par de valores que se te ocurra, siempre es lógicamente posible que exista otro valor intermedio.</p></li>
+<li><p>Una <strong>variable discreta</strong> es, en efecto, una variable que <em>no</em> es continua. En una variable discreta, a veces <em>no</em> hay nada en el medio.</p></li>
+</ul>
+<p>Estas definiciones pueden parecer un poco abstractas, pero son bastante simples una vez que ves algunos ejemplos. Por ejemplo, el tiempo de respuesta es una variable continua. Si Alan tarda 3,1 segundos y Ben tarda 2,3 segundos en responder una pregunta, entonces es posible que Cameron haya tardado 3,0 segundos, es decir, un valor intermedio. Y claro, también sería posible que David tardara 3,031 segundos, lo que lo pondría entre Cameron y Alan. Aunque en la práctica tal vez no podamos medir el tiempo de respuesta con tanta precisión, <em>en principio</em> sí se puede. Como siempre es posible encontrar un nuevo valor entre cualquier par de valores, decimos que el tiempo de respuesta es una variable continua.</p>
+<p>Las variables discretas aparecen cuando esta regla se rompe. Por ejemplo, las variables de escala nominal son siempre discretas: no hay un medio de transporte que esté “entre” el tren y la bicicleta, al menos no de la manera estrictamente matemática en la que 2,3 está entre 2 y 3. Así que el tipo de transporte es una variable discreta. Del mismo modo, las variables ordinales también son siempre discretas: aunque el “2.º lugar” esté entre el “1.º” y el “3.º”, no hay nada que pueda caer <em>entre</em> el “1.º” y el “2.º” lugar. Las variables de escala de intervalo y de razón pueden ser continuas o discretas. Como vimos antes, el tiempo de respuesta (una variable de razón) es continua. La temperatura en grados Celsius (una variable de intervalo) también es continua. Pero el año en que alguien ingresó a la universidad (una variable de intervalo) es discreta: no hay ningún año entre 2002 y 2003. El número de respuestas correctas en un test de verdadero/falso (una variable de razón) también es discreto: como una pregunta de verdadero/falso no permite estar “parcialmente correcto”, no hay nada entre 5/10 y 6/10.</p>
+<p>La siguiente tabla resume la relación entre las escalas de medición y la distinción continuo/discreto. Las celdas con una “x” marcan combinaciones posibles. Estoy tratando de dejar bien en claro este punto porque: (a) algunos manuales no lo explican bien, y (b) muy seguido la gente dice cosas como “variable discreta” cuando en realidad quiere decir “variable de escala nominal”. Es una confusión bastante desafortunada.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">continua</th>
+<th style="text-align: center;">discreta</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>nominal</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">x</td>
+</tr>
+<tr class="even">
+<td>ordinal</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">x</td>
+</tr>
+<tr class="odd">
+<td>intervalo</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">x</td>
+</tr>
+<tr class="even">
+<td>razón</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">x</td>
+</tr>
+</tbody>
+</table>
+<p><em>Relación entre las escalas de medición y la distinción continuo/discreto. Las celdas con “x” marcan combinaciones posibles.</em></p>
+</section>
+<section id="algunas-complejidades" class="level3" data-number="1.7.9">
+<h3 data-number="1.7.9" class="anchored" data-anchor-id="algunas-complejidades"><span class="header-section-number">1.7.9</span> Algunas complejidades</h3>
+<p>Bueno, sé que esto te va a sorprender, pero… el mundo real es mucho más desordenado de lo que sugiere esta pequeña clasificación. Muy pocas variables en la vida real encajan perfectamente en estas categorías ordenadas, así que hay que tener cuidado de no tratar las escalas de medición como si fueran reglas rígidas. No funcionan así: son guías pensadas para ayudarte a reflexionar sobre en qué situaciones conviene tratar a las variables de manera diferente. Nada más.</p>
+<p>Así que tomemos un ejemplo clásico, quizás <em>el</em> ejemplo clásico, de una herramienta de medición psicológica: la <strong>escala de Likert</strong>. La humilde escala de Likert es el pan de cada día en el diseño de encuestas. Vos mismo habrás completado cientos, tal vez miles, y probablemente ya usaste una. Supongamos que tenés una pregunta en una encuesta que se ve así:</p>
+<blockquote class="blockquote">
+<p>¿Cuál de las siguientes opciones describe mejor tu opinión sobre la afirmación: “todos los piratas son increíblemente geniales”?</p>
+</blockquote>
+<p>Y luego se le presentan al participante las siguientes opciones:</p>
+<blockquote class="blockquote">
+<ol type="1">
+<li>Totalmente en desacuerdo<br>
+</li>
+<li>En desacuerdo<br>
+</li>
+<li>Ni de acuerdo ni en desacuerdo<br>
+</li>
+<li>De acuerdo<br>
+</li>
+<li>Totalmente de acuerdo</li>
+</ol>
+</blockquote>
+<p>Este conjunto de ítems es un ejemplo de una escala de Likert de 5 puntos: se le pide a la gente que elija entre una de varias (en este caso 5) posibilidades claramente ordenadas, generalmente con una descripción verbal en cada caso. Sin embargo, no es necesario que todos los ítems estén explícitamente etiquetados. Este también es un ejemplo perfectamente válido de una escala de Likert de 5 puntos:</p>
+<blockquote class="blockquote">
+<ol type="1">
+<li>Totalmente en desacuerdo<br>
+</li>
+<li></li>
+<li></li>
+<li></li>
+<li>Totalmente de acuerdo</li>
+</ol>
+</blockquote>
+<p>Las escalas de Likert son herramientas muy útiles, aunque algo limitadas. La pregunta es: ¿qué tipo de variable son? Obviamente son discretas, ya que no se puede responder “2,5”. Claramente no son de escala nominal, porque los ítems están ordenados; y tampoco son de escala de razón, porque no hay un cero natural.</p>
+<p>Pero entonces, ¿son de escala ordinal o de intervalo? Un argumento sostiene que no podemos realmente demostrar que la diferencia entre “totalmente de acuerdo” y “de acuerdo” sea del mismo tamaño que la diferencia entre “de acuerdo” y “ni de acuerdo ni en desacuerdo”. De hecho, en la vida cotidiana es bastante obvio que no son iguales. Esto sugiere que deberíamos tratar las escalas de Likert como variables ordinales. Por otro lado, en la práctica, la mayoría de los participantes parece tomarse bastante en serio eso de “en una escala del 1 al 5”, y tienden a comportarse como si las diferencias entre las cinco opciones de respuesta fueran más o menos similares entre sí. Como consecuencia, muchos investigadores tratan los datos de escalas de Likert como si fueran de escala de intervalo. No lo son realmente, pero en la práctica se parecen lo suficiente como para que usualmente pensemos en ellas como de <strong>cuasi-escala de intervalo</strong>.</p>
+</section>
+</section>
+<section id="evaluación-de-la-confiabilidad-de-una-medición" class="level2" data-number="1.8">
+<h2 data-number="1.8" class="anchored" data-anchor-id="evaluación-de-la-confiabilidad-de-una-medición"><span class="header-section-number">1.8</span> Evaluación de la confiabilidad de una medición</h2>
+<p>A esta altura ya reflexionamos un poco sobre cómo operacionalizar un constructo teórico y, a partir de eso, construir una medida psicológica; y vimos que, al aplicar esas medidas, terminamos con variables, que pueden ser de muchos tipos distintos. En este punto, deberíamos empezar a discutir la pregunta obvia: ¿la medición es buena? Vamos a abordarlo en términos de dos ideas relacionadas: <strong>confiabilidad</strong> y <strong>validez</strong>. En términos simples, la <strong>confiabilidad</strong> de una medida te dice cuán <em>precisamente</em> estás midiendo algo, mientras que la validez te dice cuán <em>exacta</em> es esa medida.</p>
+<p>La confiabilidad es en realidad un concepto muy simple: se refiere a la repetibilidad o consistencia de tu medición. Medir mi peso con una balanza de baño es muy confiable: si me subo y bajo varias veces, va a seguir marcando lo mismo. Medir mi inteligencia preguntándole a mi mamá no es nada confiable: algunos días me dice que soy medio lenta, y otros días que soy una completa idiota. Fijate que este concepto de confiabilidad es distinto de la cuestión de si la medición es correcta (la exactitud de una medición tiene que ver con su validez, no con su confiabilidad). Si estoy sosteniendo una bolsa de papas al subirme y bajarme de la balanza del baño, la medición seguirá siendo confiable: siempre me va a dar el mismo número. Sin embargo, esta respuesta altamente confiable no se corresponde en absoluto con mi peso real, por lo tanto está equivocada. En términos técnicos, esta es una medición <em>confiable pero inválida</em>. De forma similar, aunque la estimación que hace mi mamá de mi inteligencia sea poco confiable, podría tener razón. Tal vez simplemente no soy muy brillante, y aunque su estimación fluctúe bastante de un día a otro, en esencia sea correcta. Eso sería una medida <em>inválida pero confiable</em>. Claro que, hasta cierto punto, si las estimaciones de mi mamá son demasiado inconsistentes, va a ser muy difícil saber cuál de todas sus opiniones sobre mi inteligencia es la verdadera. En ese sentido, una medición muy poco confiable tiende a terminar siendo inválida en la práctica; tanto así que muchos dirían que la confiabilidad es necesaria (aunque no suficiente) para garantizar la validez.</p>
+<p>Bien, ahora que tenemos clara la distinción entre confiabilidad y validez, pensemos en las distintas maneras en que podemos medir la confiabilidad:</p>
+<ul>
+<li><strong>Confiabilidad test-retest</strong>. Se refiere a la consistencia en el tiempo: si repetimos la medición más adelante, ¿obtenemos la misma respuesta?</li>
+<li><strong>Confiabilidad entre evaluadores</strong> (<em>inter-rater reliability</em>). Se refiere a la consistencia entre personas: si otra persona repite la medición (por ejemplo, si otra persona evalúa mi inteligencia), ¿obtiene la misma respuesta?</li>
+<li><strong>Confiabilidad de formas paralelas</strong>. Se refiere a la consistencia entre mediciones teóricamente equivalentes: si uso otra balanza para pesarme, ¿marca lo mismo?</li>
+<li><strong>Confiabilidad de consistencia interna</strong>. Si una medición está compuesta por muchas partes que cumplen funciones similares (por ejemplo, una escala de personalidad que suma varias preguntas), ¿tienden esas partes a dar resultados similares?</li>
+</ul>
+<p>No todas las mediciones necesitan cumplir todas las formas de confiabilidad. Por ejemplo, la evaluación educativa puede pensarse como una forma de medición. En una de las materias que enseño, <em>Ciencia Cognitiva Computacional</em>, la estructura de evaluación incluye un componente de investigación y un examen (entre otras cosas). El examen está <em>diseñado</em> para medir algo diferente al componente de investigación, así que la evaluación total tiene una baja consistencia interna. Sin embargo, dentro del examen hay varias preguntas que están pensadas para medir más o menos lo mismo, y esas tienden a producir resultados similares; por lo tanto, el examen por sí solo tiene una consistencia interna bastante alta. Que es como debería ser. Solo deberías exigir confiabilidad cuando realmente querés medir la <em>misma</em> cosa.</p>
+</section>
+<section id="el-rol-de-las-variables-predictoras-y-dependientes" class="level2" data-number="1.9">
+<h2 data-number="1.9" class="anchored" data-anchor-id="el-rol-de-las-variables-predictoras-y-dependientes"><span class="header-section-number">1.9</span> El rol de las variables: predictoras y dependientes</h2>
+<p>Bien, me queda una última pieza de terminología que necesito explicarte antes de dejar atrás el tema de las variables. Normalmente, cuando hacemos una investigación terminamos con muchas variables distintas. Luego, cuando analizamos nuestros datos, usualmente tratamos de explicar algunas de esas variables en función de otras. Es importante mantener bien separadas las dos funciones: la “que explica” y la “que es explicada”. Así que dejemos esto claro desde ahora.</p>
+<p>Primero, conviene ir acostumbrándonos a la idea de usar símbolos matemáticos para describir variables, porque lo vamos a hacer muchas veces. Vamos a denotar la variable “que queremos explicar” como <span class="math inline">\(Y\)</span>, y las variables “que la explican” como <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, etc.</p>
+<p>Ahora bien, cuando hacemos un análisis, usamos nombres diferentes para <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>, ya que cumplen distintos roles. Los nombres clásicos para estos roles son <strong>variable independiente</strong> (VI) y <strong>variable dependiente</strong> (VD). La VI es la que usamos para explicar (es decir, <span class="math inline">\(X\)</span>), y la VD es la que queremos explicar (es decir, <span class="math inline">\(Y\)</span>). La lógica detrás de estos nombres es algo así: si hay una relación entre <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>, entonces podemos decir que <span class="math inline">\(Y\)</span> depende de <span class="math inline">\(X\)</span>, y si el estudio está bien diseñado, entonces <span class="math inline">\(X\)</span> no depende de nada más. Sin embargo, personalmente encuentro estos nombres horribles: son difíciles de recordar y muy engañosos, porque (a) la VI nunca es realmente “independiente de todo lo demás”, y (b) si no hay relación, entonces la VD no depende de la VI. Y de hecho, como no soy la única que piensa que “VI” y “VD” son nombres espantosos, hay varias alternativas que me parecen más acertadas.</p>
+<p>Por ejemplo, en un experimento, la VI se refiere a la <strong>manipulación</strong>, y la VD a la <strong>medición</strong>. Así que podríamos usar <strong>variable manipulada</strong> (para la independiente) y <strong>variable medida</strong> (para la dependiente).</p>
+<table class="caption-top table">
+<caption>Terminología utilizada para distinguir los distintos roles que puede cumplir una variable en el análisis de datos.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Rol de la variable</th>
+<th style="text-align: left;">Nombre clásico</th>
+<th style="text-align: left;">Nombre moderno</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">“la que se explica”</td>
+<td style="text-align: left;">variable dependiente (VD)</td>
+<td style="text-align: left;">Medición</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">“la que explica”</td>
+<td style="text-align: left;">variable independiente (VI)</td>
+<td style="text-align: left;">Manipulación</td>
+</tr>
+</tbody>
+</table>
+<p>También podríamos usar <strong>predictoras</strong> y <strong>resultados</strong>. La idea es que tratamos de usar <span class="math inline">\(X\)</span> (las predictoras) para hacer conjeturas sobre <span class="math inline">\(Y\)</span> (los resultados). Esto se resume en la siguiente tabla:</p>
+<table class="caption-top table">
+<caption>Terminología utilizada para distinguir los distintos roles que puede cumplir una variable en el análisis de datos.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Rol de la variable</th>
+<th style="text-align: left;">Nombre clásico</th>
+<th style="text-align: left;">Nombre moderno</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">“la que se explica”</td>
+<td style="text-align: left;">variable dependiente (VD)</td>
+<td style="text-align: left;">resultado</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">“la que explica”</td>
+<td style="text-align: left;">variable independiente (VI)</td>
+<td style="text-align: left;">predictora</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="investigación-experimental-y-no-experimental" class="level2" data-number="1.10">
+<h2 data-number="1.10" class="anchored" data-anchor-id="investigación-experimental-y-no-experimental"><span class="header-section-number">1.10</span> Investigación experimental y no experimental</h2>
+<p>Una de las grandes distinciones que conviene tener presente es la diferencia entre “investigación experimental” e “investigación no experimental”. Cuando hacemos esta distinción, en realidad estamos hablando del grado de control que tiene la persona investigadora sobre los participantes y los eventos del estudio.</p>
+<section id="investigación-experimental" class="level3" data-number="1.10.1">
+<h3 data-number="1.10.1" class="anchored" data-anchor-id="investigación-experimental"><span class="header-section-number">1.10.1</span> Investigación experimental</h3>
+<p>La característica clave de la <strong>investigación experimental</strong> es que la persona investigadora controla todos los aspectos del estudio, especialmente lo que los participantes experimentan durante el mismo. En particular, manipula o varía algo (las variables independientes), y luego deja que la variable dependiente varíe de forma natural. La idea es variar deliberadamente algo en el mundo (la VI) para ver si eso tiene algún efecto causal sobre los resultados. Además, para asegurarse de que no haya otra cosa, aparte de la variable manipulada, causando los resultados, todo lo demás se mantiene constante o se “balancea” de alguna manera para que no afecte el experimento. En la práctica, es casi imposible <em>pensar</em> en todas las demás cosas que podrían influir en los resultados de un experimento, y mucho menos mantenerlas constantes. La solución estándar para esto es la <strong>aleatorización</strong>: es decir, asignar al azar a las personas a distintos grupos, y luego darle a cada grupo un tratamiento distinto (es decir, asignarles distintos valores de las variables predictoras). Hablaremos más de la aleatorización más adelante en el curso, pero por ahora alcanza con decir que lo que hace la aleatorización es minimizar (aunque no eliminar) las probabilidades de que haya diferencias sistemáticas entre los grupos.</p>
+<p>Veamos un ejemplo muy simple, completamente irreal y groseramente antiético. Supongamos que querés averiguar si fumar causa cáncer de pulmón. Una forma de hacerlo sería encontrar personas que fuman y personas que no fuman, y ver si los fumadores tienen una tasa más alta de cáncer de pulmón. Esto <em>no</em> es un experimento propiamente dicho, porque la persona investigadora no tiene mucho control sobre quién fuma y quién no. Y eso importa: por ejemplo, podría ser que quienes eligen fumar también tiendan a tener dietas poco saludables, o que trabajen en minas de asbesto, o lo que sea. El punto es que los grupos (fumadores y no fumadores) difieren en muchas cosas, no <em>solo</em> en fumar. Así que podría ser que la mayor incidencia de cáncer de pulmón entre fumadores se deba a otra cosa, y no al tabaquismo en sí. En términos técnicos, esas otras cosas (como la dieta) se llaman “confusores” (o <strong>confounds</strong>, en inglés), y hablaremos de eso en un momento.</p>
+<p>Mientras tanto, veamos cómo sería un experimento <em>propiamente</em> dicho. Recordá que nuestra preocupación era que fumadores y no fumadores podrían diferir en muchas cosas. La solución —siempre y cuando no tengas ética— es <em>controlar</em> quién fuma y quién no. Específicamente, si dividimos aleatoriamente a los participantes en dos grupos, y forzamos a la mitad a convertirse en fumadores, entonces es muy poco probable que los grupos difieran en otra cosa aparte del hecho de que la mitad fuma. De ese modo, si el grupo que fuma desarrolla cáncer a una tasa más alta que el grupo que no fuma, entonces podemos tener bastante confianza en que (a) fumar sí causa cáncer y (b) somos asesinos.</p>
+</section>
+<section id="investigación-no-experimental" class="level3" data-number="1.10.2">
+<h3 data-number="1.10.2" class="anchored" data-anchor-id="investigación-no-experimental"><span class="header-section-number">1.10.2</span> Investigación no experimental</h3>
+<p>La <strong>investigación no experimental</strong> es un término amplio que abarca “cualquier estudio en el que la persona investigadora no tiene tanto control como en un experimento”. Obviamente, tener control es algo que los científicos suelen querer, pero como ilustra el ejemplo anterior, hay muchas situaciones en las que no podés (o no deberías) intentar ejercer ese control. Ya que es profundamente antiético (y casi con certeza ilegal) forzar a alguien a fumar para ver si desarrolla cáncer, este es un buen ejemplo de una situación en la que definitivamente no deberías tratar de controlar experimentalmente. Pero también hay otras razones. Incluso dejando de lado las cuestiones éticas, nuestro “experimento del tabaco” tiene algunos problemas más. Por ejemplo, cuando sugerí que forzáramos a la mitad de los participantes a fumar, estaba hablando de <em>empezar</em> con una muestra de personas no fumadoras, y luego forzarlas a convertirse en fumadoras. Si bien esto suena como el sólido y perverso diseño experimental que disfrutaría un científico loco, tal vez no sea una manera muy válida de investigar el efecto en el mundo real. Supongamos, por ejemplo, que fumar solo causa cáncer de pulmón cuando las personas tienen dietas poco saludables, y que además quienes normalmente fuman tienden a tener dietas poco saludables. Sin embargo, como en nuestro experimento los “fumadores” no son fumadores “naturales” (es decir, forzamos a personas no fumadoras a empezar a fumar, sin que adoptaran todas las demás características típicas de los fumadores en la vida real), es probable que tengan mejores dietas. Como resultado, en este ejemplo tonto, puede que no desarrollen cáncer de pulmón, y entonces nuestro experimento fallaría, porque viola la estructura del mundo “natural” (el nombre técnico de esto es un resultado “artefactual”; ya hablaremos de eso más adelante).</p>
+<p>Una distinción útil entre dos tipos de investigación no experimental es la diferencia entre la <strong>investigación cuasi-experimental</strong> y los <strong>estudios de caso</strong>. El ejemplo que discutimos antes —en el que queremos examinar la incidencia de cáncer de pulmón entre fumadores y no fumadores, sin controlar quién fuma y quién no— es un diseño cuasi-experimental. Es decir, se parece a un experimento, pero no controlamos las variables predictoras (VIs). Igual podemos usar estadísticas para analizar los resultados, solo que tenemos que ser mucho más cuidadosos.</p>
+<p>La alternativa, los estudios de caso, apuntan a brindar una descripción muy detallada de uno o unos pocos casos. En general, no se pueden usar estadísticas para analizar los resultados de estudios de caso, y usualmente es muy difícil sacar conclusiones generales sobre “la gente en general” a partir de unos pocos ejemplos aislados. Sin embargo, los estudios de caso son muy útiles en algunas situaciones. Primero, hay ocasiones en las que no tenés otra alternativa: la neuropsicología se encuentra con esto todo el tiempo. A veces no se puede encontrar muchas personas con daño cerebral en una zona específica, así que lo único que podés hacer es describir con el mayor detalle y cuidado posible los casos que sí tenés. Sin embargo, los estudios de caso también tienen ventajas genuinas: como no tenés tantas personas para estudiar, podés invertir mucho más tiempo y esfuerzo en tratar de entender los factores específicos en juego en cada caso. Y eso es algo muy valioso. Como consecuencia, los estudios de caso pueden complementar los enfoques más estadísticos que ves en los diseños experimentales y cuasi-experimentales. No vamos a hablar mucho de estudios de caso en estas clases, ¡pero siguen siendo herramientas muy valiosas!</p>
+</section>
+</section>
+<section id="evaluar-la-validez-de-un-estudio" class="level2" data-number="1.11">
+<h2 data-number="1.11" class="anchored" data-anchor-id="evaluar-la-validez-de-un-estudio"><span class="header-section-number">1.11</span> Evaluar la validez de un estudio</h2>
+<p>Más que cualquier otra cosa, un científico quiere que su investigación sea “válida”. La idea conceptual detrás de la <strong>validez</strong> es muy simple: ¿podés confiar en los resultados de tu estudio? Si no, el estudio es inválido. Sin embargo, aunque es fácil de enunciar, en la práctica es mucho más difícil verificar la validez que la confiabilidad. Y para ser sinceros, no hay una noción precisa y universalmente aceptada de qué es la validez. De hecho, existen muchos tipos diferentes de validez, cada una con sus propios problemas, y no todas son relevantes para todos los estudios. Voy a hablar de cinco tipos diferentes:</p>
+<ul>
+<li>Validez interna<br>
+</li>
+<li>Validez externa<br>
+</li>
+<li>Validez de constructo<br>
+</li>
+<li>Validez aparente<br>
+</li>
+<li>Validez ecológica</li>
+</ul>
+<p>Para darte una guía rápida de lo que importa acá… (1) La validez interna y externa son las más importantes, ya que están directamente relacionadas con la pregunta fundamental de si tu estudio realmente funciona. (2) La validez de constructo pregunta si estás midiendo lo que creés que estás midiendo. (3) La validez aparente no es especialmente importante, excepto en la medida en que te preocupen las “apariencias”. (4) La validez ecológica es un caso especial de validez aparente que se refiere a un tipo de apariencia que puede importarte bastante.</p>
+<section id="validez-interna" class="level3" data-number="1.11.1">
+<h3 data-number="1.11.1" class="anchored" data-anchor-id="validez-interna"><span class="header-section-number">1.11.1</span> Validez interna</h3>
+<p>La <strong>validez interna</strong> se refiere al grado en que podés sacar conclusiones correctas sobre las relaciones causales entre variables. Se llama “interna” porque refiere a las relaciones entre cosas “dentro” del estudio. Vamos a ilustrar este concepto con un ejemplo simple. Supongamos que te interesa saber si una educación universitaria mejora la escritura. Para eso, reunís un grupo de estudiantes de primer año, les pedís que escriban un ensayo de 1000 palabras, y contás los errores ortográficos y gramaticales. Luego hacés lo mismo con estudiantes de tercer año, que obviamente tienen más educación universitaria que los de primer año. Y supongamos que los de tercer año cometen menos errores. Entonces concluís que la educación universitaria mejora las habilidades de escritura. ¿No? El gran problema de este experimento es que los estudiantes de tercer año son mayores y tienen más experiencia escribiendo. Así que no es fácil saber cuál es la relación causal real: ¿las personas mayores escriben mejor? ¿O las personas con más experiencia escribiendo? ¿O las personas con más educación? ¿Cuál de estas es la <em>verdadera causa</em> del mejor desempeño de los de tercer año? ¿La edad? ¿La experiencia? ¿La educación? No lo podés saber. Este es un ejemplo de una falla de validez interna, porque tu estudio no permite desentrañar bien las relaciones <em>causales</em> entre las variables.</p>
+</section>
+<section id="validez-externa" class="level3" data-number="1.11.2">
+<h3 data-number="1.11.2" class="anchored" data-anchor-id="validez-externa"><span class="header-section-number">1.11.2</span> Validez externa</h3>
+<p>La <strong>validez externa</strong> se refiere a la <strong>generalización</strong> de tus resultados. Es decir, hasta qué punto esperás ver el mismo patrón de resultados en la “vida real” que el que observaste en tu estudio. Más precisamente, cualquier estudio que hagas en psicología va a involucrar un conjunto bastante específico de preguntas o tareas, va a ocurrir en un entorno específico y va a incluir participantes de un subgrupo particular. Entonces, si resulta que los resultados no se generalizan a personas o situaciones fuera de las que estudiaste, entonces tenés un problema de validez externa.</p>
+<p>El ejemplo clásico de este problema es el hecho de que una gran proporción de los estudios en psicología usan estudiantes universitarios de psicología como participantes. Pero claramente, a los investigadores no les interesa <em>solo</em> ese grupo: les interesa la gente en general. Dado eso, un estudio que solo incluye estudiantes de psicología como participantes siempre corre el riesgo de carecer de validez externa. Es decir, si hay algo “especial” en los estudiantes de psicología que los hace diferentes de la población general en algún aspecto <em>relevante</em>, entonces podríamos preocuparnos por la validez externa.</p>
+<p>Dicho esto, es absolutamente crucial darse cuenta de que un estudio que incluye únicamente estudiantes de psicología no necesariamente tiene un problema de validez externa. Lo voy a mencionar más adelante, pero como es un error muy común, lo digo ya: la validez externa se ve amenazada por la elección de población si (a) la población de la que tomaste tu muestra es muy limitada (por ejemplo, estudiantes de psicología) y (b) esa población limitada es sistemáticamente diferente de la población general <em>en algún aspecto relevante para el fenómeno psicológico que querés estudiar</em>. Esa parte en cursiva es la que muchos olvidan: es cierto que los estudiantes de psicología difieren de la población general en muchas cosas, así que un estudio que solo incluye estudiantes <em>puede</em> tener problemas de validez externa. Pero si esas diferencias no son relevantes para el fenómeno que estás estudiando, entonces no hay de qué preocuparse. Para hacerlo más concreto, acá van dos ejemplos extremos:</p>
+<ul>
+<li><p>Querés medir “las actitudes del público general hacia la psicoterapia”, pero todos tus participantes son estudiantes de psicología. Este estudio casi con certeza tendría problemas de validez externa.</p></li>
+<li><p>Querés medir la efectividad de una ilusión visual, y todos tus participantes son estudiantes de psicología. Este estudio muy probablemente <em>no</em> tendría problemas de validez externa.</p></li>
+</ul>
+<p>Después de haberme centrado varios párrafos en la elección de participantes (porque es el tema que más preocupa a todos), vale la pena recordar que la validez externa es un concepto más amplio. Los siguientes también son ejemplos de cosas que pueden amenazar la validez externa, según qué tipo de estudio estés haciendo:</p>
+<ul>
+<li><p>Puede que la gente responda un “cuestionario de psicología” de un modo que no refleja cómo actuaría en la vida real.</p></li>
+<li><p>Tu experimento de laboratorio sobre “aprendizaje humano” podría tener una estructura diferente de los problemas de aprendizaje que la gente enfrenta fuera del laboratorio.</p></li>
+</ul>
+</section>
+<section id="validez-de-constructo" class="level3" data-number="1.11.3">
+<h3 data-number="1.11.3" class="anchored" data-anchor-id="validez-de-constructo"><span class="header-section-number">1.11.3</span> Validez de constructo</h3>
+<p>La <strong>validez de constructo</strong> es, básicamente, la pregunta de si estás midiendo lo que realmente querés medir. Una medición tiene buena validez de constructo si realmente mide el constructo teórico correcto, y mala validez de constructo si no lo hace. Para dar un ejemplo muy simple (aunque ridículo), supongamos que quiero investigar qué porcentaje de estudiantes universitarios hacen trampa en los exámenes. Y la manera en que intento medirlo es pidiéndoles a los estudiantes que hacen trampa que se paren en el aula para que pueda contarlos. Cuando hago esto en una clase de 300 estudiantes, nadie se levanta. Entonces concluyo que el porcentaje de estudiantes que hacen trampa es 0%. Claramente esto es ridículo. Pero el punto acá no es que sea un gran ejemplo metodológico, sino que ilustra qué es la validez de constructo. El problema con mi medición es que aunque <em>intento</em> medir “el porcentaje de personas que hacen trampa”, lo que en realidad estoy midiendo es “el porcentaje de personas lo suficientemente tontas como para admitirlo, o lo suficientemente provocadoras como para fingir que lo hacen”. Obviamente, ¡eso no es lo mismo! Así que mi estudio sale mal porque mi medición tiene una validez de constructo muy pobre.</p>
+</section>
+<section id="validez-aparente" class="level3" data-number="1.11.4">
+<h3 data-number="1.11.4" class="anchored" data-anchor-id="validez-aparente"><span class="header-section-number">1.11.4</span> Validez aparente</h3>
+<p>La <strong>validez aparente</strong> simplemente se refiere a si una medición “parece” estar haciendo lo que se supone que hace, y nada más. Si diseño un test de inteligencia, y la gente lo mira y dice “no, ese test no mide inteligencia”, entonces mi medición carece de validez aparente. Así de simple. Obviamente, la validez aparente no es muy importante desde una perspectiva científica pura. Después de todo, lo que nos importa es si la medición <em>realmente</em> hace lo que se supone que haga, no si <em>parece</em> hacerlo. Como consecuencia, generalmente no nos preocupa demasiado la validez aparente. Dicho esto, el concepto tiene tres usos pragmáticos útiles:</p>
+<ul>
+<li><p>A veces, un científico con experiencia tiene la “intuición” de que una medición no va a funcionar. Aunque esas intuiciones no tienen valor como evidencia en sí mismas, suele valer la pena prestarles atención. Porque muchas veces las personas tienen conocimientos que no pueden verbalizar del todo, puede haber algo preocupante incluso si no puedes explicar bien qué. En otras palabras, si alguien en quien confiás critica la validez aparente de tu estudio, conviene tomarse el tiempo de revisar bien el diseño para ver si encontrás razones por las que podría fallar. Ahora bien, si no encontrás nada, entonces probablemente no haya motivo para preocuparse: al fin y al cabo, la validez aparente no es muy relevante.</p></li>
+<li><p>Muchas veces (muchísimas), personas completamente desinformadas también tienen la “intuición” de que tu investigación es mala. Y la van a criticar en internet o donde sea. Si mirás de cerca, vas a notar que muchas de esas críticas están centradas únicamente en cómo “luce” el estudio, pero no en nada más profundo. El concepto de validez aparente sirve para explicarles amablemente que necesitan fundamentar mejor sus argumentos.</p></li>
+<li><p>En relación con lo anterior: si las creencias de personas sin formación científica son clave (por ejemplo, en investigación aplicada donde querés convencer a responsables de políticas), entonces <em>tenés</em> que preocuparte por la validez aparente. Simplemente porque —te guste o no— mucha gente va a usar la validez aparente como sustituto de la validez real. Si querés que el gobierno cambie una ley con base en datos científicos o psicológicos, no va a importar cuán buenos sean <em>realmente</em> tus estudios. Si carecen de validez aparente, los políticos te van a ignorar. Claro que es algo injusto que las políticas dependan más de las apariencias que en hechos, pero así funcionan las cosas.</p></li>
+</ul>
+</section>
+<section id="validez-ecológica" class="level3" data-number="1.11.5">
+<h3 data-number="1.11.5" class="anchored" data-anchor-id="validez-ecológica"><span class="header-section-number">1.11.5</span> Validez ecológica</h3>
+<p>La <strong>validez ecológica</strong> es una noción diferente de validez, parecida a la validez externa, pero menos importante. La idea es que, para que un estudio sea ecológicamente válido, toda su configuración debería parecerse mucho al escenario real que se está investigando. En cierto sentido, la validez ecológica es un tipo de validez aparente –refiere principalmente a si el estudio “luce” correcto, pero con un poco más de rigor. Para que tenga validez ecológica, el estudio tiene que parecer correcto de una manera bastante específica. La idea que la sustenta es la intuición de que un estudio con validez ecológica tiene más probabilidades de tener validez externa. No es una garantía, claro. Pero lo bueno de la validez ecológica es que es mucho más fácil de evaluar que la validez externa. Un ejemplo simple serían los estudios de identificación de testigos. Muchos de estos estudios suelen hacerse en entornos universitarios, a menudo con una disposición bastante simple de rostros para observar, en lugar de una rueda de reconocimiento real. El tiempo entre ver al “criminal” y que se le pida a la persona que lo identifique en la “rueda” suele ser más corto. El “crimen” no es real, así que no hay posibilidad de que el testigo esté asustado, y no hay policías presentes, así que hay menos probabilidad de que sientan presión. Todo eso significa que el estudio <em>definitivamente</em> carece de validez ecológica. Tal vez (o tal vez no) también carezca de validez externa.</p>
+</section>
+</section>
+<section id="confusores-artefactos-y-otras-amenazas-a-la-validez" class="level2" data-number="1.12">
+<h2 data-number="1.12" class="anchored" data-anchor-id="confusores-artefactos-y-otras-amenazas-a-la-validez"><span class="header-section-number">1.12</span> Confusores, artefactos y otras amenazas a la validez</h2>
+<p>Si consideramos el tema de la validez en términos generales, las dos grandes preocupaciones que tenemos son los <em>confusores</em> y los <em>artefactos</em>. Estos dos términos se definen de la siguiente manera:</p>
+<ul>
+<li><p><strong>Confusor</strong>: Un confusor es una variable adicional, a menudo no medida, que resulta estar relacionada tanto con las variables predictoras como con los resultados. La existencia de confusores amenaza la validez interna del estudio, porque no podés saber si la variable predictora causa el resultado, o si lo causa la variable confusora, etc.</p></li>
+<li><p><strong>Artefacto</strong>: Se dice que un resultado es “artefactual” si solo se sostiene en la situación especial que se usó para hacer el estudio. La posibilidad de que tu resultado sea un artefacto representa una amenaza a la validez externa, porque plantea la posibilidad de que no puedas generalizar tus resultados a la población real que te interesa.</p></li>
+</ul>
+<p>Como regla general, los confusores son una preocupación mayor en los estudios no experimentales, precisamente porque no son experimentos propiamente dichos: por definición, estás dejando muchas cosas sin controlar, así que hay mucho margen para que los confusores se metan en tu estudio. La investigación experimental tiende a ser mucho menos vulnerable a los confusores: cuanto más control tenés sobre lo que ocurre durante el estudio, más podés evitar que aparezcan confusores.</p>
+<p>Sin embargo, una de cal y otra de arena: cuando empezamos a pensar en artefactos en lugar de confusores, la situación se invierte por completo. En general, los resultados artefactuales tienden a ser una preocupación mayor en los estudios experimentales que en los no experimentales. Para ver esto, ayuda entender que muchas veces los estudios son no experimentales precisamente porque la persona investigadora quiere examinar el comportamiento humano en un contexto más naturalista. Al trabajar en un contexto más cercano al mundo real, perdés control experimental (lo que te hace vulnerable a confusores), pero como tendés a estudiar la psicología humana “en estado salvaje”, reducís las probabilidades de obtener un resultado artefactual. O, dicho de otra manera, cuando sacás la psicología del entorno natural y la llevás al laboratorio (lo que normalmente tenemos que hacer para ganar control experimental), siempre corrés el riesgo de terminar estudiando algo diferente de lo que realmente querías estudiar: lo cual es, más o menos, la definición de un artefacto.</p>
+<p>Advertencia: lo anterior es solo una guía general. Es totalmente posible que haya confusores en un experimento, y también obtener resultados artefactuales en estudios no experimentales. Esto puede pasar por muchas razones, entre ellas, errores de la persona investigadora. En la práctica, es realmente difícil prever todo por adelantado, y hasta los investigadores más competentes cometen errores. Pero otras veces es inevitable, simplemente porque la persona investigadora tiene ética (por ejemplo, ver “abandono diferencial”).</p>
+<p>Bien. En cierto sentido, casi cualquier amenaza a la validez puede caracterizarse como un confusor o un artefacto: son conceptos bastante vagos. Así que veamos algunos de los ejemplos más comunes…</p>
+<section id="efectos-de-historia" class="level3" data-number="1.12.1">
+<h3 data-number="1.12.1" class="anchored" data-anchor-id="efectos-de-historia"><span class="header-section-number">1.12.1</span> Efectos de historia</h3>
+<p>Los <strong>efectos de historia</strong> se refieren a la posibilidad de que ocurran eventos específicos durante el desarrollo del estudio que puedan influir en los resultados. Por ejemplo, algo podría pasar entre una medición pretest y una postest. O entre los participantes 23 y 24. Alternativamente, puede ser que estés revisando un estudio antiguo, que era perfectamente válido en su momento, pero el mundo ha cambiado lo suficiente desde entonces como para que sus conclusiones ya no sean confiables. Algunos ejemplos de lo que contarían como efectos de historia:</p>
+<ul>
+<li><p>Estás interesado en cómo la gente piensa sobre el riesgo y la incertidumbre. Comenzás a recolectar datos en diciembre de 2010. Pero encontrar participantes y juntar datos lleva tiempo, así que seguís trabajando en eso durante febrero de 2011. Lamentablemente para vos (y aún más lamentablemente para otros), las inundaciones en Queensland ocurrieron en enero de 2011, causando miles de millones de dólares en daños y matando a muchas personas. No sorprende que las personas evaluadas en febrero de 2011 expresen creencias bastante distintas sobre cómo manejar el riesgo que aquellas evaluadas en diciembre de 2010. ¿Cuál (si alguna) de estas refleja las creencias “verdaderas” de los participantes? Creo que la respuesta probablemente sea ambas: las inundaciones en Queensland cambiaron genuinamente las creencias del público australiano, aunque tal vez solo temporalmente. Lo importante acá es que la “historia” de las personas evaluadas en febrero es bastante distinta de la de quienes fueron evaluades en diciembre.</p></li>
+<li><p>Estás evaluando los efectos psicológicos de una nueva droga contra la ansiedad. Entonces lo que hacés es medir la ansiedad antes de administrar la droga (por ejemplo, mediante autoinforme y medidas fisiológicas, digamos), luego administrás la droga, y después volvés a tomar las mismas medidas. Sin embargo, en el medio, como tu laboratorio está en Los Ángeles, ocurre un terremoto, lo cual incrementa la ansiedad de los participantes.</p></li>
+</ul>
+</section>
+<section id="efectos-de-maduración" class="level3" data-number="1.12.2">
+<h3 data-number="1.12.2" class="anchored" data-anchor-id="efectos-de-maduración"><span class="header-section-number">1.12.2</span> Efectos de maduración</h3>
+<p>Al igual que los efectos de historia, los <strong>efectos de maduración</strong> están fundamentalmente relacionados con el cambio a lo largo del tiempo. Sin embargo, los efectos de maduración no son una respuesta a eventos específicos. Más bien, tienen que ver con cómo cambian las personas por sí solas con el paso del tiempo: envejecemos, nos cansamos, nos aburrimos, etc. Algunos ejemplos de efectos de maduración:</p>
+<ul>
+<li><p>Cuando hacés investigación en psicología del desarrollo, necesitás tener en cuenta que los niños crecen bastante rápido. Supongamos que querés averiguar si cierta estrategia educativa ayuda a aumentar el vocabulario en niños de 3 años. Algo que necesitás considerar es que el tamaño del vocabulario en niños de esa edad está creciendo a un ritmo increíble (varias palabras por día), por sí solo. Si diseñás tu estudio sin tener en cuenta este efecto de maduración, entonces no vas a poder saber si tu estrategia educativa realmente funciona.</p></li>
+<li><p>Cuando realizás un experimento muy largo en el laboratorio (digamos, algo que dura 3 horas), es muy probable que las personas empiecen a aburrirse y a cansarse, y que ese efecto de maduración va a causar una disminución en el rendimiento, independientemente de cualquier otra cosa que esté pasando en el experimento.</p></li>
+</ul>
+</section>
+<section id="efectos-de-pruebas-repetidas" class="level3" data-number="1.12.3">
+<h3 data-number="1.12.3" class="anchored" data-anchor-id="efectos-de-pruebas-repetidas"><span class="header-section-number">1.12.3</span> Efectos de pruebas repetidas</h3>
+<p>Un tipo importante de efecto de historia es el efecto de las <strong>pruebas repetidas</strong>. Supongamos que quiero tomar dos mediciones de algún constructo psicológico (por ejemplo, ansiedad). Algo que podría preocuparme es si la primera medición afecta la segunda. En otras palabras, este es un efecto de historia en el que el “evento” que influye sobre la segunda medición es ¡la primera medición en sí misma! Esto no es nada raro. Algunos ejemplos de esto incluyen:</p>
+<ul>
+<li><p><em>Aprendizaje y práctica</em>: por ejemplo, la “inteligencia” en el tiempo 2 podría parecer más alta que en el tiempo 1 porque los participantes aprendieron las reglas generales para resolver preguntas “tipo test de inteligencia” durante la primera sesión.</p></li>
+<li><p><em>Familiaridad con la situación de evaluación</em>: por ejemplo, si las personas están nerviosas en el tiempo 1, eso podría hacer que su rendimiento baje; después de atravesar la primera sesión, podrían calmarse precisamente porque ya vieron cómo es la situación de evaluación.</p></li>
+<li><p><em>Cambios auxiliares causados por la evaluación</em>: por ejemplo, si un cuestionario para medir el estado de ánimo es aburrido, entonces el estado de ánimo medido en el tiempo 2 probablemente sea “aburrido”, justamente por haber pasado por una evaluación aburrida en el tiempo 1.</p></li>
+</ul>
+</section>
+<section id="sesgo-de-selección" class="level3" data-number="1.12.4">
+<h3 data-number="1.12.4" class="anchored" data-anchor-id="sesgo-de-selección"><span class="header-section-number">1.12.4</span> Sesgo de selección</h3>
+<p>El <strong>sesgo de selección</strong> es un término bastante amplio. Supongamos que estás llevando a cabo un experimento con dos grupos de participantes, donde cada grupo recibe un “tratamiento” diferente, y querés ver si esos tratamientos generan distintos resultados. Sin embargo, supongamos que, a pesar de tus mejores esfuerzos, terminás con un desequilibrio de género entre los grupos (por ejemplo, el grupo A tiene 80% mujeres y el grupo B tiene 50%). Puede sonar como algo que nunca pasaría, pero creeme, pasa. Este es un ejemplo de sesgo de selección, en el cual las personas que fueron asignadas a los dos grupos tienen características distintas. Si resulta que alguna de esas características es relevante (por ejemplo, que tu tratamiento funciona mejor para mujeres que para varones), entonces estás en serios problemas.</p>
+</section>
+<section id="abandono-diferencial" class="level3" data-number="1.12.5">
+<h3 data-number="1.12.5" class="anchored" data-anchor-id="abandono-diferencial"><span class="header-section-number">1.12.5</span> Abandono diferencial</h3>
+<p>Un peligro bastante sutil al que hay que prestarle atención se llama <strong>abandono diferencial</strong>, que es un tipo de sesgo de selección causado por el propio estudio. Supongamos que, por primera vez en la historia de la psicología, logro encontrar una muestra perfectamente balanceada y representativa de personas. Empiezo a correr “el experimento increíblemente largo y tedioso de Dan” sobre mi muestra perfecta, pero como mi estudio es increíblemente largo y tedioso, mucha gente empieza a abandonar. No puedo evitarlo: como vamos a discutir más adelante en el capítulo sobre ética en la investigación, los participantes tienen absolutamente el derecho de dejar cualquier experimento, en cualquier momento, por la razón que se les ocurra, y como investigadores tenemos la obligación moral (y profesional) de recordarles que tienen ese derecho. Entonces, supongamos que “el experimento increíblemente largo y tedioso de Dan” tiene una tasa de abandono muy alta. ¿Qué probabilidades creés que hay de que ese abandono sea aleatorio? Respuesta: cero. Casi con certeza, las personas que permanecen son más concienzudas, más tolerantes al aburrimiento, etc., que aquellas que se van. En la medida en que (por ejemplo) la concienzudez sea relevante para el fenómeno psicológico que me interesa, este abandono puede disminuir la validez de mis resultados.</p>
+<p>Cuando se piensa en los efectos del abandono diferencial, a veces resulta útil distinguir entre dos tipos diferentes. El primero es el <strong>abandono homogéneo</strong>, en el que el efecto del abandono es el mismo para todos los grupos, tratamientos o condiciones. En el ejemplo que di más arriba, el abandono diferencial sería homogéneo si (y solo si) los participantes que se aburren fácilmente están abandonando todas las condiciones del experimento más o menos al mismo ritmo. En general, el principal efecto del abandono homogéneo es que puede volver tu muestra no representativa. En ese caso, la principal preocupación es que la generalización de los resultados disminuye: en otras palabras perdés validez externa.</p>
+<p>El segundo tipo de abandono diferencial es el <strong>abandono heterogéneo</strong>, en el que el efecto del abandono es distinto para diferentes grupos. Este es un problema mucho más grave: no solo tenés que preocuparte por tu validez externa, sino también por tu validez interna. Para ver por qué es así, consideremos un estudio muy tonto en el que quiero ver si insultar a las personas hace que actúen de manera más obediente. No sé por qué alguien querría estudiar eso, pero supongamos que a mí me importa muchísimo. Entonces, diseño mi experimento con dos condiciones. En la condición de “tratamiento”, la persona experimentadora insulta a la persona participante y luego le da un cuestionario diseñado para medir obediencia. En la condición de “control”, la persona experimentadora conversa un poco sin decir nada importante y luego le da el mismo cuestionario. Dejando de lado los dudosos méritos científicos y éticos de tal estudio, pensemos qué podría salir mal acá. Como regla general, cuando alguien me insulta en la cara, tiendo a volverme mucho menos cooperativo. Así que hay una buena probabilidad de que muchas más personas abandonen la condición de tratamiento que la condición de control. Y ese abandono no va a ser aleatorio. Las personas más propensas a abandonar probablemente sean aquellas a las que no les importa tanto la importancia de quedarse obedientemente en el experimento. Como las personas más testarudas y desobedientes se fueron del grupo de tratamiento pero no del grupo de control, hemos introducido un confusor: las personas que efectivamente completaron el cuestionario en el grupo de tratamiento ya eran <em>más</em> propensas a ser obedientes y cumplidoras que las del grupo de control. En resumen, en este estudio insultar a la gente no la vuelve más obediente: ¡hace que los más desobedientes se vayan del experimento! La validez interna de este experimento queda completamente arruinada.</p>
+</section>
+<section id="sesgo-por-no-respuesta" class="level3" data-number="1.12.6">
+<h3 data-number="1.12.6" class="anchored" data-anchor-id="sesgo-por-no-respuesta"><span class="header-section-number">1.12.6</span> Sesgo por no respuesta</h3>
+<p>El <strong>sesgo por no respuesta</strong> está estrechamente relacionado con el sesgo de selección y con el abandono diferencial. La versión más simple del problema va así: enviás una encuesta por correo a 1000 personas, y solo 300 responden. Las 300 personas que respondieron casi con seguridad no son una submuestra aleatoria. Las personas que responden encuestas son sistemáticamente diferentes de las que no lo hacen. Esto genera un problema cuando intentás generalizar a partir de esas 300 personas que sí respondieron hacia toda la población, ya que ahora tenés una muestra muy poco aleatoria.</p>
+<p>Sin embargo, el problema del sesgo por no respuesta es más general que eso. Entre las (digamos) 300 personas que respondieron la encuesta, podrías encontrar que no todas contestan todas las preguntas. Si (por ejemplo) 80 personas eligieron no responder una de tus preguntas, ¿eso introduce problemas? Como siempre, la respuesta es: tal vez. Si la pregunta que no se respondió estaba en la última página del cuestionario, y esas 80 encuestas fueron devueltas sin la última página, hay una buena probabilidad de que esos datos faltantes no sean un gran problema: probablemente las páginas simplemente se desprendieron. Sin embargo, si la pregunta que 80 personas no respondieron era la más confrontativa o invasiva del cuestionario, entonces casi con certeza tenés un problema. En esencia, lo que estás enfrentando acá es lo que se llama el problema de <strong>datos faltantes</strong>. Si los datos que faltan se “perdieron” de manera aleatoria, entonces no es un gran problema. Si faltan de forma sistemática, entonces sí puede ser un gran problema.</p>
+</section>
+<section id="regresión-a-la-media" class="level3" data-number="1.12.7">
+<h3 data-number="1.12.7" class="anchored" data-anchor-id="regresión-a-la-media"><span class="header-section-number">1.12.7</span> Regresión a la media</h3>
+<p>La <strong>regresión a la media</strong> es una curiosa variación del sesgo de selección. Se refiere a cualquier situación en la que seleccionás datos basándote en un valor extremo de alguna medición. Debido a la variación natural de la medición, eso casi con certeza significa que, cuando tomes una segunda medición, ese nuevo valor será menos extremo que el primero, simplemente por azar.</p>
+<p>Acá va un ejemplo. Supongamos que me interesa saber si una formación en psicología tiene un efecto negativo en los estudiantes muy inteligentes. Para esto, busco a los 20 estudiantes de psicología con las mejores calificaciones del secundario y analizo qué tan bien les va en la universidad. Resulta que les va mucho mejor que el promedio, pero no están encabezando la clase en la universidad, aunque sí lo hacían en el secundario. ¿Qué está pasando? El primer pensamiento natural es que esto debe significar que las clases de psicología están teniendo un efecto negativo sobre esos estudiantes. Sin embargo, aunque esa podría ser la explicación, lo más probable es que lo que estás viendo sea un ejemplo de “regresión a la media”. Para entender cómo funciona, tomémonos un momento para pensar qué se necesita para obtener la mejor nota en una clase, ya sea en el secundario o en la universidad. Cuando tenés una clase grande, va a haber <em>muchas</em> personas muy inteligentes. Para sacar la mejor nota tenés que ser muy inteligente, trabajar muy duro, y tener un poco de suerte. El examen tiene que hacer exactamente las preguntas correctas para tus habilidades particulares, y no tenés que cometer errores tontos (que todos cometemos alguna vez) al responderlas. Y ese es el punto: la inteligencia y el esfuerzo son cualidades que se transfieren de una clase a otra. La suerte, no. Los que tuvieron suerte en el secundario no van a ser los mismos que tienen suerte en la universidad. Esa es, justamente, la definición de “suerte”. Como consecuencia, cuando seleccionás personas con valores muy extremos en una medición (los 20 mejores estudiantes), estás seleccionando por esfuerzo, habilidad y suerte. Pero como la suerte no se transfiere a la segunda medición (solo la habilidad y el esfuerzo sí lo hacen), es de esperar que todos esos estudiantes bajen un poco cuando los medís por segunda vez (en la universidad). Así que sus calificaciones caen un poco, se acercan de nuevo al resto. Eso es la regresión a la media.</p>
+<p>La regresión a la media es sorprendentemente común. Por ejemplo, si dos personas muy altas tienen hijos, sus hijos tenderán a ser más altos que el promedio, pero no tanto como sus padres. Lo inverso ocurre con padres muy bajos: dos padres muy bajos tenderán a tener hijos bajos, pero aún así esos hijos tenderán a ser más altos que sus padres. También puede ser extremadamente sutil. Por ejemplo, se han hecho estudios que sugerían que las personas aprenden mejor del feedback negativo que del positivo. Sin embargo, la forma en que se trató de demostrar esto fue dando refuerzo positivo cuando los participantes lo hacían bien, y refuerzo negativo cuando lo hacían mal. Y lo que se observa es que después del refuerzo positivo, el desempeño tendía a empeorar; pero después del refuerzo negativo, tendía a mejorar. ¡Pero! Fijate que acá hay un sesgo de selección: cuando las personas lo hacen muy bien, estás seleccionando valores “altos”, y por lo tanto deberías <em>esperar</em> (por la regresión a la media) que el rendimiento en la siguiente prueba sea peor, independientemente de si se da refuerzo o no. De manera similar, después de una mala prueba, la gente tenderá a mejorar por sí sola. La aparente superioridad del feedback negativo es un artefacto causado por la regresión a la media <span class="citation" data-cites="Kahneman1973">(<a href="references.html#ref-Kahneman1973" role="doc-biblioref">Kahneman y Tversky 1973</a>)</span>.</p>
+</section>
+<section id="sesgo-del-experimentador" class="level3" data-number="1.12.8">
+<h3 data-number="1.12.8" class="anchored" data-anchor-id="sesgo-del-experimentador"><span class="header-section-number">1.12.8</span> Sesgo del experimentador</h3>
+<p>El <strong>sesgo del experimentador</strong> puede presentarse de múltiples formas. La idea básica es que la persona experimentadora, a pesar de tener las mejores intenciones, puede terminar influyendo accidentalmente en los resultados del experimento al comunicar sutilmente la “respuesta correcta” o el “comportamiento deseado” a los participantes. Típicamente, esto ocurre porque la persona experimentadora posee un conocimiento especial que la persona participante no tiene —ya sea la respuesta correcta a las preguntas que se hacen, o el patrón de desempeño esperado para la condición en la que se encuentra la persona participante, etc. El ejemplo clásico de esto es el estudio de caso de “Hans el listo”, que data de 1907 <span class="citation" data-cites="Pfungst1911 Hothersall2004">(<a href="references.html#ref-Pfungst1911" role="doc-biblioref">Pfungst 1911</a>; <a href="references.html#ref-Hothersall2004" role="doc-biblioref">Hothersall 2004</a>)</span>. Hans el listo era un caballo que aparentemente podía leer, contar y realizar otras hazañas de inteligencia típicamente humanas. Después de que Hans se hizo famoso, los psicólogos comenzaron a examinar más de cerca su comportamiento. Resultó que —como era de esperarse— Hans no sabía hacer cuentas. En realidad, Hans estaba respondiendo a los observadores humanos a su alrededor. Como ellos sí sabían contar, el caballo había aprendido a cambiar su comportamiento cuando los humanos cambiaban el suyo.</p>
+<p>La solución general al problema del sesgo del experimentador es realizar estudios doble ciego, en los que ni la persona experimentadora ni la persona participante saben en qué condición se encuentra la persona participante, ni cuál es el comportamiento deseado. Esta es una muy buena solución al problema, pero es importante reconocer que no es del todo ideal y que es difícil implementarla perfectamente.</p>
+<p>Por ejemplo, la manera obvia en que podría intentar construir un estudio doble ciego es pedirle a uno de mis estudiantes de doctorado (alguien que no sepa nada sobre el experimento) que lleve a cabo el estudio. Eso parecería suficiente. La única persona (yo) que conoce todos los detalles (por ejemplo, las respuestas correctas a las preguntas, la asignación de participantes a condiciones) no interactúa con los participantes, y la persona que sí habla con ellos (el estudiante de doctorado) no sabe nada.</p>
+<p>Salvo que, esa última parte es muy poco probable que sea cierta. Para que el estudiante de doctorado pueda llevar a cabo el estudio de manera efectiva, tiene que haber recibido instrucciones mías, la persona investigadora. Y, como ocurre, ese estudiante también me conoce, y sabe un poco sobre mis creencias generales acerca de las personas y la psicología (por ejemplo, tiendo a pensar que los seres humanos son mucho más inteligentes de lo que los psicólogos reconocen). Como resultado de todo esto, es casi imposible que la persona experimentadora evite conocer, aunque sea un poco, mis expectativas. Y hasta un poco de conocimiento puede tener efecto: supongamos que la persona experimentadora transmite accidentalmente el hecho de que se espera que los participantes lo hagan bien en esta tarea. Bueno, hay algo que se llama el “efecto Pigmalión”: si esperás grandes cosas de alguien, esa persona tenderá a estar a la altura; pero si esperás que fracase, probablemente lo haga. En otras palabras, las expectativas se vuelven profecías autocumplidas.</p>
+</section>
+<section id="efectos-de-demanda-y-reactividad" class="level3" data-number="1.12.9">
+<h3 data-number="1.12.9" class="anchored" data-anchor-id="efectos-de-demanda-y-reactividad"><span class="header-section-number">1.12.9</span> Efectos de demanda y reactividad</h3>
+<p>Cuando hablamos del sesgo del experimentador, la preocupación es que el conocimiento o los deseos de la persona experimentadora respecto al experimento se comuniquen a los participantes, y que eso afecte su comportamiento <span class="citation" data-cites="Rosenthal1966">(<a href="references.html#ref-Rosenthal1966" role="doc-biblioref">Rosenthal 1966</a>)</span>. Sin embargo, incluso si lográs evitar que eso ocurra, es casi imposible evitar que los participantes sepan que están participando en un estudio psicológico. Y el mero hecho de saber que alguien te está observando o estudiando puede tener un efecto bastante fuerte sobre el comportamiento. A esto se lo denomina en general como <strong>reactividad</strong> o <strong>efectos de demanda</strong>. La idea básica se captura en el efecto Hawthorne: las personas modifican su rendimiento debido a la atención que el estudio pone sobre elles. El efecto toma su nombre de la fábrica “Hawthorne Works” en las afueras de Chicago <span class="citation" data-cites="Adair1984">(<a href="references.html#ref-Adair1984" role="doc-biblioref">Adair 1984</a>)</span>. Un estudio hecho en la década de 1920 que examinaba los efectos de la iluminación sobre la productividad de los trabajadores en la fábrica resultó mostrar un efecto del hecho de que los trabajadores sabían que estaban siendo estudiados, más que de la iluminación.</p>
+<p>Para ser un poco más específicos sobre algunas de las formas en que el solo hecho de estar en un estudio puede cambiar cómo actúan las personas, ayuda pensar como un psicólogo social y observar algunos de los <em>roles</em> que las personas podrían adoptar durante un experimento, pero que tal vez no adoptarían si los mismos eventos ocurrieran en el mundo real:</p>
+<ul>
+<li><p>La <em>persona participante colaboradora</em> intenta ser demasiado útil para la persona investigadora: busca entender la hipótesis y confirmarla.</p></li>
+<li><p>La <em>persona participante negativa</em> hace exactamente lo opuesto a la colaboradora: busca sabotear o destruir el estudio o la hipótesis de alguna manera.</p></li>
+<li><p>La <em>persona participante fiel</em> es antinaturalmente obediente: busca seguir las instrucciones a la perfección, sin importar lo que hubiera sucedido en una situación más realista.</p></li>
+<li><p>La <em>persona participante aprensiva</em> se pone nerviosa por estar siendo evaluada o estudiada, tanto que su comportamiento se vuelve altamente antinatural o excesivamente deseable socialmente.</p></li>
+</ul>
+</section>
+<section id="efectos-placebo" class="level3" data-number="1.12.10">
+<h3 data-number="1.12.10" class="anchored" data-anchor-id="efectos-placebo"><span class="header-section-number">1.12.10</span> Efectos placebo</h3>
+<p>El <strong>efecto placebo</strong> es un tipo específico de efecto de demanda que nos preocupa bastante. Se refiere a la situación en la que el simple hecho de recibir un tratamiento provoca una mejora en los resultados. El ejemplo clásico proviene de los ensayos clínicos: si le das a una persona un fármaco completamente inerte desde el punto de vista químico y le decís que es una cura para una enfermedad, esa persona tiende a mejorar más rápido que alguien que no recibe ningún tratamiento. En otras palabras, es la <em>creencia</em> de que están recibiendo tratamiento lo que causa la mejora, no el medicamento en sí.</p>
+</section>
+<section id="efectos-de-situación-medición-y-subpoblación" class="level3" data-number="1.12.11">
+<h3 data-number="1.12.11" class="anchored" data-anchor-id="efectos-de-situación-medición-y-subpoblación"><span class="header-section-number">1.12.11</span> Efectos de situación, medición y subpoblación</h3>
+<p>En algunos aspectos, estos términos funcionan como una categoría general para “todas las demás amenazas a la validez externa”. Se refieren al hecho de que la elección de la subpoblación de la que obtenés a tus participantes, la ubicación, el momento y la manera en que llevás a cabo tu estudio (incluyendo quién recolecta los datos), y las herramientas que usás para hacer tus mediciones podrían estar influyendo en los resultados. En concreto, la preocupación es que estas cosas puedan estar influyendo en los resultados de una manera tal que impida generalizar a una gama más amplia de personas, contextos y métodos de medición.</p>
+</section>
+<section id="fraude-engaño-y-autoengaño" class="level3" data-number="1.12.12">
+<h3 data-number="1.12.12" class="anchored" data-anchor-id="fraude-engaño-y-autoengaño"><span class="header-section-number">1.12.12</span> Fraude, engaño y autoengaño</h3>
+<blockquote class="blockquote">
+<p><em>Es difícil lograr que alguien entienda algo, cuando su salario depende de que no lo entienda.</em><br>
+— Upton Sinclair</p>
+</blockquote>
+<p>Una última cosa que siento que debería mencionar. Mientras leía lo que suelen decir los libros de texto sobre cómo evaluar la validez de un estudio, no pude evitar notar que parecen asumir que la persona investigadora es honesta. Me resulta gracioso. Aunque la gran mayoría de los científicos son honestos —al menos en mi experiencia—, algunos no lo son. No solo eso: como mencioné antes, los científicos no son inmunes al sesgo de creencias —es fácil que un investigador termine engañándose a sí mismo para creer algo falso, y eso puede llevarle a hacer investigaciones sutilmente defectuosas, y luego a ocultar esas fallas al redactar el informe. Así que necesitás considerar no solo la (probablemente poco común) posibilidad de fraude deliberado, sino también la (probablemente bastante común) posibilidad de que la investigación esté sesgada de manera no intencional. Abrí algunos libros de texto estándar y no encontré mucho sobre este problema, así que acá va mi propio intento de listar algunas formas en que pueden surgir estas cuestiones:</p>
+<ul>
+<li><p><strong>Fabricación de datos</strong>. A veces, las personas simplemente inventan los datos. Ocasionalmente esto se hace con “buenas” intenciones. Por ejemplo, la persona investigadora cree que los datos fabricados reflejan la verdad, y pueden ser versiones “ligeramente corregidas” de datos reales. En otras ocasiones, el fraude es deliberado y malicioso. Algunos ejemplos de alto perfil en los que se ha alegado o demostrado fabricación de datos incluyen a Cyril Burt (un psicólogo que se cree que falsificó parte de sus datos), Andrew Wakefield (acusado de falsificar sus datos que relacionaban la vacuna triple viral con el autismo) y Hwang Woo-suk (quien falsificó muchos de sus datos sobre investigación con células madre).</p></li>
+<li><p><strong>Engaños (hoaxes)</strong>. Los engaños comparten muchas similitudes con la fabricación de datos, pero se diferencian en el propósito. Un engaño suele ser una broma, y muchos están diseñados para que (eventualmente) se descubran. A menudo, el objetivo de un engaño es desacreditar a alguien o a un campo entero. Ha habido bastantes engaños científicos conocidos a lo largo de los años (por ejemplo, el hombre de Piltdown), algunos de los cuales fueron intentos deliberados de desacreditar ciertos campos de investigación (por ejemplo, el caso Sokal).</p></li>
+<li><p><strong>Falsificación o tergiversación de los datos</strong>. Aunque el fraude es lo que se lleva los titulares, en mi experiencia es mucho más común ver datos tergiversados. Cuando digo esto, no me refiero a los medios de comunicación interpretando mal los resultados (lo cual hacen casi siempre). Me refiero a que muchas veces los datos no dicen realmente lo que los investigadores creen que dicen. Mi impresión es que, casi siempre, esto no se debe a una deshonestidad deliberada, sino a una falta de sofisticación en los análisis de datos. Por ejemplo, pensá en el caso de la paradoja de Simpson que mencioné al comienzo de estas notas. Es muy común ver a personas presentar datos “agregados” de algún tipo; y a veces, cuando profundizás y conseguís los datos crudos por tu cuenta, encontrás que los datos agregados cuentan una historia diferente que los desagregados. Alternativamente, podrías descubrir que algún aspecto de los datos está siendo ocultado porque cuenta una historia incómoda (por ejemplo, la persona investigadora podría optar por no mencionar una determinada variable). Hay muchas variantes de esto; muchas de las cuales son muy difíciles de detectar.</p></li>
+<li><p><strong>Diseño “defectuoso” del estudio</strong>. Bien, esto es más sutil. Básicamente, el problema acá es que un investigador diseña un estudio que tiene fallas estructurales, y esas fallas nunca se informan en el artículo. Los datos que se reportan son completamente reales, y están analizados correctamente, pero provienen de un estudio que en realidad está muy mal planteado. La persona investigadora realmente quiere encontrar un efecto en particular, así que el estudio se arma de manera tal que resulte “fácil” (aunque artefactual) observar ese efecto. Una manera muy astuta de hacer esto —por si tenés ganas de incursionar en un poco de fraude— es diseñar un experimento en el que sea obvio para los participantes qué es lo que “se supone” que deben hacer, y luego dejar que la reactividad haga su magia. Si querés, podés agregarle todos los adornos de un experimento doble ciego, etc. No va a hacer ninguna diferencia, ya que los propios materiales del estudio les están diciendo sutilmente a los participantes lo que se espera que hagan. Cuando redactás los resultados, el fraude no va a ser obvio para la persona lectora: lo que es evidente para la persona participante en el contexto experimental no siempre es evidente para quien lee el artículo. Claro, la manera en que describí esto suena como si <em>siempre</em> fuera fraude: probablemente haya casos donde esto se haga de forma deliberada, pero en mi experiencia la preocupación más grande ha sido con los errores no intencionales de diseño. La persona investigadora <em>cree</em>… y así, el estudio termina teniendo una falla estructural, y esa falla mágicamente desaparece cuando se escribe el artículo para su publicación.</p></li>
+<li><p><strong>Minería de datos e hipótesis post hoc</strong>. Otra forma en la que los autores de un estudio pueden, más o menos, mentir sobre lo que encontraron es mediante lo que se llama “minería de datos”. Como vamos a discutir más adelante en la clase, si analizás los datos de muchas formas diferentes, eventualmente vas a encontrar algo que “parece” un efecto real, pero que no lo es. Eso es lo que se llama “minería de datos”. Antes era bastante raro, porque analizar datos solía llevar semanas, pero ahora que todos tienen software estadístico muy potente en sus computadoras, se ha vuelto bastante común. La minería de datos en sí no es “incorrecta”, pero cuanto más la hacés, más grande es el riesgo que estás corriendo. Lo que <em>sí</em> está mal (y, sospecho, es común) es hacer minería de datos <strong>sin reconocerlo</strong>. Es decir, la persona investigadora prueba todos los análisis posibles conocidos por la humanidad, encuentra uno que “funciona”, y luego finge que ese era el único análisis que pensaba hacer desde el principio. Peor aún, muchas veces “inventa” una hipótesis después de mirar los datos, para cubrir la minería de datos. Para ser claros: no está mal cambiar tus creencias después de mirar los datos, y reanalizar los datos con tus nuevas hipótesis <em>post hoc</em>. Lo que sí está mal (y, sospecho, es común) es no reconocer que hiciste eso. Si lo reconocés, otros investigadores pueden tenerlo en cuenta. Si no lo hacés, no pueden. Y eso vuelve tu comportamiento engañoso. ¡Mal!</p></li>
+<li><p><strong>Sesgo de publicación y autocensura</strong>. Finalmente, un sesgo muy extendido es el de la no publicación de resultados negativos. Y esto es casi imposible de evitar. Las revistas científicas no publican todo lo que se les envía: tienden a preferir los artículos que muestran que “algo pasó”. Entonces, si 20 personas hacen un experimento para ver si leer <em>Finnegans Wake</em> causa locura en humanos, y 19 encuentran que no, ¿cuál pensás que se va a publicar? Obviamente, el único estudio que sí encontró que <em>Finnegans Wake</em> causa locura. Eso es un ejemplo de <em>sesgo de publicación</em>: como nadie publica los 19 estudios que no encontraron efecto, una persona ingenua jamás sabría que existieron. Peor aún, muchos investigadores internalizan este sesgo y terminan <em>autocensurando</em> sus propios trabajos. Como saben que los resultados negativos no van a ser aceptados para su publicación, ni siquiera intentan reportarlos. Como dice una amiga mía: “por cada experimento que lográs publicar, tenés diez fracasos detrás”. Y tiene razón. El problema es que, si bien algunos (quizás la mayoría) de esos estudios fallaron por razones aburridas (por ejemplo, porque cometiste algún error), otros podrían ser verdaderos resultados nulos que deberías reconocer cuando escribís el experimento que sí salió “bien”. Y distinguir entre una cosa y la otra muchas veces es difícil. Un buen punto de partida es un artículo de <span class="citation" data-cites="Ioannidis2005">Ioannidis (<a href="references.html#ref-Ioannidis2005" role="doc-biblioref">2005</a>)</span> con el deprimente título “Por qué la mayoría de los hallazgos publicados son falsos”. También te recomiendo el trabajo de <span class="citation" data-cites="Kuhberger2014">Kühberger, Fritz, y Scherndl (<a href="references.html#ref-Kuhberger2014" role="doc-biblioref">2014</a>)</span>, que presenta evidencia estadística de que esto realmente pasa en psicología.</p></li>
+</ul>
+<p>Seguramente hay muchos más temas como este para pensar, pero con esto alcanza para empezar. Lo que realmente quiero señalar es una verdad tan obvia como incómoda: la ciencia del mundo real la hacen personas reales, y solo alguien muy ingenuo puede creer que todos son siempre honestos e imparciales. Los científicos de verdad no suelen ser <em>tan</em> ingenuos, pero por alguna razón el mundo prefiere fingir que lo somos, y los manuales que solemos escribir refuerzan ese estereotipo.</p>
+</section>
+</section>
+<section id="resumen" class="level2" data-number="1.13">
+<h2 data-number="1.13" class="anchored" data-anchor-id="resumen"><span class="header-section-number">1.13</span> Resumen</h2>
+<p>Este capítulo no pretende ofrecer una discusión exhaustiva sobre los métodos de investigación en psicología: para hacerle justicia al tema se necesitaría otro volumen igual de largo que este. Sin embargo, en la vida real, las estadísticas y el diseño de estudios están fuertemente entrelazados, así que es muy útil repasar algunos temas clave. En este capítulo, discutí brevemente los siguientes temas:</p>
+<ul>
+<li><p><strong>Introducción a la medición psicológica</strong>: ¿Qué significa operacionalizar un constructo teórico? ¿Qué significa tener variables y tomar mediciones?</p></li>
+<li><p><strong>Escalas de medición y tipos de variables</strong>: Recordá que hay <em>dos</em> distinciones diferentes acá: está la diferencia entre datos discretos y continuos, y está la diferencia entre los cuatro tipos de escala (nominal, ordinal, de intervalo y de razón).</p></li>
+<li><p><strong>Confiabilidad de una medición</strong>: Si mido dos veces lo “mismo”, ¿debería esperar ver el mismo resultado? Solo si mi medición es confiable. Pero, ¿qué significa hablar de hacer lo “mismo”? Bueno, por eso tenemos distintos tipos de confiabilidad. Acordate cuáles son.</p></li>
+<li><p><strong>Terminología: predictoras y resultados</strong>: ¿Qué rol juegan las variables en un análisis? ¿Te acordás la diferencia entre variables predictoras y variables resultado? ¿Entre dependientes e independientes? Etc.</p></li>
+<li><p><strong>Diseños de investigación experimentales y no experimentales</strong>: ¿Qué es lo que hace que un experimento sea un experimento? ¿Una bata blanca de laboratorio? ¿O tiene algo que ver con el control que ejerce la persona investigadora sobre las variables?</p></li>
+<li><p><strong>Validez y sus amenazas</strong>: ¿Tu estudio mide lo que querés que mida? ¿Cómo podrían salir mal las cosas? ¿Y soy yo, o esa fue una lista larguísima de posibles maneras en que las cosas pueden salir mal?</p></li>
+</ul>
+<p>Todo esto debería dejar en claro que el diseño del estudio es una parte crítica de la metodología de investigación. Armé este capítulo a partir del clásico libro de <span class="citation" data-cites="Campbell1963">Campbell y Stanley (<a href="references.html#ref-Campbell1963" role="doc-biblioref">1963</a>)</span>, pero hay una gran cantidad de manuales sobre diseño de investigación. Con solo pasar unos minutos en tu buscador favorito vas a encontrar decenas.</p>
+</section>
+<section id="videos" class="level2" data-number="1.14">
+<h2 data-number="1.14" class="anchored" data-anchor-id="videos"><span class="header-section-number">1.14</span> Videos</h2>
+<section id="términos-en-estadística-video-en-inglés" class="level3" data-number="1.14.1">
+<h3 data-number="1.14.1" class="anchored" data-anchor-id="términos-en-estadística-video-en-inglés"><span class="header-section-number">1.14.1</span> Términos en Estadística (video en inglés)</h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HgtnpOtk350" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+</iframe>
+<p>:::</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-Adair1984" class="csl-entry" role="listitem">
+Adair, G. 1984. <span>«The <span>Hawthorne</span> Effect: <span>A</span> Reconsideration of the Methodological Artifact»</span>. <em>Journal of Applied Psychology</em> 69: 334-45. <a href="https://doi.org/10.1037/0021-9010.69.2.334">https://doi.org/10.1037/0021-9010.69.2.334</a>.
+</div>
+<div id="ref-Bickel1975" class="csl-entry" role="listitem">
+Bickel, P. J., E. A. Hammel, y J. W. O’Connell. 1975. <span>«Sex Bias in Graduate Admissions: <span>Data</span> from <span>Berkeley</span>»</span>. <em>Science (New York, N.Y.)</em> 187: 398-404. <a href="https://doi.org/10.1126/science.187.4175.398">https://doi.org/10.1126/science.187.4175.398</a>.
+</div>
+<div id="ref-Campbell1963" class="csl-entry" role="listitem">
+Campbell, D. T., y J. C. Stanley. 1963. <em>Experimental and Quasi-Experimental Designs for Research</em>. <span>Boston, MA</span>: <span>Houghton Mifflin</span>.
+</div>
+<div id="ref-Evans1983" class="csl-entry" role="listitem">
+Evans, J. St. B. T., J. L. Barston, y P. Pollard. 1983. <span>«On the Conflict between Logic and Belief in Syllogistic Reasoning»</span>. <em>Memory and Cognition</em> 11: 295-306. <a href="https://doi.org/10.3758/BF03196976">https://doi.org/10.3758/BF03196976</a>.
+</div>
+<div id="ref-Hothersall2004" class="csl-entry" role="listitem">
+Hothersall, D. 2004. <em>History of Psychology</em>. <span>McGraw-Hill</span>.
+</div>
+<div id="ref-Ioannidis2005" class="csl-entry" role="listitem">
+Ioannidis, John P. A. 2005. <span>«Why Most Published Research Findings Are False»</span>. <em>PLoS medicine</em> 2 (8): 697-701. <a href="https://doi.org/10.1371/journal.pmed.0020124">https://doi.org/10.1371/journal.pmed.0020124</a>.
+</div>
+<div id="ref-Kahneman1973" class="csl-entry" role="listitem">
+Kahneman, D., y A. Tversky. 1973. <span>«On the Psychology of Prediction»</span>. <em>Psychological Review</em> 80: 237-51. <a href="https://doi.org/10.1037/h0034747">https://doi.org/10.1037/h0034747</a>.
+</div>
+<div id="ref-Kuhberger2014" class="csl-entry" role="listitem">
+Kühberger, A, A Fritz, y T. Scherndl. 2014. <span>«Publication Bias in Psychology: <span>A</span> Diagnosis Based on the Correlation between Effect Size and Sample Size»</span>. <em>Public Library of Science One</em> 9: 1-8.
+</div>
+<div id="ref-Pfungst1911" class="csl-entry" role="listitem">
+Pfungst, O. 1911. <em>Clever <span>Hans</span> (<span>The</span> Horse of <span>Mr</span>. von <span>Osten</span>): <span>A</span> Contribution to Experimental Animal and Human Psychology</em>. Traducido por C. L. Rahn. <span>New York</span>: <span>Henry Holt</span>.
+</div>
+<div id="ref-Rosenthal1966" class="csl-entry" role="listitem">
+Rosenthal, R. 1966. <em>Experimenter Effects in Behavioral Research</em>. <span>New York</span>: <span>Appleton</span>.
+</div>
+<div id="ref-Stevens1946" class="csl-entry" role="listitem">
+Stevens, S. S. 1946. <span>«On the Theory of Scales of Measurement»</span>. <em>Science (New York, N.Y.)</em> 103: 677-80. <a href="https://doi.org/10.1126/science.103.2684.677">https://doi.org/10.1126/science.103.2684.677</a>.
+</div>
+</div>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/almadana\.github\.io\/libro_cuanti\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="Prefacio">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Prefacio</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./02-Describing_Data.html" class="pagination-link" aria-label="Describir los datos">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describir los datos</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/almadana/libro_cuanti/edit/master/01-Science_Data.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li></ul></div></div></div></footer></body></html>

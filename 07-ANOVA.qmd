@@ -424,7 +424,7 @@ ggplot(data = plot_df2, aes(x = pill_group, y = group_medias, color = simulation
 
 ```
 
-Figura 7.3: Diferentes patrones de las medias de grupo bajo la hipótesis nula (todas las puntuaciones de cada grupo muestreadas de la misma distribución).
+
 
 Upa, es un montón para mirar. ¿Qué está pasando acá? Cada cuadrito representa el resultado de un experimento simulado. Los puntos son las medias para cada grupo (si los sujetos tomaron 1, 2 o 3 pastillas mágicas). El eje Y muestra la media de inteligencia para cada grupo. Las barras de error son los errores estándar de la media.
 

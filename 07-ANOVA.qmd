@@ -212,7 +212,7 @@ Bueno, por supuesto que podrías hacer eso. Lo que pasaría es que puedes obtene
 
 La solución es **normalizar** los términos $SC$ No te preocupes, normalizar es solo una palabra elegante para sacar el promedio o encontrar la media. Recuerda, los términos SC son todos sumas. Y cada suma representa un número diferente de propiedades subyacentes.
 
-Por ejemplo, el SC\_\text{Efecto} representa la suma de la variación para tres medias en nuestro estudio. Podríamos preguntarnos, bueno, ¿cuál es la cantidad promedio de variación para cada media? Podrías pensar en dividir SC\_\text{Efecto} por 3, porque hay tres medias, pero como estamos estimando esta propiedad, dividimos por los grados de libertad en su lugar (# grupos - 1 = 3-1 = 2). Ahora hemos creado algo nuevo, se llama el $MSE_\text{Efecto}$.
+Por ejemplo, el $SC_{\text{Efecto}}$ representa la suma de la variación para tres medias en nuestro estudio. Podríamos preguntarnos, bueno, ¿cuál es la cantidad promedio de variación para cada media? Podrías pensar en dividir $SC_{\text{Efecto}}$ por 3, porque hay tres medias, pero como estamos estimando esta propiedad, dividimos por los grados de libertad en su lugar (# grupos - 1 = 3-1 = 2). Ahora hemos creado algo nuevo, se llama el $MSE_\text{Efecto}$.
 
 $MSE_\text{Efecto} = \frac{SC_\text{Efecto}}{df_\text{Efecto}}$
 

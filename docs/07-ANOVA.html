@@ -671,7 +671,7 @@ window.Quarto = {
 <p><span class="math inline">\(\frac{SC_\text{Efecto}}{SC_\text{Error}}\)</span></p>
 <p>Bueno, por supuesto que podrías hacer eso. Lo que pasaría es que puedes obtener números muy grandes y muy pequeños para tu estadístico inferencial. Y, el tipo de número que obtendrías no sería fácilmente interpretable como un valor <span class="math inline">\(t\)</span> o una puntuación <span class="math inline">\(z\)</span>.</p>
 <p>La solución es <strong>normalizar</strong> los términos <span class="math inline">\(SC\)</span> No te preocupes, normalizar es solo una palabra elegante para sacar el promedio o encontrar la media. Recuerda, los términos SC son todos sumas. Y cada suma representa un número diferente de propiedades subyacentes.</p>
-<p>Por ejemplo, el SC_ representa la suma de la variación para tres medias en nuestro estudio. Podríamos preguntarnos, bueno, ¿cuál es la cantidad promedio de variación para cada media? Podrías pensar en dividir SC_ por 3, porque hay tres medias, pero como estamos estimando esta propiedad, dividimos por los grados de libertad en su lugar (# grupos - 1 = 3-1 = 2). Ahora hemos creado algo nuevo, se llama el <span class="math inline">\(MSE_\text{Efecto}\)</span>.</p>
+<p>Por ejemplo, el <span class="math inline">\(SC_{\text{Efecto}}\)</span> representa la suma de la variación para tres medias en nuestro estudio. Podríamos preguntarnos, bueno, ¿cuál es la cantidad promedio de variación para cada media? Podrías pensar en dividir <span class="math inline">\(SC_{\text{Efecto}}\)</span> por 3, porque hay tres medias, pero como estamos estimando esta propiedad, dividimos por los grados de libertad en su lugar (# grupos - 1 = 3-1 = 2). Ahora hemos creado algo nuevo, se llama el <span class="math inline">\(MSE_\text{Efecto}\)</span>.</p>
 <p><span class="math inline">\(MSE_\text{Efecto} = \frac{SC_\text{Efecto}}{df_\text{Efecto}}\)</span></p>
 <p><span class="math inline">\(MSE_\text{Efecto} = \frac{72}{2} = 36\)</span></p>
 <p>Esto puede parecer extraño y un poco complicado. Pero es solo otra media. Es la media de las sumas de cuadrados para el efecto. Si esto te recuerda a la fórmula de la varianza, buena memoria. El <span class="math inline">\(SME_\text{Efecto}\)</span> es una medida de la varianza para el cambio en los datos debido a los cambios en las medias (que están vinculadas a las condiciones experimentales).</p>
@@ -793,12 +793,12 @@ Figura&nbsp;9.2: El valor crítico de <span class="math inline">\(F\)</span>, do
 <li><p>A y C</p></li>
 </ol>
 <p>Esas son tres posibles diferencias que podrías obtener. Podrías realizar pruebas <span class="math inline">\(t\)</span> por separado para probar si cada una de esas diferencias que pudiste haber encontrado podría haber sido producida por el azar. O podrías realizar un ANOVA, como lo que hemos estado haciendo, para hacer una pregunta más general sobre las diferencias. Aquí hay una forma de pensar sobre lo que está probando la prueba ómnibus: &nbsp;</p>
-<p>Hipótesis de no diferencias en ninguna parte: $ A = B = C $</p>
+<p>Hipótesis de no diferencias en ninguna parte: <span class="math inline">\(A = B = C\)</span></p>
 <p>Cualquier diferencia en alguna parte:</p>
 <ol type="a">
-<li>$ A B = C $</li>
-<li>$ A = B C $</li>
-<li>$ A C = B $</li>
+<li><span class="math inline">\(A \neq B = C\)</span></li>
+<li><span class="math inline">\(A = B \neq C\)</span></li>
+<li><span class="math inline">\(A \neq C = B\)</span></li>
 </ol>
 <p>El símbolo <span class="math inline">\(\neq\)</span> significa “no es igual a”, es un signo de igual con una cruz (¡no se permiten iguales!).</p>
 <p>¿Cómo juntamos todo esto? Generalmente, cuando obtenemos un valor <span class="math inline">\(p\)</span> chico, con un valor <span class="math inline">\(F\)</span> grande, no vamos a rechazar la hipótesis de no diferencias. Diremos que no tenemos evidencia de que las medias de los tres grupos sean diferentes de alguna manera, y que las diferencias que existen podrían haber sido producidas fácilmente por el azar. Cuando obtenemos una <span class="math inline">\(F\)</span> grande con un valor <span class="math inline">\(p\)</span> chico (uno que esté por debajo de nuestro criterio alfa), generalmente vamos a rechazar la hipótesis de no diferencias. Entonces asumiríamos que al menos la media de un grupo no es igual a una de las otras. Esa es la prueba ómnibus. Rechazar la hipótesis nula de esta manera es rechazar la idea de que no hay diferencias. Pero la prueba <span class="math inline">\(F\)</span> todavía no te dice cuál de las posibles diferencias de grupo es la que marca la diferencia.</p>
@@ -820,7 +820,6 @@ Figura&nbsp;9.3: Diferentes patrones de medias grupales bajo la hipótesis nula 
 </div>
 </div>
 </div>
-<p>Figura 7.3: Diferentes patrones de las medias de grupo bajo la hipótesis nula (todas las puntuaciones de cada grupo muestreadas de la misma distribución).</p>
 <p>Upa, es un montón para mirar. ¿Qué está pasando acá? Cada cuadrito representa el resultado de un experimento simulado. Los puntos son las medias para cada grupo (si los sujetos tomaron 1, 2 o 3 pastillas mágicas). El eje Y muestra la media de inteligencia para cada grupo. Las barras de error son los errores estándar de la media.</p>
 <p>Podés ver que cada uno de los 10 experimentos resulta diferente. Recordá que muestreamos 10 números para cada grupo de la misma distribución normal con media = 100 y DE = 10. Por lo tanto, sabemos que las medias correctas para cada muestra deberían ser 100 en cada ocasión. Sin embargo, no son 100 cada vez debido a… ¿el error de muestreo? (nuestro buen amigo del que hablamos todo el tiempo).</p>
 <p>Para la mayoría de las simulaciones, las barras de error se superponen, lo que sugiere visualmente que las medias no son diferentes. Sin embargo, en algunas parece que no se superponen tanto, y esto sugeriría que son diferentes. Este es el canto de sirena del azar (las sirenas atraían a los marineros a su muerte en el mar… cuidado con el canto de sirena del azar). Si concluyéramos que alguno de estos conjuntos de medias tiene una diferencia verdadera, estaríamos cometiendo un error de tipo I. Como nosotros hicimos la simulación, sabemos que ninguna de estas medias es realmente diferente. Pero, cuando estás corriendo un experimento real, no llegás a saber esto con seguridad.</p>

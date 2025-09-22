@@ -1,8 +1,10 @@
 ---
 author: 
   - Matthew J. C. Crump
+lang: es 
+abstract-title: Notas 
+abstract: Traducido al español rioplatense por ChatGPT4-o bajo la supervisión de Álvaro Cabana. 
 aliases: [t-tests.html]
-lang: es
 ---
 
 ```{r, include = FALSE}
@@ -237,16 +239,16 @@ for (i in 1:10000) {
 library(ggpubr)
 a <- ggplot(all_df, aes(x = media_muestral)) +
   geom_histogram(color = "white") +
-  theme_classic(base_size=20)
+  theme_classic(base_size=12)
 b <- ggplot(all_df, aes(x = desvío_muestral)) +
   geom_histogram(color = "white") +
-  theme_classic(base_size=20)
+  theme_classic(base_size=12)
 c <- ggplot(all_df, aes(x = muestra_ee)) +
   geom_histogram(color = "white") +
-  theme_classic(base_size=20)
+  theme_classic(base_size=12)
 d <- ggplot(all_df, aes(x = muestra_t)) +
   geom_histogram(color = "white") +
-  theme_classic(base_size=20)
+  theme_classic(base_size=12)
 
 ggarrange(a, b, c, d,
           ncol = 2, nrow = 2)
@@ -339,7 +341,8 @@ ggplot(all_df, aes(x = muestra_t)) +
   geom_label(data = data.frame(x = -4, y = 250,
                                label = "?"),
              aes(x = x, y = y, label = label)) +
-  xlab("media de muestra_t")
+  xlab("media t muestral")+
+  ylab("frecuencia")
 ```
 
 ### Tomando una decisión
@@ -720,6 +723,7 @@ Se siguen los mismos principios básicos que antes. Definimos un criterio alfa (
 
 ```{r}
 #| fig-cap: "El valor crítico de t para un test bilateral. El 5% total de los valores t son mayores o menores que los valores críticos."
+#| label: fig-6twotailedt
 
 range <- seq(-4, 4, .1)
 null_distribution <- dt(range, 4, log = FALSE)
